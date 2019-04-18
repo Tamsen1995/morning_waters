@@ -1,0 +1,404 @@
+/*!
+ * Start Bootstrap - New Age v5.0.0 (https://startbootstrap.com/template-overviews/new-age)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-new-age/blob/master/LICENSE)
+ */
+
+
+body {
+  width: 100%;
+  height: 100%;
+  text-align:center;
+}
+
+/* ----------------Fonts -------------*/
+/* font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+/* .purple {
+  position: relative;
+  width: 100%;
+  background-image: url('purplebg.png');
+  background-size: cover;
+  background-position: center;
+} */
+
+.purple {
+  position: relative;
+  width: 100%;
+  background-image: url('greenbg.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* .purple {
+  position: relative;
+  width: 100%;
+  background-image: url('BACKGROUND.png');
+  background-size: cover;
+  background-position: center;
+} */
+
+/* DNA Un-edited */
+/* .green {
+  position: relative;
+  width: 100%;
+  background-image: url('dna_purple60.png');
+  background-size: initial;
+} */
+
+.green .container-fluid{
+  background-color:white;
+  opacity: .85;
+  padding:50px ;
+}
+
+/* Green/purple design background */
+ .green {
+  position: relative;
+  width: 100%;
+  background-image: url('BACKGROUND.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.feature-item {
+  margin: 20px;
+}
+
+/* .green .col-sm {
+  background-color:white;
+  opacity: .80;
+  padding:50px ;
+}  */
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px;
+  box-sizing: border-box;
+}
+
+/* most important heading should be in h1 */
+h1,
+h2 {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-family:  'Open Sans', sans-serif;
+  font: 35px 'Open Sans', sans-serif;
+  color: #311c63;
+  text-align:center;
+}
+
+h3  {
+  letter-spacing: 2px;
+  font-style: medium;
+  font: 30px 'Lato';
+  color: #311c63;
+  text-align:center;
+}
+
+h4  {
+  font-style: medium;
+  font: 30px 'Lato';
+  color: #2d1e35;
+  text-align:center;
+}
+
+h5  {
+  font-style: medium;
+  font: 25px 'Roboto';
+  color: #2d1e35;
+  text-align:center;
+}
+
+
+p {
+  font: 'Open Sans', sans-serif;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #2d1e35;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  animation-name: moveInLeft;
+  animation-duration: 2s;
+}
+
+/* logo animation */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+
+a {
+color: #311c63;
+-webkit-transition: all .35s;
+transition: all .35s;
+}
+
+a:hover, a:focus {
+color: #6a2c86;
+}
+
+hr {
+max-width: 100px;
+margin: 25px auto 0;
+border-width: 1px;
+border-color: rgba(34, 34, 34, 0.1);
+}
+
+hr.light {
+border-color: white;
+}
+
+.btn-signup {
+  border-radius: 300px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-style: medium;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.btn-login {
+  border-radius: 300px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-style: medium;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.btn-signup-outline {
+  color: rgb(190, 190, 190);
+  border: 1px solid;
+  border-color: rgb(190, 190, 190);
+}
+
+.btn-login-outline {
+  color: rgb(190, 190, 190);
+  border: 1px solid;
+  border-color: rgb(190, 190, 190);
+}
+
+.btn-signup-outline:hover, .btn-signup-outline:focus, .btn-signup-outline.active {
+  color: white;
+  border-color: #361555;
+  background-color: #361555;
+}
+
+.btn-login-outline:hover, .btn-login-outline:focus, .btn-login-outline.active {
+  color: white;
+  border-color: #088a12;
+  background-color: #088a12;
+}
+
+.btn-xl {
+font-size: 11px;
+padding: 15px 45px;
+}
+
+.icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 115px;
+  height:100px;
+}
+
+
+section {
+  padding: 200px 0px 200px;
+}
+
+section.services {
+  padding: 100px 75px 100px;
+}
+
+
+form {
+  width:300px;
+  font-size:14pt;
+  display: inline-block;
+}
+
+/* ----footer -----*/
+
+footer {
+  padding: 30px 0px 10px;
+  text-align: left;
+  color: black(255, 255, 255, 0.8);
+  background-color: #d3d3d3;
+}
+
+/* #copy-rights {
+  background-color:#361555;
+} */
+
+#contact, p {
+  font-size: 15px;
+  margin: 0;
+}
+
+#contact h4 {
+  font-size: 18px;
+  margin: 0;
+}
+
+footer .row {
+  padding: 10px;
+}
+
+.bg-primary {
+  background: #482774;
+  background: -webkit-gradient(linear, left top, left bottom, from(#4b1552), to(#250d41));
+  background: linear-gradient(#4b1552, #250d41);
+}
+
+.text-primary {
+  color: #fdcc52;
+}
+
+.btn-outline {
+  color: rgb(190, 190, 190);
+  border: 1px solid;
+  border-color: rgb(190, 190, 190);
+
+}
+
+.btn-outline:hover, .btn-outline:focus, .btn-outline:active, .btn-outline.active {
+  color: white;
+  border-color: #361555;
+  background-color: #361555;
+}
+
+.btn {
+  border-radius: 300px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.btn-xl {
+  font-size: 11px;
+  padding: 15px 45px;
+}
+
+.btn-default {
+  background-color: #361555;
+  color:#FFF;
+  border-color: #2F3E48;
+}
+
+
+/* NAVBAR STYLING */
+#mainNav {
+  border-color: rgba(34, 34, 34, 0.05);
+  background-color: white;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  /* visibility: hidden;  */
+  opacity: 0;
+}
+
+#mainNav .navbar-brand {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+#mainNav:hover, #mainNav .navbar-brand:focus {
+  color: #823E90;
+  visibility:visible;
+  opacity: 1;
+}
+
+#mainNav .navbar-toggler {
+  font-size: 12px;
+  padding: 8px 10px;
+  color: #222222;
+}
+
+#mainNav .navbar-nav > li > a {
+  font-size: 11px;
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* #mainNav .navbar-nav > li > a.active,
+#mainNav .navbar-nav > li > a:hover, {
+  color: #87C27B !important;
+  background-color: transparent;
+} */
+
+/* Header */
+header.masthead {
+  position: relative;
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 200px;
+  color: white;
+  background: url("./HEADER.png");
+  background: url("./HEADER.png"), -webkit-gradient(linear, right top, left top, from(#c7c7c7), to(#ffffff));
+  background: url("./HEADER.png"), linear-gradient(to right, #e2e2e2, #ffffff);
+}
+
+ul {
+  text-align: left
+}
+
+/* ------Vue Directive Responsive Design Ish ----------------------------------------------------*/
+.responsive-component.small h1, h2 {
+  letter-spacing: 1px;
+  font-size: 28px;
+  text-align:center;
+}
+
+.responsive-component.small h3 {
+  letter-spacing: 1px;
+  font-size: 25px;
+  text-align:center;
+}
+
+.responsive-component.small p{
+  width:100%;
+  font-size: 20px;
+}
+
+.responsive-component.small footer p{
+  width:100%;
+  font-size: 10px;
+}
+
+.responsive-component.small form{
+  width:100%;
+  font-size: 12px;
+}
+

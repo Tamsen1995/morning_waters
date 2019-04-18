@@ -1,0 +1,251 @@
+/* ---------- Global Styling ---------- */
+
+body {
+    font: 18px 'Roboto';
+    background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
+    background-size: cover;
+    text-align:left;
+    min-height: 100vh; 
+    padding-top: 60px;
+}
+
+h1 {
+    font: 28px 'Roboto';
+    color: #29105b;
+    text-align:center;
+}
+
+/* --------- Register Form---------- */
+
+
+
+form {
+    border-radius: 5px;
+    max-width:700px;
+    width:100%;
+    margin: 5% auto;
+    padding: 30px 15px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+
+#register, label{
+    font: 18px 'Roboto';
+    color: rgb(94, 94, 94);
+    text-align:left;
+}
+
+
+ #personalinfo {
+    width:49.5%; 
+    float:left;
+    border-right: 1px dotted #CCC;
+    box-sizing: border-box;
+    padding: 0px 15px 0px 0px;
+    overflow: hidden;
+    clear: both;
+  }
+  
+ #companyinfo {
+    width:49.5%;
+    float:right;
+    box-sizing: border-box;
+    padding: 0px 0px 0px 15px;
+    overflow: hidden;
+    clear: both;
+}
+
+#register-form-footer{
+    border-top: 2px #917e9e;
+}
+
+
+.fixed-horizontal-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;  
+}
+
+.error {
+    color: red;
+}
+
+
+p {
+    text-align: left;
+    color: white;
+    /* font-size: 15px */
+    font: 20px "roboto";
+}
+
+.btn {
+    color: white;
+    border-color: #361555;
+    background-color: #361555;
+    justify-content: center;
+}
+
+#btn-login {
+    display: inline-block;
+    border-radius: 5px;
+}
+
+
+
+/* Responsive ish */
+
+.responsive-component.small body.register{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.responsive-component.small .fixed-horizontal-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;  
+}
+
+/* ------Login Form--------- */
+
+
+
+#login {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    width: 350px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+#login h1 {
+    text-align: center;
+}
+
+#form-footer{
+    padding-bottom:10px;
+}
+
+.login #login label{
+    font: 18px 'Roboto';
+    color: rgb(94, 94, 94);
+    text-align:left;
+}
+
+.login #login h1 {
+    font: 28px 'Roboto';
+    color: #29105b;
+}
+p {
+    font-size: 10px;
+    text-align: left;
+}
+
+/* button */
+
+
+#legal-links h5 {
+    letter-spacing: 1px;
+    font: 15px 'Roboto';
+    text-align: center;
+    /* color: #917e9e; */
+    color: #29105b;
+}
+
+#form-footer, p {
+    font: 12px 'Roboto';
+    color: rgb(94, 94, 94);
+}
+
+#login-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 175px;
+    height:150px;
+}
+
+/* loading animation - replace filled form with loading animation*/
+.loader {
+    color: #3c1760;
+    font-size: 20px;
+    margin: 100px auto;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-animation: load4 1.3s infinite linear;
+    animation: load4 1.3s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+@-webkit-keyframes load4 {
+0%,
+100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+}
+12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+}
+25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+}
+37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+}
+50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+}
+62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+}
+75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+}
+87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+}
+}
+@keyframes load4 {
+0%,
+100% {
+    box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+}
+12.5% {
+    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+}
+25% {
+    box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+}
+37.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+}
+50% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+}
+62.5% {
+    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+}
+75% {
+    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+}
+87.5% {
+    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+}
+}
+
+/* Buyer Login */
+
+.login #buyer-login h1 {
+    font: 28px 'Roboto';
+    color: #29105b;
+}
