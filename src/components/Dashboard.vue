@@ -92,7 +92,7 @@
                     <div class="col-12">  
                     <!-- Modal component to add a service with -->
                     
-                        <modal name="add-service"  height="auto" scrollable="true" style="padding-top:80px">
+                  <modal name="add-service"  height="auto" scrollable="true" style="padding-top:80px">
                             
                             <div class="container" style="margin:10px">
                                 <div class="row">
@@ -103,7 +103,7 @@
                                            
                                             <div class="container" style="min-width: 500px;">
                                             
-                                                <!-- Service Title -->
+                                            <!-- Service Title -->
                                                 <div class="form-group row">
                                                     <label for="serviceTitle" class="col-sm .col-form-label-xsm"><p>Service Title:</p></label>
                                                     <div class="col-sm-10">
@@ -128,7 +128,7 @@
                                                     </div>
                                                 </div>
                 
-                                                <!-- <br>
+                                                <br>
                                                 <div class="form-group">
                                                     <label for="exampleFormControlSelect1"><p>How many sub-services would you like to add?</p></label>
                                                     <div class="col-sm-2">
@@ -146,50 +146,82 @@
                                                         <option>10</option>
                                                         </select>
                                                     </div>
-                                                </div> -->
-                                                <hr>
-                                                <p>Add Subservice</p>
-                                                <!-- If 1-10 entered, show... -->
-                                                <div class="container hidden" id="subServiceBlock">
-                                                    <!-- Service Subtitle -->
-                                                    <div class="form-group row">
-                                                        <label for="serviceSubtitle" class="col-sm col-form-label"><p>Service Subtitle:</p></label>
-                                                        <div class="col-sm-8">
-                                                            <input v-model="serviceSubtitle" type="text" class="form-control animated" placeholder="Enter service subtitle"></input>
-                                                        </div>
-                                                    </div> 
-                                                    <!-- Enter Unit type -->
-                                                    <div class="form-group row">
-                                                        <label for="unitType" class="col-sm col-form-label"><p>Unit Type:</p></label>
-                                                        <div class="col-sm-8">
-                                                            <input v-model="unitType" type="text" class="form-control animated" placeholder="Enter unit type"></input>
-                                                        </div>
-                                                    </div> 
-                                                    <!-- Service Price/ Unit --> 
-                                                    <div class="form-group row">
-                                                        <label for="price" class="col-sm col-form-label"><p>Price Per Unit:</p></label>
-                                                        <div class="col-sm-8">
-                                                            <input v-model="price" type="text" class="form-control animated" placeholder="Enter price per unit"></input>
-                                                        </div>
-                                                    </div> 
-                                                    <!-- Turn Around Time -->
-                                                    <div class="form-group row">
-                                                    <label for="turnAroundTime" class="col-sm col-form-label"><p>Turn Around Time:</p></label>
-                                                        <div class="col-sm-8">
-                                                            <input v-model="turnAroundTime" type="text" class="form-control animated" placeholder="Enter turn around time in weeks"></input>
-                                                        </div>
-                                                    </div> 
                                                 </div>
-                                            
-                                                <!-- Add another (plus button) -->
+                                            <hr>
+                                            <!-- If 0 clicked, vie unit type, price, turn-around-time -->
+                                            <!-- Enter Unit type -->
+                                            <div class="form-group row">
+                                                <label for="unitType" class="col-sm col-form-label"><p>Unit Type:</p></label>
+                                                <div class="col-sm-8">
+                                                    <input v-model="unitType" type="text" class="form-control animated" placeholder="Enter unit type"></input>
+                                                </div>
+                                            </div> 
+                                            <!-- Service Price/ Unit --> 
+                                            <div class="form-group row">
+                                                <label for="price" class="col-sm col-form-label"><p>Price Per Unit:</p></label>
+                                                <div class="col-sm-8">
+                                                    <input v-model="price" type="text" class="form-control animated" placeholder="Enter price per unit"></input>
+                                                </div>
+                                            </div> 
+                                            <!-- Turn Around Time -->
+                                            <div class="form-group row">
+                                                <label for="turnAroundTime" class="col-sm col-form-label"><p>Turn Around Time (weeks):</p></label>
+                                                <div class="col-sm-8">
+                                                    <input v-model="turnAroundTime" type="text" class="form-control animated" placeholder="Enter turn around time in weeks"></input>
+                                                </div>
+                                            </div> 
+                                            <hr>
+                                            <br>                                           
+                                    
+                                            <!-- If 1-10 entered, show... -->
 
-                                                <button type="button" class="btn btn-default pull-right" id="addSubButton" @click="addSubService">
-                                                    <strong> <h6>Add Sub-service  <span class="glyphicon glyphicon-plus-sign"></span> </h6></strong>
-                                                </button>                                              
+                                                <!-- Service Subtitle -->
+                                                <div class="form-group row">
+                                                    <label for="serviceSubtitle" class="col-sm col-form-label"><p>Service Subtitle:</p></label>
+                                                    <div class="col-sm-8">
+                                                        <input v-model="serviceSubtitle" type="text" class="form-control animated" placeholder="Enter service subtitle"></input>
+                                                    </div>
+                                                </div> 
+                                        
+                                        
+                                                <!-- Enter Unit type -->
+                                                
+                                                <div class="form-group row">
+                                                    <label for="unitType" class="col-sm col-form-label"><p>Unit Type:</p></label>
+                                                    <div class="col-sm-8">
+                                                        <input v-model="unitType" type="text" class="form-control animated" placeholder="Enter unit type"></input>
+                                                    </div>
+                                                </div> 
+                                                <!-- Service Price/ Unit --> 
+                                                <div class="form-group row">
+                                                    <label for="price" class="col-sm col-form-label"><p>Price Per Unit:</p></label>
+                                                    <div class="col-sm-8">
+                                                        <input v-model="price" type="text" class="form-control animated" placeholder="Enter price per unit"></input>
+                                                    </div>
+                                                </div> 
+                                                <!-- Turn Around Time -->
+                                                <div class="form-group row">
+                                                   <label for="turnAroundTime" class="col-sm col-form-label"><p>Turn Around Time:</p></label>
+                                                    <div class="col-sm-8">
+                                                        <input v-model="turnAroundTime" type="text" class="form-control animated" placeholder="Enter turn around time in weeks"></input>
+                                                    </div>
+                                                </div> 
+                                           
+                                                <!-- Add another (plus button) -->
+                                                <div class="form-check">
+                                                    
+                                                    <label class="form-check-label" for="exampleCheck1"><p>Add another sub-service </p></label>
+                                                
+                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1"> 
+                                                </div>
+                                                <br>
+                                                <br>
                                             
                                                 <!-- File Input -->
                                                 <div class="form-group row">
                                                     <div class="col">
+                                                       
+                                                    
                                                     <p><input type="file" class="form-control-file" id="exampleFormControlFile1"></p></div>
                                                 </div>
                                                 <button 
