@@ -36,4 +36,3 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-// HEY STEF Please branch off of develop for your next coding sesh ^_^ !
