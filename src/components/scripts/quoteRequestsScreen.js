@@ -31,7 +31,7 @@ export default {
   methods: {
     async generateInvoice () {
       try {
-        InboxService.generateInvoice()
+        InboxService.generateInvoice(this.order)
         console.log(`\nThis button should ideally generate an invoice\n`) // TESTING
       } catch (error) {
         if (error) throw error

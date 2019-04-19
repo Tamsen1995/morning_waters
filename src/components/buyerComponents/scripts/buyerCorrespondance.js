@@ -24,7 +24,10 @@ export default {
   methods: {
     async downloadInvoice () {
       try {
-        console.log(`\nTodo: This button should intiate a download\n`) // TESTING
+        const response = await InboxServices.retrieveOrderInvoice(this.orderId)
+        console.log(
+          `\nTodo: This button should intiate a download ${response}\n`
+        ) // TESTING
       } catch (error) {
         if (error) throw error
       }
