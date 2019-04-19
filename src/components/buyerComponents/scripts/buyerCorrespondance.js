@@ -22,6 +22,13 @@ export default {
     BuyerHeader
   },
   methods: {
+    async downloadInvoice () {
+      try {
+        console.log(`\nTodo: This button should intiate a download\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async retrieveCorrespondance () {
       try {
         const response = await InboxServices.retrieveCorrespondance(

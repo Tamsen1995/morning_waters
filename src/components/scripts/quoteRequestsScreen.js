@@ -29,6 +29,14 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async generateInvoice () {
+      try {
+        InboxService.generateInvoice()
+        console.log(`\nThis button should ideally generate an invoice\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async sendMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING

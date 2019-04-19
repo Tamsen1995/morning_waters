@@ -1,6 +1,9 @@
 import Api from '@/services/Api';
 
 export default {
+  generateInvoice () {
+    return Api().post('generateInvoice')
+  },
   retrieveCorrespondance (orderId) {
     return Api().get('retrieveCorrespondance', {
       params: {
