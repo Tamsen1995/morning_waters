@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <page-header></page-header>
-    <div class="responsive-component" v-responsive= "{
+    <div class="responsive-component" v-responsive="{
       small: el => el.width < 430,
       large: el=> el.width > 1030
       }">
@@ -13,7 +13,7 @@
         <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
 
-        <b-card id="register">
+        <div class="card border-0" id="register">
           <div class="error" v-html="error"/>
           <!-- Form -->
           <form>
@@ -115,17 +115,17 @@
               </div> 
           </form>
 
-        </b-card>
+        </div>
 
           <!-- Footer -->
             <div id="form-footer" class="center">
-              <b-container id="legal-links">
+              <div class="container" id="legal-links">
                 <div style="text-align:center">
                     <a href="#">Terms and Conditions</a>
                     <br>
                     <a href="#">Privacy</a>
                 </div>
-              </b-container>
+              </div>
               <!-- <hr>
               <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
               <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p> -->
