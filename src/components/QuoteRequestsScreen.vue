@@ -79,6 +79,7 @@
                 v-on:keyup.enter="sendMessage()"
               ></textarea>
               <button class="box message-preview" @click="sendMessage()">Submit</button>
+              <button class="box message-preview" @click="generateInvoice()">Generate Invoice</button>
             </div>
           </div>
 
