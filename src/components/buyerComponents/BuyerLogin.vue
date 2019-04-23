@@ -11,7 +11,9 @@
     >
       <div class="container" id="login">
         <div class="row">
-          <br><br><br>
+          <br>
+          <br>
+          <br>
           <div class="col">
             <div class="container">
               <div id="fig-logo-white">
@@ -30,8 +32,9 @@
             <!-- Form -->
             <div class="card border-0" id="rounded">
               <form>
-              <h1>Buyer Login</h1>
-              <br><hr>
+                <h1>Buyer Login</h1>
+                <br>
+                <hr>
                 <div class="form-group row">
                   <label for="email" class="col-sm col-form-label">Email:</label>
                   <div class="col-sm-12">
@@ -59,15 +62,22 @@
                 <br>
                 <div class="error" v-html="error"/>
 
-
                 <div class="container" id="center">
-                    <button type="button" class="btn btn-outline" id="btn-login" @click="login">
+                  <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="btn-login"
+                    @click="buyerLogin()"
+                  >
                     <h3>Submit</h3>
-                    </button>
-                  <br><br>
-                  <p>Don't have an account yet?<a href="#"> Sign up</a></p> 
+                  </button>
+                  <br>
+                  <br>
+                  <p>
+                    Don't have an account yet?
+                    <a @click="redirectOntoBuyerRegister()">Sign up</a>
+                  </p>
                 </div>
-
               </form>
             </div>
 
@@ -76,7 +86,8 @@
               <a href="#" id="legal-links">Terms and Conditions</a>
               <br>
               <a href="#" id="legal-links">Privacy</a>
-              <br><hr>
+              <br>
+              <hr>
               <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
               <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
             </div>
