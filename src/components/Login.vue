@@ -1,7 +1,7 @@
 <template>
-<div id="app">
+<div>
   <page-header></page-header>
-  <body>
+  <body class="login">
     <div
       class="responsive-component"
       v-responsive="{
@@ -9,11 +9,11 @@
       }"
       id="register"
     >
-      <b-container id="login">
-        <b-row>
+      <div class="container" id="login">
+        <div class="row">
           <br><br><br>
-          <b-col>
-            <b-container>
+          <div class="col">
+            <div class="container">
               <div id="fig-logo-white">
                 <img
                   src="../assets/css/TINY_LOGO_WHITE.png"
@@ -23,12 +23,12 @@
                 >
               </div>
               <br>
-            </b-container>
+            </div>
             <!-- Loadng animation -->
             <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
             <!-- Form -->
-            <b-card bg-variant="transparent">
+            <div class="card border-0" id="rounded">
               <form>
               <h1>Login</h1>
               <br><hr>
@@ -58,33 +58,31 @@
                 </div>
                 <br>
                 <div class="error" v-html="error"/>
-                <div style="text-align: center;">
-                  <button type="button" class="btn btn-outline" id="btn-login" @click="login">
+
+
+                <div class="container" id="center">
+                    <button type="button" class="btn btn-outline" id="btn-login" @click="login">
                     <h3>Submit</h3>
-                  </button>
-                  <button type="button" class="btn btn-outline" id="btn-login">
-                    <h3>Sign Up</h3>
-                  </button>
-              </div>
+                    </button>
+                  <br><br>
+                  <p>Don't have an account yet?<a href="#"> Sign up</a></p> 
+                </div>
+
               </form>
-            </b-card>
+            </div>
 
             <!-- Footer -->
-            <div id="form-footer" class="center">
-              <b-container id="legal-links">
-                <div style="text-align:center">
-                    <a href="#">Terms and Conditions</a>
-                    <br>
-                    <a href="#">Privacy</a>
-                </div>
-              </b-container>
-              <br><hr><br>
+            <div class="container" id="form-footer">
+              <a href="#" id="legal-links">Terms and Conditions</a>
+              <br>
+              <a href="#" id="legal-links">Privacy</a>
+              <br><hr>
               <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
               <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
             </div>
-          </b-col>
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </div>

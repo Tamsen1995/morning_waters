@@ -67,5 +67,5 @@
 </script>
 
 <style>
-@import "../../assets/css/figanal.css";
+@import "../../assets/css/header.css";
 </style>
