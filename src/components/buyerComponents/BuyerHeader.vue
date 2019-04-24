@@ -34,7 +34,7 @@
             <!--  -->
 
             <li class="nav-item" v-if="this.buyerLoggedIn === false">
-              <a class="nav-link nav-center" @click="redirectToSignUp()">Sign Up</a>
+              <a class="nav-link nav-center" @click="redirectToSignUp()" >Sign Up</a>
             </li>
 
             <li class="nav-item" v-if="this.buyerLoggedIn === false">
@@ -54,14 +54,21 @@
             </li>
 
             <li class="nav-item">
-              <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="60px" height="45px">
+              <!-- <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="60px" height="45px"> -->
               <!-- Go to Modal Cart -->
-              <a class="nav-link" @click="manifestModalShowCart()">
-                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a>
+              <!-- <a class="nav-link" @click="manifestModalShowCart()">
+                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a> -->
 
               <!-- Go to BuyerCart -->
               <!-- <a class="nav-link" @click="goToBuyersCart()">
                 Cart:<span class="badge badge-success">{{itemsInCart}}</span></a> -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" @click="goToBuyersCart()" style="padding-top:0px;padding-bottom:0px;">
+                <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="55px" height="40px">
+              </a>
+              <a class="nav-link" @click="goToBuyersCart()" style="padding-top:0px;padding-bottom:0px;">
+                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a>
             </li>
           </ul>
         </div>
