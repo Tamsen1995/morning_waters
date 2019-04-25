@@ -25,9 +25,25 @@ export default {
     async downloadInvoice () {
       try {
         const response = await InboxServices.retrieveOrderInvoice(this.orderId)
+
+        const responseBuffer = response.data
+
         console.log(
-          `\nTodo: This button should intiate a download ${response}\n`
+          `\nI am console logging the invoice response type : ${responseBuffer}\n`
         ) // TESTING
+
+        const pdfBlob = new Blob([responseBuffer], {
+          type: 'application/pdf'
+        })
+
+        const url = URL.createObjectURL(pdfBlob)
+
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', 'file.pdf') //or any other extension
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
       } catch (error) {
         if (error) throw error
       }
