@@ -29,15 +29,22 @@
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;"
               >
-                <img src="../assets/css/noun_orders_crop.png" alt="New Orders" width="60px" height="40px" style="padding-left:5px;">
+                <img
+                  src="../assets/css/noun_orders_crop.png"
+                  alt="New Orders"
+                  width="60px"
+                  height="40px"
+                  style="padding-left:5px;"
+                >
               </router-link>
               <router-link
                 class="nav-link"
                 to="/dashboard/creditsScreen"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >             
-                Orders<span class="badge badge-success">{{ this.credits }}</span>
+              >
+                Orders
+                <span class="badge badge-success">{{ this.credits }}</span>
               </router-link>
             </li>
 
@@ -56,9 +63,7 @@
                 to="/dashboard/quoteRequestsScreen"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >             
-                Inbox
-              </router-link>
+              >Inbox</router-link>
             </li>
 
             <!-- Profile -->
@@ -69,16 +74,19 @@
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;"
               >
-                <img src="../assets/css/noun_profile_crop.png" alt="Profile" width="55px" height="40px">
+                <img
+                  src="../assets/css/noun_profile_crop.png"
+                  alt="Profile"
+                  width="55px"
+                  height="40px"
+                >
               </router-link>
-              <router-link 
-              class="nav-link" 
-              to="/dashboard" 
-              v-if="this.user == null"
-              style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >
-                Profile
-              </router-link>
+              <router-link
+                class="nav-link"
+                to="/dashboard"
+                v-if="this.user == null"
+                style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
+              >Profile</router-link>
             </li>
 
             <!-- Settings -->
@@ -89,7 +97,12 @@
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;"
               >
-                <img src="../assets/css/noun_settings_crop.png" alt="Inbox" width="55px" height="40px">
+                <img
+                  src="../assets/css/noun_settings_crop.png"
+                  alt="Inbox"
+                  width="55px"
+                  height="40px"
+                >
               </router-link>
               <router-link
                 class="nav-link"
@@ -99,8 +112,8 @@
               >Settings</router-link>
             </li>
 
-          <!-- Logout -->
-            <li class="nav-item" @click="logout()">
+            <!-- Logout -->
+            <li class="nav-item nav-center" @click="logout()">
               <router-link class="nav-link nav-center" to="/">
                 <i class="ti-close"></i> Logout
               </router-link>
