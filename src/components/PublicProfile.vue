@@ -43,7 +43,7 @@
         <div class="services">
           <br>
           <div id="services">
-            <button @click="manifestModalInquiry(service)" class="btn btn-primary pull-right">General inquiry</button>
+            <button @click="manifestModalInquiry(service)" class="btn-gen-inq btn btn-primary pull-right">General inquiry</button>
             <h4> Services:</h4>
               
           </div>
@@ -58,7 +58,7 @@
               <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
               <div class="card-body">
                 <!-- Service Description -->
-                <button @click="manifestModalForm(service)" class="btn btn-primary pull-right">Request Quote</button>
+                <button @click="manifestModalForm(service)" class="btn-quote-req btn btn-primary pull-right">Request Quote</button>
                 <h5 class="card-text" style="text-align:left; padding:15px;">{{ service.description }}</h5>
                 
                 <!-- Service/Price Listings -->
@@ -114,9 +114,9 @@
       <br>
 
       <!-- shopping cart component -->
-      <div id="shopping-cart">
+      <!-- <div id="shopping-cart">
         <shopping-cart></shopping-cart>
-      </div>
+      </div> -->
 
       <!-- Checkout button -->
       <b-button @click="redirectToCheckoutOrLogin()">
@@ -154,7 +154,7 @@
         <div class="row">
           <div class="col-10">
             <div v-if="this.itemChosen">
-              <p>Service : {{ this.itemChosen.title }}
+              <p style="text-align:left;"><strong>Service : {{ this.itemChosen.title }}</strong>
                 <ul>
                   <!-- price/unit -->
                   <li>
@@ -167,16 +167,19 @@
                   </li>
                 </ul>
 
-              </p>
+              
 
-              <div>
-                <label><p>Amount? (optional) </p></label>
+              
+                <label>Amount? (optional)</label>
                 <input v-model="pickedQuantityQuoteRequest"  type="number" style="width: 40px">
-              </div>
+              
               <br>
+              <br>
+              Send message to Seller
+              <textarea v-model="inquiryText" class="form-control animated" placeholder="Enter your message" rows=5></textarea>
+              </p>
             </div>
-            <p>Want to send a message to this seller about this specific service?</p>
-            <textarea v-model="inquiryText" class="form-control animated" placeholder="Enter your message" rows=5></textarea>
+
           </div>
           <br>
         </div>
