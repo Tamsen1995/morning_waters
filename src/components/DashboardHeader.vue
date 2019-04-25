@@ -20,88 +20,37 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <!-- /dashboard/creditsScreen/creditsPurchasing -->
-
-            <!-- Orders -->
+            <!-- TODO : Insert credits here -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/creditsScreen"
                 v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px;"
-              >
-                <img src="../assets/css/noun_orders_crop.png" alt="New Orders" width="60px" height="40px" style="padding-left:5px;">
-              </router-link>
-              <router-link
-                class="nav-link"
-                to="/dashboard/creditsScreen"
-                v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >             
-                Orders<span class="badge badge-success">{{ this.credits }}</span>
-              </router-link>
+              >Credits: {{ this.credits }}</router-link>
             </li>
 
-            <!-- Inbox -->
+            <li class="nav-item">
+              <router-link class="nav-link" to="/dashboard" v-if="this.user == null">Profile</router-link>
+            </li>
+
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/quoteRequestsScreen"
                 v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px;padding-left:0px;"
-              >
-                <img src="../assets/css/noun_Mail_crop.png" alt="Inbox" width="55px" height="40px">
-              </router-link>
-              <router-link
-                class="nav-link"
-                to="/dashboard/quoteRequestsScreen"
-                v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >             
-                Inbox
-              </router-link>
+              >Inbox</router-link>
             </li>
 
-            <!-- Profile -->
-            <li class="nav-item">
-              <router-link
-                class="nav-link"
-                to="/dashboard"
-                v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px;"
-              >
-                <img src="../assets/css/noun_profile_crop.png" alt="Profile" width="55px" height="40px">
-              </router-link>
-              <router-link 
-              class="nav-link" 
-              to="/dashboard" 
-              v-if="this.user == null"
-              style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >
-                Profile
-              </router-link>
-            </li>
-
-            <!-- Settings -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/settings"
                 v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px;"
-              >
-                <img src="../assets/css/noun_settings_crop.png" alt="Inbox" width="55px" height="40px">
-              </router-link>
-              <router-link
-                class="nav-link"
-                to="/dashboard/settings"
-                v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
               >Settings</router-link>
             </li>
 
-          <!-- Logout -->
             <li class="nav-item" @click="logout()">
-              <router-link class="nav-link nav-center" to="/">
+              <router-link class="nav-link" to="/">
                 <i class="ti-close"></i> Logout
               </router-link>
             </li>
