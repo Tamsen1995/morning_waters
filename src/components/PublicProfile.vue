@@ -114,9 +114,9 @@
       <br>
 
       <!-- shopping cart component -->
-      <div id="shopping-cart">
+      <!-- <div id="shopping-cart">
         <shopping-cart></shopping-cart>
-      </div>
+      </div> -->
 
       <!-- Checkout button -->
       <b-button @click="redirectToCheckoutOrLogin()">

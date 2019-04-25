@@ -34,11 +34,11 @@
             <!--  -->
 
             <li class="nav-item" v-if="this.buyerLoggedIn === false">
-              <a class="nav-link" @click="redirectToSignUp()">Sign Up</a>
+              <a class="nav-link nav-center" @click="redirectToSignUp()" >Sign Up</a>
             </li>
 
             <li class="nav-item" v-if="this.buyerLoggedIn === false">
-              <a class="nav-link" @click="redirectToLogin()">Login</a>
+              <a class="nav-link nav-center" @click="redirectToLogin()">Login</a>
             </li>
 
             <li class="nav-item" v-if="this.buyerLoggedIn === true">
@@ -54,12 +54,39 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" @click="goToBuyersCart()">Cart : {{itemsInCart}}</a>
+              <!-- <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="60px" height="45px"> -->
+              <!-- Go to Modal Cart -->
+              <!-- <a class="nav-link" @click="manifestModalShowCart()">
+                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a> -->
+
+              <!-- Go to BuyerCart -->
+              <!-- <a class="nav-link" @click="goToBuyersCart()">
+                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a> -->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" @click="goToBuyersCart()" style="padding-top:0px;padding-bottom:0px;">
+                <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="55px" height="40px">
+              </a>
+              <a class="nav-link" @click="goToBuyersCart()" style="padding-top:0px;padding-bottom:0px;">
+                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a>
             </li>
           </ul>
         </div>
       </div>
     </b-nav>
+    <!-- View Cart Modal -->
+    <modal name="view-cart"  height="auto" scrollable="true" style="padding-top:10px">
+                  
+      <div class="container" style="margin:10px" id="shopping-cart">
+        <div class="row">
+          <div class="col-12">
+            
+            <shopping-cart></shopping-cart>
+            
+          </div>
+        </div>
+      </div>
+    </modal>
   </div>
 </template>
 

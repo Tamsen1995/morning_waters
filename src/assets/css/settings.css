@@ -238,7 +238,13 @@ body.credits-purchasing {
 }
 
 /* -----------------Shopping Cart---------------- */
-/* body.shopping-cart {
-  background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
+body.shopping-cart {
+  padding-top: 110px;
+  /* background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%); */
   background-size: cover;
-} */
+  padding-bottom:10px;
+}
+
+body.shopping-cart .table {
+  background: white;
+}

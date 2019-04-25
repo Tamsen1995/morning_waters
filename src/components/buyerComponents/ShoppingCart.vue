@@ -1,6 +1,6 @@
 <template>
   <body class="shopping-cart">
-    <!-- <div> -->
+
       <h3>Shopping Cart</h3>
         <!-- Service/Price Listings -->
         <br>
@@ -20,9 +20,9 @@
             </thead>
             <tbody>
               <tr v-for="item in this.shoppingCart" v-bind:key="item">
-                <th scope="row">Service 1</th>
-                <td>{{ item.service.title}}</td>
+                <th scope="row">{{ item.service.title}}</th>
                 <td>{{ item.service.description }}</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -34,7 +34,6 @@
         </div>                      
       <br>
       <br>
-    <!-- </div> -->
   </body>
 </template>
 
