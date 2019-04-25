@@ -12,7 +12,17 @@
     <br>
 
     <!-- <textarea v-model="message" placeholder="add multiple lines"></textarea> -->
-    {{this.order}}
+    <div v-for="(item, index) in this.order" v-bind:key="index">
+      <div v-if="item.subject">
+        <br>
+        {{item.message}}
+      </div>
+      <div v-else>
+        Title: {{item.title}}
+        <br>
+        Description: {{item.description}}
+      </div>
+    </div>
     <br>
     <br>
     <br>
@@ -55,6 +65,7 @@
     ></textarea>
     <br>
     <button v-on:click="submitMessage()">Submit</button>
+    <button v-on:click="downloadInvoice()">Download Invoice</button>
   </body>
 </div>
 </template>

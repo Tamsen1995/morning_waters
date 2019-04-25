@@ -13,28 +13,23 @@
     <br>
     <br>
 
-    <!-- The entire list of order items -->
-    <!-- <div id="orders-list">
-      <li
-        v-for="(orderItem, index) in buyerOrderItems"
-        @click="goToOrderStatus(index)"
-        v-bind:key="buyerOrderItems.id"
-      >
-        <br>
-        Order Item : {{ orderItem.title }}
-        <br>
-        Description : {{ orderItem.description }}
-        <br>
-        <div v-if="orderItem === true">Order Status : Confirmed</div>
-        <div v-else>Order Status : Not Confirmed</div>
-      </li>
-    </div>-->
-
     <div id="orders-list">
       <li v-for="(order, index) in orders" @click="goToCorrespondance(index)" v-bind:key="index">
         <br>
         <br>
-        {{order}}
+
+        <div v-for="(item, index) in order" v-bind:key="index">
+          <div v-if="item.subject">
+            <br>
+            {{item.message}}
+          </div>
+          <div v-else>
+            Title: {{item.title}}
+            <br>
+            Description: {{item.description}}
+          </div>
+        </div>
+
         <br>
         <br>
       </li>

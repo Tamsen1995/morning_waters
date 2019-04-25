@@ -4,15 +4,62 @@ body {
     font: 18px 'Roboto';
     background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
     background-size: cover;
-    text-align:left;
+    text-align:center;
+    padding-top: 80px;
     min-height: 100vh; 
-    padding-top: 60px;
+}
+
+a, p {
+    text-align:center;
+    font: 14px 'Roboto';
+    color: #29105b;
 }
 
 h1 {
     font: 28px 'Roboto';
     color: #29105b;
     text-align:center;
+}
+
+#form-footer{
+    padding-bottom:5px;
+    padding-top:15px;
+    text-align: center;
+}
+#form-footer p {
+    text-align: center;
+    font: 12px 'Roboto';
+    color: rgb(129, 114, 114);
+}
+
+
+/* Card Formatting */
+
+.card {
+    margin-bottom: 0px;
+}
+
+.card#rounded {
+    border-radius: 10px;
+}
+
+
+/* Container Formatting */
+
+.container#center {
+    /* margin-left: 0 auto;  */
+    /* shorthand for:
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto; */
+    text-align:center;
+}
+
+.container p {
+    text-align: center;
+    font: 12px 'Roboto';
+    color: rgb(129, 114, 114);
 }
 
 /* --------- Register Form---------- */
@@ -35,6 +82,8 @@ form {
     color: rgb(94, 94, 94);
     text-align:left;
 }
+
+
 
 
  #personalinfo {
@@ -80,14 +129,11 @@ p {
     font: 20px "roboto";
 }
 
-.btn {
+.btn#btn-login {
     color: white;
     border-color: #361555;
     background-color: #361555;
     justify-content: center;
-}
-
-#btn-login {
     display: inline-block;
     border-radius: 5px;
 }
@@ -110,10 +156,13 @@ p {
 
 /* ------Login Form--------- */
 
-
+.login {
+    padding-top: 100px;
+}
 
 #login {
     position: fixed;
+    margin-bottom:10px;
     top: 25px;
     left: 50%;
     width: 350px;
@@ -126,11 +175,10 @@ p {
 
 #login h1 {
     text-align: center;
+    text-transform: uppercase;
 }
 
-#form-footer{
-    padding-bottom:10px;
-}
+
 
 .login #login label{
     font: 18px 'Roboto';
@@ -150,7 +198,7 @@ p {
 /* button */
 
 
-#legal-links h5 {
+#legal-links {
     letter-spacing: 1px;
     font: 15px 'Roboto';
     text-align: center;
@@ -158,10 +206,7 @@ p {
     color: #29105b;
 }
 
-#form-footer, p {
-    font: 12px 'Roboto';
-    color: rgb(94, 94, 94);
-}
+
 
 #login-logo {
     display: block;

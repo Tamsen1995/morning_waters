@@ -4,11 +4,10 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-new-age/blob/master/LICENSE)
  */
 
-
 body {
   width: 100%;
   height: 100%;
-  text-align:center;
+  text-align: center;
 }
 
 /* ----------------Fonts -------------*/
@@ -26,7 +25,7 @@ font-family: 'Roboto', sans-serif; */
 .purple {
   position: relative;
   width: 100%;
-  background-image: url('greenbg.png');
+  background-image: url("greenbg.png");
   background-size: cover;
   background-position: center;
 }
@@ -47,17 +46,17 @@ font-family: 'Roboto', sans-serif; */
   background-size: initial;
 } */
 
-.green .container-fluid{
-  background-color:white;
-  opacity: .85;
-  padding:50px ;
+.green .container-fluid {
+  background-color: white;
+  opacity: 0.85;
+  padding: 50px;
 }
 
 /* Green/purple design background */
- .green {
+.green {
   position: relative;
   width: 100%;
-  background-image: url('BACKGROUND.png');
+  background-image: url("BACKGROUND.png");
   background-size: cover;
   background-position: center;
 }
@@ -72,7 +71,7 @@ font-family: 'Roboto', sans-serif; */
   padding:50px ;
 }  */
 
-input[type=text] {
+input[type="text"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px;
@@ -84,37 +83,36 @@ h1,
 h2 {
   letter-spacing: 4px;
   text-transform: uppercase;
-  font-family:  'Open Sans', sans-serif;
-  font: 35px 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font: 35px "Open Sans", sans-serif;
   color: #311c63;
-  text-align:center;
+  text-align: center;
 }
 
-h3  {
+h3 {
   letter-spacing: 2px;
   font-style: medium;
-  font: 30px 'Lato';
+  font: 30px "Lato";
   color: #311c63;
-  text-align:center;
+  text-align: center;
 }
 
-h4  {
+h4 {
   font-style: medium;
-  font: 30px 'Lato';
+  font: 30px "Lato";
   color: #2d1e35;
-  text-align:center;
+  text-align: center;
 }
 
-h5  {
+h5 {
   font-style: medium;
-  font: 25px 'Roboto';
+  font: 25px "Roboto";
   color: #2d1e35;
-  text-align:center;
+  text-align: center;
 }
-
 
 p {
-  font: 'Open Sans', sans-serif;
+  font: "Open Sans", sans-serif;
   font-size: 24px;
   line-height: 1.5;
   color: #2d1e35;
@@ -148,31 +146,31 @@ p {
   }
 }
 
-
 a {
-color: #311c63;
--webkit-transition: all .35s;
-transition: all .35s;
+  color: #311c63;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
 }
 
-a:hover, a:focus {
-color: #6a2c86;
+a:hover,
+a:focus {
+  color: #6a2c86;
 }
 
 hr {
-max-width: 100px;
-margin: 25px auto 0;
-border-width: 1px;
-border-color: rgba(34, 34, 34, 0.1);
+  max-width: 100px;
+  margin: 25px auto 0;
+  border-width: 1px;
+  border-color: rgba(34, 34, 34, 0.1);
 }
 
 hr.light {
-border-color: white;
+  border-color: white;
 }
 
 .btn-signup {
   border-radius: 300px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-style: medium;
@@ -182,7 +180,7 @@ border-color: white;
 
 .btn-login {
   border-radius: 300px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-style: medium;
@@ -202,21 +200,25 @@ border-color: white;
   border-color: rgb(190, 190, 190);
 }
 
-.btn-signup-outline:hover, .btn-signup-outline:focus, .btn-signup-outline.active {
+.btn-signup-outline:hover,
+.btn-signup-outline:focus,
+.btn-signup-outline.active {
   color: white;
   border-color: #361555;
   background-color: #361555;
 }
 
-.btn-login-outline:hover, .btn-login-outline:focus, .btn-login-outline.active {
+.btn-login-outline:hover,
+.btn-login-outline:focus,
+.btn-login-outline.active {
   color: white;
   border-color: #088a12;
   background-color: #088a12;
 }
 
 .btn-xl {
-font-size: 11px;
-padding: 15px 45px;
+  font-size: 11px;
+  padding: 15px 45px;
 }
 
 .icon {
@@ -224,9 +226,8 @@ padding: 15px 45px;
   margin-left: auto;
   margin-right: auto;
   width: 115px;
-  height:100px;
+  height: 100px;
 }
-
 
 section {
   padding: 200px 0px 200px;
@@ -236,10 +237,9 @@ section.services {
   padding: 100px 75px 100px;
 }
 
-
 form {
-  width:300px;
-  font-size:14pt;
+  width: 300px;
+  font-size: 14pt;
   display: inline-block;
 }
 
@@ -256,7 +256,8 @@ footer {
   background-color:#361555;
 } */
 
-#contact, p {
+#contact,
+p {
   font-size: 15px;
   margin: 0;
 }
@@ -272,7 +273,13 @@ footer .row {
 
 .bg-primary {
   background: #482774;
-  background: -webkit-gradient(linear, left top, left bottom, from(#4b1552), to(#250d41));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#4b1552),
+    to(#250d41)
+  );
   background: linear-gradient(#4b1552, #250d41);
 }
 
@@ -284,10 +291,12 @@ footer .row {
   color: rgb(190, 190, 190);
   border: 1px solid;
   border-color: rgb(190, 190, 190);
-
 }
 
-.btn-outline:hover, .btn-outline:focus, .btn-outline:active, .btn-outline.active {
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
   color: white;
   border-color: #361555;
   background-color: #361555;
@@ -295,7 +304,7 @@ footer .row {
 
 .btn {
   border-radius: 300px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin: 0 auto;
@@ -309,18 +318,17 @@ footer .row {
 
 .btn-default {
   background-color: #361555;
-  color:#FFF;
-  border-color: #2F3E48;
+  color: #fff;
+  border-color: #2f3e48;
 }
-
 
 /* NAVBAR STYLING */
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
   background-color: white;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+  font-family: "Catamaran", "Helvetica", "Arial", "sans-serif";
   font-weight: 200;
   letter-spacing: 1px;
   /* visibility: hidden;  */
@@ -328,14 +336,15 @@ footer .row {
 }
 
 #mainNav .navbar-brand {
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-family: "Catamaran", "Helvetica", "Arial", "sans-serif";
   font-weight: 200;
   letter-spacing: 1px;
 }
 
-#mainNav:hover, #mainNav .navbar-brand:focus {
-  color: #823E90;
-  visibility:visible;
+#mainNav:hover,
+#mainNav .navbar-brand:focus {
+  color: #823e90;
+  visibility: visible;
   opacity: 1;
 }
 
@@ -346,10 +355,19 @@ footer .row {
 }
 
 #mainNav .navbar-nav > li > a {
-  font-size: 11px;
-  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+
+  font-size: 12px;
+  font-family: "Lato", "Helvetica", "Arial", "sans-serif";
   letter-spacing: 2px;
   text-transform: uppercase;
+}
+
+.nav-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+
 }
 
 /* #mainNav .navbar-nav > li > a.active,
@@ -362,43 +380,53 @@ footer .row {
 header.masthead {
   position: relative;
   width: 100%;
-  padding-top: 100px;
-  padding-bottom: 200px;
+  /* padding-top: 100px; */
+  padding-bottom: 300px;
   color: white;
   background: url("./HEADER.png");
-  background: url("./HEADER.png"), -webkit-gradient(linear, right top, left top, from(#c7c7c7), to(#ffffff));
+  background: url("./HEADER.png"),
+    -webkit-gradient(linear, right top, left top, from(#c7c7c7), to(#ffffff));
   background: url("./HEADER.png"), linear-gradient(to right, #e2e2e2, #ffffff);
 }
 
 ul {
-  text-align: left
+  text-align: left;
 }
 
 /* ------Vue Directive Responsive Design Ish ----------------------------------------------------*/
-.responsive-component.small h1, h2 {
+.responsive-component.small h1,
+h2 {
   letter-spacing: 1px;
   font-size: 28px;
-  text-align:center;
+  text-align: center;
 }
 
 .responsive-component.small h3 {
   letter-spacing: 1px;
   font-size: 25px;
-  text-align:center;
+  text-align: center;
 }
 
-.responsive-component.small p{
-  width:100%;
+.responsive-component.small p {
+  width: 100%;
   font-size: 20px;
 }
 
-.responsive-component.small footer p{
-  width:100%;
+.responsive-component.small footer p {
+  width: 100%;
   font-size: 10px;
 }
 
-.responsive-component.small form{
-  width:100%;
+.responsive-component.small form {
+  width: 100%;
   font-size: 12px;
+}
+
+
+.responsive-component.small .nav-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 
