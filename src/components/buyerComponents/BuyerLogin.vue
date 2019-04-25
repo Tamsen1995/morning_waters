@@ -9,11 +9,13 @@
       }"
       id="register"
     >
-      <b-container id="buyer-login">
-        <b-row>
-          <b-col>
-            <hr>
-            <b-container>
+      <div class="container" id="login">
+        <div class="row">
+          <br>
+          <br>
+          <br>
+          <div class="col">
+            <div class="container">
               <div id="fig-logo-white">
                 <img
                   src="../../assets/css/TINY_LOGO_WHITE.png"
@@ -22,27 +24,26 @@
                   id="login-logo"
                 >
               </div>
-            </b-container>
+              <br>
+            </div>
             <!-- Loadng animation -->
             <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
             <!-- Form -->
-            <b-card bg-variant="transparent">
-              <!-- <div id="fig-logo-white"> <b-img src="./LOGO_WHITE_mini.png" fluid alt="Responsive image"/></div> -->
-              <h1>Login</h1>
-              <hr>
-              <br>
-
+            <div class="card border-0" id="rounded">
               <form>
+                <h1>Buyer Login</h1>
+                <br>
+                <hr>
                 <div class="form-group row">
                   <label for="email" class="col-sm col-form-label">Email:</label>
                   <div class="col-sm-12">
                     <input
-                      type="text"
+                      type="email"
+                      v-model="email"
                       class="form-control"
                       id="staticEmail"
-                      value="Enter your email"
-                      v-model="email"
+                      placeholder="Enter your email"
                     >
                   </div>
                 </div>
@@ -51,53 +52,48 @@
                   <div class="col-sm-12">
                     <input
                       type="password"
+                      v-model="password"
                       class="form-control"
                       id="inputPassword"
                       placeholder="Enter your password"
-                      v-model="password"
                     >
                   </div>
                 </div>
+                <br>
+                <div class="error" v-html="error"/>
+
+                <div class="container" id="center">
+                  <button
+                    type="button"
+                    class="btn btn-outline"
+                    id="btn-login"
+                    @click="buyerLogin()"
+                  >
+                    <h3>Submit</h3>
+                  </button>
+                  <br>
+                  <br>
+                  <p>
+                    Don't have an account yet?
+                    <a @click="redirectOntoBuyerRegister()">Sign up</a>
+                  </p>
+                </div>
               </form>
+            </div>
 
-              <br>
-              <div class="error" v-html="error"/>
-              <!-- <br> -->
-
-              <button
-                type="button"
-                class="btn btn-outline pull-right"
-                id="submit"
-                @click="buyerLogin"
-              >
-                <h3>Submit</h3>
-              </button>
-
-              <a @click="redirectOntoBuyerRegister()">Don't have an account ?</a>
-            </b-card>
-            <br>
-            <br>
             <!-- Footer -->
-            <div id="form-footer">
-              <b-container id="legal-links">
-                <b-row>
-                  <b-col cols="8">
-                    <h5>Terms and Conditions</h5>
-                  </b-col>
-                  <b-col cols="4">
-                    <h5>Privacy</h5>
-                  </b-col>
-                </b-row>
-              </b-container>
+            <div class="container" id="form-footer">
+              <a href="#" id="legal-links">Terms and Conditions</a>
               <br>
+              <a href="#" id="legal-links">Privacy</a>
+              <br>
+              <hr>
               <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
               <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
             </div>
-            <hr>
-          </b-col>
-          <!-- <b-col cols="12" md="auto"></b-col> -->
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </div>

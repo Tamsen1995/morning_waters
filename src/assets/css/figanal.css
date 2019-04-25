@@ -8,8 +8,9 @@
 body {
   width: 100%;
   height: 100%;
-  text-align:center;
+  text-align: center;
 }
+
 
 /* ----------------Fonts -------------*/
 /* font-family: 'Montserrat', sans-serif;
@@ -313,7 +314,6 @@ footer .row {
   border-color: #2F3E48;
 }
 
-
 /* NAVBAR STYLING */
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
@@ -380,13 +380,12 @@ footer .row {
 } */
 
 
-
 /* Header */
 header.masthead {
   position: relative;
   width: 100%;
-  padding-top: 100px;
-  padding-bottom: 200px;
+  /* padding-top: 100px; */
+  padding-bottom: 300px;
   color: white;
   background: url("./HEADER.png");
   background: url("./HEADER.png"), -webkit-gradient(linear, right top, left top, from(#c7c7c7), to(#ffffff));
