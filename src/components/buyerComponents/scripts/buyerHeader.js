@@ -113,14 +113,6 @@ export default {
       }
     }
   },
-  async manifestModalShowCart () {
-    try {
-      this.$modal.show('view-cart')
-    } catch (error) {
-      console.log(`\nError in manifestModalShowCart : ${error}\n`) // TESTING
-      if (error) throw error
-    }
-  },
   computed: {
     itemsInCart () {
       let cart = this.$store.getters.getShoppingCartItems
