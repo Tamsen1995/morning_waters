@@ -1,3 +1,5 @@
+import ShoppingCart from '@/components/buyerComponents/ShoppingCart';
+
 export default {
   data () {
     return {
@@ -8,7 +10,19 @@ export default {
   mounted () {
     this.getBuyerAuthStatus()
   },
+  components: {
+    ShoppingCart
+  },
   methods: {
+    async manifestModalShowCart () {
+      try {
+        console.log('\ntesting\n')
+        this.$modal.show('view-cart')
+      } catch (error) {
+        console.log(`\nError in manifestModalShowCart : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
     // display_menu: function() {
     //   var body = document.getElementsByTagName("body")[0];
     //   (!body.classList.contains("display_menu")) ? body.classList.add("display_menu") : body.classList.remove("display_menu");
