@@ -1,39 +1,37 @@
 <template>
   <body class="shopping-cart">
-
-      <h3>Shopping Cart</h3>
-        <!-- Service/Price Listings -->
-        <br>
-        <br>
-        <div class="container" id="price-chart">
-          <p>
-            <table class="table table-hover" >
-            <thead>
-                <tr>
-                  <th scope="col">Item</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Turn Around Time</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in this.shoppingCart" v-bind:key="item">
-                <th scope="row">{{ item.service.title}}</th>
-                <td>{{ item.service.description }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-            </table>
-          </p>
-        </div>                      
-      <br>
-      <br>
+    <!-- Service/Price Listings -->
+    <div class="container" id="price-chart">
+      <p>
+        <table class="table table-hover" >
+        <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Description</th>
+              <th scope="col">Turn Around Time</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total</th>
+              <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in this.shoppingCart" v-bind:key="item">
+            <th scope="row">{{ item.service.title}}</th>
+            <td>{{ item.service.description }}</td>
+            <td></td>
+            <!-- Add edit quantity functionality -->
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <!-- Add delete functionality -->
+            <td>X</td>
+          </tr>
+        </tbody>
+        </table>
+      </p>
+    </div>                      
   </body>
 </template>
 
@@ -85,6 +83,6 @@ export default {
 </script>
 
 <style>
-@import "../../assets/css/settings.css";
+@import "../../assets/css/header.css";
 @import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
 </style>

@@ -33,11 +33,11 @@
 
             <!--  -->
 
-            <li class="nav-item" v-if="this.buyerLoggedIn === false">
+            <li class="nav-item nav-center" v-if="this.buyerLoggedIn === false" >
               <a class="nav-link nav-center" @click="redirectToSignUp()" >Sign Up</a>
             </li>
 
-            <li class="nav-item" v-if="this.buyerLoggedIn === false">
+            <li class="nav-item nav-center" v-if="this.buyerLoggedIn === false">
               <a class="nav-link nav-center" @click="redirectToLogin()">Login</a>
             </li>
 
@@ -54,38 +54,27 @@
             </li>
 
             <li class="nav-item">
-              <!-- <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="60px" height="45px"> -->
-              <!-- Go to Modal Cart -->
-              <a class="nav-link" @click="manifestModalShowCart()">
-                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a>
 
-              <!-- Go to BuyerCart -->
-              <!-- <a class="nav-link" @click="goToBuyersCart()">
-                Cart:<span class="badge badge-success">{{itemsInCart}}</span></a> -->
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" @click="goToBuyersCart()" style="padding-top:0px;padding-bottom:0px;">
+              <!-- Go to Modal Cart -->
+              <a class="nav-link" @click="manifestModalShowCart()" style="padding-top:0px;padding-bottom:0px;">
                 <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="55px" height="40px">
               </a>
-              <a class="nav-link" @click="goToBuyersCart()" style="padding-top:0px;padding-bottom:0px;">
+              <a class="nav-link" @click="manifestModalShowCart()"                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">
                 Cart:<span class="badge badge-success">{{itemsInCart}}</span></a>
-            </li> -->
+            </li>
+
+
           </ul>
         </div>
       </div>
     </b-nav>
     <!-- View Cart Modal -->
-    <modal name="view-cart"  height="auto" scrollable="true" style="padding-top:10px">
-                  
-      <div class="container" style="margin:10px" id="shopping-cart">
-        <div class="row">
-          <div class="col-12">
-            
-            <shopping-cart></shopping-cart>
-            <button @click="goToBuyersCart()">View Cart</button>
-          </div>
-        </div>
+    <modal name="view-cart"  scrollable="true" style="padding-top:35px; padding-left:300px; pivotY:0;">            
+      <div class="container" id="shopping-cart">    
+        <shopping-cart></shopping-cart>
+        <button  class="btn btn-primary pull-right" @click="goToBuyersCart()"><h4>View Cart</h4></button>
       </div>
+      <br>
     </modal>
   </div>
 </template>
