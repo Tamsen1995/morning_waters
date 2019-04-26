@@ -90,7 +90,69 @@
                     
                     <!-- Add message indicating no services have been added until services have been added -->
                     <div class="col-12">  
-                    <!-- Modal component to add a service with -->
+                
+                    
+                        <br>
+
+                        <div class="card" v-for="service in this.services" :key="service.title">
+                            <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
+                            <div class="card-body">
+                                <!-- Service Description -->
+                                <h6><a href="#" class="btn pull-right">Edit</a></h6>
+                                <h5 class="card-text" style="text-align:left; padding:15px;">{{ service.description }}</h5>
+
+                                <!-- Service/Price Listings -->
+                                <div class="container" id="price-chart">
+                                    <p>
+                                        <table class="table table-hover" >
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Service Subtitle</th>
+                                                <th scope="col">Turn Around Time</th>
+                                                <th scope="col">Price/ Unit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Service1</th>
+                                                <td>TT1</td>
+                                                <td>P1</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Service2</th>
+                                                <td>TT2</td>
+                                                <td>P2</td>
+                                            </tr>
+
+                                        </tbody>
+                                        </table>
+                                    </p>
+                                </div>                              
+                            
+                            </div>
+                        </div>
+
+                        <!-- Add Service Button -->
+                        <br>
+                        <button type="button" class="btn btn-default pull-right btn-add-service" @click="addService">
+                            <strong> <h6>Add Service  <span class="glyphicon glyphicon-plus-sign"></span> </h6></strong>
+                        </button>
+                    <br><br>
+                    <br>
+                    </div> 
+                </div>
+
+            </div>
+        </body>       
+        </div>
+
+
+
+
+
+
+
+    <!-- Modal component to add a service with -->
                     
                         <modal name="add-service"  height="auto" scrollable="true" style="padding-top:80px">
                             
@@ -127,26 +189,7 @@
                                 
                                                     </div>
                                                 </div>
-                
-                                                <!-- <br>
-                                                <div class="form-group">
-                                                    <label for="exampleFormControlSelect1"><p>How many sub-services would you like to add?</p></label>
-                                                    <div class="col-sm-2">
-                                                        <select class="form-control" id="exampleFormControlSelect1">
-                                                        <option>0</option>
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>             
-                                                        <option>5</option>
-                                                        <option>6</option>
-                                                        <option>7</option>
-                                                        <option>8</option>
-                                                        <option>9</option>
-                                                        <option>10</option>
-                                                        </select>
-                                                    </div>
-                                                </div> -->
+            
                                                 <hr>
                                                 <p>Add Subservice</p>
                                                 <!-- If 1-10 entered, show... -->
@@ -207,60 +250,9 @@
                             </div>
                            
                         </modal>  
-                    
-                        <br>
 
-                        <div class="card" v-for="service in this.services" :key="service.title">
-                            <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
-                            <div class="card-body">
-                                <!-- Service Description -->
-                                <h6><a href="#" class="btn pull-right">Edit</a></h6>
-                                <h5 class="card-text" style="text-align:left; padding:15px;">{{ service.description }}</h5>
 
-                                <!-- Service/Price Listings -->
-                                <div class="container" id="price-chart">
-                                    <p>
-                                        <table class="table table-hover" >
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Service Subtitle</th>
-                                                <th scope="col">Turn Around Time</th>
-                                                <th scope="col">Price/ Unit</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">Service1</th>
-                                                <td>TT1</td>
-                                                <td>P1</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">Service2</th>
-                                                <td>TT2</td>
-                                                <td>P2</td>
-                                            </tr>
 
-                                        </tbody>
-                                        </table>
-                                    </p>
-                                </div>                              
-                            
-                            </div>
-                        </div>
-
-                        <!-- Add Service Button -->
-                        <br>
-                        <button type="button" class="btn btn-default pull-right btn-add-service" @click="addService">
-                            <strong> <h6>Add Service  <span class="glyphicon glyphicon-plus-sign"></span> </h6></strong>
-                        </button>
-                    <br><br>
-                    <br>
-                    </div> 
-                </div>
-
-            </div>
-        </body>       
-        </div>
 
     </div>
 </template>
