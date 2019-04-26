@@ -20,13 +20,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <!-- /dashboard/creditsScreen/creditsPurchasing -->
-
-            <!-- Orders -->
+            <!-- TODO : Insert credits here -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/creditsScreen"
                 v-if="this.user == null"
+
                 style="padding-top:0px;padding-bottom:0px;"
               >
                 <img
@@ -46,10 +46,11 @@
                 Orders
                 <span class="badge badge-success">{{ this.credits }}</span>
               </router-link>
+
             </li>
 
-            <!-- Inbox -->
             <li class="nav-item">
+
               <router-link
                 class="nav-link"
                 to="/dashboard/quoteRequestsScreen"
@@ -64,14 +65,15 @@
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
               >Inbox</router-link>
+
             </li>
 
-            <!-- Profile -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
-                to="/dashboard"
+                to="/dashboard/quoteRequestsScreen"
                 v-if="this.user == null"
+
                 style="padding-top:0px;padding-bottom:0px;"
               >
                 <img
@@ -87,14 +89,15 @@
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
               >Profile</router-link>
+
             </li>
 
-            <!-- Settings -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/settings"
                 v-if="this.user == null"
+
                 style="padding-top:0px;padding-bottom:0px;"
               >
                 <img
@@ -115,6 +118,7 @@
             <!-- Logout -->
             <li class="nav-item nav-center" @click="logout()">
               <router-link class="nav-link nav-center" to="/">
+
                 <i class="ti-close"></i> Logout
               </router-link>
             </li>

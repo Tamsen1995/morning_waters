@@ -1,26 +1,23 @@
 <template>
 <div id="app">
   <buyer-header></buyer-header>
-  <!-- <div class="responsive-component" v-responsive= "{
-  small: el => el.width < 860
-  }"> -->
+  <br>
+  <br>
+  <br>
+  <br>
+  <body>
+    <br>
+    <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
 
-    <body class="nav">
-      <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
+    <br>
+    <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
+  </body>
 
-      <br>
-      <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
-
-      <!-- Checkout button -->
-      <b-button @click="redirectToCheckoutOrLogin()">
-        <p>Checkout</p>
-      </b-button>
-
-    </body>
-
-  <!-- </div> -->
+  <!-- Checkout button -->
+  <b-button @click="redirectToCheckoutOrLogin()">
+    <p>Checkout</p>
+  </b-button>
 </div>
-
 </template>
 
 <script>
@@ -93,6 +90,4 @@ export default {
 </script>
 
 <style>
-@import "../../assets/css/settings.css";
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
 </style>

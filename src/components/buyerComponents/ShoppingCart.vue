@@ -1,40 +1,35 @@
 <template>
-  <body class="shopping-cart">
+  <div>
+    <h1>Shopping Cart</h1>
 
-      <h3>Shopping Cart</h3>
-        <!-- Service/Price Listings -->
+    <ul class="timeline">
+      <li v-for="item in this.shoppingCart" v-bind:key="item">
+        <!-- { "quantity": "21", "service": { "id": 11, "userId": 1, "tableId": "1serviceList", "title": "extra small", "description": "tkt j'au mon business", "createdAt": "2019-03-25T20:27:27.000Z", "updatedAt": "2019-03-25T20:27:27.000Z" } } -->
+        Item : {{ item.service.title}}
+        <br>
+        Description : {{ item.service.description }}
+        <br>
+        Quantity : {{ item.quantity }}
         <br>
         <br>
-        <div class="container" id="price-chart">
-          <p>
-            <table class="table table-hover" >
-            <thead>
-                <tr>
-                  <th scope="col">Item</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Turn Around Time</th>
-                  <th scope="col">Quantity</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-              <tr v-for="item in this.shoppingCart" v-bind:key="item">
-                <th scope="row">{{ item.service.title}}</th>
-                <td>{{ item.service.description }}</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-            </table>
-          </p>
-        </div>                      
+      </li>
       <br>
-      <br>
-  </body>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--  -->
+    <h1 @click="testingDelete()">Testing only please delete</h1>
+    <!--  -->
+  </div>
 </template>
 
 <script>
@@ -85,6 +80,4 @@ export default {
 </script>
 
 <style>
-@import "../../assets/css/settings.css";
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
 </style>

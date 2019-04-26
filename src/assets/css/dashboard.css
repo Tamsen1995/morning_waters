@@ -232,29 +232,6 @@ p {
 
 /* Stats View Leads */
 
-.btn-quote-req{
-  border-radius: 0px;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 2px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-style: medium;
-  margin: 0 auto;
-  justify-content: center;
-}
-
-.btn-gen-inq {
-  border-radius: 0px;
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 2px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-style: medium;
-  margin: 0 auto;
-  justify-content: center;
-  background-color: #2238ff;
-}
-
 /* Stats Add credits */
 /* .btn-add-service {
   border-radius: 300px;

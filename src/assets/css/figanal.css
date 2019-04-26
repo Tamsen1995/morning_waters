@@ -323,7 +323,6 @@ footer .row {
 }
 
 
-
 /* Header */
 header.masthead {
   position: relative;
@@ -370,9 +369,11 @@ h2 {
   font-size: 12px;
 }
 
+
 .responsive-component.small .nav-center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
 }
+
