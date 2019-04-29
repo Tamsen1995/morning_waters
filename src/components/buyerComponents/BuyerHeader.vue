@@ -19,20 +19,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
+
+            <!-- Orders -->
             <!-- This is the dropdown menu -->
             <li class="nav-item" v-if="this.buyerLoggedIn === true">
+              <a class="nav-link" @click="toggleDropdownMenu()"
+                style="padding-top:0px;padding-bottom:0px;">                
+                <img
+                  src="../../assets/css/noun_orders_crop.png"
+                  alt="New Orders"
+                  width="60px"
+                  height="40px"
+                >
+              </a>
               <!-- <a class="nav-link"> -->
-              <a class="nav-link" @click="toggleDropdownMenu()">Orders</a>
+              <a class="nav-link" @click="toggleDropdownMenu()" style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">Orders</a>
               <!-- </a> -->
+              <div v-show="this.dropdownMenu" class="absolute">
+                <div>Order History</div>
+                <div>Shipping</div>
+              </div>
             </li>
 
-            <div v-show="this.dropdownMenu" class="absolute">
-              <div>Order History</div>
-              <div>Shipping</div>
-            </div>
 
-            <!--  -->
-
+            <!-- Login/Sign-up -->
             <li class="nav-item nav-center" v-if="this.buyerLoggedIn === false" >
               <a class="nav-link nav-center" @click="redirectToSignUp()" >Sign Up</a>
             </li>
@@ -41,18 +51,49 @@
               <a class="nav-link nav-center" @click="redirectToLogin()">Login</a>
             </li>
 
+          <!-- Inbox -->
             <li class="nav-item" v-if="this.buyerLoggedIn === true">
-              <a class="nav-link" @click="redirectToInbox()">Inbox</a>
+              <a
+                class="nav-link"
+                @click="redirectToInbox()"
+                style="padding-top:0px;padding-bottom:0px;padding-left:0px;"
+              >
+                <img src="../../assets/css/noun_Mail_crop.png" alt="Inbox" width="55px" height="40px">
+              </a>
+              <a class="nav-link" @click="redirectToInbox()" style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">Inbox</a>
+            </li>
+          
+          <!-- Billing -->
+            <li class="nav-item" v-if="this.buyerLoggedIn === true">
+              <a class="nav-link" @click="redirectToBillings()" style="padding-top:0px;padding-bottom:0px;"> 
+                <img
+                  src="../../assets/css/noun_payment_crop.png"
+                  alt="New Orders"
+                  width="50px"
+                  height="40px"
+                  padding-left="5px"
+                >
+              </a>
+              <a class="nav-link" @click="redirectToBillings()" style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">Billing</a>
             </li>
 
+          <!-- Settings -->
             <li class="nav-item" v-if="this.buyerLoggedIn === true">
-              <a class="nav-link" @click="redirectToBillings()">Billing</a>
+              <a class="nav-link" @click="redirectToSettings()" 
+                style="padding-top:0px;padding-bottom:0px;"> 
+                <img 
+                  src="../../assets/css/noun_settings_crop.png"
+                  alt="Inbox"
+                  width="55px"
+                  height="40px"
+                >  
+              </a>
+              <a class="nav-link" @click="redirectToSettings()" style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">Settings</a>
+                
+
             </li>
 
-            <li class="nav-item" v-if="this.buyerLoggedIn === true">
-              <a class="nav-link" @click="redirectToSettings()">Settings</a>
-            </li>
-
+            <!-- View Cart -->
             <li class="nav-item">
               <!-- Go to Modal Cart -->
               <a class="nav-link" @click="manifestModalShowCart()" style="padding-top:0px;padding-bottom:0px;">
