@@ -113,15 +113,7 @@
       <br>
       <br>
 
-      <!-- shopping cart component -->
-      <!-- <div id="shopping-cart">
-        <shopping-cart></shopping-cart>
-      </div> -->
 
-      <!-- Checkout button -->
-      <b-button @click="redirectToCheckoutOrLogin()">
-        <p>Checkout</p>
-      </b-button>
     </body>
 
     <!-- General Inquiry -->
@@ -166,9 +158,6 @@
                   Turnaround Time
                   </li>
                 </ul>
-
-              
-
               
                 <label>Amount? (optional)</label>
                 <input v-model="pickedQuantityQuoteRequest"  type="number" style="width: 40px">

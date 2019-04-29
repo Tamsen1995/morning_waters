@@ -54,25 +54,28 @@
             </li>
 
             <li class="nav-item">
-
               <!-- Go to Modal Cart -->
               <a class="nav-link" @click="manifestModalShowCart()" style="padding-top:0px;padding-bottom:0px;">
                 <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="55px" height="40px">
               </a>
-              <a class="nav-link" @click="manifestModalShowCart()"                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">
+              <a class="nav-link" @click="manifestModalShowCart()" style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">
                 Cart:<span class="badge badge-success">{{itemsInCart}}</span></a>
             </li>
-
 
           </ul>
         </div>
       </div>
     </b-nav>
     <!-- View Cart Modal -->
-    <modal name="view-cart"  scrollable="true" style="padding-top:35px; padding-left:300px; pivotY:0;">            
-      <div class="container" id="shopping-cart">    
+    <modal name="view-cart" height="auto" pivotY="0" scrollable="true" style="padding-top:85px; padding-left:240px;">            
+      <div class="container" id="shopping-cart">
+          <div class="pull-right">
+            <a @click="$modal.hide('view-cart')">
+              <h4>x</h4>
+            </a>
+          </div>    
         <shopping-cart></shopping-cart>
-        <button  class="btn btn-primary pull-right" @click="goToBuyersCart()"><h4>View Cart</h4></button>
+        <button  class="btn-cart btn-default pull-right btn-block" @click="goToBuyersCart()"><h3>View Cart</h3></button>
       </div>
       <br>
     </modal>

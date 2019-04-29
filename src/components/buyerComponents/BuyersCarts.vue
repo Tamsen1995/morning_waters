@@ -1,24 +1,30 @@
 <template>
 <div id="app">
   <buyer-header></buyer-header>
-  <!-- <div class="responsive-component" v-responsive= "{
+  <div class="responsive-component" v-responsive= "{
   small: el => el.width < 860
-  }"> -->
+  }">
 
-    <body class="nav">
-      <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
+    <body class="buyers_carts">
+      <div class="container" style="max-width:800px; display: block;
+        margin-left: auto;
+        margin-right: auto;">
+        <br>
 
-      <br>
-      <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
+        <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
 
-      <!-- Checkout button -->
-      <b-button @click="redirectToCheckoutOrLogin()">
-        <p>Checkout</p>
-      </b-button>
+        <br>
+        <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
 
+        <!-- Checkout button -->
+
+        <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
+          <h3>Checkout</h3>
+        </button>
+
+      </div>
     </body>
-
-  <!-- </div> -->
+  </div>
 </div>
 
 </template>
@@ -30,7 +36,10 @@ import BuyerHeader from "@/components/buyerComponents/BuyerHeader";
 
 export default {
   data() {
-    return {};
+    return {
+      shoppingCartItems: [],
+      quoteRequestsCart: []
+    };
   },
   created() {
     this.getCartItemsFromStore();
