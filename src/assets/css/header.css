@@ -27,7 +27,7 @@
 #mainNav .navbar-toggler {
   font-size: 12px;
   padding: 8px 10px;
-  color: #222222;
+  color: #823E90;;
 }
 
 #mainNav .navbar-nav > li > a {
@@ -53,3 +53,31 @@ ul {
   margin-right: auto;
   margin-top: 12px;
 }
+
+
+.modal["view_cart"] {
+  background: transparent;
+}
+
+.btn-cart {
+  border-color: #361555;
+  border-width: 2px;
+}
+
+.btn-cart h3{
+  color: #361555;
+  font-style: bold;
+}
+
+.btn-cart:hover,
+.btn-cart:focus,
+.btn-cart.active {
+  border-color: purple;
+}
+
+.btn-cart h3:hover,
+.btn-cart h3:focus,
+.btn-cart h3.active {
+  color: purple;
+}
+

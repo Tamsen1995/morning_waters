@@ -113,15 +113,8 @@
       <br>
       <br>
 
-      <!-- shopping cart component -->
-      <div id="shopping-cart">
-        <shopping-cart></shopping-cart>
-      </div>
 
-      <!-- Checkout button -->
-      <b-button @click="redirectToCheckoutOrLogin()">
-        <p>Checkout</p>
-      </b-button>
+
     </body>
 
     <!-- General Inquiry -->
@@ -167,10 +160,9 @@
                   </li>
                 </ul>
 
-              </p>
+              
+                <label>Amount? (optional)</label>
 
-              <div>
-                <label><p>Amount? (optional) </p></label>
                 <input v-model="pickedQuantityQuoteRequest"  type="number" style="width: 40px">
               </div>
               <br>

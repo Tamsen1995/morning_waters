@@ -1,99 +1,99 @@
 <template>
-<div id="app">
-  <buyer-header></buyer-header>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 
-  <h1>Buyer Checkout</h1>
+  <div id="app">
+    <buyer-header></buyer-header>
+    <div class="responsive-component" v-responsive="{
+      small: el => el.width < 860
+      }">   
 
-  <body>
-    <div class="grid-container">
-      <div class="grid-item">
-        <div v-if="this.customerDefaultSource !== null" class="default-source">
-          <div class="change-preference">
-            <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link>
+      <body class="buyer-checkout">
+        <div class="container" style="max-width:800px; display: block;
+          margin-left: auto;
+          margin-right: auto;">
+          <h5 style="text-align:center;">Checkout</h5>
+          <br>
+          <div class="grid-container">
+            <div class="grid-item" >
+              <div v-if="this.customerDefaultSource !== null" class="default-source">
+                <div class="change-preference">
+                  <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link>
+                </div>
+                <br>
+                <div class="default-payment-card">
+                  Default Payment Method:
+                  <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
+                  <pre> expires : {{ this.customerDefaultSource.exp_month }} / {{ this.customerDefaultSource.exp_year }}</pre>
+                </div>
+
+              </div>
+
+              <div v-else>No default payment method</div>
+
+              <br>
+              <br>
+              <br>
+              <!-- make input for card -->
+            </div>
+          </div>
+
+
+          <div id="stripeCard">
+            <div ref="card"></div>
           </div>
           <br>
-          <div class="default-payment-card">
-            Default Payment Method:
-            <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
-            <pre> expires : {{ this.customerDefaultSource.exp_month }} / {{ this.customerDefaultSource.exp_year }}</pre>
+          <br>
+          <h2 style="text-align:center;color:purple;">You will not be charged until the seller confirms your order.</h2>
+
+          <h3>
+            <input
+              v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
+              type="submit"
+              value="Send Order"
+              class="checkout-btn"
+              @click="sendOrderAndOrInquiries()"
+            > 
+          </h3>
+          <br>
+
+          <input
+            v-if="this.quoteRequestsCart.length > 0 && this.shoppingCart.length === 0"
+            type="submit"
+            value="Send Inquires"
+            class="checkout-btn"
+            @click="sendQuoteRequests()"
+          >
+          <div class="container" id="purchase_content">
+            <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
+
+            <br>
+            <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
           </div>
+
+
+          <button
+            v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
+            type="submit"
+            class="btn-cart btn-default btn-block"
+            @click="sendShoppingCart()"
+          > <h3>Complete Purchase </h3></button>
+
+
+          <br>
+          <br>
         </div>
-
-        <div v-else>No default payment method</div>
-
-        <br>
-        <br>
-        <!-- make input for card -->
-      </div>
+      </body>
     </div>
+  </div>
 
-    <div id="stripeCard">
-      <div ref="card"></div>
-    </div>
-
-    <input
-      v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
-      type="submit"
-      value="Send Order"
-      class="checkout-btn"
-      @click="sendOrderAndOrInquiries()"
-    >
-
-    <input
-      v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
-      type="submit"
-      value="Purchase shopping cart"
-      class="checkout-btn"
-      @click="sendShoppingCart()"
-    >
-
-    <input
-      v-if="this.quoteRequestsCart.length > 0 && this.shoppingCart.length === 0"
-      type="submit"
-      value="Send Inquires"
-      class="checkout-btn"
-      @click="sendQuoteRequests()"
-    >
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
-
-    <br>
-    <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
-  </body>
-
-  <br>
-  <br>
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div></div>
-</div>
 </template>
 
 <script src="./scripts/buyerCheckout.js">
 </script>
 
 <style scoped>
+@import "../../assets/css/settings.css";
+@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+
 #stripeCard {
   margin-left: auto;
   margin-right: auto;

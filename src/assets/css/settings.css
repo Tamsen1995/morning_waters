@@ -1,3 +1,25 @@
+.btn-cart {
+  border-color: #361555;
+  border-width: 2px;
+}
+
+.btn-cart h3{
+  color: #361555;
+  font-style: bold;
+}
+
+.btn-cart:hover,
+.btn-cart:focus,
+.btn-cart.active {
+  border-color: purple;
+}
+
+.btn-cart h3:hover,
+.btn-cart h3:focus,
+.btn-cart h3.active {
+  color: purple;
+}
+
 /* -----------------Settings----------------- */
 body.settings {
   padding-top: 100px;
@@ -9,8 +31,6 @@ body.settings {
   background-size: cover;
   min-height: 100vh;  
 }
-
-
 
 #settings-nav {
   border-bottom: 2px solid #29105b;
@@ -42,7 +62,7 @@ body.settings {
   font: 30px 'Roboto';
   color: #29105b;
   text-align:left;
-  text-shadow: 2px 2px 4px #D8D4DC;
+  /* text-shadow: 2px 2px 4px #D8D4DC; */
 }
 
 #settings-page h4 {
@@ -52,7 +72,7 @@ body.settings {
   font-style: medium;
   color: #29105b;
   text-align:left;
-  text-shadow: 2px 2px 4px #D8D4DC;
+  /* text-shadow: 2px 2px 4px #D8D4DC; */
 }
 
 #settings-page p {
@@ -129,7 +149,7 @@ body.orders {
   color: #29105b;
   text-align:left;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px #D8D4DC; 
+  /* text-shadow: 2px 2px 4px #D8D4DC;  */
 }
 
 #order-history p {
@@ -214,7 +234,6 @@ body.credits-purchasing {
   font-style: 'medium';
   /* color: #31037a; */
   text-align:left;
-  text-shadow: 2px 2px 4px #D8D4DC;
 }
 
 #credits h5 {
@@ -222,7 +241,6 @@ body.credits-purchasing {
   font: 33px 'Roboto';
   color: #7e6f89;
   text-align:left;
-  text-shadow: 2px 2px 4px #D8D4DC;
 }
 
 .responsive-component.small body.credits-purchasing{
@@ -235,5 +253,48 @@ body.credits-purchasing {
   margin-left: auto;
   margin-right: auto;
   width: 100%;  
+}
+
+/* -----------------Shopping Cart---------------- */
+body.shopping-cart {
+  background-size: cover;
+  padding-bottom:10px;
+}
+
+body.shopping-cart .table {
+  background: white;
+  border-color: purple;
+  border-width: 3px;
+}
+
+/* -----------------BuyersCarts---------------- */
+
+body.buyers_carts{
+  padding-top: 90px;
+  background-size: cover;
+  background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%); 
+  min-height: 100vh;  
+}
+/* -----------------Checkout---------------- */
+
+body.buyer-checkout {
+  padding-top: 90px;
+  background-size: cover;
+  background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
+  min-height: 100vh;  
+}
+
+.buyer-checkout h1 {
+  color: #361555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font: 20px 'Roboto';
+  font-style: 'medium';
+}
+
+.container #purchase_content {
+  /* border-top: 2px solid #7e6f89; */
+  border-top: 2px solid purple;
+  padding-top: 20px;
 }
 

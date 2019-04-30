@@ -1,22 +1,58 @@
 <template>
 <div id="app">
   <buyer-header></buyer-header>
-  <br>
-  <br>
-  <br>
-  <br>
-  <body>
-    <br>
-    <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
+  <div class="responsive-component" v-responsive= "{
+  small: el => el.width < 860
+  }">
 
-    <br>
-    <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
-  </body>
+    <body class="buyers_carts">
+      <div class="container" style="max-width:800px; display: block;
+        margin-left: auto;
+        margin-right: auto;">
+        <div class="container cart_container">
 
-  <!-- Checkout button -->
-  <b-button @click="redirectToCheckoutOrLogin()">
-    <p>Checkout</p>
-  </b-button>
+          <div class="card">
+            <h5 class="card-header" style="text-align: center;">Cart</h5>
+            <div class="card-body">
+              <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
+            </div>
+              <ul class="list-group list-group-flush">
+                
+                <li class="list-group-item">
+                  <h3 style="text-align:center;">
+                    <a href="#" class="card-link">Continue Shopping</a>
+                  </h3>
+                  <h3 style="text-align:center;">
+                    <a href="#" class="card-link" >Review message to buyer</a>
+                  </h3>
+                </li>
+                
+              </ul>
+          </div>
+
+          
+          <br>
+          <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
+
+        <!-- Checkout button -->
+
+        <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
+          <h3>Checkout</h3>
+        </button>
+
+        </div>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <h3 style="text-align:center;"></h3>
+
+      </div>
+    </body>
+  </div>
+
 </div>
 </template>
 
@@ -27,7 +63,10 @@ import BuyerHeader from "@/components/buyerComponents/BuyerHeader";
 
 export default {
   data() {
-    return {};
+    return {
+      shoppingCartItems: [],
+      quoteRequestsCart: []
+    };
   },
   created() {
     this.getCartItemsFromStore();
