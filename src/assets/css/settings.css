@@ -62,7 +62,7 @@ body.settings {
   font: 30px 'Roboto';
   color: #29105b;
   text-align:left;
-  text-shadow: 2px 2px 4px #D8D4DC;
+  /* text-shadow: 2px 2px 4px #D8D4DC; */
 }
 
 #settings-page h4 {
@@ -72,7 +72,7 @@ body.settings {
   font-style: medium;
   color: #29105b;
   text-align:left;
-  text-shadow: 2px 2px 4px #D8D4DC;
+  /* text-shadow: 2px 2px 4px #D8D4DC; */
 }
 
 #settings-page p {
@@ -149,7 +149,7 @@ body.orders {
   color: #29105b;
   text-align:left;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px #D8D4DC; 
+  /* text-shadow: 2px 2px 4px #D8D4DC;  */
 }
 
 #order-history p {
@@ -270,7 +270,7 @@ body.shopping-cart .table {
 /* -----------------BuyersCarts---------------- */
 
 body.buyers_carts{
-  padding-top: 110px;
+  padding-top: 90px;
   background-size: cover;
   background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%); 
   min-height: 100vh;  
@@ -278,7 +278,7 @@ body.buyers_carts{
 /* -----------------Checkout---------------- */
 
 body.buyer-checkout {
-  padding-top: 110px;
+  padding-top: 90px;
   background-size: cover;
   background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
   min-height: 100vh;  
@@ -293,6 +293,7 @@ body.buyer-checkout {
 }
 
 .container #purchase_content {
-  border-top: 2px solid #7e6f89;
+  /* border-top: 2px solid #7e6f89; */
+  border-top: 2px solid purple;
   padding-top: 20px;
 }

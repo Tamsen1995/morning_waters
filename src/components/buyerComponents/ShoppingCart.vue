@@ -20,11 +20,13 @@
             <th scope="row">{{ item.service.title}}</th>
             <td>{{ item.service.description }}</td>
             <td></td>
+
             <!-- Add edit quantity functionality -->
             <td></td>
             <td></td>
             <td></td>
             <td></td>
+            
             <!-- Add delete functionality -->
             <td>X</td>
           </tr>

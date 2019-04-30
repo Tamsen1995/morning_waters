@@ -97,7 +97,7 @@
             <li class="nav-item">
               <!-- Go to Modal Cart -->
               <a class="nav-link" @click="manifestModalShowCart()" style="padding-top:0px;padding-bottom:0px;">
-                <img src="../../assets/css/noun_cart_n_crop.png" alt="New Orders" width="55px" height="40px">
+                <img src="../../assets/css/noun_cart_n_crop.png" alt="Your Orders" width="55px" height="40px">
               </a>
               <a class="nav-link" @click="manifestModalShowCart()" style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;">
                 Cart:<span class="badge badge-success">{{itemsInCart}}</span></a>

@@ -27,7 +27,7 @@
 #mainNav .navbar-toggler {
   font-size: 12px;
   padding: 8px 10px;
-  color: #222222;
+  color: #823E90;;
 }
 
 #mainNav .navbar-nav > li > a {
@@ -80,3 +80,4 @@ ul {
 .btn-cart h3.active {
   color: purple;
 }
+

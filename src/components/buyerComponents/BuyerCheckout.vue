@@ -9,13 +9,8 @@
         <div class="container" style="max-width:800px; display: block;
           margin-left: auto;
           margin-right: auto;">
-          <h1 style="text-align:center;">Checkout</h1>
+          <h5 style="text-align:center;">Checkout</h5>
           <br>
-          <br>
-          <h2 style="text-align:center;color:purple;">You will not be charged until the seller confirms your order.</h2>
-          <br>
-
-        
           <div class="grid-container">
             <div class="grid-item" >
               <div v-if="this.customerDefaultSource !== null" class="default-source">
@@ -28,19 +23,26 @@
                   <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
                   <pre> expires : {{ this.customerDefaultSource.exp_month }} / {{ this.customerDefaultSource.exp_year }}</pre>
                 </div>
+
               </div>
 
               <div v-else>No default payment method</div>
 
               <br>
               <br>
+              <br>
               <!-- make input for card -->
             </div>
           </div>
 
+
           <div id="stripeCard">
             <div ref="card"></div>
           </div>
+          <br>
+          <br>
+          <h2 style="text-align:center;color:purple;">You will not be charged until the seller confirms your order.</h2>
+
           <h3>
             <input
               v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
