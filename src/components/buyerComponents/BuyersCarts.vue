@@ -52,8 +52,8 @@
       </div>
     </body>
   </div>
-</div>
 
+</div>
 </template>
 
 <script>
@@ -129,6 +129,4 @@ export default {
 </script>
 
 <style>
-@import "../../assets/css/settings.css";
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
 </style>

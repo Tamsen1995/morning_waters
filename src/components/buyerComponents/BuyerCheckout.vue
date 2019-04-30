@@ -1,4 +1,5 @@
 <template>
+
   <div id="app">
     <buyer-header></buyer-header>
     <div class="responsive-component" v-responsive="{
@@ -83,6 +84,7 @@
       </body>
     </div>
   </div>
+
 </template>
 
 <script src="./scripts/buyerCheckout.js">

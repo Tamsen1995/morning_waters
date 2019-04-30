@@ -1,4 +1,5 @@
 <template>
+
   <body class="shopping-cart">
     <!-- Service/Price Listings -->
     <div class="container" id="price-chart">
@@ -26,7 +27,8 @@
             <td></td>
             <td></td>
             <td></td>
-            
+                <h1 @click="testingDelete()">Testing only please delete</h1>
+
             <!-- Add delete functionality -->
             <td>X</td>
           </tr>
@@ -35,6 +37,7 @@
       </p>
     </div>                      
   </body>
+
 </template>
 
 <script>
