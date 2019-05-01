@@ -13,6 +13,10 @@ export default {
       serviceTitle: '',
       serviceDescription: '',
       servicePrice: 0.0,
+      serviceSubtitle: '',
+      unitType: '',
+      price: '',
+      turnAroundTime: '',
       user: null,
       companyName: '',
       companyLocation: '',
@@ -42,6 +46,8 @@ export default {
           description: this.serviceDescription,
           servicePrice: this.servicePrice
         }
+
+        console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
 
         // TODO : the reponse object doesn't return anything. Fix that in a little bit
         await DashboardServices.pushServiceOntoDb(service)

@@ -275,12 +275,7 @@
 
               <!-- Add another (plus button) -->
 
-              <button
-                type="button"
-                class="btn btn-default pull-right"
-                id="addSubButton"
-                @click="addSubService"
-              >
+              <button type="button" class="btn btn-default pull-right" id="addSubButton">
                 <strong>
                   <h6>
                     Add Sub-service
