@@ -46,10 +46,29 @@ export default {
     BuyerHeader
   },
   methods: {
+    async sendShippingInfo () {
+      try {
+        this.$modal.hide('choose-shipping')
+        console.log(`\nInside of sendShippingInfo\n`) // TESTING
+        // TODO :
+        // send who needs to ship to the back
+        // prompt the seller if the buyer has indicated that they don't need
+        // to send anything
+        // if the buyer has indicated that they do need to send something
+        // then don't prompt the seller.
+      } catch (error) {
+        console.log(
+          `\nAn error has been found in sendShippingInfo : ${error}\n`
+        ) // TESTING
+        if (error) throw error
+      }
+    },
     async sendShoppingCart () {
       try {
         const token = await stripe.createToken(card)
         if (!token.error) {
+          this.$modal.show('choose-shipping')
+
           const buyerExtracted = this.$store.getters.getBuyerInfo
           const sellerExtracted = this.$store.getters.getUserInfo
           const buyerId = buyerExtracted.id
@@ -73,9 +92,9 @@ export default {
             sellerId: sellerExtracted.user.id,
             orderId: this.orderId
           })
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+          // this.$router.push({
+          //   name: 'orderConfirm'
+          // })
         }
       } catch (error) {
         console.log(`\nThe error seen in sendShoppingCart\n`)
@@ -116,6 +135,8 @@ export default {
         // sending shopping cart to back
         const token = await stripe.createToken(card)
         if (!token.error) {
+          this.$modal.show('choose-shipping')
+
           const buyerExtracted = this.$store.getters.getBuyerInfo
           const sellerExtracted = this.$store.getters.getUserInfo
           const quoteRequestsCart = this.quoteRequestsCart
@@ -148,9 +169,9 @@ export default {
           })
           this.$store.dispatch('setQuoteRequestCart', [])
           this.$store.dispatch('setShoppingCart', [])
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+          // this.$router.push({
+          //   name: 'orderConfirm'
+          // })
         }
       } catch (error) {
         console.log(
