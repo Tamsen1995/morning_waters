@@ -20,14 +20,23 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <!-- /dashboard/creditsScreen/creditsPurchasing -->
-            <!-- TODO : Insert credits here -->
+
+            <!-- Orders -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/creditsScreen"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;"
-              ></router-link>
+              >
+                <img
+                  src="../assets/css/noun_orders_crop.png"
+                  alt="New Orders"
+                  width="60px"
+                  height="40px"
+                  style="padding-left:5px;"
+                >
+              </router-link>
               <router-link
                 class="nav-link"
                 to="/dashboard/creditsScreen"
@@ -39,13 +48,16 @@
               </router-link>
             </li>
 
+            <!-- Inbox -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/quoteRequestsScreen"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;padding-left:0px;"
-              ></router-link>
+              >
+                <img src="../assets/css/noun_Mail_crop.png" alt="Inbox" width="55px" height="40px">
+              </router-link>
               <router-link
                 class="nav-link"
                 to="/dashboard/quoteRequestsScreen"
@@ -54,13 +66,21 @@
               >Inbox</router-link>
             </li>
 
+            <!-- Profile -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
-                to="/dashboard/quoteRequestsScreen"
+                to="/dashboard"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;"
-              ></router-link>
+              >
+                <img
+                  src="../assets/css/noun_profile_crop.png"
+                  alt="Profile"
+                  width="55px"
+                  height="40px"
+                >
+              </router-link>
               <router-link
                 class="nav-link"
                 to="/dashboard"
@@ -69,13 +89,21 @@
               >Profile</router-link>
             </li>
 
+            <!-- Settings -->
             <li class="nav-item">
               <router-link
                 class="nav-link"
                 to="/dashboard/settings"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;"
-              ></router-link>
+              >
+                <img
+                  src="../assets/css/noun_settings_crop.png"
+                  alt="Inbox"
+                  width="55px"
+                  height="40px"
+                >
+              </router-link>
               <router-link
                 class="nav-link"
                 to="/dashboard/settings"
