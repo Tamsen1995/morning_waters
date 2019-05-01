@@ -46,7 +46,6 @@ export default {
         // TODO : the reponse object doesn't return anything. Fix that in a little bit
         await DashboardServices.pushServiceOntoDb(service)
         this.$modal.hide('add-service')
-        // $('#myModal').modal('hide')
 
         this.getServices()
         this.serviceTitle = '';
