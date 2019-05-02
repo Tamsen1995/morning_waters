@@ -3,6 +3,7 @@ import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'; //
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
 
 import BuyerServices from '@/services/BuyerServices';
+import ShippingService from '@/services/ShippingService';
 
 let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`) // TODO : Replace this with the live api key
 let elements = stripe.elements()
@@ -46,10 +47,32 @@ export default {
     BuyerHeader
   },
   methods: {
+    async sendShippingInfo (buyerHasToShipSamples) {
+      try {
+        this.$modal.hide('choose-shipping')
+        // send who needs to ship to the back
+
+        const response = await ShippingService.appendShippingToOrder({
+          orderId: this.orderId,
+          buyerHasToShipSamples: buyerHasToShipSamples
+        })
+
+        this.$router.push({
+          name: 'orderConfirm'
+        })
+      } catch (error) {
+        console.log(
+          `\nAn error has been found in sendShippingInfo : ${error}\n`
+        ) // TESTING
+        if (error) throw error
+      }
+    },
     async sendShoppingCart () {
       try {
         const token = await stripe.createToken(card)
         if (!token.error) {
+          this.$modal.show('choose-shipping')
+
           const buyerExtracted = this.$store.getters.getBuyerInfo
           const sellerExtracted = this.$store.getters.getUserInfo
           const buyerId = buyerExtracted.id
@@ -73,9 +96,9 @@ export default {
             sellerId: sellerExtracted.user.id,
             orderId: this.orderId
           })
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+          // this.$router.push({
+          //   name: 'orderConfirm'
+          // })
         }
       } catch (error) {
         console.log(`\nThe error seen in sendShoppingCart\n`)
@@ -116,6 +139,8 @@ export default {
         // sending shopping cart to back
         const token = await stripe.createToken(card)
         if (!token.error) {
+          this.$modal.show('choose-shipping')
+
           const buyerExtracted = this.$store.getters.getBuyerInfo
           const sellerExtracted = this.$store.getters.getUserInfo
           const quoteRequestsCart = this.quoteRequestsCart
@@ -148,9 +173,9 @@ export default {
           })
           this.$store.dispatch('setQuoteRequestCart', [])
           this.$store.dispatch('setShoppingCart', [])
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+          // this.$router.push({
+          //   name: 'orderConfirm'
+          // })
         }
       } catch (error) {
         console.log(
