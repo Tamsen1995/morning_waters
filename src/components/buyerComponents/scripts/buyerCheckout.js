@@ -46,16 +46,31 @@ export default {
     BuyerHeader
   },
   methods: {
-    async sendShippingInfo () {
+    async sendShippingInfo (buyerHasToShipSamples) {
       try {
         this.$modal.hide('choose-shipping')
-        console.log(`\nInside of sendShippingInfo\n`) // TESTING
+        console.log(`\n\n -- > ${buyerHasToShipSamples}\n`) // TESTING
+
+        if (buyerHasToShipSamples === true) {
+          console.log(
+            `\nset a variable onto the order in the back indicating the buyer has to ship\n`
+          ) // TESTING
+        } else {
+          console.log(
+            `\nset the variable onto the order in the back indicating the seller needs to ship\n`
+          ) // TESTING
+        }
+
+        // console.log(`\nInside of sendShippingInfo\n`) // TESTING
         // TODO :
         // send who needs to ship to the back
         // prompt the seller if the buyer has indicated that they don't need
         // to send anything
         // if the buyer has indicated that they do need to send something
         // then don't prompt the seller.
+        this.$router.push({
+          name: 'orderConfirm'
+        })
       } catch (error) {
         console.log(
           `\nAn error has been found in sendShippingInfo : ${error}\n`
