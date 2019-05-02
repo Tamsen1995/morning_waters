@@ -57,11 +57,16 @@ export default {
           buyerHasToShipSamples: buyerHasToShipSamples
         })
 
-        console.log(`\n${JSON.stringify(response)}\n`) // TESTING
-
-        // this.$router.push({
-        //   name: 'orderConfirm'
-        // })
+        if (buyerHasToShipSamples === true) {
+          console.log(
+            `\nWhen this occurs then the buyer will have to be redirect to the shipping module.\n`
+          ) // TESTING
+        } else {
+          // Otherwise just confirm that the order has been placed and voilà
+          this.$router.push({
+            name: 'orderConfirm'
+          })
+        }
       } catch (error) {
         console.log(
           `\nAn error has been found in sendShippingInfo : ${error}\n`
