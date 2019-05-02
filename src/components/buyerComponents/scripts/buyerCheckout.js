@@ -3,6 +3,7 @@ import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'; //
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
 
 import BuyerServices from '@/services/BuyerServices';
+import ShippingService from '@/services/ShippingService';
 
 let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`) // TODO : Replace this with the live api key
 let elements = stripe.elements()
@@ -49,28 +50,18 @@ export default {
     async sendShippingInfo (buyerHasToShipSamples) {
       try {
         this.$modal.hide('choose-shipping')
-        console.log(`\n\n -- > ${buyerHasToShipSamples}\n`) // TESTING
-
-        if (buyerHasToShipSamples === true) {
-          console.log(
-            `\nset a variable onto the order in the back indicating the buyer has to ship\n`
-          ) // TESTING
-        } else {
-          console.log(
-            `\nset the variable onto the order in the back indicating the seller needs to ship\n`
-          ) // TESTING
-        }
-
-        // console.log(`\nInside of sendShippingInfo\n`) // TESTING
-        // TODO :
         // send who needs to ship to the back
-        // prompt the seller if the buyer has indicated that they don't need
-        // to send anything
-        // if the buyer has indicated that they do need to send something
-        // then don't prompt the seller.
-        this.$router.push({
-          name: 'orderConfirm'
+
+        const response = await ShippingService.appendShippingToOrder({
+          orderId: this.orderId,
+          buyerHasToShipSamples: buyerHasToShipSamples
         })
+
+        console.log(`\n${JSON.stringify(response)}\n`) // TESTING
+
+        // this.$router.push({
+        //   name: 'orderConfirm'
+        // })
       } catch (error) {
         console.log(
           `\nAn error has been found in sendShippingInfo : ${error}\n`
