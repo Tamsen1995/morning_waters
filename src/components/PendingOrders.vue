@@ -32,7 +32,7 @@
     </modal>
 
     <modal name="ask-seller-if-buyer-needs-to-ship">
-      <div>Do you need to ship something ?</div>
+      <div>Does the buyer need to ship something ?</div>
       <button @click="buyerNeedsToShip(true)">Yes</button>
       <button @click="buyerNeedsToShip(false)">No</button>
     </modal>
@@ -69,6 +69,7 @@ export default {
         } else {
           // set buyer_shipping status on the order to false
         }
+        this.$modal.hide("ask-seller-if-buyer-needs-to-ship");
       } catch (error) {
         if (error) throw error;
       }
