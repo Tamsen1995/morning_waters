@@ -1,6 +1,13 @@
 import Api from '@/services/Api';
 
 export default {
+  getSellersOrderItems (sellerId) {
+    return Api().get('/getSellersOrderItems', {
+      params: {
+        sellerId: sellerId
+      }
+    })
+  },
   unlockOrder (orderId) {
     console.log(`orderId being : ${orderId}`) // TESTING
     return Api().post('/unlockOrder', { orderId })

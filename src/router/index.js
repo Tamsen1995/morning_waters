@@ -11,6 +11,7 @@ import Checkout from '@/components/Checkout';
 import CreditsHome from '@/components/CreditsHome';
 import SettingsPage from '@/components/SettingsPage';
 import SettingsChangeDefaultSource from '@/components/SettingsChangeDefaultSource';
+import PendingOrders from '@/components/PendingOrders';
 import AuthenticationService from '@/services/AuthenticationService';
 
 // Buyer routes
@@ -121,6 +122,14 @@ export default new Router({
       path: '/dashboard/changeDefaultSource',
       name: 'changeDefaultSource',
       component: SettingsChangeDefaultSource,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+      }
+    },
+    {
+      path: '/pending_orders',
+      name: 'pendingOrders',
+      component: PendingOrders,
       beforeEnter: (to, from, next) => {
         routingAuthentication(to, from, next)
       }
