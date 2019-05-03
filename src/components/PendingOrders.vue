@@ -25,14 +25,15 @@
             Description: {{item.description}}
     </div>-->
     <!--  -->
-    <div v-for="(item, index) in orders" v-bind:key="index">
+    <div v-for="(order, index) in orders" v-bind:key="index" @click="goToOrderStatus(index)">
       <br>
-      {{item}}
+      {{order}}
       <br>
     </div>
     <!--  -->
     <br>
     <br>
+    <button v-on:click="goToShippingUI">Go to shipping UI</button>
   </div>
 </template>
 
@@ -58,6 +59,23 @@ export default {
   components: {},
   directives: {},
   methods: {
+    async goToOrderStatus(index) {
+      try {
+        console.log(`\nLoggin the index : ${index}\n`); // TESTING
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async goToShippingUI() {
+      try {
+        // https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING
+        window.open(
+          "https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING"
+        );
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async getSellerOrderItems() {
       try {
         const userExtracted = this.$store.getters.getUserInfo;
