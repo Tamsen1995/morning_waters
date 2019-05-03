@@ -47,23 +47,6 @@ export default {
     BuyerHeader
   },
   methods: {
-    // async sendShippingInfo (buyerHasToShipSamples) {
-    //   try {
-    //     this.$modal.hide('choose-shipping')
-    //     // send who needs to ship to the back
-
-    //     const response = await ShippingService.appendShippingToOrder({
-    //       orderId: this.orderId,
-    //       buyerHasToShipSamples: buyerHasToShipSamples
-    //     })
-
-    //     this.$router.push({
-    //       name: 'orderConfirm'
-    //     })
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // },
     async sendShoppingCart () {
       try {
         const token = await stripe.createToken(card)

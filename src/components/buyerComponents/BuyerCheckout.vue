@@ -84,15 +84,6 @@
       </div>
     </body>
   </div>
-
-  <modal name="choose-shipping" :adaptive="true" width="80%" height="80%">
-    <br>
-    <br>Do you need to ship samples ?
-    <br>
-    <button v-on:click="sendShippingInfo(true)">Yes</button>
-    <button v-on:click="sendShippingInfo(false)">No</button>
-  </modal>
-  <!--  -->
 </div>
 </template>
 

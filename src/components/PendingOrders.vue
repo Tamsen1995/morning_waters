@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <br>
     <br>
     <br>
@@ -25,16 +25,51 @@
     <br>
     <button v-on:click="goToShippingUI">Go to shipping UI</button>
 
-    <modal name="ask-seller-if-seller-needs-to-ship">
-      <div>Do you need to ship something ?</div>
-      <button @click="sellerNeedsToShip(true)">Yes</button>
+    <!-- <button @click="sellerNeedsToShip(true)">Yes</button>
       <button @click="sellerNeedsToShip(false)">No</button>
-    </modal>
 
-    <modal name="ask-seller-if-buyer-needs-to-ship">
+
       <div>Does the buyer need to ship something ?</div>
       <button @click="buyerNeedsToShip(true)">Yes</button>
-      <button @click="buyerNeedsToShip(false)">No</button>
+    <button @click="buyerNeedsToShip(false)">No</button>-->
+
+    <!-- <input type="radio" id="one" value="One" v-model="picked">
+      <label for="one">One</label>
+      <br>
+      <input type="radio" id="two" value="Two" v-model="picked">
+      <label for="two">Two</label>
+      <br>
+    <span>Picked: {{ picked }}</span>-->
+
+    <modal name="ask-seller-if-seller-needs-to-ship">
+      <!--  -->
+      <div>
+        Do you need to ship something ?
+        <br>
+        <input type="radio" id="one" value="true" v-model="seller_shipping">
+        <label for="one">Yes</label>
+        <br>
+        <input type="radio" id="two" value="false" v-model="seller_shipping">
+        <label for="two">No</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+      </div>
+      <br>
+      <!--  -->
+      <div>
+        Does the buyer need to ship something ?
+        <br>
+        <input type="radio" id="one" value="true" v-model="buyer_shipping">
+        <label for="one">Yes</label>
+        <br>
+        <input type="radio" id="two" value="false" v-model="buyer_shipping">
+        <label for="two">No</label>
+        <br>
+        <span>Picked: {{ pickedTwo }}</span>
+      </div>
+      <!--  -->
+      <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
+      <button @click="submitShippingInfo()">Submit</button>
     </modal>
   </div>
 </template>
@@ -42,6 +77,7 @@
 <script>
 import PageHeader from "@/components/Header.vue";
 import AuthenticationService from "@/services/AuthenticationService";
+import ShippingService from "@/services/ShippingService";
 import UserServices from "@/services/UserServices";
 import Api from "@/services/Api";
 import { ResponsiveDirective } from "vue-responsive-components";
@@ -50,8 +86,14 @@ export default {
   data() {
     return {
       orderToBeConfirmed: null,
+      shippingInfo: {
+        seller_shipping: false,
+        buyer_shipping: false
+      },
       orders: null,
-      orderItems: null
+      orderItems: null,
+      seller_shipping: false,
+      buyer_shipping: false
     };
   },
   async created() {
@@ -62,32 +104,18 @@ export default {
   components: {},
   directives: {},
   methods: {
-    async buyerNeedsToShip(buyerNeedsToShip) {
+    async submitShippingInfo() {
       try {
-        if (buyerNeedsToShip === true) {
-          // set buyer_shipping status on the order to true
-        } else {
-          // set buyer_shipping status on the order to false
-        }
-        this.$modal.hide("ask-seller-if-buyer-needs-to-ship");
+        const response = await ShippingService.appendShippingToOrder({
+          orderId: this.orderToBeConfirmed.orderId,
+          seller_shipping: this.seller_shipping,
+          buyer_shipping: this.buyer_shipping
+        });
+        console.log(`\nThe response being : ${JSON.stringify(response)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
     },
-    async sellerNeedsToShip(sellerNeedsToShip) {
-      try {
-        if (sellerNeedsToShip === true) {
-          // set seller_shipping status on the order to true
-        } else {
-          // set seller_shipping status on the order to false
-        }
-        this.$modal.hide("ask-seller-if-seller-needs-to-ship");
-        this.$modal.show("ask-seller-if-buyer-needs-to-ship");
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
-    // this function will
     async confirmOrder(index) {
       try {
         this.orderToBeConfirmed = this.orders[index];
