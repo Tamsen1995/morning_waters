@@ -18,10 +18,14 @@ body.orders {
   background: #88cc00;  
 }
 
-
+/* .page-header {
+  background-color: purple;
+} */
 
 .current-order-status {
-  background: white;
+  background: white
+  /* background: rgb(140,10,196);
+  background: linear-gradient(rgba(140,10,196,1) 35%, rgba(167,255,0,1) 75%); */
 }
 
 #orders-main {
@@ -119,9 +123,11 @@ ul.timeline > li:before {
   bottom: 0;
   position: absolute;
   content: " ";
-  width: 2px;
+  width: 5px;
   /* background-color: #4997cd; */
-  background-color: purple;  
+  background: rgb(128,0,128);
+  background: linear-gradient(rgb(128,0,128) 35%, rgb(0, 191, 255) 75%);
+  /* background-color: linear-gradient(rgba(140,10,196,1) 35%, rgba(167,255,0,1));   */
   left: 50%;
   margin-left: -1.5px;
 }
@@ -182,7 +188,7 @@ ul.timeline > li:before {
   left: 1px;
 }
 #seller-timeline .timeline-movement {
-  border-bottom: dashed 1px #4997cd;
+  border-bottom: dashed 1px grey;
   position: relative;
 }
 #seller-timeline .timeline-movement.timeline-movement-top {
