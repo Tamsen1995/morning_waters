@@ -1,5 +1,5 @@
-import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
-import BuyerServices from '@/services/BuyerServices';
+import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import BuyerServices from '@/services/BuyerServices'
 
 export default {
   data () {
@@ -7,19 +7,32 @@ export default {
       buyerOrderItems: null,
       buyerQuoteRequests: null,
       // orders:[] is an array holding several objects, each representing an order
-      orders: []
+      orders: [],
+      quoteOrders: []
     }
   },
   async created () {
     await this.getBuyersOrders()
     await this.getBuyersQuoteRequests()
-    await this.compileOrders()
+    if (this.buyerOrderItems.length > 0) {
+      this.segmentOrderItems()
+    }
+    if (this.buyerQuoteRequests.length > 0) {
+      this.segmentBuyerQuoteRequests()
+    }
   },
-  async mounted () {},
+  async mounted () { },
   components: {
     BuyerHeader
   },
   methods: {
+    async goToQuoteCorrespondance (index) {
+      try {
+        console.log(`\nWe're gonna be different ${index}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async goToCorrespondance (index) {
       try {
         this.$store.dispatch('setObjectToBeSent', this.orders[index])
@@ -30,14 +43,30 @@ export default {
         if (error) throw error
       }
     },
-    // This takes all the orders according to their order id
-    // and compiles them into individual orders/correspondances
-    async compileOrders () {
+
+    async segmentBuyerQuoteRequests () {
       try {
-        if (this.buyerOrderItems.length > 0) {
-          this.segmentOrderItems()
-          this.consolidateQuoteRequests()
+        // Filtering out the orderIds
+        var currentOrderId = this.buyerQuoteRequests[0].orderId
+        var orderIds = []
+        orderIds.push(currentOrderId)
+        for (var i = 0; i < this.buyerQuoteRequests.length; i++) {
+          if (this.buyerQuoteRequests[i].orderId !== currentOrderId) {
+            orderIds.push(this.buyerQuoteRequests[i].orderId)
+            currentOrderId = this.buyerQuoteRequests[i].orderId
+          }
         }
+        // Filtering out the orderIds
+
+        //
+
+        // creating an array with the different quote requests in them
+        for (var k = 0; k < orderIds.length; k++) {
+          var array = []
+          array = this.buyerQuoteRequests.filter(quoteRequest => quoteRequest.orderId === orderIds[k])
+          this.quoteOrders.push(array)
+        }
+        // creating an array with the different quote requests in them
       } catch (error) {
         if (error) throw error
       }
@@ -67,23 +96,6 @@ export default {
         if (error) throw error
       }
     },
-    async consolidateQuoteRequests () {
-      try {
-        for (var i = 0; i < this.orders.length; i++) {
-          for (var indx = 0; indx < this.buyerQuoteRequests.length; indx++) {
-            if (
-              this.orders[i][0].orderId ===
-              this.buyerQuoteRequests[indx].orderId
-            ) {
-              this.orders[i].push(this.buyerQuoteRequests[indx])
-            }
-          }
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-
     async getBuyersQuoteRequests () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo

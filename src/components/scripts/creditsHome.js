@@ -1,14 +1,13 @@
-import DashboardHeader from '@/components/DashboardHeader.vue'
-import PaymentService from '@/services/PaymentService'
-import UserServices from '@/services/UserServices'
-import { ResponsiveDirective } from 'vue-responsive-components'
+import DashboardHeader from '@/components/DashboardHeader.vue';
+import PaymentService from '@/services/PaymentService';
+import UserServices from '@/services/UserServices';
+import { ResponsiveDirective } from 'vue-responsive-components';
 
 export default {
   data () {
     return {
       complete: true,
-      stripeOptions: {
-      },
+      stripeOptions: {},
       companyName: '',
       remainingCredits: 0,
       creditsToBePurchased: 0,
@@ -35,7 +34,9 @@ export default {
 
         await UserServices.checkForSubscriptionCharge(uid)
       } catch (error) {
-        console.log(`\nAn error occurred inside of the checkForSubscriptionCharge: ${error}\n`)
+        console.log(
+          `\nAn error occurred inside of the checkForSubscriptionCharge: ${error}\n`
+        )
         if (error) throw error
       }
     },
@@ -46,7 +47,9 @@ export default {
     async getRemainingCredits () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
-        const userInfo = await UserServices.getPublicProfileInfo(userExtracted.id)
+        const userInfo = await UserServices.getPublicProfileInfo(
+          userExtracted.id
+        )
         this.remainingCredits = userInfo.data.user.credits
         if (this.remainingCredits === null) {
           this.remainingCredits = 0
@@ -58,9 +61,8 @@ export default {
     },
     async goToCreditsPurchasingScreen () {
       try {
-        console.log(`\nThe credits purchasing screen is\n`) // TESTING
         this.$router.push({
-          name: 'creditsPurchasing'
+          name: 'pendingOrders'
         })
       } catch (error) {
         if (error) throw error

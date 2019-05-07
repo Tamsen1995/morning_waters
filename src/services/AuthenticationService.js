@@ -3,18 +3,12 @@ import store from '@/store/store';
 
 export default {
   register (credentials) {
-    console.log(
-      `\n\nInside of the register with credentials: ${JSON.stringify(
-        credentials
-      )}  \n`
-    ) // TESTING
     return Api().post('register', credentials)
   },
   login (credentials) {
     return Api().post('login', credentials)
   },
   routingAuthentication (jwtToken) {
-    console.log(`\nThe jwtToken is : ${jwtToken}\n`) // TESTING
     return Api().post('routingAuthentication', { jwtToken })
   },
   logout (credentials) {

@@ -3,6 +3,7 @@ import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'; //
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
 
 import BuyerServices from '@/services/BuyerServices';
+import ShippingService from '@/services/ShippingService';
 
 let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`) // TODO : Replace this with the live api key
 let elements = stripe.elements()
@@ -78,7 +79,8 @@ export default {
           })
         }
       } catch (error) {
-        console.log(`\nThe error seen in sendShoppingCart\n`)
+        console.log(`\nThe error seen in sendShoppingCart : ${error}\n`)
+        if (error) throw error
       }
     },
     // The function to comprise all the necessary info

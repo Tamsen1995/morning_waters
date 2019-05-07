@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div v-else>No default payment method</div>
+          <div v-else>No default payment method</div>
 
         <br>
         <br>

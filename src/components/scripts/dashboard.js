@@ -13,6 +13,10 @@ export default {
       serviceTitle: '',
       serviceDescription: '',
       servicePrice: 0.0,
+      serviceSubtitle: '',
+      unitType: '',
+      price: '',
+      turnAroundTime: '',
       user: null,
       companyName: '',
       companyLocation: '',
@@ -43,10 +47,11 @@ export default {
           servicePrice: this.servicePrice
         }
 
+        console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
+
         // TODO : the reponse object doesn't return anything. Fix that in a little bit
         await DashboardServices.pushServiceOntoDb(service)
         this.$modal.hide('add-service')
-        // $('#myModal').modal('hide')
 
         this.getServices()
         this.serviceTitle = '';
@@ -97,10 +102,6 @@ export default {
         if (this.credits === null) {
           this.credits = 0
         }
-
-        console.log(
-          `\n\n - > - > this.user : ${JSON.stringify(this.user)}\n\n`
-        ) // TESTING
       } catch (error) {
         if (error) throw error
       }
@@ -119,21 +120,11 @@ export default {
       this.leads = 75015
       // Page Views
       this.pageViews = 714
-    },
-    async addTags () {
-      try {
-        $('#tagBox').tagging()
-        console.log('\njquery is loaded\n')
-      } catch (error) {
-        console.log(`\nError in addtags ${error}\n`)
-        if (error) throw error
-      }
     }
   },
   mounted () {
     this.inserDummyData() // TESTING
     this.getServices()
     this.getUserInfo()
-    this.addTags()
   }
 }
