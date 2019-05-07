@@ -1,1 +1,1 @@
-web: nosdasdasde sdasdasderver.js
+web: npm install && node server.js
