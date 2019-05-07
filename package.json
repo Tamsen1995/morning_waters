@@ -14,7 +14,7 @@
     "build": "webpack --config build/webpack.prod.conf.js"
   },
   "dependencies": {
-    "@babel/runtime": "^7.4.3",
+    "@babel/runtime": "^7.4.4",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.19",
@@ -24,11 +24,11 @@
     "location": "0.0.1",
     "lodash": "^4.17.11",
     "navigator": "^1.0.1",
-    "stripe": "^6.30.0",
+    "stripe": "^6.31.2",
     "vue": "^2.6.10",
     "vue-cookies": "^1.5.13",
     "vue-disable-autocomplete": "0.0.4",
-    "vue-js-modal": "^1.3.28",
+    "vue-js-modal": "^1.3.31",
     "vue-parallaxy": "^1.1.1",
     "vue-resource": "^1.5.1",
     "vue-responsive-components": "^0.2.3",
