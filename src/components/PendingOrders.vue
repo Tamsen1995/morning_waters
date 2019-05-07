@@ -127,9 +127,9 @@ export default {
     async goToShippingUI() {
       try {
         // https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING
-        // window.open(
-        //   "https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING"
-        // );
+        window.open(
+          "https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING"
+        );
       } catch (error) {
         if (error) throw error;
       }
