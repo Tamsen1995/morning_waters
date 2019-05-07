@@ -8,22 +8,20 @@
         small: el => el.width < 430
         }"
     >
-      <b-container>
-        <div class="row">
-            <h2>Inbox</h2><br><br>
+      <div class="container">
+        <div class="row" id="header">
+            <div class="col-md-4">
+            <h2>Inbox</h2>
+            </div>
         </div>
         <div class="row message-wrapper rounded shadow mb-20">
           <div class="col-md-4 message-sideleft">
-              <div class="panel" style="min-height: 92.5%;">
+              <div class="panel">
                   <div class="panel-heading">
                       <div class="pull-left">
-                          <h3 class="panel-title">Messages</h3>
-                      </div>
-                      <div class="pull-right">
                           <div class="btn-group">
-                              <button type="button" class="btn btn-sm btn-success">All Messages</button>
-                              <button type="button" class="btn btn-sm btn-success dropdown-toggle" data-toggle="dropdown">
-                                  <span class="caret"></span>
+                              <button type="button" class="btn btn-success">All Messages</button>
+                              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                                   <span class="sr-only">Toggle Dropdown</span>
                               </button>
                               <ul class="dropdown-menu pull-right" role="menu">
@@ -34,6 +32,9 @@
                                   <li><a href="#"><i class="fa fa-briefcase"></i> Other</a></li>
                               </ul>
                           </div>
+                      </div>
+                      <div class="pull-right">
+
                           <label class="switch">
                             <input type="checkbox">
                             <span class="slider"></span>
@@ -67,6 +68,24 @@
                               <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
                               <p class="list-group-item-text">Can i have longer on my free trial please?</p>
                           </a>
+                          <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
+                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
+                          </a>
+                          <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
+                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
+                          </a>
+                          <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
+                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
+                          </a>
+                          <a href="#" class="list-group-item">
+                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
+                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
+                          </a>
+
+
                       </div><!-- /.list-group -->
                   </div><!-- /.panel-body -->
               </div><!-- /.panel -->
@@ -75,7 +94,6 @@
               <div class="panel">
                   <div class="panel-heading">
                       <div class="media">
-                          <a href="mail-compose.html" class="btn btn-danger pull-right rounded"><i class="fa fa-share"></i></a>
                           <a class="pull-left" href="#">
                               <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Rebecca Cabean" class="img-circle avatar">
                           </a>
@@ -125,7 +143,7 @@
               </div><!-- /.panel -->
           </div><!-- /.message-sideright -->
       </div>
-      </b-container>
+      </div>
     </div>
   </body>
 </div>
@@ -137,5 +155,5 @@
 <style scoped>
 /* @import "../assets/css/figanal.css"; */
 @import "../assets/css/inbox.css";
-@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+/* @import url("https://fonts.googleapis.com/css?family=Lato|Roboto"); */
 </style>
