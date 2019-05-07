@@ -1,6 +1,6 @@
 .DS_Store
+.gitignore
 npm-debug.log*
-node_modules
 yarn-debug.log*
 yarn-error.log*
 /test/unit/coverage/
