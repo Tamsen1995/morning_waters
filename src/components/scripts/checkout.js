@@ -1,9 +1,9 @@
-import DashboardHeader from '@/components/DashboardHeader.vue';
-import PaymentService from '@/services/PaymentService';
-import SettingsService from '@/services/SettingsService';
-import TimeConversion from '@/components/scripts/helpers/timeConverter';
+import DashboardHeader from '@/components/DashboardHeader.vue'
+import PaymentService from '@/services/PaymentService'
+import SettingsService from '@/services/SettingsService'
+import TimeConversion from '@/components/scripts/helpers/timeConverter'
 
-let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`) // TODO : Replace this with the live api key
+let stripe = Stripe(process.env.stripe_public_key) // TODO : Replace this with the live api key
 let elements = stripe.elements()
 let card = null
 

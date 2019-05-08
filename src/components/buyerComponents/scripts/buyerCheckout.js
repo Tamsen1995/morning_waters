@@ -1,11 +1,11 @@
-import ShoppingCart from '@/components/buyerComponents/ShoppingCart'; // TODO : Remove
-import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'; // TODO : Remove
-import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
+import ShoppingCart from '@/components/buyerComponents/ShoppingCart' // TODO : Remove
+import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart' // TODO : Remove
+import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 
-import BuyerServices from '@/services/BuyerServices';
-import ShippingService from '@/services/ShippingService';
+import BuyerServices from '@/services/BuyerServices'
+import ShippingService from '@/services/ShippingService'
 
-let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`) // TODO : Replace this with the live api key
+let stripe = Stripe(process.env.stripe_public_key) // TODO : Replace this with the live api key
 let elements = stripe.elements()
 let card = null
 
