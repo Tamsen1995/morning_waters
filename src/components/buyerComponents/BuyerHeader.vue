@@ -21,7 +21,11 @@
           <ul class="navbar-nav ml-auto">
             <!-- Orders -->
             <!-- This is the dropdown menu -->
-            <li class="nav-item" v-if="this.buyerLoggedIn === true">
+            <li
+              class="nav-item"
+              v-if="this.buyerLoggedIn === true"
+              @click="redirectOntoBuyerDashboard()"
+            >
               <a
                 class="nav-link"
                 @click="toggleDropdownMenu()"
@@ -37,14 +41,13 @@
               <!-- <a class="nav-link"> -->
               <a
                 class="nav-link"
-                @click="toggleDropdownMenu()"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
               >Orders</a>
               <!-- </a> -->
-              <div v-show="this.dropdownMenu" class="absolute">
+              <!-- <div v-show="this.dropdownMenu" class="absolute">
                 <div>Order History</div>
                 <div>Shipping</div>
-              </div>
+              </div>-->
             </li>
 
             <!-- Login/Sign-up -->

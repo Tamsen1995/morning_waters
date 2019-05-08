@@ -34,13 +34,9 @@ export default {
         if (error) throw error
       }
     },
-    async toggleDropdownMenu () {
+    async redirectOntoBuyerDashboard () {
       try {
-        if (this.dropdownMenu === false) {
-          this.dropdownMenu = true
-        } else {
-          this.dropdownMenu = false
-        }
+        console.log(`\nredirect onto buyer dashboard\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
