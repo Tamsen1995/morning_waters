@@ -9,236 +9,336 @@
   >
     <body class="orders">
 
-      <div class="container">
-        
-        <div class="page-header">
-          <h1 id="">Order Status - [Seller Name]</h1>
-        </div>
-        <!-- Add tabs to toggle Current Orders/ Pending Orders-->
 
+      <div class="page-header">
+        <ul class="nav nav-tabs">
 
-      <!-- Curent Orders -->
-      <div id="timeline">
-        <div class="row timeline-movement timeline-movement-top">
-          <div class="timeline-badge timeline-future-movement">
-            <a href="#">
-                <span class="glyphicon glyphicon-plus"></span>
-            </a>
+        <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Active Orders</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Company Name [Timestamp]</a>
+            <a class="dropdown-item" href="#">Company Name [Timestamp]</a>
+            <a class="dropdown-item" href="#">Company Name [Timestamp]</a>
+            <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a> -->
           </div>
-          <div class="timeline-badge timeline-filter-movement">
-            <a href="#">
-              <span class="glyphicon glyphicon-time"></span>
-            </a>
-          </div>
+            <li class="nav-item">
+              <h3>
+              <a class="nav-link" href="#">Order History</a>
+              </h3>
+            </li> 
 
-        </div>
-
-      <!-- Shipping Status -->
-        <div class="row timeline-movement">
-
-          
-          <div class="timeline-badge">
-              <span class="timeline-balloon-date-day">18</span>
-              <span class="timeline-balloon-date-month">APR</span>
-          </div>
+        </ul>
 
 
-          <div class="col-sm-6  timeline-item">
-              <div class="row">
-                  <div class="col-sm-11">
-                      <div class="timeline-panel buyer-side">
-                          <ul class="timeline-panel-ul">
-                              <li><span class="importo">Buyer shipping status</span></li>
-                              <li><span class="importo">[Label purchased, Shipped, Out for delivery, Arriving Today]</span></li>
-                              <li><span class="causale">Tracking Number</span> </li>
-                          </ul>
-                      </div>
-
-                  </div>
+        <div class="container current-order-status">
+          <!-- Add tabs to toggle Current Orders/ Pending Orders-->
+          <!-- Curent Orders -->
+                      <br>
+            <br>
+          <div id="seller-timeline">
+            <div class="row timeline-movement timeline-movement-top">
+              <div class="timeline-badge timeline-future-movement">
+                <a href="#">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </a>
               </div>
-          </div>
-
-
-          <div class="col-sm-offset-6 col-sm-6  timeline-item">
-              <div class="row">
-                  <div class="col-sm-offset-1 col-sm-11">
-                      <div class="timeline-panel seller-side">
-                          <ul class="timeline-panel-ul">
-                              <li><span class="importo">Seller shipping status</span></li>
-                              <li><span class="importo">[Label purchased, Shipped, Out for delivery, Arriving Today]</span></li>
-                              <li><span class="causale">Tracking Number</span> </li>
-                              <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
-                          </ul>
-                      </div>
-
-                  </div>
-              </div>
-          </div>
-
-      </div>
-
-      <!-- Shipping Decisions/ Shippo UI link -->
-        <div class="row timeline-movement">
-
-          
-          <div class="timeline-badge">
-              <span class="timeline-balloon-date-day">18</span>
-              <span class="timeline-balloon-date-month">APR</span>
-          </div>
-
-
-          <div class="col-sm-6  timeline-item">
-              <div class="row">
-                  <div class="col-sm-11">
-                      <div class="timeline-panel buyer-side">
-                          <ul class="timeline-panel-ul">
-                              <li><span class="importo">Need to ship?</span></li>
-                              <li><span class="causale">Shipping UI Link. </span> </li>
-                              <!-- <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li> -->
-                          </ul>
-                      </div>
-
-                  </div>
-              </div>
-          </div>
-
-
-          <div class="col-sm-offset-6 col-sm-6  timeline-item">
-              <div class="row">
-                  <div class="col-sm-offset-1 col-sm-11">
-                      <div class="timeline-panel seller-side">
-                          <ul class="timeline-panel-ul">
-                              <li><span class="importo">Seller shipping Decision</span></li>
-                              <li><span class="importo">Shipping selection summary</span></li>
-                              <li><span class="causale">View Invoice</span> </li>
-                              <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
-                          </ul>
-                      </div>
-
-                  </div>
-              </div>
-          </div>
-
-      </div>
-
-    <!-- Step 2: Seller Confirms Order -->
-      <div class="row timeline-movement">
-
-
-        <div class="timeline-badge">
-            <span class="timeline-balloon-date-day">13</span>
-            <span class="timeline-balloon-date-month">APR</span>
-        </div>
-
-        <!-- Buyer Charged-->
-        <div class="col-sm-6  timeline-item">
-          <div class="row">
-            <div class="col-sm-11">
-              <div class="timeline-panel buyer-side">
-                <ul class="timeline-panel-ul">
-                    <li><span class="importo">Charged [total billed]</span></li>
-                    <li><span class="causale">View Invoice</span> </li>
-                    <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Timestamp</small></p> </li>
-                </ul>
-              </div>
-
             </div>
-          </div>
-        </div>
 
-        <!-- Seller Confirmed Order Charged-->
-        <div class=" col-sm-6  timeline-item">
-            <div class="row">
-                <div class="col-sm-offset-1 col-sm-11">
+            <div class="row timeline-movement">
+              
+              <div class="timeline-badge" style= "top: 25%;">
+                <span style="font-size: 40px;" >
+                  <i class="far fa-check-circle"></i>
+                </span>
+              </div>
+
+              <div class="col-sm-offset-6 col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-11">
                     <div class="timeline-panel seller-side">
-                        <ul class="timeline-panel-ul">
-                            <li><span class="importo">[Seller Name] Confirmed Order/ Awaiting confirmation</span></li>
-                            <li><span class="causale">View Invoice</span> </li>
-                             <li><span class="causale">Providers can take up to 3 business days to confirm an order.</span> </li>
-                            <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> [TimeStamp]</small></p> </li>
-                        </ul>
+                      <ul class="timeline-panel-ul">
+                        
+                        <li><span class="importo">[Out for delivery, Delivered]</span></li>
+                        <li><span class="causale">Tracking Number</span> </li>
+                        <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                      </ul>
                     </div>
 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Shipping Status -->
+            <div class="row timeline-movement">
+
+              <div class="timeline-badge-small" style="">
+              </div>
+
+              <div class="col-sm-offset-6 col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-11">
+                    <div class="timeline-panel seller-side">
+                      <ul class="timeline-panel-ul">
+                        
+                        <li><span class="importo">[Label purchased, Shipped]</span></li>
+                        <li><span class="causale">Tracking Number</span> </li>
+                        <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="row timeline-movement">
+              
+              <div class="timeline-badge" style= "top: 25%;">
+                <span style="font-size: 40px;" >
+                  <i class="far fa-check-circle"></i>
+                </span>
+              </div>
+
+              <div class="col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-11">
+                    <div class="timeline-panel buyer-side">
+                      <ul class="timeline-panel-ul">
+                        
+                        <li><span class="importo">[Out for delivery, Delivered]</span></li>
+                        <li><span class="causale">Tracking Number</span> </li>
+                        <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row timeline-movement">
+              <div class="timeline-badge-small" style="">
+              </div>
+
+              <div class="col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-11">
+                    <div class="timeline-panel buyer-side">
+
+                      <ul class="timeline-panel-ul">
+                        <li><span class="importo">[Label purchased, Shipped]</span></li>
+                        <li><span class="causale">Tracking Number</span> </li>
+                      </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <!-- Shipping Decisions/ Shippo UI link -->
+
+            <div class="row timeline-movement">
+
+            
+              <div class="timeline-badge" style="padding:5px;">
+                <span style="font-size: 37px; padding-top: 20px;">
+                  <i class="fas fa-dolly"></i>
+                </span>
+              </div>
+
+
+                <div class="col-sm-6  timeline-item">
+                  <div class="row">
+                    <div class="col-sm-11">
+
+                      <div class="timeline-panel buyer-side">
+                        <ul class="timeline-panel-ul">
+                          <li><span class="importo"> [Company Name] Shipping Selection</span></li>
+                          <li><span class="causale">View Invoice</span> </li>
+                          <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11/09/2014</small></p> </li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Seller Confirmed Order Charged-->
+                <div class="col-sm-6  timeline-item">
+                  <div class="row">
+                    <div class="col-sm-offset-1 col-sm-11">
+                      
+                      <div class="timeline-panel seller-side">
+                        <ul class="timeline-panel-ul">
+                          <li><span class="importo">Need to ship?</span></li>
+                          <li><span class="causale">Shipping UI Link. </span> </li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            <!-- Step 2: Seller Confirms Order -->
+            <div class="row timeline-movement">
+
+              <div class="timeline-badge">
+                <span style="font-size: 40px;">
+                  <i class="fas fa-clipboard-check"></i>
+                </span>
+              </div>
+
+              <!-- Buyer Charged-->
+              <div class="col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-11">
+
+                    <div class="timeline-panel buyer-side">
+                      <!-- Order Confirmed -->
+                      <!-- <ul class="timeline-panel-ul">
+                        <li><span class="importo">Awaiting confirmation from [Seller Name]</span></li>
+                        <li><span class="causale">Providers can take up to 3 business days to confirm an order.</span> </li>
+                        <li><span class="importo">Pending charge: [total billed]</span></li>
+                      </ul> -->
+
+                      <!-- Pending Confirmation -->
+                      <ul class="timeline-panel-ul">
+                        <li><span class="importo">[Seller Name] Confirmed Order </span></li>
+                        <li><span class="importo">Charged [total billed]</span></li>
+                        <li><span class="causale">View Invoice</span> </li>
+                        <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> [TimeStamp]</small></p> </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <!-- Seller Confirmed Order Charged-->
+            <!-- <div class="row timeline-movement">
+              <div class="col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-11">
+                    
+
+                  </div>
+                </div>
+              </div>
+
+            </div> -->
+
+            <!-- Step 1: Buyer Submits order -->
+            <div class="row timeline-movement">
+              
+              <div class="timeline-badge">
+                <span style="font-size: 40px;">
+                  <i class="fas fa-clipboard-list"></i>
+                </span>
+              </div>
+
+              <div class="col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-11">
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order Submitted-->
+              <div class="col-sm-6  timeline-item">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-11">
+                    
+                    <div class="timeline-panel seller-side">
+                      <ul class="timeline-panel-ul">
+                          <li><span class="importo">Order Submited</span></li>
+                          <li><span class="causale">View Order Summary</span> </li>
+                          <li><span class="causale">You will not be charged until Seller name confirms your order.</span> </li>
+                          <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Timestamp</small></p> </li>
+                      </ul>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row timeline-movement">
+          
+              <!--In correspondance (Sellers Only) -->
+              <div style="margin:0px; padding:0px;">
+                <div class="timeline-badge-small" style="top: 50px; ">
+                </div>
+              </div>
+
+              <div class="col-sm-6  timeline-item">              
+                <div class="row">
+                  <div class="col-sm-11">
+
+                    <div class="timeline-panel buyer-side">
+                      <ul class="timeline-panel-ul">
+                          <li><span class="importo">In Correspondance</span></li>
+                          <li><span class="causale">Most Recent message...</span> </li>
+                          <li><span class="causale">View inbox</span> </li>
+                          <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Timestamp</small></p> </li>
+                      </ul>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <br>
+          <!-- Invoice Viewer -->
+          <div class="container" id="current-order-download">
+            <div class="row">
+              <div class="container" >
+                <h4> View Invoice</h4>
+                  <div class="card">
+                    View grid
+
+                    Download
+                  </div>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+
+        <br>
+
+        <!-- Shipping UI-->
+        <div class="container" id="shippo-ui">
+          <div class="row">
+            <br>
+            <div class="container" id="shipping_ui">
+              <h4>Shipping UI</h4>
+                <div class="card">
+                  Shippo Shit
                 </div>
             </div>
-        </div>
-
-      </div>
-
-    <!-- Step 1: Buyer Submits order -->
-      <div class="row timeline-movement">
-        
-        <div class="col-sm-6  timeline-item">
-          <div class="row">
-            <div class="col-sm-11">
-              <div class="timeline-panel buyer-side">
-                <ul class="timeline-panel-ul">
-                    <li><span class="importo">Order Submited</span></li>
-                    <li><span class="causale">View Order Summary</span> </li>
-                    <li><span class="causale">You will not be charged until Seller name confirms your order.</span> </li>
-                    <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Timestamp</small></p> </li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-          
-          <br>
-
-          <!-- For Sellers? -->
-          <!-- <div class="row">
-            <div class="col-sm-11">
-              <div class="timeline-panel buyer-side">
-                <ul class="timeline-panel-ul">
-                    <li><span class="importo">In Correspondance</span></li>
-                    <li><span class="causale">Most Recent message...</span> </li>
-                    <li><span class="causale">View inbox</span> </li>
-                    <li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> Timestamp</small></p> </li>
-                </ul>
-              </div>
-            </div>
-          </div> -->
-
-        </div>
-
-
-      </div>
-      </div>
-      </div>
-
-
-      <!--Layout summmary-->
-      <div class="container" id="shipping_ui">
-        <div class="row">
-          <br>
-
-          <!-- Shipping UI-->
-          <!-- insert shipping timeline -->
-          <div class="card" >
-            <h4>Shipping UI</h4>
-              <div class="card">
-                Shippo Shit
-              </div>
-          </div>
-          <br>
-        </div>
-      </div>
-
-      <div>
-        <div class="row">
-          <!-- Order History -->
-          <div class="card" id="order-history">
-            <h4>Order History</h4>
-
-            <h5> <span class="green">Order complete</span> <span class="red">Order incomplete</span></h5>
-            <h5>Payment Date [timestamp]</h5>
-            <h5>Shippment info [timestamp]</h5>
             <br>
-            <h4>Shipping info (link?)</h4>
-            <div>order history download (pdf/csv)</div>
           </div>
         </div>
+
       </div>
+
+
     </body>
   </div>
 </div>
@@ -261,4 +361,5 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 @import "../../assets/css/orders.css";
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 </style>
