@@ -144,6 +144,14 @@
                 <span class="badge badge-success">{{itemsInCart}}</span>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                @click="buyerLogout()"
+                style="padding-top:0px;padding-bottom:0px;"
+              >Logout</a>
+            </li>
           </ul>
         </div>
       </div>
