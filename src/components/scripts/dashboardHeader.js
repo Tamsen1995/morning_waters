@@ -1,5 +1,5 @@
-import PaymentService from '@/services/PaymentService';
-import AuthenticationService from '@/services/AuthenticationService';
+import PaymentService from '@/services/PaymentService'
+import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
   data () {

@@ -145,12 +145,14 @@
               </a>
             </li>
 
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                @click="buyerLogout()"
-                style="padding-top:0px;padding-bottom:0px;"
-              >Logout</a>
+            <li class="nav-item" v-if=" this.buyerLoggedIn === true">
+              <router-link class="nav-link nav-center" to="/">
+                <a
+                  class="nav-link"
+                  @click="buyerLogout()"
+                  style="padding-top:0px;padding-bottom:0px;"
+                >Logout</a>
+              </router-link>
             </li>
           </ul>
         </div>
