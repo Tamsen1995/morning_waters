@@ -1,43 +1,39 @@
 <template>
+<body class="shopping-cart">
+  <!-- Service/Price Listings -->
+  <div class="container" id="price-chart">
+    <p></p>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Description</th>
+          <th scope="col">Turn Around Time</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+          <th scope="col">Total</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item, index) in this.shoppingCart" v-bind:key="item">
+          <th scope="row">{{ item.service.title}}</th>
+          <td>{{ item.service.description }}</td>
+          <td></td>
 
-  <body class="shopping-cart">
-    <!-- Service/Price Listings -->
-    <div class="container" id="price-chart">
-      <p>
-        <table class="table table-hover" >
-        <thead>
-            <tr>
-              <th scope="col">Item</th>
-              <th scope="col">Description</th>
-              <th scope="col">Turn Around Time</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col">Total</th>
-              <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in this.shoppingCart" v-bind:key="item">
-            <th scope="row">{{ item.service.title}}</th>
-            <td>{{ item.service.description }}</td>
-            <td></td>
+          <!-- Add edit quantity functionality -->
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
 
-            <!-- Add edit quantity functionality -->
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-                <h1 @click="testingDelete()">Testing only please delete</h1>
-
-            <!-- Add delete functionality -->
-            <td>X</td>
-          </tr>
-        </tbody>
-        </table>
-      </p>
-    </div>                      
-  </body>
-
+          <!-- Add delete functionality -->
+          <td @click="deleteItemFromShoppingCart(index)">X</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
 </template>
 
 <script>
@@ -55,9 +51,9 @@ export default {
   },
   methods: {
     // TESTING
-    async testingDelete() {
+    async deleteItemFromShoppingCart(index) {
       try {
-        this.$store.dispatch("clearShoppingCart");
+        this.$store.dispatch("deleteServiceFromShoppingCart", index);
         this.getCartItemsFromStore();
       } catch (error) {
         if (error) throw error;
@@ -89,5 +85,5 @@ export default {
 
 <style>
 @import "../../assets/css/header.css";
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>
