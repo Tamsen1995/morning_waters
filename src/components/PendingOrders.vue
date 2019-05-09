@@ -130,9 +130,18 @@ export default {
     },
     async goToShippingUI() {
       try {
-        // https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING
+        var randomString =
+          Math.random()
+            .toString(36)
+            .substring(2, 15) +
+          Math.random()
+            .toString(36)
+            .substring(2, 15);
+
         window.open(
-          "https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING"
+          `https://goshippo.com/oauth/authorize?response_type=code&client_id=${
+            process.env.SHIPPO_CLIENT_ID
+          }&scope=*&state=${randomString}`
         );
       } catch (error) {
         if (error) throw error;
