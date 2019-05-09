@@ -16,12 +16,26 @@
     <br>
     <br>
 
+    <!-- This shall be converted to an actual order array. -->
     <div v-for="(order, index) in orders" v-bind:key="index" @click="confirmOrder(index)">
       <br>
-      {{order}}
+      <h3>ORDER ID :</h3>
+      {{order.orderId}}
+      <br>
+      <br>
+      <div v-for="(orderItem, index) in orderItems" v-bind:key="index">
+        <div v-if="orderItem.orderId === order.orderId">
+          <h5>Title:</h5>
+          {{orderItem.title}}
+          <br>
+          <h5>Description:</h5>
+          {{orderItem.description}}
+        </div>
+      </div>
+      <br>
       <br>
     </div>
-
+    <!--  -->
     <br>
     <br>
     <button v-on:click="goToShippingUI">Go to shipping UI</button>
@@ -138,9 +152,7 @@ export default {
             .toString(36)
             .substring(2, 15);
 
-        window.open(
-          `https://goshippo.com/oauth/authorize?response_type=code&client_id=6c0b60adaeb84bf497bb66c8d522f806&scope=*&state=${randomString}`
-        );
+        window.open(`${process.env.SHIPPO_OAUTH_LINK}${randomString}`);
       } catch (error) {
         if (error) throw error;
       }

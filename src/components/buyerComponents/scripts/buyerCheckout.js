@@ -47,6 +47,28 @@ export default {
     BuyerHeader
   },
   methods: {
+    // This function redirects to the correct flow
+    // FLOWS:
+    // shippo oauth flow
+    // direct order confirmation page.
+    async redirectToProperFlow () {
+      try {
+        var randomString =
+          Math.random()
+            .toString(36)
+            .substring(2, 15) +
+          Math.random()
+            .toString(36)
+            .substring(2, 15)
+
+        window.open(`${process.env.SHIPPO_OAUTH_LINK}${randomString}`)
+        // this.$router.push({
+        //   name: 'orderConfirm'
+        // })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async sendShoppingCart () {
       try {
         const token = await stripe.createToken(card)
@@ -74,9 +96,7 @@ export default {
             sellerId: sellerExtracted.user.id,
             orderId: this.orderId
           })
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+          this.redirectToProperFlow()
         }
       } catch (error) {
         console.log(`\nThe error seen in sendShoppingCart : ${error}\n`)
@@ -98,9 +118,8 @@ export default {
         }
         this.$store.dispatch('setQuoteRequestCart', [])
 
-        this.$router.push({
-          name: 'orderConfirm'
-        })
+        this.redirectToProperFlow()
+
         await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
         await BuyerServices.createOrder({
           buyerId: buyerExtracted.id,
@@ -150,9 +169,7 @@ export default {
           })
           this.$store.dispatch('setQuoteRequestCart', [])
           this.$store.dispatch('setShoppingCart', [])
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+          this.redirectToProperFlow()
         }
       } catch (error) {
         console.log(
