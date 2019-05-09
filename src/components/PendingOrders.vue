@@ -139,9 +139,7 @@ export default {
             .substring(2, 15);
 
         window.open(
-          `https://goshippo.com/oauth/authorize?response_type=code&client_id=${
-            process.env.SHIPPO_CLIENT_ID
-          }&scope=*&state=${randomString}`
+          `https://goshippo.com/oauth/authorize?response_type=code&client_id=6c0b60adaeb84bf497bb66c8d522f806&scope=*&state=${randomString}`
         );
       } catch (error) {
         if (error) throw error;
