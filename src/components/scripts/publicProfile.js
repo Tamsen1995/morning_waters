@@ -1,11 +1,11 @@
-import UserServices from '@/services/UserServices';
-import InboxService from '@/services/InboxService';
-import DashboardServices from '@/services/DashboardServices';
-import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
-import ShoppingCart from '@/components/buyerComponents/ShoppingCart';
-import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart';
-import AddItemToShoppingCartModal from '@/components/buyerComponents/modals/AddItemToShoppingCartModal';
-import { ResponsiveDirective } from 'vue-responsive-components';
+import UserServices from '@/services/UserServices'
+import InboxService from '@/services/InboxService'
+import DashboardServices from '@/services/DashboardServices'
+import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
+import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'
+import AddItemToShoppingCartModal from '@/components/buyerComponents/modals/AddItemToShoppingCartModal'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {
@@ -35,9 +35,9 @@ export default {
   },
   created () {
     this.userId = this.$route.params.id
+    this.getUserData()
   },
   mounted () {
-    this.getUserData()
   },
   methods: {
     async redirectToCheckoutOrLogin () {
@@ -110,7 +110,7 @@ export default {
 
         this.$store.dispatch('addQuoteRequestToCart', quoteRequestForService)
         this.$modal.hide('request-quote-modal')
-        this.inquiryText = '';
+        this.inquiryText = ''
       } catch (error) {
         if (error) throw error
       }

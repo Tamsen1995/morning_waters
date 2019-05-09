@@ -36,7 +36,9 @@ export default {
     },
     async redirectOntoBuyerDashboard () {
       try {
-        console.log(`\nredirect onto buyer dashboard\n`) // TESTING
+        this.$router.push({
+          name: 'buyerDashboard'
+        })
       } catch (error) {
         if (error) throw error
       }
