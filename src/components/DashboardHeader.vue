@@ -25,7 +25,7 @@
             <li class="nav-item">
               <router-link
                 class="nav-link"
-                to="/dashboard/creditsScreen"
+                to="/dashboard/pending_orders"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;"
               >
@@ -39,7 +39,7 @@
               </router-link>
               <router-link
                 class="nav-link"
-                to="/dashboard/creditsScreen"
+                to="/dashboard/pending_orders"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
               >

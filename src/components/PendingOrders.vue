@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <dashboard-header></dashboard-header>
     <br>
     <br>
     <br>
@@ -75,6 +76,7 @@
 </template>
 
 <script>
+import DashboardHeader from "@/components/DashboardHeader.vue";
 import PageHeader from "@/components/Header.vue";
 import AuthenticationService from "@/services/AuthenticationService";
 import ShippingService from "@/services/ShippingService";
@@ -101,7 +103,9 @@ export default {
     await this.getSellerOrderItems();
   },
   async mounted() {},
-  components: {},
+  components: {
+    DashboardHeader
+  },
   directives: {},
   methods: {
     async submitShippingInfo() {
