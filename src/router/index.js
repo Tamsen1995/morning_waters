@@ -28,6 +28,9 @@ import BuyerSettings from '@/components/buyerComponents/BuyerSettings'
 import BuyerBillings from '@/components/buyerComponents/BuyerBillings'
 import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondance'
 
+// Shippo routes
+import DashboardShippoRegister from '@/components/DashboardShippoRegister'
+
 Vue.use(Router)
 function routingAuthentication (to, from, next) {
   try {
@@ -134,6 +137,16 @@ export default new Router({
         routingAuthentication(to, from, next)
       }
     },
+    // /dashboard/shippo / oauth / register
+    {
+      path: '/dashboard/shippo/oauth/register/:state/:code',
+      name: 'dashboardRegisterShippoAccountRedirect',
+      component: DashboardShippoRegister,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+      }
+    },
+
     // Buyer Routes below
     {
       path: '/buyerRegistration',
