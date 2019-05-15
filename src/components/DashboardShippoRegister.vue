@@ -20,22 +20,24 @@ export default {
         const userExtracted = this.$store.getters.getUserInfo;
         console.log(`meeeos`); // TESTING
         // This assumes the seller has opened a new shippo account
-        if (buyerExtracted === null) {
+        console.log(`\nbuyer : ${JSON.stringify(buyerExtracted)}\n`); // TESTING
+        console.log(`\nseller: ${JSON.stringify(userExtracted)}\n`); // TESTING
+        if (buyerExtracted == null) {
           const shippoAPItokenRequest = {
             sellerId: userExtracted.id,
             client_id: process.env.SHIPPO_CLIENT_ID,
             client_secret: process.env.SHIPPO_CLIENT_SECRET,
             code: this.$route.params.code,
+            state: this.$route.params.state,
             grant_type: "authorization_code"
           };
-
           await ShippingService.generateSellerApiToken(shippoAPItokenRequest);
         } else {
           const shippoAPItokenRequest = {
             buyerId: buyerExtracted.id,
             client_id: process.env.SHIPPO_CLIENT_ID,
             client_secret: process.env.SHIPPO_CLIENT_SECRET,
-            code: this.route.params.code,
+            code: this.$route.params.code,
             grant_type: "authorization_code"
           };
           // This assumes the buyer has opened a new shippo account
@@ -47,6 +49,7 @@ export default {
     }
   },
   mounted() {
+    // if it isn't already generated
     this.generateAPItoken();
   },
   created() {}
