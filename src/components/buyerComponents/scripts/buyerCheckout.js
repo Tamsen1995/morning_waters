@@ -62,9 +62,9 @@ export default {
             .substring(2, 15)
 
         window.open(`${process.env.SHIPPO_OAUTH_LINK}${randomString}`)
-        // this.$router.push({
-        //   name: 'orderConfirm'
-        // })
+        this.$router.push({
+          name: 'orderConfirm'
+        })
       } catch (error) {
         if (error) throw error
       }

@@ -38,6 +38,7 @@ export default {
             client_id: process.env.SHIPPO_CLIENT_ID,
             client_secret: process.env.SHIPPO_CLIENT_SECRET,
             code: this.$route.params.code,
+            state: this.$route.params.state,
             grant_type: "authorization_code"
           };
           // This assumes the buyer has opened a new shippo account
