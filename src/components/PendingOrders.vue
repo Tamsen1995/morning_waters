@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="container">
     <dashboard-header></dashboard-header>
     <br>
     <br>
@@ -17,7 +17,12 @@
     <br>
 
     <!-- This shall be converted to an actual order array. -->
-    <div v-for="(order, index) in orders" v-bind:key="index" @click="confirmOrder(index)">
+    <div
+      id="pending-order"
+      v-for="(order, index) in orders"
+      v-bind:key="index"
+      @click="confirmOrder(index)"
+    >
       <br>
       <h3>ORDER ID :</h3>
       {{order.orderId}}
@@ -185,4 +190,7 @@ export default {
 </script>
 
 <style>
+#pending-order {
+  border: solid black 2px;
+}
 </style>
