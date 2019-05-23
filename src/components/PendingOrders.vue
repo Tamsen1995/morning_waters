@@ -21,7 +21,7 @@
       id="pending-order"
       v-for="(order, index) in orders"
       v-bind:key="index"
-      @click="confirmOrder(index)"
+      @click="confirmOrder(order.orderId)"
     >
       <br>
       <h3>ORDER ID :</h3>
@@ -30,7 +30,7 @@
       <br>
       <div v-for="(orderItem, index) in orderItems" v-bind:key="index">
         <div v-if="orderItem.orderId === order.orderId">
-          <h5>Title:</h5>
+          <h5>Order Item:</h5>
           {{orderItem.title}}
           <br>
           <h5>Description:</h5>
@@ -62,32 +62,30 @@
     <span>Picked: {{ picked }}</span>-->
 
     <modal name="ask-seller-if-seller-needs-to-ship">
-      <!--  -->
-      <div>
-        Do you need to ship something ?
+      <div v-for="(orderItem, index) in orderToBeConfirmed" v-bind:key="index">
+        <div>
+          Order Item: {{orderItem.title}}
+          <div>
+            <br>
+            <input type="radio" id="one" value="true" v-model="seller_shipping">
+            <label for="one">Buyer Shipping</label>
+            <br>
+            <input type="radio" id="two" value="false" v-model="seller_shipping">
+            <label for="two">Seller Shipping</label>
+            <br>
+          </div>
+        </div>
         <br>
-        <input type="radio" id="one" value="true" v-model="seller_shipping">
-        <label for="one">Yes</label>
-        <br>
-        <input type="radio" id="two" value="false" v-model="seller_shipping">
-        <label for="two">No</label>
-        <br>
-        <span>Picked: {{ picked }}</span>
       </div>
+
+      <!--  -->
+      <!--  -->
+
       <br>
-      <!--  -->
-      <div>
-        Does the buyer need to ship something ?
-        <br>
-        <input type="radio" id="one" value="true" v-model="buyer_shipping">
-        <label for="one">Yes</label>
-        <br>
-        <input type="radio" id="two" value="false" v-model="buyer_shipping">
-        <label for="two">No</label>
-        <br>
-        <span>Picked: {{ pickedTwo }}</span>
-      </div>
-      <!--  -->
+
+      <br>
+      <br>
+
       <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
       <button @click="submitShippingInfo()">Submit</button>
     </modal>
@@ -107,10 +105,10 @@ export default {
   data() {
     return {
       orderToBeConfirmed: null,
-      shippingInfo: {
-        seller_shipping: false,
-        buyer_shipping: false
-      },
+      // this will upon the call of the modal be
+      // turned into an array then used to hold the individual shipping logistics
+      // for the order which was called upon
+      seller_shipping: null,
       orders: null,
       orderItems: null,
       seller_shipping: false,
@@ -139,9 +137,32 @@ export default {
         if (error) throw error;
       }
     },
-    async confirmOrder(index) {
+    async confirmOrder(orderId) {
       try {
-        this.orderToBeConfirmed = this.orders[index];
+        // allocating an appropiate array
+        this.orderToBeConfirmed = [];
+        for (var i = 0; i < this.orderItems.length; i++) {
+          if (orderId === this.orderItems[i].orderId) {
+            this.orderToBeConfirmed.push(this.orderItems[i]);
+          }
+        }
+
+        console.log(
+          `\nthis.orderToBeConfirmed : ${this.orderToBeConfirmed.length}\n`
+        ); // TESTING
+
+        // for the seller to place shipping logistics into
+        // this.seller_shipping = [];
+        // for (var i = 0; i < this.orderToBeConfirmed.length; i++) {
+        //   this.seller_shipping.push = true;
+        // }
+
+        // console.log(
+        //   `\nthis.seller_shipping ${
+        //     this.seller_shipping.length
+        //   }  -- this.orderToBeConfirmed ${this.orderToBeConfirmed.length}\n`
+        // ); // TESTING
+
         this.$modal.show("ask-seller-if-seller-needs-to-ship");
       } catch (error) {
         if (error) throw error;
@@ -192,5 +213,12 @@ export default {
 <style>
 #pending-order {
   border: solid black 2px;
+}
+
+#ask-seller-if-seller-needs-to-ship {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 </style>

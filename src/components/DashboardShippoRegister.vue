@@ -18,10 +18,7 @@ export default {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo;
         const userExtracted = this.$store.getters.getUserInfo;
-        console.log(`meeeos`); // TESTING
         // This assumes the seller has opened a new shippo account
-        console.log(`\nbuyer : ${JSON.stringify(buyerExtracted)}\n`); // TESTING
-        console.log(`\nseller: ${JSON.stringify(userExtracted)}\n`); // TESTING
         if (buyerExtracted == null) {
           const shippoAPItokenRequest = {
             sellerId: userExtracted.id,
