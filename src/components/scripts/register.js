@@ -14,7 +14,13 @@ export default {
       jobTitle: '',
       companyName: '',
       companyWebsite: '',
-      billingAddress: '',
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: ''
+      },
       contactListTableId: '',
       serviceTableId: '',
       about: '',
