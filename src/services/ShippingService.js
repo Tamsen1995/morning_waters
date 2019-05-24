@@ -6,6 +6,9 @@ export default {
   appendShippingToOrder (shippingStatus) {
     return Api().put('appendShippingToOrder', shippingStatus)
   },
+  createOrderOnShippo (orderLogistics) {
+    return Api().post('seller/shipping/orders/create_order', orderLogistics)
+  },
   generateSellerApiToken (shippoAPItokenRequest) {
     return Api().get('seller/shipping/auth/generateAPItoken', {
       params: {

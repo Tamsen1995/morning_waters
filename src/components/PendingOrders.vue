@@ -21,7 +21,7 @@
       id="pending-order"
       v-for="(order, index) in orders"
       v-bind:key="index"
-      @click="confirmOrder(order.orderId)"
+      @click="confirmOrder(index)"
     >
       <br>
       <h3>ORDER ID :</h3>
@@ -62,32 +62,41 @@
     <span>Picked: {{ picked }}</span>-->
 
     <modal name="ask-seller-if-seller-needs-to-ship">
-      <div v-for="(orderItem, index) in orderToBeConfirmed" v-bind:key="index">
+      <div>
         <div>
-          Order Item: {{orderItem.title}}
-          <div>
-            <br>
-            <input type="radio" id="one" value="true" v-model="seller_shipping">
-            <label for="one">Buyer Shipping</label>
-            <br>
-            <input type="radio" id="two" value="false" v-model="seller_shipping">
-            <label for="two">Seller Shipping</label>
-            <br>
-          </div>
+          Does the seller have to ship samples for this ?
+          <br>
+          <input type="radio" id="one" value="true" v-model="seller_shipping">
+          <!-- This will push an order into the buyer and seller shippo dashboard -->
+          <label for="one">Yes</label>
+          <br>
+          <input type="radio" id="two" value="false" v-model="seller_shipping">
+          <!-- This will only push an order onto the seller's shippo dashboard -->
+          <label for="two">No</label>
+          <br>
         </div>
+
         <br>
+        <br>
+
+        <div>
+          Does the buyer have to ship samples for this ?
+          <br>
+          <input type="radio" id="one" value="true" v-model="buyer_shipping">
+          <!-- This will push an order into the buyer and seller shippo dashboard -->
+          <label for="one">Yes</label>
+          <br>
+          <input type="radio" id="two" value="false" v-model="buyer_shipping">
+          <!-- This will only push an order onto the seller's shippo dashboard -->
+          <label for="two">No</label>
+          <br>
+        </div>
+
+        <br>
+        <br>
+        <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
+        <button @click="createOrderOnShippo()">Submit</button>
       </div>
-
-      <!--  -->
-      <!--  -->
-
-      <br>
-
-      <br>
-      <br>
-
-      <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
-      <button @click="submitShippingInfo()">Submit</button>
     </modal>
   </div>
 </template>
@@ -125,43 +134,30 @@ export default {
   },
   directives: {},
   methods: {
-    async submitShippingInfo() {
+    async createOrderOnShippo() {
       try {
-        const response = await ShippingService.appendShippingToOrder({
+        console.log(`\nthis.seller_shipping : ${this.seller_shipping}\n`); // TESTING
+        const response = await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,
           seller_shipping: this.seller_shipping,
           buyer_shipping: this.buyer_shipping
         });
         console.log(`\nThe response being : ${JSON.stringify(response)}\n`); // TESTING
+        this.$modal.hide("ask-seller-if-seller-needs-to-ship");
       } catch (error) {
         if (error) throw error;
       }
     },
-    async confirmOrder(orderId) {
+    async confirmOrder(index) {
       try {
         // allocating an appropiate array
-        this.orderToBeConfirmed = [];
-        for (var i = 0; i < this.orderItems.length; i++) {
-          if (orderId === this.orderItems[i].orderId) {
-            this.orderToBeConfirmed.push(this.orderItems[i]);
-          }
-        }
+        this.orderToBeConfirmed = this.orders[index];
 
         console.log(
-          `\nthis.orderToBeConfirmed : ${this.orderToBeConfirmed.length}\n`
+          `\nThe order to be confirmed ${JSON.stringify(
+            this.orderToBeConfirmed
+          )}\n`
         ); // TESTING
-
-        // for the seller to place shipping logistics into
-        // this.seller_shipping = [];
-        // for (var i = 0; i < this.orderToBeConfirmed.length; i++) {
-        //   this.seller_shipping.push = true;
-        // }
-
-        // console.log(
-        //   `\nthis.seller_shipping ${
-        //     this.seller_shipping.length
-        //   }  -- this.orderToBeConfirmed ${this.orderToBeConfirmed.length}\n`
-        // ); // TESTING
 
         this.$modal.show("ask-seller-if-seller-needs-to-ship");
       } catch (error) {
