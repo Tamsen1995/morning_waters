@@ -14,7 +14,13 @@ export default {
       jobTitle: '',
       companyName: '',
       companyWebsite: '',
-      billingAddress: '',
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: ''
+      },
       contactListTableId: '',
       serviceTableId: '',
       about: '',
@@ -50,7 +56,7 @@ export default {
           jobTitle: this.jobTitle,
           companyName: this.companyName,
           companyWebsite: this.companyWebsite,
-          billingAddress: this.billingAddress,
+          address: JSON.stringify(this.address),
           serviceTableId: this.serviceTableId,
           about: this.about,
           credits: 0

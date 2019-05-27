@@ -1,6 +1,6 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import VuexPersist from 'vuex-persist';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 
 Vue.use(Vuex)
 
@@ -88,6 +88,11 @@ export default new Vuex.Store({
       array.push(service)
       state.shoppingCartServices = array
     },
+    deleteServiceFromShoppingCart (state, index) {
+      var array = state.shoppingCartServices
+      array.splice(index, 1)
+      state.shoppingCartServices = array
+    },
     addQuoteRequestToCart (state, quoteRequestForService) {
       var array = state.quoteRequestsServicesCart
       array.push(quoteRequestForService)
@@ -142,6 +147,9 @@ export default new Vuex.Store({
     },
     addServiceToCart ({ commit }, service) {
       commit('addServiceToCart', service)
+    },
+    deleteServiceFromShoppingCart ({ commit }, index) {
+      commit('deleteServiceFromShoppingCart', index)
     },
     addQuoteRequestToCart ({ commit }, quoteRequestForService) {
       commit('addQuoteRequestToCart', quoteRequestForService)

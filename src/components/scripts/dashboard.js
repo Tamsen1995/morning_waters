@@ -1,8 +1,8 @@
-import DashboardHeader from '@/components/DashboardHeader.vue';
+import DashboardHeader from '@/components/DashboardHeader.vue'
 // import AuthenticationService from '@/services/AuthenticationService'
-import UserServices from '@/services/UserServices';
-import DashboardServices from '@/services/DashboardServices';
-import { ResponsiveDirective } from 'vue-responsive-components';
+import UserServices from '@/services/UserServices'
+import DashboardServices from '@/services/DashboardServices'
+import { ResponsiveDirective } from 'vue-responsive-components'
 var $ = require('jQuery')
 
 export default {
@@ -54,8 +54,8 @@ export default {
         this.$modal.hide('add-service')
 
         this.getServices()
-        this.serviceTitle = '';
-        this.serviceDescription = '';
+        this.serviceTitle = ''
+        this.serviceDescription = ''
         this.servicePrice = 0.0
       } catch (error) {
         if (error) {
@@ -110,7 +110,7 @@ export default {
       // The goal is to replace every variable in this method with
       // a live fetched variable
 
-      this.companyLocation = 'New York, New York, US';
+      this.companyLocation = 'New York, New York, US'
 
       // Credits
 

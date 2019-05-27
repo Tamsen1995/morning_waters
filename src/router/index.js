@@ -1,32 +1,35 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Hello from '@/components/Hello';
-import Register from '@/components/Register';
-import Login from '@/components/Login';
-import Dashboard from '@/components/Dashboard';
-import CreditsPurchasing from '@/components/CreditsPurchasing';
-import QuoteRequestsScreen from '@/components/QuoteRequestsScreen';
-import PublicProfile from '@/components/PublicProfile';
-import Checkout from '@/components/Checkout';
-import CreditsHome from '@/components/CreditsHome';
-import SettingsPage from '@/components/SettingsPage';
-import SettingsChangeDefaultSource from '@/components/SettingsChangeDefaultSource';
-import PendingOrders from '@/components/PendingOrders';
-import AuthenticationService from '@/services/AuthenticationService';
+import Vue from 'vue'
+import Router from 'vue-router'
+import Hello from '@/components/Hello'
+import Register from '@/components/Register'
+import Login from '@/components/Login'
+import Dashboard from '@/components/Dashboard'
+import CreditsPurchasing from '@/components/CreditsPurchasing'
+import QuoteRequestsScreen from '@/components/QuoteRequestsScreen'
+import PublicProfile from '@/components/PublicProfile'
+import Checkout from '@/components/Checkout'
+import CreditsHome from '@/components/CreditsHome'
+import SettingsPage from '@/components/SettingsPage'
+import SettingsChangeDefaultSource from '@/components/SettingsChangeDefaultSource'
+import PendingOrders from '@/components/PendingOrders'
+import AuthenticationService from '@/services/AuthenticationService'
 
 // Buyer routes
-import BuyerRegister from '@/components/buyerComponents/BuyerRegister';
-import BuyerLogin from '@/components/buyerComponents/BuyerLogin';
-import BuyerDashboard from '@/components/buyerComponents/BuyerDashboard';
-import ShoppingCart from '@/components/buyerComponents/ShoppingCart';
-import BuyerCheckout from '@/components/buyerComponents/BuyerCheckout';
-import BuyersCarts from '@/components/buyerComponents/BuyersCarts';
-import OrderConfirm from '@/components/buyerComponents/OrderConfirm';
-import CurrentOrderStatus from '@/components/buyerComponents/CurrentOrderStatus';
-import BuyerInbox from '@/components/buyerComponents/BuyerInbox';
-import BuyerSettings from '@/components/buyerComponents/BuyerSettings';
-import BuyerBillings from '@/components/buyerComponents/BuyerBillings';
-import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondance';
+import BuyerRegister from '@/components/buyerComponents/BuyerRegister'
+import BuyerLogin from '@/components/buyerComponents/BuyerLogin'
+import BuyerDashboard from '@/components/buyerComponents/BuyerDashboard'
+import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
+import BuyerCheckout from '@/components/buyerComponents/BuyerCheckout'
+import BuyersCarts from '@/components/buyerComponents/BuyersCarts'
+import OrderConfirm from '@/components/buyerComponents/OrderConfirm'
+import CurrentOrderStatus from '@/components/buyerComponents/CurrentOrderStatus'
+import BuyerInbox from '@/components/buyerComponents/BuyerInbox'
+import BuyerSettings from '@/components/buyerComponents/BuyerSettings'
+import BuyerBillings from '@/components/buyerComponents/BuyerBillings'
+import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondance'
+
+// Shippo routes
+import DashboardShippoRegister from '@/components/DashboardShippoRegister'
 
 Vue.use(Router)
 function routingAuthentication (to, from, next) {
@@ -127,13 +130,23 @@ export default new Router({
       }
     },
     {
-      path: '/pending_orders',
+      path: '/dashboard/pending_orders',
       name: 'pendingOrders',
       component: PendingOrders,
       beforeEnter: (to, from, next) => {
         routingAuthentication(to, from, next)
       }
     },
+    // /dashboard/shippo / oauth / register
+    {
+      path: '/dashboard/shippo/oauth/register/:state/:code',
+      name: 'dashboardRegisterShippoAccountRedirect',
+      component: DashboardShippoRegister,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+      }
+    },
+
     // Buyer Routes below
     {
       path: '/buyerRegistration',

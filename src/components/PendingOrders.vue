@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div class="container">
+    <dashboard-header></dashboard-header>
     <br>
     <br>
     <br>
@@ -15,12 +16,31 @@
     <br>
     <br>
 
-    <div v-for="(order, index) in orders" v-bind:key="index" @click="confirmOrder(index)">
+    <!-- This shall be converted to an actual order array. -->
+    <div
+      id="pending-order"
+      v-for="(order, index) in orders"
+      v-bind:key="index"
+      @click="confirmOrder(index)"
+    >
       <br>
-      {{order}}
+      <h3>ORDER ID :</h3>
+      {{order.orderId}}
+      <br>
+      <br>
+      <div v-for="(orderItem, index) in orderItems" v-bind:key="index">
+        <div v-if="orderItem.orderId === order.orderId">
+          <h5>Order Item:</h5>
+          {{orderItem.title}}
+          <br>
+          <h5>Description:</h5>
+          {{orderItem.description}}
+        </div>
+      </div>
+      <br>
       <br>
     </div>
-
+    <!--  -->
     <br>
     <br>
     <button v-on:click="goToShippingUI">Go to shipping UI</button>
@@ -42,39 +62,47 @@
     <span>Picked: {{ picked }}</span>-->
 
     <modal name="ask-seller-if-seller-needs-to-ship">
-      <!--  -->
       <div>
-        Do you need to ship something ?
+        <div>
+          Does the seller have to ship samples for this ?
+          <br>
+          <input type="radio" id="one" value="true" v-model="seller_shipping">
+          <!-- This will push an order into the buyer and seller shippo dashboard -->
+          <label for="one">Yes</label>
+          <br>
+          <input type="radio" id="two" value="false" v-model="seller_shipping">
+          <!-- This will only push an order onto the seller's shippo dashboard -->
+          <label for="two">No</label>
+          <br>
+        </div>
+
         <br>
-        <input type="radio" id="one" value="true" v-model="seller_shipping">
-        <label for="one">Yes</label>
         <br>
-        <input type="radio" id="two" value="false" v-model="seller_shipping">
-        <label for="two">No</label>
+
+        <div>
+          Does the buyer have to ship samples for this ?
+          <br>
+          <input type="radio" id="one" value="true" v-model="buyer_shipping">
+          <!-- This will push an order into the buyer and seller shippo dashboard -->
+          <label for="one">Yes</label>
+          <br>
+          <input type="radio" id="two" value="false" v-model="buyer_shipping">
+          <!-- This will only push an order onto the seller's shippo dashboard -->
+          <label for="two">No</label>
+          <br>
+        </div>
+
         <br>
-        <span>Picked: {{ picked }}</span>
+        <br>
+        <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
+        <button @click="createOrderOnShippo()">Submit</button>
       </div>
-      <br>
-      <!--  -->
-      <div>
-        Does the buyer need to ship something ?
-        <br>
-        <input type="radio" id="one" value="true" v-model="buyer_shipping">
-        <label for="one">Yes</label>
-        <br>
-        <input type="radio" id="two" value="false" v-model="buyer_shipping">
-        <label for="two">No</label>
-        <br>
-        <span>Picked: {{ pickedTwo }}</span>
-      </div>
-      <!--  -->
-      <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
-      <button @click="submitShippingInfo()">Submit</button>
     </modal>
   </div>
 </template>
 
 <script>
+import DashboardHeader from "@/components/DashboardHeader.vue";
 import PageHeader from "@/components/Header.vue";
 import AuthenticationService from "@/services/AuthenticationService";
 import ShippingService from "@/services/ShippingService";
@@ -86,10 +114,10 @@ export default {
   data() {
     return {
       orderToBeConfirmed: null,
-      shippingInfo: {
-        seller_shipping: false,
-        buyer_shipping: false
-      },
+      // this will upon the call of the modal be
+      // turned into an array then used to hold the individual shipping logistics
+      // for the order which was called upon
+      seller_shipping: null,
       orders: null,
       orderItems: null,
       seller_shipping: false,
@@ -101,24 +129,36 @@ export default {
     await this.getSellerOrderItems();
   },
   async mounted() {},
-  components: {},
+  components: {
+    DashboardHeader
+  },
   directives: {},
   methods: {
-    async submitShippingInfo() {
+    async createOrderOnShippo() {
       try {
-        const response = await ShippingService.appendShippingToOrder({
+        console.log(`\nthis.seller_shipping : ${this.seller_shipping}\n`); // TESTING
+        const response = await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,
           seller_shipping: this.seller_shipping,
           buyer_shipping: this.buyer_shipping
         });
         console.log(`\nThe response being : ${JSON.stringify(response)}\n`); // TESTING
+        this.$modal.hide("ask-seller-if-seller-needs-to-ship");
       } catch (error) {
         if (error) throw error;
       }
     },
     async confirmOrder(index) {
       try {
+        // allocating an appropiate array
         this.orderToBeConfirmed = this.orders[index];
+
+        console.log(
+          `\nThe order to be confirmed ${JSON.stringify(
+            this.orderToBeConfirmed
+          )}\n`
+        ); // TESTING
+
         this.$modal.show("ask-seller-if-seller-needs-to-ship");
       } catch (error) {
         if (error) throw error;
@@ -126,10 +166,15 @@ export default {
     },
     async goToShippingUI() {
       try {
-        // https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING
-        window.open(
-          "https://goshippo.com/oauth/authorize?response_type=code&client_id=YOUR_PARTNER_ID&scope=*&state=YOUR_RANDOM_STRING"
-        );
+        var randomString =
+          Math.random()
+            .toString(36)
+            .substring(2, 15) +
+          Math.random()
+            .toString(36)
+            .substring(2, 15);
+
+        window.open(`${process.env.SHIPPO_OAUTH_LINK}${randomString}`);
       } catch (error) {
         if (error) throw error;
       }
@@ -162,4 +207,14 @@ export default {
 </script>
 
 <style>
+#pending-order {
+  border: solid black 2px;
+}
+
+#ask-seller-if-seller-needs-to-ship {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
 </style>
