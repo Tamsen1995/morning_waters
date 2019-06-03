@@ -230,6 +230,7 @@ export default {
           email: this.email,
           password: this.password,
           passwordConfirm: this.passwordConfirm,
+          address: JSON.stringify(this.address),
           number: this.number
         });
         localStorage.setItem("id_token", response.data.token);
