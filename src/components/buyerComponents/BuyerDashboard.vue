@@ -19,8 +19,8 @@
             <a class="dropdown-item" href="#">Company Name [Timestamp]</a>
             <a class="dropdown-item" href="#">Company Name [Timestamp]</a>
             <a class="dropdown-item" href="#">Company Name [Timestamp]</a>
-            <!-- <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a> -->
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
           </div>
             <li class="nav-item">
               <h3>
@@ -38,7 +38,7 @@
             <br>
           <div id="seller-timeline">
             <div class="row timeline-movement timeline-movement-top">
-              <div class="timeline-badge timeline-future-movement">
+              <div class="timeline-badge timeline-future-movement" >
                 <a href="#">
                   <span class="glyphicon glyphicon-plus"></span>
                 </a>
@@ -47,7 +47,7 @@
 
             <div class="row timeline-movement">
               
-              <div class="timeline-badge" style= "top: 25%;">
+              <div class="timeline-badge" id="status-incomplete" style= "top: 25%;">
                 <span style="font-size: 40px;" >
                   <i class="far fa-check-circle"></i>
                 </span>
@@ -73,7 +73,7 @@
             <!-- Shipping Status -->
             <div class="row timeline-movement">
 
-              <div class="timeline-badge-small" style="">
+              <div class="timeline-badge-small" id="status-incomplete" style="">
               </div>
 
               <div class="col-sm-offset-6 col-sm-6  timeline-item">
@@ -97,7 +97,7 @@
 
             <div class="row timeline-movement">
               
-              <div class="timeline-badge" style= "top: 25%;">
+              <div class="timeline-badge" id="status-incomplete" style= "top: 25%;">
                 <span style="font-size: 40px;" >
                   <i class="far fa-check-circle"></i>
                 </span>
@@ -121,7 +121,7 @@
             </div>
 
             <div class="row timeline-movement">
-              <div class="timeline-badge-small" style="">
+              <div class="timeline-badge-small" style="" id="status-incomplete">
               </div>
 
               <div class="col-sm-6  timeline-item">
@@ -148,7 +148,7 @@
             <div class="row timeline-movement">
 
             
-              <div class="timeline-badge" style="padding:5px;">
+              <div class="timeline-badge" style="padding:5px;" id="status-incomplete">
                 <span style="font-size: 37px; padding-top: 20px;">
                   <i class="fas fa-dolly"></i>
                 </span>
@@ -192,7 +192,7 @@
             <!-- Step 2: Seller Confirms Order -->
             <div class="row timeline-movement">
 
-              <div class="timeline-badge">
+              <div class="timeline-badge" id="status-complete">
                 <span style="font-size: 40px;">
                   <i class="fas fa-clipboard-check"></i>
                 </span>
@@ -232,17 +232,15 @@
                 <div class="row">
                   <div class="col-sm-offset-1 col-sm-11">
                     
-
                   </div>
                 </div>
               </div>
-
             </div> -->
 
             <!-- Step 1: Buyer Submits order -->
             <div class="row timeline-movement">
               
-              <div class="timeline-badge">
+              <div class="timeline-badge" id="status-complete">
                 <span style="font-size: 40px;">
                   <i class="fas fa-clipboard-list"></i>
                 </span>
@@ -279,7 +277,7 @@
           
               <!--In correspondance (Sellers Only) -->
               <div style="margin:0px; padding:0px;">
-                <div class="timeline-badge-small" style="top: 50px; ">
+                <div class="timeline-badge-small" id="status-complete" style="top: 50px;">
                 </div>
               </div>
 
@@ -340,6 +338,7 @@
 
 
     </body>
+
   </div>
 </div>
 </template>
