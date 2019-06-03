@@ -33,6 +33,7 @@ export default {
     return Api().post('buyerLogin', credentials)
   },
   buyerRegister (credentials) {
+    console.log(`\nJSON.stringify ${JSON.stringify(credentials)}\n`) // TESTING
     return Api().post('buyerRegister', credentials)
   }
 }
