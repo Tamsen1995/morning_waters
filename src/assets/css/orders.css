@@ -43,15 +43,14 @@ body.orders {
   max-width: 500px;
 }
 
-#orders h3 {
+.orders h3 {
   letter-spacing: 1px;
-  text-transform: uppercase;
-  font: 25px 'Roboto';
+  font: 20px 'Roboto';
   color: #29105b;
   text-align:left;
 }
 
-#company-name, h4 {
+#company-name h4 {
   letter-spacing: 1px;
   text-transform: uppercase;
   font: 18px 'Roboto';
@@ -60,7 +59,7 @@ body.orders {
   text-align:left;
 }
 
-#orders-main, h5 {
+#orders-main h5 {
   letter-spacing: 1px;
   font: 25px 'Roboto';
   color: #29105b;
@@ -79,6 +78,17 @@ body.orders {
 #order-history p {
   font: 16px 'Roboto';
   color: #29105b;
+}
+
+.orders a {
+  color: #6a2c86;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.orders a:hover,
+a:focus {
+  color: #29105b
 }
 
 /* Order History Timeline */
@@ -132,7 +142,7 @@ ul.timeline > li:before {
   width: 5px;
   /* background-color: #4997cd; */
   background: rgb(0, 132, 255);
-  background: linear-gradient(rgb(128,0,128)  35%, rgb(0, 132, 255) 75%);
+  background: linear-gradient(rgb(0, 132, 255)  35%, rgb(128,0,128) 75%);
   /* background-color: linear-gradient(rgba(140,10,196,1) 35%, rgba(167,255,0,1));   */
   left: 50%;
   margin-left: -1.5px;
@@ -186,6 +196,17 @@ ul.timeline > li:before {
   opacity: 20%;
 }
 
+ @keyframes glowing {
+  0% { box-shadow: 0 0 -10px rgb(156, 0, 156); }
+  40% { box-shadow: 0 0 20px rgb(156, 0, 156); }
+  60% { box-shadow: 0 0 20px rgb(156, 0, 156); }
+  100% { box-shadow: 0 0 -10px rgb(156, 0, 156); }
+}
+
+.badge-glow {
+  animation: glowing 3500ms infinite;
+}
+
 #seller-timeline .timeline-badge.timeline-filter-movement a span {
   color: #4997cd;
   font-size: 1.3em;
@@ -215,41 +236,55 @@ ul.timeline > li:before {
 #seller-timeline .timeline-movement .timeline-item {
   padding: 20px 0;
 }
-#seller-timeline .timeline-movement .timeline-item .timeline-panel {
+#seller-timeline .timeline-movement .timeline-item .timeline-panel.seller-side {
   border: 1px solid #d4d4d4;
   border-radius: 3px;
-  background-color: #FFFFFF;
+  /* background-color: #FFFFFF; */
+  background-color: rgb(241, 241, 241);
   color: #666;
   padding: 10px;
   position: relative;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
 }
+
+#seller-timeline .timeline-movement .timeline-item .timeline-panel.buyer-side {
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  /* background-color: rgb(239, 236, 241); */
+  color: #666;
+  padding: 10px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
 #seller-timeline .timeline-movement .timeline-item .timeline-panel .timeline-panel-ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-#seller-timeline .timeline-movement .timeline-item .timeline-panel.buyer-side .timeline-panel-ul {
+#seller-timeline .timeline-movement .timeline-item .timeline-panel.seller-side .timeline-panel-ul {
   text-align: right;
-}
-#seller-timeline .timeline-movement .timeline-item .timeline-panel.buyer-side .timeline-panel-ul li {
-  color: #666;
-  font-size: 15px;
 }
 #seller-timeline .timeline-movement .timeline-item .timeline-panel.seller-side .timeline-panel-ul li {
   color: #666;
   font-size: 15px;
 }
-#seller-timeline .timeline-movement .timeline-item .timeline-panel.buyer-side .timeline-panel-ul li span.importo {
-  color: #468c1f;
+#seller-timeline .timeline-movement .timeline-item .timeline-panel.buyer-side .timeline-panel-ul li {
+  color: #666;
+  font-size: 15px;
+}
+#seller-timeline .timeline-movement .timeline-item .timeline-panel.seller-side .timeline-panel-ul li span.importo {
+  color: #8524b3;
   font-size: 17px;
 }
-#seller-timeline .timeline-movement .timeline-item .timeline-panel.seller-side .timeline-panel-ul {
+#seller-timeline .timeline-movement .timeline-item .timeline-panel.buyer-side .timeline-panel-ul {
   text-align: left;
 }
-#seller-timeline .timeline-movement .timeline-item .timeline-panel.seller-side .timeline-panel-ul span.importo {
-  color: #e2001a;
+#seller-timeline .timeline-movement .timeline-item .timeline-panel.buyer-side .timeline-panel-ul span.importo {
+  color: #468c1f;
   font-size: 17px;
 }
 

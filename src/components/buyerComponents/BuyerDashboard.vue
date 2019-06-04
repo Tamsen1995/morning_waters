@@ -3,9 +3,8 @@
   <buyer-header/>
   <div
     class="responsive-component"
-    v-responsive="{
+    v-responsive= "{
     small: el => el.width < 860 }"
-    id="orders-home"
   >
     <body class="orders">
 
@@ -23,7 +22,7 @@
               </div>
             </h3>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <h3>
             <a class="nav-link" href="#">Order History</a>
             </h3>
@@ -36,7 +35,7 @@
           <!-- Add tabs to toggle Current Orders/ Pending Orders-->
           <!-- Curent Orders -->
           <br>
-          <div id="seller-timeline" style="top: 50px;">
+          <div id="seller-timeline" style="top: 15px;">
 
             <div class="row timeline-movement">
           
@@ -46,9 +45,17 @@
                 </div>
               </div>
 
-              <div class="col-sm-6  timeline-item">              
+              <div class="col-sm-6  timeline-item">
                 <div class="row">
                   <div class="col-sm-11">
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6  timeline-item">              
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-11">
 
                     <div class="timeline-panel buyer-side">
                       <ul class="timeline-panel-ul">
@@ -97,7 +104,7 @@
                 <div class="row">
                   <div class="col-sm-offset-1 col-sm-11">
                     
-                    <div class="timeline-panel seller-side">
+                    <div class="timeline-panel buyer-side">
                       <ul class="timeline-panel-ul">
                           <li><span class="importo">Order Submited</span></li>
                           <li><span class="causale">View Order Summary</span> </li>
@@ -125,7 +132,7 @@
                 <div class="row">
                   <div class="col-sm-11">
 
-                    <div class="timeline-panel buyer-side">
+                    <div class="timeline-panel seller-side">
                       <!-- Order Confirmed -->
                       <!-- <ul class="timeline-panel-ul">
                         <li><span class="importo">Awaiting confirmation from [Seller Name]</span></li>
@@ -163,7 +170,7 @@
                 <div class="row">
                   <div class="col-sm-11">
 
-                    <div class="timeline-panel buyer-side">
+                    <div class="timeline-panel seller-side">
                       <ul class="timeline-panel-ul">
                         <li><span class="importo"> [Company Name] Shipping Selection</span></li>
                         <li><span class="causale">View Invoice</span> </li>
@@ -180,7 +187,7 @@
                 <div class="row">
                   <div class="col-sm-offset-1 col-sm-11">
                     
-                    <div class="timeline-panel seller-side">
+                    <div class="timeline-panel buyer-side">
                       <ul class="timeline-panel-ul">
                         <li><span class="importo">Need to ship?</span></li>
                         <li><span class="causale">Shipping UI Link. </span> </li>
@@ -202,7 +209,7 @@
               <div class="col-sm-offset-6 col-sm-6  timeline-item">
                 <div class="row">
                   <div class="col-sm-offset-1 col-sm-11">
-                    <div class="timeline-panel seller-side">
+                    <div class="timeline-panel buyer-side">
                       <ul class="timeline-panel-ul">
                         
                         <li><span class="importo">[Label purchased, Shipped]</span></li>
@@ -229,7 +236,7 @@
               <div class="col-sm-offset-6 col-sm-6  timeline-item">
                 <div class="row">
                   <div class="col-sm-offset-1 col-sm-11">
-                    <div class="timeline-panel seller-side">
+                    <div class="timeline-panel buyer-side">
                       <ul class="timeline-panel-ul">
                         
                         <li><span class="importo">[Out for delivery, Delivered]</span></li>
@@ -251,7 +258,7 @@
               <div class="col-sm-6  timeline-item">
                 <div class="row">
                   <div class="col-sm-11">
-                    <div class="timeline-panel buyer-side">
+                    <div class="timeline-panel seller-side">
 
                       <ul class="timeline-panel-ul">
                         <li><span class="importo">[Label purchased, Shipped]</span></li>
@@ -278,7 +285,7 @@
               <div class="col-sm-6  timeline-item">
                 <div class="row">
                   <div class="col-sm-11">
-                    <div class="timeline-panel buyer-side">
+                    <div class="timeline-panel seller-side badge-glow">
                       <ul class="timeline-panel-ul">
                         
                         <li><span class="importo">[Out for delivery, Delivered]</span></li>
