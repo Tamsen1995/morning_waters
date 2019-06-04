@@ -137,12 +137,13 @@ export default {
     async createOrderOnShippo() {
       try {
         console.log(`\nthis.seller_shipping : ${this.seller_shipping}\n`); // TESTING
+        console.log(`\nThe buyer : ${this.buyer_shipping}\n`); // TESTING
         const response = await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,
           seller_shipping: this.seller_shipping,
           buyer_shipping: this.buyer_shipping
         });
-        console.log(`\nThe response being : ${JSON.stringify(response)}\n`); // TESTING
+        // console.log(`\nThe response being : ${JSON.stringify(response)}\n`); // TESTING
         this.$modal.hide("ask-seller-if-seller-needs-to-ship");
       } catch (error) {
         if (error) throw error;
