@@ -23,7 +23,11 @@ export default {
       about: '',
       credits: 0,
       leads: 0,
-      pageViews: 0
+      pageViews: 0,
+
+      // The variable which will determine if
+      // the section for adding a sub service will be added
+      addSubService: false
     }
   },
   components: {
@@ -33,6 +37,18 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async showAddSubService () {
+      try {
+        if (this.addSubService === false) {
+          this.addSubService = true
+        } else {
+          this.addSubService = false
+        }
+        console.log(`\nthis.addSubService - > ${this.addSubService}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitService () {
       try {
         // get the service table id from the user
@@ -66,6 +82,7 @@ export default {
       }
     },
     addService () {
+      this.addSubService = false
       this.$modal.show('add-service')
       // $('#myModal').modal('show')
     },

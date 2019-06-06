@@ -74,14 +74,14 @@ export default {
         const token = await stripe.createToken(card)
         if (!token.error) {
           const buyerExtracted = this.$store.getters.getBuyerInfo
-          const sellerExtracted = this.$store.getters.getUserInfo
+          // const sellerExtracted = this.$store.getters.getUserInfo
           const buyerId = buyerExtracted.id
           const stripeCustomerId = buyerExtracted.stripeCustomerId
           const shoppingCartItems = this.shoppingCart
 
           const purchaseInfo = {
             uid: buyerId,
-            sellerId: sellerExtracted.user.id,
+            // sellerId: sellerExtracted.user.id,
             stripeCustomerId: stripeCustomerId,
             stripeToken: token,
             shoppingCartItems: shoppingCartItems

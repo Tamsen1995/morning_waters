@@ -275,7 +275,12 @@
 
               <!-- Add another (plus button) -->
 
-              <button type="button" class="btn btn-default pull-right" id="addSubButton">
+              <button
+                type="button"
+                class="btn btn-default pull-right"
+                id="addSubButton"
+                @click="showAddSubService()"
+              >
                 <strong>
                   <h6>
                     Add Sub-service
@@ -283,6 +288,8 @@
                   </h6>
                 </strong>
               </button>
+
+              <h1 v-if="this.addSubService === true">TESTING</h1>
 
               <!-- File Input -->
               <div class="form-group row">

@@ -1,4 +1,4 @@
-import Api from '@/services/Api';
+import Api from '@/services/Api'
 
 // TODO : Potentially rename this to BuyerServices
 
