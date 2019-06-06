@@ -77,7 +77,7 @@ export default {
           const buyerId = buyerExtracted.id
           const stripeCustomerId = buyerExtracted.stripeCustomerId
           const shoppingCartItems = this.shoppingCart
-          const sellerId = shoppingCartItems[0].service.sellerId
+          const sellerId = shoppingCartItems[0].service.userId
 
           const purchaseInfo = {
             uid: buyerId,
