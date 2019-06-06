@@ -26,7 +26,7 @@ export default {
       pageViews: 0,
 
       // The variable which will determine if
-      // the section for adding a sub service will be added
+      // the section for adding a sub service will be shown
       addSubService: false
     }
   },
@@ -60,7 +60,8 @@ export default {
           tableId: serviceTableId,
           title: this.serviceTitle,
           description: this.serviceDescription,
-          servicePrice: this.servicePrice
+          servicePrice: this.servicePrice,
+          turnAroundTime: this.turnAroundTime
         }
 
         console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
@@ -73,6 +74,7 @@ export default {
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
+        this.turnAroundTime = ''
       } catch (error) {
         if (error) {
           console.log(

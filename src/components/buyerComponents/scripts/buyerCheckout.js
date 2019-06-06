@@ -93,7 +93,7 @@ export default {
           this.$store.dispatch('setShoppingCart', [])
           await BuyerServices.createOrder({
             buyerId: buyerExtracted.id,
-            sellerId: sellerExtracted.user.id,
+            // sellerId: sellerExtracted.user.id,
             orderId: this.orderId
           })
           this.redirectToProperFlow()

@@ -195,6 +195,37 @@
                 </div>
               </div>
               <br>
+              <br>
+
+              <div class="form-group row">
+                <label for="price" class="col-sm col-form-label">
+                  <p>Price Per Unit:</p>
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    v-model="servicePrice"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter price per unit"
+                  >
+                </div>
+              </div>
+              <!-- Turn Around Time -->
+              <div class="form-group row">
+                <label for="turnAroundTime" class="col-sm col-form-label">
+                  <p>Turn Around Time:</p>
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    v-model="turnAroundTime"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter turn around time in weeks"
+                  >
+                </div>
+              </div>
+              <br>
+
               <!-- Service Tags -->
               <div class="form-group row">
                 <label for="serviceTags" class="col-sm col-form-label">
@@ -210,68 +241,68 @@
                   ></textarea>
                 </div>
               </div>
+              <!-- <div v-if="this.addSubService === true">
+                <p>Add Subservice</p>
 
-              <hr>
-              <p>Add Subservice</p>
-              <!-- If 1-10 entered, show... -->
-              <div class="container hidden" id="subServiceBlock">
-                <!-- Service Subtitle -->
-                <div class="form-group row">
-                  <label for="serviceSubtitle" class="col-sm col-form-label">
-                    <p>Service Subtitle:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="serviceSubtitle"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter service subtitle"
-                    >
+                <div class="container" id="subServiceBlock">
+
+                  <div class="form-group row">
+                    <label for="serviceSubtitle" class="col-sm col-form-label">
+                      <p>Service Subtitle:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="serviceSubtitle"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter service subtitle"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="unitType" class="col-sm col-form-label">
+                      <p>Unit Type:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="unitType"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter unit type"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="price" class="col-sm col-form-label">
+                      <p>Price Per Unit:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="price"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter price per unit"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="turnAroundTime" class="col-sm col-form-label">
+                      <p>Turn Around Time:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="turnAroundTime"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter turn around time in weeks"
+                      >
+                    </div>
                   </div>
                 </div>
-                <!-- Enter Unit type -->
-                <div class="form-group row">
-                  <label for="unitType" class="col-sm col-form-label">
-                    <p>Unit Type:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="unitType"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter unit type"
-                    >
-                  </div>
-                </div>
-                <!-- Service Price/ Unit -->
-                <div class="form-group row">
-                  <label for="price" class="col-sm col-form-label">
-                    <p>Price Per Unit:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="price"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter price per unit"
-                    >
-                  </div>
-                </div>
-                <!-- Turn Around Time -->
-                <div class="form-group row">
-                  <label for="turnAroundTime" class="col-sm col-form-label">
-                    <p>Turn Around Time:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="turnAroundTime"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter turn around time in weeks"
-                    >
-                  </div>
-                </div>
-              </div>
+              </div>-->
 
               <!-- Add another (plus button) -->
 
@@ -288,8 +319,6 @@
                   </h6>
                 </strong>
               </button>
-
-              <h1 v-if="this.addSubService === true">TESTING</h1>
 
               <!-- File Input -->
               <div class="form-group row">
