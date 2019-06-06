@@ -74,26 +74,26 @@ export default {
         const token = await stripe.createToken(card)
         if (!token.error) {
           const buyerExtracted = this.$store.getters.getBuyerInfo
-          // const sellerExtracted = this.$store.getters.getUserInfo
           const buyerId = buyerExtracted.id
           const stripeCustomerId = buyerExtracted.stripeCustomerId
           const shoppingCartItems = this.shoppingCart
+          const sellerId = shoppingCartItems[0].service.sellerId
 
           const purchaseInfo = {
             uid: buyerId,
-            // sellerId: sellerExtracted.user.id,
+            sellerId: sellerId,
             stripeCustomerId: stripeCustomerId,
             stripeToken: token,
             shoppingCartItems: shoppingCartItems
           }
 
-          const responseOfPurchase = await BuyerServices.purchaseShoppingCart(
+          await BuyerServices.purchaseShoppingCart(
             purchaseInfo
           )
           this.$store.dispatch('setShoppingCart', [])
           await BuyerServices.createOrder({
             buyerId: buyerExtracted.id,
-            // sellerId: sellerExtracted.user.id,
+            sellerId: sellerId,
             orderId: this.orderId
           })
           this.redirectToProperFlow()
