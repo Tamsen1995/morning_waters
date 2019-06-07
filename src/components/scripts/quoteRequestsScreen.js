@@ -19,7 +19,10 @@ export default {
       stripeOptions: {},
       credits: 0,
       orderIdClickedOn: '',
-      showLockedMessages: true
+      showLockedMessages: true,
+
+      // the variable which is shown on the dropdown menu
+      dropdownVariable: 'All messages'
     }
   },
   components: {
@@ -29,6 +32,21 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async switchMessagesDisplayed (messagesDisplayed) {
+      try {
+        if (messagesDisplayed === 'all') {
+          this.dropdownVariable = 'All messages'
+        } else if (messagesDisplayed === 'orders') {
+          this.dropdownVariable = 'Orders'
+          this.getLockedOrders()
+        } else if (messagesDisplayed === 'quoteRequests') {
+          this.dropdownVariable = 'Quote Requests'
+        }
+      } catch (error) {
+        console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
     async generateInvoice () {
       try {
         InboxService.generateInvoice(this.order)
@@ -85,6 +103,7 @@ export default {
           }
         })
         this.orders = filtered
+        console.log(`\nThe orders found are - > ${JSON.stringify(this.orders)}\n`) // TESTING
         if (this.orders !== undefined || this.orders.length > 0) {
           this.orders = filtered
           const msg = this.orders[0]
@@ -120,23 +139,23 @@ export default {
         if (error) throw error
       }
     },
-    async unlockOrder () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const orderIdClickedOn = this.orderIdClickedOn
+    // async unlockOrder () {
+    //   try {
+    //     const userExtracted = this.$store.getters.getUserInfo
+    //     const orderIdClickedOn = this.orderIdClickedOn
 
-        console.log(`\nunlocking id of  ${orderIdClickedOn}\n`) // TESTING
-        await UserServices.unlockOrder(orderIdClickedOn)
-        this.$modal.hide('unlocking-prompt')
-        this.getLockedOrders()
-      } catch (error) {
-        console.log(`\nAn error occurred in the unlockOrder ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
-    async promptToUnlock () {
-      this.$modal.show('unlocking-prompt')
-    },
+    //     console.log(`\nunlocking id of  ${orderIdClickedOn}\n`) // TESTING
+    //     await UserServices.unlockOrder(orderIdClickedOn)
+    //     this.$modal.hide('unlocking-prompt')
+    //     this.getLockedOrders()
+    //   } catch (error) {
+    //     console.log(`\nAn error occurred in the unlockOrder ${error}\n`) // TESTING
+    //     if (error) throw error
+    //   }
+    // },
+    // async promptToUnlock () {
+    //   this.$modal.show('unlocking-prompt')
+    // },
     // This function also sets the clicked on variable
     // of the message
     async retrieveCorrespondance (orderId) {

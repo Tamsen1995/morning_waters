@@ -20,7 +20,7 @@
               <div class="panel-heading">
                 <div class="pull-left">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-success">All Messages</button>
+                    <button type="button" class="btn btn-success">{{ dropdownVariable }}</button>
                     <button
                       type="button"
                       class="btn btn-success dropdown-toggle"
@@ -30,17 +30,17 @@
                     </button>
                     <ul class="dropdown-menu pull-right" role="menu">
                       <li>
-                        <a>
+                        <a @click="switchMessagesDisplayed('all')">
                           <i class="fa fa-download"></i> All
                         </a>
                       </li>
                       <li>
-                        <a>
+                        <a @click="switchMessagesDisplayed('orders')">
                           <i class="fa fa-upload"></i> Orders
                         </a>
                       </li>
                       <li>
-                        <a>
+                        <a @click="switchMessagesDisplayed('quoteRequests')">
                           <i class="fa fa-trash-o"></i> Quote Requests
                         </a>
                       </li>
@@ -65,15 +65,16 @@
               <div class="panel-body no-padding">
                 <div class="list-group no-margin list-message">
                   <!--  -->
-                  <a class="list-group-item">
+                  <a
+                    class="list-group-item"
+                    v-for="(order, index) in this.orders"
+                    v-bind:key="index"
+                  >
                     <h4 class="list-group-item-heading">
-                      Jeck Joko
-                      <small>Yesterday at 15:45</small>
+                      Buyer ID : {{ order.buyerId }}
+                      <small>Date created : {{ order.createdAt }}</small>
                     </h4>
-                    <p class="list-group-item-text">
-                      Ticket #78:
-                      <strong>Problems with custom CSS3</strong>
-                    </p>
+                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                     <span class="label label-success pull-right">UNLOCKED</span>
                     <div class="clearfix"></div>
                   </a>
