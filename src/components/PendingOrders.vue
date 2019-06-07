@@ -153,13 +153,7 @@ export default {
       try {
         // allocating an appropiate array
         this.orderToBeConfirmed = this.orders[index];
-
-        console.log(
-          `\nThe order to be confirmed ${JSON.stringify(
-            this.orderToBeConfirmed
-          )}\n`
-        ); // TESTING
-
+        ShippingService.makeShippoApiToken();
         this.$modal.show("ask-seller-if-seller-needs-to-ship");
       } catch (error) {
         if (error) throw error;
