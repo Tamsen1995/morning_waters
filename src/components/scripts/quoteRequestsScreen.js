@@ -1,9 +1,9 @@
-import UserServices from '@/services/UserServices';
-import InboxService from '@/services/InboxService';
-import PaymentService from '@/services/PaymentService';
-import BuyerServices from '@/services/BuyerServices';
-import DashboardHeader from '@/components/DashboardHeader.vue';
-import { ResponsiveDirective } from 'vue-responsive-components';
+import UserServices from '@/services/UserServices'
+import InboxService from '@/services/InboxService'
+import PaymentService from '@/services/PaymentService'
+import BuyerServices from '@/services/BuyerServices'
+import DashboardHeader from '@/components/DashboardHeader.vue'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 var $ = require('jQuery')
 
@@ -52,7 +52,7 @@ export default {
         }
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
-        this.message = '';
+        this.message = ''
         this.showMessage(this.order)
       } catch (error) {
         if (error) throw error

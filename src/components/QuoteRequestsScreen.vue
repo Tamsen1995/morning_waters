@@ -30,23 +30,23 @@
                     </button>
                     <ul class="dropdown-menu pull-right" role="menu">
                       <li>
-                        <a href="#">
+                        <a>
                           <i class="fa fa-download"></i> All
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <i class="fa fa-upload"></i> Orders
                         </a>
                       </li>
                       <li>
-                        <a href="#">
+                        <a>
                           <i class="fa fa-trash-o"></i> Quote Requests
                         </a>
                       </li>
                       <li class="divider"></li>
                       <li>
-                        <a href="#">
+                        <a>
                           <i class="fa fa-briefcase"></i> Other
                         </a>
                       </li>
@@ -64,7 +64,8 @@
               <!-- /.panel-heading -->
               <div class="panel-body no-padding">
                 <div class="list-group no-margin list-message">
-                  <a href="#" class="list-group-item">
+                  <!--  -->
+                  <a class="list-group-item">
                     <h4 class="list-group-item-heading">
                       Jeck Joko
                       <small>Yesterday at 15:45</small>
@@ -76,6 +77,7 @@
                     <span class="label label-success pull-right">UNLOCKED</span>
                     <div class="clearfix"></div>
                   </a>
+                  <!--  -->
                 </div>
                 <!-- /.list-group -->
               </div>
