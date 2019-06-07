@@ -3,6 +3,23 @@ import Api from '@/services/Api'
 // TODO : Potentially rename this to BuyerServices
 
 export default {
+
+  // a function which generates a shippo api token
+  // for either buyer or seller
+  makeShippoApiToken () {
+    // Testing if I can just append the shippo flow like so
+    var randomString =
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15)
+
+    window.open(`${process.env.SHIPPO_OAUTH_LINK}${randomString}`)
+    // Testing if I can just append the shippo flow like so
+  },
+
   appendShippingToOrder (shippingStatus) {
     return Api().put('appendShippingToOrder', shippingStatus)
   },
