@@ -17,7 +17,9 @@
     <div id="orders-list">
       <li v-for="(order, index) in orders" @click="goToCorrespondance(index)" v-bind:key="index">
         <br>
-
+        order number : {{order[0].orderId}}
+        <br>
+        <br>
         <div v-for="(item, index) in order" v-bind:key="index">
           <div v-if="item.subject">
             <br>
