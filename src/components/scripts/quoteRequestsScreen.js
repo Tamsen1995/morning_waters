@@ -32,6 +32,16 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async showOrder (order) {
+      try {
+        const orderId = order.orderId
+
+        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.correspondanceMessages = response.data.correspondance
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async switchMessagesDisplayed (messagesDisplayed) {
       try {
         if (messagesDisplayed === 'all') {
