@@ -89,15 +89,8 @@
           </div>
           <div class="col-md-8 message-sideright">
             <div class="panel">
-              <div class="panel-heading">
+              <!-- <div class="panel-heading">
                 <div class="media">
-                  <a class="pull-left" href="#">
-                    <img
-                      src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                      alt="Rebecca Cabean"
-                      class="img-circle avatar"
-                    >
-                  </a>
                   <div class="media-body">
                     <h4 class="media-heading">
                       Rebecca Cabean
@@ -106,51 +99,15 @@
                     <small>Thursday 5th July 2014-via Intercom</small>
                   </div>
                 </div>
-              </div>
+              </div>-->
               <!-- /.panel-heading -->
               <div class="panel-body">
                 <p
                   class="lead"
                 >RE : Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <br>
-                <p>
-                  Thanks!
-                  <br>Rebecca.
-                </p>
               </div>
               <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
-            <div class="panel">
-              <div class="panel-heading">
-                <div class="media">
-                  <a class="pull-left" href="#">
-                    <img
-                      src="https://bootdey.com/img/Content/avatar/avatar6.png"
-                      alt="sarah tingting"
-                      class="img-circle avatar"
-                    >
-                  </a>
-                  <div class="media-body">
-                    <h4 class="media-heading">Sarah Tingting</h4>
-                    <small>Thursday 5th July 2014-via Intercom</small>
-                  </div>
-                </div>
-              </div>
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <p
-                  class="lead"
-                >Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                <hr>
-                <strong>Hi Tol Lee</strong>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              </div>
-              <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
           </div>
           <!-- /.message-sideright -->
         </div>
