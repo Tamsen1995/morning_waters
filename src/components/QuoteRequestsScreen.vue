@@ -101,10 +101,14 @@
                 </div>
               </div>-->
               <!-- /.panel-heading -->
-              <div class="panel-body">
-                <p
-                  class="lead"
-                >RE : Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+              <div
+                class="panel-body"
+                v-for="(msg, index) in correspondanceMessages"
+                v-bind:key="index"
+              >
+                <h4 class="media-heading">{{msg}}</h4>
+                <p class="lead">{{msg.message}}</p>
+                <hr>
               </div>
               <!-- /.panel-body -->
             </div>

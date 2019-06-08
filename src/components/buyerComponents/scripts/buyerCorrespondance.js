@@ -1,6 +1,6 @@
-import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
-import BuyerServices from '@/services/BuyerServices';
-import InboxServices from '@/services/InboxService';
+import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import BuyerServices from '@/services/BuyerServices'
+import InboxServices from '@/services/InboxService'
 
 export default {
   data () {
@@ -40,7 +40,7 @@ export default {
 
         const link = document.createElement('a')
         link.href = url
-        link.setAttribute('download', 'file.pdf') //or any other extension
+        link.setAttribute('download', 'file.pdf') // or any other extension
         document.body.appendChild(link)
         link.click()
         link.remove()
@@ -69,10 +69,10 @@ export default {
           // by userId we mean to say the id of the seller in the db
           userId: sellerExtracted.user.id,
           date: '',
-          subject: '',
+          sender: 'buyer',
           message: this.messageTextBox
         }
-        this.messageTextBox = '';
+        this.messageTextBox = ''
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
         this.retrieveCorrespondance()
       } catch (error) {
