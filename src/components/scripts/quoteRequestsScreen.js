@@ -65,7 +65,7 @@ export default {
         if (error) throw error
       }
     },
-    async sendMessage () {
+    async submitMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
 
@@ -75,7 +75,7 @@ export default {
           // by userId we mean to say the id of the seller in the db
           userId: this.order.sellerId,
           date: '',
-          subject: '',
+          sender: 'seller',
           message: this.message
         }
 

@@ -106,9 +106,16 @@
                 v-for="(msg, index) in correspondanceMessages"
                 v-bind:key="index"
               >
-                <h4 class="media-heading">{{msg}}</h4>
+                <h4 class="media-heading">{{msg.sender}} :</h4>
                 <p class="lead">{{msg.message}}</p>
                 <hr>
+              </div>
+              <!-- /.panel-body -->
+              <hr>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <textarea v-model="message" placeholder="add multiple lines"></textarea>
+                <button v-on:click="submitMessage()">Submit</button>
               </div>
               <!-- /.panel-body -->
             </div>
