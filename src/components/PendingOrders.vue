@@ -43,7 +43,6 @@
     <!--  -->
     <br>
     <br>
-    <button v-on:click="goToShippingUI">Go to shipping UI</button>
 
     <!-- <button @click="sellerNeedsToShip(true)">Yes</button>
       <button @click="sellerNeedsToShip(false)">No</button>
@@ -153,29 +152,8 @@ export default {
       try {
         // allocating an appropiate array
         this.orderToBeConfirmed = this.orders[index];
-
-        console.log(
-          `\nThe order to be confirmed ${JSON.stringify(
-            this.orderToBeConfirmed
-          )}\n`
-        ); // TESTING
-
+        ShippingService.makeShippoApiToken();
         this.$modal.show("ask-seller-if-seller-needs-to-ship");
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
-    async goToShippingUI() {
-      try {
-        var randomString =
-          Math.random()
-            .toString(36)
-            .substring(2, 15) +
-          Math.random()
-            .toString(36)
-            .substring(2, 15);
-
-        window.open(`${process.env.SHIPPO_OAUTH_LINK}${randomString}`);
       } catch (error) {
         if (error) throw error;
       }

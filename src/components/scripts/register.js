@@ -1,5 +1,6 @@
 import PageHeader from '@/components/Header.vue'
 import AuthenticationService from '@/services/AuthenticationService'
+import ShippingService from '@/services/ShippingService'
 import Api from '@/services/Api'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
@@ -66,6 +67,7 @@ export default {
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
         Api().defaults.headers.common['Authorization'] = AuthenticationService.getAuthHeader()
+        ShippingService.makeShippoApiToken()
         this.$router.push({
           name: 'dashboard'
         })
