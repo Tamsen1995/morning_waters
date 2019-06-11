@@ -13,6 +13,7 @@ export default {
     return Api().post('purchaseShoppingCart', purchaseInfo)
   },
   sendQuoteRequestsCart (purchaseInfo) {
+    console.log(`\npurchase info : ${JSON.stringify(purchaseInfo)}\n`) // TESTING
     return Api().post('sendQuoteRequestsCart', purchaseInfo)
   },
   getBuyersQuoteRequests (buyerId) {

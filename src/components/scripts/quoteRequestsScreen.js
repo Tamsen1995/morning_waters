@@ -14,6 +14,7 @@ export default {
       correspondanceMessages: [],
       message: '',
       orders: [],
+      quoteRequests: null,
       order: null,
       complete: true,
       stripeOptions: {},
@@ -80,23 +81,15 @@ export default {
         }
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
+        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
+        this.correspondanceMessages = response.data.correspondance
         this.message = ''
         this.showMessage(this.order)
       } catch (error) {
         if (error) throw error
       }
     },
-    async getAmountOfCredits () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const response = await PaymentService.getAmountOfCredits(
-          userExtracted.id
-        )
-        this.credit = response.data.credits
-      } catch (error) {
-        if (error) throw error
-      }
-    },
+
     // Loads the locked quote requests into the inbox view on the left
     async getLockedOrders () {
       try {
@@ -114,32 +107,6 @@ export default {
         })
         this.orders = filtered
         console.log(`\nThe orders found are - > ${JSON.stringify(this.orders)}\n`) // TESTING
-        if (this.orders !== undefined || this.orders.length > 0) {
-          this.orders = filtered
-          const msg = this.orders[0]
-          this.showMessage(msg)
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async getUnlockedOrders () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const userId = userExtracted.id
-
-        const response = await UserServices.getLockedOrders(userId)
-        this.orders = response.data.orders
-
-        var filtered = this.orders.filter(function (elem) {
-          if (elem.locked === false) {
-            return true
-          } else {
-            return false
-          }
-        })
-
-        this.orders = filtered
         if (this.orders !== undefined || this.orders.length > 0) {
           this.orders = filtered
           const msg = this.orders[0]
@@ -185,9 +152,22 @@ export default {
       }
       this.order = order
       this.orderIdClickedOn = order.orderId
+    },
+    async getInboxMessages () {
+      try {
+        const sellerExtracted = this.$store.getters.getUserInfo
+        const response = await UserServices.getInboxMessages(sellerExtracted.id)
+
+        this.quoteRequests = response.data.inboxMessages
+        // console.log(`\n\nThe response I get is : ${JSON.stringify(response.data.inboxMessages)}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
     }
   },
-  mounted () {
-    this.getLockedOrders()
+  async mounted () {
+    await this.getLockedOrders()
+    await this.getInboxMessages()
+    await this.showOrder(this.orders[0])
   }
 }

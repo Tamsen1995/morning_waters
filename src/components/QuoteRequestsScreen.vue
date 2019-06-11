@@ -61,8 +61,9 @@
                 </div>
                 <div class="clearfix"></div>
               </div>
+
               <!-- /.panel-heading -->
-              <div class="panel-body no-padding">
+              <div class="panel-body no-padding" v-if="this.dropdownVariable === 'Orders'">
                 <div class="list-group no-margin list-message">
                   <!--  -->
                   <a
@@ -84,6 +85,32 @@
                 <!-- /.list-group -->
               </div>
               <!-- /.panel-body -->
+
+              <!--  -->
+              <div class="panel-body no-padding" v-if="this.dropdownVariable === 'Quote Requests'">
+                <!--  -->
+                <!-- <div class="list-group no-margin list-message">
+                  <a
+                    class="list-group-item"
+                    v-for="(order, index) in this.orders"
+                    v-bind:key="index"
+                    @click="showOrder(order)"
+                  >
+                    <h4 class="list-group-item-heading">
+                      Buyer ID : {{ order.buyerId }}
+                      <small>Date created : {{ order.createdAt }}</small>
+                    </h4>
+                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                    <span class="label label-success pull-right">UNLOCKED</span>
+                    <div class="clearfix"></div>
+                  </a>
+                </div>-->
+                <div class="list-group no-margin list-message">
+                  <a class="list-group-item"></a>
+                </div>
+                <!--  -->
+              </div>
+              <!--  -->
             </div>
             <!-- /.panel -->
           </div>
@@ -114,7 +141,11 @@
               <hr>
               <!-- /.panel-heading -->
               <div class="panel-body">
-                <textarea v-model="message" placeholder="add multiple lines"></textarea>
+                <textarea
+                  v-model="message"
+                  v-on:keyup.enter="submitMessage()"
+                  placeholder="add multiple lines"
+                ></textarea>
                 <button v-on:click="submitMessage()">Submit</button>
               </div>
               <!-- /.panel-body -->

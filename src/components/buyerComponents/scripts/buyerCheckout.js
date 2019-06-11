@@ -110,7 +110,6 @@ export default {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const sellerExtracted = this.$store.getters.getUserInfo
         const quoteRequestsCart = this.quoteRequestsCart
-
         const purchaseInfo = {
           seller: sellerExtracted,
           buyer: buyerExtracted,
