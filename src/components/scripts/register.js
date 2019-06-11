@@ -7,6 +7,7 @@ import { ResponsiveDirective } from 'vue-responsive-components'
 export default {
   data () {
     return {
+      step:1,
       name: '',
       email: '',
       password: '',
@@ -45,6 +46,12 @@ export default {
       this.email = this.$store.getters.getEmailAddress
       this.$store.dispatch('setCompanyName', '')
       this.$store.dispatch('setEmailAddress', '')
+    },
+    prev() {
+      this.step--;
+    },
+    next() {
+      this.step++;
     },
     async register () {
       try {
