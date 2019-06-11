@@ -61,10 +61,13 @@
                 </div>
                 <div class="clearfix"></div>
               </div>
-              <!-- /.panel-heading -->
-              <div class="panel-body no-padding">
+
+              <!-- The panels for the orders -->
+              <div
+                class="panel-body no-padding"
+                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
+              >
                 <div class="list-group no-margin list-message">
-                  <!--  -->
                   <a
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
@@ -73,19 +76,46 @@
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
+                      <br>
+                      <br>
                       <small>Date created : {{ order.createdAt }}</small>
+                      <br>
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">UNLOCKED</span>
+                    <span class="label label-success pull-right">Order</span>
                     <div class="clearfix"></div>
                   </a>
-                  <!--  -->
                 </div>
-                <!-- /.list-group -->
               </div>
-              <!-- /.panel-body -->
+              <!-- The panels for the orders -->
+
+              <!-- The panels for the quote requests -->
+              <div
+                class="panel-body no-padding"
+                v-if="this.dropdownVariable === 'Quote Requests' || this.dropdownVariable === 'All messages'"
+              >
+                <div class="list-group no-margin list-message">
+                  <a
+                    class="list-group-item"
+                    v-for="(request, index) in this.quoteRequests"
+                    v-bind:key="index"
+                    @click="showQuoteRequest(request)"
+                  >
+                    <h4 class="list-group-item-heading">
+                      Subject : {{ request.subject }}
+                      <br>
+                      <br>
+                      <small>Date created : {{ request.createdAt }}</small>
+                    </h4>
+
+                    <p class="list-group-item-text"></p>
+                    <span class="label label-success pull-right">Quote Request</span>
+                    <div class="clearfix"></div>
+                  </a>
+                </div>
+              </div>
             </div>
-            <!-- /.panel -->
+            <!-- The panels for the quote requests -->
           </div>
           <div class="col-md-8 message-sideright">
             <div class="panel">
@@ -114,7 +144,11 @@
               <hr>
               <!-- /.panel-heading -->
               <div class="panel-body">
-                <textarea v-model="message" placeholder="add multiple lines"></textarea>
+                <textarea
+                  v-model="message"
+                  v-on:keyup.enter="submitMessage()"
+                  placeholder="add multiple lines"
+                ></textarea>
                 <button v-on:click="submitMessage()">Submit</button>
               </div>
               <!-- /.panel-body -->

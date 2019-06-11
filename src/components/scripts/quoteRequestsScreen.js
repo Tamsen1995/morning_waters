@@ -14,7 +14,9 @@ export default {
       correspondanceMessages: [],
       message: '',
       orders: [],
+      quoteRequests: null,
       order: null,
+      quoteRequest: null,
       complete: true,
       stripeOptions: {},
       credits: 0,
@@ -32,8 +34,21 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async showQuoteRequest (request) {
+      try {
+        this.quoteRequest = request
+        this.order = null
+        const orderId = request.orderId
+        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.correspondanceMessages = response.data.correspondance
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async showOrder (order) {
       try {
+        this.order = order
+        this.quoteRequest = null
         const orderId = order.orderId
 
         const response = await InboxService.retrieveCorrespondance(orderId)
@@ -68,35 +83,43 @@ export default {
     async submitMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
-
-        const correspondanceMsg = {
-          orderId: this.order.orderId,
-          buyerId: this.order.buyerId,
-          // by userId we mean to say the id of the seller in the db
-          userId: this.order.sellerId,
-          date: '',
-          sender: 'seller',
-          message: this.message
+        var correspondanceMsg = null
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            // by userId we mean to say the id of the seller in the db
+            userId: this.order.sellerId,
+            date: '',
+            sender: 'seller',
+            message: this.message
+          }
+        } else if (this.quoteRequest !== null) {
+          correspondanceMsg = {
+            orderId: this.quoteRequest.orderId,
+            buyerId: this.quoteRequest.buyerId,
+            userId: this.quoteRequest.sellerId,
+            date: 'nothing for now',
+            sender: 'seller',
+            message: this.message
+          }
         }
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
+        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
+        this.correspondanceMessages = response.data.correspondance
         this.message = ''
-        this.showMessage(this.order)
+        if (this.order !== null) {
+          this.showOrder(this.order)
+        } else if (this.quoteRequest !== null) {
+          this.showQuoteRequest(this.quoteRequest)
+        }
+        // this.showMessage(this.order)
       } catch (error) {
         if (error) throw error
       }
     },
-    async getAmountOfCredits () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const response = await PaymentService.getAmountOfCredits(
-          userExtracted.id
-        )
-        this.credit = response.data.credits
-      } catch (error) {
-        if (error) throw error
-      }
-    },
+
     // Loads the locked quote requests into the inbox view on the left
     async getLockedOrders () {
       try {
@@ -116,56 +139,14 @@ export default {
         console.log(`\nThe orders found are - > ${JSON.stringify(this.orders)}\n`) // TESTING
         if (this.orders !== undefined || this.orders.length > 0) {
           this.orders = filtered
-          const msg = this.orders[0]
-          this.showMessage(msg)
+
+          this.showOrder(this.orders[0])
         }
       } catch (error) {
         if (error) throw error
       }
     },
-    async getUnlockedOrders () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const userId = userExtracted.id
 
-        const response = await UserServices.getLockedOrders(userId)
-        this.orders = response.data.orders
-
-        var filtered = this.orders.filter(function (elem) {
-          if (elem.locked === false) {
-            return true
-          } else {
-            return false
-          }
-        })
-
-        this.orders = filtered
-        if (this.orders !== undefined || this.orders.length > 0) {
-          this.orders = filtered
-          const msg = this.orders[0]
-          this.showMessage(msg)
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    // async unlockOrder () {
-    //   try {
-    //     const userExtracted = this.$store.getters.getUserInfo
-    //     const orderIdClickedOn = this.orderIdClickedOn
-
-    //     console.log(`\nunlocking id of  ${orderIdClickedOn}\n`) // TESTING
-    //     await UserServices.unlockOrder(orderIdClickedOn)
-    //     this.$modal.hide('unlocking-prompt')
-    //     this.getLockedOrders()
-    //   } catch (error) {
-    //     console.log(`\nAn error occurred in the unlockOrder ${error}\n`) // TESTING
-    //     if (error) throw error
-    //   }
-    // },
-    // async promptToUnlock () {
-    //   this.$modal.show('unlocking-prompt')
-    // },
     // This function also sets the clicked on variable
     // of the message
     async retrieveCorrespondance (orderId) {
@@ -176,18 +157,21 @@ export default {
         if (error) throw error
       }
     },
-    async showMessage (order) {
-      if (order.locked === true) {
-        this.showLockedMessages = true
-      } else {
-        this.showLockedMessages = false
-        this.retrieveCorrespondance(order.orderId)
+
+    async getInboxMessages () {
+      try {
+        const sellerExtracted = this.$store.getters.getUserInfo
+        const response = await UserServices.getInboxMessages(sellerExtracted.id)
+
+        this.quoteRequests = response.data.inboxMessages
+        console.log(`\n\n\n\nThe response I get is  -- >: ${JSON.stringify(this.quoteRequests)}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
       }
-      this.order = order
-      this.orderIdClickedOn = order.orderId
     }
   },
-  mounted () {
-    this.getLockedOrders()
+  async mounted () {
+    await this.getLockedOrders()
+    await this.getInboxMessages()
   }
 }

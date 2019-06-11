@@ -110,7 +110,6 @@ export default {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const sellerExtracted = this.$store.getters.getUserInfo
         const quoteRequestsCart = this.quoteRequestsCart
-
         const purchaseInfo = {
           seller: sellerExtracted,
           buyer: buyerExtracted,
@@ -121,11 +120,13 @@ export default {
         this.redirectToProperFlow()
 
         await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
-        await BuyerServices.createOrder({
-          buyerId: buyerExtracted.id,
-          sellerId: sellerExtracted.user.id,
-          orderId: this.orderId
-        })
+        // DEPRECATED
+        // We should not create an order if a quote request has been made
+        // await BuyerServices.createOrder({
+        //   buyerId: buyerExtracted.id,
+        //   sellerId: sellerExtracted.user.id,
+        //   orderId: this.orderId
+        // })
       } catch (error) {
         console.log(`\nAn error occurred in sendQuoteRequests: ${error}\n`) // TESTING
         if (error) throw error
