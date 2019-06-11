@@ -47,18 +47,22 @@ font-family: 'Roboto', sans-serif; */
 } */
 
 .green .container-fluid {
-  background-color: white;
-  opacity: 0.85;
-  padding: 50px;
+  max-width: 500px;
+  max-height: 600px;
 }
 
 /* Green/purple design background */
 .green {
   position: relative;
   width: 100%;
-  background-image: url("BACKGROUND.png");
+  /* background-image: url("BACKGROUND.png"); */
+  background-image:radial-gradient(#bbb8ff 40%, #55529c) ;
   background-size: cover;
   background-position: center;
+}
+
+.green .container {
+  width: 100%;
 }
 
 .feature-item {
@@ -237,10 +241,19 @@ section.services {
   padding: 100px 75px 100px;
 }
 
+section.green {
+  padding: 80px 0px 0px;
+}
+
+carousel.img {
+  min-width: 800px;
+}
+
 form {
-  width: 300px;
+  width: 100%;
   font-size: 14pt;
   display: inline-block;
+  position: center;
 }
 
 /* ----footer -----*/
