@@ -62,10 +62,12 @@
                 <div class="clearfix"></div>
               </div>
 
-              <!-- /.panel-heading -->
-              <div class="panel-body no-padding" v-if="this.dropdownVariable === 'Orders'">
+              <!-- The panels for the orders -->
+              <div
+                class="panel-body no-padding"
+                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
+              >
                 <div class="list-group no-margin list-message">
-                  <!--  -->
                   <a
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
@@ -77,42 +79,38 @@
                       <small>Date created : {{ order.createdAt }}</small>
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">UNLOCKED</span>
+                    <span class="label label-success pull-right">Order</span>
                     <div class="clearfix"></div>
                   </a>
-                  <!--  -->
                 </div>
-                <!-- /.list-group -->
               </div>
-              <!-- /.panel-body -->
+              <!-- The panels for the orders -->
 
-              <!--  -->
-              <div class="panel-body no-padding" v-if="this.dropdownVariable === 'Quote Requests'">
-                <!--  -->
-                <!-- <div class="list-group no-margin list-message">
+              <!-- The panels for the quote requests -->
+              <div
+                class="panel-body no-padding"
+                v-if="this.dropdownVariable === 'Quote Requests' || this.dropdownVariable === 'All messages'"
+              >
+                <div class="list-group no-margin list-message">
                   <a
                     class="list-group-item"
-                    v-for="(order, index) in this.orders"
+                    v-for="(request, index) in this.quoteRequests"
                     v-bind:key="index"
-                    @click="showOrder(order)"
+                    @click="showQuoteRequest(request)"
                   >
                     <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <small>Date created : {{ order.createdAt }}</small>
+                      Buyer ID : {{ request }}
+                      <small>Date created : {{ message.createdAt }}</small>
                     </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">UNLOCKED</span>
+
+                    <p class="list-group-item-text"></p>
+                    <span class="label label-success pull-right">Quote Request</span>
                     <div class="clearfix"></div>
                   </a>
-                </div>-->
-                <div class="list-group no-margin list-message">
-                  <a class="list-group-item"></a>
                 </div>
-                <!--  -->
               </div>
-              <!--  -->
             </div>
-            <!-- /.panel -->
+            <!-- The panels for the quote requests -->
           </div>
           <div class="col-md-8 message-sideright">
             <div class="panel">

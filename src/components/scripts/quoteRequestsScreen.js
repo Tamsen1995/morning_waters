@@ -33,6 +33,13 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async showQuoteRequest (request) {
+      try {
+        console.log(`\nThe request being : ${JSON.stringify(request)}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async showOrder (order) {
       try {
         const orderId = order.orderId

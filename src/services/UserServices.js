@@ -9,7 +9,6 @@ export default {
     })
   },
   unlockOrder (orderId) {
-    console.log(`orderId being : ${orderId}`) // TESTING
     return Api().post('/unlockOrder', { orderId })
   },
   getLockedOrders (sellerId) {
@@ -20,7 +19,6 @@ export default {
     })
   },
   checkForSubscriptionCharge (uid) {
-    console.log(`\nI am checking for the subscription charge period\n`) // TESTING
     return Api().get('checkForSubscriptionCharge', {
       params: {
         userId: uid
