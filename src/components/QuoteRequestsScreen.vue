@@ -76,7 +76,10 @@
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
+                      <br>
+                      <br>
                       <small>Date created : {{ order.createdAt }}</small>
+                      <br>
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                     <span class="label label-success pull-right">Order</span>
@@ -100,7 +103,9 @@
                   >
                     <h4 class="list-group-item-heading">
                       Subject : {{ request.subject }}
-                      <small>Date created : {{ message.createdAt }}</small>
+                      <br>
+                      <br>
+                      <small>Date created : {{ request.createdAt }}</small>
                     </h4>
 
                     <p class="list-group-item-text"></p>
