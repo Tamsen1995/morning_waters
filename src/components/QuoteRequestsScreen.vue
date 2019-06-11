@@ -99,7 +99,7 @@
                     @click="showQuoteRequest(request)"
                   >
                     <h4 class="list-group-item-heading">
-                      Buyer ID : {{ request }}
+                      Subject : {{ request.subject }}
                       <small>Date created : {{ message.createdAt }}</small>
                     </h4>
 
