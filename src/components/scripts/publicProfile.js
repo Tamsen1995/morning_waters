@@ -69,10 +69,26 @@ export default {
     },
     async submitInquiryText () {
       try {
-        const response = await InboxService.sendInquiryToUserInbox({
-          uid: this.userId,
-          inquiryText: this.inquiryText
-        })
+        const isUserLoggedIn = this.$store.getters.userLoggedIn
+
+        if (isUserLoggedIn === true) {
+          const buyerExtracted = this.$store.getters.getBuyerInfo
+
+          console.log(`\nbuyerExtracted : ${JSON.stringify(buyerExtracted)}\n`) // TESTING
+          const generalInquiry = {
+            buyerId: buyerExtracted.id,
+            uid: this.userId,
+            inquiryText: this.inquiryText
+          }
+          console.log(`\n\nThe general inquiry being : ${generalInquiry}\n\n`) // TESTING
+          // await InboxService.sendInquiryToUserInbox(generalInquiry)
+          console.log(`\nSo here the inquiry should just be sent directly\n`) // TESTING
+        } else {
+          this.$router.push({
+            name: 'buyerLogin'
+          })
+          console.log(`\nHere the user will be redirected onto the buyer signup page. \n`) // TESTING
+        }
       } catch (error) {
         console.log(`\nThe error occurred in submitInquiryText ${error}\n`) // TESTING
         if (error) throw error

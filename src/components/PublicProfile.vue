@@ -129,7 +129,7 @@
 
             <button
               class="btn btn-info pull-right"
-              @click="submitInquiryText"
+              @click="submitInquiryText()"
               style="margin-top:10px"
               type="button"
             >Submit</button>
@@ -180,34 +180,7 @@
       </div>
     </modal>
 
-        <!-- Add to cart Modal -->
-    <!-- <modal name="request-quote-modal">
-      <div class="container" style="margin:25px" id="spec_inquiry">
-        <div class="row">
-          <div class="col-10">
-            <div v-if="this.itemChosen">
-              <p>Service : {{ this.itemChosen.title }}</p>
-              <div>
-                <input v-model="pickedQuantityQuoteRequest" type="number" style="width: 30px">
-              </div>
-            </div>
 
-            <textarea
-              v-model="inquiryText"
-              class="form-control animated"
-              placeholder="Your inquiry"
-            ></textarea>
-          </div>
-        </div>
-
-        <button
-          class="btn btn-info pull-left"
-          style="margin-top:10px"
-          type="button"
-          @click="submitQuoteRequest()"
-        >Submit</button>
-      </div>
-    </modal> -->
 
   </div>
 </div>
