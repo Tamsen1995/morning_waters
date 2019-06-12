@@ -71,21 +71,24 @@ export default {
       try {
         const isUserLoggedIn = this.$store.getters.userLoggedIn
 
+        var generalInquiry = {
+          uid: this.userId,
+          inquiryText: this.inquiryText
+        }
         if (isUserLoggedIn === true) {
           const buyerExtracted = this.$store.getters.getBuyerInfo
-
-          const generalInquiry = {
+          generalInquiry = {
             buyerId: buyerExtracted.id,
             uid: this.userId,
             inquiryText: this.inquiryText
           }
-
           await InboxService.sendInquiryToUserInbox(generalInquiry)
         } else {
+          // store general inquiry in store here
+          this.$store.dispatch('setGeneralInquiry', generalInquiry)
           this.$router.push({
             name: 'buyerLogin'
           })
-          console.log(`\nHere the user will be redirected onto the buyer signup page. \n`) // TESTING
         }
       } catch (error) {
         console.log(`\nThe error occurred in submitInquiryText ${error}\n`) // TESTING
