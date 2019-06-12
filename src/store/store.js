@@ -28,12 +28,17 @@ export default new Vuex.Store({
     shoppingCartServices: [],
     quoteRequestsServicesCart: [],
 
-    // the flag which is to
-    // be set to determine the
+    // the flag which determines the
     // flow from the buyers' perspective
     // if it's set then upon signup the buyer will be redirected
     // to the checkout page directly
-    shoppingCartFlag: false
+    shoppingCartFlag: false,
+
+    // If this general inquiry is set
+    // then it will be submitted upon buyer login
+    // and then reset again
+    generalInquiry: null
+
   },
   mutations: {
     setShoppingCartFlag (state, flag) {
@@ -103,6 +108,9 @@ export default new Vuex.Store({
     },
     setQuoteRequestCart (state, array) {
       state.quoteRequestsServicesCart = array
+    },
+    setGeneralInquiry (state, generalInquiry) {
+      state.generalInquiry = generalInquiry
     }
   },
   actions: {
@@ -159,6 +167,9 @@ export default new Vuex.Store({
     },
     setQuoteRequestCart ({ commit }, array) {
       commit('setQuoteRequestCart', array)
+    },
+    setGeneralInquiry ({ commit }, generalInquiry) {
+      commit('setGeneralInquiry', generalInquiry)
     }
   },
   getters: {
@@ -197,6 +208,9 @@ export default new Vuex.Store({
     },
     getQuoteRequestsCart: state => {
       return state.quoteRequestsServicesCart
+    },
+    getGeneralInquiry: state => {
+      return state.generalInquiry
     },
     // NEEDS to be set to true / false everytime auth status
     // changes

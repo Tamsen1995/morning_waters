@@ -71,23 +71,24 @@ export default {
       try {
         const isUserLoggedIn = this.$store.getters.userLoggedIn
 
+        var generalInquiry = {
+          uid: this.userId,
+          inquiryText: this.inquiryText
+        }
         if (isUserLoggedIn === true) {
           const buyerExtracted = this.$store.getters.getBuyerInfo
-
-          console.log(`\nbuyerExtracted : ${JSON.stringify(buyerExtracted)}\n`) // TESTING
-          const generalInquiry = {
+          generalInquiry = {
             buyerId: buyerExtracted.id,
             uid: this.userId,
             inquiryText: this.inquiryText
           }
-          console.log(`\n\nThe general inquiry being : ${generalInquiry}\n\n`) // TESTING
-          // await InboxService.sendInquiryToUserInbox(generalInquiry)
-          console.log(`\nSo here the inquiry should just be sent directly\n`) // TESTING
+          await InboxService.sendInquiryToUserInbox(generalInquiry)
         } else {
+          // store general inquiry in store here
+          this.$store.dispatch('setGeneralInquiry', generalInquiry)
           this.$router.push({
             name: 'buyerLogin'
           })
-          console.log(`\nHere the user will be redirected onto the buyer signup page. \n`) // TESTING
         }
       } catch (error) {
         console.log(`\nThe error occurred in submitInquiryText ${error}\n`) // TESTING
@@ -98,16 +99,11 @@ export default {
     async manifestModalForm (service) {
       try {
         this.itemChosen = service
-        // this.pickedQuantityQuoteRequest
 
         this.$modal.show('request-quote-modal')
         console.log(
           `\nWhat is this item chosen : ${JSON.stringify(this.itemChosen)}\n`
         ) // TESTING
-
-        // set a picked item when manifesting this modal
-        // this.modal = true
-        // this.itemChosen = service
       } catch (error) {
         if (error) throw error
       }
