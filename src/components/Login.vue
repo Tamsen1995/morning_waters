@@ -70,7 +70,10 @@
                   <br>
                   <p>
                     Don't have an account yet?
-                    <a href="#">Sign up</a>
+                    <a
+                      href="#/register"
+                      @click="redirectToSignup()"
+                    >Sign up</a>
                   </p>
                 </div>
               </form>
