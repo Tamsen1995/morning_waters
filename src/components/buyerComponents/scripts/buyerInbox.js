@@ -8,7 +8,9 @@ export default {
       buyerQuoteRequests: null,
       // orders:[] is an array holding several objects, each representing an order
       orders: [],
-      quoteOrders: []
+      quoteOrders: [],
+      dropdownVariable: 'All messages'
+
     }
   },
   async created () {
@@ -21,11 +23,27 @@ export default {
       this.segmentBuyerQuoteRequests()
     }
   },
-  async mounted () { },
+  async mounted () {
+  },
   components: {
     BuyerHeader
   },
   methods: {
+    async switchMessagesDisplayed (messagesDisplayed) {
+      try {
+        if (messagesDisplayed === 'all') {
+          this.dropdownVariable = 'All messages'
+        } else if (messagesDisplayed === 'orders') {
+          this.dropdownVariable = 'Orders'
+          this.getLockedOrders()
+        } else if (messagesDisplayed === 'quoteRequests') {
+          this.dropdownVariable = 'Quote Requests'
+        }
+      } catch (error) {
+        console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
     async goToQuoteCorrespondance (index) {
       try {
         console.log(`\nWe're gonna be different ${index}\n`) // TESTING
