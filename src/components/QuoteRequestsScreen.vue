@@ -53,12 +53,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="pull-right">
-                  <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider"></span>
-                  </label>
-                </div>
+
                 <div class="clearfix"></div>
               </div>
 
@@ -90,7 +85,7 @@
               <!-- The panels for the orders -->
 
               <!-- The panels for the quote requests -->
-              <div
+              <!-- <div
                 class="panel-body no-padding"
                 v-if="this.dropdownVariable === 'Quote Requests' || this.dropdownVariable === 'All messages'"
               >
@@ -113,7 +108,7 @@
                     <div class="clearfix"></div>
                   </a>
                 </div>
-              </div>
+              </div>-->
             </div>
             <!-- The panels for the quote requests -->
           </div>
