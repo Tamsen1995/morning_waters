@@ -68,15 +68,20 @@
                 v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
               >
                 <div class="list-group no-margin list-message">
-                  <a class="list-group-item">
+                  <a
+                    class="list-group-item"
+                    v-for="(order, index) in this.orders"
+                    v-bind:key="index"
+                    @click="showOrder(order)"
+                  >
                     <h4 class="list-group-item-heading">
-                      Buyer ID :
+                      Buyer ID : {{ order.buyerId }}
                       <br>
                       <br>
-                      <small>Date created :</small>
+                      <small>Date created : {{ order.createdAt }}</small>
                       <br>
                     </h4>
-                    <p class="list-group-item-text">Order#</p>
+                    <p class="list-group-item-text">Order# {{ order.orderId }}</p>
                     <span class="label label-success pull-right">Order</span>
                     <div class="clearfix"></div>
                   </a>
