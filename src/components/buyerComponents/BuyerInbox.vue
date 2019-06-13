@@ -90,12 +90,17 @@
                 v-if="this.dropdownVariable === 'Quote Requests' || this.dropdownVariable === 'All messages'"
               >
                 <div class="list-group no-margin list-message">
-                  <a class="list-group-item">
+                  <a
+                    class="list-group-item"
+                    v-for=" (request, index) in this.buyerQuoteRequests"
+                    v-bind:key="index"
+                    @click="showQuoteRequest(request)"
+                  >
                     <h4 class="list-group-item-heading">
-                      Subject :
+                      Subject : {{ request.subject }}
                       <br>
                       <br>
-                      <small>Date created :</small>
+                      <small>Date created : {{ request.createdAt }}</small>
                     </h4>
 
                     <p class="list-group-item-text"></p>

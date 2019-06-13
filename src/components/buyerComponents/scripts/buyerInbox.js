@@ -1,5 +1,6 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 import BuyerServices from '@/services/BuyerServices'
+import InboxService from '@/services/InboxService'
 
 export default {
   data () {
@@ -9,8 +10,8 @@ export default {
       // orders:[] is an array holding several objects, each representing an order
       orders: [],
       quoteOrders: [],
-      dropdownVariable: 'All messages'
-
+      dropdownVariable: 'All messages',
+      correspondanceMessages: []
     }
   },
   async created () {
@@ -29,6 +30,19 @@ export default {
     BuyerHeader
   },
   methods: {
+
+    async showQuoteRequest (request) {
+      try {
+        this.quoteRequest = request
+        this.order = null
+        const orderId = request.orderId
+        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.correspondanceMessages = response.data.correspondance
+        console.log(`\n\n\nThe correspondenceMessages for buyer : ${this.correspondanceMessages}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async switchMessagesDisplayed (messagesDisplayed) {
       try {
         if (messagesDisplayed === 'all') {
