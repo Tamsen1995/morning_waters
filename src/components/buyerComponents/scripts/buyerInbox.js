@@ -71,6 +71,7 @@ export default {
         if (error) throw error
       }
     },
+
     async showQuoteRequest (request) {
       try {
         this.quoteRequest = request
@@ -78,7 +79,18 @@ export default {
         const orderId = request.orderId
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.correspondanceMessages = response.data.correspondance
-        console.log(`\n\n\nThe correspondenceMessages for buyer : ${this.correspondanceMessages}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async showOrder (order) {
+      try {
+        this.order = order
+        this.quoteRequest = null
+        const orderId = order.orderId
+
+        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.correspondanceMessages = response.data.correspondance
       } catch (error) {
         if (error) throw error
       }
@@ -95,23 +107,6 @@ export default {
         }
       } catch (error) {
         console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
-    async goToQuoteCorrespondance (index) {
-      try {
-        console.log(`\nWe're gonna be different ${index}\n`) // TESTING
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async goToCorrespondance (index) {
-      try {
-        this.$store.dispatch('setObjectToBeSent', this.orders[index])
-        this.$router.push({
-          name: 'buyerCorrespondance'
-        })
-      } catch (error) {
         if (error) throw error
       }
     },
