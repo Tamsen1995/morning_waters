@@ -7,11 +7,13 @@ export default {
     return {
       buyerOrderItems: null,
       buyerQuoteRequests: null,
+      quoteRequest: null,
       // orders:[] is an array holding several objects, each representing an order
       orders: [],
       quoteOrders: [],
       dropdownVariable: 'All messages',
-      correspondanceMessages: []
+      correspondanceMessages: [],
+      message: ''
     }
   },
   async created () {
@@ -30,7 +32,45 @@ export default {
     BuyerHeader
   },
   methods: {
+    async submitMessage () {
+      try {
+        console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
+        var correspondanceMsg = null
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            // by userId we mean to say the id of the seller in the db
+            userId: this.order.sellerId,
+            date: '',
+            sender: 'buyer',
+            message: this.message
+          }
+        } else if (this.quoteRequest !== null) {
+          correspondanceMsg = {
+            orderId: this.quoteRequest.orderId,
+            buyerId: this.quoteRequest.buyerId,
+            userId: this.quoteRequest.sellerId,
+            date: 'nothing for now',
+            sender: 'buyer',
+            message: this.message
+          }
+        }
 
+        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
+        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
+        this.correspondanceMessages = response.data.correspondance
+        this.message = ''
+        if (this.order !== null) {
+          this.showOrder(this.order)
+        } else if (this.quoteRequest !== null) {
+          this.showQuoteRequest(this.quoteRequest)
+        }
+        // this.showMessage(this.order)
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async showQuoteRequest (request) {
       try {
         this.quoteRequest = request
