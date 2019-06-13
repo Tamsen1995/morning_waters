@@ -33,6 +33,10 @@ export default {
   directives: {
     responsive: ResponsiveDirective
   },
+  async mounted () {
+    await this.getLockedOrders()
+    await this.getInboxMessages()
+  },
   methods: {
     async showQuoteRequest (request) {
       try {
@@ -169,9 +173,6 @@ export default {
         if (error) throw error
       }
     }
-  },
-  async mounted () {
-    await this.getLockedOrders()
-    await this.getInboxMessages()
   }
+
 }
