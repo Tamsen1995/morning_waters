@@ -1,6 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
+  getSellerPendingOrders (sellerId) {
+    return Api().get('/getSellerPendingOrders', {
+      params: {
+        sellerId: sellerId
+      }
+    })
+  },
   getSellersOrderItems (sellerId) {
     return Api().get('/getSellersOrderItems', {
       params: {
