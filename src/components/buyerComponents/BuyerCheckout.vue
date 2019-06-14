@@ -11,7 +11,7 @@
           margin-left: auto;
           margin-right: auto;"
       >
-        <h5 style="text-align:center;">Checkout</h5>
+        <h5 style="text-align:center;">Request Checkout</h5>
         <br>
         <div class="grid-container">
           <div class="grid-item">

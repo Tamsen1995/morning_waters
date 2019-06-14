@@ -3,6 +3,9 @@ import Api from '@/services/Api'
 // TODO : Potentially rename this to BuyerServices
 
 export default {
+  createPendingOrder (pendingOrder) {
+    return Api().post('createPendingOrder', pendingOrder)
+  },
   createOrder (order) {
     return Api().post('createOrder', order)
   },
