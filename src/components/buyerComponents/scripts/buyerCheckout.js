@@ -71,6 +71,7 @@ export default {
     },
     async sendShoppingCart () {
       try {
+        console.log(`\nhere?\n`) // TESTING
         const token = await stripe.createToken(card)
         if (!token.error) {
           const buyerExtracted = this.$store.getters.getBuyerInfo
@@ -91,11 +92,17 @@ export default {
             purchaseInfo
           )
           this.$store.dispatch('setShoppingCart', [])
-          await BuyerServices.createOrder({
+          const response = await BuyerServices.createPendingOrder({
             buyerId: buyerExtracted.id,
             sellerId: sellerId,
             orderId: this.orderId
           })
+          // await BuyerServices.createOrder({
+          //   buyerId: buyerExtracted.id,
+          //   sellerId: sellerId,
+          //   orderId: this.orderId
+          // })
+
           this.redirectToProperFlow()
         }
       } catch (error) {
@@ -135,41 +142,41 @@ export default {
         console.log(`\nsend this shit !!\n`) // TESTING
         // sending shopping cart to back
         const token = await stripe.createToken(card)
-        if (!token.error) {
-          const buyerExtracted = this.$store.getters.getBuyerInfo
-          const sellerExtracted = this.$store.getters.getUserInfo
-          const quoteRequestsCart = this.quoteRequestsCart
+        // if (!token.error) {
+        const buyerExtracted = this.$store.getters.getBuyerInfo
+        const sellerExtracted = this.$store.getters.getUserInfo
+        const quoteRequestsCart = this.quoteRequestsCart
 
-          const buyerId = buyerExtracted.id
-          const stripeCustomerId = buyerExtracted.stripeCustomerId
-          const shoppingCartItems = this.shoppingCart
+        const buyerId = buyerExtracted.id
+        const stripeCustomerId = buyerExtracted.stripeCustomerId
+        const shoppingCartItems = this.shoppingCart
 
-          const purchaseInfo = {
-            seller: sellerExtracted,
-            buyer: buyerExtracted,
-            quoteRequestsCart: quoteRequestsCart
-          }
-
-          const purchaseInfoTwo = {
-            uid: buyerId,
-            sellerId: sellerExtracted.user.id,
-            stripeCustomerId: stripeCustomerId,
-            stripeToken: token,
-            shoppingCartItems: shoppingCartItems
-          }
-
-          await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
-          await BuyerServices.purchaseShoppingCart(purchaseInfoTwo)
-
-          await BuyerServices.createOrder({
-            buyerId: buyerId,
-            sellerId: sellerExtracted.user.id,
-            orderId: this.orderId
-          })
-          this.$store.dispatch('setQuoteRequestCart', [])
-          this.$store.dispatch('setShoppingCart', [])
-          this.redirectToProperFlow()
+        const purchaseInfo = {
+          seller: sellerExtracted,
+          buyer: buyerExtracted,
+          quoteRequestsCart: quoteRequestsCart
         }
+
+        const purchaseInfoTwo = {
+          uid: buyerId,
+          sellerId: sellerExtracted.user.id,
+          stripeCustomerId: stripeCustomerId,
+          // stripeToken: token,
+          shoppingCartItems: shoppingCartItems
+        }
+
+        await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
+        await BuyerServices.purchaseShoppingCart(purchaseInfoTwo)
+
+        await BuyerServices.createOrder({
+          buyerId: buyerId,
+          sellerId: sellerExtracted.user.id,
+          orderId: this.orderId
+        })
+        this.$store.dispatch('setQuoteRequestCart', [])
+        this.$store.dispatch('setShoppingCart', [])
+        this.redirectToProperFlow()
+        // }
       } catch (error) {
         console.log(
           `\nan error occurred in sendOrderAndOrInquiries : ${error}\n`
