@@ -2,9 +2,8 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="dashboard_nav">
       <div class="container">
-        <a class="navbar-brand" href="/">
-          <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
-        </a>
+        <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
+
         <!-- <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -101,7 +100,7 @@
 
           <!-- Logout -->
           <li class="nav-item nav-center" @click="logout()">
-            <router-link class="nav-link" to="/dashboard/settings" v-if="this.user == null">
+            <router-link class="nav-link" to="/" v-if="this.user == null">
               <i class="fas fa-sign-out-alt"></i>
               Logout
             </router-link>
