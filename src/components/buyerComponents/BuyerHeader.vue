@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <b-nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <b-nav class="navbar navbar-expand-lg navbar-light fixed-top" id="dashboard_nav">
       <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" >
           <img src="./../TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
         </a>
         <button
@@ -29,14 +29,9 @@
               <a
                 class="nav-link"
                 @click="toggleDropdownMenu()"
-                style="padding-top:0px;padding-bottom:0px;"
+                style="padding-top:0px;padding-bottom:0px;padding-left:10px;"
               >
-                <img
-                  src="../../assets/css/noun_orders_crop.png"
-                  alt="New Orders"
-                  width="60px"
-                  height="40px"
-                >
+                <i class="fas fa-seedling" id="dash_icon"></i>
               </a>
               <!-- <a class="nav-link"> -->
               <a
@@ -64,20 +59,18 @@
               <a
                 class="nav-link"
                 @click="redirectToInbox()"
-                style="padding-top:0px;padding-bottom:0px;padding-left:0px;"
+                style="padding-top:0px;padding-bottom:0px;padding-left:15px;"
               >
-                <img
-                  src="../../assets/css/noun_Mail_crop.png"
-                  alt="Inbox"
-                  width="55px"
-                  height="40px"
-                >
+                <i class="fas fa-envelope" alt="Inbox" id="dash_icon"></i>
               </a>
               <a
                 class="nav-link"
                 @click="redirectToInbox()"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >Inbox</a>
+              >Inbox
+                <span class="badge badge-primary">{{itemsInCart}}</span>
+              </a>
+              
             </li>
 
             <!-- Billing -->
@@ -87,13 +80,7 @@
                 @click="redirectToBillings()"
                 style="padding-top:0px;padding-bottom:0px;"
               >
-                <img
-                  src="../../assets/css/noun_payment_crop.png"
-                  alt="New Orders"
-                  width="50px"
-                  height="40px"
-                  padding-left="5px"
-                >
+                <i class="fas fa-money-bill-wave-alt" id="dash_icon"></i>
               </a>
               <a
                 class="nav-link"
@@ -107,14 +94,9 @@
               <a
                 class="nav-link"
                 @click="redirectToSettings()"
-                style="padding-top:0px;padding-bottom:0px;"
+                style="padding-top:0px;padding-bottom:0px;padding-left:15px;"
               >
-                <img
-                  src="../../assets/css/noun_settings_crop.png"
-                  alt="Inbox"
-                  width="55px"
-                  height="40px"
-                >
+                <i class="fas fa-sliders-h" id="dash_icon"></i> 
               </a>
               <a
                 class="nav-link"
@@ -131,12 +113,7 @@
                 @click="manifestModalShowCart()"
                 style="padding-top:0px;padding-bottom:0px;"
               >
-                <img
-                  src="../../assets/css/noun_cart_n_crop.png"
-                  alt="Your Orders"
-                  width="55px"
-                  height="40px"
-                >
+                <i class="fas fa-shopping-cart" id="dash_icon"></i>
               </a>
               <a
                 class="nav-link"
@@ -154,7 +131,9 @@
                   class="nav-link"
                   @click="buyerLogout()"
                   style="padding-top:0px;padding-bottom:0px;"
-                >Logout</a>
+                >
+                Logout</a>
+    
               </router-link>
             </li>
           </ul>
