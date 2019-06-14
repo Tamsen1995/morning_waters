@@ -48,7 +48,7 @@
                 class="nav-link"
                 to="/dashboard/quoteRequestsScreen"
                 v-if="this.user == null"
-                style="padding-top:0px;padding-bottom:0px;padding-left:7px;"
+                style="padding-top:0px;padding-bottom:0px;padding-left:15px;"
               >
                 <i class="fas fa-envelope" alt="Inbox" id="dash_icon"></i>
               </router-link>
@@ -57,7 +57,10 @@
                 to="/dashboard/quoteRequestsScreen"
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >Inbox</router-link>
+              >
+              Inbox
+                <span class="badge badge-info">{{itemsInCart}}</span>
+              </router-link>
             </li>
 
             <!-- Profile -->
@@ -86,7 +89,7 @@
                 v-if="this.user == null"
                 style="padding-top:0px;padding-bottom:0px;padding-left:15px;"
               >
-                <i class="fas fa-sliders-h" id="dash_icon" style="hover:purple;"></i> 
+                <i class="fas fa-sliders-h" id="dash_icon"></i> 
               </router-link>
               <router-link
                 class="nav-link"
