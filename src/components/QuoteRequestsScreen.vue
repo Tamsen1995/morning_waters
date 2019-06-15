@@ -77,12 +77,38 @@
                       <br>
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">Order</span>
+                    <span class="label label-success pull-right">Request</span>
                     <div class="clearfix"></div>
                   </a>
                 </div>
               </div>
               <!-- The panels for the orders -->
+              <!-- The panels for the pending orders -->
+              <div
+                class="panel-body no-padding"
+                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
+              >
+                <div class="list-group no-margin list-message">
+                  <a
+                    class="list-group-item"
+                    v-for="(order, index) in this.pendingOrders"
+                    v-bind:key="index"
+                    @click="showOrder(order)"
+                  >
+                    <h4 class="list-group-item-heading">
+                      Buyer ID : {{ order.buyerId }}
+                      <br>
+                      <br>
+                      <small>Date created : {{ order.createdAt }}</small>
+                      <br>
+                    </h4>
+                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                    <span class="label label-success pull-right">Pending Order</span>
+                    <div class="clearfix"></div>
+                  </a>
+                </div>
+              </div>
+              <!-- The panels for the pending orders -->
 
               <!-- The panels for the quote requests -->
               <!-- <div

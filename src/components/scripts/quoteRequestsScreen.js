@@ -131,7 +131,8 @@ export default {
         const userExtracted = this.$store.getters.getUserInfo
         const userId = userExtracted.id
         const response = await UserServices.getPendingOrders(userId)
-        console.log(`\nthe response for pending orders is : ${JSON.stringify(response)}\n`) // TESTING
+        // console.log(`\nthe response for pending orders is : ${JSON.stringify(response.data)}\n`) // TESTING
+        this.pendingOrders = response.data
       } catch (error) {
         if (error) throw error
       }

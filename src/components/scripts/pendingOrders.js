@@ -22,7 +22,7 @@ export default {
   },
   async created () {
     await this.getSellerPendingOrders()
-    // await this.getSellerOrders();
+    // await this.getSellerOrders()
     // await this.getSellerOrderItems();
   },
   async mounted () { },
@@ -39,21 +39,17 @@ export default {
           userExtracted.id
         )
         this.pendingOrders = response.data
-        // console.log(`\n\nThe response : ${JSON.stringify(response.data)}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
     },
     async createOrderOnShippo () {
       try {
-        console.log(`\nthis.seller_shipping : ${this.seller_shipping}\n`) // TESTING
-        console.log(`\nThe buyer : ${this.buyer_shipping}\n`) // TESTING
-        const response = await ShippingService.createOrderOnShippo({
+        await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,
           seller_shipping: this.seller_shipping,
           buyer_shipping: this.buyer_shipping
         })
-        // console.log(`\nThe response being : ${JSON.stringify(response)}\n`); // TESTING
         this.$modal.hide('ask-seller-if-seller-needs-to-ship')
       } catch (error) {
         if (error) throw error
@@ -69,16 +65,7 @@ export default {
         if (error) throw error
       }
     }
-    // async confirmOrder (index) {
-    //   try {
-    //     // allocating an appropiate array
-    //     this.orderToBeConfirmed = this.orders[index]
-    //     ShippingService.makeShippoApiToken()
-    //     this.$modal.show('ask-seller-if-seller-needs-to-ship')
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // }
+
     // async getSellerOrderItems () {
     //   try {
     //     const userExtracted = this.$store.getters.getUserInfo
