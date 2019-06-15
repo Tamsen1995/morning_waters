@@ -14,6 +14,7 @@ export default {
       correspondanceMessages: [],
       message: '',
       orders: [],
+      pendingOrders: [],
       quoteRequests: null,
       order: null,
       quoteRequest: null,
@@ -35,9 +36,11 @@ export default {
   },
   async mounted () {
     await this.getLockedOrders()
+    await this.getPendingOrders()
     await this.getInboxMessages()
   },
   methods: {
+
     async showQuoteRequest (request) {
       try {
         this.quoteRequest = request
@@ -123,7 +126,16 @@ export default {
         if (error) throw error
       }
     },
-
+    async getPendingOrders () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+        const userId = userExtracted.id
+        const response = await UserServices.getPendingOrders(userId)
+        console.log(`\nthe response for pending orders is : ${JSON.stringify(response)}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     // Loads the locked quote requests into the inbox view on the left
     async getLockedOrders () {
       try {

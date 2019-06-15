@@ -18,6 +18,13 @@ export default {
   unlockOrder (orderId) {
     return Api().post('/unlockOrder', { orderId })
   },
+  getPendingOrders (sellerId) {
+    return Api().get('getPendingOrders', {
+      params: {
+        sellerId: sellerId
+      }
+    })
+  },
   getLockedOrders (sellerId) {
     return Api().get('getLockedOrders', {
       params: {
