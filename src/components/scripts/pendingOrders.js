@@ -31,6 +31,18 @@ export default {
   },
   directives: {},
   methods: {
+    async goToOrderStatus (index) {
+      try {
+        const pendingOrder = this.pendingOrders[index]
+
+        this.$router.push({
+          name: 'pendingOrderStatus',
+          params: { orderId: pendingOrder.orderId }
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async getSellerPendingOrders () {
       try {
         const userExtracted = this.$store.getters.getUserInfo

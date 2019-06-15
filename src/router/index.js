@@ -12,6 +12,7 @@ import CreditsHome from '@/components/CreditsHome'
 import SettingsPage from '@/components/SettingsPage'
 import SettingsChangeDefaultSource from '@/components/SettingsChangeDefaultSource'
 import PendingOrders from '@/components/PendingOrders'
+import PendingOrderStatus from '@/components/PendingOrderStatus'
 import AuthenticationService from '@/services/AuthenticationService'
 
 // Buyer routes
@@ -68,6 +69,11 @@ export default new Router({
       path: '/publicProfile/:id',
       name: 'publicProfile',
       component: PublicProfile
+    },
+    {
+      path: '/pendingOrder/status/:orderId',
+      name: 'pendingOrderStatus',
+      component: PendingOrderStatus
     },
     {
       path: '/',
