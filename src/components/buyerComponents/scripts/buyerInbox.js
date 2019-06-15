@@ -6,6 +6,8 @@ export default {
   data () {
     return {
       orders: [],
+      pendingOrders: [],
+
       buyerQuoteRequests: null,
       quoteRequest: null,
       order: null,
@@ -18,7 +20,8 @@ export default {
   },
   async created () {
     await this.getBuyersOrders()
-    await this.getBuyersQuoteRequests()
+    await this.getBuyersPendingOrders()
+    // await this.getBuyersQuoteRequests()
     // if (this.buyerOrderItems.length > 0) {
     //   this.segmentOrderItems()
     // }
@@ -32,6 +35,7 @@ export default {
     BuyerHeader
   },
   methods: {
+
     async submitMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
@@ -122,17 +126,23 @@ export default {
         if (error) throw error
       }
     },
+    async getBuyersPendingOrders () {
+      try {
+        const buyerExtracted = this.$store.getters.getBuyerInfo
+
+        const buyerId = buyerExtracted.id
+        const response = await BuyerServices.getPendingOrders(buyerId)
+        this.pendingOrders = response.data.pendingOrders
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async getBuyersOrders () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const response = await BuyerServices.getBuyersOrders(buyerExtracted.id)
 
         this.orders = response.data.orders
-        console.log(`\nThe stars will not align : ${JSON.stringify(response.data.orders)}\n`) // TESTING
-
-        // const buyerOrderItems = response.data.orderItems
-
-        // this.buyerOrderItems = buyerOrderItems
       } catch (error) {
         if (error) throw error
       }

@@ -37,7 +37,7 @@ export default {
   async mounted () {
     await this.getLockedOrders()
     await this.getPendingOrders()
-    await this.getInboxMessages()
+    // await this.getInboxMessages()
   },
   methods: {
 

@@ -25,6 +25,13 @@ export default {
       }
     })
   },
+  getPendingOrders (buyerId) {
+    return Api().get('buyer/getPendingOrders', {
+      params: {
+        buyerId: buyerId
+      }
+    })
+  },
   getBuyersOrders (buyerId) {
     return Api().get('getBuyersOrders', {
       params: {
