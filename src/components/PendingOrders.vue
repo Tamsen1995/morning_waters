@@ -1,20 +1,9 @@
 <template>
   <div class="container">
     <dashboard-header></dashboard-header>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <h1>Pending orders page</h1>
-    <br>
-    <br>
-    <br>
+
 
     <!-- This shall be converted to an actual order array. -->
     <!-- <div

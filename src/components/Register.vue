@@ -13,17 +13,17 @@
         <!-- Loadng animation -->
         <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
-        <div class="card " id="register">
+        <div class="card" id="register">
           <div class="error" v-html="error"/>
           <!-- Form -->
-          <form>
+          <form >
             <h1>Sign Up</h1>
-            <br>
+
             <hr>
             <div class="container">
                 <div v-if="step === 1">
              
-                    <h2>Personal Info</h2>
+                    <h2 style="color:#880599;">Personal Info</h2>
 
                     <div class="form-group row">
                       <label for="name" class="col-sm col-form-label">Name:</label>
@@ -98,17 +98,22 @@
                         >
                       </div>
                     </div>
-                    <br>
-                    <br>
 
 
-                  <button @click.prevent="next()">Next</button>
+                  <button @click.prevent="next()"
+                    type="button" 
+                    class="btn btn-outline float-right" 
+                    id="btn-next"
+                    >
+                    <h3>Next</h3>
+
+                  </button>
                 </div>
 
                 <!-- Company Info -->
                 <div v-if="step === 2">
                   
-                    <h2>Company Info</h2>
+                    <h2 style="color:#880599">Company Info</h2>
                     <!-- Company Name -->
                     <div class="form-group row">
                       <label for="inputCompanyName" class="col-sm col-form-label">Company Name:</label>
@@ -218,43 +223,108 @@
                     </div>
                     <br>
 
-                  <div class="row">
-                    <button @click.prevent="prev()">Previous</button>
-                    <button @click.prevent="next()">Next</button>
-                  </div>
+                  
+                  <button @click.prevent="prev()" 
+                    type="button" 
+                    class="btn btn-outline" 
+                    id="btn-previous">
+                    <h3>Previous</h3>
+                  </button>
+                  <button @click.prevent="next()" 
+                    type="button" 
+                    class="btn btn-outline float-right" 
+                    id="btn-next">
+                    <h3>Next</h3>
+                  </button>
+                  
                 </div>
 
             </div>
             
             <!-- Terms & Conditions -->
             <div v-if="step === 3">
-              Terms & Conditions
-              <div name="termly-embed" data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8" data-type="iframe"></div>
               <div class="row">
-                <button @click.prevent="prev()">Previous</button>
-                <button @click.prevent="next()">Next</button>
+                <div class="col">
+                  Terms & Conditions
+                </div>
               </div>
+              <div name="termly-embed" data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8" data-type="iframe"></div>
+              
+              <button @click.prevent="prev()" 
+                type="button" 
+                class="btn btn-outline " 
+                id="btn-previous">
+                <h3>Previous</h3>
+                </button>
+              <button @click.prevent="next()" 
+                type="button" 
+                class="btn btn-outline float-right" 
+                id="btn-next">
+                <h3>Next</h3>
+              </button>
+              
             </div>
             
             <!-- Privacy -->
             <div v-if="step === 4">
-              Privacy
               <div class="row">
-                <button @click.prevent="prev()">Previous</button>
-                <button @click.prevent="next()">Next</button>
+                <div class="col">
+                  Privacy
+                </div>
               </div>
+              <div class="row">
+                <div class="col">
+                  <div name="termly-embed" data-id="a291c868-81c5-4419-81c8-735597b64d86" data-type="iframe"></div>
+                </div>
+              </div>
+
+              <button @click.prevent="prev()" 
+                type="button" 
+                class="btn btn-outline " 
+                id="btn-previous">
+                <h3>Previous</h3>
+              </button>
+              <button @click.prevent="next()" 
+                type="button" 
+                class="btn btn-outline float-right" 
+                id="btn-next" >
+                <h3>Next</h3>
+              </button>
+              
             </div>
 
             <!-- Shippo -->
             <div v-if="step === 5">
-              Create an account with our partners at Shippo, your one stop shop to fufilling all of your shipping needs.
               <div class="row">
-                <button @click.prevent="prev()">Previous</button>
-                <div style="text-align:center;">
-                <button type="button" class="btn btn-outline" id="submit" @click="register">
-                  <h3>Submit</h3>
-                </button>
+                <div class="col">
+                  Create an account with our partners at Shippo, your one stop shop to fufilling all of your shipping needs.
+
+                  <div class="row">
+                    <div class="col">
+                      <button @click.prevent="prev()" 
+                        type="button" 
+                        class="btn btn-outline" 
+                        id="btn-previous">
+                        <h3>Previous</h3>
+                      </button>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              
+
+
+              <div class="row">
+                <div class="col">
+                <hr>
+                <!-- <div style="text-align:center;"> -->
+                  <button type="button" 
+                    class="btn btn-outline btn-block" 
+                    id="btn-submit" @click="register">
+                    <h3>Submit</h3>
+                  </button>
+                </div>
+                <!-- </div> -->
               </div>
 
             </div>
@@ -273,7 +343,7 @@
             <div style="text-align:center">
               <a href="#">Terms and Conditions</a>
               <br>
-              <a href="#">Privacy</a>
+              <a href="https://app.termly.io/document/privacy-policy/a291c868-81c5-4419-81c8-735597b64d86">Privacy</a>
             </div>
           </div>
           <!-- <hr>
@@ -293,6 +363,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../assets/css/forms.css";
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 .error {
   color: red;
 }
