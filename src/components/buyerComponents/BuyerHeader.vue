@@ -2,7 +2,7 @@
   <div id="app">
     <b-nav class="navbar navbar-expand-lg navbar-light fixed-top" id="dashboard_nav">
       <div class="container">
-        <a class="navbar-brand" >
+        <a class="navbar-brand">
           <img src="./../TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
         </a>
         <button
@@ -67,10 +67,10 @@
                 class="nav-link"
                 @click="redirectToInbox()"
                 style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
-              >Inbox
+              >
+                Inbox
                 <span class="badge badge-primary">{{itemsInCart}}</span>
               </a>
-              
             </li>
 
             <!-- Billing -->
@@ -96,7 +96,7 @@
                 @click="redirectToSettings()"
                 style="padding-top:0px;padding-bottom:0px;padding-left:15px;"
               >
-                <i class="fas fa-sliders-h" id="dash_icon"></i> 
+                <i class="fas fa-sliders-h" id="dash_icon"></i>
               </a>
               <a
                 class="nav-link"
@@ -131,9 +131,7 @@
                   class="nav-link"
                   @click="buyerLogout()"
                   style="padding-top:0px;padding-bottom:0px;"
-                >
-                Logout</a>
-    
+                >Logout</a>
               </router-link>
             </li>
           </ul>

@@ -63,7 +63,7 @@
                 <div class="error" v-html="error"/>
 
                 <div class="container" id="center">
-                  <button type="button" class="btn btn-outline" id="btn-login" @click="login">
+                  <button type="button" class="btn btn-outline" id="btn-login" @click="login()">
                     <h3>Submit</h3>
                   </button>
                   <br>

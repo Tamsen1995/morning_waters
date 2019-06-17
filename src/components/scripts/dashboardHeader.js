@@ -19,7 +19,7 @@ export default {
         this.$store.dispatch('setUser', null)
         this.$store.dispatch('setQuoteToBeRequested', null)
         this.$store.dispatch('setSidebarHighlight', '')
-        await AuthenticationService.logout
+        await AuthenticationService.logout()
       } catch (error) {
         if (error) throw error
       }
