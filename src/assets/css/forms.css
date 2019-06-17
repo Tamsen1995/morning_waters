@@ -37,9 +37,12 @@ h1 {
 
 .card {
     margin-bottom: 0px;
+    max-width:600px;
+    margin-left: auto;
+    margin-right:auto;
 }
 
-.card#rounded {
+.card #rounded {
     border-radius: 10px;
 }
 
@@ -68,13 +71,23 @@ h1 {
 
 form {
     border-radius: 5px;
-    max-width:700px;
+    max-width:600px;
     width:100%;
-    margin: 5% auto;
+    /* margin: 5% auto; */
     padding: 5px 15px;
     background-color: #FFFFFF;
     overflow: hidden; 
     border-radius: 25px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height:auto;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
 }
 
 #register{
@@ -88,7 +101,7 @@ form {
 }
 
 #personalinfo {
-    width:49.5%; 
+    width: 49.5%; 
     float:left;
     border-right: 1px dotted #CCC;
     box-sizing: border-box;
@@ -194,21 +207,15 @@ p {
 
 
 
-
-
 /* Responsive ish */
-
-.responsive-component.small body.register{
-    padding-left: 10px;
-    padding-right: 10px;
-}
 
 .responsive-component.small .fixed-horizontal-center {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;  
+    width: 90%;  
 }
+
 
 /* ------Login Form--------- */
 

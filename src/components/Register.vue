@@ -3,11 +3,9 @@
   <page-header></page-header>
   <div
     class="responsive-component"
-    v-responsive="{
-      small: el => el.width < 430,
-      large: el=> el.width > 1030
-      }"
-  >
+    v-responsive= "{
+      small: el => el.width < 860
+      }">
     <body>
       <div class="fixed-horizontal-center">
         <!-- Loadng animation -->
@@ -245,11 +243,17 @@
             <div v-if="step === 3">
               <div class="row">
                 <div class="col">
+                  <h3>
                   Terms & Conditions
+                  </h3>
                 </div>
               </div>
               <div name="termly-embed" data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8" data-type="iframe"></div>
-              
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="termsCheck">
+                <label class="form-check-label" for="termsCheck" style="padding-left:20px;">Accept</label>
+              </div>
+              <br>
               <button @click.prevent="prev()" 
                 type="button" 
                 class="btn btn-outline " 
@@ -269,7 +273,7 @@
             <div v-if="step === 4">
               <div class="row">
                 <div class="col">
-                  Privacy
+                  <h3>Privacy</h3>
                 </div>
               </div>
               <div class="row">
@@ -277,6 +281,15 @@
                   <div name="termly-embed" data-id="a291c868-81c5-4419-81c8-735597b64d86" data-type="iframe"></div>
                 </div>
               </div>
+
+              <!-- Mandatory -->
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="privacyCheck">
+                <label class="form-check-label" for="privacyCheck" style="padding-left:20px;">Accept</label>
+              </div>
+              <br>
+
+
 
               <button @click.prevent="prev()" 
                 type="button" 
@@ -297,8 +310,24 @@
             <div v-if="step === 5">
               <div class="row">
                 <div class="col">
-                  Create an account with our partners at Shippo, your one stop shop to fufilling all of your shipping needs.
-
+                  
+                  <div class="row">
+                    <div class="col" >
+                      <img src="../assets/css/shippo_logo.jpg" alt="Shippo" class="center">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col" style="text-align:center;">
+                      Shippo is our trusted partner for all things shipping, including: expedited shipping, insurrance and dry ice. 
+                    </div>
+                  </div>
+                  <br> <br>
+                  On <span style="background-color:purple; color:white;"> Submit</span> you will redirected to create an account with Shippo
+                   to seamlessly manage shipping logistics on our platform. 
+                  <br> <br>
+                  (Not mandatory, but highly recommended!)
+                  <br>
+                  <br>
                   <div class="row">
                     <div class="col">
                       <button @click.prevent="prev()" 
