@@ -41,16 +41,15 @@
       <br>
     </div>-->
 
-    <div
-      id="pending-order"
-      v-for="(pendingOrder, index) in this.pendingOrders"
-      v-bind:key="index"
-      @click="confirmOrder(index)"
-    >
+    <div id="pending-order" v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index">
       <br>
       <h3>ORDER ID :</h3>
       {{pendingOrder.orderId}}
       <br>
+
+      <button type="submit" @click="confirmOrder(index)">Shipping</button>
+      <button type="submit" @click="goToOrderStatus(index)">Status</button>
+
       <br>
     </div>
 
