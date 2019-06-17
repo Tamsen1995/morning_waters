@@ -5,7 +5,7 @@ body {
     background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
     background-size: cover;
     text-align:center;
-    padding-top: 80px;
+    padding-top: 70px;
     min-height: 100vh; 
 }
 
@@ -37,9 +37,12 @@ h1 {
 
 .card {
     margin-bottom: 0px;
+    max-width:600px;
+    margin-left: auto;
+    margin-right:auto;
 }
 
-.card#rounded {
+.card #rounded {
     border-radius: 10px;
 }
 
@@ -68,14 +71,28 @@ h1 {
 
 form {
     border-radius: 5px;
-    max-width:700px;
+    max-width:600px;
     width:100%;
-    margin: 5% auto;
-    padding: 30px 15px;
+    /* margin: 5% auto; */
+    padding: 5px 15px;
     background-color: #FFFFFF;
-    overflow: hidden;
+    overflow: hidden; 
+    border-radius: 25px;
 }
 
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height:auto;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+}
+
+#register{
+    border-radius: 10px;
+}
 
 #register, label{
     font: 18px 'Roboto';
@@ -83,20 +100,17 @@ form {
     text-align:left;
 }
 
-
-
-
- #personalinfo {
-    width:49.5%; 
+#personalinfo {
+    width: 49.5%; 
     float:left;
     border-right: 1px dotted #CCC;
     box-sizing: border-box;
     padding: 0px 15px 0px 0px;
     overflow: hidden;
     clear: both;
-  }
+}
   
- #companyinfo {
+#companyinfo {
     width:49.5%;
     float:right;
     box-sizing: border-box;
@@ -129,10 +143,63 @@ p {
     font: 20px "roboto";
 }
 
-.btn#btn-login {
+#btn-login {
     color: white;
     border-color: #361555;
     background-color: #361555;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#btn-submit {
+    color: white;
+    border-color: #361555;
+    background-color: #361555;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#btn-submit:hover {
+    color: white;
+    border-color: #850696;
+    background-color: #850696;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#btn-next {
+    color: white;
+    border-color: #850696;
+    background-color: #850696;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+#btn-next:hover {
+    color: white;
+    border-color: #b109c7;
+    background-color: #b109c7;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#btn-previous {
+    color: #850696;
+    border-color: #850696;
+    background-color: white;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#btn-previous:hover {
+    color: #a109c7;
+    border-color: #a109c7;
+    background-color: rgb(228, 228, 228);
     justify-content: center;
     display: inline-block;
     border-radius: 5px;
@@ -142,17 +209,13 @@ p {
 
 /* Responsive ish */
 
-.responsive-component.small body.register{
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 .responsive-component.small .fixed-horizontal-center {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;  
+    width: 90%;  
 }
+
 
 /* ------Login Form--------- */
 
@@ -195,7 +258,7 @@ p {
     text-align: left;
 }
 
-/* button */
+
 
 
 #legal-links {
