@@ -16,6 +16,7 @@ export default {
       orders: [],
       pendingOrders: [],
       quoteRequests: null,
+      orderItems: null,
       order: null,
       quoteRequest: null,
       complete: true,
@@ -52,6 +53,18 @@ export default {
         if (error) throw error
       }
     },
+
+    async retrieveOrderOrderItems (order) {
+      try {
+        const orderId = order.orderId
+        const response = await InboxService.retrieveOrderOrderItems(orderId)
+        this.orderItems = response.data.orderItems
+      } catch (error) {
+        console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
+
     async showOrder (order) {
       try {
         this.order = order

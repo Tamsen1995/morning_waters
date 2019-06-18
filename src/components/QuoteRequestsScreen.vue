@@ -67,7 +67,7 @@
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
                     v-bind:key="index"
-                    @click="showOrder(order)"
+                    @click="showOrder(order), retrieveOrderOrderItems(order)"
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}

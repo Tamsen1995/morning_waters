@@ -1,6 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
+  retrieveOrderOrderItems (orderId) {
+    return Api().get('orders/retrieveOrderOrderItems', {
+      params: {
+        orderId: orderId
+      }
+    })
+  },
   retrieveOrderInvoice (orderId) {
     return Api().get('retrieveOrderInvoice', {
       responseType: 'arraybuffer',
