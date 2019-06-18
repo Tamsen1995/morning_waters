@@ -58,7 +58,10 @@ export default {
       try {
         const orderId = order.orderId
         const response = await InboxService.retrieveOrderOrderItems(orderId)
-        this.orderItems = response.data.orderItems
+        // response.data.orderItems
+
+        const servicesNegotiated = await InboxService.retrieveServicesNegotiated(response.data.orderItems)
+        console.log(`\n\nTesting the services negotiated : ${JSON.stringify(servicesNegotiated)}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error

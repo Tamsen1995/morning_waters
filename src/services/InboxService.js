@@ -1,6 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
+  retrieveServicesNegotiated (orderItems) {
+    return Api().get('seller/orders/retrieveServicesNegotiated', {
+      params: {
+        orderItems: orderItems
+      }
+    })
+  },
   retrieveOrderOrderItems (orderId) {
     return Api().get('orders/retrieveOrderOrderItems', {
       params: {

@@ -173,6 +173,15 @@
                 <button v-on:click="submitMessage()">Submit</button>
               </div>
               <!-- /.panel-body -->
+
+              <div class="panel-body">
+                Negotiaion Interface [TESTING]:
+                <div v-for="(item, index) in this.orderItems" v-bind:key="index">
+                  <br>
+                  {{ item }}
+                  <br>
+                </div>
+              </div>
             </div>
           </div>
           <!-- /.message-sideright -->
