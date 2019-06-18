@@ -17,6 +17,7 @@ export default {
       pendingOrders: [],
       quoteRequests: null,
       orderItems: null,
+      servicesNegotiated: null,
       order: null,
       quoteRequest: null,
       complete: true,
@@ -60,8 +61,10 @@ export default {
         const response = await InboxService.retrieveOrderOrderItems(orderId)
         // response.data.orderItems
 
-        const servicesNegotiated = await InboxService.retrieveServicesNegotiated(response.data.orderItems)
-        console.log(`\n\nTesting the services negotiated : ${JSON.stringify(servicesNegotiated)}\n`) // TESTING
+        const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
+
+        this.orderItems = response.data.orderItems
+        this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error

@@ -176,7 +176,7 @@
 
               <div class="panel-body">
                 Negotiaion Interface [TESTING]:
-                <div v-for="(item, index) in this.orderItems" v-bind:key="index">
+                <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   <br>
                   {{ item }}
                   <br>
