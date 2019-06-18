@@ -12,30 +12,7 @@
 
   <h1>Checkout</h1>
 
-  <body>
-    <div class="grid-container">
-      <div class="grid-item">
-        <div v-if="this.customerDefaultSource !== null" class="default-source">
-          <div class="change-preference">
-            <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link>
-          </div>
-          <br>
-          <div class="default-payment-card">
-            Default Payment Method:
-            <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
-            <pre> expires : {{ this.customerDefaultSource.exp_month }} / {{ this.customerDefaultSource.exp_year }}</pre>
-          </div>
-        </div>
-
-        <div v-else>No default payment method</div>
-
-        <br>
-        <br>
-        <!-- make input for card -->
-        <!-- <input type="submit" value="Purchase" class="checkout-btn" @click="submitPaymentMethod"> -->
-      </div>
-    </div>
-  </body>
+  <body></body>
 
   <div id="stripeCard">
     <div ref="card"></div>
