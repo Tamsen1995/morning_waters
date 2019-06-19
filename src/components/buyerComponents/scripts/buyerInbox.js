@@ -37,7 +37,18 @@ export default {
     BuyerHeader
   },
   methods: {
-
+    async confirmOrder () {
+      try {
+        // console.log(`\n\n-- > ${this.order.orderId}\n`) // TESTING
+        await InboxService.confirmOrder({
+          orderId: this.order.orderId,
+          user: 'buyer'
+        })
+      } catch (error) {
+        console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
+        if (error) throw error
+      }
+    },
     async submitMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING

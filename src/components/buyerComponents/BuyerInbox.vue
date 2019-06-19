@@ -176,6 +176,8 @@
               <!-- /.panel-body -->
 
               <div class="panel-body">
+                <button v-on:click="confirmOrder()">Submit Order</button>
+
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   {{orderItems[index].amount }} X
                   {{item.title}}
