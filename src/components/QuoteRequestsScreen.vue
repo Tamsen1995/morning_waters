@@ -190,7 +190,7 @@
                     {{ item.title }}
                     <p
                       style="color:red;font-size:15px;"
-                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $ times the amount of the vmodel index</p>
+                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                   </div>
 
                   <br>

@@ -45,7 +45,11 @@ export default {
   methods: {
     async updateOrderItems (index) {
       try {
-        console.log(`\nThe index being of the order being: ${JSON.stringify(this.orderItems[index])}\n`) // TESTING
+        // console.log(`\nThe index being of the order being: ${this.amtForServicesNegotiated[index]}  ; ${this.orderItems[index].amount} ;  ${this.orderItems[index].price}\n`) // TESTING
+        this.orderItems[index].amount = this.amtForServicesNegotiated[index]
+        this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
+        // TODO : update the value of this order item in the back after dynamic retrieval has been implemented.
+        await InboxService.updateOrderItem(this.orderItems[index])
       } catch (error) {
         if (error) throw error
       }
@@ -64,8 +68,8 @@ export default {
 
         this.orderItems = response.data.orderItems
         this.servicesNegotiated = servicesNegotiated
-        for (var i = 0; i < this.servicesNegotiated.length; i++) {
-          this.amtForServicesNegotiated.push(0)
+        for (var i = 0; i < this.orderItems.length; i++) {
+          this.amtForServicesNegotiated.push(this.orderItems[i].amount)
         }
         console.log(`\n\nHow many in this ? ${this.amtForServicesNegotiated}\n`) // TESTING
       } catch (error) {
