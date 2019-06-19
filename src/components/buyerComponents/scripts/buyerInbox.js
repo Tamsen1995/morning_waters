@@ -23,10 +23,6 @@ export default {
   async created () {
     await this.getBuyersOrders()
     await this.getBuyersPendingOrders()
-    // await this.getBuyersQuoteRequests()
-    // if (this.buyerOrderItems.length > 0) {
-    //   this.segmentOrderItems()
-    // }
     if (this.buyerQuoteRequests.length > 0) {
       this.segmentBuyerQuoteRequests()
     }
