@@ -44,13 +44,13 @@
             
             
             <!-- If Order Confirmed -->
-            <!-- <h3>Order Status:</h3> 
+            <h3>Order Status:</h3> 
             <h2>Seller purchased shipping label</h2>
-            <br> -->
+            <br>
 
 
             <!-- IF Order UNCONFIRMED -->
-            <h2 class="status-unconfirmed" style="color:red;">Order Unconfirmed</h2> 
+            <!-- <h2 class="status-unconfirmed" style="color:red;">Order Unconfirmed</h2>  -->
             
             
             <!-- View Order Details, Add expandable Div -->
@@ -75,20 +75,20 @@
           <div class="col-4">
 
             <!-- IF order CONFIRMED -->
-            <!-- <h3 class="pull-right" style="color:green;"> Order Confirmed [Date]</h3>          -->
+            <h3 class="pull-right" style="color:green;"> Order Confirmed [Date]</h3>         
             
             <!-- IF Order UNCONFIRMED -->
             <!--Confirm order links to inbox message-->
-            <h3 class="pull-right" style="color:red;">Order Submitted [Date] </h3>
+            <!-- <h3 class="pull-right" style="color:red;">Order Submitted [Date] </h3> -->
           </div>
         </div>
         <br>
 
         <!-- IF UNCONFIRMED -->
-        <button class="btn-danger" id="btn-confirm-order">Confirm Order</button>
+        <!-- <button class="btn-danger" id="btn-confirm-order">Confirm Order</button> -->
         
         <!-- IF CONFIRMED -->
-        <!-- <button class="btn-timeline" id="btn-timeline" type="submit" @click="goToOrderStatus(index)">View Timeline</button> -->
+        <button class="btn-timeline" id="btn-timeline" type="submit" @click="goToOrderStatus(index)">View Timeline</button>
         
         <!-- Handle shipping -->
         <button id="btn-shippo" type="submit" @click="confirmOrder(index)">
