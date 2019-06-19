@@ -23,6 +23,11 @@ export default {
   appendShippingToOrder (shippingStatus) {
     return Api().put('appendShippingToOrder', shippingStatus)
   },
+  // This will activate an order after shipping
+  // logistics have been ruled out
+  activateOrder (orderId) {
+    return Api().post('seller/shipping/orders/activateOrder', orderId)
+  },
   createOrderOnShippo (orderLogistics) {
     return Api().post('seller/shipping/orders/create_order', orderLogistics)
   },
