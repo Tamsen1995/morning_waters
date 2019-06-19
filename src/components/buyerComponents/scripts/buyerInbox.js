@@ -39,11 +39,12 @@ export default {
   methods: {
     async confirmOrder () {
       try {
-        // console.log(`\n\n-- > ${this.order.orderId}\n`) // TESTING
         await InboxService.confirmOrder({
           orderId: this.order.orderId,
           user: 'buyer'
         })
+
+        await InboxService.submitToPendingOrders({ orderId: this.order.orderId })
       } catch (error) {
         console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
         if (error) throw error

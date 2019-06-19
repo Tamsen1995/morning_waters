@@ -1,6 +1,9 @@
 import Api from '@/services/Api'
 
 export default {
+  submitToPendingOrders (orderId) {
+    return Api().post('orders/submitToPendingOrders', orderId)
+  },
   confirmOrder (orderConfirm) {
     return Api().post('orders/confirmOrder', orderConfirm)
   },
