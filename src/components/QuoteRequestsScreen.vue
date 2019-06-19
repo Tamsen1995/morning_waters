@@ -180,10 +180,16 @@
                   <br>
 
                   <div>
-                    <input type="number" placeholder="amount" style="width:8%;">
+                    <input
+                      v-model="amtForServicesNegotiated[index]"
+                      placeholder="amount"
+                      style="width:8%;"
+                    >
+                    X
                     {{ item.title }}
-                    <br>
-                    <p style="color:red;font-size:15px;">{{ item.servicePrice }} $</p>
+                    <p
+                      style="color:red;font-size:15px;"
+                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $ times the amount of the vmodel index</p>
                   </div>
 
                   <br>

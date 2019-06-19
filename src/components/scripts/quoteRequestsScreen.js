@@ -18,6 +18,7 @@ export default {
       quoteRequests: null,
       orderItems: null,
       servicesNegotiated: null,
+      amtForServicesNegotiated: [],
       order: null,
       quoteRequest: null,
       complete: true,
@@ -44,6 +45,10 @@ export default {
   methods: {
     async retrieveOrderOrderItems (order) {
       try {
+        this.orderItems = null
+        this.servicesNegotiated = null
+        this.amtForServicesNegotiated = []
+
         const orderId = order.orderId
         const response = await InboxService.retrieveOrderOrderItems(orderId)
         // response.data.orderItems
@@ -52,6 +57,10 @@ export default {
 
         this.orderItems = response.data.orderItems
         this.servicesNegotiated = servicesNegotiated
+        for (var i = 0; i < this.servicesNegotiated.length; i++) {
+          this.amtForServicesNegotiated.push(0)
+        }
+        console.log(`\n\nHow many in this ? ${this.amtForServicesNegotiated}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error
