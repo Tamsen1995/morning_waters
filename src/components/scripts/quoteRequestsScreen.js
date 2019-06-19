@@ -16,6 +16,9 @@ export default {
       orders: [],
       pendingOrders: [],
       quoteRequests: null,
+      orderItems: null,
+      servicesNegotiated: null,
+      amtForServicesNegotiated: [],
       order: null,
       quoteRequest: null,
       complete: true,
@@ -40,6 +43,36 @@ export default {
     // await this.getInboxMessages()
   },
   methods: {
+    async updateOrderItems (index) {
+      try {
+        this.orderItems[index].amount = this.amtForServicesNegotiated[index]
+        this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
+        const response = await InboxService.updateOrderItem(this.orderItems[index])
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async retrieveOrderOrderItems (order) {
+      try {
+        this.orderItems = null
+        this.servicesNegotiated = null
+        this.amtForServicesNegotiated = []
+
+        const orderId = order.orderId
+        const response = await InboxService.retrieveOrderOrderItems(orderId)
+
+        const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
+
+        this.orderItems = response.data.orderItems
+        this.servicesNegotiated = servicesNegotiated
+        for (var i = 0; i < this.orderItems.length; i++) {
+          this.amtForServicesNegotiated.push(this.orderItems[i].amount)
+        }
+      } catch (error) {
+        console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
 
     async showQuoteRequest (request) {
       try {
@@ -52,6 +85,7 @@ export default {
         if (error) throw error
       }
     },
+
     async showOrder (order) {
       try {
         this.order = order
@@ -84,6 +118,18 @@ export default {
         InboxService.generateInvoice(this.order)
         console.log(`\nThis button should ideally generate an invoice\n`) // TESTING
       } catch (error) {
+        if (error) throw error
+      }
+    },
+    async submitOrder () {
+      try {
+        // set the order confirmed on the seller side to true
+        await InboxService.confirmOrder({
+          orderId: this.order.orderId,
+          user: 'seller'
+        })
+      } catch (error) {
+        console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
         if (error) throw error
       }
     },

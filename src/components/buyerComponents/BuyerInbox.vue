@@ -67,7 +67,7 @@
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
                     v-bind:key="index"
-                    @click="showOrder(order)"
+                    @click="showOrder(order), retrieveOrderOrderItems(order)"
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
@@ -174,6 +174,18 @@
                 <button v-on:click="submitMessage()">Submit</button>
               </div>
               <!-- /.panel-body -->
+
+              <div class="panel-body">
+                <button v-on:click="confirmOrder()">Submit Order</button>
+
+                <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
+                  {{orderItems[index].amount }} X
+                  {{item.title}}
+                  <p
+                    style="color:red;font-size:15px;"
+                  >{{ item.servicePrice * orderItems[index].amount }} $</p>
+                </div>
+              </div>
             </div>
           </div>
           <!-- /.message-sideright -->

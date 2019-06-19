@@ -11,6 +11,8 @@ export default {
       buyerQuoteRequests: null,
       quoteRequest: null,
       order: null,
+      orderItems: [],
+      servicesNegotiated: [],
       // orders:[] is an array holding several objects, each representing an order
       quoteOrders: [],
       dropdownVariable: 'All messages',
@@ -21,10 +23,6 @@ export default {
   async created () {
     await this.getBuyersOrders()
     await this.getBuyersPendingOrders()
-    // await this.getBuyersQuoteRequests()
-    // if (this.buyerOrderItems.length > 0) {
-    //   this.segmentOrderItems()
-    // }
     if (this.buyerQuoteRequests.length > 0) {
       this.segmentBuyerQuoteRequests()
     }
@@ -35,7 +33,19 @@ export default {
     BuyerHeader
   },
   methods: {
+    async confirmOrder () {
+      try {
+        await InboxService.confirmOrder({
+          orderId: this.order.orderId,
+          user: 'buyer'
+        })
 
+        await InboxService.submitToPendingOrders({ orderId: this.order.orderId })
+      } catch (error) {
+        console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
+        if (error) throw error
+      }
+    },
     async submitMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
@@ -84,6 +94,18 @@ export default {
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.correspondanceMessages = response.data.correspondance
       } catch (error) {
+        if (error) throw error
+      }
+    },
+    async retrieveOrderOrderItems (order) {
+      try {
+        const response = await InboxService.retrieveOrderOrderItems(order.orderId)
+        const response2 = await InboxService.retrieveServicesNegotiated(response.data.orderItems)
+
+        this.orderItems = response.data.orderItems
+        this.servicesNegotiated = response2.data
+      } catch (error) {
+        console.log(`\nError in retrieveOrderOrderItems\n`) // TESTING
         if (error) throw error
       }
     },

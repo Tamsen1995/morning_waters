@@ -1,5 +1,6 @@
 <template>
 
+
   <div class="responsive-component" v-responsive= "{
   small: el => el.width < 860
   }">
@@ -9,6 +10,7 @@
     <div id="pending_orders_content">
 
       <h1>Pending Orders</h1>
+
       <br>
 
 
