@@ -182,6 +182,7 @@
                   <div>
                     <input type="number" placeholder="amount" style="width:8%;">
                     {{ item.title }}
+                    <br>
                     <p style="color:red;font-size:15px;">{{ item.servicePrice }} $</p>
                   </div>
 
