@@ -476,6 +476,6 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-@import "../../assets/css/orders.css";
+@import "../../assets/css/timeline.css";
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 </style>
