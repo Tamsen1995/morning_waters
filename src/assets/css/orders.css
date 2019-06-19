@@ -120,10 +120,27 @@ ul.timeline > li:before {
   z-index: 400;
 } */
 
+/* Orders Responsive ish */
+
+.responsive-component.small body.orders {
+  padding-top: 85px;
+  padding-left: 10px;
+  padding-bottom: 100px;
+  text-align:left;
+  background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
+  min-height: 100vh;  
+}
+
+.responsive-component.small #orders {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;  
+}
 
 /* SELLER: PENDING ORDERS */
 body.pending_orders {
-  padding-top: 300px;
+  padding-top: 80px;
   padding-bottom: 100px;
   padding-left: 0px;
   padding-right: 0px; 
@@ -138,20 +155,25 @@ body.pending_orders {
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-  min-width: 300px;
+  min-width: 400px;
+  max-width: 800px;
 }
 
 #pending-order {
-  border: solid purple 2px;
+  border: solid #29105b 2px;
   border-radius: 5px;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 15px;
-  margin-bottom:20px;
+  padding-top:10px;
+}
+
+#pending_orders_content .status_panel {
+  padding: 10px;
 }
 
 #order_details {
-  padding-left: 50px;
+  padding-left: 10px;
 }
 
 #ask-seller-if-seller-needs-to-ship {
@@ -161,16 +183,111 @@ body.pending_orders {
   height: 100%;
 }
 
-a, p {
+a.invoice-link {
   text-align:center;
-  font: 14px 'Roboto';
+  font: 16px 'Roboto';
   color: #29105b;
 }
 
-h1 {
+a.invoice-link:hover,
+a.invoice-link:focus {
+  color: #6a2c86;
+}
+
+#pending_orders_content h1 {
   font: 28px 'Roboto';
-  color: purple;
+  color: #29105b;
   text-align:center;
+}
+
+#pending_orders_content h2 {
+  text-transform: uppercase;
+  font: 20px 'Roboto';
+  color: #29105b;
+  text-align:left;
+}
+
+#pending_orders_content h3 {
+  font: 18px 'Roboto';
+  color: #29105b;
+  text-align:left;
+}
+
+#order_details h2 {
+  text-transform: uppercase;
+  font: 20px 'Roboto';
+  color: #29105b;
+  text-align:left;
+}
+
+#order_details h3 {
+  font: 18px 'Roboto';
+  color: #29105b;
+  text-align:left;
+}
+
+#btn-shippo {
+  color: white;
+  border-color: yellowgreen;
+  border-width: 2px;
+  background-color: yellowgreen;
+  justify-content: center;
+  display: inline-block;
+  border-radius: 5px;
+  font-size:18px;
+}
+
+#btn-shippo:hover {
+  color: white;
+  border-color: rgb(121, 161, 39);
+  background-color: rgb(121, 161, 39);
+  border-width: 2px;
+  justify-content: center;
+  display: inline-block;
+  border-radius: 5px;
+  font-size:18px;
+}
+
+#btn-timeline{
+  color: white;
+  border-color: purple;
+  border-width: 2px;
+  background-color: purple;
+  justify-content: center;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+#btn-timeline:hover{
+  color: white;
+  border-color: rgb(179, 1, 179);
+  border-width: 2px;
+  background-color: rgb(179, 1, 179);
+  justify-content: center;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+#btn-confirm-order{
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+/* Responsive ish */
+.responsive-component.small body.pending_orders{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.responsive-component.small #pending_orders_content {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  min-width: 400px;
+  max-width: 800px; 
 }
 
 /* Current Orders Timeline */
@@ -367,37 +484,4 @@ ul.oh_timeline > li:before {
   z-index: 400;
 }
 
-/* orders Responsive ish */
-/* .responsive-component.small body.orders {
-  padding-left: 10px;
-  padding-right: 10px; 
-} */
 
-.responsive-component.small body.orders {
-  padding-top: 85px;
-  padding-left: 10px;
-  padding-bottom: 100px;
-  text-align:left;
-  background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
-  min-height: 100vh;  
-}
-
-.responsive-component.small #orders {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;  
-}
-
-/* Responsive ish */
-.responsive-component.small body.pending_orders{
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.responsive-component.small #pending_orders_content {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;  
-}
