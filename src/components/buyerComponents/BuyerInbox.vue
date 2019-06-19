@@ -175,30 +175,15 @@
               </div>
               <!-- /.panel-body -->
 
-              <!-- <div class="panel-body">
-                Negotiaion Interface [TESTING]:
-                <button @click="submitOrder()">Submit Order</button>
-
+              <div class="panel-body">
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-                  <br>
-
-                  <div>
-                    <input
-                      v-model="amtForServicesNegotiated[index]"
-                      @change="updateOrderItems(index)"
-                      placeholder="amount"
-                      style="width:8%;"
-                    >
-                    X
-                    {{ item.title }}
-                    <p
-                      style="color:red;font-size:15px;"
-                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
-                  </div>
-
-                  <br>
+                  {{orderItems[index].amount }} X
+                  {{item.title}}
+                  <p
+                    style="color:red;font-size:15px;"
+                  >{{ item.servicePrice * orderItems[index].amount }} $</p>
                 </div>
-              </div>-->
+              </div>
             </div>
           </div>
           <!-- /.message-sideright -->
