@@ -60,7 +60,6 @@ export default {
 
         const orderId = order.orderId
         const response = await InboxService.retrieveOrderOrderItems(orderId)
-        // response.data.orderItems
 
         const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
 
@@ -69,7 +68,6 @@ export default {
         for (var i = 0; i < this.orderItems.length; i++) {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
         }
-        console.log(`\n\nHow many in this ? ${this.amtForServicesNegotiated}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error

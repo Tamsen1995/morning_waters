@@ -7,64 +7,65 @@
     <body class="dashboard">
       <div class="container" id="dashboard">
         <div id="main">
-            <div class="container" id="name-location">
-
-        
-                <div class="d-flex justify-content-center" id="company-name">
-                    <h1 style="text-align:center:">{{ this.companyName }}</h1>
-                </div>
-                    <div class="d-flex justify-content-center" id="company-location">
-                    <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
-                </div>
-                    <div class="d-flex justify-content-center" id="company-logo">
-                    <div id= "logo-border">
-                        <div class="circle" id="logo"></div>
-                    </div>
-                </div>
-                                                      
+          <div class="container" id="name-location">
+            <div class="d-flex justify-content-center" id="company-name">
+              <h1 style="text-align:center:">{{ this.companyName }}</h1>
             </div>
-
-            <!-- About Section -->
-            <div class="container" id="about">                
-                <div class="row">
-                    <h4>About:</h4><p style="text-align:left"> {{ this.about }}</p>
-                </div>
+            <div class="d-flex justify-content-center" id="company-location">
+              <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
             </div>
-            
+            <div class="d-flex justify-content-center" id="company-logo">
+              <div id="logo-border">
+                <div class="circle" id="logo"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- About Section -->
+          <div class="container" id="about">
+            <div class="row">
+              <h4>About:</h4>
+              <p style="text-align:left">{{ this.about }}</p>
+            </div>
+          </div>
         </div>
-      
-        <br>
-        <br>
-        <br>
-      
 
-      
+        <br>
+        <br>
+        <br>
 
         <div class="services">
           <br>
           <div id="services">
-            <button @click="manifestModalInquiry(service)" class="btn-gen-inq btn btn-primary pull-right">General inquiry</button>
-            <h4> Services:</h4>
-              
+            <button
+              @click="manifestModalInquiry(service)"
+              class="btn-gen-inq btn btn-primary pull-right"
+            >General inquiry</button>
+            <h4>Services:</h4>
           </div>
 
-          <div class="col-12"> 
-
-            <div
-              class="card"
-              v-for="(service, index) in this.services"
-              :key="service.id"
-            >
+          <div class="col-12">
+            <div class="card" v-for="(service, index) in this.services" :key="service.id">
               <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
               <div class="card-body">
                 <!-- Service Description -->
-                <button @click="manifestModalForm(service)" class="btn-quote-req btn btn-primary pull-right">Request Quote</button>
-                <h5 class="card-text" style="text-align:left; padding:15px;">{{ service.description }}</h5>
-                
+                <button
+                  @click="manifestModalForm(service)"
+                  class="btn-quote-req btn btn-primary pull-right"
+                >Request Quote</button>
+                <h5
+                  class="card-text"
+                  style="text-align:left; padding:15px;"
+                >{{ service.description }}</h5>
+
                 <!-- Service/Price Listings -->
-                
+                <button
+                  class="btn btn-success"
+                  @click="addServiceToCart(service, index)"
+                >Add to Cart</button>
+
                 <div class="container" id="price-chart">
-                  <p>
+                  <!-- <p>
                     <table class="table table-hover" >
                       <thead>
                           <tr>
@@ -90,13 +91,10 @@
                       </tbody>
 
                     </table>
-                  </p> 
+                  </p>-->
                 </div>
-                 
-
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -124,7 +122,7 @@
               v-model="inquiryText"
               class="form-control animated"
               placeholder="Enter your message"
-              rows=5
+              rows="5"
             ></textarea>
 
             <button
@@ -140,33 +138,33 @@
 
     <!-- Specific Inquiry -->
     <modal height="auto" scrollable="true" name="request-quote-modal" style="padding-bottom:25px">
-      <div class="container"  style="margin:25px" id="spec_inquiry">
+      <div class="container" style="margin:25px" id="spec_inquiry">
         <div class="row">
           <div class="col-10">
             <div v-if="this.itemChosen">
-              <p style="text-align:left;"><strong>Service : {{ this.itemChosen.title }}</strong>
-                <ul>
-                  <!-- price/unit -->
-                  <li>
-                  Price/Unit
-                  </li>
-
-                  <!-- turnaround time -->
-                  <li>
-                  Turnaround Time
-                  </li>
-                </ul>
-              
-                <label>Amount? (optional)</label>
-                <input v-model="pickedQuantityQuoteRequest"  type="number" style="width: 40px">
-              
-              <br>
-              <br>
-              Send message to Seller
-              <textarea v-model="inquiryText" class="form-control animated" placeholder="Enter your message" rows=5></textarea>
+              <p style="text-align:left;">
+                <strong>Service : {{ this.itemChosen.title }}</strong>
               </p>
-            </div>
+              <ul>
+                <!-- price/unit -->
+                <li>Price/Unit</li>
 
+                <!-- turnaround time -->
+                <li>Turnaround Time</li>
+              </ul>
+
+              <label>Amount? (optional)</label>
+              <input v-model="pickedQuantityQuoteRequest" type="number" style="width: 40px">
+
+              <br>
+              <br>Send message to Seller
+              <textarea
+                v-model="inquiryText"
+                class="form-control animated"
+                placeholder="Enter your message"
+                rows="5"
+              ></textarea>
+            </div>
           </div>
           <br>
         </div>
@@ -179,9 +177,6 @@
         >Submit</button>
       </div>
     </modal>
-
-
-
   </div>
 </div>
 </template>
@@ -192,7 +187,7 @@
 
 <style scoped>
 @import "../assets/css/dashboard.css";
-@import url('https://fonts.googleapis.com/css?family=Lato|Roboto');
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 div.card {
   margin-left: auto;
   margin-right: auto;

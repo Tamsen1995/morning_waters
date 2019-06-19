@@ -20,7 +20,7 @@ export default {
       pickedQuantityService: [],
       // modal form data
       inquiryText: '',
-      pickedQuantityQuoteRequest: 0,
+      pickedQuantityQuoteRequest: 1,
       itemChosen: null
     }
   },
@@ -101,9 +101,6 @@ export default {
         this.itemChosen = service
 
         this.$modal.show('request-quote-modal')
-        console.log(
-          `\nWhat is this item chosen : ${JSON.stringify(this.itemChosen)}\n`
-        ) // TESTING
       } catch (error) {
         if (error) throw error
       }
@@ -117,7 +114,8 @@ export default {
           sellerId: this.itemChosen.userId,
           serviceTitle: this.itemChosen.title,
           serviceDescription: this.itemChosen.description,
-          quantity: this.pickedQuantityQuoteRequest // I'm not sure why we would need this. Clarify with Stef
+          quantity: this.pickedQuantityQuoteRequest, // I'm not sure why we would need this. Clarify with Stef
+          price: this.pickedQuantityQuoteRequest * this.itemChosen.servicePrice
         }
 
         this.$store.dispatch('addQuoteRequestToCart', quoteRequestForService)
