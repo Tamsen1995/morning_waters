@@ -178,7 +178,13 @@
                 Negotiaion Interface [TESTING]:
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   <br>
-                  {{ item }}
+
+                  <div>
+                    <input type="number" placeholder="amount" style="width:8%;">
+                    {{ item.title }}
+                    <p style="color:red;font-size:15px;">{{ item.servicePrice }} $</p>
+                  </div>
+
                   <br>
                 </div>
               </div>

@@ -42,19 +42,6 @@ export default {
     // await this.getInboxMessages()
   },
   methods: {
-
-    async showQuoteRequest (request) {
-      try {
-        this.quoteRequest = request
-        this.order = null
-        const orderId = request.orderId
-        const response = await InboxService.retrieveCorrespondance(orderId)
-        this.correspondanceMessages = response.data.correspondance
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-
     async retrieveOrderOrderItems (order) {
       try {
         const orderId = order.orderId
@@ -67,6 +54,18 @@ export default {
         this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
+
+    async showQuoteRequest (request) {
+      try {
+        this.quoteRequest = request
+        this.order = null
+        const orderId = request.orderId
+        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.correspondanceMessages = response.data.correspondance
+      } catch (error) {
         if (error) throw error
       }
     },
