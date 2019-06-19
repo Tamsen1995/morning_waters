@@ -182,6 +182,7 @@
                   <div>
                     <input
                       v-model="amtForServicesNegotiated[index]"
+                      @change="updateOrderItems(index)"
                       placeholder="amount"
                       style="width:8%;"
                     >

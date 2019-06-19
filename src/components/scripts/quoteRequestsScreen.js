@@ -43,6 +43,13 @@ export default {
     // await this.getInboxMessages()
   },
   methods: {
+    async updateOrderItems (index) {
+      try {
+        console.log(`\nThe index being of the order being: ${JSON.stringify(this.orderItems[index])}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async retrieveOrderOrderItems (order) {
       try {
         this.orderItems = null
