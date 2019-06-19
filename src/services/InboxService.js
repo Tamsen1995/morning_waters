@@ -1,6 +1,9 @@
 import Api from '@/services/Api'
 
 export default {
+  confirmOrder (orderConfirm) {
+    return Api().post('orders/confirmOrder', orderConfirm)
+  },
   updateOrderItem (orderItem) {
     return Api().post('seller/orders/updateOrderItem', { orderItem })
   },

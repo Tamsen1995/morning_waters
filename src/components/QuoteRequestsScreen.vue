@@ -176,6 +176,8 @@
 
               <div class="panel-body">
                 Negotiaion Interface [TESTING]:
+                <button @click="submitOrder()">Submit Order</button>
+
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   <br>
 

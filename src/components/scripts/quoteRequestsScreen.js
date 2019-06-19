@@ -121,6 +121,18 @@ export default {
         if (error) throw error
       }
     },
+    async submitOrder () {
+      try {
+        // set the order confirmed on the seller side to true
+        await InboxService.confirmOrder({
+          orderId: this.order.orderId,
+          user: 'seller'
+        })
+      } catch (error) {
+        console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
     async submitMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
