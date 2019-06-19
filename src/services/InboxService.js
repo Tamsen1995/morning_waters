@@ -1,6 +1,9 @@
 import Api from '@/services/Api'
 
 export default {
+  updateOrderItem (orderItem) {
+    return Api().post('seller/orders/updateOrderItem', { orderItem })
+  },
   retrieveServicesNegotiated (orderItems) {
     return Api().get('seller/orders/retrieveServicesNegotiated', {
       params: {
