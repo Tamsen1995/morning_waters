@@ -20,6 +20,7 @@ export default {
       servicesNegotiated: null,
       amtForServicesNegotiated: [],
       order: null,
+      totalPrice: 0.0,
       quoteRequest: null,
       complete: true,
       stripeOptions: {},
@@ -48,13 +49,14 @@ export default {
         this.orderItems[index].amount = this.amtForServicesNegotiated[index]
         this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
         const response = await InboxService.updateOrderItem(this.orderItems[index])
+        this.retrieveOrderOrderItems(this.order)
       } catch (error) {
         if (error) throw error
       }
     },
     async retrieveOrderOrderItems (order) {
       try {
-        this.orderItems = null
+        this.totalPrice = 0.0
         this.servicesNegotiated = null
         this.amtForServicesNegotiated = []
 
@@ -62,11 +64,14 @@ export default {
         const response = await InboxService.retrieveOrderOrderItems(orderId)
 
         const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
+        this.orderItems = null
 
         this.orderItems = response.data.orderItems
+
         this.servicesNegotiated = servicesNegotiated
         for (var i = 0; i < this.orderItems.length; i++) {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
+          this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING

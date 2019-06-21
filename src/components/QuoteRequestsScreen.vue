@@ -194,9 +194,9 @@
                       style="color:red;font-size:15px;"
                     >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                   </div>
-
-                  <br>
                 </div>
+                <hr>
+                Total price: {{ this.totalPrice }} $
               </div>
             </div>
           </div>

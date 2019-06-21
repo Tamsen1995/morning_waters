@@ -104,7 +104,7 @@
                       <br>
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}</p>
-                    <span class="label label-success pull-right">Order</span>
+                    <span class="label label-success pull-right">Pending Order</span>
                     <div class="clearfix"></div>
                   </a>
                 </div>

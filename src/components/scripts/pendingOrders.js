@@ -81,29 +81,5 @@ export default {
         if (error) throw error
       }
     }
-
-    // async getSellerOrderItems () {
-    //   try {
-    //     const userExtracted = this.$store.getters.getUserInfo
-
-    //     const response = await UserServices.getSellersOrderItems(
-    //       userExtracted.id
-    //     )
-
-    //     this.orderItems = response.data
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // }
-    // async getSellerOrders () {
-    //   try {
-    //     const userExtracted = this.$store.getters.getUserInfo
-
-    //     const response = await UserServices.getLockedOrders(userExtracted.id)
-    //     this.orders = response.data.orders
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // }
   }
 }
