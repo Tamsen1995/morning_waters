@@ -91,7 +91,7 @@
         >View Timeline</button>
 
         <!-- Handle shipping -->
-        <button id="btn-shippo" type="submit" @click="confirmOrder(index)">Handle Shipping</button>
+        <button id="btn-shippo" type="submit">Shipping</button>
 
         <a class="invoice-link pull-right">Download Invoice</a>
       </div>

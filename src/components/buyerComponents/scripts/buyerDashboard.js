@@ -20,6 +20,20 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+
+    async goToOrderStatus (index) {
+      try {
+        const pendingOrder = this.pendingOrders[index]
+
+        this.$router.push({
+          name: 'buyerOrderStatus',
+          params: { orderId: pendingOrder.orderId }
+        })
+        console.log(`\n\npendingOrder : ${JSON.stringify(pendingOrder)}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async getBuyerPendingOrders () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
