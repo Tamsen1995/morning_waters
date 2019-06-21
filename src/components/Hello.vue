@@ -122,28 +122,29 @@
     </section>
 
     <section class="green">
-      <div class="container">
-        <carousel :per-page="1" :autoplay="true" :autoplayTimeout="2000">
+      
+        <carousel :adjustableHeight="true" :per-page="1" :autoplay="true" :autoplayTimeout="2000">
+
           <!-- Step 1 -->
           <slide>
-            <img src="../assets/css/hello_step_1.png" alt="FIG ANALYTICS" class="center">
+            <img src="../assets/css/hello_step_1.png" alt="FIG ANALYTICS" class="center" id="pitch">
           </slide>
 
           <!-- Step 2 -->
           <slide>
-            <img src="../assets/css/hello_step_2.png" alt="FIG ANALYTICS" class="center">
+            <img src="../assets/css/hello_step_2.png" alt="FIG ANALYTICS" class="center" id="pitch">
           </slide>
 
           <!-- Step 3 -->
           <slide>
-            <img src="../assets/css/hello_step_3.png" alt="FIG ANALYTICS" class="center">
+            <img src="../assets/css/hello_step_3.png" alt="FIG ANALYTICS" class="center" id="pitch">
           </slide>
 
           <!-- Step 4 -->
           <slide>
             <div class="container-fluid">
               <div class="col-sm-12">
-                <h2>Get 3 free leads when you complete your profile!</h2>
+                <h3>Start your project today.</h3>
                 <br>
                 <br>
                 <br>
@@ -173,12 +174,13 @@
                 >Continue</a>
                 <br>
                 <br>
-                <h3>Start your project today.</h3>
+                <!-- <h3>Start your project today.</h3> -->
               </div>
             </div>
           </slide>
+
         </carousel>
-      </div>
+      
     </section>
 
     <footer>
