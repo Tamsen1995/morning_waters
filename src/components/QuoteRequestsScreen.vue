@@ -99,6 +99,9 @@
                       Buyer ID : {{ order.buyerId }}
                       <br>
                       <br>
+                      Charged: {{order.totalPrice}} $
+                      <br>
+                      <br>
                       <small>Date created : {{ order.createdAt }}</small>
                       <br>
                     </h4>
@@ -108,33 +111,6 @@
                   </a>
                 </div>
               </div>
-              <!-- The panels for the pending orders -->
-
-              <!-- The panels for the quote requests -->
-              <!-- <div
-                class="panel-body no-padding"
-                v-if="this.dropdownVariable === 'Quote Requests' || this.dropdownVariable === 'All messages'"
-              >
-                <div class="list-group no-margin list-message">
-                  <a
-                    class="list-group-item"
-                    v-for="(request, index) in this.quoteRequests"
-                    v-bind:key="index"
-                    @click="showQuoteRequest(request)"
-                  >
-                    <h4 class="list-group-item-heading">
-                      Subject : {{ request.subject }}
-                      <br>
-                      <br>
-                      <small>Date created : {{ request.createdAt }}</small>
-                    </h4>
-
-                    <p class="list-group-item-text"></p>
-                    <span class="label label-success pull-right">Quote Request</span>
-                    <div class="clearfix"></div>
-                  </a>
-                </div>
-              </div>-->
             </div>
             <!-- The panels for the quote requests -->
           </div>
@@ -174,7 +150,8 @@
               </div>
               <!-- /.panel-body -->
 
-              <div class="panel-body">
+              <!-- if this variable is undefined we are dealing with a not yet confirmed order -->
+              <div class="panel-body" v-if="this.order.totalPrice === undefined">
                 Negotiaion Interface [TESTING]:
                 <button @click="submitOrder()">Submit Order</button>
 

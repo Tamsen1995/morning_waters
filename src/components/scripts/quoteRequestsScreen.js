@@ -96,6 +96,7 @@ export default {
         this.order = order
         this.quoteRequest = null
         const orderId = order.orderId
+        this.orderItems = null
 
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.correspondanceMessages = response.data.correspondance
@@ -140,7 +141,6 @@ export default {
     },
     async submitMessage () {
       try {
-        console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
         var correspondanceMsg = null
         if (this.order !== null) {
           correspondanceMsg = {
