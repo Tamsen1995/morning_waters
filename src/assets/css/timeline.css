@@ -49,6 +49,28 @@ a.invoice-link:focus {
   text-align:left;
 }
 
+#btn-shippo {
+  color: white;
+  border-color: yellowgreen;
+  border-width: 2px;
+  background-color: yellowgreen;
+  justify-content: center;
+  display: inline-block;
+  border-radius: 5px;
+  font-size:18px;
+}
+
+#btn-shippo:hover {
+  color: white;
+  border-color: rgb(121, 161, 39);
+  background-color: rgb(121, 161, 39);
+  border-width: 2px;
+  justify-content: center;
+  display: inline-block;
+  border-radius: 5px;
+  font-size:18px;
+}
+
 
 /* Current Orders Timeline */
 #seller-timeline {
