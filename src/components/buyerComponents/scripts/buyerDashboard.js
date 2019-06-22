@@ -1,6 +1,6 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader.vue'
 import { ResponsiveDirective } from 'vue-responsive-components'
-import InboxService from '@/services/InboxService'
+import InboxServices from '@/services/InboxService'
 import BuyerServices from '@/services/BuyerServices'
 
 export default {
@@ -20,7 +20,28 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async downloadInvoice (pendingOrder) {
+      try {
+        const response = await InboxServices.retrieveOrderInvoice(pendingOrder.orderId)
 
+        const responseBuffer = response.data
+
+        const pdfBlob = new Blob([responseBuffer], {
+          type: 'application/pdf'
+        })
+
+        const url = URL.createObjectURL(pdfBlob)
+
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', 'file.pdf') // or any other extension
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async goToOrderStatus (index) {
       try {
         const pendingOrder = this.pendingOrders[index]

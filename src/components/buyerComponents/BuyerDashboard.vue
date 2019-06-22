@@ -68,7 +68,7 @@
         <!-- Handle shipping -->
         <button id="btn-shippo" type="submit">Shipping</button>
 
-        <a class="invoice-link pull-right">Download Invoice</a>
+        <a class="invoice-link pull-right" @click="downloadInvoice(pendingOrder)">Download Invoice</a>
       </div>
     </div>
   </body>
