@@ -153,7 +153,7 @@
               <!-- if this variable is undefined we are dealing with a not yet confirmed order -->
               <div
                 class="panel-body"
-                v-if="this.order === undefined && this.order.totalPrice === undefined"
+                v-if="this.order !== undefined && this.order.totalPrice === undefined"
               >
                 Negotiaion Interface [TESTING]:
                 <button @click="submitOrder()">Submit Order</button>
