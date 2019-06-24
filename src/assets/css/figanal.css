@@ -31,16 +31,17 @@ font-family: 'Roboto', sans-serif; */
 }
 
 .green .container-fluid {
-  max-width: 500px;
-  max-height: 800px;
-  padding-top: 20px;
+  max-width: 400px;
+  max-height: 700px;
+  padding-top: 60px;
 
 }
 
 /* Green/purple design background */
 .green {
   width: 100%;
-  background-image:radial-gradient(#c5c4fc 80%, #D8D4DC);
+  /* background-image: linear-gradient( #c5c4fc, 95%, white); */
+  background-image: radial-gradient(#c6c2ff,70% ,#ffffff);
   background-size: cover;
 }
 
@@ -48,13 +49,6 @@ font-family: 'Roboto', sans-serif; */
   margin: 20px;
 }
 
-
-
-/* .green .col-sm {
-  background-color:white;
-  opacity: .80;
-  padding:50px ;
-}  */
 
 input[type="text"] {
   width: 100%;
@@ -227,14 +221,11 @@ section.green {
 }
 
 #pitch {
-  /* height: 100%; */
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   height:auto;
-  /* max-height: 400px; */
   padding-bottom:0px;
-  /* padding-left:10%;
-  padding-right:10%; */
+  padding-top: 50px;
 }
 
 form {
@@ -248,15 +239,27 @@ form {
 
 footer {
   /* margin-top:20px; */
-  padding: 30px 0px 10px;
+  padding: 0px 0px 10px;
   text-align: left;
-  color: black(255, 255, 255, 0.8);
   background-color: #361555;
 }
 
-/* #copy-rights {
+footer #contact{
+  /* background-color: rgb(190, 190, 190); */
+  background-color:#461f6b;
+  /* background-image: linear-gradient(#4b1552,#361555); */
+  padding-top: 30px;
+}
+
+footer #copy-rights {
   background-color:#361555;
-} */
+  padding-top: 20px
+}
+
+#btn-footer{
+  padding:5px;
+  border-radius: 5px;
+}
 
 #contact,
 p {

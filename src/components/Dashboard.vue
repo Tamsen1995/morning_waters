@@ -28,7 +28,14 @@
           <div class="container" id="about">
             <div class="row">
               <h4>About:</h4>
-              <p style="text-align:left">{{ this.about }}</p>
+              <!-- <transition-expand>
+                <div v-if="expanded"> -->
+                  <p style="text-align:left">{{ this.about }}</p>
+                <!-- </div> -->
+              <!-- </transition-expand>
+              <button @click="expanded = !expanded">
+                {{ expanded ? `Shrink` : `Expand` }}
+              </button> -->
             </div>
           </div>
         </div>
@@ -64,9 +71,6 @@
               <div class="card-body">
                 <h4 class="card-title">Pending Orders:</h4>
                 <p class="card-text">{{ this.credits }}</p>
-                <p class="card-text">
-                  <small class="text-muted">Orders link must be added</small>
-                </p>
                 <b-button block href="#" variant="outline-success">
                   <h6>View Orders</h6>
                 </b-button>
@@ -78,56 +82,53 @@
         <br>
         <br>
 
-        <div class="services">
+        <div class="services" id="services">
           <br>
-          <div id="services">
             <h4>Services:</h4>
-          </div>
-
-          <!-- Add message indicating no services have been added until services have been added -->
-          <div class="col-12">
             <br>
-
-            <div class="card" v-for="service in this.services" :key="service.title">
-              <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
-              <div class="card-body">
-                <!-- Service Description -->
+            <!-- Title -->
+            <div class="service-block" v-for="service in this.services" :key="service.title">
+              <div id="service-title">
+                <h4 style="text-align:left;">{{ service.title }}</h4>
                 <h6>
                   <a href="#" class="btn pull-right">Edit</a>
                 </h6>
-                <h5
-                  class="card-text"
-                  style="text-align:left; padding:15px;"
-                >{{ service.description }}</h5>
+              </div>
+              <!-- Service Description -->
+              <div class="container" id="service-desc">
+                <h5> {{ service.description }}</h5>
 
-                <!-- Service/Price Listings -->
-                <div class="container" id="price-chart">
-                  <!-- <p> -->
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">Service Subtitle</th>
-                        <th scope="col">Turn Around Time</th>
-                        <th scope="col">Price/ Unit</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Service1</th>
-                        <td>TT1</td>
-                        <td>P1</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Service2</th>
-                        <td>TT2</td>
-                        <td>P2</td>
-                      </tr>
-                    </tbody>
-                  </table>
+              </div>   
 
-                  <!-- </p> -->
+              <div class="service-block-sub">
+                <div id="service-title">
+                  <h4 style="text-align:left;">{{ service.title }}</h4>
+                  <h6>
+                    <a href="#" class="btn pull-right">Edit</a>
+                  </h6>
+                </div>
+                <!-- Service Description -->
+                <div class="container" id="service-desc">
+                  <h5> {{ service.description }}</h5>
+
                 </div>
               </div>
+              <div class="service-block-sub">
+                <div id="service-title">
+                  <h4 style="text-align:left;">{{ service.title }}</h4>
+                  <h6>
+                    <a href="#" class="btn pull-right">Edit</a>
+                  </h6>
+                </div>
+                <!-- Service Description -->
+                <div class="container" id="service-desc">
+                  <h5> {{ service.description }}</h5>
+              </div>
+              
+
+            </div>
+              
+
             </div>
 
             <!-- Add Service Button -->
@@ -147,7 +148,7 @@
             <br>
             <br>
             <br>
-          </div>
+
         </div>
       </div>
     </body>

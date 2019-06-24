@@ -37,6 +37,26 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    // enter(element) {
+    //   // ...
+    // },
+    // afterEnter(element) {
+    //   element.style.height = 'auto';
+    // },
+    // leave(element) {
+    //   const height = getComputedStyle(element).height;
+      
+    //   element.style.height = height;
+
+      // Force repaint to make sure the
+      // animation is triggered correctly.
+    //   getComputedStyle(element).height;
+
+    //   setTimeout(() => {
+    //     element.style.height = 0;
+    //   });
+    // },
+
     async showAddSubService () {
       try {
         if (this.addSubService === false) {
