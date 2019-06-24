@@ -211,10 +211,11 @@
           <br>
           <br>
           <div class="col-lg-2">
-            <router-link class="btn-default btn-lg" to="/login">Client Login</router-link>
+            <div class="container" style="max-width:200px;text-align:center;">
+            <router-link class="btn-default btn-large btn-block" id="btn-footer" to="/login">Client Login</router-link>
             <br>
-            <br>
-            <router-link class="btn-success btn-lg" to="/register">Sign Up</router-link>
+            <router-link class="btn-success btn-large btn-block" id="btn-footer" to="/register">Sign Up</router-link>
+            </div>
           </div>
         </div>
       </div>
