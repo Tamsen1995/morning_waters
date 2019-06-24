@@ -19,6 +19,7 @@ import AuthenticationService from '@/services/AuthenticationService'
 import BuyerRegister from '@/components/buyerComponents/BuyerRegister'
 import BuyerLogin from '@/components/buyerComponents/BuyerLogin'
 import BuyerDashboard from '@/components/buyerComponents/BuyerDashboard'
+import BuyerOrderStatus from '@/components/buyerComponents/BuyerOrderStatus'
 import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
 import BuyerCheckout from '@/components/buyerComponents/BuyerCheckout'
 import BuyersCarts from '@/components/buyerComponents/BuyersCarts'
@@ -168,6 +169,12 @@ export default new Router({
       path: '/buyerDashboard',
       name: 'buyerDashboard',
       component: BuyerDashboard
+    },
+    {
+      path: '/buyerDashboard/orders/status/:orderId',
+      name: 'buyerOrderStatus',
+      component: BuyerOrderStatus
+
     },
     {
       path: '/shoppingCart',
