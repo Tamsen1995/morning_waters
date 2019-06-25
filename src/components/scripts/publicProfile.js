@@ -154,10 +154,6 @@ export default {
         this.companyName = userInfo.user.companyName
         this.about = userInfo.user.about
         this.$store.dispatch('setUser', userInfo)
-        const testingUser = this.$store.getters.getUserInfo
-        console.log(
-          `\nI am watching the user : ${JSON.stringify(testingUser)}\n`
-        ) // TESTING
       } catch (error) {
         if (error) throw error
       }
