@@ -10,13 +10,14 @@ export default {
   data () {
     return {
       services: [],
+      subServices: [],
       serviceTitle: '',
       serviceDescription: '',
       servicePrice: 0.0,
-      serviceSubtitle: '',
+      turnAroundTime: '',
+      serviceTags: '',
       unitType: '',
       price: '',
-      turnAroundTime: '',
       user: null,
       companyName: '',
       companyLocation: '',
@@ -28,7 +29,8 @@ export default {
       // The variable which will determine if
       // the section for adding a sub service will be shown
       // addSubService: false
-      subServicesToBeAdded: 0
+      // these are the subservicesToBeAdded to be added
+      subServicesToBeAdded: []
     }
   },
   components: {
@@ -40,16 +42,16 @@ export default {
   methods: {
     async addSubService () {
       try {
-        console.log(`\nAdding a subservice : \n`) // TESTING
-        this.subServicesToBeAdded = this.subServicesToBeAdded + 1
+        const userExtracted = this.$store.getters.getUserInfo
 
-        console.log(`\nsubservices to be added  : ${this.subServicesToBeAdded}\n`) // TESTING
-        // if (this.addSubService === false) {
-        //   this.addSubService = true
-        // } else {
-        //   this.addSubService = false
-        // }
-        // console.log(`\nthis.addSubService - > ${this.addSubService}\n`) // TESTING
+        this.subServicesToBeAdded.push({
+          userId: userExtracted.id,
+          serviceTitle: '',
+          serviceDescription: '',
+          servicePrice: 0.0,
+          turnAroundTime: '',
+          serviceTags: ''
+        })
       } catch (error) {
         if (error) throw error
       }
@@ -69,17 +71,29 @@ export default {
           turnAroundTime: this.turnAroundTime
         }
 
-        console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
+        // console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
 
         // TODO : the reponse object doesn't return anything. Fix that in a little bit
         await DashboardServices.pushServiceOntoDb(service)
+        await this.getServices()
+
+        const serviceId = this.services[this.services.length - 1].id
+        if (this.subServicesToBeAdded.length > 0) {
+          await DashboardServices.addSubServices({
+            parentServiceId: serviceId,
+            subServices: this.subServicesToBeAdded
+          })
+        }
+        await this.getSubServices()
+        await this.getServices()
+
         this.$modal.hide('add-service')
 
-        this.getServices()
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
+        this.subServicesToBeAdded = []
       } catch (error) {
         if (error) {
           console.log(
@@ -128,25 +142,21 @@ export default {
         if (error) throw error
       }
     },
-    async inserDummyData () {
-      // The goal is to replace every variable in this method with
-      // a live fetched variable
+    async getSubServices () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+        const response = await DashboardServices.queryForUserSubServices(userExtracted.id)
 
-      this.companyLocation = 'New York, New York, US'
-
-      // Credits
-
-      console.log(`this.credits ${this.credits}`) // TESTING
-
-      // Leads
-      this.leads = 75015
-      // Page Views
-      this.pageViews = 714
+        this.subServices = response.data
+        console.log(`\nThe response being : ${JSON.stringify(response)}\n\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
     }
   },
   mounted () {
-    this.inserDummyData() // TESTING
     this.getServices()
+    this.getSubServices()
     this.getUserInfo()
   }
 }

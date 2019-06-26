@@ -14,7 +14,8 @@ export default {
       companyName: '',
       about: '',
       location: '',
-      services: [],
+      services: null,
+      subServices: null,
       serviceTableIdChosen: 0,
       serviceIdChosen: 0,
       pickedQuantityService: [],
@@ -33,13 +34,45 @@ export default {
   directives: {
     responsive: ResponsiveDirective
   },
-  created () {
+  async created () {
     this.userId = this.$route.params.id
-    this.getUserData()
+    await this.getSubServices()
+    await this.getUserData()
   },
-  mounted () {
+  async mounted () {
+
   },
   methods: {
+    async getSubServices () {
+      try {
+        console.log(`\nthis.userId : ${this.userId}\n`) // TESTING
+        const response = await DashboardServices.queryForUserSubServices(this.userId)
+
+        this.subServices = response.data
+        console.log(`\nThe subservices being : ${JSON.stringify(this.subServices)}\n`) // TESTING
+      } catch (error) {
+        console.log(`\nThe error occurred in getSubServices()\n`) // TESTING
+        if (error) throw error
+      }
+    },
+    async getUserData () {
+      try {
+        const userInfo = (await UserServices.getPublicProfileInfo(this.userId))
+          .data
+        const serviceTableId = userInfo.user.serviceTableId
+        this.getSubServices()
+        const response = await DashboardServices.queryForUsersServices(
+          serviceTableId
+        )
+        const userServicesArray = response.data.usersServices
+        this.services = userServicesArray
+        this.companyName = userInfo.user.companyName
+        this.about = userInfo.user.about
+        this.$store.dispatch('setUser', userInfo)
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async redirectToCheckoutOrLogin () {
       try {
         this.$store.dispatch('setShoppingCartFlag', true)
@@ -138,25 +171,9 @@ export default {
         console.log(`\nAn error occurred in addServiceToCart\n`) // TESTING
         if (error) throw error
       }
-    },
+    }
     // the user id of the SELLER will also
     // need a spot in the store
-    async getUserData () {
-      try {
-        const userInfo = (await UserServices.getPublicProfileInfo(this.userId))
-          .data
-        const serviceTableId = userInfo.user.serviceTableId
-        const response = await DashboardServices.queryForUsersServices(
-          serviceTableId
-        )
-        const userServicesArray = response.data.usersServices
-        this.services = userServicesArray
-        this.companyName = userInfo.user.companyName
-        this.about = userInfo.user.about
-        this.$store.dispatch('setUser', userInfo)
-      } catch (error) {
-        if (error) throw error
-      }
-    }
+
   }
 }
