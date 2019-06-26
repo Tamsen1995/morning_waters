@@ -27,7 +27,8 @@ export default {
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
-      addSubService: false
+      // addSubService: false
+      subServicesToBeAdded: 0
     }
   },
   components: {
@@ -37,34 +38,18 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    // enter(element) {
-    //   // ...
-    // },
-    // afterEnter(element) {
-    //   element.style.height = 'auto';
-    // },
-    // leave(element) {
-    //   const height = getComputedStyle(element).height;
-      
-    //   element.style.height = height;
-
-      // Force repaint to make sure the
-      // animation is triggered correctly.
-    //   getComputedStyle(element).height;
-
-    //   setTimeout(() => {
-    //     element.style.height = 0;
-    //   });
-    // },
-
-    async showAddSubService () {
+    async addSubService () {
       try {
-        if (this.addSubService === false) {
-          this.addSubService = true
-        } else {
-          this.addSubService = false
-        }
-        console.log(`\nthis.addSubService - > ${this.addSubService}\n`) // TESTING
+        console.log(`\nAdding a subservice : \n`) // TESTING
+        this.subServicesToBeAdded = this.subServicesToBeAdded + 1
+
+        console.log(`\nsubservices to be added  : ${this.subServicesToBeAdded}\n`) // TESTING
+        // if (this.addSubService === false) {
+        //   this.addSubService = true
+        // } else {
+        //   this.addSubService = false
+        // }
+        // console.log(`\nthis.addSubService - > ${this.addSubService}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
@@ -104,9 +89,7 @@ export default {
       }
     },
     addService () {
-      this.addSubService = false
       this.$modal.show('add-service')
-      // $('#myModal').modal('show')
     },
 
     async getServices () {

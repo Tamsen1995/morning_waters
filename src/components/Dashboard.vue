@@ -29,13 +29,13 @@
             <div class="row">
               <h4>About:</h4>
               <!-- <transition-expand>
-                <div v-if="expanded"> -->
-                  <p style="text-align:left">{{ this.about }}</p>
-                <!-- </div> -->
+              <div v-if="expanded">-->
+              <p style="text-align:left">{{ this.about }}</p>
+              <!-- </div> -->
               <!-- </transition-expand>
               <button @click="expanded = !expanded">
                 {{ expanded ? `Shrink` : `Expand` }}
-              </button> -->
+              </button>-->
             </div>
           </div>
         </div>
@@ -84,10 +84,22 @@
 
         <div class="services" id="services">
           <br>
-            <h4>Services:</h4>
-            <br>
-            <!-- Title -->
-            <div class="service-block" v-for="service in this.services" :key="service.title">
+          <h4>Services:</h4>
+          <br>
+          <!-- Title -->
+          <div class="service-block" v-for="service in this.services" :key="service.title">
+            <div id="service-title">
+              <h4 style="text-align:left;">{{ service.title }}</h4>
+              <h6>
+                <a href="#" class="btn pull-right">Edit</a>
+              </h6>
+            </div>
+            <!-- Service Description -->
+            <div class="container" id="service-desc">
+              <h5>{{ service.description }}</h5>
+            </div>
+
+            <div class="service-block-sub">
               <div id="service-title">
                 <h4 style="text-align:left;">{{ service.title }}</h4>
                 <h6>
@@ -96,59 +108,40 @@
               </div>
               <!-- Service Description -->
               <div class="container" id="service-desc">
-                <h5> {{ service.description }}</h5>
-
-              </div>   
-
-              <div class="service-block-sub">
-                <div id="service-title">
-                  <h4 style="text-align:left;">{{ service.title }}</h4>
-                  <h6>
-                    <a href="#" class="btn pull-right">Edit</a>
-                  </h6>
-                </div>
-                <!-- Service Description -->
-                <div class="container" id="service-desc">
-                  <h5> {{ service.description }}</h5>
-
-                </div>
+                <h5>{{ service.description }}</h5>
               </div>
-              <div class="service-block-sub">
-                <div id="service-title">
-                  <h4 style="text-align:left;">{{ service.title }}</h4>
-                  <h6>
-                    <a href="#" class="btn pull-right">Edit</a>
-                  </h6>
-                </div>
-                <!-- Service Description -->
-                <div class="container" id="service-desc">
-                  <h5> {{ service.description }}</h5>
-              </div>
-              
-
             </div>
-              
-
-            </div>
-
-            <!-- Add Service Button -->
-            <br>
-            <button
-              type="button"
-              class="btn btn-default pull-right btn-add-service"
-              @click="addService"
-            >
-              <strong>
+            <div class="service-block-sub">
+              <div id="service-title">
+                <h4 style="text-align:left;">{{ service.title }}</h4>
                 <h6>
-                  Add Service
-                  <span class="glyphicon glyphicon-plus-sign"></span>
+                  <a href="#" class="btn pull-right">Edit</a>
                 </h6>
-              </strong>
-            </button>
-            <br>
-            <br>
-            <br>
+              </div>
+              <!-- Service Description -->
+              <div class="container" id="service-desc">
+                <h5>{{ service.description }}</h5>
+              </div>
+            </div>
+          </div>
 
+          <!-- Add Service Button -->
+          <br>
+          <button
+            type="button"
+            class="btn btn-default pull-right btn-add-service"
+            @click="addService"
+          >
+            <strong>
+              <h6>
+                Add Service
+                <span class="glyphicon glyphicon-plus-sign"></span>
+              </h6>
+            </strong>
+          </button>
+          <br>
+          <br>
+          <br>
         </div>
       </div>
     </body>
@@ -311,7 +304,7 @@
                 type="button"
                 class="btn btn-default pull-right"
                 id="addSubButton"
-                @click="showAddSubService()"
+                @click="addSubService()"
               >
                 <strong>
                   <h6>
