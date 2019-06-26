@@ -110,7 +110,7 @@
                   </h6>
                 </div>
                 <div class="container" id="service-desc">
-                  <h5>{{ service.description }}</h5>
+                  <h5>{{ subService.description }}</h5>
                 </div>
               </div>
             </div>
@@ -232,6 +232,8 @@
 
               <div v-for="(subservice, index) in this.subServicesToBeAdded" v-bind:key="index">
                 <br>
+                <br>
+                <hr>
                 <br>
                 <br>
                 <!-- Service Title -->

@@ -58,41 +58,41 @@
                   style="text-align:left; padding:15px;"
                 >{{ service.description }}</h5>
 
+                <!-- This is where I'll list the subservices -->
+                <div v-for="(subService, index) in subServices" :key="index">
+                  <div
+                    class="container"
+                    id="price-chart"
+                    v-if="subService.parentServiceId === service.id"
+                  >
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Service Subtitle</th>
+                          <th scope="col">Turn Around Time</th>
+                          <th scope="col">Price/ Unit</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">{{ subService.title }}</th>
+                          <td>{{ subService.turnAroundTime }}</td>
+                          <td>{{ subService.servicePrice }}</td>
+                          <td>
+                            <button class="btn btn-success">Add to Cart</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <!--  -->
+
                 <!-- Service/Price Listings -->
                 <button
                   class="btn btn-success"
                   @click="addServiceToCart(service, index)"
                 >Add to Cart</button>
-
-                <div class="container" id="price-chart">
-                  <!-- <p>
-                    <table class="table table-hover" >
-                      <thead>
-                          <tr>
-                              <th scope="col">Service Subtitle</th>
-                              <th scope="col">Turn Around Time</th>
-                              <th scope="col">Price/ Unit</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <th scope="row">Service1</th>
-                              <td>TT1</td>
-                              <td>P1</td>
-                              <td><button class="btn btn-success" @click="addServiceToCart(service, index)">Add to Cart</button></td>
-                          </tr>
-                          <tr>
-                              <th scope="row">Service2</th>
-                              <td>TT2</td>
-                              <td>P2</td>
-                              <td><button class="btn btn-success" @click="addServiceToCart(service, index)">Add to Cart</button></td>
-                          </tr>
-
-                      </tbody>
-
-                    </table>
-                  </p>-->
-                </div>
               </div>
             </div>
           </div>
@@ -179,6 +179,8 @@
     </modal>
   </div>
 </div>
+
+<!-- Potentially deprecated -->
 </template>
 
 
@@ -201,3 +203,5 @@ div.card {
   border: 1px solid green;
 }
 </style>
+
+
