@@ -56,23 +56,20 @@ export default {
     },
     async retrieveOrderOrderItems (order) {
       try {
-        this.totalPrice = 0.0
-        this.servicesNegotiated = null
-        this.amtForServicesNegotiated = []
-
         const orderId = order.orderId
         const response = await InboxService.retrieveOrderOrderItems(orderId)
-
         const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
+
         this.orderItems = null
-
         this.orderItems = response.data.orderItems
-
-        this.servicesNegotiated = servicesNegotiated
+        this.amtForServicesNegotiated = []
+        this.totalPrice = 0.0
         for (var i = 0; i < this.orderItems.length; i++) {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
+        this.servicesNegotiated = null
+        this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error
