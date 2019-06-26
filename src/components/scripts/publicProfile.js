@@ -6,6 +6,7 @@ import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
 import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'
 import AddItemToShoppingCartModal from '@/components/buyerComponents/modals/AddItemToShoppingCartModal'
 import { ResponsiveDirective } from 'vue-responsive-components'
+import TransitionExpand from '@/components/TransitionExpand'
 
 export default {
   data () {
@@ -28,7 +29,8 @@ export default {
     BuyerHeader,
     ShoppingCart,
     RequestQuoteCart,
-    AddItemToShoppingCartModal
+    AddItemToShoppingCartModal,
+    TransitionExpand,
   },
   directives: {
     responsive: ResponsiveDirective

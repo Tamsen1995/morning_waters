@@ -10,6 +10,17 @@ body.dashboard {
   background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
 }
 
+.expand-enter-active,
+.expand-leave-active {
+  transition: height 1s ease-in-out;
+  overflow: hidden;
+}
+
+.expand-enter,
+.expand-leave-to {
+  height: 0;
+}
+
 #dashboard #name-location {
   max-width: 1314px;
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
