@@ -1,7 +1,7 @@
-import SettingsService from '@/services/SettingsService';
-import PaymentService from '@/services/PaymentService';
+import SettingsService from '@/services/SettingsService'
+import PaymentService from '@/services/PaymentService'
 
-let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`)
+let stripe = Stripe(process.env.stripe_public_key)
 let elements = stripe.elements()
 let card = null
 

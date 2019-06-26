@@ -1,6 +1,13 @@
-import Api from '@/services/Api';
+import Api from '@/services/Api'
 
 export default {
+  getSellerPendingOrders (sellerId) {
+    return Api().get('/getSellerPendingOrders', {
+      params: {
+        sellerId: sellerId
+      }
+    })
+  },
   getSellersOrderItems (sellerId) {
     return Api().get('/getSellersOrderItems', {
       params: {
@@ -8,9 +15,23 @@ export default {
       }
     })
   },
+  // this function will retrieve
+  getOrder (orderId) {
+    return Api().get('orders/getOrder', {
+      params: {
+        orderId: orderId
+      }
+    })
+  },
   unlockOrder (orderId) {
-    console.log(`orderId being : ${orderId}`) // TESTING
     return Api().post('/unlockOrder', { orderId })
+  },
+  getPendingOrders (sellerId) {
+    return Api().get('getPendingOrders', {
+      params: {
+        sellerId: sellerId
+      }
+    })
   },
   getLockedOrders (sellerId) {
     return Api().get('getLockedOrders', {
@@ -20,7 +41,6 @@ export default {
     })
   },
   checkForSubscriptionCharge (uid) {
-    console.log(`\nI am checking for the subscription charge period\n`) // TESTING
     return Api().get('checkForSubscriptionCharge', {
       params: {
         userId: uid

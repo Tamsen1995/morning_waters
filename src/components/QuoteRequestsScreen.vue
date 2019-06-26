@@ -10,139 +10,181 @@
     >
       <div class="container">
         <div class="row" id="header">
-            <div class="col-md-4">
+          <div class="col-md-4">
             <h2>Inbox</h2>
-            </div>
+          </div>
         </div>
         <div class="row message-wrapper rounded shadow mb-20">
           <div class="col-md-4 message-sideleft">
-              <div class="panel">
-                  <div class="panel-heading">
-                      <div class="pull-left">
-                          <div class="btn-group">
-                              <button type="button" class="btn btn-success">All Messages</button>
-                              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                                  <span class="sr-only">Toggle Dropdown</span>
-                              </button>
-                              <ul class="dropdown-menu pull-right" role="menu">
-                                  <li><a href="#"><i class="fa fa-download"></i> All</a></li>
-                                  <li><a href="#"><i class="fa fa-upload"></i> Orders</a></li>
-                                  <li><a href="#"><i class="fa fa-trash-o"></i> Quote Requests</a></li>
-                                  <li class="divider"></li>
-                                  <li><a href="#"><i class="fa fa-briefcase"></i> Other</a></li>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="pull-right">
+            <div class="panel">
+              <div class="panel-heading">
+                <div class="pull-left">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-success">{{ dropdownVariable }}</button>
+                    <button
+                      type="button"
+                      class="btn btn-success dropdown-toggle"
+                      data-toggle="dropdown"
+                    >
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" role="menu">
+                      <li>
+                        <a @click="switchMessagesDisplayed('all')">
+                          <i class="fa fa-download"></i> All
+                        </a>
+                      </li>
+                      <li>
+                        <a @click="switchMessagesDisplayed('orders')">
+                          <i class="fa fa-upload"></i> Orders
+                        </a>
+                      </li>
+                      <li>
+                        <a @click="switchMessagesDisplayed('quoteRequests')">
+                          <i class="fa fa-trash-o"></i> Quote Requests
+                        </a>
+                      </li>
+                      <li class="divider"></li>
+                      <li>
+                        <a>
+                          <i class="fa fa-briefcase"></i> Other
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
-                          <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider"></span>
-                          </label>
-                      </div>
-                      <div class="clearfix"></div>
-                  </div><!-- /.panel-heading -->
-                  <div class="panel-body no-padding">
-                      <div class="list-group no-margin list-message">
-                          <a href="#" class="list-group-item">
-                              <h4 class="list-group-item-heading">Jeck Joko <small>Yesterday at 15:45</small></h4>
-                              <p class="list-group-item-text">
-                                  Ticket #78: <strong>Problems with custom CSS3</strong>
-                              </p>
-                              <span class="label label-success pull-right">UNLOCKED</span>
-                              <div class="clearfix"></div>
-                          </a>
-                          <a href="#" class="list-group-item active">
-                              <h4 class="list-group-item-heading">Toni Miring <small>Sunday at 12:33</small></h4>
-                              <p class="list-group-item-text">Ticket #43: <strong>How do i use something</strong></p>
-                              <span class="label label-success pull-right rounded">UNLOCKED</span>
-                              <div class="clearfix"></div>
-                          </a>
-                          <a href="#" class="list-group-item">
-                              <h4 class="list-group-item-heading">Bella Negoro <small>Sunday at 12:33</small></h4>
-                              <p class="list-group-item-text">Ticket #15: <strong>Why doesn't my cheese work properly? :(</strong></p>
-                              <span class="label label-default pull-right circle">LOCKED</span>
-                              <div class="clearfix"></div>
-                          </a>
-                          <a href="#" class="list-group-item">
-                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
-                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
-                          </a>
-                          <a href="#" class="list-group-item">
-                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
-                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
-                          </a>
-                          <a href="#" class="list-group-item">
-                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
-                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
-                          </a>
-                          <a href="#" class="list-group-item">
-                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
-                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
-                          </a>
-                          <a href="#" class="list-group-item">
-                              <h4 class="list-group-item-heading">Daddy Botak <small>Sunday at 12:33</small></h4>
-                              <p class="list-group-item-text">Can i have longer on my free trial please?</p>
-                          </a>
+                <div class="clearfix"></div>
+              </div>
 
-
-                      </div><!-- /.list-group -->
-                  </div><!-- /.panel-body -->
-              </div><!-- /.panel -->
-          </div><!-- /.message-sideleft -->
-          <div class="col-md-8 message-sideright">
-              <div class="panel">
-                  <div class="panel-heading">
-                      <div class="media">
-                          <a class="pull-left" href="#">
-                              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Rebecca Cabean" class="img-circle avatar">
-                          </a>
-                          <div class="media-body">
-                              <h4 class="media-heading">Rebecca Cabean <small>(Sales Manager)</small></h4>
-                              <small>Thursday 5th July 2014-via Intercom</small>
-                          </div>
-                      </div>
-                  </div><!-- /.panel-heading -->
-                  <div class="panel-body">
-                      <p class="lead">
-                          RE : Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                      </p>
-                      <hr>
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
+              <!-- The panels for the orders -->
+              <div
+                class="panel-body no-padding"
+                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
+              >
+                <div class="list-group no-margin list-message">
+                  <a
+                    class="list-group-item"
+                    v-for="(order, index) in this.orders"
+                    v-bind:key="index"
+                    @click="showOrder(order), retrieveOrderOrderItems(order)"
+                  >
+                    <h4 class="list-group-item-heading">
+                      Buyer ID : {{ order.buyerId }}
                       <br>
-                      <p>
-                          Thanks! <br>
-                          Rebecca.
-                      </p>
-                  </div><!-- /.panel-body -->
-              </div><!-- /.panel -->
-              <div class="panel">
-                  <div class="panel-heading">
-                      <div class="media">
-                          <a class="pull-left" href="#">
-                              <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="sarah tingting" class="img-circle avatar">
-                          </a>
-                          <div class="media-body">
-                              <h4 class="media-heading">Sarah Tingting</h4>
-                              <small>Thursday 5th July 2014-via Intercom</small>
-                          </div>
-                      </div>
-                  </div><!-- /.panel-heading -->
-                  <div class="panel-body">
-                      <p class="lead">
-                          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                      </p>
-                      <hr>
-                      <strong>Hi Tol Lee</strong>
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                      </p>
-                  </div><!-- /.panel-body -->
-              </div><!-- /.panel -->
-          </div><!-- /.message-sideright -->
-      </div>
+                      <br>
+                      <small>Date created : {{ order.createdAt }}</small>
+                      <br>
+                    </h4>
+                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                    <span class="label label-success pull-right">Request</span>
+                    <div class="clearfix"></div>
+                  </a>
+                </div>
+              </div>
+              <!-- The panels for the orders -->
+              <!-- The panels for the pending orders -->
+              <div
+                class="panel-body no-padding"
+                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
+              >
+                <div class="list-group no-margin list-message">
+                  <a
+                    class="list-group-item"
+                    v-for="(order, index) in this.pendingOrders"
+                    v-bind:key="index"
+                    @click="showOrder(order)"
+                  >
+                    <h4 class="list-group-item-heading">
+                      Buyer ID : {{ order.buyerId }}
+                      <br>
+                      <br>
+                      <!-- Charged: {{order.totalPrice}} $ -->
+                      <br>
+                      <br>
+                      <small>Date created : {{ order.createdAt }}</small>
+                      <br>
+                    </h4>
+                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                    <span class="label label-success pull-right">Pending Order</span>
+                    <div class="clearfix"></div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- The panels for the quote requests -->
+          </div>
+          <div class="col-md-8 message-sideright">
+            <div class="panel">
+              <!-- <div class="panel-heading">
+                <div class="media">
+                  <div class="media-body">
+                    <h4 class="media-heading">
+                      Rebecca Cabean
+                      <small>(Sales Manager)</small>
+                    </h4>
+                    <small>Thursday 5th July 2014-via Intercom</small>
+                  </div>
+                </div>
+              </div>-->
+              <!-- /.panel-heading -->
+              <div
+                class="panel-body"
+                v-for="(msg, index) in correspondanceMessages"
+                v-bind:key="index"
+              >
+                <h4 class="media-heading">{{msg.sender}} :</h4>
+                <p class="lead">{{msg.message}}</p>
+                <hr>
+              </div>
+              <!-- /.panel-body -->
+              <hr>
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <textarea
+                  v-model="message"
+                  v-on:keyup.enter="submitMessage()"
+                  placeholder="add multiple lines"
+                ></textarea>
+                <button v-on:click="submitMessage()">Submit</button>
+              </div>
+              <!-- /.panel-body -->
+
+              <!-- if this variable is undefined we are dealing with a not yet confirmed order -->
+              <div
+                class="panel-body"
+                v-if="this.order !== undefined && this.order.totalPrice === undefined"
+              >
+                Negotiaion Interface [TESTING]:
+                <button
+                  @click="submitOrder()"
+                  v-if="this.order && this.order.seller_confirmed === false"
+                >Submit Order</button>
+
+                <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
+                  <br>
+
+                  <div>
+                    <input
+                      v-model="amtForServicesNegotiated[index]"
+                      @change="updateOrderItems(index)"
+                      placeholder="amount"
+                      style="width:8%;"
+                    >
+                    X
+                    {{ item.title }}
+                    <p
+                      style="color:red;font-size:15px;"
+                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
+                  </div>
+                </div>
+                <hr>
+                Total price: {{ this.totalPrice }} $
+              </div>
+            </div>
+          </div>
+          <!-- /.message-sideright -->
+        </div>
       </div>
     </div>
   </body>

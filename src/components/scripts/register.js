@@ -1,11 +1,13 @@
 import PageHeader from '@/components/Header.vue'
 import AuthenticationService from '@/services/AuthenticationService'
+import ShippingService from '@/services/ShippingService'
 import Api from '@/services/Api'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {
     return {
+      step:1,
       name: '',
       email: '',
       password: '',
@@ -14,7 +16,13 @@ export default {
       jobTitle: '',
       companyName: '',
       companyWebsite: '',
-      billingAddress: '',
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: ''
+      },
       contactListTableId: '',
       serviceTableId: '',
       about: '',
@@ -22,7 +30,8 @@ export default {
     }
   },
   mounted () {
-    this.insertPrefilledInfo()
+    this.insertPrefilledInfo(),
+    ('script', 'termly-jssdk')
   },
   components: {
     PageHeader
@@ -39,6 +48,19 @@ export default {
       this.$store.dispatch('setCompanyName', '')
       this.$store.dispatch('setEmailAddress', '')
     },
+    prev() {
+      this.step--;
+    },
+    next() {
+      this.step++;
+    },
+    function(d, s, id) {
+      var js, tjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://app.termly.io/embed-policy.min.js";
+      tjs.parentNode.insertBefore(js, tjs);
+    },
     async register () {
       try {
         const response = await AuthenticationService.register({
@@ -50,7 +72,7 @@ export default {
           jobTitle: this.jobTitle,
           companyName: this.companyName,
           companyWebsite: this.companyWebsite,
-          billingAddress: this.billingAddress,
+          address: JSON.stringify(this.address),
           serviceTableId: this.serviceTableId,
           about: this.about,
           credits: 0
@@ -60,6 +82,7 @@ export default {
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
         Api().defaults.headers.common['Authorization'] = AuthenticationService.getAuthHeader()
+        ShippingService.makeShippoApiToken()
         this.$router.push({
           name: 'dashboard'
         })

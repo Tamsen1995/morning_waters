@@ -1,11 +1,11 @@
-import UserServices from '@/services/UserServices';
-import InboxService from '@/services/InboxService';
-import DashboardServices from '@/services/DashboardServices';
-import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
-import ShoppingCart from '@/components/buyerComponents/ShoppingCart';
-import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart';
-import AddItemToShoppingCartModal from '@/components/buyerComponents/modals/AddItemToShoppingCartModal';
-import { ResponsiveDirective } from 'vue-responsive-components';
+import UserServices from '@/services/UserServices'
+import InboxService from '@/services/InboxService'
+import DashboardServices from '@/services/DashboardServices'
+import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
+import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'
+import AddItemToShoppingCartModal from '@/components/buyerComponents/modals/AddItemToShoppingCartModal'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {
@@ -20,7 +20,7 @@ export default {
       pickedQuantityService: [],
       // modal form data
       inquiryText: '',
-      pickedQuantityQuoteRequest: 0,
+      pickedQuantityQuoteRequest: 1,
       itemChosen: null
     }
   },
@@ -35,9 +35,9 @@ export default {
   },
   created () {
     this.userId = this.$route.params.id
+    this.getUserData()
   },
   mounted () {
-    this.getUserData()
   },
   methods: {
     async redirectToCheckoutOrLogin () {
@@ -69,10 +69,27 @@ export default {
     },
     async submitInquiryText () {
       try {
-        const response = await InboxService.sendInquiryToUserInbox({
+        const isUserLoggedIn = this.$store.getters.userLoggedIn
+
+        var generalInquiry = {
           uid: this.userId,
           inquiryText: this.inquiryText
-        })
+        }
+        if (isUserLoggedIn === true) {
+          const buyerExtracted = this.$store.getters.getBuyerInfo
+          generalInquiry = {
+            buyerId: buyerExtracted.id,
+            uid: this.userId,
+            inquiryText: this.inquiryText
+          }
+          await InboxService.sendInquiryToUserInbox(generalInquiry)
+        } else {
+          // store general inquiry in store here
+          this.$store.dispatch('setGeneralInquiry', generalInquiry)
+          this.$router.push({
+            name: 'buyerLogin'
+          })
+        }
       } catch (error) {
         console.log(`\nThe error occurred in submitInquiryText ${error}\n`) // TESTING
         if (error) throw error
@@ -82,16 +99,8 @@ export default {
     async manifestModalForm (service) {
       try {
         this.itemChosen = service
-        // this.pickedQuantityQuoteRequest
 
         this.$modal.show('request-quote-modal')
-        console.log(
-          `\nWhat is this item chosen : ${JSON.stringify(this.itemChosen)}\n`
-        ) // TESTING
-
-        // set a picked item when manifesting this modal
-        // this.modal = true
-        // this.itemChosen = service
       } catch (error) {
         if (error) throw error
       }
@@ -105,12 +114,13 @@ export default {
           sellerId: this.itemChosen.userId,
           serviceTitle: this.itemChosen.title,
           serviceDescription: this.itemChosen.description,
-          quantity: this.pickedQuantityQuoteRequest // I'm not sure why we would need this. Clarify with Stef
+          quantity: this.pickedQuantityQuoteRequest, // I'm not sure why we would need this. Clarify with Stef
+          price: this.pickedQuantityQuoteRequest * this.itemChosen.servicePrice
         }
 
         this.$store.dispatch('addQuoteRequestToCart', quoteRequestForService)
         this.$modal.hide('request-quote-modal')
-        this.inquiryText = '';
+        this.inquiryText = ''
       } catch (error) {
         if (error) throw error
       }
@@ -144,10 +154,6 @@ export default {
         this.companyName = userInfo.user.companyName
         this.about = userInfo.user.about
         this.$store.dispatch('setUser', userInfo)
-        const testingUser = this.$store.getters.getUserInfo
-        console.log(
-          `\nI am watching the user : ${JSON.stringify(testingUser)}\n`
-        ) // TESTING
       } catch (error) {
         if (error) throw error
       }

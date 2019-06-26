@@ -268,7 +268,7 @@ input:checked + .slider:before {
 /* scrolly bars */
 .col-md-4.message-sideleft .panel-body {
   overflow-y: auto;
-  height: 450px;
+  height: 100%;
 }
 .message-wrapper .col-md-8.message-sideright {
   margin-top:22px;

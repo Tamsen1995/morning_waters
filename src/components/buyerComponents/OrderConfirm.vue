@@ -16,15 +16,7 @@
 </template>
 
 <script>
-// import ShoppingCart from "@/components/buyerComponents/ShoppingCart"; // TODO : Remove
-// import RequestQuoteCart from "@/components/buyerComponents/RequestQuoteCart"; // TODO : Remove
 import BuyerHeader from "@/components/buyerComponents/BuyerHeader";
-
-// import BuyerPaymentService from "@/services/BuyerPaymentService";
-
-// let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`); // TODO : Replace this with the live api key
-// let elements = stripe.elements();
-// let card = null;
 
 export default {
   data() {

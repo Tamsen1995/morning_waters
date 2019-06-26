@@ -1,8 +1,8 @@
-import DashboardHeader from '@/components/DashboardHeader.vue';
+import DashboardHeader from '@/components/DashboardHeader.vue'
 // import AuthenticationService from '@/services/AuthenticationService'
-import UserServices from '@/services/UserServices';
-import DashboardServices from '@/services/DashboardServices';
-import { ResponsiveDirective } from 'vue-responsive-components';
+import UserServices from '@/services/UserServices'
+import DashboardServices from '@/services/DashboardServices'
+import { ResponsiveDirective } from 'vue-responsive-components'
 var $ = require('jQuery')
 
 export default {
@@ -23,7 +23,12 @@ export default {
       about: '',
       credits: 0,
       leads: 0,
-      pageViews: 0
+      pageViews: 0,
+
+      // The variable which will determine if
+      // the section for adding a sub service will be shown
+      // addSubService: false
+      subServicesToBeAdded: 0
     }
   },
   components: {
@@ -33,6 +38,22 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async addSubService () {
+      try {
+        console.log(`\nAdding a subservice : \n`) // TESTING
+        this.subServicesToBeAdded = this.subServicesToBeAdded + 1
+
+        console.log(`\nsubservices to be added  : ${this.subServicesToBeAdded}\n`) // TESTING
+        // if (this.addSubService === false) {
+        //   this.addSubService = true
+        // } else {
+        //   this.addSubService = false
+        // }
+        // console.log(`\nthis.addSubService - > ${this.addSubService}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitService () {
       try {
         // get the service table id from the user
@@ -44,7 +65,8 @@ export default {
           tableId: serviceTableId,
           title: this.serviceTitle,
           description: this.serviceDescription,
-          servicePrice: this.servicePrice
+          servicePrice: this.servicePrice,
+          turnAroundTime: this.turnAroundTime
         }
 
         console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
@@ -54,9 +76,10 @@ export default {
         this.$modal.hide('add-service')
 
         this.getServices()
-        this.serviceTitle = '';
-        this.serviceDescription = '';
+        this.serviceTitle = ''
+        this.serviceDescription = ''
         this.servicePrice = 0.0
+        this.turnAroundTime = ''
       } catch (error) {
         if (error) {
           console.log(
@@ -67,7 +90,6 @@ export default {
     },
     addService () {
       this.$modal.show('add-service')
-      // $('#myModal').modal('show')
     },
 
     async getServices () {
@@ -110,7 +132,7 @@ export default {
       // The goal is to replace every variable in this method with
       // a live fetched variable
 
-      this.companyLocation = 'New York, New York, US';
+      this.companyLocation = 'New York, New York, US'
 
       // Credits
 

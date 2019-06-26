@@ -1,8 +1,11 @@
-import Api from '@/services/Api';
+import Api from '@/services/Api'
 
 // TODO : Potentially rename this to BuyerServices
 
 export default {
+  createPendingOrder (pendingOrder) {
+    return Api().post('createPendingOrder', pendingOrder)
+  },
   createOrder (order) {
     return Api().post('createOrder', order)
   },
@@ -17,6 +20,13 @@ export default {
   },
   getBuyersQuoteRequests (buyerId) {
     return Api().get('getBuyersQuoteRequests', {
+      params: {
+        buyerId: buyerId
+      }
+    })
+  },
+  getPendingOrders (buyerId) {
+    return Api().get('buyer/getPendingOrders', {
       params: {
         buyerId: buyerId
       }

@@ -14,6 +14,15 @@ export default {
     PageHeader
   },
   methods: {
+    async redirectToSignup () {
+      try {
+        this.$router.push({
+          name: 'register'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async login () {
       try {
         const response = await AuthenticationService.login({

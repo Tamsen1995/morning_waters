@@ -121,51 +121,66 @@
       </div>
     </section>
 
-    <section class="green" id="start">
-      <div class="container-fluid">
-        <div class="col-sm-12">
-          <h3>Get 3 free leads when you complete your profile!</h3>
-          <br>
-          <br>
-          <br>
-          <br>
+    <section class="green">
+      
+        <carousel :adjustableHeight="true" :per-page="1" :autoplay="true" :autoplayTimeout="2000">
 
-          <!-- The continue button needs to lead onto the registration around here -->
-          <form>
-            <div class="row">
+          <!-- Step 1 -->
+          <slide>
+            <img src="../assets/css/hello_step_1.png" alt="FIG ANALYTICS" class="center" id="pitch">
+          </slide>
+
+          <!-- Step 2 -->
+          <slide>
+            <img src="../assets/css/hello_step_2.png" alt="FIG ANALYTICS" class="center" id="pitch">
+          </slide>
+
+          <!-- Step 3 -->
+          <slide>
+            <img src="../assets/css/hello_step_3.png" alt="FIG ANALYTICS" class="center" id="pitch">
+          </slide>
+
+          <!-- Step 4 -->
+          <slide>
+            <div class="container-fluid">
               <div class="col-sm-12">
-                <p>Company Name:</p>
-                <input v-model="companyName" type="text" name="company">
+                <h3>Start your project today.</h3>
                 <br>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <p>Email:</p>
-                <input v-model="emailAddress" type="text" name="email">
-              </div>
-            </div>
-          </form>
+                <br>
+                <br>
+                <!-- The continue button needs to lead onto the registration around here -->
+                <form>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <p>Company Name:</p>
+                      <input v-model="companyName" type="text" name="company">
+                      <br>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <p>Email:</p>
+                      <input v-model="emailAddress" type="text" name="email">
+                    </div>
+                  </div>
+                </form>
 
-          <br>
-          <br>
-          <br>
-          <br>
-          <a
-            href="#register"
-            class="btn btn-outline btn-xl"
-            @click="continueOntoRegisterForm()"
-          >Continue</a>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <h3>Start your project today.</h3>
-        </div>
-      </div>
-      <div class="overlay"></div>
+                <br>
+                <br>
+                <a
+                  href="#register"
+                  class="btn btn-outline btn-xl"
+                  @click="continueOntoRegisterForm()"
+                >Continue</a>
+                <br>
+                <br>
+                <!-- <h3>Start your project today.</h3> -->
+              </div>
+            </div>
+          </slide>
+
+        </carousel>
+      
     </section>
 
     <footer>
@@ -196,12 +211,11 @@
           <br>
           <br>
           <div class="col-lg-2">
-            <router-link class="btn-default btn-lg" to="/login">Client Login</router-link>
-
+            <div class="container" style="max-width:200px;text-align:center;">
+            <router-link class="btn-default btn-large btn-block" id="btn-footer" to="/login">Client Login</router-link>
             <br>
-            <br>
-
-            <router-link class="btn-success btn-lg" to="/register">Sign Up</router-link>
+            <router-link class="btn-success btn-large btn-block" id="btn-footer" to="/register">Sign Up</router-link>
+            </div>
           </div>
         </div>
       </div>

@@ -28,7 +28,14 @@
           <div class="container" id="about">
             <div class="row">
               <h4>About:</h4>
+              <!-- <transition-expand>
+              <div v-if="expanded">-->
               <p style="text-align:left">{{ this.about }}</p>
+              <!-- </div> -->
+              <!-- </transition-expand>
+              <button @click="expanded = !expanded">
+                {{ expanded ? `Shrink` : `Expand` }}
+              </button>-->
             </div>
           </div>
         </div>
@@ -64,9 +71,6 @@
               <div class="card-body">
                 <h4 class="card-title">Pending Orders:</h4>
                 <p class="card-text">{{ this.credits }}</p>
-                <p class="card-text">
-                  <small class="text-muted">Orders link must be added</small>
-                </p>
                 <b-button block href="#" variant="outline-success">
                   <h6>View Orders</h6>
                 </b-button>
@@ -78,76 +82,66 @@
         <br>
         <br>
 
-        <div class="services">
+        <div class="services" id="services">
           <br>
-          <div id="services">
-            <h4>Services:</h4>
-          </div>
+          <h4>Services:</h4>
+          <br>
+          <!-- Title -->
+          <div class="service-block" v-for="service in this.services" :key="service.title">
+            <div id="service-title">
+              <h4 style="text-align:left;">{{ service.title }}</h4>
+              <h6>
+                <a href="#" class="btn pull-right">Edit</a>
+              </h6>
+            </div>
+            <!-- Service Description -->
+            <div class="container" id="service-desc">
+              <h5>{{ service.description }}</h5>
+            </div>
 
-          <!-- Add message indicating no services have been added until services have been added -->
-          <div class="col-12">
-            <br>
-
-            <div class="card" v-for="service in this.services" :key="service.title">
-              <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
-              <div class="card-body">
-                <!-- Service Description -->
+            <div class="service-block-sub">
+              <div id="service-title">
+                <h4 style="text-align:left;">{{ service.title }}</h4>
                 <h6>
                   <a href="#" class="btn pull-right">Edit</a>
                 </h6>
-                <h5
-                  class="card-text"
-                  style="text-align:left; padding:15px;"
-                >{{ service.description }}</h5>
-
-                <!-- Service/Price Listings -->
-                <div class="container" id="price-chart">
-                  <!-- <p> -->
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">Service Subtitle</th>
-                        <th scope="col">Turn Around Time</th>
-                        <th scope="col">Price/ Unit</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Service1</th>
-                        <td>TT1</td>
-                        <td>P1</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Service2</th>
-                        <td>TT2</td>
-                        <td>P2</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <!-- </p> -->
-                </div>
+              </div>
+              <!-- Service Description -->
+              <div class="container" id="service-desc">
+                <h5>{{ service.description }}</h5>
               </div>
             </div>
-
-            <!-- Add Service Button -->
-            <br>
-            <button
-              type="button"
-              class="btn btn-default pull-right btn-add-service"
-              @click="addService"
-            >
-              <strong>
+            <div class="service-block-sub">
+              <div id="service-title">
+                <h4 style="text-align:left;">{{ service.title }}</h4>
                 <h6>
-                  Add Service
-                  <span class="glyphicon glyphicon-plus-sign"></span>
+                  <a href="#" class="btn pull-right">Edit</a>
                 </h6>
-              </strong>
-            </button>
-            <br>
-            <br>
-            <br>
+              </div>
+              <!-- Service Description -->
+              <div class="container" id="service-desc">
+                <h5>{{ service.description }}</h5>
+              </div>
+            </div>
           </div>
+
+          <!-- Add Service Button -->
+          <br>
+          <button
+            type="button"
+            class="btn btn-default pull-right btn-add-service"
+            @click="addService"
+          >
+            <strong>
+              <h6>
+                Add Service
+                <span class="glyphicon glyphicon-plus-sign"></span>
+              </h6>
+            </strong>
+          </button>
+          <br>
+          <br>
+          <br>
         </div>
       </div>
     </body>
@@ -195,6 +189,37 @@
                 </div>
               </div>
               <br>
+              <br>
+
+              <div class="form-group row">
+                <label for="price" class="col-sm col-form-label">
+                  <p>Price Per Unit:</p>
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    v-model="servicePrice"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter price per unit"
+                  >
+                </div>
+              </div>
+              <!-- Turn Around Time -->
+              <div class="form-group row">
+                <label for="turnAroundTime" class="col-sm col-form-label">
+                  <p>Turn Around Time:</p>
+                </label>
+                <div class="col-sm-8">
+                  <input
+                    v-model="turnAroundTime"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter turn around time in weeks"
+                  >
+                </div>
+              </div>
+              <br>
+
               <!-- Service Tags -->
               <div class="form-group row">
                 <label for="serviceTags" class="col-sm col-form-label">
@@ -210,72 +235,77 @@
                   ></textarea>
                 </div>
               </div>
+              <!-- <div v-if="this.addSubService === true">
+                <p>Add Subservice</p>
 
-              <hr>
-              <p>Add Subservice</p>
-              <!-- If 1-10 entered, show... -->
-              <div class="container hidden" id="subServiceBlock">
-                <!-- Service Subtitle -->
-                <div class="form-group row">
-                  <label for="serviceSubtitle" class="col-sm col-form-label">
-                    <p>Service Subtitle:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="serviceSubtitle"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter service subtitle"
-                    >
+                <div class="container" id="subServiceBlock">
+
+                  <div class="form-group row">
+                    <label for="serviceSubtitle" class="col-sm col-form-label">
+                      <p>Service Subtitle:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="serviceSubtitle"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter service subtitle"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="unitType" class="col-sm col-form-label">
+                      <p>Unit Type:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="unitType"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter unit type"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="price" class="col-sm col-form-label">
+                      <p>Price Per Unit:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="price"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter price per unit"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="turnAroundTime" class="col-sm col-form-label">
+                      <p>Turn Around Time:</p>
+                    </label>
+                    <div class="col-sm-8">
+                      <input
+                        v-model="turnAroundTime"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter turn around time in weeks"
+                      >
+                    </div>
                   </div>
                 </div>
-                <!-- Enter Unit type -->
-                <div class="form-group row">
-                  <label for="unitType" class="col-sm col-form-label">
-                    <p>Unit Type:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="unitType"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter unit type"
-                    >
-                  </div>
-                </div>
-                <!-- Service Price/ Unit -->
-                <div class="form-group row">
-                  <label for="price" class="col-sm col-form-label">
-                    <p>Price Per Unit:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="price"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter price per unit"
-                    >
-                  </div>
-                </div>
-                <!-- Turn Around Time -->
-                <div class="form-group row">
-                  <label for="turnAroundTime" class="col-sm col-form-label">
-                    <p>Turn Around Time:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="turnAroundTime"
-                      type="text"
-                      class="form-control animated"
-                      placeholder="Enter turn around time in weeks"
-                    >
-                  </div>
-                </div>
-              </div>
+              </div>-->
 
               <!-- Add another (plus button) -->
 
-              <button type="button" class="btn btn-default pull-right" id="addSubButton">
+              <button
+                type="button"
+                class="btn btn-default pull-right"
+                id="addSubButton"
+                @click="addSubService()"
+              >
                 <strong>
                   <h6>
                     Add Sub-service

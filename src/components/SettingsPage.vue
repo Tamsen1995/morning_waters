@@ -1,7 +1,7 @@
 <template>
 <div id="app">
   <dashboard-header/>
-  <div class="responsive-component" v-responsive="{
+  <div class="responsive-component" v-responsive= "{
       small: el => el.width < 430
       }">
     <body class="settings">

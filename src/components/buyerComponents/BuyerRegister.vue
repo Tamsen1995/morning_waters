@@ -72,6 +72,78 @@
               </div>
             </div>
 
+            <!--  -->
+            <div>
+              Address
+              <br>
+              <!-- Street -->
+              <div class="form-group row">
+                <label for="inputStreet" class="col-sm col-form-label">Street:</label>
+                <div class="col-sm-12">
+                  <input
+                    v-model="address.street"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your street"
+                  >
+                </div>
+              </div>
+
+              <!-- City -->
+              <div class="form-group row">
+                <label for="inputCity" class="col-sm col-form-label">City:</label>
+                <div class="col-sm-12">
+                  <input
+                    v-model="address.city"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your city"
+                  >
+                </div>
+              </div>
+
+              <!-- State -->
+              <div class="form-group row">
+                <label for="inputState" class="col-sm col-form-label">State:</label>
+                <div class="col-sm-12">
+                  <input
+                    v-model="address.state"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your city"
+                  >
+                </div>
+              </div>
+
+              <!-- Zip -->
+              <div class="form-group row">
+                <label for="inputZip" class="col-sm col-form-label">Zip:</label>
+                <div class="col-sm-12">
+                  <input
+                    v-model="address.zip"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your zip code"
+                  >
+                </div>
+              </div>
+
+              <!-- Country -->
+              <div class="form-group row">
+                <label for="inputCountry" class="col-sm col-form-label">Country:</label>
+                <div class="col-sm-12">
+                  <input
+                    v-model="address.country"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter your country"
+                  >
+                </div>
+              </div>
+            </div>
+            <!--  -->
+            <br>
+            <!--  -->
             <div class="form-group row">
               <label for="inputPhoneNumber" class="col-sm col-form-label">Phone Number:</label>
               <div class="col-sm-12">
@@ -83,6 +155,7 @@
                 >
               </div>
             </div>
+            <!--  -->
           </form>
 
           <button type="button" class="btn btn-outline pull-right" id="submit" @click="register">
@@ -129,6 +202,13 @@ export default {
       email: "",
       password: "",
       passwordConfirm: "",
+      address: {
+        street: "",
+        city: "",
+        state: "",
+        zip: "",
+        country: ""
+      },
       number: "",
       contactListTableId: "",
       error: null
@@ -150,6 +230,7 @@ export default {
           email: this.email,
           password: this.password,
           passwordConfirm: this.passwordConfirm,
+          address: JSON.stringify(this.address),
           number: this.number
         });
         localStorage.setItem("id_token", response.data.token);

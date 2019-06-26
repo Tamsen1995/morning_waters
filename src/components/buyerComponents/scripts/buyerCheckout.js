@@ -1,11 +1,11 @@
-import ShoppingCart from '@/components/buyerComponents/ShoppingCart'; // TODO : Remove
-import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'; // TODO : Remove
-import BuyerHeader from '@/components/buyerComponents/BuyerHeader';
+import ShoppingCart from '@/components/buyerComponents/ShoppingCart' // TODO : Remove
+import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart' // TODO : Remove
+import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 
-import BuyerServices from '@/services/BuyerServices';
-import ShippingService from '@/services/ShippingService';
+import BuyerServices from '@/services/BuyerServices'
+import ShippingService from '@/services/ShippingService'
 
-let stripe = Stripe(`pk_test_CLMSL40and9mdJdOgCRMbLfs`) // TODO : Replace this with the live api key
+let stripe = Stripe(process.env.stripe_public_key) // TODO : Replace this with the live api key
 let elements = stripe.elements()
 let card = null
 
@@ -47,36 +47,58 @@ export default {
     BuyerHeader
   },
   methods: {
+    // This function redirects to the correct flow
+    // FLOWS:
+    // shippo oauth flow
+    // direct order confirmation page.
+    async redirectToProperFlow () {
+      try {
+        var randomString =
+          Math.random()
+            .toString(36)
+            .substring(2, 15) +
+          Math.random()
+            .toString(36)
+            .substring(2, 15)
+
+        window.open(`${process.env.SHIPPO_OAUTH_LINK}${randomString}`)
+        this.$router.push({
+          name: 'orderConfirm'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async sendShoppingCart () {
       try {
+        console.log(`\nhere?\n`) // TESTING
         const token = await stripe.createToken(card)
         if (!token.error) {
           const buyerExtracted = this.$store.getters.getBuyerInfo
-          const sellerExtracted = this.$store.getters.getUserInfo
           const buyerId = buyerExtracted.id
           const stripeCustomerId = buyerExtracted.stripeCustomerId
           const shoppingCartItems = this.shoppingCart
+          const sellerId = shoppingCartItems[0].service.userId
 
           const purchaseInfo = {
             uid: buyerId,
-            sellerId: sellerExtracted.user.id,
+            sellerId: sellerId,
             stripeCustomerId: stripeCustomerId,
             stripeToken: token,
             shoppingCartItems: shoppingCartItems
           }
 
-          const responseOfPurchase = await BuyerServices.purchaseShoppingCart(
+          await BuyerServices.purchaseShoppingCart(
             purchaseInfo
           )
           this.$store.dispatch('setShoppingCart', [])
-          await BuyerServices.createOrder({
+          const response = await BuyerServices.createPendingOrder({
             buyerId: buyerExtracted.id,
-            sellerId: sellerExtracted.user.id,
+            sellerId: sellerId,
             orderId: this.orderId
           })
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+
+          this.redirectToProperFlow()
         }
       } catch (error) {
         console.log(`\nThe error seen in sendShoppingCart : ${error}\n`)
@@ -90,7 +112,6 @@ export default {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const sellerExtracted = this.$store.getters.getUserInfo
         const quoteRequestsCart = this.quoteRequestsCart
-
         const purchaseInfo = {
           seller: sellerExtracted,
           buyer: buyerExtracted,
@@ -98,9 +119,8 @@ export default {
         }
         this.$store.dispatch('setQuoteRequestCart', [])
 
-        this.$router.push({
-          name: 'orderConfirm'
-        })
+        this.redirectToProperFlow()
+
         await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
         await BuyerServices.createOrder({
           buyerId: buyerExtracted.id,
@@ -150,9 +170,7 @@ export default {
           })
           this.$store.dispatch('setQuoteRequestCart', [])
           this.$store.dispatch('setShoppingCart', [])
-          this.$router.push({
-            name: 'orderConfirm'
-          })
+          this.redirectToProperFlow()
         }
       } catch (error) {
         console.log(

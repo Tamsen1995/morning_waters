@@ -1,5 +1,5 @@
-import PaymentService from '@/services/PaymentService';
-import AuthenticationService from '@/services/AuthenticationService';
+import PaymentService from '@/services/PaymentService'
+import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
   data () {
@@ -19,7 +19,7 @@ export default {
         this.$store.dispatch('setUser', null)
         this.$store.dispatch('setQuoteToBeRequested', null)
         this.$store.dispatch('setSidebarHighlight', '')
-        await AuthenticationService.logout
+        await AuthenticationService.logout()
       } catch (error) {
         if (error) throw error
       }

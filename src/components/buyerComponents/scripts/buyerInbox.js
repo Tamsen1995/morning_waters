@@ -1,101 +1,150 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 import BuyerServices from '@/services/BuyerServices'
+import InboxService from '@/services/InboxService'
+import UserServices from '../../../services/UserServices'
 
 export default {
   data () {
     return {
-      buyerOrderItems: null,
-      buyerQuoteRequests: null,
-      // orders:[] is an array holding several objects, each representing an order
       orders: [],
-      quoteOrders: []
+      pendingOrders: [],
+
+      buyerQuoteRequests: null,
+      quoteRequest: null,
+      order: null,
+      orderItems: [],
+      servicesNegotiated: [],
+      // orders:[] is an array holding several objects, each representing an order
+      quoteOrders: [],
+      dropdownVariable: 'All messages',
+      correspondanceMessages: [],
+      message: ''
     }
   },
   async created () {
     await this.getBuyersOrders()
-    await this.getBuyersQuoteRequests()
-    if (this.buyerOrderItems.length > 0) {
-      this.segmentOrderItems()
-    }
+    await this.getBuyersPendingOrders()
     if (this.buyerQuoteRequests.length > 0) {
       this.segmentBuyerQuoteRequests()
     }
   },
-  async mounted () { },
+  async mounted () {
+  },
   components: {
     BuyerHeader
   },
   methods: {
-    async goToQuoteCorrespondance (index) {
+    async confirmOrder () {
       try {
-        console.log(`\nWe're gonna be different ${index}\n`) // TESTING
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async goToCorrespondance (index) {
-      try {
-        this.$store.dispatch('setObjectToBeSent', this.orders[index])
-        this.$router.push({
-          name: 'buyerCorrespondance'
+        await InboxService.confirmOrder({
+          orderId: this.order.orderId,
+          user: 'buyer'
         })
+
+        await InboxService.submitToPendingOrders({ orderId: this.order.orderId })
+
+        // const response = await InboxService.checkIfOrderIsConfirmed({ orderId: this.order.orderId })
+        if (this.order && this.order.seller_confirmed === true) {
+          this.$router.push({
+            name: 'buyerDashboard'
+          })
+        }
       } catch (error) {
+        console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
         if (error) throw error
       }
     },
-
-    async segmentBuyerQuoteRequests () {
+    async submitMessage () {
       try {
-        // Filtering out the orderIds
-        var currentOrderId = this.buyerQuoteRequests[0].orderId
-        var orderIds = []
-        orderIds.push(currentOrderId)
-        for (var i = 0; i < this.buyerQuoteRequests.length; i++) {
-          if (this.buyerQuoteRequests[i].orderId !== currentOrderId) {
-            orderIds.push(this.buyerQuoteRequests[i].orderId)
-            currentOrderId = this.buyerQuoteRequests[i].orderId
+        console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
+        var correspondanceMsg = null
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            // by userId we mean to say the id of the seller in the db
+            userId: this.order.sellerId,
+            date: '',
+            sender: 'buyer',
+            message: this.message
+          }
+        } else if (this.quoteRequest !== null) {
+          correspondanceMsg = {
+            orderId: this.quoteRequest.orderId,
+            buyerId: this.quoteRequest.buyerId,
+            userId: this.quoteRequest.sellerId,
+            date: 'nothing for now',
+            sender: 'buyer',
+            message: this.message
           }
         }
-        // Filtering out the orderIds
 
-        //
-
-        // creating an array with the different quote requests in them
-        for (var k = 0; k < orderIds.length; k++) {
-          var array = []
-          array = this.buyerQuoteRequests.filter(quoteRequest => quoteRequest.orderId === orderIds[k])
-          this.quoteOrders.push(array)
+        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
+        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
+        this.correspondanceMessages = response.data.correspondance
+        this.message = ''
+        if (this.order !== null) {
+          this.showOrder(this.order)
+        } else if (this.quoteRequest !== null) {
+          this.showQuoteRequest(this.quoteRequest)
         }
-        // creating an array with the different quote requests in them
+        // this.showMessage(this.order)
       } catch (error) {
         if (error) throw error
       }
     },
-    async segmentOrderItems () {
+
+    async showQuoteRequest (request) {
       try {
-        var previousOrderId = this.buyerOrderItems[0].orderId
-        var order = []
-        // iterates through the buyer order items and segments all the orders into their
-        // respective order ids
-        for (var i = 0; i < this.buyerOrderItems.length; i++) {
-          if (previousOrderId === this.buyerOrderItems[i].orderId) {
-            order.push(this.buyerOrderItems[i])
-
-            if (this.buyerOrderItems.length === i + 1) {
-              this.orders.push(order)
-              order = []
-              previousOrderId = this.buyerOrderItems[i].orderId
-            }
-          } else {
-            this.orders.push(order)
-            order = []
-            previousOrderId = this.buyerOrderItems[i].orderId
-          }
-        }
+        this.quoteRequest = request
+        this.order = null
+        const orderId = request.orderId
+        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.correspondanceMessages = response.data.correspondance
       } catch (error) {
         if (error) throw error
       }
     },
+    async retrieveOrderOrderItems (order) {
+      try {
+        const response = await InboxService.retrieveOrderOrderItems(order.orderId)
+        const response2 = await InboxService.retrieveServicesNegotiated(response.data.orderItems)
+
+        this.orderItems = response.data.orderItems
+        this.servicesNegotiated = response2.data
+      } catch (error) {
+        console.log(`\nError in retrieveOrderOrderItems\n`) // TESTING
+        if (error) throw error
+      }
+    },
+    async showOrder (order) {
+      try {
+        this.order = order
+        this.quoteRequest = null
+        const orderId = order.orderId
+
+        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.correspondanceMessages = response.data.correspondance
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async switchMessagesDisplayed (messagesDisplayed) {
+      try {
+        if (messagesDisplayed === 'all') {
+          this.dropdownVariable = 'All messages'
+        } else if (messagesDisplayed === 'orders') {
+          this.dropdownVariable = 'Orders'
+          this.getLockedOrders()
+        } else if (messagesDisplayed === 'quoteRequests') {
+          this.dropdownVariable = 'Quote Requests'
+        }
+      } catch (error) {
+        console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
+        if (error) throw error
+      }
+    },
+
     async getBuyersQuoteRequests () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
@@ -107,13 +156,23 @@ export default {
         if (error) throw error
       }
     },
+    async getBuyersPendingOrders () {
+      try {
+        const buyerExtracted = this.$store.getters.getBuyerInfo
+
+        const buyerId = buyerExtracted.id
+        const response = await BuyerServices.getPendingOrders(buyerId)
+        this.pendingOrders = response.data.pendingOrders
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async getBuyersOrders () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const response = await BuyerServices.getBuyersOrders(buyerExtracted.id)
 
-        const buyerOrderItems = response.data.orderItems
-        this.buyerOrderItems = buyerOrderItems
+        this.orders = response.data.orders
       } catch (error) {
         if (error) throw error
       }
