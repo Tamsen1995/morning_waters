@@ -90,6 +90,7 @@
 
                 <!-- Service/Price Listings -->
                 <button
+                  v-if="service.sub_services_present === false"
                   class="btn btn-success"
                   @click="addServiceToCart(service, index)"
                 >Add to Cart</button>
