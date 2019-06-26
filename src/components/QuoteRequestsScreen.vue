@@ -156,7 +156,10 @@
                 v-if="this.order !== undefined && this.order.totalPrice === undefined"
               >
                 Negotiaion Interface [TESTING]:
-                <button @click="submitOrder()">Submit Order</button>
+                <button
+                  @click="submitOrder()"
+                  v-if="this.order && this.order.seller_confirmed === false"
+                >Submit Order</button>
 
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   <br>

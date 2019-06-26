@@ -1,6 +1,7 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
+import UserServices from '../../../services/UserServices'
 
 export default {
   data () {
@@ -41,6 +42,13 @@ export default {
         })
 
         await InboxService.submitToPendingOrders({ orderId: this.order.orderId })
+
+        // const response = await InboxService.checkIfOrderIsConfirmed({ orderId: this.order.orderId })
+        if (this.order && this.order.seller_confirmed === true) {
+          this.$router.push({
+            name: 'buyerDashboard'
+          })
+        }
       } catch (error) {
         console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
         if (error) throw error

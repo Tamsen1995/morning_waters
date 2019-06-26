@@ -15,6 +15,14 @@ export default {
       }
     })
   },
+  // this function will retrieve
+  getOrder (orderId) {
+    return Api().get('orders/getOrder', {
+      params: {
+        orderId: orderId
+      }
+    })
+  },
   unlockOrder (orderId) {
     return Api().post('/unlockOrder', { orderId })
   },
