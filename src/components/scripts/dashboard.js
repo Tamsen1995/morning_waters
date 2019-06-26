@@ -10,6 +10,7 @@ export default {
   data () {
     return {
       services: [],
+      subServices: [],
       serviceTitle: '',
       serviceDescription: '',
       servicePrice: 0.0,
@@ -28,8 +29,8 @@ export default {
       // The variable which will determine if
       // the section for adding a sub service will be shown
       // addSubService: false
-      // these are the subservices to be added
-      subServices: []
+      // these are the subservicesToBeAdded to be added
+      subServicesToBeAdded: []
     }
   },
   components: {
@@ -41,7 +42,10 @@ export default {
   methods: {
     async addSubService () {
       try {
-        this.subServices.push({
+        const userExtracted = this.$store.getters.getUserInfo
+
+        this.subServicesToBeAdded.push({
+          userId: userExtracted.id,
           serviceTitle: '',
           serviceDescription: '',
           servicePrice: 0.0,
@@ -75,10 +79,10 @@ export default {
         await this.getServices()
 
         const serviceId = this.services[this.services.length - 1].id
-        if (this.subServices.length > 0) {
-          await DashboardServices.addSubServices({
+        if (this.subServicesToBeAdded.length > 0) {
+          await DashboardServices.addSubService({
             parentServiceId: serviceId,
-            subServices: this.subServices
+            subServices: this.subServicesToBeAdded
           })
         }
         this.$modal.hide('add-service')
@@ -87,7 +91,7 @@ export default {
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
-        this.subServices = []
+        this.subServicesToBeAdded = []
       } catch (error) {
         if (error) {
           console.log(
@@ -136,25 +140,23 @@ export default {
         if (error) throw error
       }
     },
-    async inserDummyData () {
-      // The goal is to replace every variable in this method with
-      // a live fetched variable
+    async getSubServices () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+        const response = await DashboardServices.queryForUserSubServices({
+          userId: userExtracted.id
+        })
 
-      this.companyLocation = 'New York, New York, US'
-
-      // Credits
-
-      console.log(`this.credits ${this.credits}`) // TESTING
-
-      // Leads
-      this.leads = 75015
-      // Page Views
-      this.pageViews = 714
+        console.log(`\nThe response being : ${JSON.stringify(response)}\n\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
     }
   },
   mounted () {
     this.inserDummyData() // TESTING
     this.getServices()
+    this.getSubServices()
     this.getUserInfo()
   }
 }

@@ -13,5 +13,12 @@ export default {
         serviceTableId: serviceTableId
       }
     })
+  },
+  queryForUserSubServices (userId) {
+    return Api().get('seller/services/queryForUserSubServices', {
+      params: {
+        userId: userId
+      }
+    })
   }
 }

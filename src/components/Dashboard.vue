@@ -99,32 +99,21 @@
               <h5>{{ service.description }}</h5>
             </div>
 
-            <div class="service-block-sub">
+            <!--  -->
+            <!-- sub services will be in this block -->
+            <!-- <div class="service-block-sub">
               <div id="service-title">
                 <h4 style="text-align:left;">{{ service.title }}</h4>
                 <h6>
                   <a href="#" class="btn pull-right">Edit</a>
                 </h6>
               </div>
-              <!-- Service Description -->
               <div class="container" id="service-desc">
                 <h5>{{ service.description }}</h5>
               </div>
-            </div>
-            <div class="service-block-sub">
-              <div id="service-title">
-                <h4 style="text-align:left;">{{ service.title }}</h4>
-                <h6>
-                  <a href="#" class="btn pull-right">Edit</a>
-                </h6>
-              </div>
-              <!-- Service Description -->
-              <div class="container" id="service-desc">
-                <h5>{{ service.description }}</h5>
-              </div>
-            </div>
+            </div>-->
           </div>
-
+          <!--  -->
           <!-- Add Service Button -->
           <br>
           <button
@@ -349,7 +338,7 @@
                 class="btn btn-info pull-right"
                 style="margin-top:10px"
                 type="button"
-                @click="submitService()"
+                @click="submitService"
               >
                 <p>Submit</p>
               </button>
