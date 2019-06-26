@@ -6,7 +6,7 @@
       }">
     <body class="dashboard">
       <div class="container" id="dashboard">
-        <div id="main">
+        <!-- <div id="main"> -->
           <div class="container" id="name-location">
             <div class="d-flex justify-content-center" id="company-name">
               <h1 style="text-align:center:">{{ this.companyName }}</h1>
@@ -25,10 +25,18 @@
           <div class="container" id="about">
             <div class="row">
               <h4>About:</h4>
-              <p style="text-align:left">{{ this.about }}</p>
+              <transition-expand>
+                <div v-if="expanded">
+                  <p style="text-align:left">{{ this.about }}</p>
+                </div>
+              </transition-expand>
+              <button @click="expanded = !expanded">
+                {{ expanded ? `Shrink` : `Expand` }}
+              </button>
+
             </div>
           </div>
-        </div>
+        <!-- </div> -->
 
         <br>
         <br>
