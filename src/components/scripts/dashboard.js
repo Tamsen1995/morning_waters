@@ -75,16 +75,18 @@ export default {
 
         // TODO : the reponse object doesn't return anything. Fix that in a little bit
         await DashboardServices.pushServiceOntoDb(service)
-
         await this.getServices()
 
         const serviceId = this.services[this.services.length - 1].id
         if (this.subServicesToBeAdded.length > 0) {
-          await DashboardServices.addSubService({
+          await DashboardServices.addSubServices({
             parentServiceId: serviceId,
             subServices: this.subServicesToBeAdded
           })
         }
+        await this.getSubServices()
+        await this.getServices()
+
         this.$modal.hide('add-service')
 
         this.serviceTitle = ''
@@ -143,10 +145,9 @@ export default {
     async getSubServices () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
-        const response = await DashboardServices.queryForUserSubServices({
-          userId: userExtracted.id
-        })
+        const response = await DashboardServices.queryForUserSubServices(userExtracted.id)
 
+        this.subServices = response.data
         console.log(`\nThe response being : ${JSON.stringify(response)}\n\n`) // TESTING
       } catch (error) {
         if (error) throw error
@@ -154,7 +155,6 @@ export default {
     }
   },
   mounted () {
-    this.inserDummyData() // TESTING
     this.getServices()
     this.getSubServices()
     this.getUserInfo()

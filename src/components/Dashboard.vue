@@ -87,7 +87,7 @@
           <h4>Services:</h4>
           <br>
           <!-- Title -->
-          <div class="service-block" v-for="service in this.services" :key="service.title">
+          <div class="service-block" v-for="(service, index) in this.services" :key="index">
             <div id="service-title">
               <h4 style="text-align:left;">{{ service.title }}</h4>
               <h6>
@@ -101,17 +101,19 @@
 
             <!--  -->
             <!-- sub services will be in this block -->
-            <!-- <div class="service-block-sub">
-              <div id="service-title">
-                <h4 style="text-align:left;">{{ service.title }}</h4>
-                <h6>
-                  <a href="#" class="btn pull-right">Edit</a>
-                </h6>
+            <div v-for="(subService, index) in subServices" :key="index">
+              <div class="service-block-sub" v-if="subService.parentServiceId === service.id">
+                <div id="service-title">
+                  <h4 style="text-align:left;">{{ subService.title }}</h4>
+                  <h6>
+                    <a href="#" class="btn pull-right">Edit</a>
+                  </h6>
+                </div>
+                <div class="container" id="service-desc">
+                  <h5>{{ service.description }}</h5>
+                </div>
               </div>
-              <div class="container" id="service-desc">
-                <h5>{{ service.description }}</h5>
-              </div>
-            </div>-->
+            </div>
           </div>
           <!--  -->
           <!-- Add Service Button -->
@@ -228,7 +230,7 @@
               <!-- The sub services form -->
               <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
 
-              <div v-for="(subservice, index) in this.subServices" v-bind:key="index">
+              <div v-for="(subservice, index) in this.subServicesToBeAdded" v-bind:key="index">
                 <br>
                 <br>
                 <br>
@@ -239,7 +241,7 @@
                   </label>
                   <div class="col-sm-10">
                     <input
-                      v-model="subServices[index].serviceTitle"
+                      v-model="subServicesToBeAdded[index].serviceTitle"
                       type="text"
                       class="form-control"
                       placeholder="Enter service title"
@@ -253,7 +255,7 @@
                   </label>
                   <div class="col-sm-10">
                     <textarea
-                      v-model="subServices[index].serviceDescription"
+                      v-model="subServicesToBeAdded[index].serviceDescription"
                       type="text"
                       rows="5"
                       class="form-control animated"
@@ -270,7 +272,7 @@
                   </label>
                   <div class="col-sm-8">
                     <input
-                      v-model="subServices[index].servicePrice"
+                      v-model="subServicesToBeAdded[index].servicePrice"
                       type="text"
                       class="form-control"
                       placeholder="Enter price per unit"
@@ -284,7 +286,7 @@
                   </label>
                   <div class="col-sm-8">
                     <input
-                      v-model="subServices[index].turnAroundTime"
+                      v-model="subServicesToBeAdded[index].turnAroundTime"
                       type="text"
                       class="form-control"
                       placeholder="Enter turn around time in weeks"
@@ -300,7 +302,7 @@
                   </label>
                   <div class="col-sm-10">
                     <textarea
-                      v-model="subServices[index].serviceTags"
+                      v-model="subServicesToBeAdded[index].serviceTags"
                       type="text"
                       rows="3"
                       class="form-control animated"
