@@ -13,10 +13,10 @@ export default {
       serviceTitle: '',
       serviceDescription: '',
       servicePrice: 0.0,
-      serviceSubtitle: '',
+      turnAroundTime: '',
+      serviceTags: '',
       unitType: '',
       price: '',
-      turnAroundTime: '',
       user: null,
       companyName: '',
       companyLocation: '',
@@ -28,7 +28,8 @@ export default {
       // The variable which will determine if
       // the section for adding a sub service will be shown
       // addSubService: false
-      subServicesToBeAdded: 0
+      // these are the subservices to be added
+      subServices: []
     }
   },
   components: {
@@ -40,16 +41,13 @@ export default {
   methods: {
     async addSubService () {
       try {
-        console.log(`\nAdding a subservice : \n`) // TESTING
-        this.subServicesToBeAdded = this.subServicesToBeAdded + 1
-
-        console.log(`\nsubservices to be added  : ${this.subServicesToBeAdded}\n`) // TESTING
-        // if (this.addSubService === false) {
-        //   this.addSubService = true
-        // } else {
-        //   this.addSubService = false
-        // }
-        // console.log(`\nthis.addSubService - > ${this.addSubService}\n`) // TESTING
+        this.subServices.push({
+          serviceTitle: '',
+          serviceDescription: '',
+          servicePrice: 0.0,
+          turnAroundTime: '',
+          serviceTags: ''
+        })
       } catch (error) {
         if (error) throw error
       }
@@ -69,17 +67,27 @@ export default {
           turnAroundTime: this.turnAroundTime
         }
 
-        console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
+        // console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
 
         // TODO : the reponse object doesn't return anything. Fix that in a little bit
         await DashboardServices.pushServiceOntoDb(service)
+
+        await this.getServices()
+
+        const serviceId = this.services[this.services.length - 1].id
+        if (this.subServices.length > 0) {
+          await DashboardServices.addSubServices({
+            parentServiceId: serviceId,
+            subServices: this.subServices
+          })
+        }
         this.$modal.hide('add-service')
 
-        this.getServices()
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
+        this.subServices = []
       } catch (error) {
         if (error) {
           console.log(

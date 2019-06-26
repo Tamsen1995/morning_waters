@@ -235,68 +235,91 @@
                   ></textarea>
                 </div>
               </div>
-              <!-- <div v-if="this.addSubService === true">
-                <p>Add Subservice</p>
 
-                <div class="container" id="subServiceBlock">
+              <!-- The sub services form -->
+              <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
 
-                  <div class="form-group row">
-                    <label for="serviceSubtitle" class="col-sm col-form-label">
-                      <p>Service Subtitle:</p>
-                    </label>
-                    <div class="col-sm-8">
-                      <input
-                        v-model="serviceSubtitle"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter service subtitle"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="unitType" class="col-sm col-form-label">
-                      <p>Unit Type:</p>
-                    </label>
-                    <div class="col-sm-8">
-                      <input
-                        v-model="unitType"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter unit type"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="price" class="col-sm col-form-label">
-                      <p>Price Per Unit:</p>
-                    </label>
-                    <div class="col-sm-8">
-                      <input
-                        v-model="price"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter price per unit"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="form-group row">
-                    <label for="turnAroundTime" class="col-sm col-form-label">
-                      <p>Turn Around Time:</p>
-                    </label>
-                    <div class="col-sm-8">
-                      <input
-                        v-model="turnAroundTime"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter turn around time in weeks"
-                      >
-                    </div>
+              <div v-for="(subservice, index) in this.subServices" v-bind:key="index">
+                <br>
+                <br>
+                <br>
+                <!-- Service Title -->
+                <div class="form-group row">
+                  <label for="serviceTitle" class="col-sm .col-form-label-xsm">
+                    <p>Service Title:</p>
+                  </label>
+                  <div class="col-sm-10">
+                    <input
+                      v-model="subServices[index].serviceTitle"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter service title"
+                    >
                   </div>
                 </div>
-              </div>-->
+                <!-- Service Description -->
+                <div class="form-group row">
+                  <label for="serviceDescription" class="col-sm col-form-label">
+                    <p>General Service Description:</p>
+                  </label>
+                  <div class="col-sm-10">
+                    <textarea
+                      v-model="subServices[index].serviceDescription"
+                      type="text"
+                      rows="5"
+                      class="form-control animated"
+                      placeholder="Enter service description"
+                    ></textarea>
+                  </div>
+                </div>
+                <br>
+                <br>
+
+                <div class="form-group row">
+                  <label for="price" class="col-sm col-form-label">
+                    <p>Price Per Unit:</p>
+                  </label>
+                  <div class="col-sm-8">
+                    <input
+                      v-model="subServices[index].servicePrice"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter price per unit"
+                    >
+                  </div>
+                </div>
+                <!-- Turn Around Time -->
+                <div class="form-group row">
+                  <label for="turnAroundTime" class="col-sm col-form-label">
+                    <p>Turn Around Time:</p>
+                  </label>
+                  <div class="col-sm-8">
+                    <input
+                      v-model="subServices[index].turnAroundTime"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter turn around time in weeks"
+                    >
+                  </div>
+                </div>
+                <br>
+
+                <!-- Service Tags -->
+                <div class="form-group row">
+                  <label for="serviceTags" class="col-sm col-form-label">
+                    <p>Tags:</p>
+                  </label>
+                  <div class="col-sm-10">
+                    <textarea
+                      v-model="subServices[index].serviceTags"
+                      type="text"
+                      rows="3"
+                      class="form-control animated"
+                      placeholder="Enter tags used to describe your service"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
 
               <!-- Add another (plus button) -->
 
@@ -326,7 +349,7 @@
                 class="btn btn-info pull-right"
                 style="margin-top:10px"
                 type="button"
-                @click="submitService"
+                @click="submitService()"
               >
                 <p>Submit</p>
               </button>
