@@ -104,6 +104,7 @@
                   <!-- Service/Price Listings -->
                   <button
                     class="btn btn-success"
+                    v-if="subServicesPresent(service) === false"
                     @click="addServiceToCart(service, index)"
                   >Add to Cart</button>
                 </div>
