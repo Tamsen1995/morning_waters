@@ -40,6 +40,72 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    // compares the given service to all
+    // other services and determines if there any
+    // subservices present
+
+    // async manifestModalInquiry() {
+    //   try {
+    //     this.$modal.show('general-inquiry-modal')
+    //   } catch (error) {
+    //     console.log(`\nError in manifestModalInquiry : ${error}\n`) // TESTING
+    //     if (error) throw error
+    //   }
+    // },
+
+    // get the service id of the service clicked on
+    // ddeclare the service with the service id the main service
+    // iteratively add all the services with the same public id into an array
+    //
+
+    // this.$modal.hide('add-service')
+    //     this.serviceTitle = ''
+    //     this.serviceDescription = ''
+    //     this.servicePrice = 0.0
+    //     this.turnAroundTime = ''
+    //     this.subServicesToBeAdded = []
+
+    async deleteService (service) {
+      try {
+        // delete the service
+        await DashboardServices.deleteService(service.id)
+
+        this.getServices()
+        // reload the services into the dashboard
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async editService (service) {
+      try {
+        console.log(`\nIm editing the services : ${JSON.stringify(service)}\n`) // TESTING
+
+        this.serviceTitle = service.title
+        this.serviceDescription = service.description
+        this.servicePrice = service.servicePrice
+        this.turnAroundTime = service.turnAroundTime
+
+        this.subServicesToBeAdded = []
+        for (var i = 0; i < this.services.length; i++) {
+          if (this.services[i].parentServiceId === service.id) {
+            console.log(`\nthis.services[i] : ${this.services[i]}\n`) // TESTING
+            this.subServicesToBeAdded.push({
+              serviceTitle: this.services[i].title,
+              serviceDescription: this.services[i].description,
+              servicePrice: this.services[i].servicePrice,
+              turnAroundTime: this.services[i].turnAroundTime
+            })
+          }
+        }
+
+        // delete service with the underlying service id
+
+        this.$modal.show('add-service')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+
     async addSubService () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
@@ -114,8 +180,8 @@ export default {
           serviceTableId
         )
         // have an array in which the services of the user are
-        const userServicesArray = response.data.usersServices
-        this.services = userServicesArray
+
+        this.services = response.data.usersServices
       } catch (error) {
         console.log(
           `An error occurred inside of the dashboard.js getServices method : ${error}`

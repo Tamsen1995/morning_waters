@@ -92,7 +92,7 @@
               <div id="service-title">
                 <h4 style="text-align:left;">{{ service.title }}</h4>
                 <h6>
-                  <a href="#" class="btn pull-right">Edit</a>
+                  <a class="btn pull-right" style="color: black;" @click="editService(service)">Edit</a>
                 </h6>
               </div>
               <!-- Service Description -->
@@ -109,9 +109,7 @@
                 >
                   <div id="service-title">
                     <h4 style="text-align:left;">{{ subService.title }}</h4>
-                    <h6>
-                      <a href="#" class="btn pull-right">Edit</a>
-                    </h6>
+                    <h6></h6>
                   </div>
                   <div class="container" id="service-desc">
                     <h5>{{ subService.description }}</h5>
