@@ -16,7 +16,7 @@
           <!-- Form -->
           <form >
             <h1>Sign Up</h1>
-
+            <br>
             <hr>
             <div class="container">
                 <div v-if="step === 1">
@@ -30,8 +30,7 @@
                           v-model="name"
                           type="text"
                           class="form-control"
-                          id="staticEmail"
-                          value="Enter your name"
+                          placeholder="Enter your name"
                         >
                       </div>
                     </div>
@@ -367,18 +366,16 @@
         </div>
 
         <!-- Footer -->
-        <div id="form-footer" class="center">
-          <div class="container" id="legal-links">
-            <div style="text-align:center">
-              <a href="#">Terms and Conditions</a>
-              <br>
-              <a href="https://app.termly.io/document/privacy-policy/a291c868-81c5-4419-81c8-735597b64d86">Privacy</a>
-            </div>
-          </div>
-          <!-- <hr>
-              <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
-          <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>-->
+        <div class="container" id="form-footer">
+          <a href="#" id="legal-links">Terms and Conditions</a>
+          <br>
+          <a href="https://app.termly.io/document/privacy-policy/a291c868-81c5-4419-81c8-735597b64d86">Privacy</a>
+          <br>
+          <hr>
+          <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
+          <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
         </div>
+
       </div>
     </body>
     <!-- </div> -->
