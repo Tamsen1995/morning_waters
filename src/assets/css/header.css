@@ -6,7 +6,6 @@
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
-
   font-size: 12px;
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   letter-spacing: 2px;
@@ -18,67 +17,11 @@
 #mainNav:hover {
   color: #823E90;
   visibility:visible;
-
   background-color: white;
   height:auto;
 }
 
-
-/* #mainNav .navbar-nav > li > a.active,
-#mainNav .navbar-nav > li > a:hover, {
-  color: #87C27B !important;
-  background-color: transparent;
-} */
-
 /* --------Seller Dashboard Nav-------------- */
-
-#dashboard_nav{
-  border-color: rgba(34, 34, 34, 0.05);
-  background-color: white;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
-  letter-spacing: 1px;
-  padding:0px;
-}
-
-
-#dashboard_nav .navbar-brand{
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
-  font-weight: 200;
-  letter-spacing: 1px;
-  padding-right:10px;
-}
-#dash_icon:hover {
-  color:  yellowgreen ;
-}
-#dashboard_nav:hover, #dashboard_nav .navbar-brand:focus {
-  color: #823E90;
-  visibility:visible;
-  opacity: 1;
-}
-
-#dashboard_nav .navbar-toggler {
-  font-size: 12px;
-  color: #823E90;
-}
-
-#dashboard_nav .navbar-nav > li > a {
-  font-size: 12px;
-  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-#dash_icon{
-  padding: 5px;
-  font-size: 35px;
-}
-
-ul {
-  text-align: left
-}
-
 .nav-center {
   display: block;
   margin-left: auto;
@@ -113,6 +56,32 @@ ul {
   color: purple;
 }
 
+#seller_nav {
+  -webkit-transition: all .35s;
+  transition: all .35s;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  letter-spacing: 1px;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: -5px;
+  padding-top:0px;
+}
+#seller_nav_icon {
+  font-size: 30px;
+}
+
+#seller_nav_icon:hover {
+  color:  yellowgreen ;
+}
+
+#seller_nav:hover, #buyer_nav .navbar-brand:focus {
+  color: #823E90;
+  visibility:visible;
+  opacity: 1;
+}
+
 /* -------Buyer Nav ----------*/
 #buyer_nav {
   -webkit-transition: all .35s;
@@ -123,6 +92,8 @@ ul {
   font-weight: 200;
   letter-spacing: 1px;
   font-size: 15px;
+  margin-bottom: -5px;
+  padding-top:0px;
 }
 
 #buyer_nav_icon:hover {
