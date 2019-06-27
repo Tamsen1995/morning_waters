@@ -1,15 +1,14 @@
 <template>
-<div>
+<div id="app">
   <page-header></page-header>
-  <body class="login">
-    <div
-      class="responsive-component"
-      v-responsive="{
-      small: el => el.width < 430
-      }"
-      id="register"
+  <div
+    class="responsive-component"
+    v-responsive= "{
+    small: el => el.width < 430
+    }"
     >
-      <div class="container" id="login">
+    <body>
+      
         <div class="row">
           <br>
           <br>
@@ -30,7 +29,7 @@
             <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
             <!-- Form -->
-            <div class="card border-0" id="rounded">
+            <div class="card" id="login">
               <form>
                 <h1>Login</h1>
                 <br>
@@ -80,7 +79,7 @@
             </div>
 
             <!-- Footer -->
-            <div class="container" id="form-footer">
+            <div class="container" id="login_form-footer">
               <a href="#" id="legal-links">Terms and Conditions</a>
               <br>
               <a href="#" id="legal-links">Privacy</a>
@@ -91,9 +90,10 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </body>
+
+
+    </body>
+  </div>
 </div>
 </template>
 

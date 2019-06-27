@@ -16,7 +16,7 @@
           <!-- Form -->
           <form >
             <h1>Sign Up</h1>
-
+            <br>
             <hr>
             <div class="container">
                 <div v-if="step === 1">
@@ -30,8 +30,7 @@
                           v-model="name"
                           type="text"
                           class="form-control"
-                          id="staticEmail"
-                          value="Enter your name"
+                          placeholder="Enter your name"
                         >
                       </div>
                     </div>
@@ -136,8 +135,9 @@
                         >
                       </div>
                     </div>
+                    
                     <!-- Billing -->
-                    <!--  -->
+                    <h2 style="color:#880599">Your Payment Info</h2>
                     <div>
                       Address
                       <br>
@@ -238,9 +238,34 @@
                 </div>
 
             </div>
+
+            <!-- Client Payment Set Up -->
+            
+            <div v-if="step === 3">
+              <div class="row">
+                <div class="col">
+                  <h3>
+                  Payment System Set Up
+                  </h3>
+                </div>
+              </div>
+              <h2 style="color:#880599">The Bank info your clients will use to pay you</h2>
+                  <button @click.prevent="prev()" 
+                    type="button" 
+                    class="btn btn-outline" 
+                    id="btn-previous">
+                    <h3>Previous</h3>
+                  </button>
+                  <button @click.prevent="next()" 
+                    type="button" 
+                    class="btn btn-outline float-right" 
+                    id="btn-next">
+                    <h3>Next</h3>
+                  </button>
+            </div>
             
             <!-- Terms & Conditions -->
-            <div v-if="step === 3">
+            <div v-if="step === 4">
               <div class="row">
                 <div class="col">
                   <h3>
@@ -270,7 +295,7 @@
             </div>
             
             <!-- Privacy -->
-            <div v-if="step === 4">
+            <div v-if="step === 5">
               <div class="row">
                 <div class="col">
                   <h3>Privacy</h3>
@@ -307,7 +332,7 @@
             </div>
 
             <!-- Shippo -->
-            <div v-if="step === 5">
+            <div v-if="step === 6">
               <div class="row">
                 <div class="col">
                   
@@ -367,18 +392,16 @@
         </div>
 
         <!-- Footer -->
-        <div id="form-footer" class="center">
-          <div class="container" id="legal-links">
-            <div style="text-align:center">
-              <a href="#">Terms and Conditions</a>
-              <br>
-              <a href="https://app.termly.io/document/privacy-policy/a291c868-81c5-4419-81c8-735597b64d86">Privacy</a>
-            </div>
-          </div>
-          <!-- <hr>
-              <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
-          <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>-->
+        <div class="container" id="form-footer">
+          <a href="#" id="legal-links">Terms and Conditions</a>
+          <br>
+          <a href="https://app.termly.io/document/privacy-policy/a291c868-81c5-4419-81c8-735597b64d86">Privacy</a>
+          <br>
+          <hr>
+          <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
+          <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
         </div>
+
       </div>
     </body>
     <!-- </div> -->
