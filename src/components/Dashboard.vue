@@ -87,35 +87,41 @@
           <h4>Services:</h4>
           <br>
           <!-- Title -->
-          <div class="service-block" v-for="(service, index) in this.services" :key="index">
-            <div id="service-title">
-              <h4 style="text-align:left;">{{ service.title }}</h4>
-              <h6>
-                <a href="#" class="btn pull-right">Edit</a>
-              </h6>
-            </div>
-            <!-- Service Description -->
-            <div class="container" id="service-desc">
-              <h5>{{ service.description }}</h5>
-            </div>
+          <div v-for="(service, index) in this.services" :key="index">
+            <div class="service-block" v-if="service.isSubService === false">
+              <div id="service-title">
+                <h4 style="text-align:left;">{{ service.title }}</h4>
+                <h6>
+                  <a href="#" class="btn pull-right">Edit</a>
+                </h6>
+              </div>
+              <!-- Service Description -->
+              <div class="container" id="service-desc">
+                <h5>{{ service.description }}</h5>
+              </div>
 
-            <!--  -->
-            <!-- sub services will be in this block -->
-            <div v-for="(subService, index) in subServices" :key="index">
-              <div class="service-block-sub" v-if="subService.parentServiceId === service.id">
-                <div id="service-title">
-                  <h4 style="text-align:left;">{{ subService.title }}</h4>
-                  <h6>
-                    <a href="#" class="btn pull-right">Edit</a>
-                  </h6>
-                </div>
-                <div class="container" id="service-desc">
-                  <h5>{{ subService.description }}</h5>
+              <!--  -->
+              <!-- sub services will be in this block -->
+              <div v-for="(subService, index) in services" :key="index">
+                <div
+                  class="service-block-sub"
+                  v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
+                >
+                  <div id="service-title">
+                    <h4 style="text-align:left;">{{ subService.title }}</h4>
+                    <h6>
+                      <a href="#" class="btn pull-right">Edit</a>
+                    </h6>
+                  </div>
+                  <div class="container" id="service-desc">
+                    <h5>{{ subService.description }}</h5>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <!--  -->
+
           <!-- Add Service Button -->
           <br>
           <button

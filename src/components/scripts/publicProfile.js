@@ -31,7 +31,7 @@ export default {
     ShoppingCart,
     RequestQuoteCart,
     AddItemToShoppingCartModal,
-    TransitionExpand,
+    TransitionExpand
   },
   directives: {
     responsive: ResponsiveDirective
@@ -45,13 +45,23 @@ export default {
 
   },
   methods: {
+    // compares the given service to all
+    // other services and determines if there any
+    // subservices present
+    subServicesPresent (service) {
+      const serviceId = service.id
+      for (var i = 0; i < this.services.length; i++) {
+        if (this.services[i].parentServiceId === serviceId) {
+          return true
+        }
+      }
+      return false
+    },
     async getSubServices () {
       try {
-        console.log(`\nthis.userId : ${this.userId}\n`) // TESTING
         const response = await DashboardServices.queryForUserSubServices(this.userId)
 
         this.subServices = response.data
-        console.log(`\nThe subservices being : ${JSON.stringify(this.subServices)}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error occurred in getSubServices()\n`) // TESTING
         if (error) throw error
@@ -152,7 +162,6 @@ export default {
           quantity: this.pickedQuantityQuoteRequest, // I'm not sure why we would need this. Clarify with Stef
           price: this.pickedQuantityQuoteRequest * this.itemChosen.servicePrice
         }
-
         this.$store.dispatch('addQuoteRequestToCart', quoteRequestForService)
         this.$modal.hide('request-quote-modal')
         this.inquiryText = ''
