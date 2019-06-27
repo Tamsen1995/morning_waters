@@ -45,7 +45,7 @@
       </div>
     </header>
 
-    <section class="purple" id="about">
+    <section class="about">
       <div class="container-fluid">
         <h3>
           Email marketing on the front-end, A.I. on the back-end.
@@ -127,17 +127,17 @@
 
           <!-- Step 1 -->
           <slide>
-            <img src="../assets/css/hello_step_1.png" alt="FIG ANALYTICS" class="center" id="pitch">
+            <img src="../assets/css/new_pitch_1.svg" alt="FIG ANALYTICS" class="center" id="pitch" >
           </slide>
 
           <!-- Step 2 -->
           <slide>
-            <img src="../assets/css/hello_step_2.png" alt="FIG ANALYTICS" class="center" id="pitch">
+            <img src="../assets/css/new_pitch_2.svg" alt="FIG ANALYTICS" class="center" id="pitch">
           </slide>
 
           <!-- Step 3 -->
           <slide>
-            <img src="../assets/css/hello_step_3.png" alt="FIG ANALYTICS" class="center" id="pitch">
+            <img src="../assets/css/new_pitch_3.svg" alt="FIG ANALYTICS" class="center" id="pitch">
           </slide>
 
           <!-- Step 4 -->
