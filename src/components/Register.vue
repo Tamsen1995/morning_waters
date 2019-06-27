@@ -135,8 +135,9 @@
                         >
                       </div>
                     </div>
+                    
                     <!-- Billing -->
-                    <!--  -->
+                    <h2 style="color:#880599">Your Payment Info</h2>
                     <div>
                       Address
                       <br>
@@ -237,9 +238,34 @@
                 </div>
 
             </div>
+
+            <!-- Client Payment Set Up -->
+            
+            <div v-if="step === 3">
+              <div class="row">
+                <div class="col">
+                  <h3>
+                  Payment System Set Up
+                  </h3>
+                </div>
+              </div>
+              <h2 style="color:#880599">The Bank info your clients will use to pay you</h2>
+                  <button @click.prevent="prev()" 
+                    type="button" 
+                    class="btn btn-outline" 
+                    id="btn-previous">
+                    <h3>Previous</h3>
+                  </button>
+                  <button @click.prevent="next()" 
+                    type="button" 
+                    class="btn btn-outline float-right" 
+                    id="btn-next">
+                    <h3>Next</h3>
+                  </button>
+            </div>
             
             <!-- Terms & Conditions -->
-            <div v-if="step === 3">
+            <div v-if="step === 4">
               <div class="row">
                 <div class="col">
                   <h3>
@@ -269,7 +295,7 @@
             </div>
             
             <!-- Privacy -->
-            <div v-if="step === 4">
+            <div v-if="step === 5">
               <div class="row">
                 <div class="col">
                   <h3>Privacy</h3>
@@ -306,7 +332,7 @@
             </div>
 
             <!-- Shippo -->
-            <div v-if="step === 5">
+            <div v-if="step === 6">
               <div class="row">
                 <div class="col">
                   
