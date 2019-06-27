@@ -96,7 +96,7 @@ ul {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 12px;
+  margin-top: 25px;
 }
 
 
@@ -126,3 +126,39 @@ ul {
   color: purple;
 }
 
+/* -------Buyer Nav ----------*/
+#buyer_nav {
+  -webkit-transition: all .35s;
+  transition: all .35s;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  letter-spacing: 1px;
+
+}
+
+
+#buyer_nav {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+#buyer_nav_icon:hover {
+  color:  yellowgreen ;
+}
+
+#buyer_nav:hover, #buyer_nav .navbar-brand:focus {
+  color: #823E90;
+  visibility:visible;
+  opacity: 1;
+}
+
+#nav-collapse:hover{
+  color: #823E90;
+  visibility:visible;
+  opacity: 1;
+}
+
+#buyer_nav_icon {
+  font-size: 30px;
+}
