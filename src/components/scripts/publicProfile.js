@@ -31,7 +31,7 @@ export default {
     ShoppingCart,
     RequestQuoteCart,
     AddItemToShoppingCartModal,
-    TransitionExpand,
+    TransitionExpand
   },
   directives: {
     responsive: ResponsiveDirective
@@ -152,7 +152,6 @@ export default {
           quantity: this.pickedQuantityQuoteRequest, // I'm not sure why we would need this. Clarify with Stef
           price: this.pickedQuantityQuoteRequest * this.itemChosen.servicePrice
         }
-
         this.$store.dispatch('addQuoteRequestToCart', quoteRequestForService)
         this.$modal.hide('request-quote-modal')
         this.inquiryText = ''
@@ -162,6 +161,7 @@ export default {
     },
     async addServiceToCart (service, index) {
       try {
+        console.log(`\n\nservices : ${JSON.stringify(service)}\n\n`) // TESTING
         const shoppingCartItem = {
           orderId: '',
           quantity: this.quantity, // this.pickedQuantityService[index],

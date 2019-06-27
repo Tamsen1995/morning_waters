@@ -7,35 +7,32 @@
     <body class="dashboard">
       <div class="container" id="dashboard">
         <!-- <div id="main"> -->
-          <div class="container" id="name-location">
-            <div class="d-flex justify-content-center" id="company-name">
-              <h1 style="text-align:center:">{{ this.companyName }}</h1>
+        <div class="container" id="name-location">
+          <div class="d-flex justify-content-center" id="company-name">
+            <h1 style="text-align:center:">{{ this.companyName }}</h1>
+          </div>
+          <div class="d-flex justify-content-center" id="company-location">
+            <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
+          </div>
+          <div class="d-flex justify-content-center" id="company-logo">
+            <div id="logo-border">
+              <div class="circle" id="logo"></div>
             </div>
-            <div class="d-flex justify-content-center" id="company-location">
-              <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
-            </div>
-            <div class="d-flex justify-content-center" id="company-logo">
-              <div id="logo-border">
-                <div class="circle" id="logo"></div>
+          </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="container" id="about">
+          <div class="row">
+            <h4>About:</h4>
+            <transition-expand>
+              <div v-if="expanded">
+                <p style="text-align:left">{{ this.about }}</p>
               </div>
-            </div>
+            </transition-expand>
+            <button @click="expanded = !expanded">{{ expanded ? `Shrink` : `Expand` }}</button>
           </div>
-
-          <!-- About Section -->
-          <div class="container" id="about">
-            <div class="row">
-              <h4>About:</h4>
-              <transition-expand>
-                <div v-if="expanded">
-                  <p style="text-align:left">{{ this.about }}</p>
-                </div>
-              </transition-expand>
-              <button @click="expanded = !expanded">
-                {{ expanded ? `Shrink` : `Expand` }}
-              </button>
-
-            </div>
-          </div>
+        </div>
         <!-- </div> -->
 
         <br>
@@ -87,7 +84,10 @@
                           <td>{{ subService.turnAroundTime }}</td>
                           <td>{{ subService.servicePrice }}</td>
                           <td>
-                            <button class="btn btn-success">Add to Cart</button>
+                            <button
+                              class="btn btn-success"
+                              @click="addServiceToCart(service, index)"
+                            >Add to Cart</button>
                           </td>
                         </tr>
                       </tbody>

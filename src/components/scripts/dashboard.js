@@ -81,10 +81,12 @@ export default {
         if (this.subServicesToBeAdded.length > 0) {
           await DashboardServices.addSubServices({
             parentServiceId: serviceId,
+            serviceTableId: serviceTableId,
             subServices: this.subServicesToBeAdded
           })
+          console.log(`\nThis is the subServicesToBeAdded : ${JSON.stringify(this.subServicesToBeAdded)}\n`) // TESTING
         }
-        await this.getSubServices()
+
         await this.getServices()
 
         this.$modal.hide('add-service')
@@ -141,22 +143,10 @@ export default {
       } catch (error) {
         if (error) throw error
       }
-    },
-    async getSubServices () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const response = await DashboardServices.queryForUserSubServices(userExtracted.id)
-
-        this.subServices = response.data
-        console.log(`\nThe response being : ${JSON.stringify(response)}\n\n`) // TESTING
-      } catch (error) {
-        if (error) throw error
-      }
     }
   },
   mounted () {
     this.getServices()
-    this.getSubServices()
     this.getUserInfo()
   }
 }
