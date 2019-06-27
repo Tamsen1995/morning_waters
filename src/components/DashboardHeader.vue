@@ -4,22 +4,8 @@
       <div class="container">
         <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
 
-        <!-- <button
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>-->
-        <!-- <div class="collapse navbar-collapse" id="navbarResponsive"> -->
-        <ul class="navbar-nav ml-auto">
-          <!-- /dashboard/creditsScreen/creditsPurchasing -->
 
+        <ul class="navbar-nav ml-auto">
           <!-- Orders -->
           <li class="nav-item">
             <router-link

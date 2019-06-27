@@ -13,13 +13,26 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto" >
-          <b-nav-text  href="#about">About</b-nav-text>
+          <b-nav-text  href="#about">
+            <a class="nav-link" href="#about">About</a>
+          </b-nav-text>
 
-          <b-nav-text href="#services">Services</b-nav-text>
+          <b-nav-text href="#services">
+            <a class="nav-link" href="#services">Services</a>
+          </b-nav-text>
 
-          <b-nav-text to="/login">Login</b-nav-text>
+          <b-nav-text >
+            <router-link class="nav-link" to="/login">
+              Login
+            </router-link>
+          </b-nav-text>
 
-          <b-nav-text to="/register">Sign Up</b-nav-text>
+          <b-nav-text to="/register">
+            <router-link class="nav-link" to="/register">
+            Sign Up
+            </router-link>
+
+          </b-nav-text>
 
         </b-navbar-nav>
       </b-collapse>
