@@ -1,55 +1,55 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="dashboard_nav">
-      <div class="container">
-        <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
+    <b-navbar toggleable="lg" style="position: sticky" id="seller_nav">
 
-        <!-- <button
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>-->
-        <!-- <div class="collapse navbar-collapse" id="navbarResponsive"> -->
-        <ul class="navbar-nav ml-auto">
-          <!-- /dashboard/creditsScreen/creditsPurchasing -->
+      <b-navbar-brand href="#" class="mr-auto">
+        <router-link 
+            class="nav-link"
+            to="/dashboard"
+            v-if="this.user == null">
+          <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
+        </router-link>
+      </b-navbar-brand>
 
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+          
           <!-- Orders -->
-          <li class="nav-item">
-            <router-link
-              class="nav-link"
-              to="/dashboard/pending_orders"
-              v-if="this.user == null"
-              style="padding-top:0px;padding-bottom:0px;padding-left:15px;"
+          <b-nav-item href="#"
+            v-if="this.user == null"
+            @click="redirectOntoBuyerDashboard()"  
             >
-              <i class="fas fa-seedling" id="dash_icon"></i>
-            </router-link>
             <router-link
               class="nav-link"
               to="/dashboard/pending_orders"
               v-if="this.user == null"
-              style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;padding-right:15px;"
+              style="padding-top:0px;padding-bottom:0px;padding-right:10px;"
+            >
+              <i class="fas fa-seedling" id="seller_nav_icon"></i>
+            </router-link>
+
+            <router-link
+              class="nav-link"
+              to="/dashboard/pending_orders"
+              v-if="this.user == null"
+              style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;padding-right:5px;"
             >
               Orders
               <span class="badge badge-success">{{ this.credits }}</span>
             </router-link>
-          </li>
+          </b-nav-item>
 
           <!-- Inbox -->
-          <li class="nav-item">
+          <b-nav-item>
             <router-link
               class="nav-link"
               to="/dashboard/quoteRequestsScreen"
               v-if="this.user == null"
               style="padding-top:0px;padding-bottom:0px;padding-left:7px;"
             >
-              <i class="fas fa-envelope" alt="Inbox" id="dash_icon"></i>
+              <i class="fas fa-envelope" alt="Inbox" id="seller_nav_icon"></i>
             </router-link>
             <router-link
               class="nav-link"
@@ -58,19 +58,19 @@
               style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
             >
               Inbox
-              <span class="badge badge-info">{{itemsInCart}}</span>
+              <span class="badge badge-info"></span>
             </router-link>
-          </li>
+          </b-nav-item>
 
           <!-- Profile -->
-          <li class="nav-item">
+          <b-nav-item>
             <router-link
               class="nav-link"
               to="/dashboard"
               v-if="this.user == null"
-              style="padding-top:0px;padding-bottom:0px;padding-left:10px;"
+              style="padding-top:0px;padding-bottom:0px;padding-left:7px;"
             >
-              <i class="fas fa-home" id="dash_icon"></i>
+              <i class="fas fa-home" id="seller_nav_icon"></i>
             </router-link>
             <router-link
               class="nav-link"
@@ -78,17 +78,17 @@
               v-if="this.user == null"
               style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
             >Profile</router-link>
-          </li>
+          </b-nav-item>
 
           <!-- Settings -->
-          <li class="nav-item">
+          <b-nav-item>
             <router-link
               class="nav-link"
               to="/dashboard/settings"
               v-if="this.user == null"
-              style="padding-top:0px;padding-bottom:0px;padding-left:15px;"
+              style="padding-top:0px;padding-bottom:0px;padding-left:5px;"
             >
-              <i class="fas fa-sliders-h" id="dash_icon"></i>
+              <i class="fas fa-sliders-h" id="seller_nav_icon"></i>
             </router-link>
             <router-link
               class="nav-link"
@@ -96,22 +96,22 @@
               v-if="this.user == null"
               style="padding-top:0px;padding-bottom:0px; margin-bottom:0px;"
             >Settings</router-link>
-          </li>
+          </b-nav-item>
 
           <!-- Logout -->
-          <li class="nav-item nav-center" @click="logout()">
-            <router-link class="nav-link" to="/" v-if="this.user == null">
+          <b-nav-item v-if="this.user == null">
+            <router-link class="nav-link" to="/" @click="logout()">
               <i class="fas fa-sign-out-alt"></i>
               Logout
             </router-link>
             <!-- <router-link class="nav-link nav-center" to="/" style="margin-top:0px;">
-                 Logout
+                  Logout
             </router-link>-->
-          </li>
-        </ul>
-      </div>
-      <!-- </div> -->
-    </nav>
+          </b-nav-item>
+
+        </b-navbar-nav>
+      </b-collapse> 
+    </b-navbar>
   </div>
 </template>
 

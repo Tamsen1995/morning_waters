@@ -1,102 +1,32 @@
 
 /* --------Hello Dashboard Nav-------------- */
 #mainNav {
-  border-color: rgba(34, 34, 34, 0.05);
-  background-color: white;
   -webkit-transition: all .35s;
   transition: all .35s;
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
-  /* visibility: hidden;  */
-  opacity: 0;
-}
-
-#mainNav .navbar-brand {
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
-  font-weight: 200;
-  letter-spacing: 1px;
-}
-
-#mainNav:hover, #mainNav .navbar-brand:focus {
-  color: #823E90;
-  visibility:visible;
-  opacity: 1;
-}
-
-#mainNav .navbar-toggler {
   font-size: 12px;
-  padding: 8px 10px;
-  color: #823E90;;
-}
-
-#mainNav .navbar-nav > li > a {
-  font-size: 11px;
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   letter-spacing: 2px;
   text-transform: uppercase;
+  margin-bottom: -5px;
+  padding-top:0px;
 }
 
-/* #mainNav .navbar-nav > li > a.active,
-#mainNav .navbar-nav > li > a:hover, {
-  color: #87C27B !important;
-  background-color: transparent;
-} */
+#mainNav:hover {
+  color: #823E90;
+  visibility:visible;
+  background-color: white;
+  height:auto;
+}
 
 /* --------Seller Dashboard Nav-------------- */
-
-#dashboard_nav{
-  border-color: rgba(34, 34, 34, 0.05);
-  background-color: white;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
-  letter-spacing: 1px;
-  padding:0px;
-}
-
-
-#dashboard_nav .navbar-brand{
-  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
-  font-weight: 200;
-  letter-spacing: 1px;
-  padding-right:10px;
-}
-#dash_icon:hover {
-  color:  yellowgreen ;
-}
-#dashboard_nav:hover, #dashboard_nav .navbar-brand:focus {
-  color: #823E90;
-  visibility:visible;
-  opacity: 1;
-}
-
-#dashboard_nav .navbar-toggler {
-  font-size: 12px;
-  color: #823E90;
-}
-
-#dashboard_nav .navbar-nav > li > a {
-  font-size: 12px;
-  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-#dash_icon{
-  padding: 5px;
-  font-size: 35px;
-}
-
-ul {
-  text-align: left
-}
-
 .nav-center {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 12px;
+  margin-top: 25px;
 }
 
 
@@ -126,3 +56,62 @@ ul {
   color: purple;
 }
 
+#seller_nav {
+  -webkit-transition: all .35s;
+  transition: all .35s;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  letter-spacing: 1px;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: -5px;
+  padding-top:0px;
+}
+#seller_nav_icon {
+  font-size: 30px;
+}
+
+#seller_nav_icon:hover {
+  color:  yellowgreen ;
+}
+
+#seller_nav:hover, #buyer_nav .navbar-brand:focus {
+  color: #823E90;
+  visibility:visible;
+  opacity: 1;
+}
+
+/* -------Buyer Nav ----------*/
+#buyer_nav {
+  -webkit-transition: all .35s;
+  transition: all .35s;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  letter-spacing: 1px;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 15px;
+  margin-bottom: -5px;
+  padding-top:0px;
+}
+
+#buyer_nav_icon:hover {
+  color:  yellowgreen ;
+}
+
+#buyer_nav:hover, #buyer_nav .navbar-brand:focus {
+  color: #823E90;
+  visibility:visible;
+  opacity: 1;
+}
+
+#nav-collapse:hover{
+  color: #823E90;
+  visibility:visible;
+  opacity: 1;
+}
+
+#buyer_nav_icon {
+  font-size: 30px;
+}

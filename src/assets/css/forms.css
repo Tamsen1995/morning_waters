@@ -5,7 +5,7 @@ body {
     background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
     background-size: cover;
     text-align:center;
-    padding-top: 70px;
+    padding-top: 30px;
     min-height: 100vh; 
 }
 
@@ -37,7 +37,7 @@ h1 {
 
 .card {
     margin-bottom: 0px;
-    max-width:600px;
+    max-width:500px;
     margin-left: auto;
     margin-right:auto;
 }

@@ -18,6 +18,8 @@
           <div class="col-md-4 message-sideleft">
             <div class="panel">
               <div class="panel-heading">
+
+                <!-- Filter Orders/Quote Requests -->
                 <div class="pull-left">
                   <div class="btn-group">
                     <button type="button" class="btn btn-success">{{ dropdownVariable }}</button>
@@ -28,7 +30,9 @@
                     >
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
+       
                     <ul class="dropdown-menu pull-right" role="menu">
+                      
                       <li>
                         <a @click="switchMessagesDisplayed('all')">
                           <i class="fa fa-download"></i> All
@@ -50,7 +54,45 @@
                           <i class="fa fa-briefcase"></i> Other
                         </a>
                       </li>
+                      
                     </ul>
+         
+                  </div>
+                </div>
+
+                <!-- Filter Lock/Unlock -->
+                <div class="pull-right">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-success">{{ dropdownVariable }}</button>
+                    <button
+                      type="button"
+                      class="btn btn-success dropdown-toggle"
+                      data-toggle="dropdown"
+                    >
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+<!--        
+                    <ul class="dropdown-menu pull-right" role="menu">
+
+                      <li>
+                        <a @click="switchMessagesDisplayed('orders')">
+                          <i class="fa fa-upload"></i> Locked
+                        </a>
+                      </li>
+                      <li>
+                        <a @click="switchMessagesDisplayed('quoteRequests')">
+                          <i class="fa fa-trash-o"></i> Unlocked
+                        </a>
+                      </li>
+                      <li class="divider"></li>                      
+                      <li>
+                        <a @click="switchMessagesDisplayed('all')">
+                          <i class="fa fa-download"></i> All
+                        </a>
+                      </li>
+                      
+                    </ul> -->
+         
                   </div>
                 </div>
 
@@ -111,6 +153,15 @@
                   </a>
                 </div>
               </div>
+
+              <!-- Pagination MUST ADD FUNCTIONALITY to Paginate between lists of messages -->
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
             </div>
             <!-- The panels for the quote requests -->
           </div>
@@ -133,20 +184,27 @@
                 v-for="(msg, index) in correspondanceMessages"
                 v-bind:key="index"
               >
-                <h4 class="media-heading">{{msg.sender}} :</h4>
-                <p class="lead">{{msg.message}}</p>
+                <h4 class="media-heading pull-right"> Date </h4>
+                <h4 class="media-heading"> Buyer ID : {{ order.buyerId }}:</h4>
+                
+                <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+                <div class="view_msg">
+                  <p class="lead">{{msg.message}}</p>
+                </div>
                 <hr>
               </div>
               <!-- /.panel-body -->
               <hr>
               <!-- /.panel-heading -->
               <div class="panel-body">
-                <textarea
-                  v-model="message"
-                  v-on:keyup.enter="submitMessage()"
-                  placeholder="add multiple lines"
-                ></textarea>
-                <button v-on:click="submitMessage()">Submit</button>
+                <div class="reply_msg">
+                  <textarea
+                    v-model="message"
+                    v-on:keyup.enter="submitMessage()"
+                    placeholder="add multiple lines"
+                  ></textarea>
+                  <button v-on:click="submitMessage()">Submit</button>
+                </div>
               </div>
               <!-- /.panel-body -->
 
@@ -195,7 +253,6 @@
 </script>
 
 <style scoped>
-/* @import "../assets/css/figanal.css"; */
 @import "../assets/css/inbox.css";
 /* @import url("https://fonts.googleapis.com/css?family=Lato|Roboto"); */
 </style>

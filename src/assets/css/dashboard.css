@@ -5,7 +5,7 @@ body.dashboard {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 100px 80px;
+  padding: 15px 80px;
   /* background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%); */
   background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
 }
@@ -387,7 +387,7 @@ padding: 15px 45px;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 80px 0px;
+  padding: 15px 0px;
   /* background-image: url("./BACKGROUND.png"); */
   background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%);
 } 
