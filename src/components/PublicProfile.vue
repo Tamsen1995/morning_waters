@@ -51,57 +51,65 @@
 
           <div class="col-12">
             <!-- This is where I list the services -->
-            <div class="card" v-for="(service, index) in this.services" :key="service.id">
-              <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
-              <div class="card-body">
-                <!-- Service Description -->
-                <button
-                  @click="manifestModalForm(service)"
-                  class="btn-quote-req btn btn-primary pull-right"
-                >Request Quote</button>
-                <h5
-                  class="card-text"
-                  style="text-align:left; padding:15px;"
-                >Description: {{ service.description }}</h5>
+            <div v-for="(service, index) in this.services" :key="service.id">
+              <div class="card" v-if="(service.isSubService === false)">
+                <h4
+                  class="card-header"
+                  style="text-align:left; text-indent:15px; color: purple"
+                >Title: {{ service.title }}</h4>
+                <div class="card-body">
+                  <!-- Service Description -->
+                  <button
+                    @click="manifestModalForm(service)"
+                    class="btn-quote-req btn btn-primary pull-right"
+                  >Request Quote</button>
+                  <h5
+                    class="card-text"
+                    style="text-align:left; padding:15px;"
+                  >Description: {{ service.description }}</h5>
 
-                <!-- This is where I'll list the subservices -->
-                <div>
-                  <div class="container" id="price-chart">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th scope="col">Service Subtitle</th>
-                          <th scope="col">Turn Around Time</th>
-                          <th scope="col">Price/ Unit</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row"></th>
-                          <td></td>
-                          <td></td>
-                          <td>
-                            <button
-                              class="btn btn-success"
-                              @click="addServiceToCart(service, index)"
-                            >Add to Cart</button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <!-- This is where I'll list the subservices -->
+                  <div v-for="(subService, index) in services" :key="index">
+                    <div
+                      class="container"
+                      id="price-chart"
+                      v-if="(subService.parentServiceId === service.id) && (subService.isSubService === true)"
+                    >
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col">Service Subtitle</th>
+                            <th scope="col">Turn Around Time</th>
+                            <th scope="col">Price/ Unit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">{{ subService.title }}</th>
+                            <td>{{ subService.turnAroundTime }}</td>
+                            <td>{{ subService.description }}</td>
+                            <td>
+                              <button
+                                class="btn btn-success"
+                                @click="addServiceToCart(subService, index)"
+                              >Add to Cart</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
-                <!--  -->
+                  <!--  -->
 
-                <!-- Service/Price Listings -->
-                <button
-                  class="btn btn-success"
-                  @click="addServiceToCart(service, index)"
-                >Add to Cart</button>
+                  <!-- Service/Price Listings -->
+                  <button
+                    class="btn btn-success"
+                    @click="addServiceToCart(service, index)"
+                  >Add to Cart</button>
+                </div>
               </div>
             </div>
-
-            <!--  -->
+            <!-- This is where I list the services -->
           </div>
         </div>
       </div>

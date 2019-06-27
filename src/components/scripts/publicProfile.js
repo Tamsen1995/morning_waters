@@ -47,11 +47,9 @@ export default {
   methods: {
     async getSubServices () {
       try {
-        console.log(`\nthis.userId : ${this.userId}\n`) // TESTING
         const response = await DashboardServices.queryForUserSubServices(this.userId)
 
         this.subServices = response.data
-        console.log(`\nThe subservices being : ${JSON.stringify(this.subServices)}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error occurred in getSubServices()\n`) // TESTING
         if (error) throw error
@@ -161,7 +159,6 @@ export default {
     },
     async addServiceToCart (service, index) {
       try {
-        console.log(`\n\nservices : ${JSON.stringify(service)}\n\n`) // TESTING
         const shoppingCartItem = {
           orderId: '',
           quantity: this.quantity, // this.pickedQuantityService[index],
