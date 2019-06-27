@@ -50,6 +50,7 @@
           </div>
 
           <div class="col-12">
+            <!-- This is where I list the services -->
             <div class="card" v-for="(service, index) in this.services" :key="service.id">
               <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
               <div class="card-body">
@@ -61,15 +62,11 @@
                 <h5
                   class="card-text"
                   style="text-align:left; padding:15px;"
-                >{{ service.description }}</h5>
+                >Description: {{ service.description }}</h5>
 
                 <!-- This is where I'll list the subservices -->
-                <div v-for="(subService, index) in subServices" :key="index">
-                  <div
-                    class="container"
-                    id="price-chart"
-                    v-if="subService.parentServiceId === service.id"
-                  >
+                <div>
+                  <div class="container" id="price-chart">
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -80,9 +77,9 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">{{ subService.title }}</th>
-                          <td>{{ subService.turnAroundTime }}</td>
-                          <td>{{ subService.servicePrice }}</td>
+                          <th scope="row"></th>
+                          <td></td>
+                          <td></td>
                           <td>
                             <button
                               class="btn btn-success"
@@ -98,12 +95,13 @@
 
                 <!-- Service/Price Listings -->
                 <button
-                  v-if="service.sub_services_present === false"
                   class="btn btn-success"
                   @click="addServiceToCart(service, index)"
                 >Add to Cart</button>
               </div>
             </div>
+
+            <!--  -->
           </div>
         </div>
       </div>
