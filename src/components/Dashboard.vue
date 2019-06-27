@@ -103,7 +103,10 @@
               <!--  -->
               <!-- sub services will be in this block -->
               <div v-for="(subService, index) in services" :key="index">
-                <div class="service-block-sub" v-if="subService.isSubService === true">
+                <div
+                  class="service-block-sub"
+                  v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
+                >
                   <div id="service-title">
                     <h4 style="text-align:left;">{{ subService.title }}</h4>
                     <h6>

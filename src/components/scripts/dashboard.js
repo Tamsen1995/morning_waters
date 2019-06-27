@@ -84,13 +84,9 @@ export default {
             serviceTableId: serviceTableId,
             subServices: this.subServicesToBeAdded
           })
-          console.log(`\nThis is the subServicesToBeAdded : ${JSON.stringify(this.subServicesToBeAdded)}\n`) // TESTING
         }
-
         await this.getServices()
-
         this.$modal.hide('add-service')
-
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
