@@ -1,46 +1,30 @@
 <template>
   <div id="app">
-    <b-nav
-      class="navbar navbar-expand-lg navbar-light fixed-top"
+    <b-navbar
+      toggleable="lg" 
       id="mainNav"
       v-b-scrollspy:nav-scroller
     >
-      <div class="container">
-        <a class="navbar-brand" href="/">
-          <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
-        </a>
-        <button
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Menu
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#services">Services</a>
-            </li>
 
-            <li class="nav-item">
-              <router-link class="nav-link" to="/login">Login</router-link>
-            </li>
+      <b-navbar-brand class="mr-auto" href="/">
+        <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
+      </b-navbar-brand>
+      <b-navbar-toggle id="nav-hover" target="nav-collapse"></b-navbar-toggle>
 
-            <li class="nav-item">
-              <router-link class="nav-link" to="/register">Sign Up</router-link>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </b-nav>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto" >
+          <b-nav-text  href="#about">About</b-nav-text>
+
+          <b-nav-text href="#services">Services</b-nav-text>
+
+          <b-nav-text to="/login">Login</b-nav-text>
+
+          <b-nav-text to="/register">Sign Up</b-nav-text>
+
+        </b-navbar-nav>
+      </b-collapse>
+
+    </b-navbar>
   </div>
 </template>
 

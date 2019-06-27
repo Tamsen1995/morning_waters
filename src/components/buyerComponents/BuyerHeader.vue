@@ -5,7 +5,6 @@
         <img src="./../TINY_LOGO.png" alt="FIG ANALYTICS" >
       </b-navbar-brand>
 
-
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -16,7 +15,7 @@
 
           <!-- Login/Sign-up -->
           <b-nav-text  href="#" v-if="this.buyerLoggedIn === false" @click="redirectToSignUp()">       
-              Sign Up
+            Sign Up
           </b-nav-text>
 
           <b-nav-text  href="#" v-if="this.buyerLoggedIn === false" @click="redirectToLogin()">
