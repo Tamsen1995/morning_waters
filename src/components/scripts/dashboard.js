@@ -67,6 +67,7 @@ export default {
         for (var i = 0; i < this.services.length; i++) {
           if (this.services[i].parentServiceId === service.id) {
             this.subServicesToBeAdded.push({
+              serviceId: this.services[i].id,
               serviceTitle: this.services[i].title,
               serviceDescription: this.services[i].description,
               servicePrice: this.services[i].servicePrice,
@@ -95,6 +96,8 @@ export default {
           service: this.serviceEdited,
           subServices: this.subServicesToBeAdded
         }
+
+        console.log(`\n\nJSON.string : ${JSON.stringify(this.subServicesToBeAdded)}\n`) // TESTING
 
         await DashboardServices.editService(serviceEdit)
 
@@ -150,6 +153,7 @@ export default {
         await this.getServices()
 
         const serviceId = this.services[this.services.length - 1].id
+
         if (this.subServicesToBeAdded.length > 0) {
           await DashboardServices.addSubServices({
             parentServiceId: serviceId,
@@ -157,6 +161,7 @@ export default {
             subServices: this.subServicesToBeAdded
           })
         }
+
         await this.getServices()
         this.$modal.hide('add-service')
         this.serviceTitle = ''
