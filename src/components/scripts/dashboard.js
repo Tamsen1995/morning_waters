@@ -43,8 +43,9 @@ export default {
   },
   methods: {
 
-    async deleteService (serviceId) {
+    async deleteService (service) {
       try {
+        const serviceId = service.id
         // delete the service
         await DashboardServices.deleteService(serviceId)
 

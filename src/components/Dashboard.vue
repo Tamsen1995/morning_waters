@@ -91,6 +91,9 @@
             <div class="service-block" v-if="service.isSubService === false">
               <div id="service-title">
                 <h4 style="text-align:left;">{{ service.title }}</h4>
+                <button @click="deleteService(service)">
+                  <div style="border: 3px solid red;">X</div>
+                </button>
                 <h6>
                   <a class="btn pull-right" style="color: black;" @click="editService(service)">Edit</a>
                 </h6>
