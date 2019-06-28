@@ -3,8 +3,15 @@ import Api from '@/services/Api'
 export default {
   // takes in a service id
   // and then deletes it
-  deleteService (serviceId) {
-    return Api().delete('seller/services/deleteService', { data: serviceId })
+  editService (serviceEdit) {
+    return Api().post('seller/services/editService', { serviceEdit })
+  },
+  deleteService (serviceId) { // TODO implement back for this
+    return Api().delete('seller/services/deleteService', {
+      data: {
+        serviceId: serviceId
+      }
+    })
   },
   addSubServices (subServiceInfo) {
     return Api().post('seller/services/addSubServices', { subServiceInfo })

@@ -144,7 +144,13 @@
 
   <!-- Modal component to add a service with -->
 
-  <modal name="add-service" height="auto" scrollable="true" style="padding-top:80px">
+  <modal
+    name="add-service"
+    height="auto"
+    scrollable="true"
+    style="padding-top:80px"
+    :clickToClose="false"
+  >
     <div class="container" style="margin:10px">
       <div class="row">
         <div class="col-12">
@@ -342,11 +348,23 @@
                   </p>
                 </div>
               </div>
+
               <button
+                v-if="this.serviceBeingEdited === true"
                 class="btn btn-info pull-right"
                 style="margin-top:10px"
                 type="button"
-                @click="submitService"
+                @click="submitServiceEdit()"
+              >
+                <p>Submit Edit</p>
+              </button>
+
+              <button
+                v-else
+                class="btn btn-info pull-right"
+                style="margin-top:10px"
+                type="button"
+                @click="submitService()"
               >
                 <p>Submit</p>
               </button>

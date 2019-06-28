@@ -30,7 +30,9 @@ export default {
       // the section for adding a sub service will be shown
       // addSubService: false
       // these are the subservicesToBeAdded to be added
-      subServicesToBeAdded: []
+      subServicesToBeAdded: [],
+      serviceBeingEdited: false,
+      serviceEdited: null
     }
   },
   components: {
@@ -40,55 +42,30 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    // compares the given service to all
-    // other services and determines if there any
-    // subservices present
 
-    // async manifestModalInquiry() {
-    //   try {
-    //     this.$modal.show('general-inquiry-modal')
-    //   } catch (error) {
-    //     console.log(`\nError in manifestModalInquiry : ${error}\n`) // TESTING
-    //     if (error) throw error
-    //   }
-    // },
-
-    // get the service id of the service clicked on
-    // ddeclare the service with the service id the main service
-    // iteratively add all the services with the same public id into an array
-    //
-
-    // this.$modal.hide('add-service')
-    //     this.serviceTitle = ''
-    //     this.serviceDescription = ''
-    //     this.servicePrice = 0.0
-    //     this.turnAroundTime = ''
-    //     this.subServicesToBeAdded = []
-
-    async deleteService (service) {
+    async deleteService (serviceId) {
       try {
         // delete the service
-        await DashboardServices.deleteService(service.id)
+        await DashboardServices.deleteService(serviceId)
 
-        this.getServices()
         // reload the services into the dashboard
+        this.getServices()
       } catch (error) {
         if (error) throw error
       }
     },
     async editService (service) {
       try {
-        console.log(`\nIm editing the services : ${JSON.stringify(service)}\n`) // TESTING
-
+        this.serviceBeingEdited = true
         this.serviceTitle = service.title
         this.serviceDescription = service.description
         this.servicePrice = service.servicePrice
         this.turnAroundTime = service.turnAroundTime
+        this.serviceEdited = service
 
         this.subServicesToBeAdded = []
         for (var i = 0; i < this.services.length; i++) {
           if (this.services[i].parentServiceId === service.id) {
-            console.log(`\nthis.services[i] : ${this.services[i]}\n`) // TESTING
             this.subServicesToBeAdded.push({
               serviceTitle: this.services[i].title,
               serviceDescription: this.services[i].description,
@@ -98,14 +75,42 @@ export default {
           }
         }
 
-        // delete service with the underlying service id
-
         this.$modal.show('add-service')
       } catch (error) {
         if (error) throw error
       }
     },
 
+    // sends an updated service with subservices to the back
+    // and updates the db with the updated services.
+    async submitServiceEdit () {
+      try {
+        this.serviceEdited.title = this.serviceTitle
+        this.serviceEdited.description = this.serviceDescription
+        this.serviceEdited.servicePrice = this.servicePrice
+        this.serviceEdited.turnAroundTime = this.turnAroundTime
+
+        // all the info needed to modify a service and its subservices in the data base
+        const serviceEdit = {
+          service: this.serviceEdited,
+          subServices: this.subServicesToBeAdded
+        }
+
+        await DashboardServices.editService(serviceEdit)
+
+        this.$modal.hide('add-service')
+        this.serviceTitle = ''
+        this.serviceDescription = ''
+        this.servicePrice = 0.0
+        this.turnAroundTime = ''
+
+        this.subServicesToBeAdded = []
+        this.serviceBeingEdited = false
+        this.serviceEdited = null
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async addSubService () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
