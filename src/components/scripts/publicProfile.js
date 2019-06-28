@@ -38,7 +38,6 @@ export default {
   },
   async created () {
     this.userId = this.$route.params.id
-    await this.getSubServices()
     await this.getUserData()
   },
   async mounted () {
@@ -61,7 +60,7 @@ export default {
         const userInfo = (await UserServices.getPublicProfileInfo(this.userId))
           .data
         const serviceTableId = userInfo.user.serviceTableId
-        this.getSubServices()
+
         const response = await DashboardServices.queryForUsersServices(
           serviceTableId
         )
