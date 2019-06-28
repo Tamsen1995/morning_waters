@@ -107,6 +107,7 @@ export default {
         this.subServicesToBeAdded = []
         this.serviceBeingEdited = false
         this.serviceEdited = null
+        this.getServices()
       } catch (error) {
         if (error) throw error
       }
