@@ -23,15 +23,30 @@ export default {
   },
   async created () {
     await this.getSellerPendingOrders()
+    await this.retrieveOrdersFromShippo()
+
     // await this.getSellerOrders()
     // await this.getSellerOrderItems();
   },
-  async mounted () { },
+  mounted () {
+  },
   components: {
     DashboardHeader
   },
   directives: {},
   methods: {
+    async retrieveOrdersFromShippo () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+        const sellerId = userExtracted.id
+        const response = await ShippingService.retrieveOrdersFromShippo(sellerId)
+
+        const shippoOrders = response.data.results
+        console.log(`\nresponse : JSON.str ${JSON.stringify(shippoOrders)}\n`) // TESTIN
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async goToOrderStatus (index) {
       try {
         const pendingOrder = this.pendingOrders[index]
