@@ -20,10 +20,10 @@ export default {
     // Testing if I can just append the shippo flow like so
   },
 
-  retrieveOrdersFromShippo (sellerId) {
+  retrieveOrderFromShippo (orderId) {
     return Api().get('seller/shipping/orders/retrieve', {
       params: {
-        sellerId: sellerId
+        orderId: orderId
       }
     })
   },

@@ -16,6 +16,7 @@ export default {
       // for the order which was called upon
       //   orders: null,
       pendingOrders: null,
+      shippoOrders: null,
       orderItems: null,
       seller_shipping: false,
       buyer_shipping: false
@@ -23,7 +24,6 @@ export default {
   },
   async created () {
     await this.getSellerPendingOrders()
-    await this.retrieveOrdersFromShippo()
 
     // await this.getSellerOrders()
     // await this.getSellerOrderItems();
@@ -35,18 +35,7 @@ export default {
   },
   directives: {},
   methods: {
-    async retrieveOrdersFromShippo () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const sellerId = userExtracted.id
-        const response = await ShippingService.retrieveOrdersFromShippo(sellerId)
 
-        const shippoOrders = response.data.results
-        console.log(`\nresponse : JSON.str ${JSON.stringify(shippoOrders)}\n`) // TESTIN
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     async goToOrderStatus (index) {
       try {
         const pendingOrder = this.pendingOrders[index]
@@ -67,6 +56,12 @@ export default {
           userExtracted.id
         )
         this.pendingOrders = response.data
+
+        for (var i = 0; i < this.pendingOrders.length; i++) {
+          const response = await ShippingService.retrieveOrderFromShippo(this.pendingOrders[i].orderId)
+          var orderFromShippo = response.data
+          console.log(`\n\nThe order from shippo being : ${JSON.stringify(orderFromShippo)}\n`) // TESTING
+        }
       } catch (error) {
         if (error) throw error
       }
