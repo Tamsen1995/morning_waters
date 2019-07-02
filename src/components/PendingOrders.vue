@@ -7,7 +7,7 @@
     <div id="pending_orders_content">
       <h1>Pending Orders</h1>
 
-      <br>
+      <br />
 
       <!-- This shall be converted to an actual order array. -->
       <!-- <div
@@ -44,9 +44,9 @@
             <!-- Post confirmation ORDER STATUS -->
 
             <!-- If Order Confirmed -->
-            <h3>Order Status:</h3>
+            <h3>Order Status: {{ shippoOrders[index].order_status }}</h3>
             <h2>Seller purchased shipping label</h2>
-            <br>
+            <br />
 
             <!-- IF Order UNCONFIRMED -->
             <!-- <h2 class="status-unconfirmed" style="color:red;">Order Unconfirmed</h2>  -->
@@ -77,7 +77,7 @@
             <!-- <h3 class="pull-right" style="color:red;">Order Submitted [Date] </h3> -->
           </div>
         </div>
-        <br>
+        <br />
 
         <!-- IF UNCONFIRMED -->
         <!-- <button class="btn-danger" id="btn-confirm-order">Confirm Order</button> -->
@@ -100,35 +100,35 @@
         <div>
           <div>
             Does the seller have to ship samples for this ?
-            <br>
-            <input type="radio" id="one" value="true" v-model="seller_shipping">
+            <br />
+            <input type="radio" id="one" value="true" v-model="seller_shipping" />
             <!-- This will push an order into the buyer and seller shippo dashboard -->
             <label for="one">Yes</label>
-            <br>
-            <input type="radio" id="two" value="false" v-model="seller_shipping">
+            <br />
+            <input type="radio" id="two" value="false" v-model="seller_shipping" />
             <!-- This will only push an order onto the seller's shippo dashboard -->
             <label for="two">No</label>
-            <br>
+            <br />
           </div>
 
-          <br>
-          <br>
+          <br />
+          <br />
 
           <div>
             Does the buyer have to ship samples for this ?
-            <br>
-            <input type="radio" id="one" value="true" v-model="buyer_shipping">
+            <br />
+            <input type="radio" id="one" value="true" v-model="buyer_shipping" />
             <!-- This will push an order into the buyer and seller shippo dashboard -->
             <label for="one">Yes</label>
-            <br>
-            <input type="radio" id="two" value="false" v-model="buyer_shipping">
+            <br />
+            <input type="radio" id="two" value="false" v-model="buyer_shipping" />
             <!-- This will only push an order onto the seller's shippo dashboard -->
             <label for="two">No</label>
-            <br>
+            <br />
           </div>
 
-          <br>
-          <br>
+          <br />
+          <br />
           <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
           <button @click="createOrderOnShippo()">Submit</button>
         </div>

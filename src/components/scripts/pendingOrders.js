@@ -16,7 +16,7 @@ export default {
       // for the order which was called upon
       //   orders: null,
       pendingOrders: null,
-      shippoOrders: null,
+      shippoOrders: [],
       orderItems: null,
       seller_shipping: false,
       buyer_shipping: false
@@ -35,7 +35,25 @@ export default {
   },
   directives: {},
   methods: {
+    async getSellerPendingOrders () {
+      try {
+        this.shippoOrders = []
+        const userExtracted = this.$store.getters.getUserInfo
 
+        const response = await UserServices.getSellerPendingOrders(
+          userExtracted.id
+        )
+        this.pendingOrders = response.data
+
+        for (var i = 0; i < this.pendingOrders.length; i++) {
+          const response = await ShippingService.retrieveOrderFromShippo(this.pendingOrders[i].orderId)
+          var orderFromShippo = response.data
+          this.shippoOrders.push(orderFromShippo)
+        }
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async goToOrderStatus (index) {
       try {
         const pendingOrder = this.pendingOrders[index]
@@ -48,24 +66,7 @@ export default {
         if (error) throw error
       }
     },
-    async getSellerPendingOrders () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
 
-        const response = await UserServices.getSellerPendingOrders(
-          userExtracted.id
-        )
-        this.pendingOrders = response.data
-
-        for (var i = 0; i < this.pendingOrders.length; i++) {
-          const response = await ShippingService.retrieveOrderFromShippo(this.pendingOrders[i].orderId)
-          var orderFromShippo = response.data
-          console.log(`\n\nThe order from shippo being : ${JSON.stringify(orderFromShippo)}\n`) // TESTING
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     async createOrderOnShippo () {
       try {
         // We can charge the buyer here for now
