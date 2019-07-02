@@ -42,7 +42,15 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-
+    async redirectToPendingOrders () {
+      try {
+        this.$router.push({
+          name: 'pendingOrders'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async deleteService (service) {
       try {
         const serviceId = service.id

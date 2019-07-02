@@ -1,7 +1,7 @@
 
 <template>
 <div id="app">
-  <dashboard-header/>
+  <dashboard-header />
 
   <div class="responsive-component" v-responsive="{
         small: el => el.width < 860
@@ -40,8 +40,8 @@
           </div>
         </div>
 
-        <br>
-        <br>
+        <br />
+        <br />
         <!-- Stats Cards -->
         <div id="stats">
           <div class="card-group">
@@ -71,21 +71,21 @@
               <div class="card-body">
                 <h4 class="card-title">Pending Orders:</h4>
                 <p class="card-text">{{ this.credits }}</p>
-                <b-button block href="#" variant="outline-success">
+                <b-button block variant="outline-success" @click="redirectToPendingOrders()">
                   <h6>View Orders</h6>
                 </b-button>
               </div>
             </div>
           </div>
         </div>
-        <br>
-        <br>
-        <br>
+        <br />
+        <br />
+        <br />
 
         <div class="services" id="services">
-          <br>
+          <br />
           <h4>Services:</h4>
-          <br>
+          <br />
           <!-- Title -->
           <div v-for="(service, index) in this.services" :key="index">
             <div class="service-block" v-if="service.isSubService === false">
@@ -124,7 +124,7 @@
           <!--  -->
 
           <!-- Add Service Button -->
-          <br>
+          <br />
           <button
             type="button"
             class="btn btn-default pull-right btn-add-service"
@@ -137,9 +137,9 @@
               </h6>
             </strong>
           </button>
-          <br>
-          <br>
-          <br>
+          <br />
+          <br />
+          <br />
         </div>
       </div>
     </body>
@@ -160,7 +160,7 @@
           <h4 class="heading">
             <strong>Add</strong> Service
           </h4>
-          <br>
+          <br />
           <form id="add-service">
             <div class="container" style="min-width: 500px;">
               <!-- Service Title -->
@@ -174,7 +174,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter service title"
-                  >
+                  />
                 </div>
               </div>
               <!-- Service Description -->
@@ -192,8 +192,8 @@
                   ></textarea>
                 </div>
               </div>
-              <br>
-              <br>
+              <br />
+              <br />
 
               <div class="form-group row">
                 <label for="price" class="col-sm col-form-label">
@@ -205,7 +205,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter price per unit"
-                  >
+                  />
                 </div>
               </div>
               <!-- Turn Around Time -->
@@ -219,10 +219,10 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter turn around time in weeks"
-                  >
+                  />
                 </div>
               </div>
-              <br>
+              <br />
 
               <!-- Service Tags -->
               <div class="form-group row">
@@ -244,11 +244,11 @@
               <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
 
               <div v-for="(subservice, index) in this.subServicesToBeAdded" v-bind:key="index">
-                <br>
-                <br>
-                <hr>
-                <br>
-                <br>
+                <br />
+                <br />
+                <hr />
+                <br />
+                <br />
                 <!-- Service Title -->
                 <div class="form-group row">
                   <label for="serviceTitle" class="col-sm .col-form-label-xsm">
@@ -260,7 +260,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Enter service title"
-                    >
+                    />
                   </div>
                 </div>
                 <!-- Service Description -->
@@ -278,8 +278,8 @@
                     ></textarea>
                   </div>
                 </div>
-                <br>
-                <br>
+                <br />
+                <br />
 
                 <div class="form-group row">
                   <label for="price" class="col-sm col-form-label">
@@ -291,7 +291,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Enter price per unit"
-                    >
+                    />
                   </div>
                 </div>
                 <!-- Turn Around Time -->
@@ -305,10 +305,10 @@
                       type="text"
                       class="form-control"
                       placeholder="Enter turn around time in weeks"
-                    >
+                    />
                   </div>
                 </div>
-                <br>
+                <br />
 
                 <!-- Service Tags -->
                 <div class="form-group row">
@@ -347,7 +347,7 @@
               <div class="form-group row">
                 <div class="col">
                   <p>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" />
                   </p>
                 </div>
               </div>
