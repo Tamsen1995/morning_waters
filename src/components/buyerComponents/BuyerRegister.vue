@@ -15,14 +15,14 @@
         <!-- Form -->
         <b-card bg-variant="light" style="max-width: 100rem;" id="register">
           <h1>Buyer Sign Up</h1>
-          <br>
+          <br />
           <!-- <hr> -->
-          <br>
-          <div class="error" v-html="error"/>
+          <br />
+          <div class="error" v-html="error" />
           <!-- input for name -->
           <form>
             <div>Personal Info</div>
-            <hr>
+            <hr />
             <div class="form-group row">
               <label for="name" class="col-sm col-form-label">Name:</label>
               <div class="col-sm-12">
@@ -32,7 +32,7 @@
                   class="form-control"
                   id="staticEmail"
                   value="Enter your name"
-                >
+                />
               </div>
             </div>
 
@@ -44,7 +44,7 @@
                   type="email"
                   class="form-control"
                   placeholder="Enter your email"
-                >
+                />
               </div>
             </div>
 
@@ -56,7 +56,7 @@
                   type="password"
                   class="form-control"
                   placeholder="Enter your password"
-                >
+                />
               </div>
             </div>
 
@@ -68,14 +68,14 @@
                   type="password"
                   class="form-control"
                   placeholder="Re-enter your password"
-                >
+                />
               </div>
             </div>
 
             <!--  -->
             <div>
               Address
-              <br>
+              <br />
               <!-- Street -->
               <div class="form-group row">
                 <label for="inputStreet" class="col-sm col-form-label">Street:</label>
@@ -85,7 +85,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter your street"
-                  >
+                  />
                 </div>
               </div>
 
@@ -98,7 +98,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter your city"
-                  >
+                  />
                 </div>
               </div>
 
@@ -111,7 +111,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter your city"
-                  >
+                  />
                 </div>
               </div>
 
@@ -124,7 +124,7 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter your zip code"
-                  >
+                  />
                 </div>
               </div>
 
@@ -137,12 +137,12 @@
                     type="text"
                     class="form-control"
                     placeholder="Enter your country"
-                  >
+                  />
                 </div>
               </div>
             </div>
             <!--  -->
-            <br>
+            <br />
             <!--  -->
             <div class="form-group row">
               <label for="inputPhoneNumber" class="col-sm col-form-label">Phone Number:</label>
@@ -152,7 +152,7 @@
                   type="number"
                   class="form-control"
                   placeholder="Enter your phone number"
-                >
+                />
               </div>
             </div>
             <!--  -->
@@ -162,11 +162,11 @@
             <h3>Submit</h3>
           </button>
         </b-card>
-        <br>
-        <br>
+        <br />
+        <br />
         <!-- Footer -->
         <div id="register-form-footer">
-          <hr>
+          <hr />
           <b-container id="legal-links">
             <b-row>
               <b-col cols="3"></b-col>
@@ -178,7 +178,7 @@
               </b-col>
             </b-row>
           </b-container>
-          <br>
+          <br />
           <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
           <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
         </div>
@@ -188,79 +188,7 @@
 </div>
 </template>
 
-<script>
-import PageHeader from "@/components/Header.vue";
-import BuyerHeader from "@/components/buyerComponents/BuyerHeader.vue";
-import AuthenticationService from "@/services/AuthenticationService";
-import Api from "@/services/Api";
-import { ResponsiveDirective } from "vue-responsive-components";
-
-export default {
-  data() {
-    return {
-      name: "",
-      email: "",
-      password: "",
-      passwordConfirm: "",
-      address: {
-        street: "",
-        city: "",
-        state: "",
-        zip: "",
-        country: ""
-      },
-      number: "",
-      contactListTableId: "",
-      error: null
-    };
-  },
-  components: {
-    BuyerHeader
-  },
-  directives: {
-    responsive: ResponsiveDirective
-  },
-  methods: {
-    // Prefills registration
-    // info if it was provided on the homepage
-    async register() {
-      try {
-        const response = await AuthenticationService.buyerRegister({
-          name: this.name,
-          email: this.email,
-          password: this.password,
-          passwordConfirm: this.passwordConfirm,
-          address: JSON.stringify(this.address),
-          number: this.number
-        });
-        localStorage.setItem("id_token", response.data.token);
-        this.$store.dispatch("setToken", response.data.token);
-        this.$store.dispatch("setBuyer", response.data.buyer);
-        Api().defaults.headers.common[
-          "Authorization"
-        ] = AuthenticationService.getAuthHeader();
-
-        const shoppingCartFlag = this.$store.getters.getShoppingCartFlag;
-
-        if (shoppingCartFlag == true) {
-          console.log(`\nRedirecting onto buyer checkout\n`); // TESTING
-          this.$router.push({
-            name: "buyerCheckout"
-          });
-        } else {
-          console.log(`\nRedirecting onto buyer dashboard\n`); // TESTING
-          this.$router.push({
-            name: "buyerDashboard"
-          });
-        }
-      } catch (error) {
-        console.log(`\nAn error occurred in register ${error}\n`); // TESTING
-        this.error = error.response.data.error;
-        if (error) throw error;
-      }
-    }
-  }
-};
+<script src="./scripts/buyerRegister.js">
 </script>
 
 <style scoped>
