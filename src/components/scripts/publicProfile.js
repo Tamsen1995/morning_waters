@@ -23,7 +23,8 @@ export default {
       // modal form data
       inquiryText: '',
       pickedQuantityQuoteRequest: 1,
-      itemChosen: null
+      itemChosen: null,
+      expanded: false
     }
   },
   components: {

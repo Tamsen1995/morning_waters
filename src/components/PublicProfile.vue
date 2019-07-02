@@ -27,7 +27,7 @@
             <h4>About:</h4>
             <transition-expand>
               <div v-if="expanded">
-                <p style="text-align:left">{{ this.about }}</p>
+                <p style="text-align:left">{{this.about}}</p>
               </div>
             </transition-expand>
             <button @click="expanded = !expanded">{{ expanded ? `Shrink` : `Expand` }}</button>
@@ -35,12 +35,12 @@
         </div>
         <!-- </div> -->
 
-        <br>
-        <br>
-        <br>
+        <br />
+        <br />
+        <br />
 
         <div class="services">
-          <br>
+          <br />
           <div id="services">
             <button
               @click="manifestModalInquiry(service)"
@@ -120,12 +120,12 @@
         <request-quote-cart></request-quote-cart>
       </div>
 
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </body>
 
     <!-- General Inquiry -->
@@ -170,10 +170,10 @@
               </ul>
 
               <label>Amount? (optional)</label>
-              <input v-model="pickedQuantityQuoteRequest" type="number" style="width: 40px">
+              <input v-model="pickedQuantityQuoteRequest" type="number" style="width: 40px" />
 
-              <br>
-              <br>Send message to Seller
+              <br />
+              <br />Send message to Seller
               <textarea
                 v-model="inquiryText"
                 class="form-control animated"
@@ -182,7 +182,7 @@
               ></textarea>
             </div>
           </div>
-          <br>
+          <br />
         </div>
 
         <button
