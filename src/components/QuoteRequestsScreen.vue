@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <dashboard-header/>
+  <dashboard-header />
   <body class="inbox" id="inbox">
     <div
       class="responsive-component"
@@ -18,7 +18,6 @@
           <div class="col-md-4 message-sideleft">
             <div class="panel">
               <div class="panel-heading">
-
                 <!-- Filter Orders/Quote Requests -->
                 <div class="pull-left">
                   <div class="btn-group">
@@ -30,9 +29,8 @@
                     >
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
-       
+
                     <ul class="dropdown-menu pull-right" role="menu">
-                      
                       <li>
                         <a @click="switchMessagesDisplayed('all')">
                           <i class="fa fa-download"></i> All
@@ -54,9 +52,7 @@
                           <i class="fa fa-briefcase"></i> Other
                         </a>
                       </li>
-                      
                     </ul>
-         
                   </div>
                 </div>
 
@@ -71,7 +67,7 @@
                     >
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
-<!--        
+                    <!--        
                     <ul class="dropdown-menu pull-right" role="menu">
 
                       <li>
@@ -91,8 +87,7 @@
                         </a>
                       </li>
                       
-                    </ul> -->
-         
+                    </ul>-->
                   </div>
                 </div>
 
@@ -113,10 +108,10 @@
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
-                      <br>
-                      <br>
+                      <br />
+                      <br />
                       <small>Date created : {{ order.createdAt }}</small>
-                      <br>
+                      <br />
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                     <span class="label label-success pull-right">Request</span>
@@ -139,13 +134,13 @@
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
-                      <br>
-                      <br>
+                      <br />
+                      <br />
                       <!-- Charged: {{order.totalPrice}} $ -->
-                      <br>
-                      <br>
+                      <br />
+                      <br />
                       <small>Date created : {{ order.createdAt }}</small>
-                      <br>
+                      <br />
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                     <span class="label label-success pull-right">Pending Order</span>
@@ -156,11 +151,21 @@
 
               <!-- Pagination MUST ADD FUNCTIONALITY to Paginate between lists of messages -->
               <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Previous</a>
+                </li>
+                <li class="page-item active" aria-current="page">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
               </ul>
             </div>
             <!-- The panels for the quote requests -->
@@ -184,17 +189,17 @@
                 v-for="(msg, index) in correspondanceMessages"
                 v-bind:key="index"
               >
-                <h4 class="media-heading pull-right"> Date </h4>
-                <h4 class="media-heading"> Buyer ID : {{ order.buyerId }}:</h4>
-                
+                <h4 class="media-heading pull-right">Date</h4>
+                <h4 class="media-heading">Buyer ID : {{ order.buyerId }}:</h4>
+
                 <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                 <div class="view_msg">
                   <p class="lead">{{msg.message}}</p>
                 </div>
-                <hr>
+                <hr />
               </div>
               <!-- /.panel-body -->
-              <hr>
+              <hr />
               <!-- /.panel-heading -->
               <div class="panel-body">
                 <div class="reply_msg">
@@ -220,7 +225,7 @@
                 >Submit Order</button>
 
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-                  <br>
+                  <br />
 
                   <div>
                     <input
@@ -228,7 +233,7 @@
                       @change="updateOrderItems(index)"
                       placeholder="amount"
                       style="width:8%;"
-                    >
+                    />
                     X
                     {{ item.title }}
                     <p
@@ -236,7 +241,7 @@
                     >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                   </div>
                 </div>
-                <hr>
+                <hr />
                 Total price: {{ this.totalPrice }} $
               </div>
             </div>
