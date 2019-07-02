@@ -1,25 +1,20 @@
 <template>
-  <transition
-    name="expand"
-    @enter="enter"
-    @after-enter="afterEnter"
-    @leave="leave"
-  >
-    <slot/>
+  <transition name="expand" @enter="enter" @after-enter="afterEnter" @leave="leave">
+    <slot />
   </transition>
 </template>
 
 <script>
 export default {
-  name: 'TransitionExpand',
+  name: "TransitionExpand",
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;
 
       element.style.width = width;
-      element.style.position = 'absolute';
-      element.style.visibility = 'hidden';
-      element.style.height = 'auto';
+      element.style.position = "absolute";
+      element.style.visibility = "hidden";
+      element.style.height = "auto";
 
       const height = getComputedStyle(element).height;
 
@@ -29,11 +24,11 @@ export default {
       element.style.height = 0;
     },
     afterEnter(element) {
-      element.style.height = 'auto';
+      element.style.height = "auto";
     },
     leave(element) {
       const height = getComputedStyle(element).height;
-      
+
       element.style.height = height;
 
       // Force repaint to make sure the
@@ -43,9 +38,9 @@ export default {
       setTimeout(() => {
         element.style.height = 0;
       });
-    },
-  },
-};  
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -66,5 +61,4 @@ export default {
   backface-visibility: hidden;
   perspective: 1000px;
 }
-
 </style>

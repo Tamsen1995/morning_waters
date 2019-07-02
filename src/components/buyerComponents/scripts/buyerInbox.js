@@ -119,6 +119,7 @@ export default {
     },
     async showOrder (order) {
       try {
+        this.servicesNegotiated = []
         this.order = order
         this.quoteRequest = null
         const orderId = order.orderId
