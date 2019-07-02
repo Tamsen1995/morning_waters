@@ -61,7 +61,7 @@
                 <h4 class="card-title">Leads:</h4>
                 <p class="card-text">{{ this.leads }}</p>
                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                <b-button block href="#" variant="outline-success">
+                <b-button block variant="outline-success" @click="redirectToInbox()">
                   <h6>View Leads</h6>
                 </b-button>
               </div>

@@ -42,6 +42,15 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async redirectToInbox () {
+      try {
+        this.$router.push({
+          name: 'quoteRequestsScreen'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async redirectToPendingOrders () {
       try {
         this.$router.push({
