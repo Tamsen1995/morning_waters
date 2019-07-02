@@ -16,6 +16,7 @@ export default {
       // for the order which was called upon
       //   orders: null,
       pendingOrders: null,
+      shippoOrders: [],
       orderItems: null,
       seller_shipping: false,
       buyer_shipping: false
@@ -23,15 +24,36 @@ export default {
   },
   async created () {
     await this.getSellerPendingOrders()
+
     // await this.getSellerOrders()
     // await this.getSellerOrderItems();
   },
-  async mounted () { },
+  mounted () {
+  },
   components: {
     DashboardHeader
   },
   directives: {},
   methods: {
+    async getSellerPendingOrders () {
+      try {
+        this.shippoOrders = []
+        const userExtracted = this.$store.getters.getUserInfo
+
+        const response = await UserServices.getSellerPendingOrders(
+          userExtracted.id
+        )
+        this.pendingOrders = response.data
+
+        for (var i = 0; i < this.pendingOrders.length; i++) {
+          const response = await ShippingService.retrieveOrderFromShippo(this.pendingOrders[i].orderId)
+          var orderFromShippo = response.data
+          this.shippoOrders.push(orderFromShippo)
+        }
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async goToOrderStatus (index) {
       try {
         const pendingOrder = this.pendingOrders[index]
@@ -44,18 +66,7 @@ export default {
         if (error) throw error
       }
     },
-    async getSellerPendingOrders () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
 
-        const response = await UserServices.getSellerPendingOrders(
-          userExtracted.id
-        )
-        this.pendingOrders = response.data
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     async createOrderOnShippo () {
       try {
         // We can charge the buyer here for now

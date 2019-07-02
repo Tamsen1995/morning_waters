@@ -38,16 +38,13 @@ export default {
   },
   async created () {
     this.userId = this.$route.params.id
-    await this.getSubServices()
     await this.getUserData()
   },
   async mounted () {
 
   },
   methods: {
-    // compares the given service to all
-    // other services and determines if there any
-    // subservices present
+
     subServicesPresent (service) {
       const serviceId = service.id
       for (var i = 0; i < this.services.length; i++) {
@@ -57,22 +54,13 @@ export default {
       }
       return false
     },
-    async getSubServices () {
-      try {
-        const response = await DashboardServices.queryForUserSubServices(this.userId)
 
-        this.subServices = response.data
-      } catch (error) {
-        console.log(`\nThe error occurred in getSubServices()\n`) // TESTING
-        if (error) throw error
-      }
-    },
     async getUserData () {
       try {
         const userInfo = (await UserServices.getPublicProfileInfo(this.userId))
           .data
         const serviceTableId = userInfo.user.serviceTableId
-        this.getSubServices()
+
         const response = await DashboardServices.queryForUsersServices(
           serviceTableId
         )

@@ -91,8 +91,11 @@
             <div class="service-block" v-if="service.isSubService === false">
               <div id="service-title">
                 <h4 style="text-align:left;">{{ service.title }}</h4>
+                <button @click="deleteService(service)">
+                  <div style="border: 3px solid red;">X</div>
+                </button>
                 <h6>
-                  <a href="#" class="btn pull-right">Edit</a>
+                  <a class="btn pull-right" style="color: black;" @click="editService(service)">Edit</a>
                 </h6>
               </div>
               <!-- Service Description -->
@@ -109,9 +112,7 @@
                 >
                   <div id="service-title">
                     <h4 style="text-align:left;">{{ subService.title }}</h4>
-                    <h6>
-                      <a href="#" class="btn pull-right">Edit</a>
-                    </h6>
+                    <h6></h6>
                   </div>
                   <div class="container" id="service-desc">
                     <h5>{{ subService.description }}</h5>
@@ -146,7 +147,13 @@
 
   <!-- Modal component to add a service with -->
 
-  <modal name="add-service" height="auto" scrollable="true" style="padding-top:80px">
+  <modal
+    name="add-service"
+    height="auto"
+    scrollable="true"
+    style="padding-top:80px"
+    :clickToClose="false"
+  >
     <div class="container" style="margin:10px">
       <div class="row">
         <div class="col-12">
@@ -344,11 +351,23 @@
                   </p>
                 </div>
               </div>
+
               <button
+                v-if="this.serviceBeingEdited === true"
                 class="btn btn-info pull-right"
                 style="margin-top:10px"
                 type="button"
-                @click="submitService"
+                @click="submitServiceEdit()"
+              >
+                <p>Submit Edit</p>
+              </button>
+
+              <button
+                v-else
+                class="btn btn-info pull-right"
+                style="margin-top:10px"
+                type="button"
+                @click="submitService()"
               >
                 <p>Submit</p>
               </button>
