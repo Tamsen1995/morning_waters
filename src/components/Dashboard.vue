@@ -83,89 +83,67 @@
         <br />
         <br />
 
-        <md-card class="md-card-example">
-          <md-card-area md-inset>
-            <md-card-header>
-              <h2 class="md-title">Service Title : ()</h2>
-              <div class="md-subhead">
-                <md-icon>access_time</md-icon>
-                <span>Turnaround time : ()</span>
-              </div>
-            </md-card-header>
-
-            <md-card-content>Service Description : ()</md-card-content>
-          </md-card-area>
-
-          <md-card
-            style="width: 80%; margin-left: auto; margin-right: auto; background-color: #d6d1e4"
-          >
-            <md-card-area>
-              <md-card-header>
-                <div class="md-title">subservice title : ()</div>
-                <div class="md-subhead">
-                  <md-icon>access_time</md-icon>
-                  <span>Turnaround time : ()</span>
-                </div>
-              </md-card-header>
-
-              <md-card-content>Service Description : ()</md-card-content>
-            </md-card-area>
-
-            <md-card-actions md-alignment="left">
-              <md-button>Price :</md-button>
-            </md-card-actions>
-          </md-card>
-
-          <md-card-content>
-            <div class="card-reservation">
-              <div class="md-button-group">Price</div>
-            </div>
-          </md-card-content>
-
-          <md-card-actions>
-            <md-button class="md-primary">Edit</md-button>
-          </md-card-actions>
-        </md-card>
-
         <div class="services" id="services">
           <br />
           <h4>Services:</h4>
           <br />
-          <!-- Title -->
+          <!-- Beginning of cards -->
           <div v-for="(service, index) in this.services" :key="index">
-            <div class="service-block" v-if="service.isSubService === false">
-              <div id="service-title">
-                <h4 style="text-align:left;">{{ service.title }}</h4>
-                <button @click="deleteService(service)">
-                  <div style="border: 3px solid red;">X</div>
-                </button>
-                <h6>
-                  <a class="btn pull-right" style="color: black;" @click="editService(service)">Edit</a>
-                </h6>
-              </div>
-              <!-- Service Description -->
-              <div class="container" id="service-desc">
-                <h5>{{ service.description }}</h5>
-              </div>
+            <md-card
+              v-if="service.isSubService === false"
+              class="md-card-example"
+              style="background-color: #ebebf7; color: #311c63"
+            >
+              <button @click="deleteService(service)">
+                <div>X</div>
+              </button>
+              <md-card-area md-inset>
+                <md-card-header>
+                  <h2 class="md-title">{{ service.title }}</h2>
+                  <div class="md-subhead">
+                    <md-icon>access_time</md-icon>
+                    <span>Turnaround time : {{ service.turnAroundTime }}</span>
+                  </div>
+                </md-card-header>
 
-              <!--  -->
-              <!-- sub services will be in this block -->
+                <md-card-content>{{ service.description }}</md-card-content>
+              </md-card-area>
+
               <div v-for="(subService, index) in services" :key="index">
-                <div
-                  class="service-block-sub"
+                <md-card
+                  style="width: 80%; margin-left: auto; margin-right: auto; background-color: #d6d1e4"
                   v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
                 >
-                  <div id="service-title">
-                    <h4 style="text-align:left;">{{ subService.title }}</h4>
-                    <h6></h6>
-                  </div>
-                  <div class="container" id="service-desc">
-                    <h5>{{ subService.description }}</h5>
-                  </div>
-                </div>
+                  <md-card-area>
+                    <md-card-header>
+                      <div class="md-title">{{ subService.title }}</div>
+                      <div class="md-subhead">
+                        <md-icon>access_time</md-icon>
+                        <span>Turnaround time : {{ subService.turnAroundTime }}</span>
+                      </div>
+                    </md-card-header>
+
+                    <md-card-content>{{ subService.description }}</md-card-content>
+                  </md-card-area>
+
+                  <md-card-actions md-alignment="left">
+                    <md-button>Price : {{subService.servicePrice}}</md-button>
+                  </md-card-actions>
+                </md-card>
               </div>
-            </div>
+
+              <md-card-content>
+                <div class="card-reservation">
+                  <div class="md-button-group">Price: {{service.servicePrice}} $</div>
+                </div>
+              </md-card-content>
+
+              <md-card-actions>
+                <md-button class="md-primary">Edit</md-button>
+              </md-card-actions>
+            </md-card>
           </div>
+
           <!--  -->
 
           <!-- Add Service Button -->
