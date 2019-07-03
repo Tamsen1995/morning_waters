@@ -136,7 +136,8 @@
                   ></md-textarea>
                 </md-field>
 
-                <button v-on:click="submitMessage()">Submit</button>
+                <!-- <button v-on:click="submitMessage()">Submit</button> -->
+                <md-button class="md-raised md-primary" v-on:click="submitMessage()">Submit Message</md-button>
               </div>
               <!-- /.panel-body -->
             </md-card>
