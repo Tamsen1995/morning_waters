@@ -1,0 +1,71 @@
+import BuyerHeader from '@/components/buyerComponents/BuyerHeader.vue'
+import AuthenticationService from '@/services/AuthenticationService'
+import Api from '@/services/Api'
+import { ResponsiveDirective } from 'vue-responsive-components'
+
+export default {
+  data () {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: ''
+      },
+      number: '',
+      contactListTableId: '',
+      error: null
+    }
+  },
+  components: {
+    BuyerHeader
+  },
+  directives: {
+    responsive: ResponsiveDirective
+  },
+  methods: {
+    // Prefills registration
+    // info if it was provided on the homepage
+    async register () {
+      try {
+        const response = await AuthenticationService.buyerRegister({
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          passwordConfirm: this.passwordConfirm,
+          address: JSON.stringify(this.address),
+          number: this.number
+        })
+        localStorage.setItem('id_token', response.data.token)
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setBuyer', response.data.buyer)
+        Api().defaults.headers.common[
+          'Authorization'
+        ] = AuthenticationService.getAuthHeader()
+
+        const shoppingCartFlag = this.$store.getters.getShoppingCartFlag
+
+        if (shoppingCartFlag == true) {
+          console.log(`\nRedirecting onto buyer checkout\n`) // TESTING
+          this.$router.push({
+            name: 'buyerCheckout'
+          })
+        } else {
+          console.log(`\nRedirecting onto buyer dashboard\n`) // TESTING
+          this.$router.push({
+            name: 'buyerDashboard'
+          })
+        }
+      } catch (error) {
+        console.log(`\nAn error occurred in register ${error}\n`) // TESTING
+        this.error = error.response.data.error
+        if (error) throw error
+      }
+    }
+  }
+}
