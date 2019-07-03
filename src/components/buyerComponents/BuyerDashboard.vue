@@ -7,69 +7,66 @@
     <div id="pending_orders_content">
       <h1>Pending Orders</h1>
 
-      <br>
+      <br />
 
-      <div
-        id="pending-order"
+      <!--  -->
+
+      <!--  -->
+
+      <!-- Post confirmation ORDER STATUS -->
+      <md-app
+        class="page-container"
         v-for="(pendingOrder, index) in this.pendingOrders"
         v-bind:key="index"
+        style="background-color: white;"
+        :md-elevation="5"
       >
-        <div class="row">
-          <div class="col-8">
-            <!-- Post confirmation ORDER STATUS -->
+        <md-app-toolbar class="md-primary" style="background-color: rgb(157, 83, 252)">
+          <span class="md-title">Order ID : {{pendingOrder.orderId}}</span>
+        </md-app-toolbar>
 
-            <!-- If Order Confirmed -->
-            <h3>Order Status:</h3>
-            <h2>Seller purchased shipping label</h2>
-            <br>
+        <md-app-drawer md-permanent="clipped" style="background-color: opacity:1.0">
+          <md-list>
+            <md-list-item>
+              <md-button id="btn-timeline" type="submit" @click="goToOrderStatus(index)">Timeline</md-button>
+            </md-list-item>
 
-            <!-- IF Order UNCONFIRMED -->
-            <!-- <h2 class="status-unconfirmed" style="color:red;">Order Unconfirmed</h2>  -->
+            <md-list-item>
+              <md-button id="btn-shippo" type="submit" @click="goToOrderStatus(index)">Shipping</md-button>
+            </md-list-item>
 
-            <!-- View Order Details, Add expandable Div -->
-            <div id="order_details">
-              <h3>Order ID : {{pendingOrder.orderId}}</h3>
-              <ol id="item_list">
-                <h3>
-                  <li>
-                    <!-- {{orderItem.title}}
-                    <br>
-                    {{orderItem.description}} 
-                    <br>
-                    {{orderItem.quantity}}-->
-                  </li>
-                </h3>
-              </ol>
-              <!-- <a><h3 style="color:purple;"> View Timeline</h3></a>  -->
-            </div>
-          </div>
-          <div class="col-4">
-            <!-- IF order CONFIRMED -->
-            <h3 class="pull-right" style="color:green;">Order Confirmed [Date]</h3>
+            <md-list-item>
+              <md-button
+                id="btn-shippo"
+                type="submit"
+                style="background-color: rgb(205, 188, 227);"
+                @click="downloadInvoice(pendingOrder)"
+              >Download Invoice</md-button>
+            </md-list-item>
+          </md-list>
+        </md-app-drawer>
 
-            <!-- IF Order UNCONFIRMED -->
-            <!--Confirm order links to inbox message-->
-            <!-- <h3 class="pull-right" style="color:red;">Order Submitted [Date] </h3> -->
-          </div>
-        </div>
-        <br>
+        <md-app-content class="md-title">
+          Order Status: PAID
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />Order Confirmed: [DATE]
+        </md-app-content>
+      </md-app>
+      <!-- If Order Confirmed -->
 
-        <!-- IF UNCONFIRMED -->
-        <!-- <button class="btn-danger" id="btn-confirm-order">Confirm Order</button> -->
+      <!-- IF Order UNCONFIRMED -->
+      <!-- <h2 class="status-unconfirmed" style="color:red;">Order Unconfirmed</h2>  -->
 
-        <!-- IF CONFIRMED -->
-        <button
-          class="btn-timeline"
-          id="btn-timeline"
-          type="submit"
-          @click="goToOrderStatus(index)"
-        >View Timeline</button>
+      <!-- View Order Details, Add expandable Div -->
 
-        <!-- Handle shipping -->
-        <button id="btn-shippo" type="submit">Shipping</button>
+      <!-- IF UNCONFIRMED -->
+      <!-- <button class="btn-danger" id="btn-confirm-order">Confirm Order</button> -->
 
-        <a class="invoice-link pull-right" @click="downloadInvoice(pendingOrder)">Download Invoice</a>
-      </div>
+      <!-- IF CONFIRMED -->
     </div>
   </body>
 </div>
@@ -83,4 +80,18 @@
 @import "../../assets/css/timeline.css";
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 @import "../../assets/css/orders.css";
+.page-container {
+  min-height: 270px;
+  border: 1px solid black;
+  background: #ffffff 0%;
+}
+
+.md-drawer {
+  border-right: 1px solid black;
+  background: #ffffff 0%;
+  max-width: 30%;
+}
 </style>
+
+
+
