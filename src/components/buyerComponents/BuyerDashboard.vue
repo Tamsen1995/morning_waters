@@ -82,12 +82,12 @@
 @import "../../assets/css/orders.css";
 .page-container {
   min-height: 270px;
-  border: 1px solid rgb(121, 161, 39);
+  border: 1px solid black;
   background: #ffffff 0%;
 }
 
 .md-drawer {
-  border-right: 1px solid rgb(121, 161, 39);
+  border-right: 1px solid black;
   background: #ffffff 0%;
   max-width: 30%;
 }
