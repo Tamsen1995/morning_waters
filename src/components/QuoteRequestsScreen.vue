@@ -16,7 +16,7 @@
         </div>
         <div class="row message-wrapper rounded shadow mb-20">
           <div class="col-md-4 message-sideleft">
-            <div class="panel">
+            <md-card>
               <div class="panel-heading">
                 <!-- Filter Orders/Quote Requests -->
                 <div class="pull-left">
@@ -67,27 +67,6 @@
                     >
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <!--        
-                    <ul class="dropdown-menu pull-right" role="menu">
-
-                      <li>
-                        <a @click="switchMessagesDisplayed('orders')">
-                          <i class="fa fa-upload"></i> Locked
-                        </a>
-                      </li>
-                      <li>
-                        <a @click="switchMessagesDisplayed('quoteRequests')">
-                          <i class="fa fa-trash-o"></i> Unlocked
-                        </a>
-                      </li>
-                      <li class="divider"></li>                      
-                      <li>
-                        <a @click="switchMessagesDisplayed('all')">
-                          <i class="fa fa-download"></i> All
-                        </a>
-                      </li>
-                      
-                    </ul>-->
                   </div>
                 </div>
 
@@ -148,25 +127,11 @@
                   </a>
                 </div>
               </div>
-
-              <!-- Pagination MUST ADD FUNCTIONALITY to Paginate between lists of messages -->
-            </div>
+            </md-card>
             <!-- The panels for the quote requests -->
           </div>
           <div class="col-md-8 message-sideright">
-            <div class="panel">
-              <!-- <div class="panel-heading">
-                <div class="media">
-                  <div class="media-body">
-                    <h4 class="media-heading">
-                      Rebecca Cabean
-                      <small>(Sales Manager)</small>
-                    </h4>
-                    <small>Thursday 5th July 2014-via Intercom</small>
-                  </div>
-                </div>
-              </div>-->
-              <!-- /.panel-heading -->
+            <md-card>
               <div
                 class="panel-body"
                 v-for="(msg, index) in correspondanceMessages"
@@ -201,27 +166,12 @@
                 </div>
               </div>
               <!-- /.panel-body -->
+            </md-card>
 
-              <!-- <md-list>
-                <md-list-item v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-                  <md-icon>move_to_inbox</md-icon>
-                  <span class="md-list-item-text">
-                    <input
-                      v-model="amtForServicesNegotiated[index]"
-                      @change="updateOrderItems(index)"
-                      placeholder="amount"
-                      style="width:8%;"
-                    />
-                    X
-                    {{ item.title }}
-                    <p
-                      style="color:red;font-size:15px;"
-                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
-                  </span>
-                </md-list-item>
-              </md-list>-->
+            <br />
 
-              <!-- if this variable is undefined we are dealing with a not yet confirmed order -->
+            <md-card>
+              <!-- Negotation Interface -->
               <div
                 class="panel-body"
                 v-if="this.order !== undefined && this.order.totalPrice === undefined"
@@ -251,8 +201,9 @@
                 </div>
                 <hr />
                 Total price: {{ this.totalPrice }} $
+                <!-- Negotiation Interface -->
               </div>
-            </div>
+            </md-card>
           </div>
           <!-- /.message-sideright -->
         </div>
