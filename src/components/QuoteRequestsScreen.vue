@@ -150,23 +150,6 @@
               </div>
 
               <!-- Pagination MUST ADD FUNCTIONALITY to Paginate between lists of messages -->
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#">Previous</a>
-                </li>
-                <li class="page-item active" aria-current="page">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
             </div>
             <!-- The panels for the quote requests -->
           </div>
@@ -203,15 +186,40 @@
               <!-- /.panel-heading -->
               <div class="panel-body">
                 <div class="reply_msg">
-                  <textarea
-                    v-model="message"
-                    v-on:keyup.enter="submitMessage()"
-                    placeholder="add multiple lines"
-                  ></textarea>
-                  <button v-on:click="submitMessage()">Submit</button>
+                  <md-field>
+                    <md-textarea
+                      v-model="message"
+                      v-on:keyup.enter="submitMessage()"
+                      placeholder="message.."
+                      style="border: 1px solid black;"
+                    ></md-textarea>
+                  </md-field>
+                  <md-button
+                    class="md-raised md-primary"
+                    v-on:click="submitMessage()"
+                  >Submit Message</md-button>
                 </div>
               </div>
               <!-- /.panel-body -->
+
+              <!-- <md-list>
+                <md-list-item v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
+                  <md-icon>move_to_inbox</md-icon>
+                  <span class="md-list-item-text">
+                    <input
+                      v-model="amtForServicesNegotiated[index]"
+                      @change="updateOrderItems(index)"
+                      placeholder="amount"
+                      style="width:8%;"
+                    />
+                    X
+                    {{ item.title }}
+                    <p
+                      style="color:red;font-size:15px;"
+                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
+                  </span>
+                </md-list-item>
+              </md-list>-->
 
               <!-- if this variable is undefined we are dealing with a not yet confirmed order -->
               <div
