@@ -77,9 +77,7 @@
                   </div>
                 </md-card-content>
 
-                <md-card-actions>
-                  <md-button>Submit profile edits</md-button>
-                </md-card-actions>
+                <md-button class="md-raised md-primary">Submit profile edits</md-button>
               </md-ripple>
             </md-card>
             <!--  -->
@@ -94,54 +92,58 @@
             <billing-tab></billing-tab>
           </div>
           <div v-show="currentTab === 'password4'">
-            <h4>Edit Password:</h4>
-            <br />
-            <br />
-            <!-- Input old password -->
-            <div class="form-row">
-              <label horizontal for="oldPass" class="col-sm col-form-label">Old Password:</label>
-              <div class="col-8">
-                <input
-                  v-model="oldPass"
-                  class="form-control"
-                  type="password"
-                  placeholder="Enter your old password"
-                />
-              </div>
-            </div>
-            <!-- input for new password -->
-            <div class="form-row">
-              <label horizontal for="newPass" class="col-sm col-form-label">New Password:</label>
-              <div class="col-8">
-                <input
-                  v-model="newPass"
-                  class="form-control"
-                  type="password"
-                  placeholder="Enter your new password"
-                />
-              </div>
-            </div>
-            <!-- Confirm new password -->
-            <div class="form-row">
-              <label
-                horizontal
-                for="confirmNewPass"
-                class="col-sm col-form-label"
-              >Confirm new password:</label>
-              <div class="col-8">
-                <input
-                  v-model="confirmNewPass"
-                  class="form-control"
-                  type="password"
-                  placeholder="Re-enter your new password please"
-                />
-              </div>
-            </div>
+            <md-card>
+              <md-ripple>
+                <md-card-header>
+                  <div class="md-title">Edit Password:</div>
+                </md-card-header>
 
-            <br />
-            <button class="btn btn-outline btn-xl pull-right" @click="updatePassword">
-              <p>Update Password</p>
-            </button>
+                <br />
+                <br />
+                <md-card-content>
+                  <!-- Input old password -->
+                  <div class="form-row">
+                    <!-- <label horizontal for="oldPass" class="col-sm col-form-label"></label>
+                  <div class="col-8">
+                    <input
+                      v-model="oldPass"
+                      class="form-control"
+                    />
+                    </div>-->
+
+                    <md-field>
+                      <label>Old Password:</label>
+                      <md-input
+                        placeholder="Enter your old password"
+                        type="password"
+                        v-model="oldPass"
+                      ></md-input>
+                    </md-field>
+                  </div>
+                  <!-- input for new password -->
+                  <md-field>
+                    <label>New Password:</label>
+                    <md-input
+                      v-model="newPass"
+                      type="password"
+                      placeholder="Enter your new password"
+                    ></md-input>
+                  </md-field>
+
+                  <md-field>
+                    <label>Confirm new password:</label>
+                    <md-input
+                      v-model="confirmNewPass"
+                      type="password"
+                      placeholder="Re-enter your new password please"
+                    ></md-input>
+                  </md-field>
+
+                  <br />
+                  <md-button @click="updatePassword" class="md-raised md-primary">Update Password</md-button>
+                </md-card-content>
+              </md-ripple>
+            </md-card>
           </div>
         </div>
       </div>
