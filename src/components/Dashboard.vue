@@ -42,6 +42,7 @@
 
         <br />
         <br />
+
         <!-- Stats Cards -->
         <div id="stats">
           <div class="card-group">
@@ -158,7 +159,7 @@
       <div class="row">
         <div class="col-12">
           <h4 class="heading">
-            <strong>Add</strong> Service
+            <!-- <strong>Add</strong> Service -->
           </h4>
           <br />
           <form id="add-service">
@@ -166,23 +167,16 @@
               <!-- Service Title -->
               <div class="form-group row">
                 <label for="serviceTitle" class="col-sm .col-form-label-xsm">
-                  <p>Service Title:</p>
+                  <p></p>
                 </label>
-                <div class="col-sm-10">
-                  <input
-                    v-model="serviceTitle"
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter service title"
-                  />
-                </div>
+                <md-field>
+                  <label>Service Title:</label>
+                  <md-input type="text" v-model="serviceTitle" style="border-bottom: 1px inset"></md-input>
+                </md-field>
               </div>
               <!-- Service Description -->
               <div class="form-group row">
-                <label for="serviceDescription" class="col-sm col-form-label">
-                  <p>General Service Description:</p>
-                </label>
-                <div class="col-sm-10">
+                <!-- <div class="col-sm-10">
                   <textarea
                     v-model="serviceDescription"
                     type="text"
@@ -190,55 +184,32 @@
                     class="form-control animated"
                     placeholder="Enter service description"
                   ></textarea>
-                </div>
+                </div>-->
+
+                <md-field>
+                  <label>General Service Description:</label>
+                  <md-textarea v-model="serviceDescription" style="border-bottom: 1px inset"></md-textarea>
+                </md-field>
               </div>
               <br />
               <br />
 
-              <div class="form-group row">
-                <label for="price" class="col-sm col-form-label">
-                  <p>Price Per Unit:</p>
-                </label>
-                <div class="col-sm-8">
-                  <input
-                    v-model="servicePrice"
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter price per unit"
-                  />
-                </div>
-              </div>
-              <!-- Turn Around Time -->
-              <div class="form-group row">
-                <label for="turnAroundTime" class="col-sm col-form-label">
-                  <p>Turn Around Time:</p>
-                </label>
-                <div class="col-sm-8">
-                  <input
-                    v-model="turnAroundTime"
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter turn around time in weeks"
-                  />
-                </div>
-              </div>
+              <md-field>
+                <label>Price Per Unit:</label>
+                <md-input type="text" v-model="servicePrice" style="border-bottom: 1px inset"></md-input>
+              </md-field>
+
+              <md-field>
+                <label>Turn Around Time:</label>
+                <md-input type="text" v-model="turnAroundTime" style="border-bottom: 1px inset"></md-input>
+              </md-field>
+
               <br />
 
-              <!-- Service Tags -->
-              <div class="form-group row">
-                <label for="serviceTags" class="col-sm col-form-label">
-                  <p>Tags:</p>
-                </label>
-                <div class="col-sm-10">
-                  <textarea
-                    v-model="serviceTags"
-                    type="text"
-                    rows="3"
-                    class="form-control animated"
-                    placeholder="Enter tags used to describe your service"
-                  ></textarea>
-                </div>
-              </div>
+              <md-field>
+                <label>Tags</label>
+                <md-textarea type="text" v-model="serviceTags" style="border-bottom: 1px inset"></md-textarea>
+              </md-field>
 
               <!-- The sub services form -->
               <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
@@ -246,7 +217,7 @@
               <div v-for="(subservice, index) in this.subServicesToBeAdded" v-bind:key="index">
                 <br />
                 <br />
-                <hr />
+
                 <br />
                 <br />
                 <!-- Service Title -->
@@ -352,25 +323,22 @@
                 </div>
               </div>
 
-              <button
+              <md-button
                 v-if="this.serviceBeingEdited === true"
-                class="btn btn-info pull-right"
-                style="margin-top:10px"
+                class="md-dense md-raised md-primary"
+                style="margin-top:100%"
                 type="button"
                 @click="submitServiceEdit()"
               >
                 <p>Submit Edit</p>
-              </button>
+              </md-button>
 
-              <button
+              <md-button
                 v-else
-                class="btn btn-info pull-right"
-                style="margin-top:10px"
+                class="md-dense md-raised md-primary"
                 type="button"
                 @click="submitService()"
-              >
-                <p>Submit</p>
-              </button>
+              >Submit</md-button>
             </div>
           </form>
         </div>
