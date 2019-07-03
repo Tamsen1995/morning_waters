@@ -83,6 +83,52 @@
         <br />
         <br />
 
+        <md-card class="md-card-example">
+          <md-card-area md-inset>
+            <md-card-header>
+              <h2 class="md-title">Coffee House</h2>
+              <div class="md-subhead">
+                <md-icon>location_on</md-icon>
+                <span>2 miles</span>
+              </div>
+            </md-card-header>
+
+            <md-card-content>Illy Coffee served with a complimentary Leonidas Belgian Chocolate with all beverages.</md-card-content>
+          </md-card-area>
+
+          <md-card-content>
+            <h3 class="md-subheading">Today's availability</h3>
+            <div class="card-reservation">
+              <md-icon>access_time</md-icon>
+              <div class="md-button-group">
+                <md-button>5:30PM</md-button>
+                <md-button>7:30PM</md-button>
+                <md-button>9:00PM</md-button>
+              </div>
+            </div>
+          </md-card-content>
+
+          <md-card-actions>
+            <md-button class="md-primary">Reserve</md-button>
+          </md-card-actions>
+        </md-card>
+
+        <md-card>
+          <md-card-area>
+            <md-card-header>
+              <div class="md-title">Actions left aligned</div>
+              <div class="md-subhead">Subtitle here</div>
+            </md-card-header>
+
+            <md-card-content>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.</md-card-content>
+          </md-card-area>
+
+          <md-card-actions md-alignment="left">
+            <md-button>Action</md-button>
+            <md-button>Action</md-button>
+          </md-card-actions>
+        </md-card>
+
         <div class="services" id="services">
           <br />
           <h4>Services:</h4>
