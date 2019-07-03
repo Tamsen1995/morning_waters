@@ -9,22 +9,10 @@
         <div id="settings-nav">
           <h3>Settings</h3>
           <br />
-          <tabs
-            :tabs="tabs"
-            :currentTab="currentTab"
-            :wrapper-class="'default-tabs'"
-            :tab-class="'default-tabs__item'"
-            :tab-active-class="'default-tabs__item_active'"
-            :line-class="'default-tabs__active-line'"
-            @onClick="handleClick"
-          />
         </div>
 
-        <div class="settings-content">
-          <br />
-
-          <!--  -->
-          <div v-show="currentTab === 'profile1'">
+        <md-tabs>
+          <md-tab id="tab-profile" md-label="Profile">
             <!--  -->
             <!--  -->
             <md-card md-with-hover>
@@ -85,13 +73,11 @@
 
             <br />
             <!-- <button class="btn btn-default btn-xl pull-right" @click="updateProfile">Update Profile</button> -->
-          </div>
-          <!--  -->
-
-          <div v-if="currentTab === 'billing3'">
+          </md-tab>
+          <md-tab id="tab-billing" md-label="Billing">
             <billing-tab></billing-tab>
-          </div>
-          <div v-show="currentTab === 'password4'">
+          </md-tab>
+          <md-tab id="tab-password" md-label="Password">
             <md-card>
               <md-ripple>
                 <md-card-header>
@@ -144,8 +130,8 @@
                 </md-card-content>
               </md-ripple>
             </md-card>
-          </div>
-        </div>
+          </md-tab>
+        </md-tabs>
       </div>
     </body>
   </div>
