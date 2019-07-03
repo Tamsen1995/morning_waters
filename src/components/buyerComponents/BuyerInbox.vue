@@ -14,9 +14,9 @@
             <h2>Inbox</h2>
           </div>
         </div>
-        <div class="row message-wrapper rounded shadow mb-20">
+        <div class="row message-wrapper rounded shadow mb-20" style="height: auto;">
           <div class="col-md-4 message-sideleft">
-            <md-card>
+            <md-card style="min-height: 50em;;">
               <div class="panel-heading">
                 <div class="pull-left">
                   <div class="btn-group">
@@ -113,7 +113,7 @@
             <!-- The panels for the quote requests -->
           </div>
           <div class="col-md-5 message-sideright">
-            <md-card>
+            <md-card style="min-height: 50em;">
               <div
                 class="panel-body"
                 v-for="(msg, index) in correspondanceMessages"
@@ -144,7 +144,7 @@
           </div>
           <br />
           <div class="col-md-3 message-sideright">
-            <md-card>
+            <md-card style="min-height: 50em;">
               <div class="panel-body">
                 <button
                   v-if="this.order && this.order.seller_confirmed === true"
