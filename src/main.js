@@ -13,9 +13,12 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import AuthenticationService from '@/services/AuthenticationService'
-import VueCarousel from 'vue-carousel';
+import VueCarousel from 'vue-carousel'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.css'
 
-Vue.use(VueCarousel);
+Vue.use(VueCarousel)
+Vue.use(VueMaterial)
 
 Api().defaults.headers.common[
   'Authorization'

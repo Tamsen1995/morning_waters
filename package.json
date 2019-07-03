@@ -30,6 +30,7 @@
     "vue-cookies": "^1.5.13",
     "vue-disable-autocomplete": "0.0.4",
     "vue-js-modal": "^1.3.31",
+    "vue-material": "^1.0.0-beta-11",
     "vue-parallaxy": "^1.1.1",
     "vue-resource": "^1.5.1",
     "vue-responsive-components": "^0.2.3",
