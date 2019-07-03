@@ -78,8 +78,7 @@
                 </md-card-content>
 
                 <md-card-actions>
-                  <md-button>Action</md-button>
-                  <md-button>Action</md-button>
+                  <md-button>Submit profile edits</md-button>
                 </md-card-actions>
               </md-ripple>
             </md-card>
