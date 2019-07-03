@@ -24,8 +24,11 @@ export default {
   async created () {
     await this.getBuyersOrders()
     await this.getBuyersPendingOrders()
-    if (this.buyerQuoteRequests.length > 0) {
-      this.segmentBuyerQuoteRequests()
+    if (this.orders.length > 0) {
+      this.showOrder(this.orders[0])
+      this.retrieveOrderOrderItems(this.orders[0])
+    } else if (this.pendingOrders.length > 0) {
+      this.showOrder(this.pendingOrders[0])
     }
   },
   async mounted () {
