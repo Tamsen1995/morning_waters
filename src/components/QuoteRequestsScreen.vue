@@ -8,14 +8,14 @@
         small: el => el.width < 430
         }"
     >
-      <div class="container">
+      <div class="container-fluid">
         <div class="row" id="header">
-          <div class="col-md-4">
+          <div class="col-lg-4">
             <h2>Inbox</h2>
           </div>
         </div>
         <div class="row message-wrapper rounded shadow mb-20">
-          <div class="col-md-4 message-sideleft">
+          <div class="col-lg-4 message-sideleft">
             <md-card>
               <div class="panel-heading">
                 <!-- Filter Orders/Quote Requests -->
@@ -130,7 +130,7 @@
             </md-card>
             <!-- The panels for the quote requests -->
           </div>
-          <div class="col-md-8 message-sideright">
+          <div class="col-md-5 message-sideright">
             <md-card>
               <div
                 class="panel-body"
@@ -167,9 +167,9 @@
               </div>
               <!-- /.panel-body -->
             </md-card>
-
-            <br />
-
+          </div>
+          <br />
+          <div class="col-lg-3 message-sideright">
             <md-card>
               <!-- Negotation Interface -->
               <div
