@@ -79,7 +79,7 @@
                 v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
               >
                 <div class="list-group no-margin list-message">
-                  <a
+                  <md-card
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
                     v-bind:key="index"
@@ -95,7 +95,7 @@
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                     <span class="label label-success pull-right">Request</span>
                     <div class="clearfix"></div>
-                  </a>
+                  </md-card>
                 </div>
               </div>
               <!-- The panels for the orders -->
@@ -105,7 +105,7 @@
                 v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
               >
                 <div class="list-group no-margin list-message">
-                  <a
+                  <md-card
                     class="list-group-item"
                     v-for="(order, index) in this.pendingOrders"
                     v-bind:key="index"
@@ -124,7 +124,7 @@
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                     <span class="label label-success pull-right">Pending Order</span>
                     <div class="clearfix"></div>
-                  </a>
+                  </md-card>
                 </div>
               </div>
             </md-card>
@@ -138,8 +138,7 @@
                 v-bind:key="index"
               >
                 <h4 class="media-heading pull-right">Date</h4>
-                <h4 class="media-heading">Buyer ID : {{ order.buyerId }}:</h4>
-
+                {{msg.sender}}
                 <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                 <div class="view_msg">
                   <p class="lead">{{msg.message}}</p>
