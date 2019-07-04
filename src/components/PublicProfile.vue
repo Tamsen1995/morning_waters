@@ -54,65 +54,77 @@
 
           <div class="col-12">
             <!-- This is where I list the services -->
-            <div v-for="(service, index) in this.services" :key="service.id">
-              <div class="card" v-if="(service.isSubService === false)">
-                <h4
-                  class="card-header"
-                  style="text-align:left; text-indent:15px; color: purple"
-                >Title: {{ service.title }}</h4>
-                <div class="card-body">
-                  <!-- Service Description -->
-                  <button
-                    @click="manifestModalForm(service)"
-                    class="btn-quote-req btn btn-primary pull-right"
-                  >Request Quote</button>
-                  <h5
-                    class="card-text"
-                    style="text-align:left; padding:15px;"
-                  >Description: {{ service.description }}</h5>
+            <!-- <div >
+              
+            </div>-->
 
-                  <!-- This is where I'll list the subservices -->
-                  <div v-for="(subService, index) in services" :key="index">
-                    <div
-                      class="container"
-                      id="price-chart"
-                      v-if="(subService.parentServiceId === service.id) && (subService.isSubService === true)"
-                    >
-                      <table class="table table-hover">
-                        <thead>
-                          <tr>
-                            <th scope="col">Service Subtitle</th>
-                            <th scope="col">Turn Around Time</th>
-                            <th scope="col">Price/ Unit</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">{{ subService.title }}</th>
-                            <td>{{ subService.turnAroundTime }}</td>
-                            <td>{{ subService.description }}</td>
-                            <td>
-                              <button
-                                class="btn btn-success"
-                                @click="addServiceToCart(subService, index)"
-                              >Add to Cart</button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+            <md-card v-for="(service, index) in this.services" :key="service.id">
+              <md-card-content>
+                <!-- <div class="card" v-if="(service.isSubService === false)"></div> -->
+
+                <div v-if="(service.isSubService === false)">
+                  <h4
+                    class="card-header"
+                    style="text-align:left; text-indent:15px; color: purple"
+                  >Title: {{ service.title }}</h4>
+                  <div class="card-body">
+                    <!-- Service Description -->
+                    <md-button
+                      @click="manifestModalForm(service)"
+                      class="md-raised md-primary pull-right"
+                      style="background-color: #2238ff; color: white;"
+                    >Request Quote</md-button>
+
+                    <h5
+                      class="card-text"
+                      style="text-align:left; padding:15px;"
+                    >Description: {{ service.description }}</h5>
+
+                    <!-- This is where I'll list the subservices -->
+
+                    <md-card v-for="(subService, index) in services" :key="index">
+                      <div
+                        class="container"
+                        v-if="(subService.parentServiceId === service.id) && (subService.isSubService === true)"
+                      >
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th scope="col">Service Subtitle</th>
+                              <th scope="col">Turn Around Time</th>
+                              <th scope="col">Price/ Unit</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">{{ subService.title }}</th>
+                              <td>{{ subService.turnAroundTime }}</td>
+                              <td>{{ subService.description }}</td>
+                              <td>
+                                <md-button
+                                  style="background-color: #28a745; color: white;"
+                                  @click="addServiceToCart(subService, index)"
+                                >Add to Cart</md-button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </md-card>
+                    <!--  -->
+
+                    <!-- Service/Price Listings -->
+
+                    <md-button
+                      style="background-color: #28a745; color: white;"
+                      v-if="subServicesPresent(service) === false"
+                      @click="addServiceToCart(subService, index)"
+                    >Add to Cart</md-button>
                   </div>
-                  <!--  -->
-
-                  <!-- Service/Price Listings -->
-                  <button
-                    class="btn btn-success"
-                    v-if="subServicesPresent(service) === false"
-                    @click="addServiceToCart(service, index)"
-                  >Add to Cart</button>
                 </div>
-              </div>
-            </div>
+              </md-card-content>
+            </md-card>
+
             <!-- This is where I list the services -->
           </div>
         </div>
