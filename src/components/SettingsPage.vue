@@ -93,55 +93,49 @@
             <billing-tab></billing-tab>
           </md-tab>
           <md-tab id="tab-password" md-label="Password">
-            <h4>Edit Password:</h4>
-            <br />
-            <br />
-            <!-- Input old password -->
-            <div class="form-row">
-              <label horizontal for="billingAddress" class="col-sm col-form-label">Old Password:</label>
-              <div class="col-8">
-                <input
-                  v-model="billingAddress"
-                  class="form-control"
-                  type="text"
-                  placeholder="Enter your old password"
-                  description="Edit your billing address."
-                />
-              </div>
-            </div>
-            <!-- input for new password -->
-            <div class="form-row">
-              <label horizontal for="newPass" class="col-sm col-form-label">New Password:</label>
-              <div class="col-8">
-                <input
-                  v-model="newPass"
-                  class="form-control"
-                  type="password"
-                  placeholder="Enter your new password"
-                />
-              </div>
-            </div>
-            <!-- Confirm new password -->
-            <div class="form-row">
-              <label
-                horizontal
-                for="confirmNewPass"
-                class="col-sm col-form-label"
-              >Confirm new password:</label>
-              <div class="col-8">
-                <input
-                  v-model="confirmNewPass"
-                  class="form-control"
-                  type="password"
-                  placeholder="Re-enter your new password please"
-                />
-              </div>
-            </div>
+            <md-card>
+              <md-card-content>
+                <!-- 
+                <div class="form-row">
+                  <md-field>
+                    <label>Billing Address:</label>
+                    <md-input v-model="billingAddress"></md-input>
+                  </md-field>
+                </div>-->
 
-            <br />
-            <button class="btn btn-outline btn-xl pull-right" @click="updatePassword">
-              <p>Update Password</p>
-            </button>
+                <h4>Edit Password:</h4>
+                <br />
+                <br />
+                <!-- Input old password -->
+
+                <md-field>
+                  <label>Old Password:</label>
+                  <md-input placeholder="Enter your old password" type="password" v-model="oldPass"></md-input>
+                </md-field>
+
+                <!-- input for new password -->
+
+                <md-field>
+                  <label>New Password:</label>
+                  <md-input placeholder="Enter your old password" type="password" v-model="newPass"></md-input>
+                </md-field>
+
+                <!-- Confirm new password -->
+                <md-field>
+                  <label>Confirm New Password:</label>
+                  <md-input
+                    placeholder="Enter your old password"
+                    type="password"
+                    v-model="confirmNewPass"
+                  ></md-input>
+                </md-field>
+
+                <br />
+                <button class="btn btn-outline btn-xl pull-right" @click="updatePassword">
+                  <p>Update Password</p>
+                </button>
+              </md-card-content>
+            </md-card>
           </md-tab>
         </md-tabs>
       </div>
