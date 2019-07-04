@@ -178,6 +178,10 @@
                 class="panel-body"
                 v-if="this.order !== undefined && this.order.totalPrice === undefined"
               >
+                <md-card style="background-color: #66bb6a; height: 100px;">
+                  <h5>Negotiation Interface</h5>
+                </md-card>
+
                 <md-button
                   @click="submitOrder()"
                   v-if="this.order && this.order.seller_confirmed === false"
