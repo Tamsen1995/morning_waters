@@ -1,97 +1,88 @@
 <template>
 <div id="app">
   <page-header></page-header>
-  <div
-    class="responsive-component"
-    v-responsive= "{
+  <div class="responsive-component" v-responsive="{
     small: el => el.width < 430
-    }"
-    >
+    }">
     <body>
-      
-        <div class="row">
-          <br>
-          <br>
-          <br>
-          <div class="col">
-            <div class="container">
-              <div id="fig-logo-white">
-                <img
-                  src="../assets/css/TINY_LOGO_WHITE.png"
-                  alt="FIG ANALYTICS"
-                  class="center"
-                  id="login-logo"
-                >
+      <div class="row">
+        <br />
+        <br />
+        <br />
+        <div class="col">
+          <div class="container">
+            <div id="fig-logo-white">
+              <img
+                src="../assets/css/TINY_LOGO_WHITE.png"
+                alt="FIG ANALYTICS"
+                class="center"
+                id="login-logo"
+              />
+            </div>
+            <br />
+          </div>
+          <!-- Loadng animation -->
+          <div class="loader" v-if="loadingFlag == 2">Loading...</div>
+
+          <!-- Form -->
+          <div class="card" id="login">
+            <form>
+              <h1>Login</h1>
+              <br />
+              <hr />
+              <div class="form-group row">
+                <label for="email" class="col-sm col-form-label">Email:</label>
+                <div class="col-sm-12">
+                  <input
+                    type="email"
+                    v-model="email"
+                    class="form-control"
+                    id="staticEmail"
+                    placeholder="Enter your email"
+                  />
+                </div>
               </div>
-              <br>
-            </div>
-            <!-- Loadng animation -->
-            <div class="loader" v-if="loadingFlag == 2">Loading...</div>
-
-            <!-- Form -->
-            <div class="card" id="login">
-              <form>
-                <h1>Login</h1>
-                <br>
-                <hr>
-                <div class="form-group row">
-                  <label for="email" class="col-sm col-form-label">Email:</label>
-                  <div class="col-sm-12">
-                    <input
-                      type="email"
-                      v-model="email"
-                      class="form-control"
-                      id="staticEmail"
-                      placeholder="Enter your email"
-                    >
-                  </div>
+              <div class="form-group row">
+                <label for="inputPassword" class="col-sm col-form-label">Password:</label>
+                <div class="col-sm-12">
+                  <input
+                    type="password"
+                    v-model="password"
+                    class="form-control"
+                    id="inputPassword"
+                    placeholder="Enter your password"
+                  />
                 </div>
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm col-form-label">Password:</label>
-                  <div class="col-sm-12">
-                    <input
-                      type="password"
-                      v-model="password"
-                      class="form-control"
-                      id="inputPassword"
-                      placeholder="Enter your password"
-                    >
-                  </div>
-                </div>
-                <br>
-                <div class="error" v-html="error"/>
+              </div>
+              <br />
+              <div class="error" v-html="error" />
 
-                <div class="container" id="center">
-                  <button type="button" class="btn btn-outline" id="btn-login" @click="login()">
-                    <h3>Submit</h3>
-                  </button>
-                  <br>
-                  <br>
-                  <p>
-                    Don't have an account yet?
-                    <a
-                      href="#/register"
-                      @click="redirectToSignup()"
-                    >Sign up</a>
-                  </p>
-                </div>
-              </form>
-            </div>
+              <div class="container" id="center">
+                <button type="button" class="btn btn-outline" id="btn-login" @click="login()">
+                  <h3>Submit</h3>
+                </button>
+                <br />
+                <br />
+                <p>
+                  Don't have an account yet?
+                  <a href="#/register" @click="redirectToSignup()">Sign up</a>
+                </p>
+              </div>
+            </form>
+          </div>
 
-            <!-- Footer -->
-            <div class="container" id="login_form-footer">
-              <a href="#" id="legal-links">Terms and Conditions</a>
-              <br>
-              <a href="#" id="legal-links">Privacy</a>
-              <br>
-              <hr>
-              <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
-              <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
-            </div>
+          <!-- Footer -->
+          <div class="container" id="login_form-footer">
+            <a href="#" id="legal-links">Terms and Conditions</a>
+            <br />
+            <a href="#" id="legal-links">Privacy</a>
+            <br />
+            <hr />
+            <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
+            <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
           </div>
         </div>
-
-
+      </div>
     </body>
   </div>
 </div>
