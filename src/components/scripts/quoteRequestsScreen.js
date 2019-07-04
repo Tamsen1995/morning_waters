@@ -90,6 +90,7 @@ export default {
 
     async showOrder (order) {
       try {
+        console.log(`\n\nBAbyyy : ${JSON.stringify(order)}\n`) // TESTING
         this.servicesNegotiated = []
         this.order = order
         this.quoteRequest = null

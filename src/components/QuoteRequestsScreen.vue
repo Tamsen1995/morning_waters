@@ -83,18 +83,19 @@
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
                     v-bind:key="index"
-                    @click="showOrder(order), retrieveOrderOrderItems(order)"
                   >
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">Request</span>
-                    <div class="clearfix"></div>
+                    <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                      <h4 class="list-group-item-heading">
+                        Buyer ID : {{ order.buyerId }}
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <span class="label label-success pull-right">Request</span>
+                      <div class="clearfix"></div>
+                    </div>
                   </md-card>
                 </div>
               </div>
@@ -109,21 +110,22 @@
                     class="list-group-item"
                     v-for="(order, index) in this.pendingOrders"
                     v-bind:key="index"
-                    @click="showOrder(order)"
                   >
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br />
-                      <br />
-                      <!-- Charged: {{order.totalPrice}} $ -->
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">Pending Order</span>
-                    <div class="clearfix"></div>
+                    <div @click="showOrder(order)">
+                      <h4 class="list-group-item-heading">
+                        Buyer ID : {{ order.buyerId }}
+                        <br />
+                        <br />
+                        <!-- Charged: {{order.totalPrice}} $ -->
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <span class="label label-success pull-right">Pending Order</span>
+                      <div class="clearfix"></div>
+                    </div>
                   </md-card>
                 </div>
               </div>
@@ -175,11 +177,11 @@
                 class="panel-body"
                 v-if="this.order !== undefined && this.order.totalPrice === undefined"
               >
-                Negotiaion Interface [TESTING]:
-                <button
+                <md-button
                   @click="submitOrder()"
                   v-if="this.order && this.order.seller_confirmed === false"
-                >Submit Order</button>
+                  style="background-color: #28a745;"
+                >Submit Order</md-button>
 
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   <br />
