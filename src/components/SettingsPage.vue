@@ -24,112 +24,72 @@
                   </div>
                   <!-- input for Name -->
                   <div class="form-row">
-                    <label horizontal for="name" class="col-sm col-form-label">Name:</label>
-                    <div class="col-8">
-                      <input
-                        v-model="name"
-                        class="form-control"
-                        type="text"
-                        placeholder="Edit your name"
-                      />
-                    </div>
+                    <md-field>
+                      <label>Name:</label>
+                      <md-input v-model="name"></md-input>
+                    </md-field>
                   </div>
 
                   <!-- input for email address -->
                   <div class="form-row">
-                    <label horizontal for="email" class="col-sm col-form-label">Email:</label>
-                    <div class="col-8">
-                      <input
-                        v-model="email"
-                        class="form-control"
-                        type="email"
-                        placeholder="Edit your email"
-                      />
-                    </div>
+                    <md-field>
+                      <label>Email:</label>
+                      <md-input v-model="email"></md-input>
+                    </md-field>
                   </div>
 
                   <!-- input your phone number -->
                   <div class="form-row">
-                    <label horizontal for="name" class="col-sm col-form-label">Phone Number:</label>
-                    <div class="col-8">
-                      <input
-                        v-model="number"
-                        class="form-control"
-                        type="number"
-                        placeholder="Edit your phone number"
-                      />
-                    </div>
+                    <md-field>
+                      <label>Phone Number:</label>
+                      <md-input v-model="number"></md-input>
+                    </md-field>
                   </div>
 
                   <!-- Input for Job title -->
                   <div class="form-row">
-                    <label horizontal for="name" class="col-sm col-form-label">Job Title:</label>
-                    <div class="col-8">
-                      <input
-                        v-model="jobTitle"
-                        class="form-control"
-                        type="text"
-                        placeholder="Edit your job title"
-                      />
-                    </div>
+                    <md-field>
+                      <label>Job Title:</label>
+                      <md-input v-model="jobTitle"></md-input>
+                    </md-field>
                   </div>
-                  <br />
 
                   <!-- Input for Company Name -->
                   <div class="form-row">
-                    <label horizontal for="name" class="col-sm col-form-label">Company Name:</label>
-                    <div class="col-8">
-                      <input
-                        v-model="companyName"
-                        class="form-control"
-                        type="text"
-                        placeholder="Edit your company name"
-                      />
-                    </div>
+                    <md-field>
+                      <label>Company name:</label>
+                      <md-input v-model="companyName"></md-input>
+                    </md-field>
                   </div>
                   <!-- Company Website -->
                   <div class="form-row">
-                    <label horizontal for="name" class="col-sm col-form-label">Company Website:</label>
-                    <div class="col-8">
-                      <input
-                        v-model="companyWebsite"
-                        class="form-control"
-                        type="text"
-                        placeholder="Edit your company's website"
-                      />
-                    </div>
+                    <md-field>
+                      <label>Company Website:</label>
+                      <md-input v-model="companyWebsite"></md-input>
+                    </md-field>
                   </div>
                   <!-- Input for Billing Address -->
                   <!-- Add more formatting to this section: Maybe even map app -->
                   <div class="form-row">
-                    <label horizontal for="name" class="col-sm col-form-label">Billing Address:</label>
-                    <div class="col-8">
-                      <input
-                        v-model="billingAddress"
-                        class="form-control"
-                        type="text"
-                        placeholder="Edit your billing address"
-                        description="Edit your billing address."
-                      />
-                    </div>
+                    <md-field>
+                      <label>Billing Address:</label>
+                      <md-input v-model="billingAddress"></md-input>
+                    </md-field>
                   </div>
                   <!-- Input for About -->
                   <div class="form-group row">
-                    <label for="About" class="col-sm col-form-label">About:</label>
-                    <div class="col-sm-12">
-                      <textarea
-                        v-model="about"
-                        class="form-control"
-                        placeholder="Tell us about your company"
-                      ></textarea>
-                    </div>
+                    <md-field>
+                      <label>About:</label>
+                      <md-textarea v-model="about" class="form-control"></md-textarea>
+                    </md-field>
                   </div>
 
                   <br />
-                  <button
-                    class="btn btn-default btn-xl pull-right"
+
+                  <md-button
                     @click="updateProfile"
-                  >Update Profile</button>
+                    class="md-raised md-primary"
+                  >Submit profile edits</md-button>
                 </md-card-content>
               </md-ripple>
             </md-card>
