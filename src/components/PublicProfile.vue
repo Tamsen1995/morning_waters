@@ -23,14 +23,17 @@
 
         <!-- About Section -->
         <div class="container" id="about">
-          <div class="row">
+          <div class="col-md-12">
             <h4>About:</h4>
             <transition-expand>
-              <div v-if="expanded">
-                <p style="text-align:left">{{this.about}}</p>
-              </div>
+              <md-card>
+                <div v-if="expanded">{{this.about}}</div>
+              </md-card>
             </transition-expand>
-            <button @click="expanded = !expanded">{{ expanded ? `Shrink` : `Expand` }}</button>
+            <md-button
+              class="md-dense md-raised md-primary"
+              @click="expanded = !expanded"
+            >{{ expanded ? `Shrink` : `Expand` }}</md-button>
           </div>
         </div>
         <!-- </div> -->
