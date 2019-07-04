@@ -9,12 +9,12 @@
       }"
       id="register"
     >
-      <div class="container" style="width:200%; " id="login">
+      <div class="container-fluid" style="width: 65%" id="login">
         <md-card>
           <div class="row">
             <br />
             <div class="col">
-              <div class="container">
+              <div class="container-fluid">
                 <br />
                 <br />
                 <div id="fig-logo-white">
@@ -32,57 +32,55 @@
 
               <!-- Form -->
 
-              <md-card class="card border-0" id="rounded">
-                <form>
-                  <br />
-                  <h1>Buyer Login</h1>
-                  <br />
-                  <hr />
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <md-field>
-                        <label>Email:</label>
-                        <br />
-                        <md-input placeholder="Enter your email address" v-model="email"></md-input>
-                      </md-field>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <md-field>
-                        <label>Password:</label>
-                        <br />
-                        <md-input
-                          type="password"
-                          v-model="password"
-                          class="form-control"
-                          id="inputPassword"
-                          placeholder="Enter your password"
-                        ></md-input>
-                      </md-field>
-                    </div>
-                  </div>
-                  <br />
-                  <div class="error" v-html="error" />
+              <div class="container-fluid" style="width: 50%">
+                <md-card class="card border-0" id="rounded">
+                  <form>
+                    <br />
+                    <h3>Buyer Login</h3>
+                    <br />
+                    <hr />
 
-                  <div class="container" id="center">
-                    <button
-                      type="button"
-                      class="btn btn-outline"
-                      id="btn-login"
-                      @click="buyerLogin()"
-                    >
-                      <h3>Submit</h3>
-                    </button>
+                    <md-field>
+                      <label>Email:</label>
+                      <br />
+                      <md-input
+                        placeholder="Enter your email address"
+                        class="form-control"
+                        v-model="email"
+                      ></md-input>
+                    </md-field>
+
+                    <md-field>
+                      <label>Password:</label>
+                      <br />
+                      <md-input
+                        type="password"
+                        v-model="password"
+                        class="form-control"
+                        id="inputPassword"
+                        placeholder="Enter your password"
+                      ></md-input>
+                    </md-field>
+
                     <br />
-                    <br />
-                    <p>
-                      Don't have an account yet?
-                      <a @click="redirectOntoBuyerRegister()">Sign up</a>
-                    </p>
-                  </div>
-                </form>
-              </md-card>
+                    <div class="error" v-html="error" />
+
+                    <div class="container" id="center">
+                      <md-button
+                        type="button"
+                        @click="buyerLogin()"
+                        style="background-color: purple; color: white;"
+                      >Login</md-button>
+                      <br />
+                      <br />
+                      <p>
+                        Don't have an account yet?
+                        <a @click="redirectOntoBuyerRegister()">Sign up</a>
+                      </p>
+                    </div>
+                  </form>
+                </md-card>
+              </div>
               <!-- Footer -->
               <div class="container" id="form-footer">
                 <a href="#" id="legal-links">Terms and Conditions</a>
