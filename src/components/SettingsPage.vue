@@ -14,84 +14,79 @@
         <md-tabs>
           <md-tab id="tab-profile" md-label="Profile">
             <md-card md-with-hover>
-              <md-ripple>
-                <md-card-content>
-                  <!-- Edit Profile info -->
-                  <div>
-                    <h4>Edit Main Profile Info:</h4>
-                    <p>(Services information can be added & edited directly on your profile.)</p>
-                    <br />
-                  </div>
-                  <!-- input for Name -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Name:</label>
-                      <md-input v-model="name"></md-input>
-                    </md-field>
-                  </div>
-
-                  <!-- input for email address -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Email:</label>
-                      <md-input v-model="email"></md-input>
-                    </md-field>
-                  </div>
-
-                  <!-- input your phone number -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Phone Number:</label>
-                      <md-input v-model="number"></md-input>
-                    </md-field>
-                  </div>
-
-                  <!-- Input for Job title -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Job Title:</label>
-                      <md-input v-model="jobTitle"></md-input>
-                    </md-field>
-                  </div>
-
-                  <!-- Input for Company Name -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Company name:</label>
-                      <md-input v-model="companyName"></md-input>
-                    </md-field>
-                  </div>
-                  <!-- Company Website -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Company Website:</label>
-                      <md-input v-model="companyWebsite"></md-input>
-                    </md-field>
-                  </div>
-                  <!-- Input for Billing Address -->
-                  <!-- Add more formatting to this section: Maybe even map app -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Billing Address:</label>
-                      <md-input v-model="billingAddress"></md-input>
-                    </md-field>
-                  </div>
-                  <!-- Input for About -->
-                  <div class="form-group row">
-                    <md-field>
-                      <label>About:</label>
-                      <md-textarea v-model="about" class="form-control"></md-textarea>
-                    </md-field>
-                  </div>
-
+              <md-card-content>
+                <!-- Edit Profile info -->
+                <div>
+                  <h4>Edit Main Profile Info:</h4>
+                  <p>(Services information can be added & edited directly on your profile.)</p>
                   <br />
+                </div>
+                <!-- input for Name -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Name:</label>
+                    <md-input v-model="name"></md-input>
+                  </md-field>
+                </div>
 
-                  <md-button
-                    @click="updateProfile"
-                    class="md-raised md-primary"
-                  >Submit profile edits</md-button>
-                </md-card-content>
-              </md-ripple>
+                <!-- input for email address -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Email:</label>
+                    <md-input v-model="email"></md-input>
+                  </md-field>
+                </div>
+
+                <!-- input your phone number -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Phone Number:</label>
+                    <md-input v-model="number"></md-input>
+                  </md-field>
+                </div>
+
+                <!-- Input for Job title -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Job Title:</label>
+                    <md-input v-model="jobTitle"></md-input>
+                  </md-field>
+                </div>
+
+                <!-- Input for Company Name -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Company name:</label>
+                    <md-input v-model="companyName"></md-input>
+                  </md-field>
+                </div>
+                <!-- Company Website -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Company Website:</label>
+                    <md-input v-model="companyWebsite"></md-input>
+                  </md-field>
+                </div>
+                <!-- Input for Billing Address -->
+                <!-- Add more formatting to this section: Maybe even map app -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Billing Address:</label>
+                    <md-input v-model="billingAddress"></md-input>
+                  </md-field>
+                </div>
+                <!-- Input for About -->
+                <div class="form-group row">
+                  <md-field>
+                    <label>About:</label>
+                    <md-textarea v-model="about" class="form-control"></md-textarea>
+                  </md-field>
+                </div>
+
+                <br />
+
+                <md-button @click="updateProfile" class="md-raised md-primary">Submit profile edits</md-button>
+              </md-card-content>
             </md-card>
           </md-tab>
           <md-tab id="tab-billing" md-label="Billing">
