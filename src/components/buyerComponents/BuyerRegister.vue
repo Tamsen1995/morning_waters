@@ -19,11 +19,10 @@
           <!--  -->
           <md-card>
             <md-card-header>
-              <div class="md-title">Card without hover effect</div>
+              <div class="md-title">Buyer Sign Up</div>
             </md-card-header>
 
             <md-card-content>
-              <h1>Buyer Sign Up</h1>
               <br />
               <!-- <hr> -->
               <br />
@@ -33,51 +32,46 @@
                 <div>Personal Info</div>
                 <hr />
                 <div class="form-group row">
-                  <label for="name" class="col-sm col-form-label">Name:</label>
                   <div class="col-sm-12">
-                    <input
-                      v-model="name"
-                      type="text"
-                      class="form-control"
-                      id="staticEmail"
-                      value="Enter your name"
-                    />
+                    <!--  -->
+                    <md-field>
+                      <label>Name :</label>
+                      <md-input class="form-control" v-model="name"></md-input>
+                    </md-field>
+                    <!--  -->
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="email" class="col-sm col-form-label">Email:</label>
                   <div class="col-sm-12">
-                    <input
-                      v-model="email"
-                      type="email"
-                      class="form-control"
-                      placeholder="Enter your email"
-                    />
+                    <!--  -->
+                    <md-field>
+                      <label>Email :</label>
+                      <md-input class="form-control" v-model="email"></md-input>
+                    </md-field>
+                    <!--  -->
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm col-form-label">Password:</label>
                   <div class="col-sm-12">
-                    <input
-                      v-model="password"
-                      type="password"
-                      class="form-control"
-                      placeholder="Enter your password"
-                    />
+                    <!--  -->
+                    <md-field>
+                      <label>password :</label>
+                      <md-input type="password" class="form-control" v-model="password"></md-input>
+                    </md-field>
+                    <!--  -->
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="inputPassword" class="col-sm col-form-label">Confirm Password:</label>
                   <div class="col-sm-12">
-                    <input
-                      v-model="passwordConfirm"
-                      type="password"
-                      class="form-control"
-                      placeholder="Re-enter your password"
-                    />
+                    <!--  -->
+                    <md-field>
+                      <label>Confirm Password :</label>
+                      <md-input type="password" class="form-control" v-model="passwordConfirm"></md-input>
+                    </md-field>
+                    <!--  -->
                   </div>
                 </div>
 
@@ -87,66 +81,68 @@
                   <br />
                   <!-- Street -->
                   <div class="form-group row">
-                    <label for="inputStreet" class="col-sm col-form-label">Street:</label>
                     <div class="col-sm-12">
-                      <input
-                        v-model="address.street"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your street"
-                      />
+                      <!--  -->
+                      <md-field>
+                        <label>Street :</label>
+                        <md-input class="form-control" v-model="address.street"></md-input>
+                      </md-field>
+                      <!--  -->
                     </div>
                   </div>
 
                   <!-- City -->
                   <div class="form-group row">
-                    <label for="inputCity" class="col-sm col-form-label">City:</label>
                     <div class="col-sm-12">
-                      <input
-                        v-model="address.city"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your city"
-                      />
+                      <!--  -->
+                      <md-field>
+                        <label>City :</label>
+                        <md-input class="form-control" v-model="address.city"></md-input>
+                      </md-field>
+                      <!--  -->
                     </div>
                   </div>
 
                   <!-- State -->
                   <div class="form-group row">
-                    <label for="inputState" class="col-sm col-form-label">State:</label>
                     <div class="col-sm-12">
-                      <input
-                        v-model="address.state"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your city"
-                      />
+                      <!--  -->
+                      <md-field>
+                        <label>State :</label>
+                        <md-input class="form-control" v-model="address.state"></md-input>
+                      </md-field>
+                      <!--  -->
                     </div>
                   </div>
 
                   <!-- Zip -->
                   <div class="form-group row">
-                    <label for="inputZip" class="col-sm col-form-label">Zip:</label>
                     <div class="col-sm-12">
-                      <input
+                      <!-- <input
                         v-model="address.zip"
                         type="text"
                         class="form-control"
                         placeholder="Enter your zip code"
-                      />
+                      />-->
+
+                      <!--  -->
+                      <md-field>
+                        <label>Zip :</label>
+                        <md-input class="form-control" v-model="address.zip"></md-input>
+                      </md-field>
+                      <!--  -->
                     </div>
                   </div>
 
                   <!-- Country -->
                   <div class="form-group row">
-                    <label for="inputCountry" class="col-sm col-form-label">Country:</label>
                     <div class="col-sm-12">
-                      <input
-                        v-model="address.country"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your country"
-                      />
+                      <!--  -->
+                      <md-field>
+                        <label>Country :</label>
+                        <md-input class="form-control" v-model="address.country"></md-input>
+                      </md-field>
+                      <!--  -->
                     </div>
                   </div>
                 </div>
@@ -156,12 +152,15 @@
                 <div class="form-group row">
                   <label for="inputPhoneNumber" class="col-sm col-form-label">Phone Number:</label>
                   <div class="col-sm-12">
-                    <input
-                      v-model="number"
-                      type="number"
-                      class="form-control"
-                      placeholder="Enter your phone number"
-                    />
+                    <md-field>
+                      <label>Country :</label>
+                      <md-input
+                        v-model="number"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your phone number"
+                      ></md-input>
+                    </md-field>
                   </div>
                 </div>
                 <!--  -->
