@@ -122,6 +122,7 @@
                         <small>Date created : {{ order.createdAt }}</small>
                         <br />
                       </h4>
+
                       <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                       <span class="label label-success pull-right">Pending Order</span>
                       <div class="clearfix"></div>
@@ -187,14 +188,19 @@
                   <br />
 
                   <div>
-                    <input
-                      v-model="amtForServicesNegotiated[index]"
-                      @change="updateOrderItems(index)"
-                      placeholder="amount"
-                      style="width:8%;"
-                    />
-                    X
-                    {{ item.title }}
+                    <md-field>
+                      <label>Number</label>
+                      <md-input
+                        v-model="amtForServicesNegotiated[index]"
+                        @change="updateOrderItems(index)"
+                        placeholder="amount"
+                        style="width:4%; background-color: white;"
+                        type="number"
+                      ></md-input>
+                      X
+                      {{ item.title }}
+                    </md-field>
+
                     <p
                       style="color:red;font-size:15px;"
                     >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
