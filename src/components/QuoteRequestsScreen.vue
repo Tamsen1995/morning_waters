@@ -15,7 +15,7 @@
           </div>
         </div>
         <div class="row message-wrapper rounded shadow mb-20">
-          <div class="col-lg-4 message-sideleft">
+          <div class="col-lg-3 message-sideleft">
             <md-card>
               <div class="panel-heading">
                 <!-- Filter Orders/Quote Requests -->
@@ -56,28 +56,11 @@
                   </div>
                 </div>
 
-                <!-- Filter Lock/Unlock -->
-                <div class="pull-right">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-success">{{ dropdownVariable }}</button>
-                    <button
-                      type="button"
-                      class="btn btn-success dropdown-toggle"
-                      data-toggle="dropdown"
-                    >
-                      <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                  </div>
-                </div>
-
                 <div class="clearfix"></div>
               </div>
 
               <!-- The panels for the orders -->
-              <div
-                class="panel-body no-padding"
-                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
-              >
+              <div class="panel-body no-padding">
                 <div class="list-group no-margin list-message">
                   <md-card
                     class="list-group-item"
@@ -104,10 +87,7 @@
               </div>
               <!-- The panels for the orders -->
               <!-- The panels for the pending orders -->
-              <div
-                class="panel-body no-padding"
-                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
-              >
+              <div class="panel-body no-padding">
                 <div class="list-group no-margin list-message">
                   <md-card
                     class="list-group-item"
@@ -136,72 +116,100 @@
             </md-card>
             <!-- The panels for the quote requests -->
           </div>
-          <div class="col-md-5 message-sideright">
-            <md-card>
-              <div
-                class="panel-body"
-                v-for="(msg, index) in correspondanceMessages"
-                v-bind:key="index"
+          <div class="col-md-6 message-sideright">
+            <!-- <v
+ 
               >
-                <h4 class="media-heading pull-right">Date</h4>
-                {{msg.sender}}
-                <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-                <div class="view_msg">
-                  <p class="lead">{{msg.message}}</p>
-                </div>
-                <hr />
-              </div>
-              <!-- /.panel-body -->
-              <hr />
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <div class="reply_msg">
-                  <md-field>
-                    <md-textarea
+  
+            </div>-->
+
+            <div
+              class="panel-body"
+              v-for="(msg, index) in correspondanceMessages"
+              v-bind:key="index"
+            >
+              <!-- if -->
+              <md-card
+                v-if="msg && msg.sender && msg.sender === 'buyer'"
+                style="width: 75%;"
+                class="pull-left"
+              >
+                <md-content>
+                  <h4 class="media-heading pull-right">Date</h4>
+                  <md-icon>account_circle</md-icon>
+                  {{msg.sender}}
+                  <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+                  <div class="view_msg">
+                    <p class="lead">{{msg.message}}</p>
+                  </div>
+                </md-content>
+              </md-card>
+              <!--  -->
+              <!-- else -->
+              <md-card v-else style="width: 75%;" class="pull-right">
+                <md-content>
+                  <h4 class="media-heading pull-right">Date</h4>
+                  <md-icon>account_circle</md-icon>
+                  {{msg.sender}}
+                  <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+                  <div class="view_msg">
+                    <p class="lead">{{msg.message}}</p>
+                  </div>
+                </md-content>
+              </md-card>
+              <!--  -->
+            </div>
+
+            <hr />
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+              <div class="reply_msg">
+                <md-field>
+                  <!-- <md-textarea
                       v-model="message"
                       v-on:keyup.enter="submitMessage()"
                       placeholder="message.."
-                      style="border: 1px solid black;"
+                      style="border: 1px solid black; background-color: #FFFFFF;"
+                  ></md-textarea>-->
+
+                  <md-field>
+                    <!-- <label>Enter your message here</label> -->
+                    <md-textarea
+                      v-model="message"
+                      md-autogrow
+                      md-counter="200"
+                      v-on:keyup.enter="submitMessage()"
+                      placeholder="Enter your message here ..."
+                      style="background-color: #FFFFFF;"
                     ></md-textarea>
                   </md-field>
-                  <md-button
-                    class="md-raised md-primary"
-                    v-on:click="submitMessage()"
-                  >Submit Message</md-button>
-                </div>
+                </md-field>
+                <md-button
+                  class="md-raised md-primary pull-right"
+                  v-on:click="submitMessage()"
+                >Submit Message</md-button>
               </div>
-              <!-- /.panel-body -->
-            </md-card>
+            </div>
+            <!-- /.panel-body -->
           </div>
           <br />
-          <div class="col-lg-3 message-sideright">
+          <div class="col-md-3 message-sideright">
             <md-card>
               <!-- Negotation Interface -->
               <div
                 class="panel-body"
                 v-if="this.order !== undefined && this.order.totalPrice === undefined"
               >
-                <md-card style="background-color: #66bb6a; height: 100px;">
-                  <h5>Negotiation Interface</h5>
-                </md-card>
-
-                <md-button
-                  @click="submitOrder()"
-                  v-if="this.order && this.order.seller_confirmed === false"
-                  style="background-color: #28a745;"
-                >Submit Order</md-button>
-
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   <br />
 
                   <div>
                     <md-field>
-                      <label>Number</label>
                       <md-input
                         v-model="amtForServicesNegotiated[index]"
                         @change="updateOrderItems(index)"
                         placeholder="amount"
-                        style="width:4%; background-color: white;"
+                        style="background-color: white; width: 5px;"
                         type="number"
                       ></md-input>
                       X
@@ -215,7 +223,14 @@
                 </div>
                 <hr />
                 Total price: {{ this.totalPrice }} $
+                <br />
+                <br />
                 <!-- Negotiation Interface -->
+                <md-button
+                  @click="submitOrder()"
+                  v-if="this.order && this.order.seller_confirmed === false"
+                  style="background-color: #12005e; color: white;"
+                >Submit Order</md-button>
               </div>
             </md-card>
           </div>
