@@ -116,7 +116,10 @@
             </md-card>
             <!-- The panels for the quote requests -->
           </div>
-          <div class="col-md-6 message-sideright">
+          <div
+            class="col-md-6 message-sideright"
+            style="border-right: 1px groove white; border-left: 1px groove white"
+          >
             <!-- <v
  
               >
@@ -165,13 +168,6 @@
             <div class="panel-body">
               <div class="reply_msg">
                 <md-field>
-                  <!-- <md-textarea
-                      v-model="message"
-                      v-on:keyup.enter="submitMessage()"
-                      placeholder="message.."
-                      style="border: 1px solid black; background-color: #FFFFFF;"
-                  ></md-textarea>-->
-
                   <md-field>
                     <!-- <label>Enter your message here</label> -->
                     <md-textarea
@@ -205,20 +201,19 @@
 
                   <div>
                     <md-field>
-                      <md-input
+                      <input
+                        style="background-color: white; width: 10%;"
                         v-model="amtForServicesNegotiated[index]"
                         @change="updateOrderItems(index)"
                         placeholder="amount"
-                        style="background-color: white; width: 5px;"
-                        type="number"
-                      ></md-input>
+                        type="text"
+                      />
                       X
                       {{ item.title }}
+                      <p
+                        style="color:red;font-size:15px;"
+                      >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                     </md-field>
-
-                    <p
-                      style="color:red;font-size:15px;"
-                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                   </div>
                 </div>
                 <hr />
