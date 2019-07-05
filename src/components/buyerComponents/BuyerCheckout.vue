@@ -12,14 +12,14 @@
           margin-right: auto;"
       >
         <h5 style="text-align:center;">Request Checkout</h5>
-        <br>
+        <br />
         <div class="grid-container">
           <div class="grid-item">
             <div v-if="this.customerDefaultSource !== null" class="default-source">
               <div class="change-preference">
                 <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link>
               </div>
-              <br>
+              <br />
               <div class="default-payment-card">
                 Default Payment Method:
                 <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
@@ -29,9 +29,9 @@
 
             <div v-else>No default payment method</div>
 
-            <br>
-            <br>
-            <br>
+            <br />
+            <br />
+            <br />
             <!-- make input for card -->
           </div>
         </div>
@@ -39,8 +39,8 @@
         <div id="stripeCard">
           <div ref="card"></div>
         </div>
-        <br>
-        <br>
+        <br />
+        <br />
         <h2
           style="text-align:center;color:purple;"
         >You will not be charged until the seller confirms your order.</h2>
@@ -52,9 +52,9 @@
             value="Send Order"
             class="checkout-btn"
             @click="sendOrderAndOrInquiries()"
-          >
+          />
         </h3>
-        <br>
+        <br />
 
         <input
           v-if="this.quoteRequestsCart.length > 0 && this.shoppingCart.length === 0"
@@ -62,11 +62,11 @@
           value="Send Inquires"
           class="checkout-btn"
           @click="sendQuoteRequests()"
-        >
+        />
         <div class="container" id="purchase_content">
           <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
 
-          <br>
+          <br />
           <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
         </div>
 
@@ -79,8 +79,8 @@
           <h3>Complete Purchase</h3>
         </button>
 
-        <br>
-        <br>
+        <br />
+        <br />
       </div>
     </body>
   </div>

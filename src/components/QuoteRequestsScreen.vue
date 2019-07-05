@@ -79,23 +79,27 @@
                 v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
               >
                 <div class="list-group no-margin list-message">
-                  <a
+                  <md-card
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
                     v-bind:key="index"
-                    @click="showOrder(order), retrieveOrderOrderItems(order)"
                   >
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">Request</span>
-                    <div class="clearfix"></div>
-                  </a>
+                    <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                      <h4 class="list-group-item-heading">
+                        <md-avatar class="md-avatar-icon md-primary">
+                          <md-icon>folder</md-icon>
+                        </md-avatar>
+                        Buyer ID : {{ order.buyerId }}
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <span class="label label-success pull-right">Request</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-card>
                 </div>
               </div>
               <!-- The panels for the orders -->
@@ -105,26 +109,28 @@
                 v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
               >
                 <div class="list-group no-margin list-message">
-                  <a
+                  <md-card
                     class="list-group-item"
                     v-for="(order, index) in this.pendingOrders"
                     v-bind:key="index"
-                    @click="showOrder(order)"
                   >
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br />
-                      <br />
-                      <!-- Charged: {{order.totalPrice}} $ -->
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">Pending Order</span>
-                    <div class="clearfix"></div>
-                  </a>
+                    <div @click="showOrder(order)">
+                      <h4 class="list-group-item-heading">
+                        Buyer ID : {{ order.buyerId }}
+                        <br />
+                        <br />
+                        <!-- Charged: {{order.totalPrice}} $ -->
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
+
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <span class="label label-success pull-right">Pending Order</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-card>
                 </div>
               </div>
             </md-card>
@@ -138,8 +144,7 @@
                 v-bind:key="index"
               >
                 <h4 class="media-heading pull-right">Date</h4>
-                <h4 class="media-heading">Buyer ID : {{ order.buyerId }}:</h4>
-
+                {{msg.sender}}
                 <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                 <div class="view_msg">
                   <p class="lead">{{msg.message}}</p>
@@ -176,24 +181,33 @@
                 class="panel-body"
                 v-if="this.order !== undefined && this.order.totalPrice === undefined"
               >
-                Negotiaion Interface [TESTING]:
-                <button
+                <md-card style="background-color: #66bb6a; height: 100px;">
+                  <h5>Negotiation Interface</h5>
+                </md-card>
+
+                <md-button
                   @click="submitOrder()"
                   v-if="this.order && this.order.seller_confirmed === false"
-                >Submit Order</button>
+                  style="background-color: #28a745;"
+                >Submit Order</md-button>
 
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                   <br />
 
                   <div>
-                    <input
-                      v-model="amtForServicesNegotiated[index]"
-                      @change="updateOrderItems(index)"
-                      placeholder="amount"
-                      style="width:8%;"
-                    />
-                    X
-                    {{ item.title }}
+                    <md-field>
+                      <label>Number</label>
+                      <md-input
+                        v-model="amtForServicesNegotiated[index]"
+                        @change="updateOrderItems(index)"
+                        placeholder="amount"
+                        style="width:4%; background-color: white;"
+                        type="number"
+                      ></md-input>
+                      X
+                      {{ item.title }}
+                    </md-field>
+
                     <p
                       style="color:red;font-size:15px;"
                     >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>

@@ -83,27 +83,23 @@
         <br />
         <br />
 
-        <div class="services" id="services">
+        <div class="services" id="services" style="background-color: white;">
           <br />
           <h4>Services:</h4>
           <br />
           <!-- Beginning of cards -->
-          <div v-for="(service, index) in this.services" :key="index">
-            <md-card
-              v-if="service.isSubService === false"
-              class="md-card-example"
-              style="background-color: #ebebf7; color: #311c63"
-            >
-              <button @click="deleteService(service)">
-                <div>X</div>
-              </button>
+          <div v-for="(service, index) in this.services" :key="index" id="service-card">
+            <br />
+            <!-- <md-card></md-card> -->
+
+            <div v-if="service.isSubService === false">
+              <md-button @click="deleteService(service)" class="md-raised md-accent">Delete</md-button>
+
               <md-card-area md-inset>
                 <md-card-header>
-                  <h2 class="md-title">{{ service.title }}</h2>
-                  <div class="md-subhead">
-                    <md-icon>access_time</md-icon>
-                    <span>Turnaround time : {{ service.turnAroundTime }}</span>
-                  </div>
+                  <!-- <h2 class="md-title"></h2> -->
+                  <md-icon>play_for_work</md-icon>
+                  <span class="md-title">{{ service.title }}</span>
                 </md-card-header>
 
                 <md-card-content>{{ service.description }}</md-card-content>
@@ -111,12 +107,12 @@
 
               <div v-for="(subService, index) in services" :key="index">
                 <md-card
-                  style="width: 80%; margin-left: auto; margin-right: auto; background-color: #d6d1e4"
+                  style="width: 80%; margin-left: auto; margin-right: auto; "
                   v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
                 >
                   <md-card-area>
                     <md-card-header>
-                      <div class="md-title">{{ subService.title }}</div>
+                      <div class="md-title" style="background-color: #63d154">{{ subService.title }}</div>
                       <div class="md-subhead">
                         <md-icon>access_time</md-icon>
                         <span>Turnaround time : {{ subService.turnAroundTime }}</span>
@@ -138,10 +134,15 @@
                 </div>
               </md-card-content>
 
+              <div class="md-subhead">
+                <md-icon>access_time</md-icon>
+                <span>Turnaround time : {{ service.turnAroundTime }}</span>
+              </div>
+
               <md-card-actions>
-                <md-button class="md-primary">Edit</md-button>
+                <md-button class="md-raised" :md-ripple="false">Edit</md-button>
               </md-card-actions>
-            </md-card>
+            </div>
           </div>
 
           <!--  -->
@@ -376,4 +377,9 @@
 <style scoped>
 @import "../assets/css/dashboard.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+#service-card {
+  border-bottom: 1px solid yellowgreen;
+  color: #5c5d60;
+  border-color: yellowgreen;
+}
 </style>

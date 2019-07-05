@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in this.shoppingCart" v-bind:key="item">
+        <tr v-for="(item, index) in this.shoppingCart" v-bind:key="index">
           <th scope="row">{{ item.service.title}}</th>
           <td>{{ item.service.description }}</td>
           <td></td>
