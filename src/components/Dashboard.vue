@@ -83,23 +83,26 @@
         <br />
         <br />
 
-        <div class="services" id="services">
+        <div class="services" id="services" style="background-color: white;">
           <br />
           <h4>Services:</h4>
           <br />
           <!-- Beginning of cards -->
-          <div v-for="(service, index) in this.services" :key="index">
-            <md-card
-              v-if="service.isSubService === false"
-              class="md-card-example"
-              style="background-color: #ebebf7; color: #311c63"
-            >
+          <div v-for="(service, index) in this.services" :key="index" class="card">
+            <br />
+            <!-- <md-card></md-card> -->
+
+            <div v-if="service.isSubService === false" style="color: #311c63;">
               <button @click="deleteService(service)">
                 <div>X</div>
               </button>
               <md-card-area md-inset>
                 <md-card-header>
-                  <h2 class="md-title">{{ service.title }}</h2>
+                  <!-- <h2 class="md-title"></h2> -->
+                  <md-toolbar :md-elevation="1" style="background-color: #63d154">
+                    <span class="md-title" style="font-size: 90%; ">{{ service.title }}</span>
+                  </md-toolbar>
+
                   <div class="md-subhead">
                     <md-icon>access_time</md-icon>
                     <span>Turnaround time : {{ service.turnAroundTime }}</span>
@@ -111,12 +114,12 @@
 
               <div v-for="(subService, index) in services" :key="index">
                 <md-card
-                  style="width: 80%; margin-left: auto; margin-right: auto; background-color: #d6d1e4"
+                  style="width: 80%; margin-left: auto; margin-right: auto; "
                   v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
                 >
                   <md-card-area>
                     <md-card-header>
-                      <div class="md-title">{{ subService.title }}</div>
+                      <div class="md-title" style="background-color: #63d154">{{ subService.title }}</div>
                       <div class="md-subhead">
                         <md-icon>access_time</md-icon>
                         <span>Turnaround time : {{ subService.turnAroundTime }}</span>
@@ -141,7 +144,7 @@
               <md-card-actions>
                 <md-button class="md-primary">Edit</md-button>
               </md-card-actions>
-            </md-card>
+            </div>
           </div>
 
           <!--  -->

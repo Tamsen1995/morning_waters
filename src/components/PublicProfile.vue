@@ -68,6 +68,7 @@
                       class="card-header"
                       style="text-align:left; text-indent:15px; color: purple"
                     >Title: {{ service.title }}</h4>
+
                     <div class="card-body">
                       <!-- Service Description -->
                       <md-button
