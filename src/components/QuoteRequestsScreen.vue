@@ -118,7 +118,7 @@
           </div>
           <div
             class="col-md-6 message-sideright"
-            style="border-right: 1px groove white; border-left: 1px groove white"
+            style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
           >
             <!-- <v
  
@@ -134,13 +134,13 @@
               <!-- if -->
               <md-card
                 v-if="msg && msg.sender && msg.sender === 'buyer'"
-                style="width: 75%;"
+                style="width: 75%; background-color: #f4f4f4;"
                 class="pull-left"
               >
                 <md-content>
                   <h4 class="media-heading pull-right">Date</h4>
                   <md-icon>account_circle</md-icon>
-                  {{msg.sender}}
+                  {{buyer.name}}
                   <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                   <div class="view_msg">
                     <p class="lead">{{msg.message}}</p>
@@ -149,11 +149,15 @@
               </md-card>
               <!--  -->
               <!-- else -->
-              <md-card v-else style="width: 75%;" class="pull-right">
+              <md-card
+                v-else
+                style="width: 75%; background-color: #dcffde; color: black"
+                class="pull-right"
+              >
                 <md-content>
                   <h4 class="media-heading pull-right">Date</h4>
                   <md-icon>account_circle</md-icon>
-                  {{msg.sender}}
+                  {{seller.companyName}}
                   <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                   <div class="view_msg">
                     <p class="lead">{{msg.message}}</p>
@@ -182,6 +186,7 @@
                 </md-field>
                 <md-button
                   class="md-raised md-primary pull-right"
+                  style="background-color: #2fb52b; color: white;"
                   v-on:click="submitMessage()"
                 >Submit Message</md-button>
               </div>
