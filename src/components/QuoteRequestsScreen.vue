@@ -86,6 +86,9 @@
                   >
                     <div @click="showOrder(order), retrieveOrderOrderItems(order)">
                       <h4 class="list-group-item-heading">
+                        <md-avatar class="md-avatar-icon md-primary">
+                          <md-icon>folder</md-icon>
+                        </md-avatar>
                         Buyer ID : {{ order.buyerId }}
                         <br />
                         <br />
