@@ -124,7 +124,7 @@
                       <md-button
                         style="background-color: #28a745; color: white;"
                         v-if="subServicesPresent(service) === false"
-                        @click="addServiceToCart(subService, index)"
+                        @click="addServiceToCart(service, index)"
                       >Add to Cart</md-button>
                     </div>
                   </div>

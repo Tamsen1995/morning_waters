@@ -150,16 +150,11 @@
                 <br />
                 <!--  -->
                 <div class="form-group row">
-                  <label for="inputPhoneNumber" class="col-sm col-form-label">Phone Number:</label>
                   <div class="col-sm-12">
                     <md-field>
-                      <label>Country :</label>
-                      <md-input
-                        v-model="number"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your phone number"
-                      ></md-input>
+                      <label>Phone Number:</label>
+
+                      <md-input v-model="number" type="text" placeholder="Enter your phone number"></md-input>
                     </md-field>
                   </div>
                 </div>

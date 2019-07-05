@@ -88,25 +88,18 @@
           <h4>Services:</h4>
           <br />
           <!-- Beginning of cards -->
-          <div v-for="(service, index) in this.services" :key="index" class="card">
+          <div v-for="(service, index) in this.services" :key="index" id="service-card">
             <br />
             <!-- <md-card></md-card> -->
 
-            <div v-if="service.isSubService === false" style="color: #311c63;">
-              <button @click="deleteService(service)">
-                <div>X</div>
-              </button>
+            <div v-if="service.isSubService === false">
+              <md-button @click="deleteService(service)" class="md-raised md-accent">Delete</md-button>
+
               <md-card-area md-inset>
                 <md-card-header>
                   <!-- <h2 class="md-title"></h2> -->
-                  <md-toolbar :md-elevation="1" style="background-color: #63d154">
-                    <span class="md-title" style="font-size: 90%; ">{{ service.title }}</span>
-                  </md-toolbar>
-
-                  <div class="md-subhead">
-                    <md-icon>access_time</md-icon>
-                    <span>Turnaround time : {{ service.turnAroundTime }}</span>
-                  </div>
+                  <md-icon>play_for_work</md-icon>
+                  <span class="md-title">{{ service.title }}</span>
                 </md-card-header>
 
                 <md-card-content>{{ service.description }}</md-card-content>
@@ -141,8 +134,13 @@
                 </div>
               </md-card-content>
 
+              <div class="md-subhead">
+                <md-icon>access_time</md-icon>
+                <span>Turnaround time : {{ service.turnAroundTime }}</span>
+              </div>
+
               <md-card-actions>
-                <md-button class="md-primary">Edit</md-button>
+                <md-button class="md-raised" :md-ripple="false">Edit</md-button>
               </md-card-actions>
             </div>
           </div>
@@ -379,4 +377,9 @@
 <style scoped>
 @import "../assets/css/dashboard.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+#service-card {
+  border-bottom: 1px solid yellowgreen;
+  color: #5c5d60;
+  border-color: yellowgreen;
+}
 </style>
