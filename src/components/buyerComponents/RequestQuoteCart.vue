@@ -1,26 +1,34 @@
 <template>
 <div id="app" style="background-color: white;">
   <body>
-    <md-card style="background-color: purple; color: white; text-align: center; height: 50%;">
-      <span class="md-title">Quote Request</span>
+    <md-card style="background-color: #311c63; color: white; text-align: center; height: 50%;">
+      <span class="md-title">Quote Requests</span>
     </md-card>
 
     <!-- <h1 style="text-align: center;"></h1> -->
 
     <md-list
       :md-expand-single="expandSingle"
-      v-for="item in this.quoteRequestsCart"
-      v-bind:key="item"
+      v-for="(item, index) in this.quoteRequestsCart"
+      v-bind:key="index"
     >
       <md-list-item md-expand :md-expanded.sync="expandNews">
         <md-icon>whatshot</md-icon>
-        <span class="md-list-item-text">News</span>
+        <span class="md-list-item-text">Request #{{index+1}}</span>
 
         <md-list slot="md-expand">
-          <md-list-item class="md-inset">Item : {{ item.serviceTitle }}</md-list-item>
-          <md-list-item class="md-inset">Description : {{ item.serviceDescription }}</md-list-item>
-          <md-list-item class="md-inset">Quanitity : {{ item.quantity }}</md-list-item>
-          <md-list-item class="md-inset">Inquiry : {{ item.inquiryText }}</md-list-item>
+          <md-card>
+            <md-card-content style="font-size: 0.7vw; ">
+              Item : {{ item.serviceTitle }}
+              <br />
+              Description : {{ item.serviceDescription }}
+              <br />
+              Quanitity : {{ item.quantity }}
+              <br />
+              Inquiry : {{ item.inquiryText }}
+              <br />
+            </md-card-content>
+          </md-card>
         </md-list>
       </md-list-item>
     </md-list>
