@@ -66,6 +66,7 @@
         <md-button
           class="checkout-btn md-raised md-accent"
           style="background-color: white; color: #311c63;"
+          v-if="this.shoppingCart.length === 0 && this.quoteRequestsCart.length > 0"
           @click="sendQuoteRequests()"
         >Send Inquires</md-button>
 
