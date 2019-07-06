@@ -9,8 +9,8 @@
       }"
       id="register"
     >
-      <div class="container-fluid" style="width: 65%" id="login">
-        <md-card>
+      <div class="container-fluid" style="width: 50%;" id="login">
+        <md-content class="md-primary">
           <div class="row">
             <br />
             <div class="col">
@@ -93,7 +93,7 @@
               </div>
             </div>
           </div>
-        </md-card>
+        </md-content>
       </div>
     </div>
   </body>
