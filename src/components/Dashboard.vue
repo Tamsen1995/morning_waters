@@ -149,18 +149,16 @@
 
           <!-- Add Service Button -->
           <br />
-          <button
-            type="button"
-            class="btn btn-default pull-right btn-add-service"
+          <md-button
+            class="md-raised pull-right"
+            :md-ripple="false"
+            style="background-color: purple;"
             @click="addService"
           >
-            <strong>
-              <h6>
-                Add Service
-                <span class="glyphicon glyphicon-plus-sign"></span>
-              </h6>
-            </strong>
-          </button>
+            Add Service
+            <md-icon>note_add</md-icon>
+          </md-button>
+
           <br />
           <br />
           <br />
