@@ -46,8 +46,7 @@
           <br />
           <md-button
             @click="manifestModalInquiry(service)"
-            class="md-raised md-primary pull-right"
-            style="background-color: #2238ff; color: white;"
+            class="md-raised md-primary pull-right submit-buttons-md"
           >General inquiry</md-button>
           <h4 style="color: #212529;">Services:</h4>
           <br />
@@ -66,7 +65,7 @@
                   <div v-if="(service.isSubService === false)">
                     <h4
                       class="card-header"
-                      style="text-align:left; text-indent:15px; color: purple"
+                      style="text-align:left; text-indent:15px; color: black"
                     >Title: {{ service.title }}</h4>
 
                     <div class="card-body">
@@ -209,12 +208,12 @@
           <br />
         </div>
 
-        <button
-          class="btn btn-info"
+        <md-button
+          class="md-raised md-primary submit-buttons-md"
           style="margin-top:10px"
           type="button"
           @click="submitQuoteRequest()"
-        >Submit</button>
+        >Submit</md-button>
       </div>
     </modal>
   </div>
@@ -230,6 +229,10 @@
 <style scoped>
 @import "../assets/css/dashboard.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+.submit-buttons-md {
+  background-color: #2238ff;
+  color: white;
+}
 div.card {
   margin-left: auto;
   margin-right: auto;

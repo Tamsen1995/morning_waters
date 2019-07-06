@@ -39,7 +39,7 @@
     <br />
     <br />
     <!--  -->
-    <md-card style="background-color: black; color: white;">
+    <md-card style="background-color: white; color: grey;">
       <md-button @click="testingDelete()">Testing only please delete</md-button>
     </md-card>
   </body>

@@ -53,23 +53,22 @@
         >You will not be charged until the seller confirms your order.</h2>
 
         <h3>
-          <input
+          <md-button
+            class="checkout-btn md-raised md-accent"
+            style="background-color: white; color: #311c63;"
             v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
             type="submit"
-            value="Send Order"
-            class="checkout-btn"
             @click="sendOrderAndOrInquiries()"
-          />
+          >Send Order</md-button>
         </h3>
         <br />
 
-        <input
-          v-if="this.quoteRequestsCart.length > 0 && this.shoppingCart.length === 0"
-          type="submit"
-          value="Send Inquires"
-          class="checkout-btn"
+        <md-button
+          class="checkout-btn md-raised md-accent"
+          style="background-color: white; color: #311c63;"
           @click="sendQuoteRequests()"
-        />
+        >Send Inquires</md-button>
+
         <div class="container" id="purchase_content">
           <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
 
