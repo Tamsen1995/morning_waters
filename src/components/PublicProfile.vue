@@ -42,7 +42,7 @@
         <br />
         <br />
 
-        <div class="services" id="services">
+        <div class="container services" id="services">
           <br />
           <md-button
             @click="manifestModalInquiry(service)"
@@ -52,7 +52,7 @@
           <h4>Services:</h4>
           <br />
           <br />
-          <div class="col-12">
+          <div class="col-md-9">
             <!-- This is where I list the services -->
             <!-- <div >
               
@@ -134,12 +134,14 @@
 
             <!-- This is where I list the services -->
           </div>
-        </div>
-      </div>
 
-      <!-- quote request cart -->
-      <div id="request-quote-cart">
-        <request-quote-cart></request-quote-cart>
+          <!-- quote request cart -->
+          <div class="col-md-3">
+            <md-card>
+              <request-quote-cart></request-quote-cart>
+            </md-card>
+          </div>
+        </div>
       </div>
 
       <br />

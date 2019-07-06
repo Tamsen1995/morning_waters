@@ -5,7 +5,7 @@
       <md-card-content>
         <div v-if="this.customerDefaultSource !== null" class="default-source">
           <div class="change-preference">
-            <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link>
+            <!-- <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link> -->
           </div>
           <br />
           <div class="default-payment-card">
