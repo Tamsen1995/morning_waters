@@ -84,12 +84,11 @@
         <br />
 
         <div class="services" id="services">
-          <br>
+          <br />
           <h2>Services:</h2>
-          <br>
+          <br />
           <!-- Beginning of cards -->
           <div v-for="(service, index) in this.services" :key="index" id="service-card">
-
             <!-- <md-card></md-card> -->
 
             <div v-if="service.isSubService === false">
@@ -101,7 +100,7 @@
                   <span class="md-title">{{ service.title }}</span>
 
                   <md-card-content>
-                    <div class="card-reservation  pull-right">
+                    <div class="card-reservation pull-right">
                       <div class="md-button-group">Price: {{service.servicePrice}} $</div>
                     </div>
                   </md-card-content>
@@ -110,7 +109,6 @@
                     <md-icon>access_time</md-icon>
                     <span>Turnaround time : {{ service.turnAroundTime }}</span>
                   </div>
-                  
                 </md-card-header>
 
                 <md-card-content>{{ service.description }}</md-card-content>
@@ -145,7 +143,7 @@
                 <md-button @click="deleteService(service)" class="md-raised md-accent">Delete</md-button>
               </md-card-actions>
             </div>
-            <br>
+            <br />
           </div>
 
           <!--  -->
@@ -230,9 +228,15 @@
 
               <br />
 
+              <label>Tags</label>
+
               <md-field>
-                <label>Tags</label>
-                <md-textarea type="text" v-model="serviceTags" style="border-bottom: 1px inset"></md-textarea>
+                <md-chips
+                  v-model="tags"
+                  md-placeholder="Add tags"
+                  style="border-bottom: 1px inset;"
+                ></md-chips>
+                <!-- <md-textarea type="text" v-model="serviceTags" style="border-bottom: 1px inset"></md-textarea> -->
               </md-field>
 
               <!-- The sub services form -->
@@ -378,5 +382,4 @@
 <style scoped>
 @import "../assets/css/dashboard.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-
 </style>
