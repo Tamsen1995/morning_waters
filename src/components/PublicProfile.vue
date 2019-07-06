@@ -49,7 +49,7 @@
             class="md-raised md-primary pull-right"
             style="background-color: #2238ff; color: white;"
           >General inquiry</md-button>
-          <h4>Services:</h4>
+          <h4 style="color: #212529;">Services:</h4>
           <br />
           <br />
           <div class="col-md-9">
@@ -59,7 +59,7 @@
             </div>-->
 
             <div v-for="(service, index) in this.services" :key="service.id">
-              <md-card class="md-card-example" style="background-color: #ebebf7; color: #311c63">
+              <md-card class="md-card-example" style="background-color: white; color: #311c63">
                 <md-card-content>
                   <!-- <div class="card" v-if="(service.isSubService === false)"></div> -->
 
