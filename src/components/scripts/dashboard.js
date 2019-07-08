@@ -145,7 +145,7 @@ export default {
           serviceDescription: '',
           servicePrice: 0.0,
           turnAroundTime: '',
-          serviceTags: ''
+          serviceTags: []
         })
       } catch (error) {
         if (error) throw error
