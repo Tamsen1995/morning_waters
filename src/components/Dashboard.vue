@@ -185,7 +185,7 @@
     style="padding-top:80px"
     :clickToClose="false"
   >
-    <div class="container" style="margin:10px">
+    <div class="container" style="padding:50px">
       <div class="row">
         <div class="col-12">
           <h4 class="heading">
@@ -257,50 +257,45 @@
                 <br />
                 <br />
                 <!-- Service Title -->
+
                 <div class="form-group row">
-                  <label for="serviceTitle" class="col-sm .col-form-label-xsm">
-                    <p>Service Title:</p>
-                  </label>
-                  <div class="col-sm-10">
-                    <input
-                      v-model="subServicesToBeAdded[index].serviceTitle"
+                  <label>sub service title:</label>
+
+                  <md-field>
+                    <md-input
                       type="text"
-                      class="form-control"
-                      placeholder="Enter service title"
-                    />
-                  </div>
+                      v-model="subServicesToBeAdded[index].serviceTitle"
+                      style="border-bottom: 1px inset"
+                    ></md-input>
+                  </md-field>
                 </div>
                 <!-- Service Description -->
+
                 <div class="form-group row">
-                  <label for="serviceDescription" class="col-sm col-form-label">
-                    <p>General Service Description:</p>
-                  </label>
-                  <div class="col-sm-10">
-                    <textarea
+                  <md-field>
+                    <label>General sub service description:</label>
+                    <md-textarea
                       v-model="subServicesToBeAdded[index].serviceDescription"
-                      type="text"
-                      rows="5"
-                      class="form-control animated"
-                      placeholder="Enter service description"
-                    ></textarea>
-                  </div>
+                      style="border-bottom: 1px inset"
+                    ></md-textarea>
+                  </md-field>
                 </div>
+
                 <br />
                 <br />
 
                 <div class="form-group row">
-                  <label for="price" class="col-sm col-form-label">
-                    <p>Price Per Unit:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="subServicesToBeAdded[index].servicePrice"
+                  <!--  -->
+                  <md-field>
+                    <label>Price Per Unit:</label>
+                    <md-input
                       type="text"
-                      class="form-control"
-                      placeholder="Enter price per unit"
-                    />
-                  </div>
+                      v-model="subServicesToBeAdded[index].servicePrice"
+                      style="border-bottom: 1px inset"
+                    ></md-input>
+                  </md-field>
                 </div>
+
                 <!-- Turn Around Time -->
                 <div class="form-group row">
                   <label for="turnAroundTime" class="col-sm col-form-label">
