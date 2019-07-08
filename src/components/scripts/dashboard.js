@@ -15,7 +15,7 @@ export default {
       serviceDescription: '',
       servicePrice: 0.0,
       turnAroundTime: '',
-      serviceTags: '',
+      // serviceTags: '',
       unitType: '',
       price: '',
       user: null,
@@ -83,15 +83,24 @@ export default {
         this.turnAroundTime = service.turnAroundTime
         this.serviceEdited = service
 
+        // Iteratively push the service tags into the array
+        for (var k = 0; k < service.tags.length; k++) {
+          console.log(`\n\nthis.tags : ${this.tags}\n`) // TESTING
+
+          this.tags.push(service.tags[k].tag)
+        }
+
         this.subServicesToBeAdded = []
         for (var i = 0; i < this.services.length; i++) {
           if (this.services[i].parentServiceId === service.id) {
+            console.log(`\n\nAre you a crazy ?\n`) // TESTING
             this.subServicesToBeAdded.push({
               serviceId: this.services[i].id,
               serviceTitle: this.services[i].title,
               serviceDescription: this.services[i].description,
               servicePrice: this.services[i].servicePrice,
-              turnAroundTime: this.services[i].turnAroundTime
+              turnAroundTime: this.services[i].turnAroundTime,
+              serviceTags: this.services[i].serviceTags
             })
           }
         }
@@ -110,14 +119,13 @@ export default {
         this.serviceEdited.description = this.serviceDescription
         this.serviceEdited.servicePrice = this.servicePrice
         this.serviceEdited.turnAroundTime = this.turnAroundTime
+        this.serviceEdited.tags = this.tags
 
         // all the info needed to modify a service and its subservices in the data base
         const serviceEdit = {
           service: this.serviceEdited,
           subServices: this.subServicesToBeAdded
         }
-
-        console.log(`\n\nJSON.string : ${JSON.stringify(this.subServicesToBeAdded)}\n`) // TESTING
 
         await DashboardServices.editService(serviceEdit)
 
@@ -128,6 +136,7 @@ export default {
         this.turnAroundTime = ''
 
         this.subServicesToBeAdded = []
+        this.tags = []
         this.serviceBeingEdited = false
         this.serviceEdited = null
         this.getServices()
@@ -188,6 +197,7 @@ export default {
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
+        this.tags = []
         this.subServicesToBeAdded = []
       } catch (error) {
         if (error) {

@@ -140,6 +140,15 @@
                     <md-card-content>{{ subService.description }}</md-card-content>
                   </md-card-area>
 
+                  <div>
+                    <md-chip
+                      class="md-primary md-accent"
+                      style="background-color: black; color: white;"
+                      v-for="chip in subService.tags"
+                      :key="chip"
+                    >{{ chip.tag }}</md-chip>
+                  </div>
+
                   <md-card-actions md-alignment="left">
                     <md-button>Price : {{subService.servicePrice}}</md-button>
                   </md-card-actions>
@@ -147,7 +156,7 @@
               </div>
 
               <md-card-actions>
-                <md-button class="md-raised" :md-ripple="false">Edit</md-button>
+                <md-button @click="editService(service)" class="md-raised" :md-ripple="false">Edit</md-button>
                 <md-button @click="deleteService(service)" class="md-raised md-accent">Delete</md-button>
               </md-card-actions>
             </div>
@@ -350,12 +359,9 @@
               <md-button
                 v-if="this.serviceBeingEdited === true"
                 class="md-dense md-raised md-primary"
-                style="margin-top:100%"
                 type="button"
                 @click="submitServiceEdit()"
-              >
-                <p>Submit Edit</p>
-              </md-button>
+              >Submit Edit</md-button>
 
               <md-button
                 v-else
