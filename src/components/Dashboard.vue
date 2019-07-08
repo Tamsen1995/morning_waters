@@ -298,17 +298,14 @@
 
                 <!-- Turn Around Time -->
                 <div class="form-group row">
-                  <label for="turnAroundTime" class="col-sm col-form-label">
-                    <p>Turn Around Time:</p>
-                  </label>
-                  <div class="col-sm-8">
-                    <input
-                      v-model="subServicesToBeAdded[index].turnAroundTime"
+                  <md-field>
+                    <label>Turn Around Time:</label>
+                    <md-input
                       type="text"
-                      class="form-control"
-                      placeholder="Enter turn around time in weeks"
-                    />
-                  </div>
+                      v-model="subServicesToBeAdded[index].turnAroundTime"
+                      style="border-bottom: 1px inset"
+                    ></md-input>
+                  </md-field>
                 </div>
                 <br />
 
