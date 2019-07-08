@@ -112,6 +112,14 @@
                 </md-card-header>
 
                 <md-card-content>{{ service.description }}</md-card-content>
+                <div>
+                  <md-chip
+                    class="md-primary md-accent"
+                    style="background-color: black; color: white;"
+                    v-for="chip in service.tags"
+                    :key="chip"
+                  >{{ chip.tag }}</md-chip>
+                </div>
               </md-card-area>
 
               <div v-for="(subService, index) in services" :key="index">
@@ -328,7 +336,7 @@
 
               <!-- Add another (plus button) -->
 
-              <button
+              <md-button
                 type="button"
                 class="btn btn-default pull-right"
                 id="addSubButton"
@@ -340,7 +348,7 @@
                     <span class="glyphicon glyphicon-plus-sign"></span>
                   </h6>
                 </strong>
-              </button>
+              </md-button>
 
               <!-- File Input -->
               <div class="form-group row">
