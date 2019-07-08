@@ -31,6 +31,7 @@ export default {
       // addSubService: false
       // these are the subservicesToBeAdded to be added
       subServicesToBeAdded: [],
+      tags: [],
       serviceBeingEdited: false,
       serviceEdited: null
     }
@@ -42,6 +43,7 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+
     async redirectToInbox () {
       try {
         this.$router.push({
@@ -154,14 +156,14 @@ export default {
         // get the service table id from the user
         const userExtracted = this.$store.getters.getUserInfo
         const serviceTableId = userExtracted.serviceTableId
-
         const service = {
           userId: userExtracted.id,
           tableId: serviceTableId,
           title: this.serviceTitle,
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
-          turnAroundTime: this.turnAroundTime
+          turnAroundTime: this.turnAroundTime,
+          tags: this.tags
         }
 
         // console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
