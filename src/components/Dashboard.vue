@@ -309,21 +309,17 @@
                 </div>
                 <br />
 
-                <!-- Service Tags -->
-                <div class="form-group row">
-                  <label for="serviceTags" class="col-sm col-form-label">
-                    <p>Tags:</p>
-                  </label>
-                  <div class="col-sm-10">
-                    <textarea
-                      v-model="subServicesToBeAdded[index].serviceTags"
-                      type="text"
-                      rows="3"
-                      class="form-control animated"
-                      placeholder="Enter tags used to describe your service"
-                    ></textarea>
-                  </div>
-                </div>
+                <label>Tags</label>
+
+                <!--  -->
+                <md-field>
+                  <md-chips
+                    md-placeholder="Add tags"
+                    v-model="subServicesToBeAdded[index].serviceTags"
+                    style="border-bottom: 1px inset;"
+                  ></md-chips>
+                  <!-- <md-textarea type="text" v-model="serviceTags" style="border-bottom: 1px inset"></md-textarea> -->
+                </md-field>
               </div>
 
               <!-- Add another (plus button) -->
