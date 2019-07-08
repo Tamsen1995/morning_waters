@@ -85,22 +85,26 @@ export default {
 
         // Iteratively push the service tags into the array
         for (var k = 0; k < service.tags.length; k++) {
-          console.log(`\n\nthis.tags : ${this.tags}\n`) // TESTING
-
           this.tags.push(service.tags[k].tag)
         }
 
         this.subServicesToBeAdded = []
         for (var i = 0; i < this.services.length; i++) {
           if (this.services[i].parentServiceId === service.id) {
-            console.log(`\n\nAre you a crazy ?\n`) // TESTING
+            var subServiceTags = []
+
+            // Iteratively push the sub service tags into the array
+            for (var counter = 0; counter < this.services[i].tags.length; counter++) {
+              subServiceTags.push(this.services[i].tags[counter].tag)
+            }
+
             this.subServicesToBeAdded.push({
               serviceId: this.services[i].id,
               serviceTitle: this.services[i].title,
               serviceDescription: this.services[i].description,
               servicePrice: this.services[i].servicePrice,
               turnAroundTime: this.services[i].turnAroundTime,
-              serviceTags: this.services[i].serviceTags
+              serviceTags: subServiceTags
             })
           }
         }
