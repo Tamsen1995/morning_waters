@@ -16,37 +16,37 @@
       <!-- Post confirmation ORDER STATUS -->
 
       <!--  -->
-      <md-card
-        v-for="(pendingOrder, index) in this.pendingOrders"
-        v-bind:key="index"
-        style="background-color: white;"
-      >
-        <md-card-header>
-          <div class="md-title">Order ID : [ {{pendingOrder.orderId}} ]</div>
-        </md-card-header>
 
-        <md-card-content>
-          Order Status: PAID
-          <br />Order Confirmed: [DATE]
-          <br />
-          <br />
-          <br />
+      <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index">
+        <md-card style="background-color: white;">
+          <md-card-header>
+            <div class="md-title">Order ID : [ {{pendingOrder.orderId}} ]</div>
+          </md-card-header>
 
-          <div
-            v-for="(item, index) in pendingOrder.orderItems"
-            v-bind:key="index"
-          >{{item.title}} - price : {{item.servicePrice}} $</div>
-        </md-card-content>
+          <md-card-content>
+            Order Status: PAID
+            <br />Order Confirmed: [DATE]
+            <br />
+            <br />
+            <br />
 
-        <md-card-actions>
-          <md-button @click="goToOrderStatus(index)">Timeline</md-button>
-          <md-button
-            type="submit"
-            style="background-color: rgb(205, 188, 227);"
-            @click="downloadInvoice(pendingOrder)"
-          >Download Invoice</md-button>
-        </md-card-actions>
-      </md-card>
+            <div
+              v-for="(item, index) in pendingOrder.orderItems"
+              v-bind:key="index"
+            >{{item.title}} - price : {{item.servicePrice}} $</div>
+          </md-card-content>
+
+          <md-card-actions>
+            <md-button @click="goToOrderStatus(index)">Timeline</md-button>
+            <md-button
+              type="submit"
+              style="background-color: rgb(205, 188, 227);"
+              @click="downloadInvoice(pendingOrder)"
+            >Download Invoice</md-button>
+          </md-card-actions>
+        </md-card>
+        <br />
+      </div>
       <!--  -->
 
       <!-- If Order Confirmed -->
