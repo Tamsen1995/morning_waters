@@ -30,13 +30,21 @@
             <br />
             <br />
 
-            <div
-              v-for="(item, index) in pendingOrder.orderItems"
-              v-bind:key="index"
-            >{{item.title}} - price : {{item.servicePrice}} $</div>
+            <div class="card" style="min-width: 30%;">
+              <!-- <img src="..." class="card-img-top" alt="..."> -->
+              <div class="card-body">
+                <h4 class="card-title">Order items:</h4>
+
+                <div
+                  v-for="(item, index) in pendingOrder.orderItems"
+                  v-bind:key="index"
+                >{{item.title}} - price : {{item.servicePrice}} $</div>
+              </div>
+            </div>
           </md-card-content>
 
           <md-card-actions>
+            <md-button style="background-color: yellowgreen;">Shipping</md-button>
             <md-button @click="goToOrderStatus(index)">Timeline</md-button>
             <md-button
               type="submit"
@@ -71,6 +79,7 @@
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 @import "../../assets/css/timeline.css";
+@import "../../assets/css/dashboard.css";
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 @import "../../assets/css/orders.css";
 .page-container {
