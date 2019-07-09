@@ -5,7 +5,7 @@ body.dashboard {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 15px 80px;
+  /* padding: 15px 0px; */
   /* background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%); */
   background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
 }
@@ -150,9 +150,14 @@ body.dashboard {
 }
 
 /*------------- Text ------------------------*/
-.dashboard #dashboard #add-service p {
-  font-size: 15px;
+/* .dashboard #dashboard #add-services p {
   text-align: left;
+  color: #4527a0;
+} */
+
+#dashboard .md-title {
+  font-size: 25px;
+  color: #4527a0;
 }
 
 #dashboard .md-title {
@@ -170,6 +175,15 @@ body.dashboard {
   /* text-transform: uppercase; */
   font-style: medium;
   font: 35px "Roboto";
+  color: #311c63;
+  text-align: center;
+}
+
+.dashboard #dashboard h2 {
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  font-style: medium;
+  font: 25px "Roboto";
   color: #311c63;
   text-align: center;
 }
@@ -261,6 +275,41 @@ body.dashboard {
 #dashboard #spec_inquiry p {
   text-align: left;
 }
+
+.md-checkbox {
+  display: flex;
+}
+
+#add_service{
+  padding-top:10px;
+}
+
+/* #add_service md-input {
+  border-bottom: 1px inset;
+} */
+
+#service-form-block {
+  color:#4527a0;
+  border: 5px #4527a0 solid;
+  padding: 30px;
+}
+
+#service-form-block table {
+  width: 100%;
+  table-layout: fixed;
+  background: #ebe8f1;
+}
+
+#subservice-form-block table {
+  width: 100%;
+  table-layout: fixed;
+  background: #ebe8f1;
+}
+
+#subservice-form-block {
+  color:#4527a0;
+}
+
 
 /* Responsive Text */
 
@@ -395,41 +444,19 @@ padding: 15px 45px;
 /* ------Vue Directive Responsive Design Ish ----------------------------------------------------*/
 
 .responsive-component.small body.dashboard {
-  /* opacity: 0.50; */
   text-align: center;
   text-align: justify;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 15px 0px;
-  /* background-image: url("./BACKGROUND.png"); */
+  padding: 0px 0px;
   background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%);
 } 
 
-
-/* .responsive-component.small #name-location {
-  background: linear-gradient( white 70%, #311c63 30%);
-  border-color: rgb(190, 187, 187);
-  border-style: solid;
-  border-width: .5px;
-}  */
-
-
-
-/* .responsive-component #dashboard #company-name {
-
-  color: white;
-
+.responsive-component.small #add-services {
+  margin: 10px;
 }
-
-.responsive-component #dashboard #company-location{
-  color: white;
-
-
-} */
-
-
 
 /* logo */
 .responsive-component.small #dashboard #logo {
@@ -444,6 +471,9 @@ padding: 15px 45px;
   background-image: url("./Icons/noun_DNA_2362091.png");
 }
 
+#service-form-block{
+  padding:10px;
+}
 
 .responsive-component.small #dashboard #logo-border {
   background-color: #22104b;
@@ -457,40 +487,3 @@ padding: 15px 45px;
   padding: 10px;
 }
 
-/* .responsive-component.small #company-name {
-
-  color: white;
-} */
-
-/* .responsive-component.small #dashboard #company-location{
-  padding-top: 20px;
-} */
-
-/* text */
-
-/* .responsive-component.small h1, h2 {
-  letter-spacing: 1px;
-  font-size: 28px;
-  text-align:center;
-}
-
-.responsive-component.small h3 {
-  letter-spacing: 1px;
-  font-size: 25px;
-  text-align:center;
-}
-
-.responsive-component.small p{
-  width:100%;
-  font-size: 20px;
-}
-
-.responsive-component.small footer p{
-  width:100%;
-  font-size: 10px;
-}
-
-.responsive-component.small form{
-  width:100%;
-  font-size: 12px;
-} */
