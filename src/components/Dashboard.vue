@@ -26,17 +26,14 @@
 
           <!-- About Section -->
           <div class="container" id="about">
+            <md-content class="md-scrollbar">
             <div class="row">
               <h4>About:</h4>
-              <!-- <transition-expand>
-              <div v-if="expanded">-->
-              <p style="text-align:left">{{ this.about }}</p>
-              <!-- </div> -->
-              <!-- </transition-expand>
-              <button @click="expanded = !expanded">
-                {{ expanded ? `Shrink` : `Expand` }}
-              </button>-->
+              
+                <p style="text-align:left">{{ this.about }}</p>
+              
             </div>
+            </md-content>
           </div>
         </div>
 
@@ -56,25 +53,29 @@
                 </p>
               </div>
             </div>
-            <div class="card" style="min-width: 30%;">
+            <div class="card" style="min-width: 30%;border-color: #9d46ff;
+              border-width: 3px; 
+              border-style: solid;">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h4 class="card-title">Leads:</h4>
+                <h4 class="card-title" style="color: #9d46ff;" >New Leads:</h4>
                 <p class="card-text">{{ this.leads }}</p>
                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                <b-button block variant="outline-success" @click="redirectToInbox()">
+                <button class="btn-block" id="btn-leads" @click="redirectToInbox()">
                   <h6>View Leads</h6>
-                </b-button>
+                </button>
               </div>
             </div>
-            <div class="card" style="min-width: 30%;">
+            <div class="card" style="min-width: 30%;border-color: yellowgreen;
+              border-width: 3px; 
+              border-style: solid;">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h4 class="card-title">Pending Orders:</h4>
+                <h4 class="card-title" style="color: yellowgreen;">Pending Orders:</h4>
                 <p class="card-text">{{ this.credits }}</p>
-                <b-button block variant="outline-success" @click="redirectToPendingOrders()">
+                <button class="btn-block" id="btn-orders" @click="redirectToPendingOrders()">
                   <h6>View Orders</h6>
-                </b-button>
+                </button>
               </div>
             </div>
           </div>
@@ -87,6 +88,15 @@
           <br />
           <h2>Services:</h2>
           <br />
+          <!-- Empty state for service listings when no listings have been added -->
+          <!-- <md-empty-state
+            md-rounded
+            class="md-primary"
+            md-icon="access_time"
+            md-label="No Services Added"
+            md-description="Add services to start marketting your technology.">
+          </md-empty-state> -->
+
           <!-- Beginning of cards -->
           <div v-for="(service, index) in this.services" :key="index" id="service-card">
             <!-- <md-card></md-card> -->
@@ -94,21 +104,21 @@
             <div v-if="service.isSubService === false">
               <md-card-area md-inset>
                 <md-card-header>
-                  <!-- <h2 class="md-title"></h2> -->
-                  <!-- <md-icon>play_for_work</md-icon> -->
                   <i class="fas fa-atom" id="service_logo"></i>
                   <span class="md-title">{{ service.title }}</span>
 
                   <md-card-content>
-                    <div class="card-reservation pull-right">
-                      <div class="md-button-group">Price: {{service.servicePrice}} $</div>
+                    <div class="card-reservation">
+                      <div class="md-subhead">
+                        <span style="color:#1faa00;font-size: 18px;"> Price: {{service.servicePrice}} $</span>
+                        
+                        <span class="pull-right"> 
+                          <md-icon>access_time</md-icon>
+                          Turnaround time : {{ service.turnAroundTime }}
+                        </span>
+                      </div>
                     </div>
                   </md-card-content>
-
-                  <div class="md-subhead">
-                    <md-icon>access_time</md-icon>
-                    <span>Turnaround time : {{ service.turnAroundTime }}</span>
-                  </div>
                 </md-card-header>
 
                 <md-card-content>{{ service.description }}</md-card-content>
@@ -121,38 +131,38 @@
                   >{{ chip.tag }}</md-chip>
                 </div>
               </md-card-area>
-
+              <br>
               <div v-for="(subService, index) in services" :key="index">
+                
                 <md-card
-                  style="width: 80%; margin-left: auto; margin-right: auto; "
+                  style="width: 90%; margin-left: auto; margin-right: auto; "
                   v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
                 >
                   <md-card-area>
                     <md-card-header>
-                      <i class="fas fa-dna"></i>
-                      <div class="md-title" style="background-color: #63d154">{{ subService.title }}</div>
+                      <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
                       <div class="md-subhead">
-                        <md-icon>access_time</md-icon>
-                        <span>Turnaround time : {{ subService.turnAroundTime }}</span>
+                        <span style="color:#1faa00;font-size: 18px;"> Price: {{subService.servicePrice}} $</span>
+                            <span class="pull-right"> 
+                              <md-icon>access_time</md-icon>
+                              Turnaround time : {{ subService.turnAroundTime }}
+                            </span>
                       </div>
                     </md-card-header>
-
                     <md-card-content>{{ subService.description }}</md-card-content>
                   </md-card-area>
 
                   <div>
                     <md-chip
                       class="md-primary md-accent"
-                      style="background-color: black; color: white;"
+                      style="background-color: #00b2cc; color: white;"
                       v-for="chip in subService.tags"
                       :key="chip"
                     >{{ chip.tag }}</md-chip>
                   </div>
-
-                  <md-card-actions md-alignment="left">
-                    <md-button>Price : {{subService.servicePrice}}</md-button>
-                  </md-card-actions>
+                  <br>
                 </md-card>
+                
               </div>
 
               <md-card-actions>
@@ -194,9 +204,8 @@
     scrollable="true"
     :clickToClose="true"
     id="add-services"
-    style=" padding:0px"
   >
-    <div class="container" id="service-form-block" style=" padding:30px">
+    <div class="container" id="service-form-block">
       <div class="md-title">
         <h2>
         <i class="fas fa-atom" id="service_logo"></i>

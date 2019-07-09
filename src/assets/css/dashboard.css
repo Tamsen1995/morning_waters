@@ -5,7 +5,7 @@ body.dashboard {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  /* padding: 15px 0px; */
+  padding: 15px 0px;
   /* background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%); */
   background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
 }
@@ -40,19 +40,24 @@ body.dashboard {
 }
 
 #dashboard #stats {
-  background-color: white;
-  box-shadow: 2px 2px 5px 1px  #bebbc7;
-  padding: 5px;
   border-radius: 5px;
 }
 
 #stats .card {
-  border-color: yellowgreen;
-  border-width: 3px; 
-  border-style: solid;
   border-radius: 5px;
   margin-left:5px;
   margin-right:5px;
+  box-shadow:   2px 2px 5px 1px  #c7c4d1;
+}
+.card-expansion {
+  height: 480px;
+}
+
+.md-card {
+  width: 320px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .dashboard #about {
@@ -235,9 +240,10 @@ body.dashboard {
   letter-spacing: 1px;
   /* font-style: medium; */
   font: 18px "Roboto";
-  color: black;
   text-align: center;
 }
+
+
 
 #dashboard #service-desc h5 {
   font: 15px "Roboto";
@@ -450,7 +456,7 @@ padding: 15px 45px;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 0px 0px;
+  padding: 10px 0px;
   background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%);
 } 
 
