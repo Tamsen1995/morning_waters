@@ -14,48 +14,41 @@
       <!--  -->
 
       <!-- Post confirmation ORDER STATUS -->
-      <md-app
-        class="page-container"
+
+      <!--  -->
+      <md-card
         v-for="(pendingOrder, index) in this.pendingOrders"
         v-bind:key="index"
         style="background-color: white;"
-        :md-elevation="5"
       >
-        <md-app-toolbar class="md-primary" style="background-color: rgb(157, 83, 252)">
-          <span class="md-title">Order ID : {{pendingOrder.orderId}}</span>
-        </md-app-toolbar>
+        <md-card-header>
+          <div class="md-title">Order ID : [ {{pendingOrder.orderId}} ]</div>
+        </md-card-header>
 
-        <md-app-drawer md-permanent="clipped" style="background-color: opacity:1.0">
-          <md-list>
-            <md-list-item>
-              <md-button id="btn-timeline" type="submit" @click="goToOrderStatus(index)">Timeline</md-button>
-            </md-list-item>
-
-            <md-list-item>
-              <md-button id="btn-shippo" type="submit" @click="goToOrderStatus(index)">Shipping</md-button>
-            </md-list-item>
-
-            <md-list-item>
-              <md-button
-                id="btn-shippo"
-                type="submit"
-                style="background-color: rgb(205, 188, 227);"
-                @click="downloadInvoice(pendingOrder)"
-              >Download Invoice</md-button>
-            </md-list-item>
-          </md-list>
-        </md-app-drawer>
-
-        <md-app-content class="md-title">
+        <md-card-content>
           Order Status: PAID
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
           <br />Order Confirmed: [DATE]
-        </md-app-content>
-      </md-app>
+          <br />
+          <br />
+          <br />
+
+          <div
+            v-for="(item, index) in pendingOrder.orderItems"
+            v-bind:key="index"
+          >{{item.title}} - price : {{item.servicePrice}} $</div>
+        </md-card-content>
+
+        <md-card-actions>
+          <md-button @click="goToOrderStatus(index)">Timeline</md-button>
+          <md-button
+            type="submit"
+            style="background-color: rgb(205, 188, 227);"
+            @click="downloadInvoice(pendingOrder)"
+          >Download Invoice</md-button>
+        </md-card-actions>
+      </md-card>
+      <!--  -->
+
       <!-- If Order Confirmed -->
 
       <!-- IF Order UNCONFIRMED -->
