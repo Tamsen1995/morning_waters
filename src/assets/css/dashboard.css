@@ -24,7 +24,7 @@ body.dashboard {
 #dashboard #name-location {
   max-width: 1314px;
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
-  background: linear-gradient( white 60%, #311c63 40%);
+  background: linear-gradient( white 60%, #4527a0 40%);
   border-color: rgb(190, 187, 187);
   border-style: solid;
   border-width: .5px;
@@ -60,7 +60,7 @@ body.dashboard {
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
 }
 
-#dashboard #service-card {
+#dashboard .service-border {
   border-bottom: 2px solid #4527a0;
 }
 
@@ -144,7 +144,7 @@ body.dashboard {
 }
 
 #dashboard #logo-border {
-  background-color: #22104b;
+  background-color: #4527a0;
   width: 170px;
   height: 170px;
   -moz-border-radius: 85px;
@@ -395,6 +395,45 @@ p {
   justify-content: center;
   background-color: #2238ff;
 }
+
+#btn-orders {
+  background-color: #9d46ff;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: white;
+}
+
+#btn-orders:hover, #btn-orders:focus, #btn-orders:active {
+  background-color: hsl(268, 97%, 74%);
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: white;
+}
+
+#btn-leads {
+  background-color: #00c853;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: white;
+}
+
+#btn-leads:hover, #btn-leads:focus, #btn-leads:active {
+  background-color: #4ee271;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: white;
+}
+
+/* #btn-orders {
+  background-color: #9d46ff;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  font-size: 12px;
+} */
 
 /* Stats Add credits */
 /* .btn-add-service {
