@@ -26,13 +26,9 @@
 
           <!-- About Section -->
           <div class="container" id="about">
-            <md-content class="md-scrollbar">
-            <div class="row">
+            <md-content class="md-scrollbar">        
               <h4>About:</h4>
-              
-                <p style="text-align:left">{{ this.about }}</p>
-              
-            </div>
+              <p style="text-align:left">{{ this.about }}</p>
             </md-content>
           </div>
         </div>
@@ -43,39 +39,41 @@
         <!-- Stats Cards -->
         <div id="stats">
           <div class="card-group">
-            <div class="card" style="min-width: 30%;">
-              <!-- <img src="..." class="card-img-top" alt="..."> -->
-              <div class="card-body">
-                <h4 class="card-title">Page Views:</h4>
-                <p class="card-text">{{ this.pageViews }}</p>
-                <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
-              </div>
-            </div>
             <div class="card" style="min-width: 30%;border-color: #9d46ff;
               border-width: 3px; 
               border-style: solid;">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h4 class="card-title" style="color: #9d46ff;" >New Leads:</h4>
-                <p class="card-text">{{ this.leads }}</p>
+                <h3 class="card-title" style="color: #9d46ff;" >Pending Orders:</h3>
+                <h3 class="card-text">{{ this.credits }}</h3>
+                <button class="btn-block" id="btn-orders" @click="redirectToPendingOrders()">
+                  <h6>View Orders</h6>
+                </button>
+              </div>
+            </div>
+            <div class="card" style="min-width: 30%;border-color: #00c853;
+              border-width: 3px; 
+              border-style: solid;">
+              <!-- <img src="..." class="card-img-top" alt="..."> -->
+              <div class="card-body">
+                <h3 class="card-title" style="color: #00c853;">New Leads:</h3>
+                <h3 class="card-text">{{ this.leads }}</h3>
                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                 <button class="btn-block" id="btn-leads" @click="redirectToInbox()">
                   <h6>View Leads</h6>
                 </button>
               </div>
             </div>
-            <div class="card" style="min-width: 30%;border-color: yellowgreen;
+            <div class="card" style="min-width: 30%;border-color: #304ffe;
               border-width: 3px; 
               border-style: solid;">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h4 class="card-title" style="color: yellowgreen;">Pending Orders:</h4>
-                <p class="card-text">{{ this.credits }}</p>
-                <button class="btn-block" id="btn-orders" @click="redirectToPendingOrders()">
-                  <h6>View Orders</h6>
-                </button>
+                <h3 class="card-title" style="color: #304ffe;">Page Views:</h3>
+                <h3 class="card-text">{{ this.pageViews }}</h3>
+                <p class="card-text">
+                  <small class="text-muted">Last updated [timestamp]</small>
+                </p>
               </div>
             </div>
           </div>
@@ -121,8 +119,8 @@
                   </md-card-content>
                 </md-card-header>
 
-                <md-card-content>{{ service.description }}</md-card-content>
-                <div>
+                <md-card-content class="md-scrollbar">{{ service.description }}</md-card-content>
+                <div style="padding-left: 15px;">
                   <md-chip
                     class="md-primary md-accent"
                     style="background-color: #00b2cc; color: white;"
@@ -135,27 +133,27 @@
               <div v-for="(subService, index) in services" :key="index">
                 
                 <md-card
-                  style="width: 90%; margin-left: auto; margin-right: auto; "
+                  id="subservice-block"
                   v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
                 >
                   <md-card-area>
                     <md-card-header>
                       <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
                       <div class="md-subhead">
-                        <span style="color:#1faa00;font-size: 18px;"> Price: {{subService.servicePrice}} $</span>
+                        <span style="color:#009624;font-size: 18px;"> Price: {{subService.servicePrice}} $</span>
                             <span class="pull-right"> 
                               <md-icon>access_time</md-icon>
                               Turnaround time : {{ subService.turnAroundTime }}
                             </span>
                       </div>
                     </md-card-header>
-                    <md-card-content>{{ subService.description }}</md-card-content>
+                    <md-card-content class="md-scrollbar">{{ subService.description }}</md-card-content>
                   </md-card-area>
 
-                  <div>
+                  <div style="padding-left: 15px;">
                     <md-chip
                       class="md-primary md-accent"
-                      style="background-color: #00b2cc; color: white;"
+                      style="padding-left: 5px;background-color: #00b2cc; color: white;"
                       v-for="chip in subService.tags"
                       :key="chip"
                     >{{ chip.tag }}</md-chip>

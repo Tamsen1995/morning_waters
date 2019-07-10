@@ -1,5 +1,4 @@
 body.dashboard {
-  /* opacity: 0.50; */
   text-align: justify;
   background-position: center;
   background-repeat: no-repeat;
@@ -34,9 +33,20 @@ body.dashboard {
   border-radius: 5px;
 }
 
-#dashboard #service-card {
-  border-bottom: 2px solid #4527a0;
-  /* color: #5c5d60; */
+.dashboard #about {
+  background-color: white;
+  border-width: .5px;
+  border-color: rgb(190, 187, 187);
+  border-style: solid;
+  box-shadow:   2px 2px 5px 1px  #c7c4d1;
+  border-radius: 5px;
+  text-align: left;
+}
+
+#dashboard #about .md-content {
+  max-width: 900px;
+  max-height: 250px;
+  overflow: auto;
 }
 
 #dashboard #stats {
@@ -49,29 +59,27 @@ body.dashboard {
   margin-right:5px;
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
 }
-.card-expansion {
-  height: 480px;
+
+#dashboard #service-card {
+  border-bottom: 2px solid #4527a0;
 }
 
-.md-card {
+#dashboard #service-card .md-card-content {
+  max-width: 900px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+
+
+#dashboard .md-card {
   width: 320px;
   margin: 4px;
   display: inline-block;
   vertical-align: top;
 }
 
-.dashboard #about {
-  display: inline-block;
-  padding-left: 30px;
-  padding-top: 10px;
-  background-color: white;
-  border-width: .5px;
-  border-color: rgb(190, 187, 187);
-  border-style: solid;
-  /* max-width: 1314px; */
-  box-shadow:   2px 2px 5px 1px  #c7c4d1;
-  border-radius: 5px;
-}
+
 
 .dashboard #services {
   padding-left: 20px;
@@ -83,16 +91,16 @@ body.dashboard {
   border-radius: 5px;
 }
 
-/* .dashboard .service-block{
-  background-color: #4a148c;
-  margin-top:10px;
+
+.dashboard #subservice-block {
+  min-width: 95%; 
+  margin-left: 40px;
+}
+
+/* .dashboard .service-block-sub{
+  padding-left:100px;
   border-radius: 5px;
 } */
-
-.dashboard .service-block-sub{
-  padding-left:30px;
-  border-radius: 5px;
-}
 
 /* .dashboard .service-block #service-title{
   background-color: #d6d1e4;
@@ -224,7 +232,7 @@ body.dashboard {
   /* font-style: medium; */
   font: 19px "Roboto";
   color: black;
-  text-align: center;
+  text-align: left;
 }
 
 #dashboard #about p {
@@ -475,6 +483,11 @@ padding: 15px 45px;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("./Icons/noun_DNA_2362091.png");
+}
+
+.responsive-component.small .dashboard #subservice-block {
+  min-width: 95%; 
+  margin-left: 20px;
 }
 
 #service-form-block{
