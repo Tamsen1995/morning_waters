@@ -1,192 +1,143 @@
 <template>
 <div id="app">
-  <dashboard-header/>
-  <div class="responsive-component" v-responsive= "{
+  <dashboard-header />
+  <div class="responsive-component" v-responsive="{
       small: el => el.width < 430
       }">
     <body class="settings">
       <div id="settings-page">
         <div id="settings-nav">
           <h3>Settings</h3>
-          <br>
-          <tabs
-            :tabs="tabs"
-            :currentTab="currentTab"
-            :wrapper-class="'default-tabs'"
-            :tab-class="'default-tabs__item'"
-            :tab-active-class="'default-tabs__item_active'"
-            :line-class="'default-tabs__active-line'"
-            @onClick="handleClick"
-          />
+          <br />
         </div>
 
-        <div class="settings-content">
-          <br>
-          <div v-show="currentTab === 'profile1'">
-            <br>
-            <!-- Edit Profile info -->
-            <div>
-              <h4>Edit Main Profile Info:</h4>
-              <p>(Services information can be added & edited directly on your profile.)</p>
-              <br>
-            </div>
-            <!-- input for Name -->
-            <div class="form-row">
-              <label horizontal for="name" class="col-sm col-form-label">Name:</label>
-              <div class="col-8">
-                <input v-model="name" class="form-control" type="text" placeholder="Edit your name">
-              </div>
-            </div>
+        <md-tabs>
+          <md-tab id="tab-profile" md-label="Profile">
+            <md-card md-with-hover>
+              <md-card-content>
+                <!-- Edit Profile info -->
+                <div>
+                  <h4>Edit Main Profile Info:</h4>
+                  <p>(Services information can be added & edited directly on your profile.)</p>
+                  <br />
+                </div>
+                <!-- input for Name -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Name:</label>
+                    <md-input v-model="name"></md-input>
+                  </md-field>
+                </div>
 
-            <!-- input for email address -->
-            <div class="form-row">
-              <label horizontal for="email" class="col-sm col-form-label">Email:</label>
-              <div class="col-8">
-                <input
-                  v-model="email"
-                  class="form-control"
-                  type="email"
-                  placeholder="Edit your email"
-                >
-              </div>
-            </div>
+                <!-- input for email address -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Email:</label>
+                    <md-input v-model="email"></md-input>
+                  </md-field>
+                </div>
 
-            <!-- input your phone number -->
-            <div class="form-row">
-              <label horizontal for="name" class="col-sm col-form-label">Phone Number:</label>
-              <div class="col-8">
-                <input
-                  v-model="number"
-                  class="form-control"
-                  type="number"
-                  placeholder="Edit your phone number"
-                >
-              </div>
-            </div>
+                <!-- input your phone number -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Phone Number:</label>
+                    <md-input v-model="number"></md-input>
+                  </md-field>
+                </div>
 
-            <!-- Input for Job title -->
-            <div class="form-row">
-              <label horizontal for="name" class="col-sm col-form-label">Job Title:</label>
-              <div class="col-8">
-                <input
-                  v-model="jobTitle"
-                  class="form-control"
-                  type="text"
-                  placeholder="Edit your job title"
-                >
-              </div>
-            </div>
-            <br>
+                <!-- Input for Job title -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Job Title:</label>
+                    <md-input v-model="jobTitle"></md-input>
+                  </md-field>
+                </div>
 
-            <!-- Input for Company Name -->
-            <div class="form-row">
-              <label horizontal for="name" class="col-sm col-form-label">Company Name:</label>
-              <div class="col-8">
-                <input
-                  v-model="companyName"
-                  class="form-control"
-                  type="text"
-                  placeholder="Edit your company name"
-                >
-              </div>
-            </div>
-            <!-- Company Website -->
-            <div class="form-row">
-              <label horizontal for="name" class="col-sm col-form-label">Company Website:</label>
-              <div class="col-8">
-                <input
-                  v-model="companyWebsite"
-                  class="form-control"
-                  type="text"
-                  placeholder="Edit your company's website"
-                >
-              </div>
-            </div>
-            <!-- Input for Billing Address -->
-            <!-- Add more formatting to this section: Maybe even map app -->
-            <div class="form-row">
-              <label horizontal for="name" class="col-sm col-form-label">Billing Address:</label>
-              <div class="col-8">
-                <input
-                  v-model="billingAddress"
-                  class="form-control"
-                  type="text"
-                  placeholder="Edit your billing address"
-                  description="Edit your billing address."
-                >
-              </div>
-            </div>
-            <!-- Input for About -->
-            <div class="form-group row">
-              <label for="About" class="col-sm col-form-label">About:</label>
-              <div class="col-sm-12">
-                <textarea
-                  v-model="about"
-                  class="form-control"
-                  placeholder="Tell us about your company"
-                ></textarea>
-              </div>
-            </div>
+                <!-- Input for Company Name -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Company name:</label>
+                    <md-input v-model="companyName"></md-input>
+                  </md-field>
+                </div>
+                <!-- Company Website -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Company Website:</label>
+                    <md-input v-model="companyWebsite"></md-input>
+                  </md-field>
+                </div>
+                <!-- Input for Billing Address -->
+                <!-- Add more formatting to this section: Maybe even map app -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Billing Address:</label>
+                    <md-input v-model="billingAddress"></md-input>
+                  </md-field>
+                </div>
+                <!-- Input for About -->
+                <div class="form-group row">
+                  <md-field>
+                    <label>About:</label>
+                    <md-textarea v-model="about" class="form-control"></md-textarea>
+                  </md-field>
+                </div>
 
-            <br>
-            <button class="btn btn-default btn-xl pull-right" @click="updateProfile">Update Profile</button>
-          </div>
+                <br />
 
-          <div v-if="currentTab === 'billing3'">
+                <md-button @click="updateProfile" class="md-raised md-primary">Submit profile edits</md-button>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+          <md-tab id="tab-billing" md-label="Billing">
             <billing-tab></billing-tab>
-          </div>
-          <div v-show="currentTab === 'password4'">
-            <h4>Edit Password:</h4>
-            <br>
-            <br>
-            <!-- Input old password -->
-            <div class="form-row">
-              <label horizontal for="billingAddress" class="col-sm col-form-label">Old Password:</label>
-              <div class="col-8">
-                <input
-                  v-model="billingAddress"
-                  class="form-control"
-                  type="text"
-                  placeholder="Enter your old password"
-                  description="Edit your billing address."
-                >
-              </div>
-            </div>
-            <!-- input for new password -->
-            <div class="form-row">
-              <label horizontal for="newPass" class="col-sm col-form-label">New Password:</label>
-              <div class="col-8">
-                <input
-                  v-model="newPass"
-                  class="form-control"
-                  type="password"
-                  placeholder="Enter your new password"
-                >
-              </div>
-            </div>
-            <!-- Confirm new password -->
-            <div class="form-row">
-              <label
-                horizontal
-                for="confirmNewPass"
-                class="col-sm col-form-label"
-              >Confirm new password:</label>
-              <div class="col-8">
-                <input
-                  v-model="confirmNewPass"
-                  class="form-control"
-                  type="password"
-                  placeholder="Re-enter your new password please"
-                >
-              </div>
-            </div>
+          </md-tab>
+          <md-tab id="tab-password" md-label="Password">
+            <md-card>
+              <md-card-content>
+                <!-- 
+                <div class="form-row">
+                  <md-field>
+                    <label>Billing Address:</label>
+                    <md-input v-model="billingAddress"></md-input>
+                  </md-field>
+                </div>-->
 
-            <br>
-            <button class="btn btn-outline btn-xl pull-right" @click="updatePassword">
-              <p>Update Password</p>
-            </button>
-          </div>
-        </div>
+                <h4>Edit Password:</h4>
+                <br />
+                <br />
+                <!-- Input old password -->
+
+                <md-field>
+                  <label>Old Password:</label>
+                  <md-input placeholder="Enter your old password" type="password" v-model="oldPass"></md-input>
+                </md-field>
+
+                <!-- input for new password -->
+
+                <md-field>
+                  <label>New Password:</label>
+                  <md-input placeholder="Enter your old password" type="password" v-model="newPass"></md-input>
+                </md-field>
+
+                <!-- Confirm new password -->
+                <md-field>
+                  <label>Confirm New Password:</label>
+                  <md-input
+                    placeholder="Enter your old password"
+                    type="password"
+                    v-model="confirmNewPass"
+                  ></md-input>
+                </md-field>
+
+                <br />
+                <button class="btn btn-outline btn-xl pull-right" @click="updatePassword">
+                  <p>Update Password</p>
+                </button>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+        </md-tabs>
       </div>
     </body>
   </div>

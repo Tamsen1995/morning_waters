@@ -4,14 +4,18 @@ import InboxServices from '@/services/InboxService'
 import BuyerServices from '@/services/BuyerServices'
 
 export default {
-  data () {
+  data  () {
     return {
       pendingOrders: null
+
     }
   },
-  async mounted () {
-    this.checkGeneralInquiry()
-    this.getBuyerPendingOrders()
+  async created  () {
+    await this.getBuyerPendingOrders()
+    await this.getBuyerPendingOrdersOrderItems()
+  },
+  async mounted  () {
+    await this.checkGeneralInquiry()
   },
   components: {
     BuyerHeader
@@ -20,7 +24,22 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    async downloadInvoice (pendingOrder) {
+    async getBuyerPendingOrdersOrderItems  () {
+      try {
+        console.log(`\n\nIn here we wanna get the buyer pending orders order items : ${JSON.stringify(this.pendingOrders)}\n`) // TESTING
+        for (var i = 0; i < this.pendingOrders.length; i++) {
+          var response = await InboxServices.retrieveOrderOrderItems(this.pendingOrders[i].orderId)
+          const response2 = await InboxServices.retrieveServicesNegotiated(response.data.orderItems)
+          this.pendingOrders[i].orderItems = response2.data
+        }
+        var tmp = this.pendingOrders
+        this.pendingOrders = []
+        this.pendingOrders = tmp
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async downloadInvoice  (pendingOrder) {
       try {
         const response = await InboxServices.retrieveOrderInvoice(pendingOrder.orderId)
 
@@ -42,7 +61,7 @@ export default {
         if (error) throw error
       }
     },
-    async goToOrderStatus (index) {
+    async goToOrderStatus  (index) {
       try {
         const pendingOrder = this.pendingOrders[index]
 
@@ -55,7 +74,7 @@ export default {
         if (error) throw error
       }
     },
-    async getBuyerPendingOrders () {
+    async getBuyerPendingOrders  () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const buyerId = buyerExtracted.id
@@ -68,7 +87,7 @@ export default {
         if (error) throw error
       }
     },
-    async checkGeneralInquiry () {
+    async checkGeneralInquiry  () {
       try {
         // after log in check if there is any GI.
         // If so then submit it and reset it to null in the store.

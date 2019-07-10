@@ -9,90 +9,91 @@
       }"
       id="register"
     >
-      <div class="container" id="login">
-        <div class="row">
-          <br>
-          <br>
-          <br>
-          <div class="col">
-            <div class="container">
-              <div id="fig-logo-white">
-                <img
-                  src="../../assets/css/TINY_LOGO_WHITE.png"
-                  alt="FIG ANALYTICS"
-                  class="center"
-                  id="login-logo"
-                >
+      <div class="container-fluid" style="width: 50%;" id="login">
+        <md-content class="md-primary">
+          <div class="row">
+            <br />
+            <div class="col">
+              <div class="container-fluid">
+                <br />
+                <br />
+                <div id="fig-logo-white">
+                  <img
+                    src="../../assets/css/TINY_LOGO_WHITE.png"
+                    alt="FIG ANALYTICS"
+                    class="center"
+                    id="login-logo"
+                  />
+                </div>
+                <br />
               </div>
-              <br>
-            </div>
-            <!-- Loadng animation -->
-            <div class="loader" v-if="loadingFlag == 2">Loading...</div>
+              <!-- Loadng animation -->
+              <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
-            <!-- Form -->
-            <div class="card border-0" id="rounded">
-              <form>
-                <h1>Buyer Login</h1>
-                <br>
-                <hr>
-                <div class="form-group row">
-                  <label for="email" class="col-sm col-form-label">Email:</label>
-                  <div class="col-sm-12">
-                    <input
-                      type="email"
-                      v-model="email"
-                      class="form-control"
-                      id="staticEmail"
-                      placeholder="Enter your email"
-                    >
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="inputPassword" class="col-sm col-form-label">Password:</label>
-                  <div class="col-sm-12">
-                    <input
-                      type="password"
-                      v-model="password"
-                      class="form-control"
-                      id="inputPassword"
-                      placeholder="Enter your password"
-                    >
-                  </div>
-                </div>
-                <br>
-                <div class="error" v-html="error"/>
+              <!-- Form -->
 
-                <div class="container" id="center">
-                  <button
-                    type="button"
-                    class="btn btn-outline"
-                    id="btn-login"
-                    @click="buyerLogin()"
-                  >
-                    <h3>Submit</h3>
-                  </button>
-                  <br>
-                  <br>
-                  <p>
-                    Don't have an account yet?
-                    <a @click="redirectOntoBuyerRegister()">Sign up</a>
-                  </p>
-                </div>
-              </form>
-            </div>
+              <div class="container-fluid" style="width: 50%">
+                <md-card class="card border-0" id="rounded">
+                  <form>
+                    <br />
+                    <h3>Buyer Login</h3>
+                    <br />
+                    <hr />
 
-            <!-- Footer -->
-            <div class="container" id="form-footer">
-              <a href="#" id="legal-links">Terms and Conditions</a>
-              <br>
-              <a href="#" id="legal-links">Privacy</a>
-              <br>
-              <hr>
-              <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
-              <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
+                    <md-field>
+                      <label>Email:</label>
+                      <br />
+                      <md-input
+                        placeholder="Enter your email address"
+                        class="form-control"
+                        v-model="email"
+                      ></md-input>
+                    </md-field>
+
+                    <md-field>
+                      <label>Password:</label>
+                      <br />
+                      <md-input
+                        type="password"
+                        v-model="password"
+                        class="form-control"
+                        id="inputPassword"
+                        placeholder="Enter your password"
+                      ></md-input>
+                    </md-field>
+
+                    <br />
+                    <div class="error" v-html="error" />
+
+                    <div class="container" id="center">
+                      <md-button
+                        type="button"
+                        @click="buyerLogin()"
+                        style="background-color: purple; color: white;"
+                      >Login</md-button>
+                      <br />
+                      <br />
+                      <p>
+                        Don't have an account yet?
+                        <a @click="redirectOntoBuyerRegister()">Sign up</a>
+                      </p>
+                    </div>
+                  </form>
+                </md-card>
+              </div>
+              <!-- Footer -->
+              <div class="container" id="form-footer">
+                <a href="#" id="legal-links">Terms and Conditions</a>
+                <br />
+                <a href="#" id="legal-links">Privacy</a>
+                <br />
+                <hr />
+                <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
+                <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
+              </div>
             </div>
           </div>
-        </div>
+        </md-content>
       </div>
     </div>
   </body>

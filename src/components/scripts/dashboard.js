@@ -10,13 +10,14 @@ export default {
   data () {
     return {
       services: [],
+      subServices: [],
       serviceTitle: '',
       serviceDescription: '',
       servicePrice: 0.0,
-      serviceSubtitle: '',
+      turnAroundTime: '',
+      // serviceTags: '',
       unitType: '',
       price: '',
-      turnAroundTime: '',
       user: null,
       companyName: '',
       companyLocation: '',
@@ -28,7 +29,11 @@ export default {
       // The variable which will determine if
       // the section for adding a sub service will be shown
       // addSubService: false
-      subServicesToBeAdded: 0
+      // these are the subservicesToBeAdded to be added
+      subServicesToBeAdded: [],
+      tags: [],
+      serviceBeingEdited: false,
+      serviceEdited: null
     }
   },
   components: {
@@ -38,18 +43,123 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+
+    async redirectToInbox () {
+      try {
+        this.$router.push({
+          name: 'quoteRequestsScreen'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async redirectToPendingOrders () {
+      try {
+        this.$router.push({
+          name: 'pendingOrders'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async deleteService (service) {
+      try {
+        const serviceId = service.id
+        // delete the service
+        await DashboardServices.deleteService(serviceId)
+
+        // reload the services into the dashboard
+        this.getServices()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async editService (service) {
+      try {
+        this.serviceBeingEdited = true
+        this.serviceTitle = service.title
+        this.serviceDescription = service.description
+        this.servicePrice = service.servicePrice
+        this.turnAroundTime = service.turnAroundTime
+        this.serviceEdited = service
+
+        // Iteratively push the service tags into the array
+        for (var k = 0; k < service.tags.length; k++) {
+          this.tags.push(service.tags[k].tag)
+        }
+
+        this.subServicesToBeAdded = []
+        for (var i = 0; i < this.services.length; i++) {
+          if (this.services[i].parentServiceId === service.id) {
+            var subServiceTags = []
+
+            // Iteratively push the sub service tags into the array
+            for (var counter = 0; counter < this.services[i].tags.length; counter++) {
+              subServiceTags.push(this.services[i].tags[counter].tag)
+            }
+
+            this.subServicesToBeAdded.push({
+              serviceId: this.services[i].id,
+              serviceTitle: this.services[i].title,
+              serviceDescription: this.services[i].description,
+              servicePrice: this.services[i].servicePrice,
+              turnAroundTime: this.services[i].turnAroundTime,
+              serviceTags: subServiceTags
+            })
+          }
+        }
+
+        this.$modal.show('add-service')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+
+    // sends an updated service with subservices to the back
+    // and updates the db with the updated services.
+    async submitServiceEdit () {
+      try {
+        this.serviceEdited.title = this.serviceTitle
+        this.serviceEdited.description = this.serviceDescription
+        this.serviceEdited.servicePrice = this.servicePrice
+        this.serviceEdited.turnAroundTime = this.turnAroundTime
+        this.serviceEdited.tags = this.tags
+
+        // all the info needed to modify a service and its subservices in the data base
+        const serviceEdit = {
+          service: this.serviceEdited,
+          subServices: this.subServicesToBeAdded
+        }
+
+        await DashboardServices.editService(serviceEdit)
+
+        this.$modal.hide('add-service')
+        this.serviceTitle = ''
+        this.serviceDescription = ''
+        this.servicePrice = 0.0
+        this.turnAroundTime = ''
+
+        this.subServicesToBeAdded = []
+        this.tags = []
+        this.serviceBeingEdited = false
+        this.serviceEdited = null
+        this.getServices()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async addSubService () {
       try {
-        console.log(`\nAdding a subservice : \n`) // TESTING
-        this.subServicesToBeAdded = this.subServicesToBeAdded + 1
+        const userExtracted = this.$store.getters.getUserInfo
 
-        console.log(`\nsubservices to be added  : ${this.subServicesToBeAdded}\n`) // TESTING
-        // if (this.addSubService === false) {
-        //   this.addSubService = true
-        // } else {
-        //   this.addSubService = false
-        // }
-        // console.log(`\nthis.addSubService - > ${this.addSubService}\n`) // TESTING
+        this.subServicesToBeAdded.push({
+          userId: userExtracted.id,
+          serviceTitle: '',
+          serviceDescription: '',
+          servicePrice: 0.0,
+          turnAroundTime: '',
+          serviceTags: []
+        })
       } catch (error) {
         if (error) throw error
       }
@@ -59,27 +169,40 @@ export default {
         // get the service table id from the user
         const userExtracted = this.$store.getters.getUserInfo
         const serviceTableId = userExtracted.serviceTableId
-
         const service = {
           userId: userExtracted.id,
           tableId: serviceTableId,
           title: this.serviceTitle,
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
-          turnAroundTime: this.turnAroundTime
+          turnAroundTime: this.turnAroundTime,
+          tags: this.tags
         }
 
-        console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
+        // console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
 
         // TODO : the reponse object doesn't return anything. Fix that in a little bit
         await DashboardServices.pushServiceOntoDb(service)
-        this.$modal.hide('add-service')
+        await this.getServices()
 
-        this.getServices()
+        const serviceId = this.services[this.services.length - 1].id
+
+        if (this.subServicesToBeAdded.length > 0) {
+          await DashboardServices.addSubServices({
+            parentServiceId: serviceId,
+            serviceTableId: serviceTableId,
+            subServices: this.subServicesToBeAdded
+          })
+        }
+
+        await this.getServices()
+        this.$modal.hide('add-service')
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
+        this.tags = []
+        this.subServicesToBeAdded = []
       } catch (error) {
         if (error) {
           console.log(
@@ -102,8 +225,8 @@ export default {
           serviceTableId
         )
         // have an array in which the services of the user are
-        const userServicesArray = response.data.usersServices
-        this.services = userServicesArray
+
+        this.services = response.data.usersServices
       } catch (error) {
         console.log(
           `An error occurred inside of the dashboard.js getServices method : ${error}`
@@ -127,25 +250,9 @@ export default {
       } catch (error) {
         if (error) throw error
       }
-    },
-    async inserDummyData () {
-      // The goal is to replace every variable in this method with
-      // a live fetched variable
-
-      this.companyLocation = 'New York, New York, US'
-
-      // Credits
-
-      console.log(`this.credits ${this.credits}`) // TESTING
-
-      // Leads
-      this.leads = 75015
-      // Page Views
-      this.pageViews = 714
     }
   },
   mounted () {
-    this.inserDummyData() // TESTING
     this.getServices()
     this.getUserInfo()
   }

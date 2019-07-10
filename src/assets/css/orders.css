@@ -234,7 +234,7 @@ a.invoice-link:focus {
   justify-content: center;
   display: inline-block;
   border-radius: 5px;
-  font-size:18px;
+  font-size:13px;
 }
 
 #btn-shippo:hover {
@@ -245,18 +245,18 @@ a.invoice-link:focus {
   justify-content: center;
   display: inline-block;
   border-radius: 5px;
-  font-size:18px;
+  font-size:10px;
 }
 
 #btn-timeline{
   color: white;
   border-color: purple;
   border-width: 2px;
-  background-color: purple;
+  background-color: rgb(157, 83, 252);
   justify-content: center;
   display: inline-block;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 13px;
 }
 
 #btn-timeline:hover{
@@ -267,7 +267,7 @@ a.invoice-link:focus {
   justify-content: center;
   display: inline-block;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 10px;
 }
 
 #btn-confirm-order{

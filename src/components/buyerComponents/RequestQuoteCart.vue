@@ -1,28 +1,49 @@
 <template>
-  <div id="app">
-    <h1>Request Quotes !!</h1>
+<div id="app" style="background-color: white;">
+  <body>
+    <md-card style="background-color: #311c63; color: white; text-align: center; height: 50%;">
+      <span class="md-title">Quote Requests</span>
+    </md-card>
 
-    <ul class="request-quote-cart">
-      <li v-for="item in this.quoteRequestsCart" v-bind:key="item">
-        Item : {{ item.serviceTitle }}
-        <br>
-        Description : {{ item.serviceDescription }}
-        <br>
-        Quanitity : {{ item.quantity }}
-        <br>
-        Inquiry : {{ item.inquiryText }}
-        <br>
-      </li>
-    </ul>
+    <!-- <h1 style="text-align: center;"></h1> -->
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <md-list
+      :md-expand-single="expandSingle"
+      v-for="(item, index) in this.quoteRequestsCart"
+      v-bind:key="index"
+    >
+      <md-list-item md-expand :md-expanded.sync="expandNews">
+        <md-icon>whatshot</md-icon>
+        <span class="md-list-item-text">Request #{{index+1}}</span>
+
+        <md-list slot="md-expand">
+          <md-card>
+            <md-card-content style="font-size: 0.7vw; ">
+              Item : {{ item.serviceTitle }}
+              <br />
+              Description : {{ item.serviceDescription }}
+              <br />
+              Quanitity : {{ item.quantity }}
+              <br />
+              Inquiry : {{ item.inquiryText }}
+              <br />
+            </md-card-content>
+          </md-card>
+        </md-list>
+      </md-list-item>
+    </md-list>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <!--  -->
-    <h1 @click="testingDelete()">Testing only please delete</h1>
-  </div>
+    <md-card style="background-color: white; color: grey;">
+      <md-button @click="testingDelete()">Testing only please delete</md-button>
+    </md-card>
+  </body>
+</div>
 </template>
 
 <script>

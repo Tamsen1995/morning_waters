@@ -25,27 +25,16 @@ export default {
   beforeDestroy () {
     card.destroy(this.$refs.card)
   },
-  mounted () {
+  async created () {
+    await this.getStripeUserInfo()
+  },
+  async mounted () {
     card = elements.create('card')
     card.mount(this.$refs.card)
-    this.getStripeUserInfo()
   },
   methods: {
     async addPaymentMethod () {
       try {
-        // const userExtracted = this.$store.getters.getUserInfo
-        // const userId = userExtracted.id
-        // const stripeCustomerId = userExtracted.stripeCustomerId
-        // const token = await stripe.createToken(card)
-        // // effectuate the purchase
-        // const sourceToBeAdded = {
-        //   uid: userId,
-        //   stripeCustomerId: stripeCustomerId,
-        //   stripeToken: token
-        // }
-        // await SettingsService.addPaymentMethod(sourceToBeAdded)
-        // this.getStripeUserInfo()
-        // card.clear(this.$refs.card)
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const buyerId = buyerExtracted.id
         const stripeCustomerId = buyerExtracted.stripeCustomerId

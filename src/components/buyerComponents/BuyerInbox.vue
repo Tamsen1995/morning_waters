@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <buyer-header/>
+  <buyer-header />
   <body class="inbox" id="inbox">
     <div
       class="responsive-component"
@@ -8,15 +8,15 @@
         small: el => el.width < 430
         }"
     >
-      <div class="container">
+      <div class="container-fluid">
         <div class="row" id="header">
           <div class="col-md-4">
             <h2>Inbox</h2>
           </div>
         </div>
-        <div class="row message-wrapper rounded shadow mb-20">
+        <div class="row message-wrapper rounded shadow mb-20" style="height: auto;">
           <div class="col-md-4 message-sideleft">
-            <div class="panel">
+            <md-card style="min-height: 50em;;">
               <div class="panel-heading">
                 <div class="pull-left">
                   <div class="btn-group">
@@ -62,7 +62,7 @@
                 class="panel-body no-padding"
                 v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
               >
-                <div class="list-group no-margin list-message">
+                <md-card class="list-group no-margin list-message">
                   <a
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
@@ -71,16 +71,16 @@
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
-                      <br>
-                      <br>
+                      <br />
+                      <br />
                       <small>Date created : {{ order.createdAt }}</small>
-                      <br>
+                      <br />
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}</p>
                     <span class="label label-success pull-right">Order</span>
                     <div class="clearfix"></div>
                   </a>
-                </div>
+                </md-card>
               </div>
               <!-- The panels for the orders -->
 
@@ -98,10 +98,10 @@
                   >
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
-                      <br>
-                      <br>
+                      <br />
+                      <br />
                       <small>Date created : {{ order.createdAt }}</small>
-                      <br>
+                      <br />
                     </h4>
                     <p class="list-group-item-text">Order# {{ order.orderId }}</p>
                     <span class="label label-success pull-right">Pending Order</span>
@@ -109,50 +109,11 @@
                   </a>
                 </div>
               </div>
-              <!-- The panels for the pending orders -->
-
-              <!-- The panels for the quote requests -->
-              <!-- <div
-                class="panel-body no-padding"
-                v-if="this.dropdownVariable === 'Quote Requests' || this.dropdownVariable === 'All messages'"
-              >
-                <div class="list-group no-margin list-message">
-                  <a
-                    class="list-group-item"
-                    v-for=" (request, index) in this.buyerQuoteRequests"
-                    v-bind:key="index"
-                    @click="showQuoteRequest(request)"
-                  >
-                    <h4 class="list-group-item-heading">
-                      Subject : {{ request.subject }}
-                      <br>
-                      <br>
-                      <small>Date created : {{ request.createdAt }}</small>
-                    </h4>
-
-                    <p class="list-group-item-text"></p>
-                    <span class="label label-success pull-right">Quote Request</span>
-                    <div class="clearfix"></div>
-                  </a>
-                </div>
-              </div>-->
-            </div>
+            </md-card>
             <!-- The panels for the quote requests -->
           </div>
-          <div class="col-md-8 message-sideright">
-            <div class="panel">
-              <!-- <div class="panel-heading">
-                <div class="media">
-                  <div class="media-body">
-                    <h4 class="media-heading">
-                      Rebecca Cabean
-                      <small>(Sales Manager)</small>
-                    </h4>
-                    <small>Thursday 5th July 2014-via Intercom</small>
-                  </div>
-                </div>
-              </div>-->
-              <!-- /.panel-heading -->
+          <div class="col-md-5 message-sideright">
+            <md-card style="min-height: 50em;">
               <div
                 class="panel-body"
                 v-for="(msg, index) in correspondanceMessages"
@@ -160,21 +121,30 @@
               >
                 <h4 class="media-heading">{{msg.sender}} :</h4>
                 <p class="lead">{{msg.message}}</p>
-                <hr>
+                <hr />
               </div>
               <!-- /.panel-body -->
-              <hr>
+              <hr />
               <!-- /.panel-heading -->
               <div class="panel-body">
-                <textarea
-                  v-model="message"
-                  v-on:keyup.enter="submitMessage()"
-                  placeholder="add multiple lines"
-                ></textarea>
-                <button v-on:click="submitMessage()">Submit</button>
+                <md-field>
+                  <md-textarea
+                    v-model="message"
+                    v-on:keyup.enter="submitMessage()"
+                    placeholder="message.."
+                    style="border: 1px solid black;"
+                  ></md-textarea>
+                </md-field>
+
+                <!-- <button v-on:click="submitMessage()">Submit</button> -->
+                <md-button class="md-raised md-primary" v-on:click="submitMessage()">Submit Message</md-button>
               </div>
               <!-- /.panel-body -->
-
+            </md-card>
+          </div>
+          <br />
+          <div class="col-md-3 message-sideright">
+            <md-card style="min-height: 50em;">
               <div class="panel-body">
                 <button
                   v-if="this.order && this.order.seller_confirmed === true"
@@ -189,7 +159,7 @@
                   >{{ item.servicePrice * orderItems[index].amount }} $</p>
                 </div>
               </div>
-            </div>
+            </md-card>
           </div>
           <!-- /.message-sideright -->
         </div>

@@ -7,69 +7,67 @@
     <div id="pending_orders_content">
       <h1>Pending Orders</h1>
 
-      <br>
+      <br />
 
-      <div
-        id="pending-order"
-        v-for="(pendingOrder, index) in this.pendingOrders"
-        v-bind:key="index"
-      >
-        <div class="row">
-          <div class="col-8">
-            <!-- Post confirmation ORDER STATUS -->
+      <!--  -->
 
-            <!-- If Order Confirmed -->
-            <h3>Order Status:</h3>
-            <h2>Seller purchased shipping label</h2>
-            <br>
+      <!--  -->
 
-            <!-- IF Order UNCONFIRMED -->
-            <!-- <h2 class="status-unconfirmed" style="color:red;">Order Unconfirmed</h2>  -->
+      <!-- Post confirmation ORDER STATUS -->
 
-            <!-- View Order Details, Add expandable Div -->
-            <div id="order_details">
-              <h3>Order ID : {{pendingOrder.orderId}}</h3>
-              <ol id="item_list">
-                <h3>
-                  <li>
-                    <!-- {{orderItem.title}}
-                    <br>
-                    {{orderItem.description}} 
-                    <br>
-                    {{orderItem.quantity}}-->
-                  </li>
-                </h3>
-              </ol>
-              <!-- <a><h3 style="color:purple;"> View Timeline</h3></a>  -->
+      <!--  -->
+
+      <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index">
+        <md-card style="background-color: white;">
+          <md-card-header>
+            <div class="md-title">Order ID : [ {{pendingOrder.orderId}} ]</div>
+          </md-card-header>
+
+          <md-card-content>
+            Order Status: PAID
+            <br />Order Confirmed: [DATE]
+            <br />
+            <br />
+            <br />
+
+            <div class="card" style="min-width: 30%;">
+              <!-- <img src="..." class="card-img-top" alt="..."> -->
+              <div class="card-body">
+                <h4 class="card-title">Order items:</h4>
+
+                <div
+                  v-for="(item, index) in pendingOrder.orderItems"
+                  v-bind:key="index"
+                >{{item.title}} - price : {{item.servicePrice}} $</div>
+              </div>
             </div>
-          </div>
-          <div class="col-4">
-            <!-- IF order CONFIRMED -->
-            <h3 class="pull-right" style="color:green;">Order Confirmed [Date]</h3>
+          </md-card-content>
 
-            <!-- IF Order UNCONFIRMED -->
-            <!--Confirm order links to inbox message-->
-            <!-- <h3 class="pull-right" style="color:red;">Order Submitted [Date] </h3> -->
-          </div>
-        </div>
-        <br>
-
-        <!-- IF UNCONFIRMED -->
-        <!-- <button class="btn-danger" id="btn-confirm-order">Confirm Order</button> -->
-
-        <!-- IF CONFIRMED -->
-        <button
-          class="btn-timeline"
-          id="btn-timeline"
-          type="submit"
-          @click="goToOrderStatus(index)"
-        >View Timeline</button>
-
-        <!-- Handle shipping -->
-        <button id="btn-shippo" type="submit">Shipping</button>
-
-        <a class="invoice-link pull-right" @click="downloadInvoice(pendingOrder)">Download Invoice</a>
+          <md-card-actions>
+            <md-button style="background-color: yellowgreen;">Shipping</md-button>
+            <md-button @click="goToOrderStatus(index)">Timeline</md-button>
+            <md-button
+              type="submit"
+              style="background-color: rgb(205, 188, 227);"
+              @click="downloadInvoice(pendingOrder)"
+            >Download Invoice</md-button>
+          </md-card-actions>
+        </md-card>
+        <br />
       </div>
+      <!--  -->
+
+      <!-- If Order Confirmed -->
+
+      <!-- IF Order UNCONFIRMED -->
+      <!-- <h2 class="status-unconfirmed" style="color:red;">Order Unconfirmed</h2>  -->
+
+      <!-- View Order Details, Add expandable Div -->
+
+      <!-- IF UNCONFIRMED -->
+      <!-- <button class="btn-danger" id="btn-confirm-order">Confirm Order</button> -->
+
+      <!-- IF CONFIRMED -->
     </div>
   </body>
 </div>
@@ -81,6 +79,21 @@
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 @import "../../assets/css/timeline.css";
+@import "../../assets/css/dashboard.css";
 @import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 @import "../../assets/css/orders.css";
+.page-container {
+  min-height: 270px;
+  border: 1px solid black;
+  background: #ffffff 0%;
+}
+
+.md-drawer {
+  border-right: 1px solid black;
+  background: #ffffff 0%;
+  max-width: 30%;
+}
 </style>
+
+
+

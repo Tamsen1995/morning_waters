@@ -20,6 +20,8 @@ export default {
       servicesNegotiated: null,
       amtForServicesNegotiated: [],
       order: null,
+      buyer: null,
+      seller: null,
       totalPrice: 0.0,
       quoteRequest: null,
       complete: true,
@@ -30,6 +32,7 @@ export default {
 
       // the variable which is shown on the dropdown menu
       dropdownVariable: 'All messages'
+
     }
   },
   components: {
@@ -90,7 +93,10 @@ export default {
 
     async showOrder (order) {
       try {
+        this.servicesNegotiated = []
         this.order = order
+        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
+        this.seller = this.$store.getters.getUserInfo
         this.quoteRequest = null
         const orderId = order.orderId
         this.orderItems = null

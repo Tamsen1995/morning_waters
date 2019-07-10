@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <dashboard-header/>
+  <dashboard-header />
   <body class="inbox" id="inbox">
     <div
       class="responsive-component"
@@ -8,16 +8,17 @@
         small: el => el.width < 430
         }"
     >
-      <div class="container">
+      <div class="container-fluid">
         <div class="row" id="header">
-          <div class="col-md-4">
+          <div class="col-lg-4">
             <h2>Inbox</h2>
           </div>
         </div>
         <div class="row message-wrapper rounded shadow mb-20">
-          <div class="col-md-4 message-sideleft">
-            <div class="panel">
+          <div class="col-lg-3 message-sideleft">
+            <md-card>
               <div class="panel-heading">
+                <!-- Filter Orders/Quote Requests -->
                 <div class="pull-left">
                   <div class="btn-group">
                     <button type="button" class="btn btn-success">{{ dropdownVariable }}</button>
@@ -28,6 +29,7 @@
                     >
                       <span class="sr-only">Toggle Dropdown</span>
                     </button>
+
                     <ul class="dropdown-menu pull-right" role="menu">
                       <li>
                         <a @click="switchMessagesDisplayed('all')">
@@ -58,130 +60,179 @@
               </div>
 
               <!-- The panels for the orders -->
-              <div
-                class="panel-body no-padding"
-                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
-              >
+              <div class="panel-body no-padding">
                 <div class="list-group no-margin list-message">
-                  <a
+                  <md-card
                     class="list-group-item"
                     v-for="(order, index) in this.orders"
                     v-bind:key="index"
-                    @click="showOrder(order), retrieveOrderOrderItems(order)"
                   >
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br>
-                      <br>
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br>
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">Request</span>
-                    <div class="clearfix"></div>
-                  </a>
+                    <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                      <h4 class="list-group-item-heading">
+                        <md-avatar class="md-avatar-icon md-primary">
+                          <md-icon>folder</md-icon>
+                        </md-avatar>
+                        Buyer ID : {{ order.buyerId }}
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <span class="label label-success pull-right">Request</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-card>
                 </div>
               </div>
               <!-- The panels for the orders -->
               <!-- The panels for the pending orders -->
-              <div
-                class="panel-body no-padding"
-                v-if="this.dropdownVariable === 'Orders' || this.dropdownVariable === 'All messages'"
-              >
+              <div class="panel-body no-padding">
                 <div class="list-group no-margin list-message">
-                  <a
+                  <md-card
                     class="list-group-item"
                     v-for="(order, index) in this.pendingOrders"
                     v-bind:key="index"
-                    @click="showOrder(order)"
                   >
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br>
-                      <br>
-                      <!-- Charged: {{order.totalPrice}} $ -->
-                      <br>
-                      <br>
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br>
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <span class="label label-success pull-right">Pending Order</span>
-                    <div class="clearfix"></div>
-                  </a>
+                    <div @click="showOrder(order)">
+                      <h4 class="list-group-item-heading">
+                        Buyer ID : {{ order.buyerId }}
+                        <br />
+                        <br />
+                        <!-- Charged: {{order.totalPrice}} $ -->
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
+
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <span class="label label-success pull-right">Pending Order</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-card>
                 </div>
               </div>
-            </div>
+            </md-card>
             <!-- The panels for the quote requests -->
           </div>
-          <div class="col-md-8 message-sideright">
-            <div class="panel">
-              <!-- <div class="panel-heading">
-                <div class="media">
-                  <div class="media-body">
-                    <h4 class="media-heading">
-                      Rebecca Cabean
-                      <small>(Sales Manager)</small>
-                    </h4>
-                    <small>Thursday 5th July 2014-via Intercom</small>
-                  </div>
-                </div>
-              </div>-->
-              <!-- /.panel-heading -->
-              <div
-                class="panel-body"
-                v-for="(msg, index) in correspondanceMessages"
-                v-bind:key="index"
+          <div
+            class="col-md-6 message-sideright"
+            style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
+          >
+            <!-- <v
+ 
               >
-                <h4 class="media-heading">{{msg.sender}} :</h4>
-                <p class="lead">{{msg.message}}</p>
-                <hr>
-              </div>
-              <!-- /.panel-body -->
-              <hr>
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <textarea
-                  v-model="message"
-                  v-on:keyup.enter="submitMessage()"
-                  placeholder="add multiple lines"
-                ></textarea>
-                <button v-on:click="submitMessage()">Submit</button>
-              </div>
-              <!-- /.panel-body -->
+  
+            </div>-->
 
-              <!-- if this variable is undefined we are dealing with a not yet confirmed order -->
+            <div
+              class="panel-body"
+              v-for="(msg, index) in correspondanceMessages"
+              v-bind:key="index"
+            >
+              <!-- if -->
+              <md-card
+                v-if="msg && msg.sender && msg.sender === 'buyer'"
+                style="width: 75%; background-color: #f4f4f4;"
+                class="pull-left"
+              >
+                <md-content>
+                  <h4 class="media-heading pull-right">Date</h4>
+                  <md-icon>account_circle</md-icon>
+                  {{buyer.name}}
+                  <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+                  <div class="view_msg">
+                    <p class="lead">{{msg.message}}</p>
+                  </div>
+                </md-content>
+              </md-card>
+              <!--  -->
+              <!-- else -->
+              <md-card
+                v-else
+                style="width: 75%; background-color: #dcffde; color: black"
+                class="pull-right"
+              >
+                <md-content>
+                  <h4 class="media-heading pull-right">Date</h4>
+                  <md-icon>account_circle</md-icon>
+                  {{seller.companyName}}
+                  <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+                  <div class="view_msg">
+                    <p class="lead">{{msg.message}}</p>
+                  </div>
+                </md-content>
+              </md-card>
+              <!--  -->
+            </div>
+
+            <hr />
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+              <div class="reply_msg">
+                <md-field>
+                  <md-field>
+                    <!-- <label>Enter your message here</label> -->
+                    <md-textarea
+                      v-model="message"
+                      md-autogrow
+                      md-counter="200"
+                      v-on:keyup.enter="submitMessage()"
+                      placeholder="Enter your message here ..."
+                      style="background-color: #FFFFFF;"
+                    ></md-textarea>
+                  </md-field>
+                </md-field>
+                <md-button
+                  class="md-raised md-primary pull-right"
+                  style="background-color: #2fb52b; color: white;"
+                  v-on:click="submitMessage()"
+                >Submit Message</md-button>
+              </div>
+            </div>
+            <!-- /.panel-body -->
+          </div>
+          <br />
+          <div class="col-md-3 message-sideright">
+            <md-card>
+              <!-- Negotation Interface -->
               <div
                 class="panel-body"
                 v-if="this.order !== undefined && this.order.totalPrice === undefined"
               >
-                Negotiaion Interface [TESTING]:
-                <button
-                  @click="submitOrder()"
-                  v-if="this.order && this.order.seller_confirmed === false"
-                >Submit Order</button>
-
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-                  <br>
+                  <br />
 
                   <div>
-                    <input
-                      v-model="amtForServicesNegotiated[index]"
-                      @change="updateOrderItems(index)"
-                      placeholder="amount"
-                      style="width:8%;"
-                    >
-                    X
-                    {{ item.title }}
-                    <p
-                      style="color:red;font-size:15px;"
-                    >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
+                    <md-field>
+                      <input
+                        style="background-color: white; width: 10%;"
+                        v-model="amtForServicesNegotiated[index]"
+                        @change="updateOrderItems(index)"
+                        placeholder="amount"
+                        type="text"
+                      />
+                      X
+                      {{ item.title }}
+                      <p
+                        style="color:red;font-size:15px;"
+                      >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
+                    </md-field>
                   </div>
                 </div>
-                <hr>
+                <hr />
                 Total price: {{ this.totalPrice }} $
+                <br />
+                <br />
+                <!-- Negotiation Interface -->
+                <md-button
+                  @click="submitOrder()"
+                  v-if="this.order && this.order.seller_confirmed === false"
+                  style="background-color: #12005e; color: white;"
+                >Submit Order</md-button>
               </div>
-            </div>
+            </md-card>
           </div>
           <!-- /.message-sideright -->
         </div>
@@ -195,7 +246,6 @@
 </script>
 
 <style scoped>
-/* @import "../assets/css/figanal.css"; */
 @import "../assets/css/inbox.css";
 /* @import url("https://fonts.googleapis.com/css?family=Lato|Roboto"); */
 </style>

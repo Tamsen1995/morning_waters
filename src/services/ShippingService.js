@@ -20,6 +20,13 @@ export default {
     // Testing if I can just append the shippo flow like so
   },
 
+  retrieveOrderFromShippo (orderId) {
+    return Api().get('seller/shipping/orders/retrieve', {
+      params: {
+        orderId: orderId
+      }
+    })
+  },
   appendShippingToOrder (shippingStatus) {
     return Api().put('appendShippingToOrder', shippingStatus)
   },

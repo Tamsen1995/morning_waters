@@ -5,10 +5,22 @@ body.dashboard {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 100px 80px;
+  padding: 15px 80px;
   /* background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%); */
   background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
 }
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: height 1s ease-in-out;
+  overflow: hidden;
+}
+
+.expand-enter,
+.expand-leave-to {
+  height: 0;
+}
+
 
 #dashboard #name-location {
   max-width: 1314px;
@@ -22,6 +34,10 @@ body.dashboard {
   border-radius: 5px;
 }
 
+#dashboard #service-card {
+  border-bottom: 2px solid #4527a0;
+  /* color: #5c5d60; */
+}
 
 #dashboard #stats {
   background-color: white;
@@ -32,7 +48,7 @@ body.dashboard {
 
 #stats .card {
   border-color: yellowgreen;
-  border-width: 1px; 
+  border-width: 3px; 
   border-style: solid;
   border-radius: 5px;
   margin-left:5px;
@@ -56,30 +72,30 @@ body.dashboard {
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 0px;
-  background-color: #311c63 ;
-  color:white;
+  background-color: white ;
+  color:black;
   box-shadow: 1px 1px 2px 1px  #9f9aac;
   border-radius: 5px;
 }
 
-.dashboard .service-block{
-  background-color: white;
+/* .dashboard .service-block{
+  background-color: #4a148c;
   margin-top:10px;
   border-radius: 5px;
-}
+} */
 
 .dashboard .service-block-sub{
   padding-left:30px;
   border-radius: 5px;
 }
 
-.dashboard .service-block #service-title{
+/* .dashboard .service-block #service-title{
   background-color: #d6d1e4;
   box-shadow:  0px 2px 2px 1px  #c2bece;
   padding-left: 10px;
   padding-top:0px;
   border-radius: 5px;
-}
+} */
 
 .dashboard .service-block #service-desc{
   background-color: white;
@@ -87,7 +103,7 @@ body.dashboard {
 }
 
 .dashboard .service-block-sub #service-title{
-  background-color: lightgrey;
+  background-color: #4a148c;
   padding-left: 10px;
   margin-right: 10px;
   padding-top:0px;
@@ -139,6 +155,16 @@ body.dashboard {
   text-align: left;
 }
 
+#dashboard .md-title {
+  font-size: 25px;
+  color: #4527a0;
+}
+
+#dashboard #service_logo {
+  color: #4527a0;
+  font-size: 25px;
+}
+
 .dashboard #dashboard h1 {
   letter-spacing: 1px;
   /* text-transform: uppercase; */
@@ -160,7 +186,7 @@ body.dashboard {
 .dashboard .services h4 {
   letter-spacing: 1px;
   font: 20px "Roboto";
-  color: white;
+  color: #311c63;
 }
 
 .dashboard .service-block h4 {
@@ -376,7 +402,7 @@ padding: 15px 45px;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 80px 0px;
+  padding: 15px 0px;
   /* background-image: url("./BACKGROUND.png"); */
   background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%);
 } 

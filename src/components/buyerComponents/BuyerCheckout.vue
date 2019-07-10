@@ -12,61 +12,68 @@
           margin-right: auto;"
       >
         <h5 style="text-align:center;">Request Checkout</h5>
-        <br>
-        <div class="grid-container">
-          <div class="grid-item">
-            <div v-if="this.customerDefaultSource !== null" class="default-source">
-              <div class="change-preference">
-                <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link>
+        <br />
+
+        <md-card md-with-hover style="background-color: white;">
+          <div>
+            <md-card-content>
+              <div v-if="this.customerDefaultSource !== null" class="default-source">
+                <div class="change-preference">
+                  <router-link
+                    class="nav-link"
+                    to="/dashboard/changeDefaultSource"
+                  >Change Preference</router-link>
+                </div>
+                <br />
+                <div class="default-payment-card">
+                  Default Payment Method:
+                  <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
+                  <pre> expires : {{ this.customerDefaultSource.exp_month }} / {{ this.customerDefaultSource.exp_year }}</pre>
+                </div>
               </div>
-              <br>
-              <div class="default-payment-card">
-                Default Payment Method:
-                <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
-                <pre> expires : {{ this.customerDefaultSource.exp_month }} / {{ this.customerDefaultSource.exp_year }}</pre>
-              </div>
+
+              <div v-else>No default payment method</div>
+
+              <br />
+              <br />
+              <br />
+              <!-- make input for card -->
+            </md-card-content>
+            <div id="stripeCard">
+              <div ref="card" style="border-bottom: 1px inset black"></div>
             </div>
-
-            <div v-else>No default payment method</div>
-
-            <br>
-            <br>
-            <br>
-            <!-- make input for card -->
+            <br />
+            <br />
           </div>
-        </div>
-
-        <div id="stripeCard">
-          <div ref="card"></div>
-        </div>
-        <br>
-        <br>
+        </md-card>
+        <br />
+        <br />
         <h2
           style="text-align:center;color:purple;"
         >You will not be charged until the seller confirms your order.</h2>
 
         <h3>
-          <input
+          <md-button
+            class="checkout-btn md-raised md-accent"
+            style="background-color: white; color: #311c63;"
             v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
             type="submit"
-            value="Send Order"
-            class="checkout-btn"
             @click="sendOrderAndOrInquiries()"
-          >
+          >Send Order</md-button>
         </h3>
-        <br>
+        <br />
 
-        <input
-          v-if="this.quoteRequestsCart.length > 0 && this.shoppingCart.length === 0"
-          type="submit"
-          value="Send Inquires"
-          class="checkout-btn"
+        <md-button
+          class="checkout-btn md-raised md-accent"
+          style="background-color: white; color: #311c63;"
+          v-if="this.shoppingCart.length === 0 && this.quoteRequestsCart.length > 0"
           @click="sendQuoteRequests()"
-        >
+        >Send Inquires</md-button>
+
         <div class="container" id="purchase_content">
           <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
 
-          <br>
+          <br />
           <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
         </div>
 
@@ -79,8 +86,8 @@
           <h3>Complete Purchase</h3>
         </button>
 
-        <br>
-        <br>
+        <br />
+        <br />
       </div>
     </body>
   </div>
@@ -97,8 +104,8 @@
 #stripeCard {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 100px;
-  width: 30%;
+  margin-top: auto;
+  width: 50%;
 }
 .change-preference {
   position: absolute;

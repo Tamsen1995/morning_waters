@@ -1,43 +1,36 @@
 <template>
 <div id="app">
   <body>
-    <div class="grid-container">
-      <div class="grid-item">
-        <div v-if="this.customerDefaultSource !== null" class="default-source">
-          <div class="change-preference">
-            <router-link class="nav-link" to="/dashboard/changeDefaultSource">Change Preference</router-link>
-          </div>
-          <br>
+    <md-card md-with-hover>
+      <md-ripple>
+        <md-card-header>
+          <div class="md-title">Billing</div>
+          <div class="md-subhead"></div>
+        </md-card-header>
+
+        <md-card-content>
           <div v-if="this.customerDefaultSource !== null" class="default-payment-card">
             Default Payment Method:
             <pre>{{ this.customerDefaultSource.brand }} ending in	{{ this.customerDefaultSource.last4 }} </pre>
             <pre> expires : {{ this.customerDefaultSource.exp_month }} / {{ this.customerDefaultSource.exp_year }}</pre>
           </div>
-        </div>
+          <br />
+          <br />
+          <div id="stripeCard">
+            <div ref="card"></div>
+          </div>
+        </md-card-content>
 
-          <div v-else>No default payment method</div>
-
-        <br>
-        <br>
-        <!-- make input for card -->
-        <div id="stripeCard">
-          <div ref="card"></div>
-        </div>
-        <!-- <input type="submit" value="Purchase" class="checkout-btn" @click="submitPaymentMethod"> -->
-
-        <br>
-        <br>
-        <button type="button" class="add-payment-button" @click="addPaymentMethod">
-          <span class="glyphicon glyphicon-plus-sign">
-            <strong>Add Card</strong>
-          </span>
-        </button>
-      </div>
-    </div>
+        <md-card-actions>
+          <md-button @click="addPaymentMethod">Add Card</md-button>
+          <md-button>Change Preference</md-button>
+        </md-card-actions>
+      </md-ripple>
+    </md-card>
   </body>
 
-  <br>
-  <br>
+  <br />
+  <br />
 
   <div
     id="subscriptions-billing-tab"
@@ -45,17 +38,17 @@
     v-bind:key="subscription"
   >
     Date of purchase : {{ new Date(subscription.created * 1000) }}
-    <br>
-    <br>
+    <br />
+    <br />
     Last billing date : {{ new Date(subscription.current_period_start * 1000) }}
-    <br>
-    <br>
+    <br />
+    <br />
     Next billing date : {{ new Date(subscription.current_period_end * 1000) }}
-    <br>
-    <br>
+    <br />
+    <br />
     Subscription plan : {{ subscription.items.data[0].plan.nickname }}
-    <br>
-    <br>
+    <br />
+    <br />
   </div>
 </div>
 </template>

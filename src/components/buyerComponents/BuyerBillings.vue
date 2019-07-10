@@ -2,42 +2,16 @@
 <div id="app">
   <buyer-header></buyer-header>
   <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>Billing</h1>
-    <br>
+    <br />
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
     <billing-tab></billing-tab>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br />
+
+    <br />
+    <br />
+    <br />
   </body>
 </div>
 </template>

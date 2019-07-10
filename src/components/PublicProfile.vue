@@ -6,110 +6,149 @@
       }">
     <body class="dashboard">
       <div class="container" id="dashboard">
-        <div id="main">
-          <div class="container" id="name-location">
-            <div class="d-flex justify-content-center" id="company-name">
-              <h1 style="text-align:center:">{{ this.companyName }}</h1>
-            </div>
-            <div class="d-flex justify-content-center" id="company-location">
-              <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
-            </div>
-            <div class="d-flex justify-content-center" id="company-logo">
-              <div id="logo-border">
-                <div class="circle" id="logo"></div>
-              </div>
-            </div>
+        <!-- <div id="main"> -->
+        <div class="container" id="name-location">
+          <div class="d-flex justify-content-center" id="company-name">
+            <h1 style="text-align:center:">{{ this.companyName }}</h1>
           </div>
-
-          <!-- About Section -->
-          <div class="container" id="about">
-            <div class="row">
-              <h4>About:</h4>
-              <p style="text-align:left">{{ this.about }}</p>
+          <div class="d-flex justify-content-center" id="company-location">
+            <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
+          </div>
+          <div class="d-flex justify-content-center" id="company-logo">
+            <div id="logo-border">
+              <div class="circle" id="logo"></div>
             </div>
           </div>
         </div>
 
-        <br>
-        <br>
-        <br>
+        <!-- About Section -->
+        <div class="container" id="about">
+          <div class="col-md-12">
+            <h4>About:</h4>
+            <transition-expand>
+              <md-card>
+                <div v-if="expanded">{{this.about}}</div>
+              </md-card>
+            </transition-expand>
+            <md-button
+              class="md-dense md-raised md-primary"
+              @click="expanded = !expanded"
+            >{{ expanded ? `Shrink` : `Expand` }}</md-button>
+          </div>
+        </div>
+        <!-- </div> -->
 
-        <div class="services">
-          <br>
-          <div id="services">
-            <button
-              @click="manifestModalInquiry(service)"
-              class="btn-gen-inq btn btn-primary pull-right"
-            >General inquiry</button>
-            <h4>Services:</h4>
+        <br />
+        <br />
+        <br />
+
+        <div class="container services" id="services">
+          <br />
+          <md-button
+            @click="manifestModalInquiry(service)"
+            class="md-raised md-primary pull-right submit-buttons-md"
+          >General inquiry</md-button>
+          <h4 style="color: #212529;">Services:</h4>
+          <br />
+          <br />
+          <div class="col-md-9">
+            <!-- This is where I list the services -->
+            <!-- <div >
+              
+            </div>-->
+
+            <div v-for="(service, index) in this.services" :key="service.id">
+              <md-card class="md-card-example" style="background-color: white; color: #311c63">
+                <md-card-content>
+                  <!-- <div class="card" v-if="(service.isSubService === false)"></div> -->
+
+                  <div v-if="(service.isSubService === false)">
+                    <h4
+                      class="card-header"
+                      style="text-align:left; text-indent:15px; color: black"
+                    >Title: {{ service.title }}</h4>
+
+                    <div class="card-body">
+                      <!-- Service Description -->
+                      <md-button
+                        @click="manifestModalForm(service)"
+                        class="md-raised md-primary pull-right"
+                        style="background-color: #2238ff; color: white;"
+                      >Request Quote</md-button>
+
+                      <h5
+                        class="card-text"
+                        style="text-align:left; padding:15px;"
+                      >Description: {{ service.description }}</h5>
+
+                      <!-- This is where I'll list the subservices -->
+
+                      <md-card
+                        style="width: 80%; margin-left: auto; margin-right: auto; background-color: #d6d1e4"
+                        v-for="(subService, index) in services"
+                        :key="index"
+                      >
+                        <div
+                          class="container"
+                          v-if="(subService.parentServiceId === service.id) && (subService.isSubService === true)"
+                        >
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">Service Subtitle</th>
+                                <th scope="col">Turn Around Time</th>
+                                <th scope="col">Price/ Unit</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">{{ subService.title }}</th>
+                                <td>{{ subService.turnAroundTime }}</td>
+                                <td>{{ subService.description }}</td>
+                                <td>
+                                  <md-button
+                                    style="background-color: #28a745; color: white;"
+                                    @click="addServiceToCart(subService, index)"
+                                  >Add to Cart</md-button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </md-card>
+                      <!--  -->
+
+                      <!-- Service/Price Listings -->
+
+                      <md-button
+                        style="background-color: #28a745; color: white;"
+                        v-if="subServicesPresent(service) === false"
+                        @click="addServiceToCart(service, index)"
+                      >Add to Cart</md-button>
+                    </div>
+                  </div>
+                </md-card-content>
+              </md-card>
+            </div>
+
+            <!-- This is where I list the services -->
           </div>
 
-          <div class="col-12">
-            <div class="card" v-for="(service, index) in this.services" :key="service.id">
-              <h4 class="card-header" style="text-align:left; text-indent:15px;">{{ service.title }}</h4>
-              <div class="card-body">
-                <!-- Service Description -->
-                <button
-                  @click="manifestModalForm(service)"
-                  class="btn-quote-req btn btn-primary pull-right"
-                >Request Quote</button>
-                <h5
-                  class="card-text"
-                  style="text-align:left; padding:15px;"
-                >{{ service.description }}</h5>
-
-                <!-- Service/Price Listings -->
-                <button
-                  class="btn btn-success"
-                  @click="addServiceToCart(service, index)"
-                >Add to Cart</button>
-
-                <div class="container" id="price-chart">
-                  <!-- <p>
-                    <table class="table table-hover" >
-                      <thead>
-                          <tr>
-                              <th scope="col">Service Subtitle</th>
-                              <th scope="col">Turn Around Time</th>
-                              <th scope="col">Price/ Unit</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <th scope="row">Service1</th>
-                              <td>TT1</td>
-                              <td>P1</td>
-                              <td><button class="btn btn-success" @click="addServiceToCart(service, index)">Add to Cart</button></td>
-                          </tr>
-                          <tr>
-                              <th scope="row">Service2</th>
-                              <td>TT2</td>
-                              <td>P2</td>
-                              <td><button class="btn btn-success" @click="addServiceToCart(service, index)">Add to Cart</button></td>
-                          </tr>
-
-                      </tbody>
-
-                    </table>
-                  </p>-->
-                </div>
-              </div>
-            </div>
+          <!-- quote request cart -->
+          <div class="col-md-3">
+            <md-card>
+              <request-quote-cart></request-quote-cart>
+            </md-card>
           </div>
         </div>
       </div>
 
-      <!-- quote request cart -->
-      <div id="request-quote-cart">
-        <request-quote-cart></request-quote-cart>
-      </div>
-
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </body>
 
     <!-- General Inquiry -->
@@ -154,10 +193,10 @@
               </ul>
 
               <label>Amount? (optional)</label>
-              <input v-model="pickedQuantityQuoteRequest" type="number" style="width: 40px">
+              <input v-model="pickedQuantityQuoteRequest" type="number" style="width: 40px" />
 
-              <br>
-              <br>Send message to Seller
+              <br />
+              <br />Send message to Seller
               <textarea
                 v-model="inquiryText"
                 class="form-control animated"
@@ -166,19 +205,21 @@
               ></textarea>
             </div>
           </div>
-          <br>
+          <br />
         </div>
 
-        <button
-          class="btn btn-info"
+        <md-button
+          class="md-raised md-primary submit-buttons-md"
           style="margin-top:10px"
           type="button"
           @click="submitQuoteRequest()"
-        >Submit</button>
+        >Submit</md-button>
       </div>
     </modal>
   </div>
 </div>
+
+<!-- Potentially deprecated -->
 </template>
 
 
@@ -188,6 +229,10 @@
 <style scoped>
 @import "../assets/css/dashboard.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+.submit-buttons-md {
+  background-color: #2238ff;
+  color: white;
+}
 div.card {
   margin-left: auto;
   margin-right: auto;
@@ -201,3 +246,5 @@ div.card {
   border: 1px solid green;
 }
 </style>
+
+

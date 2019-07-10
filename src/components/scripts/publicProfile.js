@@ -6,6 +6,7 @@ import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
 import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'
 import AddItemToShoppingCartModal from '@/components/buyerComponents/modals/AddItemToShoppingCartModal'
 import { ResponsiveDirective } from 'vue-responsive-components'
+import TransitionExpand from '@/components/TransitionExpand'
 
 export default {
   data () {
@@ -14,32 +15,65 @@ export default {
       companyName: '',
       about: '',
       location: '',
-      services: [],
+      services: null,
+      subServices: null,
       serviceTableIdChosen: 0,
       serviceIdChosen: 0,
       pickedQuantityService: [],
       // modal form data
       inquiryText: '',
       pickedQuantityQuoteRequest: 1,
-      itemChosen: null
+      itemChosen: null,
+      expanded: false
     }
   },
   components: {
     BuyerHeader,
     ShoppingCart,
     RequestQuoteCart,
-    AddItemToShoppingCartModal
+    AddItemToShoppingCartModal,
+    TransitionExpand
   },
   directives: {
     responsive: ResponsiveDirective
   },
-  created () {
+  async created () {
     this.userId = this.$route.params.id
-    this.getUserData()
+    await this.getUserData()
   },
-  mounted () {
+  async mounted () {
+
   },
   methods: {
+
+    subServicesPresent (service) {
+      const serviceId = service.id
+      for (var i = 0; i < this.services.length; i++) {
+        if (this.services[i].parentServiceId === serviceId) {
+          return true
+        }
+      }
+      return false
+    },
+
+    async getUserData () {
+      try {
+        const userInfo = (await UserServices.getPublicProfileInfo(this.userId))
+          .data
+        const serviceTableId = userInfo.user.serviceTableId
+
+        const response = await DashboardServices.queryForUsersServices(
+          serviceTableId
+        )
+        const userServicesArray = response.data.usersServices
+        this.services = userServicesArray
+        this.companyName = userInfo.user.companyName
+        this.about = userInfo.user.about
+        this.$store.dispatch('setUser', userInfo)
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async redirectToCheckoutOrLogin () {
       try {
         this.$store.dispatch('setShoppingCartFlag', true)
@@ -117,7 +151,6 @@ export default {
           quantity: this.pickedQuantityQuoteRequest, // I'm not sure why we would need this. Clarify with Stef
           price: this.pickedQuantityQuoteRequest * this.itemChosen.servicePrice
         }
-
         this.$store.dispatch('addQuoteRequestToCart', quoteRequestForService)
         this.$modal.hide('request-quote-modal')
         this.inquiryText = ''
@@ -138,25 +171,9 @@ export default {
         console.log(`\nAn error occurred in addServiceToCart\n`) // TESTING
         if (error) throw error
       }
-    },
+    }
     // the user id of the SELLER will also
     // need a spot in the store
-    async getUserData () {
-      try {
-        const userInfo = (await UserServices.getPublicProfileInfo(this.userId))
-          .data
-        const serviceTableId = userInfo.user.serviceTableId
-        const response = await DashboardServices.queryForUsersServices(
-          serviceTableId
-        )
-        const userServicesArray = response.data.usersServices
-        this.services = userServicesArray
-        this.companyName = userInfo.user.companyName
-        this.about = userInfo.user.about
-        this.$store.dispatch('setUser', userInfo)
-      } catch (error) {
-        if (error) throw error
-      }
-    }
+
   }
 }
