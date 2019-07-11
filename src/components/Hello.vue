@@ -6,10 +6,7 @@
     <page-header />
     <!-- v-on:scroll="handleScroll"> -->
     <header class="masthead">
-
       <div>
-
-
         <a>
           <img src="./LOGO.png" alt="FIG ANALYTICS" class="center" />
         </a>
@@ -33,27 +30,26 @@
       </div>
     </header>
 
-
     <section class="services" id="services">
       <div class="col-centered my-auto">
         <h2>Our Services</h2>
-        <br>
-        <hr>
-        <br>
-        <br>
-        <br>
-
+        <br />
+        <hr />
+        <br />
+        <br />
+        <br />
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-6">
               <div class="feature-item">
-
-                <img src="../assets/css/leads.png" class="icon">
-                <h3>Smart Lead Generation</h3><br>
-                <h5 class="text-muted"> 
-                  Buyer discovery and matchmaking for your biotech products & services.</h5>
-              </div><br>
-
+                <img src="../assets/css/leads.png" class="icon" />
+                <h3>Smart Lead Generation</h3>
+                <br />
+                <h5
+                  class="text-muted"
+                >Buyer discovery and matchmaking for your biotech products & services.</h5>
+              </div>
+              <br />
             </div>
             <br />
             <br />
@@ -62,81 +58,86 @@
             <br />
             <div class="col-lg-6">
               <div class="feature-item">
-
-                <img src="../assets/css/email1.png" class="icon">
-                <h3>Full Service Sales Platform</h3><br>
-                <h5 class="text-muted"> 
-                  Streamlined interface guides you from A to B through the Sales process.</h5>
-              </div><br>
-
+                <img src="../assets/css/email1.png" class="icon" />
+                <h3>Full Service Sales Platform</h3>
+                <br />
+                <h5
+                  class="text-muted"
+                >Streamlined interface guides you from A to B through the Sales process.</h5>
+              </div>
+              <br />
             </div>
           </div>
           <br />
           <div class="row">
             <div class="col-lg-6">
               <div class="feature-item">
-
-                <img src="../assets/css/abstract.png" class="icon">
-                <h3>Shipping Logistics & Handling</h3><br>
-                <h5 class="text-muted">Our shipping partners handle everything from fragile packaging and dry ice to insurance.</h5>
-              </div><br>
-
+                <img src="../assets/css/abstract.png" class="icon" />
+                <h3>Shipping Logistics & Handling</h3>
+                <br />
+                <h5
+                  class="text-muted"
+                >Our shipping partners handle everything from fragile packaging and dry ice to insurance.</h5>
+              </div>
+              <br />
             </div>
             <div class="col-lg-6">
-
               <div class="feature-item">
-
-                <img src="../assets/css/search.png" class="icon">
-                <h3>Citation Tracking</h3><br>
+                <img src="../assets/css/search.png" class="icon" />
+                <h3>Citation Tracking</h3>
+                <br />
                 <h5 class="text-muted">Coming soon!</h5>
-              </div><br>
-
+              </div>
+              <br />
             </div>
           </div>
         </div>
       </div>
     </section>
 
-
     <section class="about" id="about">
       <div class="container-fluid">
-        <h2>
-          Your one-stop shop for biotech exchange.
-        </h2>
-        <br>
-        <hr>
-        <br>
-        <br>
-        <h3>Digital Marketplace on the Front-End,<br>AI on the Back-End.</h3>
-        <br>
-        <br>
-        <br>
-        <img class="wasp" src="../assets/css/wasp.png">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <h2>Your one-stop shop for biotech exchange.</h2>
+        <br />
+        <hr />
+        <br />
+        <br />
+        <h3>
+          Digital Marketplace on the Front-End,
+          <br />AI on the Back-End.
+        </h3>
+        <br />
+        <br />
+        <br />
+        <img class="wasp" src="../assets/css/wasp.png" />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <h4>
           We’ve streamlined B2B marketing,
-          <br>so you can focus on innovating.
+          <br />so you can focus on innovating.
         </h4>
       </div>
     </section>
 
-
-
     <section class="carousel">
-      
-        <carousel :adjustableHeight="true" :per-page="1" :autoplay="true" :autoplayTimeout="2000">
+      <carousel :adjustableHeight="true" :per-page="1" :autoplay="true" :autoplayTimeout="2000">
+        <!-- Step 1 -->
+        <slide>
+          <br />
+          <br />
+          <img src="../assets/css/new_pitch_1.svg" alt="FIG ANALYTICS" class="center" id="pitch" />
+          <br />
+          <br />
+          <br />
+        </slide>
 
-          <!-- Step 1 -->
-          <slide>
-            <br><br>
-            <img src="../assets/css/new_pitch_1.svg" alt="FIG ANALYTICS" class="center" id="pitch" >
-          <br><br><br>
-          </slide>
-
+        <!-- Step 2 -->
+        <slide>
+          <img src="../assets/css/new_pitch_2.svg" alt="FIG ANALYTICS" class="center" id="pitch" />
+        </slide>
 
         <!-- Step 3 -->
         <slide>
@@ -144,33 +145,21 @@
         </slide>
 
         <!-- Step 4 -->
-        <!-- <slide>
-          <div class="container-fluid">
+        <slide>
+          <div class="container-fluid" id="start">
             <div class="col-sm-12">
               <h3>Start your project today.</h3>
               <br />
+              <hr />
               <br />
               <br />
-
-
-          <!-- Step 4 -->
-          <slide>
-            <div class="container-fluid" id="start">
-              <div class="col-sm-12">
-                <h3>Start your project today.</h3>
-                <br>
-                <hr>
-                <br>
-                <br>
-                <!-- The continue button needs to lead onto the registration around here -->
-                <form>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <p>Company Name:</p>
-                      <input v-model="companyName" type="text" name="company">
-                      <br>
-                    </div>
-
+              <!-- The continue button needs to lead onto the registration around here -->
+              <form>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p>Company Name:</p>
+                    <input v-model="companyName" type="text" name="company" />
+                    <br />
                   </div>
                 </div>
                 <div class="row">
@@ -181,42 +170,39 @@
                 </div>
               </form>
 
-
-                <br>
-                <br>
-                <br>
-                <a
-                  href="#register"
-                  class="btn btn-outline btn-xl"
-                  @click="continueOntoRegisterForm()"
-                >Continue</a>
-                <br>
-                <br>
-                <br>
-                <br><br>
-                <!-- <h3>Start your project today.</h3> -->
-              </div>
-
+              <br />
+              <br />
+              <br />
+              <a
+                href="#register"
+                class="btn btn-outline btn-xl"
+                @click="continueOntoRegisterForm()"
+              >Continue</a>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <!-- <h3>Start your project today.</h3> -->
             </div>
           </div>
-        </slide>-->
+        </slide>
       </carousel>
     </section>
 
     <footer>
       <div class="container-fluid" id="contact">
         <div class="row">
-
           <div class="col">
             <h3>Contact Us</h3>
-            <br>
+            <br />
             <h4 style="text-align:center">fig.analytica@gmail.com</h4>
-            <br>
+            <br />
             <h4 style="text-align:center">
               1138 South Cleveland St
-              <br>Oceanside CA 92054
-              <br><br>
-
+              <br />Oceanside CA 92054
+              <br />
+              <br />
             </h4>
             <br />
           </div>
@@ -229,19 +215,15 @@
                 <li>Contact</li>
               </h4>
             </ul>
-
-          </div> -->
+          </div>-->
           <!-- <br>
           <div class="col-lg-2">
-
             <div class="container" style="max-width:200px;text-align:center;">
             <router-link class="btn-default btn-large btn-block" id="btn-footer" to="/login">Client Login</router-link>
             <br>
             <router-link class="btn-success btn-large btn-block" id="btn-footer" to="/register">Sign Up</router-link>
             </div>
-
-          </div> -->
-
+          </div>-->
         </div>
       </div>
       <div class="container-fluid" id="copy-rights">
@@ -262,3 +244,4 @@
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 /* @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto'); */
 </style>
+
