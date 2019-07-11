@@ -14,40 +14,32 @@ body {
 /* font-family: 'Montserrat', sans-serif;
 font-family: 'Roboto', sans-serif; */
 
-/* .purple {
-  position: relative;
-  width: 100%;
-  background-image: url('purplebg.png');
-  background-size: cover;
-  background-position: center;
-} */
 
 .about {
-  position: relative;
+  /* position: relative; */
+  height: 100%;
   width: 100%;
-  background-image: url("greenbg.png");
+  background-image: url("HEADER.png");
   background-size: cover;
-  background-position: center;
+  /* background-position: center; */
 }
 
-.green .container-fluid {
+.carousel .container-fluid {
   max-width: 400px;
   max-height: 700px;
   padding-top: 60px;
 
 }
 
-/* Green/purple design background */
-.green {
+.carousel {
   width: 100%;
-  /* background-image: linear-gradient( #c5c4fc, 95%, white); */
-  /* background-image: radial-gradient(#c6c2ff,70% ,#ffffff); */
+
   background-image: radial-gradient(#c6c2ff,70% ,#ffffff); 
   background-size: cover;
 }
 
-.feature-item {
-  margin: 20px;
+.wasp {
+  text-align: center;
 }
 
 
@@ -58,35 +50,43 @@ input[type="text"] {
   box-sizing: border-box;
 }
 
-/* most important heading should be in h1 */
+
 h1,
 h2 {
   letter-spacing: 4px;
   text-transform: uppercase;
   font-family: "Open Sans", sans-serif;
-  font: 35px "Open Sans", sans-serif;
+  font: "Open Sans", sans-serif;
   color: #311c63;
   text-align: center;
+}
+
+h1 {
+  font: 28px;
+}
+
+h2 {
+  font: 34px;
 }
 
 h3 {
   letter-spacing: 2px;
   font-style: medium;
-  font: 30px "Lato";
+  font: 26px "Lato";
   color: #311c63;
   text-align: center;
 }
 
 h4 {
   font-style: medium;
-  font: 30px "Lato";
+  font: 22px "Lato";
   color: #2d1e35;
   text-align: center;
 }
 
 h5 {
   font-style: medium;
-  font: 25px "Roboto";
+  font: 20px "Roboto";
   color: #2d1e35;
   text-align: center;
 }
@@ -217,10 +217,6 @@ section.services {
   padding: 100px 75px 100px;
 }
 
-section.green {
-  padding: 0px 0px 0px 0px;
-}
-
 #pitch {
   width: 100%;
   max-width: 600px;
@@ -269,6 +265,10 @@ p {
   font-size: 15px;
   margin: 0;
   color:white;
+}
+
+#contact h3 {
+  color: white;
 }
 
 #contact h4 {
@@ -335,14 +335,17 @@ footer .row {
 /* Header */
 header.masthead {
   position: relative;
-  width: 100%;
-  /* padding-top: 100px; */
-  padding-bottom: 300px;
+  justify-content: center;
+  padding-top: 160px;
+  padding-bottom: 220px;
   color: white;
-  background: url("./HEADER.png");
-  background: url("./HEADER.png"),
+  background: url("header_molecules.png");
+  background: url("header_molecules.png"),
     -webkit-gradient(linear, right top, left top, from(#c7c7c7), to(#ffffff));
-  background: url("./HEADER.png"), linear-gradient(to right, #e2e2e2, #ffffff);
+  background: url("header_molecules.png"), linear-gradient(to right, #e2e2e2, #ffffff);
+  background-size: cover;
+  background-position: center;
+
 }
 
 ul {
