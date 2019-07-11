@@ -227,7 +227,7 @@
                 <br />
                 <!-- Negotiation Interface -->
                 <md-button
-                  @click="submitOrder()"
+                  @click="submitOrderPrompt()"
                   v-if="this.order && this.order.seller_confirmed === false"
                   style="background-color: #12005e; color: white;"
                 >Submit Order</md-button>
@@ -239,6 +239,15 @@
       </div>
     </div>
   </body>
+
+  <!--  -->
+
+  <modal name="would-you-like-to-submit">
+    <div>Would you like to submit this order?</div>
+    <md-button @click="submitOrder">Yes</md-button>
+    <md-button @click="closeSubmitPrompt">No</md-button>
+  </modal>
+  <!--  -->
 </div>
 </template>
 
