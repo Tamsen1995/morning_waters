@@ -9,7 +9,7 @@
     <body class="dashboard">
       <div class="container" id="dashboard">
         <!-- This section is reserved for the profile information -->
-        <div id="main">
+        <div>
           <div class="container" id="name-location">
             <div class="d-flex justify-content-center" id="company-name">
               <h1 style="text-align:center:">{{ this.companyName }}</h1>
@@ -26,55 +26,66 @@
 
           <!-- About Section -->
           <div class="container" id="about">
-            <div class="row">
-              <h4>About:</h4>
-              <!-- <transition-expand>
-              <div v-if="expanded">-->
+            <h4>About:</h4>
+            <!-- Scroll Content -->
+            <md-content class="md-scrollbar">         
               <p style="text-align:left">{{ this.about }}</p>
-              <!-- </div> -->
-              <!-- </transition-expand>
-              <button @click="expanded = !expanded">
-                {{ expanded ? `Shrink` : `Expand` }}
-              </button>-->
-            </div>
+            </md-content>
+
+            <!-- Transition Expand Content -->
+
+            <!-- <transition-expand>
+              <md-card>
+                <div v-if="expanded">{{this.about}}</div>
+              </md-card>
+            </transition-expand> -->
+            <!-- <md-button
+              class="md-dense md-raised md-primary"
+              @click="expanded = !expanded"
+            >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
           </div>
         </div>
-
         <br />
         <br />
 
         <!-- Stats Cards -->
         <div id="stats">
           <div class="card-group">
-            <div class="card" style="min-width: 30%;">
+            <div class="card" style="min-width: 30%;border-color: #9d46ff;
+              border-width: 3px; 
+              border-style: solid;">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h4 class="card-title">Page Views:</h4>
-                <p class="card-text">{{ this.pageViews }}</p>
-                <p class="card-text">
-                  <small class="text-muted">Last updated 3 mins ago</small>
-                </p>
+                <h3 class="card-title" style="color: #9d46ff;" >Pending Orders:</h3>
+                <h3 class="card-text">{{ this.credits }}</h3>
+                <button class="btn-block" id="btn-orders" @click="redirectToPendingOrders()">
+                  View Orders
+                </button>
               </div>
             </div>
-            <div class="card" style="min-width: 30%;">
+            <div class="card" style="min-width: 30%;border-color: #00c853;
+              border-width: 3px; 
+              border-style: solid;">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h4 class="card-title">Leads:</h4>
-                <p class="card-text">{{ this.leads }}</p>
+                <h3 class="card-title" style="color: #00c853;">New Leads:</h3>
+                <h3 class="card-text">{{ this.leads }}</h3>
                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                <b-button block variant="outline-success" @click="redirectToInbox()">
-                  <h6>View Leads</h6>
-                </b-button>
+                <button class="btn-block" id="btn-leads" @click="redirectToInbox()">
+                  View Leads
+                </button>
               </div>
             </div>
-            <div class="card" style="min-width: 30%;">
+            <div class="card" style="min-width: 30%;border-color: #304ffe;
+              border-width: 3px; 
+              border-style: solid;">
               <!-- <img src="..." class="card-img-top" alt="..."> -->
               <div class="card-body">
-                <h4 class="card-title">Pending Orders:</h4>
-                <p class="card-text">{{ this.credits }}</p>
-                <b-button block variant="outline-success" @click="redirectToPendingOrders()">
-                  <h6>View Orders</h6>
-                </b-button>
+                <h3 class="card-title" style="color: #304ffe;">Page Views:</h3>
+                <h3 class="card-text">{{ this.pageViews }}</h3>
+                <p class="card-text">
+                  <small class="text-muted">Last updated [timestamp]</small>
+                </p>
               </div>
             </div>
           </div>
@@ -83,85 +94,95 @@
         <br />
         <br />
 
-        <div class="services" id="services">
+        <div id="services">
           <br />
           <h2>Services:</h2>
           <br />
+          <div class="service-border"></div>
+          <!-- Empty state for service listings when no listings have been added -->
+          <!-- <md-empty-state
+            md-rounded
+            class="md-primary"
+            md-icon="access_time"
+            md-label="No Services Added"
+            md-description="Add services to start marketting your technology.">
+          </md-empty-state> -->
+
           <!-- Beginning of cards -->
-          <div v-for="(service, index) in this.services" :key="index" id="service-card">
-            <!-- <md-card></md-card> -->
-
-            <div v-if="service.isSubService === false">
-              <md-card-area md-inset>
-                <md-card-header>
-                  <!-- <h2 class="md-title"></h2> -->
-                  <!-- <md-icon>play_for_work</md-icon> -->
-                  <i class="fas fa-atom" id="service_logo"></i>
-                  <span class="md-title">{{ service.title }}</span>
-
-                  <md-card-content>
-                    <div class="card-reservation pull-right">
-                      <div class="md-button-group">Price: {{service.servicePrice}} $</div>
-                    </div>
-                  </md-card-content>
-
-                  <div class="md-subhead">
-                    <md-icon>access_time</md-icon>
-                    <span>Turnaround time : {{ service.turnAroundTime }}</span>
-                  </div>
-                </md-card-header>
-
-                <md-card-content>{{ service.description }}</md-card-content>
-                <div>
-                  <md-chip
-                    class="md-primary md-accent"
-                    style="background-color: black; color: white;"
-                    v-for="chip in service.tags"
-                    :key="chip"
-                  >{{ chip.tag }}</md-chip>
-                </div>
-              </md-card-area>
-
-              <div v-for="(subService, index) in services" :key="index">
-                <md-card
-                  style="width: 80%; margin-left: auto; margin-right: auto; "
-                  v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
-                >
-                  <md-card-area>
+          <div v-for="(service, index) in this.services" :key="index">
+            
+              <div v-if="service.isSubService === false">
+                <div class="service-border">
+                  
+                  <md-card-area md-inset>
                     <md-card-header>
-                      <i class="fas fa-dna"></i>
-                      <div class="md-title" style="background-color: #63d154">{{ subService.title }}</div>
-                      <div class="md-subhead">
-                        <md-icon>access_time</md-icon>
-                        <span>Turnaround time : {{ subService.turnAroundTime }}</span>
-                      </div>
+                      <i class="fas fa-atom" id="service_logo"></i>
+                      <span class="md-title">{{ service.title }}</span>
+
+                      <md-card-content>
+                        <div class="card-reservation">                       
+                          <span style="color:#1faa00;font-size: 18px;"> Price: {{service.servicePrice}} $</span>
+                          
+                          <span class="pull-right"> 
+                            <md-icon>access_time</md-icon>
+                            Turnaround time : {{ service.turnAroundTime }}
+                          </span>                    
+                        </div>
+                      </md-card-content>
                     </md-card-header>
 
-                    <md-card-content>{{ subService.description }}</md-card-content>
+                    <md-card-content class="md-scrollbar">{{ service.description }}</md-card-content>
+                    <div style="padding-left: 15px;">
+                      <md-chip
+                        class="md-primary md-accent"
+                        style="background-color: #00b2cc; color: white;"
+                        v-for="chip in service.tags"
+                        :key="chip"
+                      >{{ chip.tag }}</md-chip>
+                    </div>
                   </md-card-area>
+                  <br>
+                  <div v-for="(subService, index) in services" :key="index">
+                    
+                    <md-card
+                      id="subservice-block"
+                      v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
+                    >
+                      <md-card-area>
+                        <md-card-header>
+                          <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
+                          
+                            <span style="color:#009624;font-size: 18px;"> Price: {{subService.servicePrice}} $</span>
+                            <span class="pull-right"> 
+                              <md-icon>access_time</md-icon>
+                              Turnaround time : {{ subService.turnAroundTime }}
+                            </span>
+                          
+                        </md-card-header>
+                        <md-card-content class="md-scrollbar">{{ subService.description }}</md-card-content>
+                      </md-card-area>
 
-                  <div>
-                    <md-chip
-                      class="md-primary md-accent"
-                      style="background-color: black; color: white;"
-                      v-for="chip in subService.tags"
-                      :key="chip"
-                    >{{ chip.tag }}</md-chip>
+                      <div style="padding-left: 15px;">
+                        <md-chip
+                          class="md-primary md-accent"
+                          style="padding-left: 5px;background-color: #00b2cc; color: white;"
+                          v-for="chip in subService.tags"
+                          :key="chip"
+                        >{{ chip.tag }}</md-chip>
+                      </div>
+                      <br>
+                    </md-card>
+                    
                   </div>
 
-                  <md-card-actions md-alignment="left">
-                    <md-button>Price : {{subService.servicePrice}}</md-button>
+                  <md-card-actions>
+                    <md-button @click="editService(service)" class="md-raised" :md-ripple="false">Edit</md-button>
+                    <md-button @click="deleteService(service)" class="md-raised md-accent">Delete</md-button>
                   </md-card-actions>
-                </md-card>
+                </div>
               </div>
-
-              <md-card-actions>
-                <md-button @click="editService(service)" class="md-raised" :md-ripple="false">Edit</md-button>
-                <md-button @click="deleteService(service)" class="md-raised md-accent">Delete</md-button>
-              </md-card-actions>
-            </div>
-            <br />
           </div>
+
 
           <!--  -->
 
@@ -170,11 +191,12 @@
           <md-button
             class="md-raised pull-right"
             :md-ripple="false"
-            style="background-color: purple;"
+            style="background-color: yellowgreen;color: white;"
             @click="addService"
           >
+            <i class="fas fa-atom"  style="color: white;"></i>
             Add Service
-            <md-icon>note_add</md-icon>
+
           </md-button>
 
           <br />
@@ -191,189 +213,270 @@
     name="add-service"
     height="auto"
     scrollable="true"
-    style="padding-top:80px"
-    :clickToClose="false"
+    :clickToClose="true"
+    id="add-services"
   >
-    <div class="container" style="padding:50px">
-      <div class="row">
-        <div class="col-12">
-          <h4 class="heading">
-            <!-- <strong>Add</strong> Service -->
-          </h4>
-          <br />
-          <form id="add-service">
-            <div class="container" style="min-width: 500px;">
-              <!-- Service Title -->
-              <div class="form-group row">
-                <label for="serviceTitle" class="col-sm .col-form-label-xsm">
-                  <p></p>
-                </label>
-                <md-field>
-                  <label>Service Title:</label>
-                  <md-input type="text" v-model="serviceTitle" style="border-bottom: 1px inset"></md-input>
-                </md-field>
-              </div>
-              <!-- Service Description -->
-              <div class="form-group row">
-                <!-- <div class="col-sm-10">
-                  <textarea
-                    v-model="serviceDescription"
-                    type="text"
-                    rows="5"
-                    class="form-control animated"
-                    placeholder="Enter service description"
-                  ></textarea>
-                </div>-->
+    <div class="container" id="service-form-block">
+      <div class="md-title">
+        <h2>
+        <i class="fas fa-atom" id="service_logo"></i>
+        Add Services
+        </h2>
+      </div>
 
-                <md-field>
-                  <label>General Service Description:</label>
-                  <md-textarea v-model="serviceDescription" style="border-bottom: 1px inset"></md-textarea>
-                </md-field>
-              </div>
-              <br />
-              <br />
+      <form class="md-layout" >
+        <div class="container" >
+          <!-- Service Title -->
+          <div class="form-group row">
+            <label for="serviceTitle" class="col-sm .col-form-label-xsm">
+              <p></p>
+            </label>
+            <md-field>
+              <label>Service Title:</label>
+              <md-input type="text" v-model="serviceTitle" style="border-bottom: 1px inset"></md-input>
+            </md-field>
+          </div>
 
+          <md-field>
+            <label>Service Description:</label>
+            <md-textarea v-model="serviceDescription" style="border-bottom: 1px inset"></md-textarea>
+          </md-field>
+          
+                          
+          <md-field>
+            <label>Tags</label>
+            <md-chips
+              v-model="tags"
+              md-placeholder="Add a tag and click enter"
+              style="border-bottom: 1px inset; color: #00b2cc;"
+            ></md-chips>
+          </md-field>
+          
+          <!-- Price -->
+          <div class="row" id="form-row-border">
+            <div class="col-4">
               <md-field>
                 <label>Price Per Unit:</label>
                 <md-input type="text" v-model="servicePrice" style="border-bottom: 1px inset"></md-input>
               </md-field>
+            </div>
+            <!-- Unit Type -->
+            <div class="col-4">
+              <md-field>
+                <label>Unit Type:</label>
+                <md-input type="text" v-model="unit" style="border-bottom: 1px inset"></md-input>
+              </md-field>
+            </div>
 
+            <!-- Price Negotiable? -->
+            <div class="col-4">
+              <md-checkbox v-model="array" value="priceNegotiable">Negotiable price</md-checkbox>
+            </div>
+          </div>
+          
+          <div class="row" id="form-row-border">
+            <!-- Turn Around Time -->
+            <div class="col-4">
               <md-field>
                 <label>Turn Around Time:</label>
                 <md-input type="text" v-model="turnAroundTime" style="border-bottom: 1px inset"></md-input>
               </md-field>
+            </div>
 
-              <br />
-
-              <label>Tags</label>
-
+            <!-- Time Units -->
+            <div class="col-4">
               <md-field>
-                <md-chips
-                  v-model="tags"
-                  md-placeholder="Add tags"
-                  style="border-bottom: 1px inset;"
-                ></md-chips>
-                <!-- <md-textarea type="text" v-model="serviceTags" style="border-bottom: 1px inset"></md-textarea> -->
+                <label>Hours/Days/Weeks</label>
+                <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
+                  <md-option value="turnAroundTimeType">Days</md-option>
+                  <md-option value="turnAroundTimeType">Weeks</md-option>
+                </md-select>
               </md-field>
+            </div>
 
-              <!-- The sub services form -->
-              <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
+            <!-- Price Negotiable? -->
+            <div class="col-4">
+              <md-checkbox v-model="array" value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
+            </div>
 
-              <div v-for="(subservice, index) in this.subServicesToBeAdded" v-bind:key="index">
-                <br />
-                <br />
+          </div>
 
-                <br />
-                <br />
-                <!-- Service Title -->
+          <br>
+          <!-- Listings Table -->
+          <table>
+            <tr>
+              <th>Title</th>
+              <th>Price </th>
+              <th>Unit</th>
+              <th>Turn Around Time</th>
+              <!-- <th>No Value</th>
+              <th>Object</th> -->
+            </tr>
 
-                <div class="form-group row">
-                  <label>sub service title:</label>
+            <tr>
+              <td>{{ serviceTitle }}</td>
+              <td>{{ servicePrice }}</td>
+              <td>{{ unit }}</td>
+              <td>{{ turnAroundTime }} {{ turnAroundTimeType }}</td>
+              <!-- <td>{{ novalue }}</td>
+              <td>{{ obj }}</td> -->
+            </tr>
+          </table>
+          <br>
+        </div>
+          <!-- Sub services form -->
+          <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
+        <div >
+          <div 
+            class="container" 
+            style="border: 2px #9d46ff dotted;" 
+            id="subservice-form-block" 
+            v-for="(subservice, index) in this.subServicesToBeAdded" 
+            v-bind:key="index">
+            <!-- Service Title -->
+            <md-field>
+              <label>Sub Service Title:</label>
+              <md-input
+                type="text"
+                v-model="subServicesToBeAdded[index].serviceTitle"
+                style="border-bottom: 1px inset"
+              ></md-input>
+            </md-field>
+            
+            <!-- Service Description -->
+            <md-field>
+              <label>Sub Service Description:</label>
+              <md-textarea
+                v-model="subServicesToBeAdded[index].serviceDescription"
+                style="border-bottom: 1px inset"
+              ></md-textarea>
+            </md-field>
 
-                  <md-field>
-                    <md-input
-                      type="text"
-                      v-model="subServicesToBeAdded[index].serviceTitle"
-                      style="border-bottom: 1px inset"
-                    ></md-input>
-                  </md-field>
-                </div>
-                <!-- Service Description -->
-
-                <div class="form-group row">
-                  <md-field>
-                    <label>General sub service description:</label>
-                    <md-textarea
-                      v-model="subServicesToBeAdded[index].serviceDescription"
-                      style="border-bottom: 1px inset"
-                    ></md-textarea>
-                  </md-field>
-                </div>
-
-                <br />
-                <br />
-
-                <div class="form-group row">
-                  <!--  -->
-                  <md-field>
-                    <label>Price Per Unit:</label>
-                    <md-input
-                      type="text"
-                      v-model="subServicesToBeAdded[index].servicePrice"
-                      style="border-bottom: 1px inset"
-                    ></md-input>
-                  </md-field>
-                </div>
-
-                <!-- Turn Around Time -->
-                <div class="form-group row">
-                  <md-field>
-                    <label>Turn Around Time:</label>
-                    <md-input
-                      type="text"
-                      v-model="subServicesToBeAdded[index].turnAroundTime"
-                      style="border-bottom: 1px inset"
-                    ></md-input>
-                  </md-field>
-                </div>
-                <br />
-
-                <label>Tags</label>
-
-                <!--  -->
+            <!-- Sub Service Tags -->
+            <md-field>
+              <label>Tags</label>
+              <md-chips
+                md-placeholder="Add a tag and click enter"
+                v-model="subServicesToBeAdded[index].serviceTags"
+                style="border-bottom: 1px inset; color: #00b2cc;"
+              ></md-chips>
+            </md-field>
+            
+            <div class="row">
+              <div class="col-4">
                 <md-field>
-                  <md-chips
-                    md-placeholder="Add tags"
-                    v-model="subServicesToBeAdded[index].serviceTags"
-                    style="border-bottom: 1px inset;"
-                  ></md-chips>
-                  <!-- <md-textarea type="text" v-model="serviceTags" style="border-bottom: 1px inset"></md-textarea> -->
+                  <label>Price Per Unit:</label>
+                  <md-input
+                    type="text"
+                    v-model="subServicesToBeAdded[index].servicePrice"
+                    style="border-bottom: 1px inset"
+                  ></md-input>
+                </md-field>
+              </div>
+              
+              <!-- Unit Type -->
+              <div class="col-4">
+                <md-field>
+                  <label>Unit Type:</label>
+                  <md-input type="text" v-model="unit" style="border-bottom: 1px inset"></md-input>
                 </md-field>
               </div>
 
-              <!-- Add another (plus button) -->
+              <!-- Price Negotiable? -->
+              <div class="col-4">
+                <md-checkbox v-model="array" value="priceNegotiable">Negotiable Price</md-checkbox>
+              </div>
+            </div>
 
-              <md-button
-                type="button"
-                class="btn btn-default pull-right"
-                id="addSubButton"
-                @click="addSubService()"
-              >
-                <strong>
-                  <h6>
-                    Add Sub-service
-                    <span class="glyphicon glyphicon-plus-sign"></span>
-                  </h6>
-                </strong>
-              </md-button>
-
-              <!-- File Input -->
-              <div class="form-group row">
-                <div class="col">
-                  <p>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" />
-                  </p>
-                </div>
+              <!-- Turn Around Time --> 
+            <div class="row">
+              <div class="col-4">       
+                <md-field>
+                  <label>Turn Around Time:</label>
+                  <md-input
+                    type="text"
+                    v-model="subServicesToBeAdded[index].turnAroundTime"
+                    style="border-bottom: 1px inset"
+                  ></md-input>
+                </md-field>
               </div>
 
-              <md-button
-                v-if="this.serviceBeingEdited === true"
-                class="md-dense md-raised md-primary"
-                type="button"
-                @click="submitServiceEdit()"
-              >Submit Edit</md-button>
-
-              <md-button
-                v-else
-                class="md-dense md-raised md-primary"
-                type="button"
-                @click="submitService()"
-              >Submit</md-button>
+              <!-- Time Units -->
+              <div class="col-4">
+                <md-field>
+                  <label>Hours/Days/Weeks</label>
+                  <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
+                    <md-option value="turnAroundTimeType">Days</md-option>
+                    <md-option value="turnAroundTimeType">Weeks</md-option>
+                  </md-select>
+                </md-field>
+              </div>
+              
+              <!-- Time Negotiable? -->
+              <div class="col-4">
+                <md-checkbox v-model="array" value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
+              </div>
             </div>
-          </form>
+            <br />
+            <br>
+            <!-- Listings Table -->
+            <table>
+              <tr>
+                <th>Title</th>
+                <th>Price </th>
+                <th>Unit</th>
+                <th>Turn Around Time</th>
+                <!-- <th>No Value</th>
+                <th>Object</th> -->
+              </tr>
+
+              <tr>
+                <td>{{ serviceTitle }}</td>
+                <td>{{ servicePrice }}</td>
+                <td>{{ unit }}</td>
+                <td>{{ turnAroundTime }} {{ turnAroundTimeType }}</td>
+                <!-- <td>{{ novalue }}</td>
+                <td>{{ obj }}</td> -->
+              </tr>
+            </table>
+            <br>
+            <br>
+          </div>
+
+          <!-- Add another (plus button) -->
+
+
+          <md-button
+            type="button"
+            class="btn btn-default"
+            id="addSubButton"
+            @click="addSubService()"
+          >
+            <strong>
+              <h6>
+                Add Sub-service
+                <span class="glyphicon glyphicon-plus-sign"></span>
+              </h6>
+            </strong>
+          </md-button>
+
+          <md-button
+            v-if="this.serviceBeingEdited === true"
+            class="md-dense md-raised md-primary"
+            type="button"
+            @click="submitServiceEdit()"
+          >Submit Edit</md-button>
+
+          <md-button
+            v-else
+            class=" md-raised md-primary"
+            type="button"
+            @click="submitService()"
+          >Submit</md-button>
         </div>
-      </div>
+      </form>
     </div>
+
   </modal>
 </div>
 </template>
