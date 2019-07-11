@@ -43,11 +43,10 @@
             <div class="col-lg-6">
               <div class="feature-item">
                 <img src="../assets/css/leads.png" class="icon">
-                <h3>Smart Lead Generation</h3>
-                <h5
-                  class="text-muted"
-                >Buyer discovery and matchmaking for your biotech products & services</h5>
-              </div>
+                <h3>Smart Lead Generation</h3><br>
+                <h5 class="text-muted"> 
+                  Buyer discovery and matchmaking for your biotech products & services.</h5>
+              </div><br>
             </div>
             <br>
             <br>
@@ -57,28 +56,28 @@
             <div class="col-lg-6">
               <div class="feature-item">
                 <img src="../assets/css/email1.png" class="icon">
-                <h3>Full Service Sales Platform</h3>
-                <h5
-                  class="text-muted"
-                >From email design to distribution: tracked and analyzed for maximum results</h5>
-              </div>
+                <h3>Full Service Sales Platform</h3><br>
+                <h5 class="text-muted"> 
+                  Streamlined interface guides you from A to B through the Sales process.</h5>
+              </div><br>
             </div>
           </div>
           <br>
           <div class="row">
             <div class="col-lg-6">
               <div class="feature-item">
-                <img src="../assets/css/search.png" class="icon">
-                <h3>B2B Matchmaking</h3>
-                <h5 class="text-muted">Coming soon!</h5>
-              </div>
+                <img src="../assets/css/abstract.png" class="icon">
+                <h3>Shipping Logistics & Handling</h3><br>
+                <h5 class="text-muted">Our shipping partners handle everything from fragile packaging and dry ice to insurance.</h5>
+              </div><br>
             </div>
             <div class="col-lg-6">
+
               <div class="feature-item">
-                <img src="../assets/css/abstract.png" class="icon">
-                <h3>Shipping Logistics & Handling</h3>
-                <h5 class="text-muted">Categorizing projects and optimizing lead generation</h5>
-              </div>
+                <img src="../assets/css/search.png" class="icon">
+                <h3>Citation Tracking</h3><br>
+                <h5 class="text-muted">Coming soon!</h5>
+              </div><br>
             </div>
           </div>
         </div>
