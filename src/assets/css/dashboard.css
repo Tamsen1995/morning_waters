@@ -24,7 +24,7 @@ body.dashboard {
 #dashboard #name-location {
   max-width: 1314px;
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
-  background: linear-gradient( white 60%, #4527a0 40%);
+  background: linear-gradient( white 60%, #301a70 40%);
   border-color: rgb(190, 187, 187);
   border-style: solid;
   border-width: .5px;
@@ -64,13 +64,21 @@ body.dashboard {
   border-bottom: 2px solid #4527a0;
 }
 
+#dashboard #form-row-border{
+  border-bottom: 1px solid black;
+}
+
+
+
+#dashboard .md-checkbox {
+  display: flex;
+}
+
 #dashboard #service-card .md-card-content {
   max-width: 900px;
   max-height: 200px;
   overflow: auto;
 }
-
-
 
 #dashboard .md-card {
   width: 320px;
@@ -144,7 +152,7 @@ body.dashboard {
 }
 
 #dashboard #logo-border {
-  background-color: #4527a0;
+  background-color: #301a70;
   width: 170px;
   height: 170px;
   -moz-border-radius: 85px;
@@ -297,10 +305,6 @@ body.dashboard {
 #add_service{
   padding-top:10px;
 }
-
-/* #add_service md-input {
-  border-bottom: 1px inset;
-} */
 
 #service-form-block {
   color:#4527a0;
@@ -534,7 +538,7 @@ padding: 15px 45px;
 }
 
 .responsive-component.small #dashboard #logo-border {
-  background-color: #22104b;
+  background-color: #301a70;
   width: 120px;
   height: 120px;
   -moz-border-radius: 60px;

@@ -97,7 +97,6 @@
 
           <!-- Beginning of cards -->
           <div v-for="(service, index) in this.services" :key="index">
-            
             <div class="service-border">
               <div v-if="service.isSubService === false">
                 <md-card-area md-inset>
@@ -240,33 +239,41 @@
             ></md-chips>
           </md-field>
           
-          <!-- Form Group Row -->
-          <div class="row">
+          <!-- Price -->
+          <div class="row" id="form-row-border">
             <div class="col-4">
               <md-field>
                 <label>Price Per Unit:</label>
                 <md-input type="text" v-model="servicePrice" style="border-bottom: 1px inset"></md-input>
               </md-field>
             </div>
-
+            <!-- Unit Type -->
             <div class="col-4">
               <md-field>
                 <label>Unit Type:</label>
                 <md-input type="text" v-model="unit" style="border-bottom: 1px inset"></md-input>
               </md-field>
             </div>
+
+            <!-- Price Negotiable? -->
+            <div class="col-4">
+              <md-checkbox v-model="array" value="priceNegotiable">Negotiable price</md-checkbox>
+            </div>
           </div>
           
-          <div class="row">
+          <div class="row" id="form-row-border">
+            <!-- Turn Around Time -->
             <div class="col-4">
               <md-field>
                 <label>Turn Around Time:</label>
                 <md-input type="text" v-model="turnAroundTime" style="border-bottom: 1px inset"></md-input>
               </md-field>
             </div>
+
+            <!-- Time Units -->
             <div class="col-4">
               <md-field>
-                <label>Days/Weeks</label>
+                <label>Hours/Days/Weeks</label>
                 <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
                   <md-option value="turnAroundTimeType">Days</md-option>
                   <md-option value="turnAroundTimeType">Weeks</md-option>
@@ -274,7 +281,13 @@
               </md-field>
             </div>
 
+            <!-- Price Negotiable? -->
+            <div class="col-4">
+              <md-checkbox v-model="array" value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
+            </div>
+
           </div>
+
           <br>
           <!-- Listings Table -->
           <table>
@@ -325,27 +338,8 @@
                 style="border-bottom: 1px inset"
               ></md-textarea>
             </md-field>
-            
-            <md-field>
-              <label>Price Per Unit:</label>
-              <md-input
-                type="text"
-                v-model="subServicesToBeAdded[index].servicePrice"
-                style="border-bottom: 1px inset"
-              ></md-input>
-            </md-field>
-            <!-- Turn Around Time -->        
-            <md-field>
-              <label>Turn Around Time:</label>
-              <md-input
-                type="text"
-                v-model="subServicesToBeAdded[index].turnAroundTime"
-                style="border-bottom: 1px inset"
-              ></md-input>
-            </md-field>
-            <br />
 
-            <!--  -->
+            <!-- Sub Service Tags -->
             <md-field>
               <label>Tags</label>
               <md-chips
@@ -354,6 +348,63 @@
                 style="border-bottom: 1px inset; color: #00b2cc;"
               ></md-chips>
             </md-field>
+            
+            <div class="row">
+              <div class="col-4">
+                <md-field>
+                  <label>Price Per Unit:</label>
+                  <md-input
+                    type="text"
+                    v-model="subServicesToBeAdded[index].servicePrice"
+                    style="border-bottom: 1px inset"
+                  ></md-input>
+                </md-field>
+              </div>
+              
+              <!-- Unit Type -->
+              <div class="col-4">
+                <md-field>
+                  <label>Unit Type:</label>
+                  <md-input type="text" v-model="unit" style="border-bottom: 1px inset"></md-input>
+                </md-field>
+              </div>
+
+              <!-- Price Negotiable? -->
+              <div class="col-4">
+                <md-checkbox v-model="array" value="priceNegotiable">Negotiable Price</md-checkbox>
+              </div>
+            </div>
+
+              <!-- Turn Around Time --> 
+            <div class="row">
+              <div class="col-4">       
+                <md-field>
+                  <label>Turn Around Time:</label>
+                  <md-input
+                    type="text"
+                    v-model="subServicesToBeAdded[index].turnAroundTime"
+                    style="border-bottom: 1px inset"
+                  ></md-input>
+                </md-field>
+              </div>
+
+              <!-- Time Units -->
+              <div class="col-4">
+                <md-field>
+                  <label>Hours/Days/Weeks</label>
+                  <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
+                    <md-option value="turnAroundTimeType">Days</md-option>
+                    <md-option value="turnAroundTimeType">Weeks</md-option>
+                  </md-select>
+                </md-field>
+              </div>
+              
+              <!-- Time Negotiable? -->
+              <div class="col-4">
+                <md-checkbox v-model="array" value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
+              </div>
+            </div>
+            <br />
             <br>
             <!-- Listings Table -->
             <table>
