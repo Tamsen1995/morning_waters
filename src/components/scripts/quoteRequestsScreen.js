@@ -91,6 +91,16 @@ export default {
       }
     },
 
+    // goes through the array of orders
+    // finds the order with the appropiate order id
+    // and then displays that order with the showOrder function
+    async showOrderWithOrderId (orders, orderId) {
+      try {
+        //
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async showOrder (order) {
       try {
         this.servicesNegotiated = []
@@ -151,6 +161,9 @@ export default {
           orderId: this.order.orderId,
           user: 'seller'
         })
+        await this.getLockedOrders()
+        await this.getPendingOrders()
+        this.$modal.hide('would-you-like-to-submit')
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
         if (error) throw error
