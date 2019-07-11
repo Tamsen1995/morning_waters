@@ -109,13 +109,14 @@
           <br />
           <div class="service-border"></div>
           <!-- Empty state for service listings when no listings have been added -->
-          <!-- <md-empty-state
+          <md-empty-state
             md-rounded
             class="md-primary"
-            md-icon="access_time"
+            md-icon="error_outline"
             md-label="No Services Added"
-            md-description="Add services to start marketting your technology.">
-          </md-empty-state>-->
+            v-if="this.services.length === 0"
+            md-description="Add services to start marketting your technology."
+          ></md-empty-state>
 
           <!-- Beginning of cards -->
           <div v-for="(service, index) in this.services" :key="index">
@@ -202,7 +203,6 @@
             @click="addService"
           >
             <i class="fas fa-atom" style="color: white;"></i>
-
             Add Service
           </md-button>
 
