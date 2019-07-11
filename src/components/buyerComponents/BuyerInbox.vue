@@ -148,7 +148,7 @@
               <div class="panel-body">
                 <button
                   v-if="this.order && this.order.seller_confirmed === true"
-                  v-on:click="confirmOrder()"
+                  @click="promptForOrderConfirmation"
                 >Submit Order</button>
 
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
@@ -166,6 +166,12 @@
       </div>
     </div>
   </body>
+
+  <modal name="would-you-like-confirm">
+    <div>Would you like to confirm this order?</div>
+    <md-button @click="confirmOrder">Yes</md-button>
+    <md-button @click="closeModal">No</md-button>
+  </modal>
 </div>
 </template>
 
