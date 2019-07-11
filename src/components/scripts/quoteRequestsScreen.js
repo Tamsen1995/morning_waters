@@ -245,6 +245,7 @@ export default {
           this.orders = filtered
 
           this.showOrder(this.orders[0])
+          this.retrieveOrderOrderItems(this.orders[0])
         }
       } catch (error) {
         if (error) throw error
