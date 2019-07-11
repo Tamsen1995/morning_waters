@@ -12,8 +12,8 @@
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
     "build": "webpack --config build/webpack.prod.conf.js",
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "echo done!"
+    "heroku-prebuild": "echo This runs before Heroku installs your dependencies. THIS IS TAM",
+    "heroku-postbuild": "echo done! TAM WAS HERE !"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.4",
