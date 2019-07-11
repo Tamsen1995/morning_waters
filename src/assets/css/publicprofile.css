@@ -1,0 +1,325 @@
+body.public-profile {
+  text-align: justify;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 15px 0px;
+  /* background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%); */
+  background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
+}
+
+.expand-enter-active,
+.expand-leave-active {
+  transition: height 1s ease-in-out;
+  overflow: hidden;
+}
+
+.expand-enter,
+.expand-leave-to {
+  height: 0;
+}
+#public-profile #name-location {
+  max-width: 1314px;
+  box-shadow:   2px 2px 5px 1px  #c7c4d1;
+  background: linear-gradient( white 60%, #301a70 40%);
+  border-color: rgb(190, 187, 187);
+  border-style: solid;
+  border-width: .5px;
+  padding-top: 13px;
+  padding-bottom:4px;
+  border-radius: 5px;
+}
+#public-profile #about .md-content {
+  max-width: 900px;
+  max-height: 250px;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+#public-profile #service-description {
+  max-width: 900px;
+  max-height: 200px;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+#public-profile #stats {
+  border-radius: 5px;
+}
+.public-profile #about {
+  background-color: white;
+  border-width: .5px;
+  border-color: rgb(190, 187, 187);
+  border-style: solid;
+  box-shadow:   2px 2px 5px 1px  #c7c4d1;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.public-profile #services {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0px;
+  background-color: white ;
+  color:black;
+  box-shadow: 1px 1px 2px 1px  #9f9aac;
+  border-radius: 5px;
+}
+
+#public-profile .service-border {
+  border-bottom: 2px solid #4527a0;
+}
+
+.public-profile #subservice-block {
+  min-width: 95%; 
+  margin-left: 40px;
+}
+
+.public-profile .service-block #service-desc{
+  background-color: white;
+  border-radius: 5px;
+}
+
+.public-profile .service-block-sub #service-title{
+  background-color: #4a148c;
+  padding-left: 10px;
+  margin-right: 10px;
+  padding-top:0px;
+  border-radius: 5px;
+  box-shadow:0px 0px 0px 0px;
+}
+
+.public-profile .service-block #service-desc{
+  background-color: white;
+  border-radius: 5px;
+}
+
+/* Profile photo - company logo */
+.circle,
+#logo {
+  background-color: white;
+  width: 150px;
+  height: 150px;
+  -moz-border-radius: 75px;
+  -webkit-border-radius: 75px;
+  border-radius: 75px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./Icons/noun_DNA_2362091.png");
+}
+
+#public-profile #logo-border {
+  background-color: #301a70;
+  width: 170px;
+  height: 170px;
+  -moz-border-radius: 85px;
+  -webkit-border-radius: 85px;
+  border-radius: 85px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px;
+}
+
+/* #price-chart {
+  border-color: rgb(190, 187, 187);
+  border-style: solid;
+  border-width: .5px;
+  max-width: 800px;
+} */
+
+.public-profile .submit-buttons-md {
+  background-color: #2238ff;
+  color: white;
+}
+.public-profile div.card {
+  margin-left: auto;
+  margin-right: auto;
+}
+.public-profile #shopping-cart {
+  margin-left: 1000px;
+  border: 1px solid green;
+}
+.public-profile #request-quote-cart {
+  margin-left: 1000px;
+  border: 1px solid green;
+}
+
+/* TEXT */
+
+#public-profile .md-title {
+  font-size: 25px;
+  color: #4527a0;
+}
+
+#public-profile .md-title {
+  font-size: 25px;
+  color: #4527a0;
+}
+
+#public-profile #service_logo {
+  color: #4527a0;
+  font-size: 25px;
+}
+
+.public-profile #public-profile h1 {
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  font-style: medium;
+  font: 35px "Roboto";
+  color: #311c63;
+  text-align: center;
+}
+
+.public-profile #public-profile h2 {
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  font-style: medium;
+  font: 25px "Roboto";
+  color: #311c63;
+  text-align: left;
+}
+
+.public-profile #public-profile h3 {
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  font-style: medium;
+  font: 25px "Roboto";
+  color: #311c63;
+  text-align: center;
+}
+
+.public-profile #services h4 {
+  letter-spacing: 1px;
+  font: 20px "Roboto";
+  color: #311c63;
+}
+
+.public-profile .service-block h4 {
+  letter-spacing: 1px;
+  font: 20px "Roboto";
+  color: #311c63;
+}
+
+.public-profile .service-block-sub h4 {
+  letter-spacing: 1px;
+  font: 20px "Roboto";
+  color: #311c63;
+}
+#public-profile #about h4 {
+  /* font-style: medium; */
+  font: 19px "Roboto";
+  color: black;
+  text-align: left;
+}
+#public-profile #about p {
+  letter-spacing: 1px;
+  /* font-style: medium; */
+  font: 17px "Roboto";
+  color: black;
+  text-align: center;
+}
+.public-profile #public-profile #stats h4 {
+  letter-spacing: 1px;
+  /* font-style: medium; */
+  font: 18px "Roboto";
+  text-align: center;
+}
+#public-profile #service-desc h5 {
+  font: 15px "Roboto";
+  color: #111;
+}
+#public-profile #services h6 {
+  font: 17px "Roboto";
+  color: white;
+}
+#public-profile #stats h6 {
+  font: 15px "Roboto";
+  color: #111;
+  text-align: center;
+}
+
+.card-text {
+  font: 18px "Roboto";
+  color: #111;
+  text-align: center;
+}
+
+#public-profile p {
+  font: 20px "Roboto";
+  color: #111;
+  text-align: center;
+}
+
+#public-profile #price-chart p  {
+  font: 16px "Roboto";
+  color: #111;
+}
+
+#public-profile #spec_inquiry p {
+  text-align: left;
+}
+
+.md-checkbox {
+  display: flex;
+}
+
+#add_service{
+  padding-top:10px;
+}
+
+#service-form-block {
+  color:#4527a0;
+  border: 5px #4527a0 solid;
+  padding: 30px;
+}
+
+#service-form-block table {
+  width: 100%;
+  table-layout: fixed;
+  background: #ebe8f1;
+}
+
+#subservice-form-block {
+  color:#4527a0;
+}
+
+/* ------Vue Directive Responsive Design Ish ----------------------------------------------------*/
+.responsive-component.small body.public-profile {
+  text-align: center;
+  text-align: justify;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 10px 0px;
+  background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%);
+} 
+
+.responsive-component.small #public-profile #logo {
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("./Icons/noun_DNA_2362091.png");
+}
+.responsive-component.small #public-profile #logo-border {
+  background-color: #301a70;
+  width: 120px;
+  height: 120px;
+  -moz-border-radius: 60px;
+  -webkit-border-radius: 60px;
+  border-radius: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 10px;
+}
+
+.responsive-component.small .public-profile #subservice-block {
+  min-width: 95%; 
+  margin-left: 20px;
+}

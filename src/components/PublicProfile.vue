@@ -4,8 +4,8 @@
   <div class="responsive-component" v-responsive="{
       small: el => el.width < 860
       }">
-    <body class="dashboard">
-      <div class="container" id="dashboard">
+    <body class="public-profile">
+      <div class="container" id="public-profile">
         <!-- <div id="main"> -->
         <div class="container" id="name-location">
           <div class="d-flex justify-content-center" id="company-name">
@@ -22,117 +22,124 @@
         </div>
 
         <!-- About Section -->
-        <div class="container" id="about">
-          <div class="col-md-12">
-            <h4>About:</h4>
-            <transition-expand>
-              <md-card>
-                <div v-if="expanded">{{this.about}}</div>
-              </md-card>
-            </transition-expand>
-            <md-button
-              class="md-dense md-raised md-primary"
-              @click="expanded = !expanded"
-            >{{ expanded ? `Shrink` : `Expand` }}</md-button>
-          </div>
+        <div class="container" id="about">          
+          <h4>About:</h4>
+          <!-- Scroll Content -->
+          <md-content class="md-scrollbar">        
+            <p style="text-align:left">{{ this.about }}</p>
+          </md-content>
+
+          <!-- Transition Expand Content -->
+
+          <!-- <transition-expand>
+            <md-card>
+              <div v-if="expanded">{{this.about}}</div>
+            </md-card>
+          </transition-expand> -->
+          <!-- <md-button
+            class="md-dense md-raised md-primary"
+            @click="expanded = !expanded"
+          >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
         </div>
-        <!-- </div> -->
-
-        <br />
         <br />
         <br />
 
-        <div class="container services" id="services">
+        <div id="services">
           <br />
           <md-button
             @click="manifestModalInquiry(service)"
             class="md-raised md-primary pull-right submit-buttons-md"
-          >General inquiry</md-button>
-          <h4 style="color: #212529;">Services:</h4>
-          <br />
-          <br />
-          <div class="col-md-9">
-            <!-- This is where I list the services -->
-            <!-- <div >
-              
-            </div>-->
+            >Message Seller
+          </md-button>
 
+          <h2>Services:</h2>
+          <br/>
+          <!-- <div class="col-md-9"> -->
             <div v-for="(service, index) in this.services" :key="service.id">
-              <md-card class="md-card-example" style="background-color: white; color: #311c63">
-                <md-card-content>
-                  <!-- <div class="card" v-if="(service.isSubService === false)"></div> -->
+              <div class="service-border">
+                <md-button
+                  @click="manifestModalForm(service)"
+                  class="md-raised md-primary pull-right"
+                  style="background-color: #2238ff; color: white;"
+                >Request Quote</md-button>
+                
+                <div v-if="service.isSubService === false">
+                  <md-card-area md-inset>
+                    <md-card-header>
+                      <i class="fas fa-atom" id="service_logo"></i>
+                      <span class="md-title">{{ service.title }}</span>
 
-                  <div v-if="(service.isSubService === false)">
-                    <h4
-                      class="card-header"
-                      style="text-align:left; text-indent:15px; color: black"
-                    >Title: {{ service.title }}</h4>
-
-                    <div class="card-body">
-                      <!-- Service Description -->
-                      <md-button
-                        @click="manifestModalForm(service)"
-                        class="md-raised md-primary pull-right"
-                        style="background-color: #2238ff; color: white;"
-                      >Request Quote</md-button>
-
-                      <h5
-                        class="card-text"
-                        style="text-align:left; padding:15px;"
-                      >Description: {{ service.description }}</h5>
-
-                      <!-- This is where I'll list the subservices -->
-
-                      <md-card
-                        style="width: 80%; margin-left: auto; margin-right: auto; background-color: #d6d1e4"
-                        v-for="(subService, index) in services"
-                        :key="index"
-                      >
-                        <div
-                          class="container"
-                          v-if="(subService.parentServiceId === service.id) && (subService.isSubService === true)"
-                        >
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col">Service Subtitle</th>
-                                <th scope="col">Turn Around Time</th>
-                                <th scope="col">Price/ Unit</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">{{ subService.title }}</th>
-                                <td>{{ subService.turnAroundTime }}</td>
-                                <td>{{ subService.description }}</td>
-                                <td>
-                                  <md-button
-                                    style="background-color: #28a745; color: white;"
-                                    @click="addServiceToCart(subService, index)"
-                                  >Add to Cart</md-button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      <md-card-content>
+                        <div class="card-reservation">
+                          <div class="md-subhead">
+                            <span style="color:#1faa00;font-size: 18px;"> Price: {{service.servicePrice}} $</span>
+                            
+                            <span class="pull-right"> 
+                              <md-icon>access_time</md-icon>
+                              Turnaround time : {{ service.turnAroundTime }}
+                            </span>
+                          </div>
                         </div>
-                      </md-card>
-                      <!--  -->
+                      </md-card-content>
+                    </md-card-header>
 
-                      <!-- Service/Price Listings -->
-
-                      <md-button
-                        style="background-color: #28a745; color: white;"
-                        v-if="subServicesPresent(service) === false"
-                        @click="addServiceToCart(service, index)"
-                      >Add to Cart</md-button>
+                    <md-card-content class="md-scrollbar" id="service-description">{{ service.description }}</md-card-content>
+                    <div style="padding-left: 15px;">
+                      <md-chip
+                        class="md-primary md-accent"
+                        style="background-color: #00b2cc; color: white;"
+                        v-for="chip in service.tags"
+                        :key="chip"
+                      >{{ chip.tag }}</md-chip>
                     </div>
+                  </md-card-area>
+                  <br>
+                  <div v-for="(subService, index) in services" :key="index">
+                    <md-card
+                      id="subservice-block"
+                      v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
+                      >
+                      <md-card-area>
+                        <md-card-header>
+
+                            <span class="pull-right">
+                              <span style="padding-top:10px;color:#009624;font-size: 18px;"> Price: {{subService.servicePrice}} $</span> 
+                              <br>
+                              <md-button
+                                style="background-color: #28a745; color: white;"
+                                @click="addServiceToCart(subService, index)"
+                              >Add to Cart</md-button>
+                            </span>
+                          <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
+                          
+                          <md-icon>access_time</md-icon>
+                          Turnaround time : {{ subService.turnAroundTime }}
+
+                        </md-card-header>
+                        <md-card-content class="md-scrollbar" id="service-description">{{ subService.description }}</md-card-content>
+                      </md-card-area>
+
+                      <div style="padding-left: 15px;">
+                        <md-chip
+                          class="md-primary md-accent"
+                          style="padding-left: 5px;background-color: #00b2cc; color: white;"
+                          v-for="chip in subService.tags"
+                          :key="chip"
+                        >{{ chip.tag }}</md-chip>
+                      </div>
+                      <br>
+                    </md-card>
+                    
                   </div>
-                </md-card-content>
-              </md-card>
+                </div>
+              </div>
+              <br />
+              
+
             </div>
 
             <!-- This is where I list the services -->
-          </div>
+          <!-- </div> -->
 
           <!-- quote request cart -->
           <div class="col-md-3">
@@ -140,6 +147,7 @@
               <request-quote-cart></request-quote-cart>
             </md-card>
           </div>
+
         </div>
       </div>
 
@@ -227,24 +235,8 @@
 </script>
 
 <style scoped>
-@import "../assets/css/dashboard.css";
+@import "../assets/css/publicprofile.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-.submit-buttons-md {
-  background-color: #2238ff;
-  color: white;
-}
-div.card {
-  margin-left: auto;
-  margin-right: auto;
-}
-#shopping-cart {
-  margin-left: 1000px;
-  border: 1px solid green;
-}
-#request-quote-cart {
-  margin-left: 1000px;
-  border: 1px solid green;
-}
 </style>
 
 

@@ -64,21 +64,15 @@ body.dashboard {
   border-bottom: 2px solid #4527a0;
 }
 
-#dashboard #form-row-border{
-  border-bottom: 1px solid black;
-}
-
-
-
 #dashboard .md-checkbox {
   display: flex;
 }
 
-#dashboard #service-card .md-card-content {
+/* #dashboard #service-card .md-card-content {
   max-width: 900px;
   max-height: 200px;
   overflow: auto;
-}
+} */
 
 #dashboard .md-card {
   width: 320px;
@@ -104,19 +98,6 @@ body.dashboard {
   min-width: 95%; 
   margin-left: 40px;
 }
-
-/* .dashboard .service-block-sub{
-  padding-left:100px;
-  border-radius: 5px;
-} */
-
-/* .dashboard .service-block #service-title{
-  background-color: #d6d1e4;
-  box-shadow:  0px 2px 2px 1px  #c2bece;
-  padding-left: 10px;
-  padding-top:0px;
-  border-radius: 5px;
-} */
 
 .dashboard .service-block #service-desc{
   background-color: white;
@@ -206,7 +187,7 @@ body.dashboard {
   font-style: medium;
   font: 25px "Roboto";
   color: #311c63;
-  text-align: center;
+  text-align: left;
 }
 
 .dashboard #dashboard h3 {
@@ -218,7 +199,7 @@ body.dashboard {
   text-align: center;
 }
 
-.dashboard .services h4 {
+.dashboard #services h4 {
   letter-spacing: 1px;
   font: 20px "Roboto";
   color: #311c63;
@@ -313,12 +294,6 @@ body.dashboard {
 }
 
 #service-form-block table {
-  width: 100%;
-  table-layout: fixed;
-  background: #ebe8f1;
-}
-
-#subservice-form-block table {
   width: 100%;
   table-layout: fixed;
   background: #ebe8f1;

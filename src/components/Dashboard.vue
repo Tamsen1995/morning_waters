@@ -9,7 +9,7 @@
     <body class="dashboard">
       <div class="container" id="dashboard">
         <!-- This section is reserved for the profile information -->
-        <div id="main">
+        <div>
           <div class="container" id="name-location">
             <div class="d-flex justify-content-center" id="company-name">
               <h1 style="text-align:center:">{{ this.companyName }}</h1>
@@ -26,13 +26,25 @@
 
           <!-- About Section -->
           <div class="container" id="about">
-            <md-content class="md-scrollbar">        
-              <h4>About:</h4>
+            <h4>About:</h4>
+            <!-- Scroll Content -->
+            <md-content class="md-scrollbar">         
               <p style="text-align:left">{{ this.about }}</p>
             </md-content>
+
+            <!-- Transition Expand Content -->
+
+            <!-- <transition-expand>
+              <md-card>
+                <div v-if="expanded">{{this.about}}</div>
+              </md-card>
+            </transition-expand> -->
+            <!-- <md-button
+              class="md-dense md-raised md-primary"
+              @click="expanded = !expanded"
+            >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
           </div>
         </div>
-
         <br />
         <br />
 
@@ -82,7 +94,7 @@
         <br />
         <br />
 
-        <div class="services" id="services">
+        <div id="services">
           <br />
           <h2>Services:</h2>
           <br />
@@ -105,15 +117,13 @@
                     <span class="md-title">{{ service.title }}</span>
 
                     <md-card-content>
-                      <div class="card-reservation">
-                        <div class="md-subhead">
-                          <span style="color:#1faa00;font-size: 18px;"> Price: {{service.servicePrice}} $</span>
-                          
-                          <span class="pull-right"> 
-                            <md-icon>access_time</md-icon>
-                            Turnaround time : {{ service.turnAroundTime }}
-                          </span>
-                        </div>
+                      <div class="card-reservation">                       
+                        <span style="color:#1faa00;font-size: 18px;"> Price: {{service.servicePrice}} $</span>
+                        
+                        <span class="pull-right"> 
+                          <md-icon>access_time</md-icon>
+                          Turnaround time : {{ service.turnAroundTime }}
+                        </span>                    
                       </div>
                     </md-card-content>
                   </md-card-header>
