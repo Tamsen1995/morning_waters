@@ -146,7 +146,7 @@
               <br />
               <br />
               <br />
-              <!-- The continue button needs to lead onto the registration around here -->
+
               <form>
                 <div class="row">
                   <div class="col-sm-12">
@@ -172,10 +172,9 @@
               >Continue</a>
               <br />
               <br />
-              <!-- <h3>Start your project today.</h3> -->
             </div>
           </div>
-        </slide> -->
+        </slide>-->
       </carousel>
     </section>
 
