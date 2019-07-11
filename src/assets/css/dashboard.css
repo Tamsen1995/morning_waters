@@ -6,7 +6,7 @@ body.dashboard {
   min-height: 100vh;
   padding: 15px 0px;
   /* background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%); */
-  background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
+  background: linear-gradient(to bottom right, #ffffff 0%, #e1dfe7 100%);
 }
 
 .expand-enter-active,
@@ -24,7 +24,7 @@ body.dashboard {
 #dashboard #name-location {
   max-width: 1314px;
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
-  background: linear-gradient( white 60%, #301a70 40%);
+  background: linear-gradient( white 60%, #4527a0 40%);
   border-color: rgb(190, 187, 187);
   border-style: solid;
   border-width: .5px;
@@ -68,11 +68,11 @@ body.dashboard {
   display: flex;
 }
 
-/* #dashboard #service-card .md-card-content {
+#dashboard #service-card .md-card-content {
   max-width: 900px;
   max-height: 200px;
   overflow: auto;
-} */
+}
 
 #dashboard .md-card {
   width: 320px;
