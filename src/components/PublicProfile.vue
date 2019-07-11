@@ -54,16 +54,17 @@
 
           <h2>Services:</h2>
           <br/>
+          <div class="service-border"></div>
           <!-- <div class="col-md-9"> -->
             <div v-for="(service, index) in this.services" :key="service.id">
-              <div class="service-border">
-                <md-button
-                  @click="manifestModalForm(service)"
-                  class="md-raised md-primary pull-right"
-                  style="background-color: #2238ff; color: white;"
-                >Request Quote</md-button>
                 
-                <div v-if="service.isSubService === false">
+              <div v-if="service.isSubService === false">
+                <div class="service-border">
+                                <md-button
+                @click="manifestModalForm(service)"
+                class="md-raised md-primary pull-right"
+                style="background-color: #2238ff; color: white;"
+              >Request Quote</md-button>
                   <md-card-area md-inset>
                     <md-card-header>
                       <i class="fas fa-atom" id="service_logo"></i>
@@ -102,16 +103,16 @@
                       <md-card-area>
                         <md-card-header>
 
-                            <span class="pull-right">
-                              <span style="padding-top:10px;color:#009624;font-size: 18px;"> Price: {{subService.servicePrice}} $</span> 
-                              <br>
-                              <md-button
-                                style="background-color: #28a745; color: white;"
-                                @click="addServiceToCart(subService, index)"
-                              >Add to Cart</md-button>
-                            </span>
+                          <span class="pull-right">
+                            <span style="padding-top:10px;color:#009624;font-size: 18px;"> Price: {{subService.servicePrice}} $</span> 
+                            <br>
+                            <md-button
+                              style="background-color: #28a745; color: white;"
+                              @click="addServiceToCart(subService, index)"
+                            >Add to Cart</md-button>
+                          </span>
                           <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
-                          
+                        
                           <md-icon>access_time</md-icon>
                           Turnaround time : {{ subService.turnAroundTime }}
 
@@ -129,7 +130,7 @@
                       </div>
                       <br>
                     </md-card>
-                    
+
                   </div>
                 </div>
               </div>
