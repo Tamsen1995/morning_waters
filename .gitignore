@@ -1,4 +1,5 @@
 .DS_Store
+tobuild
 npm_modules
 npm-debug.log*
 yarn-debug.log*

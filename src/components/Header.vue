@@ -21,7 +21,7 @@
             <a class="nav-link" href="#services">Services</a>
           </b-nav-text>
 
-          <b-nav-text >
+          <!-- <b-nav-text >
             <router-link class="nav-link" to="/login">
               Login
             </router-link>
@@ -32,7 +32,7 @@
             Sign Up
             </router-link>
 
-          </b-nav-text>
+          </b-nav-text> -->
 
         </b-navbar-nav>
       </b-collapse>

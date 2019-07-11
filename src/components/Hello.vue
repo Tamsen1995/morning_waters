@@ -3,32 +3,36 @@
   <div class="responsive-component" v-responsive="{
     small: el => el.width < 430
     }">
-    <page-header/>
+    <page-header />
     <!-- v-on:scroll="handleScroll"> -->
     <header class="masthead">
+
       <div>
+
+
         <a>
-          <img src="./LOGO.png" alt="FIG ANALYTICS" class="center">
+          <img src="./LOGO.png" alt="FIG ANALYTICS" class="center" />
         </a>
-        <br>
-        <hr>
-        <br>
-        <br>
+        <br />
+        <hr />
+        <br />
+        <br />
         <h1>Grow your Biotech Network.</h1>
-        <br>
-        <br>
+        <br />
+        <br />
         <div class="col-md-12 text-center">
           <a href="#start" class="btn-signup btn-signup-outline btn-xl">Sign Up</a>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
+        <br />
+        <br />
+        <br />
+        <br />
         <div class="col-md-12 text-center">
           <router-link class="btn-signup btn-signup-outline btn-xl" to="/login">Client Login</router-link>
         </div>
       </div>
     </header>
+
 
     <section class="services" id="services">
       <div class="col-centered my-auto">
@@ -38,51 +42,61 @@
         <br>
         <br>
         <br>
+
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-6">
               <div class="feature-item">
+
                 <img src="../assets/css/leads.png" class="icon">
                 <h3>Smart Lead Generation</h3><br>
                 <h5 class="text-muted"> 
                   Buyer discovery and matchmaking for your biotech products & services.</h5>
               </div><br>
+
             </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <div class="col-lg-6">
               <div class="feature-item">
+
                 <img src="../assets/css/email1.png" class="icon">
                 <h3>Full Service Sales Platform</h3><br>
                 <h5 class="text-muted"> 
                   Streamlined interface guides you from A to B through the Sales process.</h5>
               </div><br>
+
             </div>
           </div>
-          <br>
+          <br />
           <div class="row">
             <div class="col-lg-6">
               <div class="feature-item">
+
                 <img src="../assets/css/abstract.png" class="icon">
                 <h3>Shipping Logistics & Handling</h3><br>
                 <h5 class="text-muted">Our shipping partners handle everything from fragile packaging and dry ice to insurance.</h5>
               </div><br>
+
             </div>
             <div class="col-lg-6">
 
               <div class="feature-item">
+
                 <img src="../assets/css/search.png" class="icon">
                 <h3>Citation Tracking</h3><br>
                 <h5 class="text-muted">Coming soon!</h5>
               </div><br>
+
             </div>
           </div>
         </div>
       </div>
     </section>
+
 
     <section class="about" id="about">
       <div class="container-fluid">
@@ -123,15 +137,21 @@
           <br><br><br>
           </slide>
 
-          <!-- Step 2 -->
-          <slide>
-            <img src="../assets/css/new_pitch_2.svg" alt="FIG ANALYTICS" class="center" id="pitch">
-          </slide>
 
-          <!-- Step 3 -->
-          <slide>
-            <img src="../assets/css/new_pitch_3.svg" alt="FIG ANALYTICS" class="center" id="pitch">
-          </slide>
+        <!-- Step 3 -->
+        <slide>
+          <img src="../assets/css/new_pitch_3.svg" alt="FIG ANALYTICS" class="center" id="pitch" />
+        </slide>
+
+        <!-- Step 4 -->
+        <!-- <slide>
+          <div class="container-fluid">
+            <div class="col-sm-12">
+              <h3>Start your project today.</h3>
+              <br />
+              <br />
+              <br />
+
 
           <!-- Step 4 -->
           <slide>
@@ -150,14 +170,17 @@
                       <input v-model="companyName" type="text" name="company">
                       <br>
                     </div>
+
                   </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <p>Email:</p>
-                      <input v-model="emailAddress" type="text" name="email">
-                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p>Email:</p>
+                    <input v-model="emailAddress" type="text" name="email" />
                   </div>
-                </form>
+                </div>
+              </form>
+
 
                 <br>
                 <br>
@@ -173,16 +196,17 @@
                 <br><br>
                 <!-- <h3>Start your project today.</h3> -->
               </div>
-            </div>
-          </slide>
 
-        </carousel>
-      
+            </div>
+          </div>
+        </slide>-->
+      </carousel>
     </section>
 
     <footer>
       <div class="container-fluid" id="contact">
         <div class="row">
+
           <div class="col">
             <h3>Contact Us</h3>
             <br>
@@ -192,8 +216,9 @@
               1138 South Cleveland St
               <br>Oceanside CA 92054
               <br><br>
+
             </h4>
-            <br>
+            <br />
           </div>
           <!-- <div class="col-lg-2">
             <ul class="list-unstyled">
@@ -204,15 +229,19 @@
                 <li>Contact</li>
               </h4>
             </ul>
+
           </div> -->
           <!-- <br>
           <div class="col-lg-2">
+
             <div class="container" style="max-width:200px;text-align:center;">
             <router-link class="btn-default btn-large btn-block" id="btn-footer" to="/login">Client Login</router-link>
             <br>
             <router-link class="btn-success btn-large btn-block" id="btn-footer" to="/register">Sign Up</router-link>
             </div>
+
           </div> -->
+
         </div>
       </div>
       <div class="container-fluid" id="copy-rights">
