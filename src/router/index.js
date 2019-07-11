@@ -66,12 +66,13 @@ export default new Router({
         routingAuthentication(to, from, next)
       }
     },
-    // {
-    //   path: '/publicProfile/:id',
-    //   name: 'publicProfile',
-    //   component: PublicProfile
-    // },
     {
+      path: '/publicProfile/:id',
+      name: 'publicProfile',
+      component: PublicProfile
+    },
+    {
+
       path: '/pendingOrder/status/:orderId',
       name: 'pendingOrderStatus',
       component: PendingOrderStatus
