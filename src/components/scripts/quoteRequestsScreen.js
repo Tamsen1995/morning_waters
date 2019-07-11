@@ -130,6 +130,20 @@ export default {
         if (error) throw error
       }
     },
+    async closeSubmitPrompt () {
+      try {
+        this.$modal.hide('would-you-like-to-submit')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async submitOrderPrompt () {
+      try {
+        this.$modal.show('would-you-like-to-submit')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitOrder () {
       try {
         // set the order confirmed on the seller side to true
