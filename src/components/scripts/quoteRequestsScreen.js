@@ -90,13 +90,17 @@ export default {
         if (error) throw error
       }
     },
-
-    // goes through the array of orders
+    // goes through the array of orders and pending orders
     // finds the order with the appropiate order id
     // and then displays that order with the showOrder function
-    async showOrderWithOrderId (orders, orderId) {
+    async showOrderWithOrderId (orderId) {
       try {
-        //
+        for (var k = 0; k < this.orders.length; k++) {
+          if (this.orders[k].orderId === orderId) {
+            this.showOrder(this.orders[k])
+            break
+          }
+        }
       } catch (error) {
         if (error) throw error
       }
@@ -156,13 +160,15 @@ export default {
     },
     async submitOrder () {
       try {
+        const orderId = this.order.orderId
         // set the order confirmed on the seller side to true
         await InboxService.confirmOrder({
-          orderId: this.order.orderId,
+          orderId: orderId,
           user: 'seller'
         })
         await this.getLockedOrders()
         await this.getPendingOrders()
+        this.showOrderWithOrderId(orderId)
         this.$modal.hide('would-you-like-to-submit')
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
