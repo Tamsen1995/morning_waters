@@ -10,40 +10,10 @@
       <div class="container" id="dashboard">
         <!-- This section is reserved for the profile information -->
         <div>
-          <div class="container" id="name-location">
-            <div class="d-flex justify-content-center" id="company-name">
-              <h1 style="text-align:center:">{{ this.companyName }}</h1>
-            </div>
-            <div class="d-flex justify-content-center" id="company-location">
-              <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
-            </div>
-            <div class="d-flex justify-content-center" id="company-logo">
-              <div id="logo-border">
-                <div class="circle" id="logo"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- About Section -->
-          <div class="container" id="about">
-            <h4>About:</h4>
-            <!-- Scroll Content -->
-            <md-content class="md-scrollbar">
-              <p style="text-align:left">{{ this.about }}</p>
-            </md-content>
-
-            <!-- Transition Expand Content -->
-
-            <!-- <transition-expand>
-              <md-card>
-                <div v-if="expanded">{{this.about}}</div>
-              </md-card>
-            </transition-expand>-->
-            <!-- <md-button
-              class="md-dense md-raised md-primary"
-              @click="expanded = !expanded"
-            >{{ expanded ? `Shrink` : `Expand` }}</md-button>-->
-          </div>
+          <!--  -->
+          <!-- insert about section -->
+          <about-section></about-section>
+          <!--  -->
         </div>
         <br />
         <br />

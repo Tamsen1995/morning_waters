@@ -1,5 +1,6 @@
 import DashboardHeader from '@/components/DashboardHeader.vue'
 import StatsCards from '@/components/sellerDashboard/StatsCards.vue'
+import AboutSection from '@/components/sellerDashboard/AboutSection.vue'
 import UserServices from '@/services/UserServices'
 import DashboardServices from '@/services/DashboardServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
@@ -18,12 +19,6 @@ export default {
       unitType: '',
       price: '',
       user: null,
-      companyName: '',
-      companyLocation: '',
-      about: '',
-      credits: 0,
-      leads: 0,
-      pageViews: 0,
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
@@ -37,7 +32,8 @@ export default {
   },
   components: {
     DashboardHeader,
-    StatsCards
+    StatsCards,
+    AboutSection
   },
   directives: {
     responsive: ResponsiveDirective
