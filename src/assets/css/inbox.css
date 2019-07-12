@@ -288,6 +288,10 @@ body.inbox {
   overflow-y: auto;
   height: 500px;
 }
+#inbox .message-wrapper .invoice-generator{
+  min-width: 300px;
+}
+
 
 /* EXTRA */
 

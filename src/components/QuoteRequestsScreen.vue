@@ -21,8 +21,8 @@
                 <!-- Filter Orders/Quote Requests -->
                 <div class="pull-left">
                   <div class="btn-group">
-                    <h2>
-                    <button type="button" class="btn btn-success">{{ dropdownVariable }}</button>
+                    
+                    <button type="button" class="btn btn-success"><h5>{{ dropdownVariable }}</h5></button>
                     <button
                       type="button"
                       class="btn btn-success dropdown-toggle"
@@ -32,15 +32,14 @@
                     </button>
 
                     <ul class="dropdown-menu pull-right" role="menu">
-
                       <li>
                         <a @click="switchMessagesDisplayed('orders')">
-                          <i class="fas fa-seedling"></i> Orders
+                          <h5><i class="fas fa-seedling"></i> Orders</h5>
                         </a>
                       </li>
                       <li>
                         <a @click="switchMessagesDisplayed('quoteRequests')">
-                          <i class="far fa-envelope"></i></i> Quote Requests
+                          <h5><i class="far fa-envelope"></i> Quote Requests</h5>
                         </a>
                       </li>
                       <li class="divider"></li>
@@ -51,12 +50,11 @@
                       </li> -->
                       <li>
                         <a @click="switchMessagesDisplayed('all')">
-                          <i class="fas fa-inbox"></i> All
+                          <h5><i class="fas fa-inbox"></i> All</h5>
                         </a>
                       </li>
 
-                    </ul>
-                     </h2>                     
+                    </ul>                   
                   </div>
                 </div>
 
@@ -208,7 +206,7 @@
           <div class="col-md-3 message-sideright card-expansion invoice-generator">
             <md-card md-with-hover>
               <md-ripple>
-                <md-card-header style="background-color:#0100ca; color:white;">
+                <md-card-header style="background-color:#6200ea; color:white;">
                   <div class="md-title" style="font-size:20px;" >
                     <i class="fas fa-file-invoice" style="font-size:40px;"></i>
                     Custom Invoice Generator</div>
@@ -219,11 +217,12 @@
                 <md-card-expand>
                   <md-card-actions md-alignment="space-between">
                     <div>
-                      <md-button>Edit Invoice</md-button>
-                      <md-button>Send Invoice</md-button>
+                      <!-- <md-button>View Order</md-button>
+                      <md-button>Edit Invoice</md-button> -->
                     </div>
                     <md-card-expand-trigger>
-                      <md-button class="md-icon-button">
+                      <md-button >
+                        Edit Invoice
                         <md-icon>keyboard_arrow_down</md-icon>
                       </md-button>
                     </md-card-expand-trigger>
