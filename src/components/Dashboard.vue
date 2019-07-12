@@ -10,94 +10,17 @@
       <div class="container" id="dashboard">
         <!-- This section is reserved for the profile information -->
         <div>
-          <div class="container" id="name-location">
-            <div class="d-flex justify-content-center" id="company-name">
-              <h1 style="text-align:center:">{{ this.companyName }}</h1>
-            </div>
-            <div class="d-flex justify-content-center" id="company-location">
-              <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
-            </div>
-            <div class="d-flex justify-content-center" id="company-logo">
-              <div id="logo-border">
-                <div class="circle" id="logo"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- About Section -->
-          <div class="container" id="about">
-            <h4>About:</h4>
-            <!-- Scroll Content -->
-            <md-content class="md-scrollbar">
-              <p style="text-align:left">{{ this.about }}</p>
-            </md-content>
-
-            <!-- Transition Expand Content -->
-
-            <!-- <transition-expand>
-              <md-card>
-                <div v-if="expanded">{{this.about}}</div>
-              </md-card>
-            </transition-expand>-->
-            <!-- <md-button
-              class="md-dense md-raised md-primary"
-              @click="expanded = !expanded"
-            >{{ expanded ? `Shrink` : `Expand` }}</md-button>-->
-          </div>
+          <!--  -->
+          <!-- insert about section -->
+          <about-section></about-section>
+          <!--  -->
         </div>
         <br />
         <br />
 
         <!-- Stats Cards -->
         <div id="stats">
-          <div class="card-group">
-            <div
-              class="card"
-              style="min-width: 30%;border-color: #9d46ff;
-              border-width: 3px; 
-              border-style: solid;"
-            >
-              <!-- <img src="..." class="card-img-top" alt="..."> -->
-              <div class="card-body">
-                <h3 class="card-title" style="color: #9d46ff;">Pending Orders:</h3>
-                <h3 class="card-text">{{ this.credits }}</h3>
-                <button
-                  class="btn-block"
-                  id="btn-orders"
-                  @click="redirectToPendingOrders()"
-                >View Orders</button>
-              </div>
-            </div>
-            <div
-              class="card"
-              style="min-width: 30%;border-color: #00c853;
-              border-width: 3px; 
-              border-style: solid;"
-            >
-              <!-- <img src="..." class="card-img-top" alt="..."> -->
-              <div class="card-body">
-                <h3 class="card-title" style="color: #00c853;">New Leads:</h3>
-                <h3 class="card-text">{{ this.leads }}</h3>
-                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                <button class="btn-block" id="btn-leads" @click="redirectToInbox()">View Leads</button>
-              </div>
-            </div>
-            <div
-              class="card"
-              style="min-width: 30%;border-color: #304ffe;
-              border-width: 3px; 
-              border-style: solid;"
-            >
-              <!-- <img src="..." class="card-img-top" alt="..."> -->
-              <div class="card-body">
-                <h3 class="card-title" style="color: #304ffe;">Page Views:</h3>
-                <h3 class="card-text">{{ this.pageViews }}</h3>
-                <p class="card-text">
-                  <small class="text-muted">Last updated [timestamp]</small>
-                </p>
-              </div>
-            </div>
-          </div>
+          <stats-cards></stats-cards>
         </div>
         <br />
         <br />
