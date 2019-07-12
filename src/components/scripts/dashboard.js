@@ -7,7 +7,6 @@ var $ = require('jQuery')
 
 export default {
   name: 'Dashboard',
-  name: 'EmptyStateRounded',
   data () {
     return {
       services: [],
@@ -16,7 +15,6 @@ export default {
       serviceDescription: '',
       servicePrice: 0.0,
       turnAroundTime: '',
-      // serviceTags: '',
       unitType: '',
       price: '',
       user: null,
