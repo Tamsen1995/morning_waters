@@ -264,7 +264,7 @@
             <div class="col-4">
               <md-field>
                 <label>Unit Type:</label>
-                <md-input type="text" v-model="unit" style="border-bottom: 1px inset"></md-input>
+                <md-input type="text" v-model="unitType" style="border-bottom: 1px inset"></md-input>
               </md-field>
             </div>
 
@@ -315,7 +315,7 @@
             <tr>
               <td>{{ serviceTitle }}</td>
               <td>{{ servicePrice }}</td>
-              <td>{{ unit }}</td>
+              <td>{{ unitType }}</td>
               <td>{{ turnAroundTime }} {{ turnAroundTimeType }}</td>
               <!-- <td>{{ novalue }}</td>
               <td>{{ obj }}</td>-->
