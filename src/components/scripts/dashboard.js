@@ -1,5 +1,5 @@
 import DashboardHeader from '@/components/DashboardHeader.vue'
-// import AuthenticationService from '@/services/AuthenticationService'
+import StatsCards from '@/components/StatsCards.vue'
 import UserServices from '@/services/UserServices'
 import DashboardServices from '@/services/DashboardServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
@@ -38,7 +38,8 @@ export default {
     }
   },
   components: {
-    DashboardHeader
+    DashboardHeader,
+    StatsCards
   },
   directives: {
     responsive: ResponsiveDirective
