@@ -22,10 +22,10 @@
         </div>
 
         <!-- About Section -->
-        <div class="container" id="about">          
+        <div class="container" id="about">
           <h4>About:</h4>
           <!-- Scroll Content -->
-          <md-content class="md-scrollbar">        
+          <md-content class="md-scrollbar">
             <p style="text-align:left">{{ this.about }}</p>
           </md-content>
 
@@ -35,11 +35,11 @@
             <md-card>
               <div v-if="expanded">{{this.about}}</div>
             </md-card>
-          </transition-expand> -->
+          </transition-expand>-->
           <!-- <md-button
             class="md-dense md-raised md-primary"
             @click="expanded = !expanded"
-          >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
+          >{{ expanded ? `Shrink` : `Expand` }}</md-button>-->
         </div>
         <br />
         <br />
@@ -49,97 +49,105 @@
           <md-button
             @click="manifestModalInquiry(service)"
             class="md-raised md-primary pull-right submit-buttons-md"
-            >Message Seller
-          </md-button>
+          >Message Seller</md-button>
 
           <h2>Services:</h2>
-          <br/>
+          <br />
           <div class="service-border"></div>
           <!-- <div class="col-md-9"> -->
-            <div v-for="(service, index) in this.services" :key="service.id">
-                
-              <div v-if="service.isSubService === false">
-                <div class="service-border">
-                                <md-button
-                @click="manifestModalForm(service)"
-                class="md-raised md-primary pull-right"
-                style="background-color: #2238ff; color: white;"
-              >Request Quote</md-button>
-                  <md-card-area md-inset>
-                    <md-card-header>
-                      <i class="fas fa-atom" id="service_logo"></i>
-                      <span class="md-title">{{ service.title }}</span>
+          <div v-for="(service, index) in this.services" :key="service.id">
+            <div v-if="service.isSubService === false">
+              <div class="service-border">
+                <md-button
+                  @click="manifestModalForm(service)"
+                  class="md-raised md-primary pull-right"
+                  style="background-color: #2238ff; color: white;"
+                >Request Quote</md-button>
+                <md-card-area md-inset>
+                  <md-card-header>
+                    <i class="fas fa-atom" id="service_logo"></i>
+                    <span class="md-title">{{ service.title }}</span>
+                    <br />
+                    <md-button
+                      v-if="subServicesPresent(service) === false"
+                      style="background-color: #28a745; color: white;"
+                      @click="addServiceToCart(service, index)"
+                    >Add to Cart</md-button>
+                    <md-card-content>
+                      <div class="card-reservation">
+                        <div class="md-subhead">
+                          <span
+                            style="color:#1faa00;font-size: 18px;"
+                          >Price: {{service.servicePrice}} $</span>
 
-                      <md-card-content>
-                        <div class="card-reservation">
-                          <div class="md-subhead">
-                            <span style="color:#1faa00;font-size: 18px;"> Price: {{service.servicePrice}} $</span>
-                            
-                            <span class="pull-right"> 
-                              <md-icon>access_time</md-icon>
-                              Turnaround time : {{ service.turnAroundTime }}
-                            </span>
-                          </div>
+                          <span class="pull-right">
+                            <md-icon>access_time</md-icon>
+                            Turnaround time : {{ service.turnAroundTime }}
+                          </span>
                         </div>
-                      </md-card-content>
-                    </md-card-header>
+                      </div>
+                    </md-card-content>
+                  </md-card-header>
 
-                    <md-card-content class="md-scrollbar" id="service-description">{{ service.description }}</md-card-content>
+                  <md-card-content
+                    class="md-scrollbar"
+                    id="service-description"
+                  >{{ service.description }}</md-card-content>
+                  <div style="padding-left: 15px;">
+                    <md-chip
+                      class="md-primary md-accent"
+                      style="background-color: #00b2cc; color: white;"
+                      v-for="chip in service.tags"
+                      :key="chip"
+                    >{{ chip.tag }}</md-chip>
+                  </div>
+                </md-card-area>
+                <br />
+                <div v-for="(subService, index) in services" :key="index">
+                  <md-card
+                    id="subservice-block"
+                    v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
+                  >
+                    <md-card-area>
+                      <md-card-header>
+                        <span class="pull-right">
+                          <span
+                            style="padding-top:10px;color:#009624;font-size: 18px;"
+                          >Price: {{subService.servicePrice}} $</span>
+                          <br />
+                          <md-button
+                            style="background-color: #28a745; color: white;"
+                            @click="addServiceToCart(subService, index)"
+                          >Add to Cart</md-button>
+                        </span>
+                        <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
+
+                        <md-icon>access_time</md-icon>
+                        Turnaround time : {{ subService.turnAroundTime }}
+                      </md-card-header>
+                      <md-card-content
+                        class="md-scrollbar"
+                        id="service-description"
+                      >{{ subService.description }}</md-card-content>
+                    </md-card-area>
+
                     <div style="padding-left: 15px;">
                       <md-chip
                         class="md-primary md-accent"
-                        style="background-color: #00b2cc; color: white;"
-                        v-for="chip in service.tags"
+                        style="padding-left: 5px;background-color: #00b2cc; color: white;"
+                        v-for="chip in subService.tags"
                         :key="chip"
                       >{{ chip.tag }}</md-chip>
                     </div>
-                  </md-card-area>
-                  <br>
-                  <div v-for="(subService, index) in services" :key="index">
-                    <md-card
-                      id="subservice-block"
-                      v-if="(subService.isSubService === true) && (subService.parentServiceId === service.id)"
-                      >
-                      <md-card-area>
-                        <md-card-header>
-
-                          <span class="pull-right">
-                            <span style="padding-top:10px;color:#009624;font-size: 18px;"> Price: {{subService.servicePrice}} $</span> 
-                            <br>
-                            <md-button
-                              style="background-color: #28a745; color: white;"
-                              @click="addServiceToCart(subService, index)"
-                            >Add to Cart</md-button>
-                          </span>
-                          <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
-                        
-                          <md-icon>access_time</md-icon>
-                          Turnaround time : {{ subService.turnAroundTime }}
-
-                        </md-card-header>
-                        <md-card-content class="md-scrollbar" id="service-description">{{ subService.description }}</md-card-content>
-                      </md-card-area>
-
-                      <div style="padding-left: 15px;">
-                        <md-chip
-                          class="md-primary md-accent"
-                          style="padding-left: 5px;background-color: #00b2cc; color: white;"
-                          v-for="chip in subService.tags"
-                          :key="chip"
-                        >{{ chip.tag }}</md-chip>
-                      </div>
-                      <br>
-                    </md-card>
-
-                  </div>
+                    <br />
+                  </md-card>
                 </div>
               </div>
-              <br />
-              
-
             </div>
+            <br />
+          </div>
 
-            <!-- This is where I list the services -->
+          <!-- This is where I list the services -->
           <!-- </div> -->
 
           <!-- quote request cart -->
@@ -148,7 +156,6 @@
               <request-quote-cart></request-quote-cart>
             </md-card>
           </div>
-
         </div>
       </div>
 
