@@ -141,7 +141,10 @@
                     </md-card-content>
                   </md-card-header>
 
-                  <md-card-content class="md-scrollbar">{{ service.description }}</md-card-content>
+                  <md-card-content
+                    class="md-scrollbar"
+                    style="word-wrap: break-word;"
+                  >{{ service.description }}</md-card-content>
                   <div style="padding-left: 15px;">
                     <md-chip
                       class="md-primary md-accent"
@@ -169,7 +172,10 @@
                           Turnaround time : {{ subService.turnAroundTime }}
                         </span>
                       </md-card-header>
-                      <md-card-content class="md-scrollbar">{{ subService.description }}</md-card-content>
+                      <md-card-content
+                        class="md-scrollbar"
+                        style="word-wrap: break-word;"
+                      >{{ subService.description }}</md-card-content>
                     </md-card-area>
 
                     <div style="padding-left: 15px;">
