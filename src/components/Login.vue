@@ -25,6 +25,8 @@
           <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
           <!-- Form -->
+          <div>{{ this.errorMessage }}</div>
+
           <div class="card" id="login">
             <form>
               <h1>Login</h1>

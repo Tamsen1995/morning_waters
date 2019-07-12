@@ -37,6 +37,20 @@ export default {
     BuyerHeader
   },
   methods: {
+    async closeModal () {
+      try {
+        this.$modal.hide('would-you-like-confirm')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async promptForOrderConfirmation () {
+      try {
+        this.$modal.show('would-you-like-confirm')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async confirmOrder () {
       try {
         await InboxService.confirmOrder({

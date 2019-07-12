@@ -6,6 +6,7 @@ import PaymentService from '@/services/PaymentService'
 import UserServices from '@/services/UserServices'
 import Api from '@/services/Api'
 import { ResponsiveDirective } from 'vue-responsive-components'
+import InboxServices from '@/services/InboxService'
 
 export default {
   data () {
@@ -24,9 +25,7 @@ export default {
   },
   async created () {
     await this.getSellerPendingOrders()
-
-    // await this.getSellerOrders()
-    // await this.getSellerOrderItems();
+    await this.getBuyerPendingOrdersOrderItems()
   },
   mounted () {
   },
@@ -35,6 +34,7 @@ export default {
   },
   directives: {},
   methods: {
+
     async getSellerPendingOrders () {
       try {
         this.shippoOrders = []
@@ -50,6 +50,22 @@ export default {
           var orderFromShippo = response.data
           this.shippoOrders.push(orderFromShippo)
         }
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+
+    async getBuyerPendingOrdersOrderItems () {
+      try {
+        for (var i = 0; i < this.pendingOrders.length; i++) {
+          var response = await InboxServices.retrieveOrderOrderItems(this.pendingOrders[i].orderId)
+          const response2 = await InboxServices.retrieveServicesNegotiated(response.data.orderItems)
+          this.pendingOrders[i].orderItems = response2.data
+        }
+        var tmp = this.pendingOrders
+        this.pendingOrders = []
+        this.pendingOrders = tmp
+        console.log(`\n\nIn here we wanna get the buyer pending orders order items : ${JSON.stringify(this.pendingOrders)}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }

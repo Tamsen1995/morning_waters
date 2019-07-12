@@ -7,6 +7,7 @@ export default {
       email: '',
       password: '',
       error: null,
+      errorMessage: '',
       loadingFlag: 0
     }
   },
@@ -25,6 +26,7 @@ export default {
     },
     async login () {
       try {
+        this.errorMessage = ''
         const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
@@ -45,7 +47,11 @@ export default {
           name: 'dashboard'
         })
       } catch (error) {
-        console.log(`An error occured in the login component ${error}`) // TESTING
+        const status = error.response.status
+        console.log(`An error occured in the login component ${error.response.status}`) // TESTING
+        if (status === 403) {
+          this.errorMessage = 'login information was incorrect'
+        }
       }
     }
   }
