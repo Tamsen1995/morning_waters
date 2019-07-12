@@ -1,5 +1,5 @@
 import DashboardHeader from '@/components/DashboardHeader.vue'
-import StatsCards from '@/components/StatsCards.vue'
+import StatsCards from '@/components/sellerDashboard/StatsCards.vue'
 import UserServices from '@/services/UserServices'
 import DashboardServices from '@/services/DashboardServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
