@@ -22,7 +22,9 @@
               <div class="pull-left">
                 <div class="btn-group">
                   <button type="button" class="btn btn-success">
+
                     <h5 style="color:white;">{{ dropdownVariable }}</h5>
+
                   </button>
                   <button
                     type="button"
@@ -68,13 +70,16 @@
             </div>
 
             <!-- The panels for the orders -->
+
             <!-- Unresponded -->
+
             <div class="list-group no-margin list-message">
               <md-card
                 class="list-group-item request"
                 v-for="(order, index) in this.orders"
                 v-bind:key="index"
                 md-with-hover
+
                 id="unresponded"
               >
                 <md-ripple>
@@ -106,6 +111,7 @@
                 v-bind:key="index"
                 md-with-hover
                 id="responded"
+
               >
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems(order)">
@@ -128,6 +134,7 @@
                 </md-ripple>
               </md-card>
             </div>
+
             <!-- The panels for the orders -->
             <!-- The panels for the pending orders -->
             <!-- Unresponded -->
@@ -161,13 +168,16 @@
               </md-card>
             </div>
             <!-- Responded -->
+
             <div class="list-group no-margin list-message">
               <md-card
                 class="list-group-item pending-order"
                 v-for="(order, index) in this.pendingOrders"
                 v-bind:key="index"
                 md-with-hover
+
                 id="responded"
+
               >
                 <md-ripple>
                   <div @click="showOrder(order)">
@@ -190,6 +200,7 @@
                 </md-ripple>
               </md-card>
             </div>
+
             <!-- The panels for the quote requests -->
           </div>
           <div
@@ -266,6 +277,7 @@
           <!-- Negotation Interface -->
           <div class="col-md-3 message-sideright card-expansion invoice-generator">
             <md-card md-with-hover>
+
               <!-- <md-ripple> -->
               <md-card-header style="background-color:#6200ea; color:white;">
                 <div class="md-title" style="font-size:20px;">
@@ -326,8 +338,10 @@
                               >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                             </md-field>
                           </div>
+
                         </div>
                       </div>
+
                       <hr />
                       Total price: {{ this.totalPrice }} $
                       <br />
@@ -345,6 +359,7 @@
               </md-card-expand>
 
               <!-- </md-ripple> -->
+
             </md-card>
           </div>
         </div>
