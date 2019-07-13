@@ -241,7 +241,7 @@ export default {
         })
         this.orders = filtered
         console.log(`\nThe orders found are - > ${JSON.stringify(this.orders)}\n`) // TESTING
-        if (this.orders !== undefined || this.orders.length > 0) {
+        if (this.orders !== undefined && this.orders.length > 0) {
           this.orders = filtered
 
           this.showOrder(this.orders[0])
