@@ -17,112 +17,119 @@
         <div class="row message-wrapper rounded shadow mb-20">
           <div class="col-lg-3 message-sideleft">
             <!-- <md-card> -->
-              <div class="panel-heading">
-                <!-- Filter Orders/Quote Requests -->
-                <div class="pull-left">
-                  <div class="btn-group">
-                    
-                    <button type="button" class="btn btn-success"><h5>{{ dropdownVariable }}</h5></button>
-                    <button
-                      type="button"
-                      class="btn btn-success dropdown-toggle"
-                      data-toggle="dropdown"
-                    >
-                      <span class="sr-only">Toggle Dropdown</span>
-                    </button>
+            <div class="panel-heading">
+              <!-- Filter Orders/Quote Requests -->
+              <div class="pull-left">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-success">
+                    <h5>{{ dropdownVariable }}</h5>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-success dropdown-toggle"
+                    data-toggle="dropdown"
+                  >
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
 
-                    <ul class="dropdown-menu pull-right" role="menu">
-                      <li>
-                        <a @click="switchMessagesDisplayed('orders')">
-                          <h5><i class="fas fa-seedling"></i> Orders</h5>
-                        </a>
-                      </li>
-                      <li>
-                        <a @click="switchMessagesDisplayed('quoteRequests')">
-                          <h5><i class="far fa-envelope"></i> Quote Requests</h5>
-                        </a>
-                      </li>
-                      <li class="divider"></li>
-                      <!-- <li>
+                  <ul class="dropdown-menu pull-right" role="menu">
+                    <li>
+                      <a @click="switchMessagesDisplayed('orders')">
+                        <h5>
+                          <i class="fas fa-seedling"></i> Orders
+                        </h5>
+                      </a>
+                    </li>
+                    <li>
+                      <a @click="switchMessagesDisplayed('quoteRequests')">
+                        <h5>
+                          <i class="far fa-envelope"></i> Quote Requests
+                        </h5>
+                      </a>
+                    </li>
+                    <li class="divider"></li>
+                    <!-- <li>
                         <a>
                           <i class="fa fa-briefcase"></i> Other
                         </a>
-                      </li> -->
-                      <li>
-                        <a @click="switchMessagesDisplayed('all')">
-                          <h5><i class="fas fa-inbox"></i> All</h5>
-                        </a>
-                      </li>
-
-                    </ul>                   
-                  </div>
+                    </li>-->
+                    <li>
+                      <a @click="switchMessagesDisplayed('all')">
+                        <h5>
+                          <i class="fas fa-inbox"></i> All
+                        </h5>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-
-                <div class="clearfix"></div>
               </div>
 
-              <!-- The panels for the orders -->
-              <!-- <div class="panel-body no-padding"> -->
-                <div class="list-group no-margin list-message">
-                  <md-card
-                    class="list-group-item request"
-                    v-for="(order, index) in this.orders"
-                    v-bind:key="index"
-                    md-with-hover
-                  >
-                    <md-ripple>
-                      <div @click="showOrder(order), retrieveOrderOrderItems(order)">
-                        <h4 class="list-group-item-heading">
-                          <md-avatar class="md-avatar-icon md-primary">
-                            <!-- <md-icon>folder</md-icon> -->
-                            <i class="fas fa-lock"></i>
-                          </md-avatar>
-                          Buyer ID : {{ order.buyerId }} <small class="pull-right">{{ order.createdAt }}</small>
-                          <br />
-                          <br />
-                          <br />
-                        </h4>
-                        <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                        <p>Estimated Revenue:[$$$]</p>
-                        <span class="label label-success pull-right">Request</span>
-                        <div class="clearfix"></div>
-                      </div>
-                    </md-ripple>
-                  </md-card>
-                </div>
-              <!-- </div> -->
-              <!-- The panels for the orders -->
-              <!-- The panels for the pending orders -->
-              <!-- <div class="panel-body no-padding"> -->
-                <div class="list-group no-margin list-message">
-                  <md-card
-                    class="list-group-item pending-order"
-                    v-for="(order, index) in this.pendingOrders"
-                    v-bind:key="index"
-                    md-with-hover
-                  >
-                    <md-ripple>
-                      <div @click="showOrder(order)">
-                        <h4 class="list-group-item-heading">
-                          Buyer ID : {{ order.buyerId }}
-                          <br />
-                          <br />
-                          <!-- Charged: {{order.totalPrice}} $ -->
-                          <br />
-                          <br />
-                          <small>Date created : {{ order.createdAt }}</small>
-                          <br />
-                        </h4>
+              <div class="clearfix"></div>
+            </div>
 
-                        <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                        <p>Estimated Revenue:[$$$]</p>
-                        <span class="label pull-right" style="background-color:#a255ff">Pending Order</span>
-                        <div class="clearfix"></div>
-                      </div>
-                    </md-ripple>
-                  </md-card>
-                </div>
-              <!-- </div> -->
+            <!-- The panels for the orders -->
+            <!-- <div class="panel-body no-padding"> -->
+            <div class="list-group no-margin list-message">
+              <md-card
+                class="list-group-item request"
+                v-for="(order, index) in this.orders"
+                v-bind:key="index"
+                md-with-hover
+              >
+                <md-ripple>
+                  <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                    <h4 class="list-group-item-heading">
+                      <md-avatar class="md-avatar-icon md-primary">
+                        <!-- <md-icon>folder</md-icon> -->
+                        <i class="fas fa-lock"></i>
+                      </md-avatar>
+                      Buyer ID : {{ order.buyerId }}
+                      <small class="pull-right">{{ order.createdAt }}</small>
+                      <br />
+                      <br />
+                      <br />
+                    </h4>
+                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                    <p>Estimated Revenue:[$$$]</p>
+                    <span class="label label-success pull-right">Request</span>
+                    <div class="clearfix"></div>
+                  </div>
+                </md-ripple>
+              </md-card>
+            </div>
+            <!-- </div> -->
+            <!-- The panels for the orders -->
+            <!-- The panels for the pending orders -->
+            <!-- <div class="panel-body no-padding"> -->
+            <div class="list-group no-margin list-message">
+              <md-card
+                class="list-group-item pending-order"
+                v-for="(order, index) in this.pendingOrders"
+                v-bind:key="index"
+                md-with-hover
+              >
+                <md-ripple>
+                  <div @click="showOrder(order)">
+                    <h4 class="list-group-item-heading">
+                      Buyer ID : {{ order.buyerId }}
+                      <br />
+                      <br />
+                      <!-- Charged: {{order.totalPrice}} $ -->
+                      <br />
+                      <br />
+                      <small>Date created : {{ order.createdAt }}</small>
+                      <br />
+                    </h4>
+
+                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                    <p>Estimated Revenue:[$$$]</p>
+                    <span class="label pull-right" style="background-color:#a255ff">Pending Order</span>
+                    <div class="clearfix"></div>
+                  </div>
+                </md-ripple>
+              </md-card>
+            </div>
+            <!-- </div> -->
             <!-- </md-card> -->
             <!-- The panels for the quote requests -->
           </div>
@@ -181,7 +188,7 @@
             <hr />
             <!-- /.panel-heading -->
             <div class="panel-body">
-              <md-card class="reply_msg">         
+              <md-card class="reply_msg">
                 <md-field>
                   <md-textarea
                     v-model="message"
@@ -196,8 +203,7 @@
                   class="md-raised md-primary pull-right"
                   style="background-color: #2fb52b; color: white;"
                   v-on:click="submitMessage()"
-                  >Send
-                </md-button>
+                >Send</md-button>
               </md-card>
             </div>
           </div>
@@ -207,21 +213,24 @@
             <md-card md-with-hover>
               <md-ripple>
                 <md-card-header style="background-color:#6200ea; color:white;">
-                  <div class="md-title" style="font-size:20px;" >
+                  <div class="md-title" style="font-size:20px;">
                     <i class="fas fa-file-invoice" style="font-size:40px;"></i>
-                    Custom Invoice Generator</div>
-                  <div class="md-subhead">You can edit orders and send custom invoices here. <br>
-                    If you create a custom invoice, your buyer will have to re-purchase the invoice, 
-                    and you will have ro re-confirm the order before your buyer is charged.</div>
+                    Custom Invoice Generator
+                  </div>
+                  <div class="md-subhead">
+                    You can edit orders and send custom invoices here.
+                    <br />If you create a custom invoice, your buyer will have to re-purchase the invoice,
+                    and you will have ro re-confirm the order before your buyer is charged.
+                  </div>
                 </md-card-header>
                 <md-card-expand>
                   <md-card-actions md-alignment="space-between">
                     <div>
                       <!-- <md-button>View Order</md-button>
-                      <md-button>Edit Invoice</md-button> -->
+                      <md-button>Edit Invoice</md-button>-->
                     </div>
                     <md-card-expand-trigger>
-                      <md-button >
+                      <md-button>
                         Edit Invoice
                         <md-icon>keyboard_arrow_down</md-icon>
                       </md-button>
@@ -231,12 +240,9 @@
                     <md-card-content>
                       <div
                         class="panel-body"
-                        v-if="this.order !== undefined && this.order.totalPrice === undefined"
+                        v-if="this.order !== null && this.order.totalPrice !== undefined"
                       >
                         <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-
-
-
                           <md-field>
                             <input
                               style="background-color: white; width: 10%;"
@@ -251,7 +257,6 @@
                               style="color:red;font-size:15px;"
                             >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                           </md-field>
-
                         </div>
                         <hr />
                         Total price: {{ this.totalPrice }} $
@@ -265,13 +270,11 @@
                         >Attach Invoice</md-button>
                       </div>
                     </md-card-content>
-                  </md-card-expand-content>               
+                  </md-card-expand-content>
                 </md-card-expand>
-                  
               </md-ripple>
             </md-card>
           </div>
-
         </div>
       </div>
     </div>
