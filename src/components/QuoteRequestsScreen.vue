@@ -22,7 +22,7 @@
                 <div class="pull-left">
                   <div class="btn-group">
                     
-                    <button type="button" class="btn btn-success"><h5>{{ dropdownVariable }}</h5></button>
+                    <button type="button" class="btn btn-success"><h5 style="color:white;">{{ dropdownVariable }}</h5></button>
                     <button
                       type="button"
                       class="btn btn-success dropdown-toggle"
@@ -62,13 +62,14 @@
               </div>
 
               <!-- The panels for the orders -->
-              <!-- <div class="panel-body no-padding"> -->
+                <!-- Unresponded -->
                 <div class="list-group no-margin list-message">
                   <md-card
                     class="list-group-item request"
                     v-for="(order, index) in this.orders"
                     v-bind:key="index"
                     md-with-hover
+                    id="unresponded"
                   >
                     <md-ripple>
                       <div @click="showOrder(order), retrieveOrderOrderItems(order)">
@@ -90,16 +91,45 @@
                     </md-ripple>
                   </md-card>
                 </div>
-              <!-- </div> -->
+                <!-- Responded -->
+                <div class="list-group no-margin list-message">
+                  <md-card
+                    class="list-group-item request"
+                    v-for="(order, index) in this.orders"
+                    v-bind:key="index"
+                    md-with-hover
+                    id="responded"
+                  >
+                    <md-ripple>
+                      <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                        <h4 class="list-group-item-heading">
+                          <md-avatar class="md-avatar-icon md-primary">
+                            <!-- <md-icon>folder</md-icon> -->
+                            <i class="fas fa-lock"></i>
+                          </md-avatar>
+                          Buyer ID : {{ order.buyerId }} <small class="pull-right">{{ order.createdAt }}</small>
+                          <br />
+                          <br />
+                          <br />
+                        </h4>
+                        <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                        <p>Estimated Revenue:[$$$]</p>
+                        <span class="label label-success pull-right">Request</span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </md-ripple>
+                  </md-card>
+                </div>                
               <!-- The panels for the orders -->
               <!-- The panels for the pending orders -->
-              <!-- <div class="panel-body no-padding"> -->
+                <!-- Unresponded -->
                 <div class="list-group no-margin list-message">
                   <md-card
                     class="list-group-item pending-order"
                     v-for="(order, index) in this.pendingOrders"
                     v-bind:key="index"
                     md-with-hover
+                    id="unresponded"
                   >
                     <md-ripple>
                       <div @click="showOrder(order)">
@@ -122,19 +152,49 @@
                     </md-ripple>
                   </md-card>
                 </div>
-              <!-- </div> -->
-            <!-- </md-card> -->
+                <!-- Responded -->
+                <div class="list-group no-margin list-message">
+                  <md-card
+                    class="list-group-item pending-order"
+                    v-for="(order, index) in this.pendingOrders"
+                    v-bind:key="index"
+                    md-with-hover
+                    id="responded"
+                  >
+                    <md-ripple>
+                      <div @click="showOrder(order)">
+                        <h4 class="list-group-item-heading">
+                          Buyer ID : {{ order.buyerId }}
+                          <br />
+                          <br />
+                          <!-- Charged: {{order.totalPrice}} $ -->
+                          <br />
+                          <br />
+                          <small>Date created : {{ order.createdAt }}</small>
+                          <br />
+                        </h4>
+
+                        <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                        <p>Estimated Revenue:[$$$]</p>
+                        <span class="label pull-right" style="background-color:#a255ff">Pending Order</span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </md-ripple>
+                  </md-card>
+                </div>
             <!-- The panels for the quote requests -->
           </div>
           <div
             class="col-md-6 message-sideright"
             style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
           >
-            <!-- <v
- 
-              >
-  
-            </div>-->
+            <div class="message-header-a">
+              <h3>{{buyer.name}}</h3>
+              <div class="message-header-b">
+                <h4>[Company Name]</h4>
+              </div>
+            
+            </div>
 
             <div
               class="panel-body"
@@ -144,7 +204,7 @@
               <!-- if -->
               <md-card
                 v-if="msg && msg.sender && msg.sender === 'buyer'"
-                style="width: 75%; background-color: #f4f4f4;"
+                id="recieve-text-bubble"
                 class="pull-left"
               >
                 <md-content>
@@ -161,7 +221,6 @@
               <!-- else -->
               <md-card
                 v-else
-                style="width: 75%; background-color: #dcffde; color: black"
                 class="pull-right"
                 id="response-text-bubble"
               >
@@ -205,7 +264,7 @@
           <!-- Negotation Interface -->
           <div class="col-md-3 message-sideright card-expansion invoice-generator">
             <md-card md-with-hover>
-              <md-ripple>
+              <!-- <md-ripple> -->
                 <md-card-header style="background-color:#6200ea; color:white;">
                   <div class="md-title" style="font-size:20px;" >
                     <i class="fas fa-file-invoice" style="font-size:40px;"></i>
@@ -230,27 +289,43 @@
                   <md-card-expand-content>
                     <md-card-content>
                       <div
-                        class="panel-body"
+                        class="panel-body invoice-editor"
                         v-if="this.order !== undefined && this.order.totalPrice === undefined"
                       >
                         <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-
-
-
-                          <md-field>
-                            <input
-                              style="background-color: white; width: 10%;"
-                              v-model="amtForServicesNegotiated[index]"
-                              @change="updateOrderItems(index)"
-                              placeholder="amount"
-                              type="text"
-                            />
-                            X
-                            {{ item.title }}
-                            <p
-                              style="color:red;font-size:15px;"
-                            >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
-                          </md-field>
+                          <!-- Add New Service (Title + Quantity + Price)-->
+                          
+                          <!-- Edit Service Title -->
+                          <div class="row">
+                            <div class="col-6">
+                              <md-field>
+                                
+                                {{ item.title }}
+                                
+                              </md-field>
+                            </div>
+                            <div class="col-3">
+                              <!-- Edit Quantity -->
+                              <md-field>
+                                X
+                                <md-input
+                                  style="background-color: white; width: 10%;"
+                                  v-model="amtForServicesNegotiated[index]"
+                                  @change="updateOrderItems(index)"
+                                  placeholder="amount"
+                                  type="text"
+                                />
+                              </md-field>
+                            </div>
+                            <div class="col-3">
+                              <!-- Edit Price -->
+                              <md-field>
+                                <p
+                                  style="color:red;font-size:15px;"
+                                >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
+                              </md-field>
+                            </div>
+                          </div>
 
                         </div>
                         <hr />
@@ -262,13 +337,14 @@
                           @click="submitOrderPrompt()"
                           v-if="this.order && this.order.seller_confirmed === false"
                           style="background-color: #12005e; color: white;"
-                        >Attach Invoice</md-button>
+                          class="btn-block"
+                        >Preview Invoice</md-button>
                       </div>
                     </md-card-content>
                   </md-card-expand-content>               
                 </md-card-expand>
                   
-              </md-ripple>
+              <!-- </md-ripple> -->
             </md-card>
           </div>
 
@@ -279,10 +355,15 @@
 
   <!--  -->
 
-  <modal name="would-you-like-to-submit">
-    <div>Would you like to submit this order?</div>
-    <md-button @click="submitOrder">Yes</md-button>
-    <md-button @click="closeSubmitPrompt">No</md-button>
+  <modal name="would-you-like-to-submit" >
+    <div class="invoice-preview">
+      <h1>Invoice Preview </h1>
+      <div>Would you like to submit this order?</div>
+      <md-button @click="submitOrder">Yes</md-button>
+      <md-button @click="closeSubmitPrompt">No</md-button>
+    </div>
+
+    
   </modal>
   <!--  -->
 </div>
