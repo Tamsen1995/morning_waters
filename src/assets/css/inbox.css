@@ -9,8 +9,54 @@ body.inbox {
   padding: 0px 40px;
 }
 
-#response-text-bubble {
+#inbox .message-header-a{
+  background-color: #311b92;
+  color: white;
+  padding-top:10px;
+  width:100%;
+  border-radius:5px;
+}
+#inbox .message-header-b{
+  background-color: #6200ea;
+  color: white;
+  width:100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border-radius:5px;
+  margin-top: 10px;
+}
 
+#inbox .message-header-a h3{
+  letter-spacing: 1px;
+  font-style: medium;
+  font: 25px "Lato";
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+}
+
+#inbox .message-header-a h4{
+  letter-spacing: 1px;
+  font-style: medium;
+  font: 16px "Lato";
+  color: white;
+  text-align: left;
+  padding-left: 30px;
+}
+
+#inbox #response-text-bubble {
+  padding:10px;
+  width: 75%; 
+  background-color: #dcffde; 
+  color: black;
+  border-radius:20px;
+}
+#inbox #recieve-text-bubble{
+  padding:10px;
+  width: 75%; 
+  background-color: #f4f4f4; 
+  color: black;
+  border-radius:20px;
 }
 
 #inbox h2 {
@@ -25,6 +71,14 @@ body.inbox {
   letter-spacing: 2px;
   font-style: medium;
   font: 25px "Lato";
+  color: #311c63;
+  text-align: center;
+}
+
+#inbox h5 {
+  letter-spacing: 2px;
+  font-style: medium;
+  font: 15px "Lato";
   color: #311c63;
   text-align: center;
 }
@@ -48,6 +102,10 @@ body.inbox {
   display:block;
   background-color: #F9F9F9;
   border-right: 1px solid #DEDEDE;
+}
+
+#inbox .invoice-editor {
+background-color: white;
 }
 
 #inbox .messages {
@@ -273,6 +331,14 @@ body.inbox {
   border-right: 3px solid #8CC152 !important;
 }
 
+#inbox .list-message #responded {
+  background-color: #f2f1f5;
+}
+
+#inbox .list-message #unresponded {
+  background-color: white;
+}
+
 #inbox .avatar{
   width:50px;
   height:50px;
@@ -289,9 +355,14 @@ body.inbox {
   height: 500px;
 }
 #inbox .message-wrapper .invoice-generator{
-  min-width: 300px;
+  min-width: 320px;
 }
 
+.invoice-preview{
+  padding:20px;
+  margin:10px;
+  border: 2px dotted #0a00b6;
+}
 
 /* EXTRA */
 
@@ -305,7 +376,7 @@ body.inbox {
   /* .message form {
     padding: 6px 15px;
     background-color: #FAFAFA;
-    border-bottom: 1px solid #E6EBED;
+    border-bottom: ;
   }
   .message form .has-icon .form-control-icon {
     position: absolute;

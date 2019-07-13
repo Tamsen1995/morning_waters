@@ -260,7 +260,7 @@ export default {
     async retrieveCorrespondance (orderId) {
       try {
         const response = await InboxService.retrieveCorrespondance(orderId)
-        this.correspondanceMessages = response.data.correspondance
+        this.correspondanceMessaes = response.data.correspondance
       } catch (error) {
         if (error) throw error
       }
