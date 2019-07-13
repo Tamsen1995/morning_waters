@@ -220,6 +220,9 @@ export default {
         const response = await UserServices.getPendingOrders(userId)
         // console.log(`\nthe response for pending orders is : ${JSON.stringify(response.data)}\n`) // TESTING
         this.pendingOrders = response.data
+        if (this.pendingOrders !== undefined || this.pendingOrders.length > 0) {
+          this.showOrder(this.pendingOrders[0])
+        }
       } catch (error) {
         if (error) throw error
       }
