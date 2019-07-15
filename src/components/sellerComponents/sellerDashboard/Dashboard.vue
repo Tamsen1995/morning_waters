@@ -216,10 +216,10 @@
             <div class="col-4">
               <md-field>
                 <label>Hours/Days/Weeks</label>
-                <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
+                <!-- <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
                   <md-option value="turnAroundTimeType">Days</md-option>
                   <md-option value="turnAroundTimeType">Weeks</md-option>
-                </md-select>
+                </md-select>-->
               </md-field>
             </div>
 

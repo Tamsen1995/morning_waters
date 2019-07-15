@@ -38,14 +38,15 @@
 </template>
 
 <script>
+import UserServices from "@/services/UserServices";
+
 export default {
   data() {
     return {
       user: null,
       companyName: "",
       companyLocation: "",
-      about: "",
-      credits: 0
+      about: ""
     };
   },
   methods: {
@@ -58,10 +59,8 @@ export default {
         this.user = response.user;
         this.companyName = this.user.companyName;
         this.about = this.user.about;
-        this.credits = this.user.credits;
-        if (this.credits === null) {
-          this.credits = 0;
-        }
+
+        console.log(`\n\n${JSON.stringify(response.user)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
