@@ -22,9 +22,7 @@
               <div class="pull-left">
                 <div class="btn-group">
                   <button type="button" class="btn btn-success">
-
                     <h5 style="color:white;">{{ dropdownVariable }}</h5>
-
                   </button>
                   <button
                     type="button"
@@ -79,7 +77,6 @@
                 v-for="(order, index) in this.orders"
                 v-bind:key="index"
                 md-with-hover
-
                 id="unresponded"
               >
                 <md-ripple>
@@ -111,7 +108,6 @@
                 v-bind:key="index"
                 md-with-hover
                 id="responded"
-
               >
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems(order)">
@@ -161,7 +157,7 @@
 
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                     <p>Estimated Revenue:[$$$]</p>
-                    <span class="label pull-right" style="background-color:#a255ff">Pending Order</span>
+                    <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
                     <div class="clearfix"></div>
                   </div>
                 </md-ripple>
@@ -175,9 +171,7 @@
                 v-for="(order, index) in this.pendingOrders"
                 v-bind:key="index"
                 md-with-hover
-
                 id="responded"
-
               >
                 <md-ripple>
                   <div @click="showOrder(order)">
@@ -277,9 +271,8 @@
           <!-- Negotation Interface -->
           <div class="col-md-3 message-sideright card-expansion invoice-generator">
             <md-card md-with-hover>
-
               <!-- <md-ripple> -->
-              <md-card-header style="background-color:#6200ea; color:white;">
+              <md-card-header style="background-color:#9474cc; color:white;">
                 <div class="md-title" style="font-size:20px;">
                   <i class="fas fa-file-invoice" style="font-size:40px;"></i>
                   Custom Invoice Generator
@@ -338,7 +331,6 @@
                               >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
                             </md-field>
                           </div>
-
                         </div>
                       </div>
 
@@ -359,7 +351,6 @@
               </md-card-expand>
 
               <!-- </md-ripple> -->
-
             </md-card>
           </div>
         </div>
