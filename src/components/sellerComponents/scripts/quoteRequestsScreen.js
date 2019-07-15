@@ -35,6 +35,9 @@ export default {
 
     }
   },
+  computed: {
+
+  },
   components: {
     DashboardHeader
   },
@@ -47,6 +50,7 @@ export default {
     // await this.getInboxMessages()
   },
   methods: {
+
     async updateOrderItems (index) {
       try {
         this.orderItems[index].amount = this.amtForServicesNegotiated[index]
@@ -71,7 +75,7 @@ export default {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
-        this.servicesNegotiated = null
+        this.servicesNegotiated = []
         this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
@@ -107,6 +111,7 @@ export default {
     },
     async showOrder (order) {
       try {
+        // emptying this arr in case order is a pending order
         this.servicesNegotiated = []
         this.order = order
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
@@ -115,8 +120,15 @@ export default {
         const orderId = order.orderId
         this.orderItems = null
 
+        // retrieving the correspondence itself (the conversation)
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.correspondanceMessages = response.data.correspondance
+
+        // checking if this order is unlocked or not so we can block the seller
+        // from  interaction when it's locked
+
+        const relationshipUnlockedResponse = await InboxService.relationshipUnlocked(this.order.sellerId, this.order.buyerId)
+        console.log(`\n\nI want to see what this endpoint gives : ${JSON.stringify(relationshipUnlockedResponse)}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
