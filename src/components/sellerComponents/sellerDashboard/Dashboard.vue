@@ -408,10 +408,10 @@
 </div>
 </template>
 
-<script src="../scripts/dashboard.js"; >
+<script src="../../scripts/dashboard.js"; >
 </script>
 
 <style scoped>
-@import "../../assets/css/dashboard.css";
+@import "../../../assets/css/dashboard.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>
