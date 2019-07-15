@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import DashboardHeader from "@/components/DashboardHeader.vue";
+import DashboardHeader from "@/components/sellerComponents/DashboardHeader.vue";
 import UserServices from "@/services/UserServices";
 import DashboardServices from "@/services/DashboardServices";
 import { ResponsiveDirective } from "vue-responsive-components";
@@ -98,6 +98,6 @@ export default {
 </script>
 
 <style scoped>
-@import "../..//assets/css/dashboard.css";
+@import "../../../assets/css/dashboard.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>

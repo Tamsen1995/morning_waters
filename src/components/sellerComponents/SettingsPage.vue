@@ -149,7 +149,7 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-@import "../assets/css/settings.css";
+@import "../../assets/css/settings.css";
 
 .tabs {
   position: relative;

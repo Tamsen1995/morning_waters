@@ -1,7 +1,7 @@
-import DashboardHeader from '@/components/DashboardHeader.vue';
-import PaymentService from '@/services/PaymentService';
-import UserServices from '@/services/UserServices';
-import { ResponsiveDirective } from 'vue-responsive-components';
+import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
+import PaymentService from '@/services/PaymentService'
+import UserServices from '@/services/UserServices'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {

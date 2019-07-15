@@ -13,7 +13,7 @@
           <div class="container">
             <div id="fig-logo-white">
               <img
-                src="../assets/css/TINY_LOGO_WHITE.png"
+                src="../../assets/css/TINY_LOGO_WHITE.png"
                 alt="FIG ANALYTICS"
                 class="center"
                 id="login-logo"
@@ -95,6 +95,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-@import "../assets/css/forms.css";
+@import "../../assets/css/forms.css";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto");
 </style>

@@ -1,8 +1,8 @@
-import PageHeader from '@/components/Header.vue';
-import { EventBus } from '../../event-bus.js';
-import { ResponsiveDirective } from 'vue-responsive-components';
-import AuthenticationService from '@/services/AuthenticationService';
-import { Carousel, Slide } from 'vue-carousel';
+import PageHeader from '@/components/Header.vue'
+import { EventBus } from '../../event-bus.js'
+import { ResponsiveDirective } from 'vue-responsive-components'
+import AuthenticationService from '@/services/AuthenticationService'
+import { Carousel, Slide } from 'vue-carousel'
 
 export default {
   name: 'HelloWorld',

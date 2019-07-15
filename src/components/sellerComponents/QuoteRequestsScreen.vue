@@ -202,7 +202,7 @@
             style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
           >
             <div class="message-header-a">
-              <h3>{{buyer.name}}</h3>
+              <h3 v-if="buyer !== null">{{buyer.name}}</h3>
               <div class="message-header-b">
                 <h4>[Company Name]</h4>
               </div>
@@ -376,6 +376,6 @@
 </script>
 
 <style scoped>
-@import "../assets/css/inbox.css";
+@import "../../assets/css/inbox.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>

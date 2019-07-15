@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
-import Register from '@/components/Register'
-import Login from '@/components/Login'
-import Dashboard from '@/components/Dashboard'
-import CreditsPurchasing from '@/components/CreditsPurchasing'
-import QuoteRequestsScreen from '@/components/QuoteRequestsScreen'
-import PublicProfile from '@/components/PublicProfile'
-import Checkout from '@/components/Checkout'
-import CreditsHome from '@/components/CreditsHome'
-import SettingsPage from '@/components/SettingsPage'
-import SettingsChangeDefaultSource from '@/components/SettingsChangeDefaultSource'
-import PendingOrders from '@/components/PendingOrders'
-import PendingOrderStatus from '@/components/PendingOrderStatus'
+import Register from '@/components/sellerComponents/Register'
+import Login from '@/components/sellerComponents/Login'
+import Dashboard from '@/components/sellerComponents/sellerDashboard/Dashboard'
+import CreditsPurchasing from '@/components/sellerComponents/CreditsPurchasing'
+import QuoteRequestsScreen from '@/components/sellerComponents/QuoteRequestsScreen'
+import PublicProfile from '@/components/sellerComponents/PublicProfile'
+import Checkout from '@/components/sellerComponents/Checkout'
+import CreditsHome from '@/components/sellerComponents/CreditsHome'
+import SettingsPage from '@/components/sellerComponents/SettingsPage'
+import SettingsChangeDefaultSource from '@/components/sellerComponents/SettingsChangeDefaultSource'
+import PendingOrders from '@/components/sellerComponents/PendingOrders'
+import PendingOrderStatus from '@/components/sellerComponents/PendingOrderStatus'
 import AuthenticationService from '@/services/AuthenticationService'
 
 // Buyer routes
@@ -31,7 +31,7 @@ import BuyerBillings from '@/components/buyerComponents/BuyerBillings'
 import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondance'
 
 // Shippo routes
-import DashboardShippoRegister from '@/components/DashboardShippoRegister'
+import DashboardShippoRegister from '@/components/sellerComponents/DashboardShippoRegister'
 
 Vue.use(Router)
 function routingAuthentication (to, from, next) {

@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import DashboardHeader from "@/components/DashboardHeader.vue";
+import DashboardHeader from "@/components/sellerComponents/DashboardHeader.vue";
 import SettingsService from "@/services/SettingsService";
 
 export default {
@@ -137,7 +137,7 @@ export default {
 </script>
 
 <style>
-@import "../assets/css/dashboard.css";
+@import "../../assets/css/dashboard.css";
 .payment-cards {
   width: 400px;
   font-size: 150%;
