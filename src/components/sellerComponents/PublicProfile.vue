@@ -243,7 +243,7 @@
 </script>
 
 <style scoped>
-@import "../assets/css/publicprofile.css";
+@import "../../assets/css/publicprofile.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>
 

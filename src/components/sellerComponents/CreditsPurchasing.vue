@@ -4,7 +4,7 @@
     <div class="responsive-component" v-responsive="{
 		small: el => el.width < 430
 		}">
-      <dashboard-header/>
+      <dashboard-header />
       <div
         class="responsive-component"
         v-responsive="{
@@ -21,19 +21,19 @@
                 </div>
                 <!-- test -->
                 <!-- test2 -->
-                <br>
-                <br>
+                <br />
+                <br />
 
                 <div id="remaining-credits">
                   <h4>Remaining credits :</h4>
                   <h5>{{ this.remainingCredits }}</h5>
                 </div>
-                <br>
-                <br>
+                <br />
+                <br />
 
                 <!-- <div class="panel panel-default"> -->
                 <div class="panel-body">
-                  <input v-model="creditsToBePurchased" placeholder="Number of credits">
+                  <input v-model="creditsToBePurchased" placeholder="Number of credits" />
                   <button type="button" class="btn btn-primary" @click="buyCredits()">Buy credits</button>
                 </div>
                 <!-- </div> -->
@@ -132,5 +132,5 @@
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-@import "../assets/css/settings.css";
+@import "../../assets/css/settings.css";
 </style>

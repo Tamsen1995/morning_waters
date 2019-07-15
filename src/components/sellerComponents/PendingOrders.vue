@@ -94,6 +94,6 @@
 </script>
 
 <style scoped>
-@import "../assets/css/orders.css";
+@import "../../assets/css/orders.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>

@@ -1,11 +1,7 @@
-import DashboardHeader from '@/components/DashboardHeader.vue'
-import PageHeader from '@/components/Header.vue'
-import AuthenticationService from '@/services/AuthenticationService'
+import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import ShippingService from '@/services/ShippingService'
 import PaymentService from '@/services/PaymentService'
 import UserServices from '@/services/UserServices'
-import Api from '@/services/Api'
-import { ResponsiveDirective } from 'vue-responsive-components'
 import InboxServices from '@/services/InboxService'
 
 export default {

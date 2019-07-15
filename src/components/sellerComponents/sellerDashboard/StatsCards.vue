@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import DashboardHeader from "@/components/DashboardHeader.vue";
+import DashboardHeader from "@/components/sellerComponents/DashboardHeader.vue";
 import UserServices from "@/services/UserServices";
 import DashboardServices from "@/services/DashboardServices";
 import { ResponsiveDirective } from "vue-responsive-components";

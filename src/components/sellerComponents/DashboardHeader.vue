@@ -1,13 +1,9 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" style="position: sticky" id="seller_nav">
-
       <b-navbar-brand href="#" class="mr-auto">
-        <router-link 
-            class="nav-link"
-            to="/dashboard"
-            v-if="this.user == null">
-          <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center">
+        <router-link class="nav-link" to="/dashboard" v-if="this.user == null">
+          <img src="../TINY_LOGO.png" alt="FIG ANALYTICS" class="center" />
         </router-link>
       </b-navbar-brand>
 
@@ -15,12 +11,8 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          
           <!-- Orders -->
-          <b-nav-item href="#"
-            v-if="this.user == null"
-            @click="redirectOntoBuyerDashboard()"  
-            >
+          <b-nav-item href="#" v-if="this.user == null" @click="redirectOntoBuyerDashboard()">
             <router-link
               class="nav-link"
               to="/dashboard/pending_orders"
@@ -108,9 +100,8 @@
                   Logout
             </router-link>-->
           </b-nav-item>
-
         </b-navbar-nav>
-      </b-collapse> 
+      </b-collapse>
     </b-navbar>
   </div>
 </template>
@@ -119,5 +110,5 @@
 </script>
 
 <style>
-@import "../assets/css/header.css";
+@import "../../assets/css/header.css";
 </style>

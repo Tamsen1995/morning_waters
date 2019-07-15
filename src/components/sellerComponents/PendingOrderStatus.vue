@@ -2,7 +2,7 @@
 <div class="responsive-component" v-responsive="{
   small: el => el.width < 860
   }">
-  <buyer-header></buyer-header>
+  <dashboard-header></dashboard-header>
   <body class="pending_orders">
     <div id="pending_orders_content">
       <div class="container current-order-status">
@@ -305,7 +305,8 @@
 </template>
 
 <script>
-import BuyerHeader from "@/components/buyerComponents/BuyerHeader.vue";
+import DashboardHeader from "@/components/sellerComponents/DashboardHeader.vue";
+
 export default {
   data() {
     return {
@@ -317,7 +318,7 @@ export default {
     this.orderId = this.$route.params.orderId;
   },
   components: {
-    BuyerHeader
+    DashboardHeader
   }
 };
 </script>

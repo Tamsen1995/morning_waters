@@ -1,4 +1,4 @@
-import DashboardHeader from '@/components/DashboardHeader.vue'
+import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import StatsCards from '@/components/sellerComponents/sellerDashboard/StatsCards.vue'
 import AboutSection from '@/components/sellerComponents/sellerDashboard/AboutSection.vue'
 import UserServices from '@/services/UserServices'

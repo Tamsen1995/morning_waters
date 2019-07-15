@@ -408,7 +408,7 @@
 </div>
 </template>
 
-<script src="../../scripts/dashboard.js"; >
+<script src="../scripts/dashboard.js"; >
 </script>
 
 <style scoped>

@@ -1,11 +1,11 @@
-import DashboardHeader from '@/components/DashboardHeader.vue';
-import BillingTab from '@/components/SettingsPageBillingTab.vue';
-import UserServices from '@/services/UserServices';
+import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
+import BillingTab from '@/components/sellerComponents/SettingsPageBillingTab.vue'
+import UserServices from '@/services/UserServices'
 
-import SettingsService from '@/services/SettingsService';
+import SettingsService from '@/services/SettingsService'
 
-import Tabs from 'vue-tabs-with-active-line';
-import { ResponsiveDirective } from 'vue-responsive-components';
+import Tabs from 'vue-tabs-with-active-line'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {

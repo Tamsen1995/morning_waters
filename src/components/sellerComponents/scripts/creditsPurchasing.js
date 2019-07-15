@@ -1,4 +1,4 @@
-import DashboardHeader from '@/components/DashboardHeader.vue'
+import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import UserServices from '@/services/UserServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
