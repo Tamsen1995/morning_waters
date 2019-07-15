@@ -102,7 +102,7 @@
             </div>
             <!-- Responded -->
             <div class="list-group no-margin list-message">
-              <md-card
+              <!-- <md-card
                 class="list-group-item request"
                 v-for="(order, index) in this.orders"
                 v-bind:key="index"
@@ -113,7 +113,7 @@
                   <div @click="showOrder(order), retrieveOrderOrderItems(order)">
                     <h4 class="list-group-item-heading">
                       <md-avatar class="md-avatar-icon md-primary">
-                        <!-- <md-icon>folder</md-icon> -->
+
                         <i class="fas fa-lock"></i>
                       </md-avatar>
                       Buyer ID : {{ order.buyerId }}
@@ -128,7 +128,7 @@
                     <div class="clearfix"></div>
                   </div>
                 </md-ripple>
-              </md-card>
+              </md-card>-->
             </div>
 
             <!-- The panels for the orders -->
@@ -166,7 +166,7 @@
             <!-- Responded -->
 
             <div class="list-group no-margin list-message">
-              <md-card
+              <!-- <md-card
                 class="list-group-item pending-order"
                 v-for="(order, index) in this.pendingOrders"
                 v-bind:key="index"
@@ -179,7 +179,7 @@
                       Buyer ID : {{ order.buyerId }}
                       <br />
                       <br />
-                      <!-- Charged: {{order.totalPrice}} $ -->
+
                       <br />
                       <br />
                       <small>Date created : {{ order.createdAt }}</small>
@@ -192,7 +192,7 @@
                     <div class="clearfix"></div>
                   </div>
                 </md-ripple>
-              </md-card>
+              </md-card>-->
             </div>
 
             <!-- The panels for the quote requests -->
