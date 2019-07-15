@@ -90,10 +90,7 @@ export default {
       this.$modal.show("add-service");
     }
   },
-  mounted() {
-    this.getServices();
-    this.getUserInfo();
-  }
+  mounted() {}
 };
 </script>
 
