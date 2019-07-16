@@ -2,7 +2,7 @@ import Api from '@/services/Api'
 
 export default {
   relationshipUnlocked (sellerId, buyerId) {
-    return Api().get('seller/orders/relationshipUnlocked', {
+    return Api().get('seller/orders/isRelationshipUnlocked', {
       params: {
         sellerId: sellerId,
         buyerId: buyerId

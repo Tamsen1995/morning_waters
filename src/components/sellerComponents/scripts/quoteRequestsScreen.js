@@ -28,14 +28,10 @@ export default {
       credits: 0,
       orderIdClickedOn: '',
       showLockedMessages: true,
-
       // the variable which is shown on the dropdown menu
       dropdownVariable: 'All messages'
 
     }
-  },
-  computed: {
-
   },
   components: {
     DashboardHeader
@@ -44,10 +40,61 @@ export default {
     responsive: ResponsiveDirective
   },
   async mounted () {
-    await this.getLockedOrders()
     await this.getPendingOrders()
+    await this.getLockedOrders()
+    await this.discernLockedCorrespondences()
   },
   methods: {
+    async discernLockedCorrespondences () {
+      try {
+        if (this.pendingOrders && this.pendingOrders.length > 0) {
+          for (var k = 0; k < this.pendingOrders.length; k++) {
+            this.pendingOrders[k].locked = (await InboxService.relationshipUnlocked(this.pendingOrders[k].sellerId, this.pendingOrders[k].buyerId)).data
+          }
+          this.showOrder(this.pendingOrders[0])
+        }
+
+        if (this.orders && this.orders.length > 0) {
+          for (var i = 0; i < this.orders.length; i++) {
+            this.orders[i].locked = (await InboxService.relationshipUnlocked(this.orders[i].sellerId, this.orders[i].buyerId)).data
+          }
+
+          this.showOrder(this.orders[0])
+          this.retrieveOrderOrderItems(this.orders[0])
+        }
+
+        // checking if this order is unlocked or not so we can block the seller
+        // from  interaction when it's locked
+
+        // this.order.locked = (await InboxService.relationshipUnlocked(this.order.sellerId, this.order.buyerId)).data
+        // console.log(`\n\nI want to see what this endpoint gives : ${JSON.stringify(this.order.locked)}\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async getPendingOrders () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+        const userId = userExtracted.id
+        const response = await UserServices.getPendingOrders(userId)
+        // console.log(`\nthe response for pending orders is : ${JSON.stringify(response.data)}\n`) // TESTING
+        this.pendingOrders = response.data
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    // Loads the locked quote requests into the inbox view on the left
+    async getLockedOrders () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+        const userId = userExtracted.id
+
+        const response = await UserServices.getLockedOrders(userId)
+        this.orders = response.data.orders
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     // whenever a change occurrs in the negotiation
     // interface, this dynamically modifies the values of the orderitems in the back
     async updateOrderItems (index) {
@@ -111,12 +158,6 @@ export default {
         // retrieving the correspondence itself (the conversation)
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.correspondanceMessages = response.data.correspondance
-
-        // checking if this order is unlocked or not so we can block the seller
-        // from  interaction when it's locked
-
-        const relationshipUnlockedResponse = await InboxService.relationshipUnlocked(this.order.sellerId, this.order.buyerId)
-        console.log(`\n\nI want to see what this endpoint gives : ${JSON.stringify(relationshipUnlockedResponse)}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
@@ -201,47 +242,7 @@ export default {
         if (error) throw error
       }
     },
-    async getPendingOrders () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const userId = userExtracted.id
-        const response = await UserServices.getPendingOrders(userId)
-        // console.log(`\nthe response for pending orders is : ${JSON.stringify(response.data)}\n`) // TESTING
-        this.pendingOrders = response.data
-        if (this.pendingOrders !== undefined || this.pendingOrders.length > 0) {
-          this.showOrder(this.pendingOrders[0])
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    // Loads the locked quote requests into the inbox view on the left
-    async getLockedOrders () {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo
-        const userId = userExtracted.id
 
-        const response = await UserServices.getLockedOrders(userId)
-        this.orders = response.data.orders
-        var filtered = this.orders.filter(function (elem) {
-          if (elem.locked === true) {
-            return true
-          } else {
-            return false
-          }
-        })
-        this.orders = filtered
-        console.log(`\nThe orders found are - > ${JSON.stringify(this.orders)}\n`) // TESTING
-        if (this.orders !== undefined && this.orders.length > 0) {
-          this.orders = filtered
-
-          this.showOrder(this.orders[0])
-          this.retrieveOrderOrderItems(this.orders[0])
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     // This function also sets the clicked on variable
     // of the message
     async retrieveCorrespondance (orderId) {

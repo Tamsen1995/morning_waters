@@ -201,7 +201,7 @@
             class="col-md-6 message-sideright"
             style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
           >
-            <div v-if="this.order.locked === true">
+            <div v-if="this.order && this.order.locked === false">
               <div class="message-header-a">
                 <h3 v-if="buyer !== null">{{buyer.name}}</h3>
                 <div class="message-header-b">
@@ -312,7 +312,7 @@
                   <md-card-content>
                     <div
                       class="panel-body invoice-editor"
-                      v-if="this.order !== undefined && this.order.totalPrice === undefined"
+                      v-if="this.order && this.order.totalPrice"
                     >
                       <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                         <!-- Add New Service (Title + Quantity + Price)-->
