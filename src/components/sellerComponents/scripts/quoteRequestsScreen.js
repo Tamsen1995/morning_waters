@@ -47,6 +47,8 @@ export default {
   methods: {
     async discernLockedCorrespondences () {
       try {
+        // checking if orders are is unlocked or not so we can block the seller
+        // from  interaction when it's locked
         if (this.pendingOrders && this.pendingOrders.length > 0) {
           for (var k = 0; k < this.pendingOrders.length; k++) {
             this.pendingOrders[k].locked = (await InboxService.relationshipUnlocked(this.pendingOrders[k].sellerId, this.pendingOrders[k].buyerId)).data
@@ -62,12 +64,6 @@ export default {
           this.showOrder(this.orders[0])
           this.retrieveOrderOrderItems(this.orders[0])
         }
-
-        // checking if this order is unlocked or not so we can block the seller
-        // from  interaction when it's locked
-
-        // this.order.locked = (await InboxService.relationshipUnlocked(this.order.sellerId, this.order.buyerId)).data
-        // console.log(`\n\nI want to see what this endpoint gives : ${JSON.stringify(this.order.locked)}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
