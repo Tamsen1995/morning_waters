@@ -310,10 +310,7 @@
                 </md-card-actions>
                 <md-card-expand-content>
                   <md-card-content>
-                    <div
-                      class="panel-body invoice-editor"
-                      v-if="this.order && this.order.totalPrice"
-                    >
+                    <div class="panel-body invoice-editor" v-if="this.order">
                       <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
                         <!-- Add New Service (Title + Quantity + Price)-->
 
@@ -356,7 +353,9 @@
                         v-if="this.order && this.order.seller_confirmed === false"
                         style="background-color: #12005e; color: white;"
                         class="btn-block"
-                      >Preview Invoice</md-button>
+                      >Submit Order</md-button>
+
+                      <md-button>Preview Invoice</md-button>
                     </div>
                   </md-card-content>
                 </md-card-expand-content>
@@ -374,7 +373,7 @@
 
   <modal name="would-you-like-to-submit">
     <div class="invoice-preview">
-      <h1>Invoice Preview</h1>
+      <h1>Order (TODO: List order items here)</h1>
       <div>Would you like to submit this order?</div>
       <md-button @click="submitOrder">Yes</md-button>
       <md-button @click="closeSubmitPrompt">No</md-button>
