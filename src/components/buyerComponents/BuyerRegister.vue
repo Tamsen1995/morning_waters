@@ -19,148 +19,169 @@
             </md-card-header>
 
             <md-card-content>
-              <br />
-              <!-- <hr> -->
-              <br />
+
               <div class="error" v-html="error" />
-              <!-- input for name -->
-              <form>
-                <div>Personal Info</div>
+                <form>
+                  <md-steppers :md-active-step.sync="active" md-linear md-vertical >
+                    <md-step id="first" :md-done.sync="first" md-label="Personal Info" md-description="Required">
 
-                <div class="form-group row">
-                  <div class="col-sm-12">
-                    <!--  -->
-                    <md-field>
-                      <label>Name :</label>
-                      <md-input class="form-control" v-model="name"></md-input>
-                    </md-field>
-                    <!--  -->
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <md-field>
+                            <label>Name :</label>
+                            <md-input class="form-control" v-model="name"></md-input>
+                          </md-field>
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <div class="col-sm-12">
-                    <!--  -->
-                    <md-field>
-                      <label>Email :</label>
-                      <md-input class="form-control" v-model="email"></md-input>
-                    </md-field>
-                    <!--  -->
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <md-field>
+                            <label>Email :</label>
+                            <md-input class="form-control" v-model="email"></md-input>
+                          </md-field>
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <div class="col-sm-12">
-                    <!--  -->
-                    <md-field>
-                      <label>password :</label>
-                      <md-input type="password" class="form-control" v-model="password"></md-input>
-                    </md-field>
-                    <!--  -->
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <md-field>
+                            <label>password :</label>
+                            <md-input type="password" class="form-control" v-model="password"></md-input>
+                          </md-field>
+                        </div>
+                      </div>
 
-                <div class="form-group row">
-                  <div class="col-sm-12">
-                    <!--  -->
-                    <md-field>
-                      <label>Confirm Password :</label>
-                      <md-input type="password" class="form-control" v-model="passwordConfirm"></md-input>
-                    </md-field>
-                    <!--  -->
-                  </div>
-                </div>
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <md-field>
+                            <label>Confirm Password :</label>
+                            <md-input type="password" class="form-control" v-model="passwordConfirm"></md-input>
+                          </md-field>
+                        </div>
+                      </div>
+                      <md-button class="md-raised md-primary" @click="setDone('first', 'second')">Continue</md-button>
+                  </md-step>
+            
+                  <md-step id="second" :md-done.sync="second" md-label="Organization Info" md-description="Required">
 
-                <!--  -->
-                <div>
-                  Address
-                  <br />
-                  <!-- Street -->
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <!--  -->
-                      <md-field>
-                        <label>Street :</label>
-                        <md-input class="form-control" v-model="address.street"></md-input>
-                      </md-field>
-                      <!--  -->
+                    <br />
+                    <!-- Street -->
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <!--  -->
+                        <md-field>
+                          <label>Street :</label>
+                          <md-input class="form-control" v-model="address.street"></md-input>
+                        </md-field>
+                        <!--  -->
+                      </div>
                     </div>
-                  </div>
 
-                  <!-- City -->
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <!--  -->
-                      <md-field>
-                        <label>City :</label>
-                        <md-input class="form-control" v-model="address.city"></md-input>
-                      </md-field>
-                      <!--  -->
+                    <!-- City -->
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <!--  -->
+                        <md-field>
+                          <label>City :</label>
+                          <md-input class="form-control" v-model="address.city"></md-input>
+                        </md-field>
+                        <!--  -->
+                      </div>
                     </div>
-                  </div>
 
-                  <!-- State -->
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <!--  -->
-                      <md-field>
-                        <label>State :</label>
-                        <md-input class="form-control" v-model="address.state"></md-input>
-                      </md-field>
-                      <!--  -->
+                    <!-- State -->
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <!--  -->
+                        <md-field>
+                          <label>State :</label>
+                          <md-input class="form-control" v-model="address.state"></md-input>
+                        </md-field>
+                        <!--  -->
+                      </div>
                     </div>
-                  </div>
 
-                  <!-- Zip -->
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <!-- <input
-                        v-model="address.zip"
-                        type="text"
-                        class="form-control"
-                        placeholder="Enter your zip code"
-                      />-->
-
-                      <!--  -->
-                      <md-field>
-                        <label>Zip :</label>
-                        <md-input class="form-control" v-model="address.zip"></md-input>
-                      </md-field>
-                      <!--  -->
-                    </div>
-                  </div>
-
-                  <!-- Country -->
-                  <div class="form-group row">
-                    <div class="col-sm-12">
-                      <!--  -->
-                      <md-field>
-                        <label>Country :</label>
-                        <md-input class="form-control" v-model="address.country"></md-input>
-                      </md-field>
-                      <!--  -->
-                    </div>
-                  </div>
-                </div>
-                <!--  -->
-                <br />
-                <!--  -->
-                <div class="form-group row">
-                  <div class="col-sm-12">
+                    <!-- Zip -->
                     <md-field>
-                      <label>Phone Number:</label>
-
-                      <md-input v-model="number" type="text" placeholder="Enter your phone number"></md-input>
+                      <label>Zip :</label>
+                      <md-input class="form-control" v-model="address.zip"></md-input>
                     </md-field>
-                  </div>
-                </div>
-                <!--  -->
+
+                    <!-- Country -->
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <!--  -->
+                        <md-field>
+                          <label>Country :</label>
+                          <md-input class="form-control" v-model="address.country"></md-input>
+                        </md-field>
+                        <!--  -->
+                      </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group row">
+                      <div class="col-sm-12">
+                        <md-field>
+                          <label>Phone Number:</label>
+
+                          <md-input v-model="number" type="text" placeholder="Enter your phone number"></md-input>
+                        </md-field>
+                      </div>
+                    </div>
+                    <md-button class="md-raised md-primary" @click="setDone('second', 'third')">Continue</md-button>
+                  </md-step>
+                
+                  <!-- Terms -->
+                  <md-step id="third" :md-done.sync="third" md-label="Terms" md-description="Required">
+                    <div class="row">
+                      <div class="col">
+                        <h3>Terms</h3>
+                      </div>
+                    </div>
+                    <div
+                      name="termly-embed"
+                      data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8"
+                      data-type="iframe"
+                    ></div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="termsCheck" />
+                      <label class="form-check-label" for="termsCheck" style="padding-left:20px;">Accept</label>
+                    </div>
+                    <br />
+                    
+                    <md-button class="md-raised md-primary" @click="setDone('third', 'fourth')">Continue</md-button>
+                  </md-step>
+                  
+                  <!-- Terms -->
+                  <md-step id="fourth" :md-done.sync="fourth" md-label="Conditions" md-description="Required" >
+                    <div class="row">
+                      <div class="col">
+                        <h3>Conditions</h3>
+                      </div>
+                    </div>
+                    <div
+                      name="termly-embed"
+                      data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8"
+                      data-type="iframe"
+                    ></div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="termsCheck" />
+                      <label class="form-check-label" for="termsCheck" style="padding-left:20px;">Accept</label>
+                    </div>
+                    <br />
+
+                    <md-card-actions>
+                      <md-button @click="register">Submit</md-button>
+                    </md-card-actions>
+                  </md-step>
+                </md-steppers>
               </form>
+
             </md-card-content>
 
-            <md-card-actions>
-              <md-button @click="register">Submit</md-button>
-            </md-card-actions>
           </md-card>
 
           <!--  -->
