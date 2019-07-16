@@ -274,7 +274,7 @@
                 md-label="Unlock this correspondence"
                 md-description="Unlocking this lead will unlock every subsequent interaction with this customer."
               >
-                <md-button class="md-primary md-raised">Unlock</md-button>
+                <md-button class="md-primary md-raised" @click="unlockRelationship()">Unlock</md-button>
               </md-empty-state>
             </div>
           </div>

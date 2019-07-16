@@ -1,8 +1,19 @@
 import Api from '@/services/Api'
 
 export default {
+  // checks to see if a relationship
+  // between buyer and seller is unlocked
   relationshipUnlocked (sellerId, buyerId) {
     return Api().get('seller/orders/isRelationshipUnlocked', {
+      params: {
+        sellerId: sellerId,
+        buyerId: buyerId
+      }
+    })
+  },
+  // unlocks a relationship between a buyer and a seller
+  unlockRelationship (sellerId, buyerId) {
+    return Api().get('seller/orders/unlockRelationship', {
       params: {
         sellerId: sellerId,
         buyerId: buyerId

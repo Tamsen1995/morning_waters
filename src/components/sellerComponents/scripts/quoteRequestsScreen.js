@@ -45,6 +45,32 @@ export default {
     await this.discernLockedCorrespondences()
   },
   methods: {
+    // goes through the array of orders and pending orders
+    // finds the order with the appropiate order id
+    // and then displays that order with the showOrder function
+    async showOrderWithOrderId (orderId) {
+      try {
+        for (var k = 0; k < this.orders.length; k++) {
+          if (this.orders[k].orderId === orderId) {
+            this.showOrder(this.orders[k])
+            break
+          }
+        }
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async unlockRelationship () {
+      try {
+        await InboxService.unlockRelationship(this.order.sellerId, this.order.buyerId)
+        await this.getPendingOrders()
+        await this.getLockedOrders()
+        await this.discernLockedCorrespondences()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+
     async discernLockedCorrespondences () {
       try {
         // checking if orders are is unlocked or not so we can block the seller
@@ -125,21 +151,6 @@ export default {
       }
     },
 
-    // goes through the array of orders and pending orders
-    // finds the order with the appropiate order id
-    // and then displays that order with the showOrder function
-    async showOrderWithOrderId (orderId) {
-      try {
-        for (var k = 0; k < this.orders.length; k++) {
-          if (this.orders[k].orderId === orderId) {
-            this.showOrder(this.orders[k])
-            break
-          }
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     async showOrder (order) {
       try {
         // emptying this arr in case order is a pending order
