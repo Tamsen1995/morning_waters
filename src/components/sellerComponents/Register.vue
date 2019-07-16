@@ -16,7 +16,7 @@
           </md-card-header>
 
           <md-card-content>
-            <div class="error" v-html="error">
+            <div class="error" v-html="error"/>
               <!-- Form -->
               <form>
                 <md-steppers :md-active-step.sync="active" md-linear md-vertical >
@@ -94,23 +94,16 @@
                       </div>
                     </div>
 
-                    <button
-                      @click.prevent="next()"
-                      type="button"
-                      class="btn btn-outline float-right"
-                      id="btn-next"
-                    >
-                      <h3>Next</h3>
-                    </button>
+                    <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('first', 'second')">Continue</md-button>
 
                   </md-step>
 
                   <!-- Lab Info -->
                   <md-step id="second" :md-done.sync="second" md-label="Lab Info" md-description="Required">
-                    <h2 style="color:#880599">Company Info</h2>
+                    <h2 style="color:#880599">Lab Info</h2>
                     <!-- Company Name -->
                     <div class="form-group row">
-                      <label for="inputCompanyName" class="col-sm col-form-label">Company Name:</label>
+                      <label for="inputCompanyName" class="col-sm col-form-label">Lab Name:</label>
                       <div class="col-sm-12">
                         <input
                           v-model="companyName"
@@ -122,7 +115,7 @@
                     </div>
                     <!-- Company Website -->
                     <div class="form-group row">
-                      <label for="inputCompanyWebsite" class="col-sm col-form-label">Company Website:</label>
+                      <label for="inputCompanyWebsite" class="col-sm col-form-label">Lab Website:</label>
                       <div class="col-sm-12">
                         <input
                           v-model="companyWebsite"
@@ -219,10 +212,12 @@
                       </div>
                     </div>
                     <br />
+                    <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('second', 'third')">Continue</md-button>                      
                   </md-step>
 
                   <md-step id="third" :md-done.sync="third" md-label="Payment System Set Up" md-description="Required">
                     <h2 style="color:#880599">The Bank info your clients will use to pay you</h2>
+                    <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('third', 'fourth')">Continue</md-button>                 
                   </md-step>
                   
                   <!--  -->
@@ -237,6 +232,7 @@
                       <label class="form-check-label" for="termsCheck" style="padding-left:20px;">Accept</label>
                     </div>
                     <br />
+                    <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('fourth', 'fifth')">Continue</md-button>
                   </md-step>
 
                   <md-step id="fifth" :md-done.sync="fifth" md-label="Privacy" md-description="Required">
@@ -256,10 +252,11 @@
                       <label class="form-check-label" for="privacyCheck" style="padding-left:20px;">Accept</label>
                     </div>
                     <br />
+                    <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('fifth', 'sixth')">Continue</md-button>
                   </md-step>
 
                   <!-- Shippo -->
-                  <!-- <md-step id="sixth" :md-done.sync="sixth" md-label="Shippo Set Up" md-description="Optional">
+                  <md-step id="sixth" :md-done.sync="sixth" md-label="Shippo Set Up" md-description="Optional">
                     <div class="row">
                       <div class="col">
                         <img src="../../assets/css/shippo_logo.jpg" alt="Shippo" class="center" />
@@ -277,11 +274,14 @@
                     to seamlessly manage shipping logistics on our platform.
                     <br />
                     <br />(Not mandatory, but highly recommended!)
-                  </md-step> -->
+                    <br>
+                    <br>
+                    <md-button class="md-raised md-primary center" style="height:40px;"id="btn-login" @click="register"> Submit </md-button>
+                  </md-step>
 
                 </md-steppers>
               </form>
-            </div>
+            <!-- </div> -->
           </md-card-content>
     
         </md-card>
