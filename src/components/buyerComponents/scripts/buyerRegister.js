@@ -20,7 +20,13 @@ export default {
       number: '',
       contactListTableId: '',
       error: null,
-      loadingFlag: 0
+      loadingFlag: 0,
+      active: 'first',
+      first: false,
+      second: false,
+      third: false,
+      fourth: false,
+      secondStepError: null
     }
   },
   components: {
@@ -32,6 +38,18 @@ export default {
   methods: {
     // Prefills registration
     // info if it was provided on the homepage
+    setDone (id, index) {
+      this[id] = true
+
+      this.secondStepError = null
+
+      if (index) {
+        this.active = index
+      }
+    },
+    setError () {
+      this.secondStepError = 'This is an error!'
+    },
     async register () {
       try {
         const response = await AuthenticationService.buyerRegister({
