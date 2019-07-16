@@ -15,7 +15,6 @@ export default {
       message: '',
       orders: [],
       pendingOrders: [],
-      quoteRequests: null,
       orderItems: null,
       servicesNegotiated: null,
       amtForServicesNegotiated: [],
@@ -35,6 +34,9 @@ export default {
 
     }
   },
+  computed: {
+
+  },
   components: {
     DashboardHeader
   },
@@ -44,14 +46,15 @@ export default {
   async mounted () {
     await this.getLockedOrders()
     await this.getPendingOrders()
-    // await this.getInboxMessages()
   },
   methods: {
+    // whenever a change occurrs in the negotiation
+    // interface, this dynamically modifies the values of the orderitems in the back
     async updateOrderItems (index) {
       try {
         this.orderItems[index].amount = this.amtForServicesNegotiated[index]
         this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
-        const response = await InboxService.updateOrderItem(this.orderItems[index])
+        await InboxService.updateOrderItem(this.orderItems[index])
         this.retrieveOrderOrderItems(this.order)
       } catch (error) {
         if (error) throw error
@@ -71,7 +74,7 @@ export default {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
-        this.servicesNegotiated = null
+        this.servicesNegotiated = []
         this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
@@ -79,17 +82,6 @@ export default {
       }
     },
 
-    async showQuoteRequest (request) {
-      try {
-        this.quoteRequest = request
-        this.order = null
-        const orderId = request.orderId
-        const response = await InboxService.retrieveCorrespondance(orderId)
-        this.correspondanceMessages = response.data.correspondance
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     // goes through the array of orders and pending orders
     // finds the order with the appropiate order id
     // and then displays that order with the showOrder function
@@ -107,16 +99,24 @@ export default {
     },
     async showOrder (order) {
       try {
+        // emptying this arr in case order is a pending order
         this.servicesNegotiated = []
         this.order = order
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = this.$store.getters.getUserInfo
-        this.quoteRequest = null
+
         const orderId = order.orderId
         this.orderItems = null
 
+        // retrieving the correspondence itself (the conversation)
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.correspondanceMessages = response.data.correspondance
+
+        // checking if this order is unlocked or not so we can block the seller
+        // from  interaction when it's locked
+
+        const relationshipUnlockedResponse = await InboxService.relationshipUnlocked(this.order.sellerId, this.order.buyerId)
+        console.log(`\n\nI want to see what this endpoint gives : ${JSON.stringify(relationshipUnlockedResponse)}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
@@ -188,15 +188,6 @@ export default {
             sender: 'seller',
             message: this.message
           }
-        } else if (this.quoteRequest !== null) {
-          correspondanceMsg = {
-            orderId: this.quoteRequest.orderId,
-            buyerId: this.quoteRequest.buyerId,
-            userId: this.quoteRequest.sellerId,
-            date: 'nothing for now',
-            sender: 'seller',
-            message: this.message
-          }
         }
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
@@ -205,10 +196,7 @@ export default {
         this.message = ''
         if (this.order !== null) {
           this.showOrder(this.order)
-        } else if (this.quoteRequest !== null) {
-          this.showQuoteRequest(this.quoteRequest)
         }
-        // this.showMessage(this.order)
       } catch (error) {
         if (error) throw error
       }
@@ -254,25 +242,12 @@ export default {
         if (error) throw error
       }
     },
-
     // This function also sets the clicked on variable
     // of the message
     async retrieveCorrespondance (orderId) {
       try {
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.correspondanceMessaes = response.data.correspondance
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-
-    async getInboxMessages () {
-      try {
-        const sellerExtracted = this.$store.getters.getUserInfo
-        const response = await UserServices.getInboxMessages(sellerExtracted.id)
-
-        this.quoteRequests = response.data.inboxMessages
-        console.log(`\n\n\n\nThe response I get is  -- >: ${JSON.stringify(this.quoteRequests)}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }

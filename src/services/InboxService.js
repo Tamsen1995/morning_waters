@@ -1,7 +1,14 @@
 import Api from '@/services/Api'
 
 export default {
-
+  relationshipUnlocked (sellerId, buyerId) {
+    return Api().get('seller/orders/relationshipUnlocked', {
+      params: {
+        sellerId: sellerId,
+        buyerId: buyerId
+      }
+    })
+  },
   submitToPendingOrders (orderId) {
     return Api().post('orders/submitToPendingOrders', orderId)
   },

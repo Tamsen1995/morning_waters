@@ -102,7 +102,7 @@
             </div>
             <!-- Responded -->
             <div class="list-group no-margin list-message">
-              <md-card
+              <!-- <md-card
                 class="list-group-item request"
                 v-for="(order, index) in this.orders"
                 v-bind:key="index"
@@ -113,7 +113,7 @@
                   <div @click="showOrder(order), retrieveOrderOrderItems(order)">
                     <h4 class="list-group-item-heading">
                       <md-avatar class="md-avatar-icon md-primary">
-                        <!-- <md-icon>folder</md-icon> -->
+
                         <i class="fas fa-lock"></i>
                       </md-avatar>
                       Buyer ID : {{ order.buyerId }}
@@ -128,7 +128,7 @@
                     <div class="clearfix"></div>
                   </div>
                 </md-ripple>
-              </md-card>
+              </md-card>-->
             </div>
 
             <!-- The panels for the orders -->
@@ -166,7 +166,7 @@
             <!-- Responded -->
 
             <div class="list-group no-margin list-message">
-              <md-card
+              <!-- <md-card
                 class="list-group-item pending-order"
                 v-for="(order, index) in this.pendingOrders"
                 v-bind:key="index"
@@ -179,7 +179,7 @@
                       Buyer ID : {{ order.buyerId }}
                       <br />
                       <br />
-                      <!-- Charged: {{order.totalPrice}} $ -->
+
                       <br />
                       <br />
                       <small>Date created : {{ order.createdAt }}</small>
@@ -192,7 +192,7 @@
                     <div class="clearfix"></div>
                   </div>
                 </md-ripple>
-              </md-card>
+              </md-card>-->
             </div>
 
             <!-- The panels for the quote requests -->
@@ -201,72 +201,84 @@
             class="col-md-6 message-sideright"
             style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
           >
-            <div class="message-header-a">
-              <h3 v-if="buyer !== null">{{buyer.name}}</h3>
-              <div class="message-header-b">
-                <h4>[Company Name]</h4>
+            <div v-if="this.order.locked === true">
+              <div class="message-header-a">
+                <h3 v-if="buyer !== null">{{buyer.name}}</h3>
+                <div class="message-header-b">
+                  <h4>[Company Name]</h4>
+                </div>
+              </div>
+
+              <div
+                class="panel-body"
+                v-for="(msg, index) in correspondanceMessages"
+                v-bind:key="index"
+              >
+                <!-- if -->
+                <md-card
+                  v-if="msg && msg.sender && msg.sender === 'buyer'"
+                  id="recieve-text-bubble"
+                  class="pull-left"
+                >
+                  <md-content>
+                    <h4 class="media-heading pull-right">Date</h4>
+                    <md-icon>account_circle</md-icon>
+                    {{buyer.name}}
+                    <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+                    <div class="view_msg">
+                      <p class="lead">{{msg.message}}</p>
+                    </div>
+                  </md-content>
+                </md-card>
+                <!--  -->
+                <!-- else -->
+                <md-card v-else class="pull-right" id="response-text-bubble">
+                  <md-content>
+                    <h4 class="media-heading pull-right">Date</h4>
+                    <md-icon>account_circle</md-icon>
+                    {{seller.companyName}}
+                    <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+                    <div class="view_msg">
+                      <p class="lead">{{msg.message}}</p>
+                    </div>
+                  </md-content>
+                </md-card>
+                <!--  -->
+              </div>
+
+              <hr />
+              <!-- /.panel-heading -->
+              <div class="panel-body">
+                <md-card class="reply_msg">
+                  <md-field>
+                    <md-textarea
+                      v-model="message"
+                      md-autogrow
+                      md-counter="500"
+                      v-on:keyup.enter="submitMessage()"
+                      placeholder="Enter your message here ..."
+                      style="background-color: #FFFFFF;"
+                    ></md-textarea>
+                  </md-field>
+                  <md-button
+                    class="md-raised md-primary pull-right"
+                    style="background-color: #2fb52b; color: white;"
+                    v-on:click="submitMessage()"
+                  >Send</md-button>
+                </md-card>
               </div>
             </div>
-
-            <div
-              class="panel-body"
-              v-for="(msg, index) in correspondanceMessages"
-              v-bind:key="index"
-            >
-              <!-- if -->
-              <md-card
-                v-if="msg && msg.sender && msg.sender === 'buyer'"
-                id="recieve-text-bubble"
-                class="pull-left"
+            <div v-else>
+              <md-empty-state
+                md-icon="lock"
+                md-label="Unlock this correspondence"
+                md-description="Unlocking this lead will unlock every subsequent interaction with this customer."
               >
-                <md-content>
-                  <h4 class="media-heading pull-right">Date</h4>
-                  <md-icon>account_circle</md-icon>
-                  {{buyer.name}}
-                  <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-                  <div class="view_msg">
-                    <p class="lead">{{msg.message}}</p>
-                  </div>
-                </md-content>
-              </md-card>
-              <!--  -->
-              <!-- else -->
-              <md-card v-else class="pull-right" id="response-text-bubble">
-                <md-content>
-                  <h4 class="media-heading pull-right">Date</h4>
-                  <md-icon>account_circle</md-icon>
-                  {{seller.companyName}}
-                  <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-                  <div class="view_msg">
-                    <p class="lead">{{msg.message}}</p>
-                  </div>
-                </md-content>
-              </md-card>
-              <!--  -->
-            </div>
-
-            <hr />
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-              <md-card class="reply_msg">
-                <md-field>
-                  <md-textarea
-                    v-model="message"
-                    md-autogrow
-                    md-counter="500"
-                    v-on:keyup.enter="submitMessage()"
-                    placeholder="Enter your message here ..."
-                    style="background-color: #FFFFFF;"
-                  ></md-textarea>
-                </md-field>
-                <md-button
-                  class="md-raised md-primary pull-right"
-                  style="background-color: #2fb52b; color: white;"
-                  v-on:click="submitMessage()"
-                >Send</md-button>
-              </md-card>
+                <md-button class="md-primary md-raised">Unlock</md-button>
+              </md-empty-state>
             </div>
           </div>
+
           <br />
           <!-- Negotation Interface -->
           <div class="col-md-3 message-sideright card-expansion invoice-generator">
