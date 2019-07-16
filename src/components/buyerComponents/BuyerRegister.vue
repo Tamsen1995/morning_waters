@@ -4,22 +4,18 @@
   <div
     class="responsive-component"
     v-responsive="{
-      small: el => el.width < 430,
-      large: el=> el.width > 1030
+      small: el => el.width < 860
       }"
   >
-    <body class="register">
+    <body>
       <div class="fixed-horizontal-center">
         <!-- Loadng animation -->
-        <!-- <div class="loader">Loading...</div> -->
+        <div class="loader" v-if="loadingFlag== 2">Loading...</div>
         <!-- Form -->
-        <b-card bg-variant="light" style="max-width: 100rem;" id="register">
-          <!--  -->
-          <!--  -->
-          <!--  -->
+        <div class="card" id="register">
           <md-card>
             <md-card-header>
-              <div class="md-title">Buyer Sign Up</div>
+              <h2>Buyer Sign Up</h2>
             </md-card-header>
 
             <md-card-content>
@@ -30,7 +26,7 @@
               <!-- input for name -->
               <form>
                 <div>Personal Info</div>
-                <hr />
+
                 <div class="form-group row">
                   <div class="col-sm-12">
                     <!--  -->
@@ -170,7 +166,7 @@
           <!--  -->
           <!--  -->
           <!--  -->
-        </b-card>
+        </div>
         <br />
         <br />
         <!-- Footer -->

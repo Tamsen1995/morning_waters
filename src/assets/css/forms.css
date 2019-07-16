@@ -9,14 +9,19 @@ body {
     min-height: 100vh; 
 }
 
-a, p {
+#login a, p {
     text-align:center;
     font: 14px 'Roboto';
     color: #29105b;
 }
 
-h1 {
+#login h1 {
     font: 28px 'Roboto';
+    color: #29105b;
+    text-align:center;
+}
+
+#login h2 {
     color: #29105b;
     text-align:center;
 }
@@ -136,6 +141,14 @@ form {
     color: red;
 }
 
+#sign-up-link{
+    color: #850696;
+}
+#sign-up-link:hover, 
+#sign-up-link:active, 
+#sign-up-link:focus {
+    color: #b109c7;
+}
 
 p {
     text-align: left;
@@ -146,11 +159,22 @@ p {
 
 #btn-login {
     color: white;
-    border-color: #361555;
-    background-color: #361555;
+    border-color: #850696;
+    background-color: #850696;
     justify-content: center;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+
+#btn-login:hover, 
+#btn-login:active, 
+#btn-login:focus {
+    color: white;
+    border-color: #9c07af;
+    background-color: #9c07af;
+    justify-content: center;
+    display: inline-block;
+    border-radius: 20px;
 }
 
 #btn-submit {
@@ -221,15 +245,6 @@ p {
 /* ------Login Form--------- */
 
 #login {
-    /* margin-bottom:10px;
-    top: 25px;
-    left: 50%;
-    width: 350px;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%); */
     display: block;
     margin-left: auto;
     margin-right: auto;
