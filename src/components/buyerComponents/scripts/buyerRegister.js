@@ -19,7 +19,8 @@ export default {
       },
       number: '',
       contactListTableId: '',
-      error: null
+      error: null,
+      loadingFlag: 0
     }
   },
   components: {
@@ -41,6 +42,9 @@ export default {
           address: JSON.stringify(this.address),
           number: this.number
         })
+        if (response) {
+          this.loadingFlag = 2
+        }
         localStorage.setItem('id_token', response.data.token)
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setBuyer', response.data.buyer)

@@ -13,7 +13,7 @@
           <div class="error" v-html="error" />
           <!-- Form -->
           <form>
-            <h1>Sign Up</h1>
+            <h2>Seller Sign Up</h2>
             <br />
             <hr />
             <div class="container">
