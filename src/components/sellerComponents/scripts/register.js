@@ -7,7 +7,6 @@ import { ResponsiveDirective } from 'vue-responsive-components'
 export default {
   data () {
     return {
-      step:1,
       name: '',
       email: '',
       password: '',
@@ -26,7 +25,16 @@ export default {
       contactListTableId: '',
       serviceTableId: '',
       about: '',
-      error: null
+      error: null,
+      loadingFlag: 0,
+      active: 'first',
+      first: false,
+      second: false,
+      third: false,
+      fourth: false,
+      fifth: false,
+      sixth: false,
+      secondStepError: null
     }
   },
   mounted () {
@@ -40,6 +48,18 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    setDone (id, index) {
+      this[id] = true
+
+      this.secondStepError = null
+
+      if (index) {
+        this.active = index
+      }
+    },
+    setError () {
+      this.secondStepError = 'This is an error!'
+    },
     // Prefills registration
     // info if it was provided on the homepage
     async insertPrefilledInfo () {
