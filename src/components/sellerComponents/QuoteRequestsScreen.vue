@@ -295,7 +295,7 @@
                   and you will have ro re-confirm the order before your buyer is charged.
                 </div>
               </md-card-header>
-              <md-card-expand>
+              <md-card-expand v-if="this.order && this.order.locked === false">
                 <md-card-actions md-alignment="space-between">
                   <div>
                     <!-- <md-button>View Order</md-button>
@@ -360,6 +360,7 @@
                   </md-card-content>
                 </md-card-expand-content>
               </md-card-expand>
+              <md-button v-else @click="unlockRelationship()">Unlock</md-button>
 
               <!-- </md-ripple> -->
             </md-card>

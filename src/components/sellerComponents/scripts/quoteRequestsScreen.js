@@ -76,7 +76,6 @@ export default {
         await this.getPendingOrders()
         await this.getLockedOrders()
         await this.discernLockedCorrespondences()
-        console.log(`\n this.showOrderWithOrderId(orderId) : ${orderId}\n\n`) // TESTING
         this.showOrderWithOrderId(orderId)
       } catch (error) {
         if (error) throw error
