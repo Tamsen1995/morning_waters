@@ -1,6 +1,6 @@
 <template>
 <div id="app" style="background-color: white;">
-  <body>
+  <body id="requestQuoteCart">
     <md-card style="background-color: #311c63; color: white; text-align: center; height: 50%;">
       <span class="md-title">Quote Requests</span>
     </md-card>
@@ -13,19 +13,25 @@
       v-bind:key="index"
     >
       <md-list-item md-expand :md-expanded.sync="expandNews">
-        <md-icon>whatshot</md-icon>
+        <i class="fas fa-atom" id="service_logo"></i>
         <span class="md-list-item-text">Request #{{index+1}}</span>
 
         <md-list slot="md-expand">
+              <h3 style="text-align:center;">
+      <a href="#" class="card-link">Edit Message</a>
+    </h3>
           <md-card>
-            <md-card-content style="font-size: 0.7vw; ">
+            <md-card-content>
               Item : {{ item.serviceTitle }}
-              <br />
-              Description : {{ item.serviceDescription }}
               <br />
               Quanitity : {{ item.quantity }}
               <br />
-              Inquiry : {{ item.inquiryText }}
+              Turn Around Time : 
+              <br />
+              Inquiry : 
+              <md-content style="text-align:left" id="inquiry-text" class="md-scrollbar">
+               <p>{{ item.inquiryText }}</p>
+              </md-content>
               <br />
             </md-card-content>
           </md-card>
@@ -33,15 +39,10 @@
       </md-list-item>
     </md-list>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <!--  -->
-    <md-card style="background-color: white; color: grey;">
-      <md-button @click="testingDelete()">Testing only please delete</md-button>
-    </md-card>
+    <!-- Add Modal to edit Quote request, with delete request functionality -->
+    
+    <br>
+
   </body>
 </div>
 </template>
@@ -85,4 +86,18 @@ export default {
 </script>
 
 <style>
+#requestQuoteCart #service_logo {
+  color: #4527a0;
+  font-size: 20px;
+  padding-right:10px;
+}
+
+#requestQuoteCart #inquiry-text {
+  max-width: 800px;
+  height: 150px;
+  max-height: 400px;
+  padding: 5px;
+  overflow: auto;
+  border:#3094f1 solid 2px;
+}
 </style>
