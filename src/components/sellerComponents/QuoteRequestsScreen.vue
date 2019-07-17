@@ -143,7 +143,7 @@
                 id="unresponded"
               >
                 <md-ripple>
-                  <div @click="showOrder(order)">
+                  <div @click="showOrder(order), retrieveOrderOrderItems (order)">
                     <h4 class="list-group-item-heading">
                       Buyer ID : {{ order.buyerId }}
                       <br />

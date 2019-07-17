@@ -62,6 +62,14 @@ export default {
         for (var k = 0; k < this.orders.length; k++) {
           if (this.orders[k].orderId === orderId) {
             this.showOrder(this.orders[k])
+            this.retrieveOrderOrderItems(this.orders[k])
+            break
+          }
+        }
+        for (var j = 0; j < this.pendingOrders.length; j++) {
+          if (this.pendingOrders[j].orderId === orderId) {
+            this.showOrder(this.pendingOrders[j])
+            this.retrieveOrderOrderItems(this.pendingOrders[j])
             break
           }
         }
