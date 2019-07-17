@@ -11,8 +11,11 @@
           margin-left: auto;
           margin-right: auto;"
       >
-        <h5 style="text-align:center;">Request Checkout</h5>
+        <h5 style="text-align:center;">Checkout</h5>
         <br />
+        <p
+          style="text-align:center;color:purple;"
+        >You will not be charged until the seller confirms your order.</p>
 
         <md-card md-with-hover style="background-color: white;">
           <div>
@@ -45,30 +48,37 @@
             <br />
             <br />
           </div>
-        </md-card>
-        <br />
-        <br />
-        <h2
-          style="text-align:center;color:purple;"
-        >You will not be charged until the seller confirms your order.</h2>
+          <br>
 
-        <h3>
+        </md-card>
+        <br>
+        
           <md-button
-            class="checkout-btn md-raised md-accent"
-            style="background-color: white; color: #311c63;"
+            class="btn-checkout md-raised md-accent btn-block"
+            style="margin-left: -1px;"
             v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
             type="submit"
-            @click="sendOrderAndOrInquiries()"
-          >Send Order</md-button>
-        </h3>
+            @click="sendOrderAndOrInquiries()"    
+          >Send Order & Messages</md-button>
+        
         <br />
 
         <md-button
-          class="checkout-btn md-raised md-accent"
-          style="background-color: white; color: #311c63;"
+          class="btn-checkout md-raised md-accent"
+          style="margin-left: -1px;"
           v-if="this.shoppingCart.length === 0 && this.quoteRequestsCart.length > 0"
           @click="sendQuoteRequests()"
-        >Send Inquires</md-button>
+        >Send Messages</md-button>
+
+        <br />
+
+        <md-button
+          class="btn-checkout md-raised md-accent"
+          style="margin-left: -1px;"
+          v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
+          @click="sendQuoteRequests()"
+        >Send Order</md-button>
+        <br/>
 
         <div class="container" id="purchase_content">
           <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>

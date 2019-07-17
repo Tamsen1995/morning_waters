@@ -9,8 +9,13 @@
       <div class="container" style="max-width:800px; display: block;
         margin-left: auto;
         margin-right: auto;">
-        <div class="container cart_container">
 
+        <div class="container cart_container">
+          <br>
+          <p>
+            Don't worry! You will not be charged until the Seller has approved your order.
+          </p> 
+          <br>
           <div class="card">
             <h5 class="card-header" style="text-align: center; color:white; background-color: purple;">Cart</h5>
             <div class="card-body">
@@ -20,22 +25,26 @@
             <h3 style="text-align:center;">
               <a href="#" class="card-link">Continue Shopping</a>
             </h3>
-            <!-- Checkout button -->
+          </div>
+          <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
+          <span>
+            <md-tooltip id="tooltip" md-direction="bottom"   
+              style="
+              font: 18px;
+              margin-top: 10px;
+              margin-left: 30px;">
+              Clicking "Checkout" will redirect you to login or create an account.
+            </md-tooltip>
             <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
               <h3>Checkout</h3>
-            </button>
-
-          </div>
-
-          
+            </button> 
+          </span>
           <br>
           <br>
-          <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
-          <!-- Send Messages -->
-          <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
-            <h3>Send to seller</h3>
-          </button>
         </div>
+        <br>
+
+
 
 
         <br>
@@ -126,4 +135,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 @import "../../assets/css/settings.css";
+.buyers_carts #tooltip {
+  min-width: 60px;
+  background-color:white;
+  font: 25px;
+  padding-top: 30px;
+}
 </style>
