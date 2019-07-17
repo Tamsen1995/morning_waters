@@ -170,7 +170,13 @@
   <modal name="would-you-like-confirm">
     <div>Would you like to confirm this order?</div>
     <md-button @click="confirmOrder">Yes</md-button>
-    <md-button @click="closeModal">No</md-button>
+    <md-button @click="closeConfirmationModal">No</md-button>
+  </modal>
+
+  <modal name="no-buyer-method-detected">
+    <div>You do not yet have a payment method. Would you like to add one in order to confirm this order?</div>
+    <md-button @click="addPaymentMethod">Yes</md-button>
+    <md-button @click="closePaymentMethodModal">No</md-button>
   </modal>
 </div>
 </template>

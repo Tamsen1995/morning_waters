@@ -1,6 +1,7 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
+import PaymentService from '@/services/PaymentService'
 import UserServices from '../../../services/UserServices'
 
 export default {
@@ -32,13 +33,27 @@ export default {
     }
   },
   async mounted () {
+    console.log(`sdjnads`) // TESTING
   },
   components: {
     BuyerHeader
   },
   methods: {
-
-    async closeModal () {
+    async addPaymentMethod () {
+      try {
+        console.log(`\nTODO : wireframe payment method adding.\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async closePaymentMethodModal () {
+      try {
+        this.$modal.hide('no-buyer-method-detected')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async closeConfirmationModal () {
       try {
         this.$modal.hide('would-you-like-confirm')
       } catch (error) {
@@ -48,13 +63,13 @@ export default {
     async promptForOrderConfirmation () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
-        const buyerHasPaymentMethod = await InboxService.checkForBuyerPaymentMethod(buyerExtracted.id)
-        console.log(`\nbuyerHasPaymentMethod : ${buyerHasPaymentMethod}\n`) // TESTING
-        // if (buyerHasPaymentMethod === true) {
-        //   this.$modal.show('would-you-like-confirm')
-        // } else {
-        //   console.log(`\nprompt the buyer to add a payment method\n`) // TESTING
-        // }
+        const buyerHasPaymentMethod = (await PaymentService.checkForBuyerPaymentMethod(buyerExtracted.id)).data
+
+        if (buyerHasPaymentMethod === true) {
+          this.$modal.show('would-you-like-confirm')
+        } else {
+          this.$modal.show('no-buyer-method-detected')
+        }
       } catch (error) {
         if (error) throw error
       }
