@@ -1,11 +1,9 @@
 <template>
 <div id="app">
   <buyer-header></buyer-header>
-  <div class="responsive-component"
-    v-responsive="{
+  <div class="responsive-component" v-responsive="{
     small: el => el.width < 430
-    }"
-  >
+    }">
     <body>
       <div class="row">
         <div class="col">
@@ -77,13 +75,12 @@
             <br />
             <a href="#" id="legal-links">Privacy</a>
             <br />
-            <hr >
+            <hr />
             <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
             <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
           </div>
         </div>
       </div>
-
     </body>
   </div>
 </div>
