@@ -12,34 +12,29 @@
         <div class="container cart_container">
 
           <div class="card">
-            <h5 class="card-header" style="text-align: center;">Cart</h5>
+            <h5 class="card-header" style="text-align: center; color:white; background-color: purple;">Cart</h5>
             <div class="card-body">
               <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
             </div>
-              <ul class="list-group list-group-flush">
-                
-                <li class="list-group-item">
-                  <h3 style="text-align:center;">
-                    <a href="#" class="card-link">Continue Shopping</a>
-                  </h3>
-                  <h3 style="text-align:center;">
-                    <a href="#" class="card-link" >Review message to buyer</a>
-                  </h3>
-                </li>
-                
-              </ul>
+
+            <h3 style="text-align:center;">
+              <a href="#" class="card-link">Continue Shopping</a>
+            </h3>
+            <!-- Checkout button -->
+            <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
+              <h3>Checkout</h3>
+            </button>
+
           </div>
 
           
           <br>
+          <br>
           <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
-
-        <!-- Checkout button -->
-
-        <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
-          <h3>Checkout</h3>
-        </button>
-
+          <!-- Send Messages -->
+          <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
+            <h3>Send to seller</h3>
+          </button>
         </div>
 
 
