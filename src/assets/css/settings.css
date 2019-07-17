@@ -270,15 +270,21 @@ body.shopping-cart .table {
 /* -----------------BuyersCarts---------------- */
 
 body.buyers_carts{
-  padding-top: 90px;
+  padding-top: 40px;
   background-size: cover;
   background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%); 
   min-height: 100vh;  
 }
+body.buyers_carts p {
+  color: purple;
+  font: 20px 'Roboto';
+  text-align: center;
+}
+
 /* -----------------Checkout---------------- */
 
 body.buyer-checkout {
-  padding-top: 90px;
+  padding-top: 30px;
   background-size: cover;
   background: linear-gradient(to bottom right, #FFFFFF 0%,  #D8D4DC 100%);
   min-height: 100vh;  
@@ -296,4 +302,50 @@ body.buyer-checkout {
   /* border-top: 2px solid #7e6f89; */
   border-top: 2px solid purple;
   padding-top: 20px;
+}
+
+.buyer-checkout .btn-checkout {
+  border: 2px solid rgb(113, 0, 128);
+  border-radius: 5px;
+  background-color: white; 
+  color: rgb(113, 0, 128);
+}
+
+.buyer-checkout #stripeCard {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  width: 50%;
+}
+.buyer-checkout .change-preference {
+  position: absolute;
+  left: 210px;
+  font-size: 80%;
+}
+.buyer-checkout .default-payment-card {
+  width: 300px;
+  border: 2px solid purple;
+  padding: 20px;
+  margin-left: 10px;
+}
+
+.buyer-checkout .add-payment-button {
+  position: relative;
+  margin: 25px;
+  bottom: 0;
+  right: 0;
+}
+
+.buyer-checkout .grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196f3;
+  padding: 10px;
+}
+.buyer-checkout .grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 2px;
+  font-size: 15px;
+  text-align: center;
 }
