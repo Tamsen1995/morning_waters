@@ -9,7 +9,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-text href="#about">
-            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#about">Aboout</a>
           </b-nav-text>
 
           <b-nav-text href="#services">
