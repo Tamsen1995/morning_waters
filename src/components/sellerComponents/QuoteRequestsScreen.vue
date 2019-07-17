@@ -145,7 +145,8 @@
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems (order)">
                     <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
+                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                      <div v-else>Buyer ID : {{ order.buyerName }}</div>
                       <br />
                       <br />
                       <!-- Charged: {{order.totalPrice}} $ -->
