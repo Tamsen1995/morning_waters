@@ -37,6 +37,7 @@ export default {
     BuyerHeader
   },
   methods: {
+
     async closeModal () {
       try {
         this.$modal.hide('would-you-like-confirm')
@@ -46,7 +47,14 @@ export default {
     },
     async promptForOrderConfirmation () {
       try {
-        this.$modal.show('would-you-like-confirm')
+        const buyerExtracted = this.$store.getters.getBuyerInfo
+        const buyerHasPaymentMethod = await InboxService.checkForBuyerPaymentMethod(buyerExtracted.id)
+        console.log(`\nbuyerHasPaymentMethod : ${buyerHasPaymentMethod}\n`) // TESTING
+        // if (buyerHasPaymentMethod === true) {
+        //   this.$modal.show('would-you-like-confirm')
+        // } else {
+        //   console.log(`\nprompt the buyer to add a payment method\n`) // TESTING
+        // }
       } catch (error) {
         if (error) throw error
       }
