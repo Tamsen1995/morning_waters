@@ -3,7 +3,6 @@ import PaymentService from '@/services/PaymentService'
 
 let stripe = Stripe(process.env.stripe_public_key)
 let elements = stripe.elements()
-let card = null
 
 function getDefaultSource (customerDefaultSourceID, customerSources) {
   var customerSourcesLength = customerSources.length
@@ -19,18 +18,21 @@ export default {
   data () {
     return {
       customerDefaultSource: null,
-      subscriptions: [] // holds the subscriptions
+      subscriptions: [], // holds the subscriptions
+      card: null,
+      stripe: null
     }
   },
   beforeDestroy () {
-    card.destroy(this.$refs.card)
+    this.card.destroy(this.$refs.card)
   },
   async created () {
     await this.getStripeUserInfo()
   },
   async mounted () {
-    card = elements.create('card')
-    card.mount(this.$refs.card)
+    this.card = elements.create('card')
+    this.card.mount(this.$refs.card)
+    this.stripe = stripe
   },
   methods: {
     async addPaymentMethod () {
@@ -38,7 +40,7 @@ export default {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const buyerId = buyerExtracted.id
         const stripeCustomerId = buyerExtracted.stripeCustomerId
-        const token = await stripe.createToken(card)
+        const token = await stripe.createToken(this.card)
         const sourceToBeAdded = {
           uid: buyerId,
           stripeCustomerId: stripeCustomerId,
@@ -46,7 +48,7 @@ export default {
         }
         await SettingsService.addPaymentMethod(sourceToBeAdded)
         this.getStripeUserInfo()
-        card.clear(this.$refs.card)
+        this.card.clear(this.$refs.card)
       } catch (error) {
         console.log(`\nThe error in the billing settings: \n`)
         if (error) throw error
