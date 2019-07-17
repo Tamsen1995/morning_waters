@@ -14,7 +14,7 @@ export default {
       userId: 0,
       companyName: '',
       about: '',
-      location: '',
+      companyLocation: '',
       services: null,
       subServices: null,
       serviceTableIdChosen: 0,

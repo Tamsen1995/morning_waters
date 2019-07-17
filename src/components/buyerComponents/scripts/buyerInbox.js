@@ -2,7 +2,7 @@ import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
-import UserServices from '../../../services/UserServices'
+import BuyerSettingsBillingsTab from '@/components/buyerComponents/BuyerSettingsBillingsTab'
 
 export default {
   data () {
@@ -36,12 +36,14 @@ export default {
     console.log(`sdjnads`) // TESTING
   },
   components: {
-    BuyerHeader
+    BuyerHeader,
+    BuyerSettingsBillingsTab
   },
   methods: {
     async addPaymentMethod () {
       try {
-        console.log(`\nTODO : wireframe payment method adding.\n`) // TESTING
+        this.$modal.show('add-payment-method')
+        this.$modal.hide('no-buyer-method-detected')
       } catch (error) {
         if (error) throw error
       }

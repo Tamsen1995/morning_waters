@@ -178,6 +178,11 @@
     <md-button @click="addPaymentMethod">Yes</md-button>
     <md-button @click="closePaymentMethodModal">No</md-button>
   </modal>
+
+  <modal name="add-payment-method">
+    <buyer-settings-billings-tab></buyer-settings-billings-tab>
+  </modal>
+  <!-- BuyerSettingsBillingsTab -->
 </div>
 </template>
 
