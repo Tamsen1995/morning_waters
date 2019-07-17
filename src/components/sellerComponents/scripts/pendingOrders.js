@@ -41,11 +41,11 @@ export default {
         )
         this.pendingOrders = response.data
 
-        for (var i = 0; i < this.pendingOrders.length; i++) {
-          const response = await ShippingService.retrieveOrderFromShippo(this.pendingOrders[i].orderId)
-          var orderFromShippo = response.data
-          this.shippoOrders.push(orderFromShippo)
-        }
+        // for (var i = 0; i < this.pendingOrders.length; i++) {
+        //   const response = await ShippingService.retrieveOrderFromShippo(this.pendingOrders[i].orderId)
+        //   var orderFromShippo = response.data
+        //   this.shippoOrders.push(orderFromShippo)
+        // }
       } catch (error) {
         if (error) throw error
       }
