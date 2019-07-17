@@ -43,6 +43,15 @@ export default {
     await this.getPendingOrders()
     await this.getLockedOrders()
     await this.discernLockedCorrespondences()
+
+    if (this.pendingOrders && this.pendingOrders.length > 0) {
+      this.showOrder(this.pendingOrders[0])
+    }
+
+    if (this.orders && this.orders.length > 0) {
+      this.showOrder(this.orders[0])
+      this.retrieveOrderOrderItems(this.orders[0])
+    }
   },
   methods: {
     // goes through the array of orders and pending orders
@@ -67,6 +76,7 @@ export default {
         await this.getPendingOrders()
         await this.getLockedOrders()
         await this.discernLockedCorrespondences()
+        console.log(`\n this.showOrderWithOrderId(orderId) : ${orderId}\n\n`) // TESTING
         this.showOrderWithOrderId(orderId)
       } catch (error) {
         if (error) throw error
@@ -88,9 +98,6 @@ export default {
           for (var i = 0; i < this.orders.length; i++) {
             this.orders[i].locked = (await InboxService.relationshipUnlocked(this.orders[i].sellerId, this.orders[i].buyerId)).data
           }
-
-          this.showOrder(this.orders[0])
-          this.retrieveOrderOrderItems(this.orders[0])
         }
       } catch (error) {
         if (error) throw error
@@ -218,6 +225,7 @@ export default {
         })
         await this.getLockedOrders()
         await this.getPendingOrders()
+        await this.discernLockedCorrespondences()
         this.showOrderWithOrderId(orderId)
         this.$modal.hide('would-you-like-to-submit')
       } catch (error) {
