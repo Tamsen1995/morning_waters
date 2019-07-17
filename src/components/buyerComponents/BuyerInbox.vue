@@ -169,8 +169,8 @@
 
   <modal name="would-you-like-confirm">
     <div>Would you like to confirm this order?</div>
-    <md-button @click="confirmOrder">Yes</md-button>
-    <md-button @click="closeConfirmationModal">No</md-button>
+    <md-button @click="confirmOrder()">Yes</md-button>
+    <md-button @click="closeConfirmationModal()">No</md-button>
   </modal>
 
   <modal name="no-buyer-method-detected">
@@ -180,7 +180,9 @@
   </modal>
 
   <modal name="add-payment-method">
-    <buyer-settings-billings-tab></buyer-settings-billings-tab>
+    <buyer-settings-billings-tab v-slot:default="slotProps">
+      <md-button @click="submitPaymentMethod(slotProps.card)">Add Card</md-button>
+    </buyer-settings-billings-tab>
   </modal>
   <!-- BuyerSettingsBillingsTab -->
 </div>

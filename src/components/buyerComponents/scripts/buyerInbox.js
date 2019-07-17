@@ -3,6 +3,8 @@ import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
 import BuyerSettingsBillingsTab from '@/components/buyerComponents/BuyerSettingsBillingsTab'
+import SettingsService from '@/services/SettingsService'
+let stripe = Stripe(process.env.stripe_public_key)
 
 export default {
   data () {
@@ -40,6 +42,27 @@ export default {
     BuyerSettingsBillingsTab
   },
   methods: {
+    async submitPaymentMethod (card) {
+      try {
+        console.log(`\n\nv-bind:user="card": ${JSON.stringify(card)} `) // TESTING
+        const buyerExtracted = this.$store.getters.getBuyerInfo
+        const buyerId = buyerExtracted.id
+        const stripeCustomerId = buyerExtracted.stripeCustomerId
+        const token = await stripe.createToken(card)
+        const sourceToBeAdded = {
+          uid: buyerId,
+          stripeCustomerId: stripeCustomerId,
+          stripeToken: token
+        }
+        await SettingsService.addPaymentMethod(sourceToBeAdded)
+
+        this.$modal.hide('add-payment-method')
+        this.confirmOrder()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    // this will render the modal to add a payment method with
     async addPaymentMethod () {
       try {
         this.$modal.show('add-payment-method')
