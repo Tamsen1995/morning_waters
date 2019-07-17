@@ -16,6 +16,7 @@ export default {
       serviceDescription: '',
       servicePrice: 0.0,
       turnAroundTime: '',
+      turnAroundTimeType: '',
       unitType: '',
       price: '',
       user: null,
