@@ -28,7 +28,7 @@
   background: transparent;
 }
 
-.btn-cart {
+/* .btn-cart {
   border-color: #361555;
   border-width: 2px;
 }
@@ -36,7 +36,7 @@
 .btn-cart h3{
   color: #361555;
   font-style: bold;
-}
+} */
 
 .btn-cart:hover,
 .btn-cart:focus,
@@ -86,11 +86,10 @@
   font-weight: 200;
   letter-spacing: 1px;
   font-size: 15px;
-  margin-bottom: -5px;
-  padding-top:0px;
+  margin-bottom: -15px;
 }
 
-#buyer_nav_icon:hover {
+#buyer_nav_icon:hover, #buyer_nav_icon:focus, #buyer_nav_icon:active {
   color:  yellowgreen ;
 }
 
@@ -107,5 +106,5 @@
 }
 
 #buyer_nav_icon {
-  font-size: 30px;
+  font-size: 20px;
 }
