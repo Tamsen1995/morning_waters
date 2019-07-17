@@ -72,13 +72,13 @@
 
         <br />
 
-        <md-button
+        <!-- <md-button
           class="btn-checkout md-raised md-accent"
           style="margin-left: -1px;"
           v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
           @click="sendQuoteRequests()"
         >Send Order</md-button>
-        <br/>
+        <br/> -->
 
         <div class="container" id="purchase_content">
           <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
