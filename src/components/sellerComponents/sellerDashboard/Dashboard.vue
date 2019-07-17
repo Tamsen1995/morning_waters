@@ -199,7 +199,7 @@
 
             <!-- Price Negotiable? -->
             <div class="col-4">
-              <md-checkbox v-model="array" value="priceNegotiable">Negotiable price</md-checkbox>
+              <md-checkbox value="priceNegotiable">Negotiable price</md-checkbox>
             </div>
           </div>
 
@@ -225,7 +225,7 @@
 
             <!-- Price Negotiable? -->
             <div class="col-4">
-              <md-checkbox v-model="array" value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
+              <md-checkbox value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
             </div>
           </div>
 
@@ -313,7 +313,7 @@
 
               <!-- Price Negotiable? -->
               <div class="col-4">
-                <md-checkbox v-model="array" value="priceNegotiable">Negotiable Price</md-checkbox>
+                <md-checkbox value="priceNegotiable">Negotiable Price</md-checkbox>
               </div>
             </div>
 
@@ -343,7 +343,7 @@
 
               <!-- Time Negotiable? -->
               <div class="col-4">
-                <md-checkbox v-model="array" value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
+                <md-checkbox value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
               </div>
             </div>
             <br />

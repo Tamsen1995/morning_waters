@@ -148,7 +148,7 @@
               <div class="panel-body">
                 <button
                   v-if="this.order && this.order.seller_confirmed === true"
-                  @click="promptForOrderConfirmation"
+                  @click="promptForOrderConfirmation()"
                 >Submit Order</button>
 
                 <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
@@ -169,9 +169,22 @@
 
   <modal name="would-you-like-confirm">
     <div>Would you like to confirm this order?</div>
-    <md-button @click="confirmOrder">Yes</md-button>
-    <md-button @click="closeModal">No</md-button>
+    <md-button @click="confirmOrder()">Yes</md-button>
+    <md-button @click="closeConfirmationModal()">No</md-button>
   </modal>
+
+  <modal name="no-buyer-method-detected">
+    <div>You do not yet have a payment method. Would you like to add one in order to confirm this order?</div>
+    <md-button @click="addPaymentMethod">Yes</md-button>
+    <md-button @click="closePaymentMethodModal">No</md-button>
+  </modal>
+
+  <modal name="add-payment-method">
+    <buyer-settings-billings-tab v-slot:default="slotProps">
+      <md-button @click="submitPaymentMethod(slotProps.card)">Add Card</md-button>
+    </buyer-settings-billings-tab>
+  </modal>
+  <!-- BuyerSettingsBillingsTab -->
 </div>
 </template>
 

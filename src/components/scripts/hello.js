@@ -1,4 +1,5 @@
 import PageHeader from '@/components/Header.vue'
+import Api from '@/services/Api'
 import { EventBus } from '../../event-bus.js'
 import { ResponsiveDirective } from 'vue-responsive-components'
 import AuthenticationService from '@/services/AuthenticationService'
@@ -16,13 +17,13 @@ export default {
   },
   mounted () {
     localStorage.clear()
+    Api().defaults.headers.common['Authorization'] = ''
     this.$store.dispatch('setToken', null)
     this.$store.dispatch('setAuthStatus', false)
     this.$store.dispatch('setUser', null)
     this.$store.dispatch('setBuyer', null)
     this.$store.dispatch('setQuoteToBeRequested', null)
     this.$store.dispatch()
-    this.$store.dispatch('setSidebarHighlight', '')
     this.logout()
   },
   components: {
@@ -44,6 +45,7 @@ export default {
     async continueOntoRegisterForm () {
       this.$store.dispatch('setCompanyName', this.companyName)
       this.$store.dispatch('setEmailAddress', this.emailAddress)
+
       this.$router.push({
         name: 'register'
       })
