@@ -59,11 +59,10 @@
   font-weight: 200;
   letter-spacing: 1px;
   font-size: 15px;
-  margin-bottom: -5px;
-  padding-top:0px;
+  margin-bottom: -15px;
 }
 #seller_nav_icon {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 #seller_nav_icon:hover {

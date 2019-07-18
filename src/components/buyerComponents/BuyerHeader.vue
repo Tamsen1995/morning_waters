@@ -39,7 +39,7 @@
               @click="redirectToInbox()"
               style="padding-top:0px;padding-bottom:0px;"
             >
-              <i class="fas fa-envelope" alt="Inbox" id="buyer_nav_icon" style="padding-right:5px;"></i>
+              <i class="fas fa-envelope" alt="Inbox" id="buyer_nav_icon"></i>
             </a>
             <a
               class="nav-link"
@@ -111,22 +111,29 @@
               <a
                 class="nav-link"
                 @click="buyerLogout()"
-                style="margin-top:-12px;"
+                style="margin-top:-13px;"
               >Logout</a>
             </router-link>
           </b-nav-item>
           <!-- Login/Sign-up -->
-          <b-nav-text  href="#" v-if="this.buyerLoggedIn === false" @click="redirectToSignUp()"
-          style="padding-top:26px;margin-top:12px;">       
-            Sign Up
-          </b-nav-text>
-
-          <b-nav-text  href="#" v-if="this.buyerLoggedIn === false" 
-            @click="redirectToLogin()"
-            style="padding-top:26px;margin-top:12px;"
+          <b-nav-item 
+            class="nav-item" 
+            v-if="this.buyerLoggedIn === false" 
+            href="#"  
+            @click="redirectToSignUp()"
+            style="padding-top:22px;"
           >
-           Login
-          </b-nav-text>
+            Sign Up
+          </b-nav-item>
+
+          <b-nav-item class="nav-item" 
+            v-if="this.buyerLoggedIn === false" 
+            href="#" 
+            @click="redirectToLogin()"
+            style="padding-top:22px;" 
+          >
+            Login
+          </b-nav-item>
 
         </b-navbar-nav>
       </b-collapse>
