@@ -13,6 +13,7 @@
         </div>
       </div>
     </div>
+    <br>
 
     <!-- About Section -->
     <div class="container" id="about">

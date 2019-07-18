@@ -10,10 +10,8 @@
       <div class="container" id="dashboard">
         <!-- This section is reserved for the profile information -->
         <div>
-          <!--  -->
           <!-- insert about section -->
           <about-section></about-section>
-          <!--  -->
         </div>
         <br />
         <br />
@@ -24,7 +22,7 @@
         </div>
         <br />
         <br />
-        <br />
+
 
         <div id="services">
           <br />
@@ -34,11 +32,11 @@
           <!-- Empty state for service listings when no listings have been added -->
           <md-empty-state
             md-rounded
-            class="md-primary"
+            class="md-accent"
             md-icon="error_outline"
             md-label="No Services Added"
             v-if="this.services.length === 0"
-            md-description="Add services to start marketting your technology."
+            md-description="Add services to get started."
           ></md-empty-state>
 
           <!-- Beginning of cards -->
@@ -53,10 +51,11 @@
                     <md-card-content>
                       <div class="card-reservation">
                         <span
+                          class="pull-right"
                           style="color:#1faa00;font-size: 18px;"
                         >Price: {{service.servicePrice}} $</span>
 
-                        <span class="pull-right">
+                        <span style="color: #5f5a6d">
                           <md-icon>access_time</md-icon>
                           Turnaround time : {{ service.turnAroundTime }}
                         </span>
@@ -71,7 +70,7 @@
                   <div style="padding-left: 15px;">
                     <md-chip
                       class="md-primary md-accent"
-                      style="background-color: #00b2cc; color: white;"
+                      style="background-color: #2282ff; color: white;"
                       v-for="chip in service.tags"
                       :key="chip"
                     >{{ chip.tag }}</md-chip>
@@ -89,8 +88,9 @@
 
                         <span
                           style="color:#009624;font-size: 18px;"
+                          class="pull-right"
                         >Price: {{subService.servicePrice}} $</span>
-                        <span class="pull-right">
+                        <span style="color: #5f5a6d;">
                           <md-icon>access_time</md-icon>
                           Turnaround time : {{ subService.turnAroundTime }}
                         </span>
@@ -104,7 +104,7 @@
                     <div style="padding-left: 15px;">
                       <md-chip
                         class="md-primary md-accent"
-                        style="padding-left: 5px;background-color: #00b2cc; color: white;"
+                        style="padding-left: 5px;background-color: #2282ff; color: white;"
                         v-for="chip in subService.tags"
                         :key="chip"
                       >{{ chip.tag }}</md-chip>
@@ -177,7 +177,7 @@
             <md-chips
               v-model="tags"
               md-placeholder="Add a tag and click enter"
-              style="border-bottom: 1px inset; color: #00b2cc;"
+              style="border-bottom: 1px inset; color: #2282ff;"
             ></md-chips>
           </md-field>
 
@@ -257,7 +257,7 @@
         <div>
           <div
             class="container"
-            style="border: 2px #9d46ff dotted;"
+            style="border: 2px rgb(136, 2, 177) dotted;"
             id="subservice-form-block"
             v-for="(subservice, index) in this.subServicesToBeAdded"
             v-bind:key="index"
@@ -287,7 +287,7 @@
               <md-chips
                 md-placeholder="Add a tag and click enter"
                 v-model="subServicesToBeAdded[index].serviceTags"
-                style="border-bottom: 1px inset; color: #00b2cc;"
+                style="border-bottom: 1px inset; color: #2282ff;"
               ></md-chips>
             </md-field>
 
