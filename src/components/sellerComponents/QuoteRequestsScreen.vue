@@ -82,12 +82,12 @@
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems(order)">
                     <h4 class="list-group-item-heading">
-                      <md-avatar class="md-avatar-icon md-primary">
-                        <!-- <md-icon>folder</md-icon> -->
-                        <i class="fas fa-lock"></i>
-                      </md-avatar>
+                      <md-avatar class="md-avatar-icon md-primary"></md-avatar>
 
-                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                      <div v-if="order.locked === true">
+                        <md-icon>lock</md-icon>
+                        Buyer ID : {{ order.buyerId }}
+                      </div>
                       <div v-else>Buyer ID : {{ order.buyerName }}</div>
 
                       <small class="pull-right">{{ order.createdAt }}</small>
@@ -148,7 +148,10 @@
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems (order)">
                     <h4 class="list-group-item-heading">
-                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                      <div v-if="order.locked === true">
+                        <md-icon>lock</md-icon>
+                        Buyer ID : {{ order.buyerId }}
+                      </div>
                       <div v-else>Buyer ID : {{ order.buyerName }}</div>
                       <br />
                       <br />
