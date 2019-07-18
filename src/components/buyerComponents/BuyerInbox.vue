@@ -181,7 +181,7 @@
 
   <modal name="add-payment-method">
     <buyer-settings-billings-tab v-slot:default="slotProps">
-      <md-button @click="submitPaymentMethod(slotProps.card)">Add Card</md-button>
+      <md-button @click="submitPaymentMethod(slotProps.card, slotProps.stripe)">Add Card</md-button>
     </buyer-settings-billings-tab>
   </modal>
   <!-- BuyerSettingsBillingsTab -->

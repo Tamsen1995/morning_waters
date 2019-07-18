@@ -54,6 +54,7 @@ export default {
     }
   },
   methods: {
+
     // goes through the array of orders and pending orders
     // finds the order with the appropiate order id
     // and then displays that order with the showOrder function

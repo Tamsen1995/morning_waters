@@ -22,7 +22,7 @@
         </md-card-content>
 
         <md-card-actions>
-          <slot v-bind:card="card">
+          <slot v-bind:card="card" v-bind:stripe="stripe">
             <md-button @click="addPaymentMethod()">Add Card</md-button>
           </slot>
           <md-button>Change Preference</md-button>
