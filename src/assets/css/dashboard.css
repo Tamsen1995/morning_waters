@@ -133,7 +133,8 @@ body.dashboard {
   border-radius: 75px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./Icons/noun_DNA_2362091.png");
+  /* background-image: url("./Icons/noun_DNA_2362091.png"); */
+  background-image: url("./noun_Science_profile_crop_purple.png");
 }
 
 #dashboard #logo-border {
@@ -442,7 +443,8 @@ p {
   border-radius: 55px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./Icons/noun_DNA_2362091.png");
+  /* background-image: url("./Icons/noun_DNA_2362091.png"); */
+  background-image: url("./noun_Science_profile_crop_purple.png");
 }
 .responsive-component.small #dashboard #logo-border {
   background-color: #301a70;
