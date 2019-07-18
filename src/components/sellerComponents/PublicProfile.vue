@@ -35,11 +35,11 @@
             <md-card>
               <div v-if="expanded">{{this.about}}</div>
             </md-card>
-          </transition-expand>-->
-          <!-- <md-button
+          </transition-expand>
+          <md-button
             class="md-dense md-raised md-primary"
             @click="expanded = !expanded"
-          >{{ expanded ? `Shrink` : `Expand` }}</md-button>-->
+          >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
         </div>
         <br />
         <br />

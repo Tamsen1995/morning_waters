@@ -4,6 +4,7 @@ import { EventBus } from '../../event-bus.js'
 import { ResponsiveDirective } from 'vue-responsive-components'
 import AuthenticationService from '@/services/AuthenticationService'
 import { Carousel, Slide } from 'vue-carousel'
+import TransitionExpand from '@/components/TransitionExpand'
 
 export default {
   name: 'HelloWorld',
@@ -12,7 +13,8 @@ export default {
       scrolled: false,
       companyName: '',
       emailAddress: '',
-      msg: 'Fig Analytics Homepage'
+      msg: 'Fig Analytics Homepage',
+      expanded: false,
     }
   },
   mounted () {
@@ -29,7 +31,8 @@ export default {
   components: {
     PageHeader,
     Carousel,
-    Slide
+    Slide,
+    TransitionExpand
   },
   directives: {
     responsive: ResponsiveDirective
