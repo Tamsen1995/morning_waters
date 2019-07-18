@@ -19,50 +19,7 @@
             <!-- <md-card> -->
             <div class="panel-heading">
               <!-- Filter Orders/Quote Requests -->
-              <div class="pull-left">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-success">
-                    <h5 style="color:white;">{{ dropdownVariable }}</h5>
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-success dropdown-toggle"
-                    data-toggle="dropdown"
-                  >
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-
-                  <ul class="dropdown-menu pull-right" role="menu">
-                    <li>
-                      <a @click="switchMessagesDisplayed('orders')">
-                        <h5>
-                          <i class="fas fa-seedling"></i> Orders
-                        </h5>
-                      </a>
-                    </li>
-                    <li>
-                      <a @click="switchMessagesDisplayed('quoteRequests')">
-                        <h5>
-                          <i class="far fa-envelope"></i> Quote Requests
-                        </h5>
-                      </a>
-                    </li>
-                    <li class="divider"></li>
-                    <!-- <li>
-                        <a>
-                          <i class="fa fa-briefcase"></i> Other
-                        </a>
-                    </li>-->
-                    <li>
-                      <a @click="switchMessagesDisplayed('all')">
-                        <h5>
-                          <i class="fas fa-inbox"></i> All
-                        </h5>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <div class="pull-left"></div>
 
               <div class="clearfix"></div>
             </div>
