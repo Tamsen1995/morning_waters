@@ -86,7 +86,10 @@
                         <!-- <md-icon>folder</md-icon> -->
                         <i class="fas fa-lock"></i>
                       </md-avatar>
-                      Buyer ID : {{ order.buyerId }}
+
+                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                      <div v-else>Buyer ID : {{ order.buyerName }}</div>
+
                       <small class="pull-right">{{ order.createdAt }}</small>
                       <br />
                       <br />
