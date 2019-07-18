@@ -1,4 +1,5 @@
 import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
+import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'
 import AuthenticationService from '@/services/AuthenticationService'
 import Api from '@/services/Api'
 
@@ -13,7 +14,8 @@ export default {
     this.getBuyerAuthStatus()
   },
   components: {
-    ShoppingCart
+    ShoppingCart,
+    RequestQuoteCart,
   },
   methods: {
     async buyerLogout () {

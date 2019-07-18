@@ -2,7 +2,7 @@
 <div id="app">
   <buyer-header />
   <div class="responsive-component" v-responsive="{
-      small: el => el.width < 430
+      small: el => el.width < 860
       }">
     <body class="settings">
       <div id="settings-page">

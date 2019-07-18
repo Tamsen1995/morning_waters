@@ -22,7 +22,7 @@
 
 /* -----------------Settings----------------- */
 body.settings {
-  padding-top: 80px;
+  padding-top: 30px;
   padding-left: 0px;
   padding-right: 0px; 
   padding-bottom: 100px;   
@@ -40,7 +40,7 @@ body.settings {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 60%;
 }
 
 .settings-content{
