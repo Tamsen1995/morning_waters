@@ -186,21 +186,21 @@ export default {
         if (error) throw error
       }
     },
-    async switchMessagesDisplayed (messagesDisplayed) {
-      try {
-        if (messagesDisplayed === 'all') {
-          this.dropdownVariable = 'All messages'
-        } else if (messagesDisplayed === 'orders') {
-          this.dropdownVariable = 'Orders'
-          this.getLockedOrders()
-        } else if (messagesDisplayed === 'quoteRequests') {
-          this.dropdownVariable = 'Quote Requests'
-        }
-      } catch (error) {
-        console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
+    // async switchMessagesDisplayed (messagesDisplayed) {
+    //   try {
+    //     if (messagesDisplayed === 'all') {
+    //       this.dropdownVariable = 'All messages'
+    //     } else if (messagesDisplayed === 'orders') {
+    //       this.dropdownVariable = 'Orders'
+    //       this.getLockedOrders()
+    //     } else if (messagesDisplayed === 'quoteRequests') {
+    //       this.dropdownVariable = 'Quote Requests'
+    //     }
+    //   } catch (error) {
+    //     console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
+    //     if (error) throw error
+    //   }
+    // },
     async generateInvoice () {
       try {
         InboxService.generateInvoice(this.order)
