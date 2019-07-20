@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <b-navbar toggleable="lg" style="position: sticky" id="seller_nav">
-      <b-navbar-brand href="#" class="mr-auto">
+      <b-navbar-brand href="#" class="mr-auto" style="margin-bottom:15px;">
         <router-link class="nav-link" to="/dashboard" v-if="this.user == null">
           <img src="../TINY_LOGO.png" alt="FIG ANALYTICS" class="center" />
         </router-link>
@@ -92,8 +92,10 @@
 
           <!-- Logout -->
           <b-nav-item v-if="this.user == null">
-            <router-link class="nav-link" to="/" @click="logout()">
-              <i class="fas fa-sign-out-alt"></i>
+            <router-link class="nav-link" 
+              style="margin-top:17px;"
+              to="/" @click="logout()">
+              <!-- <i class="fas fa-sign-out-alt"></i> -->
               Logout
             </router-link>
             <!-- <router-link class="nav-link nav-center" to="/" style="margin-top:0px;">

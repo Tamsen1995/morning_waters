@@ -109,6 +109,20 @@ p {
   animation-duration: 2s;
 }
 
+#expanded h5 {
+  text-align: center;
+  color: #311c63;
+}
+
+#btn-expand h2{
+  font-size: 30;
+}
+
+#btn-expand h2:hover, #btn-expand h2:focus, #btn-expand h2:active {
+  color: purple;
+  font-size: 30;
+}
+
 /* logo animation */
 @keyframes moveInLeft {
   0% {

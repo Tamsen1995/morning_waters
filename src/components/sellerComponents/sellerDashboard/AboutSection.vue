@@ -13,6 +13,7 @@
         </div>
       </div>
     </div>
+    <br>
 
     <!-- About Section -->
     <div class="container" id="about">
@@ -25,20 +26,22 @@
       <!-- Transition Expand Content -->
 
       <!-- <transition-expand>
-              <md-card>
-                <div v-if="expanded">{{this.about}}</div>
-              </md-card>
-      </transition-expand>-->
-      <!-- <md-button
+        <md-card>
+          <div v-if="expanded">{{this.about}}</div>
+        </md-card>
+      </transition-expand>
+      <md-button
               class="md-dense md-raised md-primary"
               @click="expanded = !expanded"
-      >{{ expanded ? `Shrink` : `Expand` }}</md-button>-->
+      >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
     </div>
   </div>
 </template>
 
 <script>
 import UserServices from "@/services/UserServices";
+import TransitionExpand from '@/components/TransitionExpand';
+
 
 export default {
   data() {
@@ -46,8 +49,12 @@ export default {
       user: null,
       companyName: "",
       companyLocation: "",
-      about: ""
+      about: "",
+      expanded: false
     };
+  },
+  components: {
+    TransitionExpand
   },
   methods: {
     async getUserInfo() {
