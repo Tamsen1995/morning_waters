@@ -24,9 +24,9 @@
         <br />
         <br />
         <br />
-        <div class="col-md-12 text-center">
+        <!-- <div class="col-md-12 text-center">
           <router-link class="btn-signup btn-signup-outline btn-xl" to="/login">Client Login</router-link>
-        </div>
+        </div>-->
       </div>
     </header>
 

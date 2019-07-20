@@ -68,168 +68,169 @@ export default new Router({
 
     },
     {
-      path: '/checkout',
-      name: 'checkout',
-      component: Checkout,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-    {
-      path: '/publicProfile/:id',
-      name: 'publicProfile',
-      component: PublicProfile
-    },
-    {
-
-      path: '/pendingOrder/status/:orderId',
-      name: 'pendingOrderStatus',
-      component: PendingOrderStatus
-    },
-    {
       path: '/',
       name: 'root',
       component: Hello
-    },
-    {
-      path: '/register',
-      name: 'register',
-      component: Register
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: Dashboard,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-    {
-      path: '/dashboard/creditsScreen',
-      name: 'creditsHome',
-      component: CreditsHome,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-    {
-      path: '/dashboard/creditsScreen/creditsPurchasing',
-      name: 'creditsPurchasing',
-      component: CreditsPurchasing,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-    {
-      path: '/dashboard/quoteRequestsScreen',
-      name: 'quoteRequestsScreen',
-      component: QuoteRequestsScreen
-    },
-    {
-      path: '/dashboard/settings',
-      name: 'settings',
-      component: SettingsPage,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-    {
-      path: '/dashboard/changeDefaultSource',
-      name: 'changeDefaultSource',
-      component: SettingsChangeDefaultSource,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-    {
-      path: '/dashboard/pending_orders',
-      name: 'pendingOrders',
-      component: PendingOrders,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-    // /dashboard/shippo / oauth / register
-    {
-      path: '/dashboard/shippo/oauth/register/:state/:code',
-      name: 'dashboardRegisterShippoAccountRedirect',
-      component: DashboardShippoRegister,
-      beforeEnter: (to, from, next) => {
-        routingAuthentication(to, from, next)
-      }
-    },
-
-    // Buyer Routes below
-    {
-      path: '/buyerRegistration',
-      name: 'buyerRegister',
-      component: BuyerRegister
-    },
-    {
-      path: '/buyerLogin',
-      name: 'buyerLogin',
-      component: BuyerLogin
-    },
-    {
-      path: '/buyerDashboard',
-      name: 'buyerDashboard',
-      component: BuyerDashboard
-    },
-    {
-      path: '/buyerDashboard/orders/status/:orderId',
-      name: 'buyerOrderStatus',
-      component: BuyerOrderStatus
-
-    },
-    {
-      path: '/shoppingCart',
-      name: 'shoppingCart',
-      component: ShoppingCart
-    },
-    {
-      path: '/buyerCheckout',
-      name: 'buyerCheckout',
-      component: BuyerCheckout
-    },
-    {
-      path: '/buyersCarts',
-      name: 'buyersCarts',
-      component: BuyersCarts
-    },
-    {
-      path: '/orderConfirm',
-      name: 'orderConfirm',
-      component: OrderConfirm
-    },
-    {
-      path: '/currentOrderStatus',
-      name: 'currentOrderStatus',
-      component: CurrentOrderStatus
-    },
-    {
-      path: '/buyer_inbox',
-      name: 'buyer_inbox',
-      component: BuyerInbox
-    },
-    {
-      path: '/buyerSettings',
-      name: 'buyerSettings',
-      component: BuyerSettings
-    },
-    {
-      path: '/buyerBillings',
-      name: 'buyerBillings',
-      component: BuyerBillings
-    },
-    {
-      path: '/orderHistory/correspondance',
-      name: 'buyerCorrespondance',
-      component: BuyerCorrespondance
     }
+    // {
+    //   path: '/checkout',
+    //   name: 'checkout',
+    //   component: Checkout,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+    // {
+    //   path: '/publicProfile/:id',
+    //   name: 'publicProfile',
+    //   component: PublicProfile
+    // },
+    // {
+
+    //   path: '/pendingOrder/status/:orderId',
+    //   name: 'pendingOrderStatus',
+    //   component: PendingOrderStatus
+    // },
+
+    // {
+    //   path: '/register',
+    //   name: 'register',
+    //   component: Register
+    // },
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   component: Login
+    // },
+    // {
+    //   path: '/dashboard',
+    //   name: 'dashboard',
+    //   component: Dashboard,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+    // {
+    //   path: '/dashboard/creditsScreen',
+    //   name: 'creditsHome',
+    //   component: CreditsHome,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+    // {
+    //   path: '/dashboard/creditsScreen/creditsPurchasing',
+    //   name: 'creditsPurchasing',
+    //   component: CreditsPurchasing,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+    // {
+    //   path: '/dashboard/quoteRequestsScreen',
+    //   name: 'quoteRequestsScreen',
+    //   component: QuoteRequestsScreen
+    // },
+    // {
+    //   path: '/dashboard/settings',
+    //   name: 'settings',
+    //   component: SettingsPage,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+    // {
+    //   path: '/dashboard/changeDefaultSource',
+    //   name: 'changeDefaultSource',
+    //   component: SettingsChangeDefaultSource,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+    // {
+    //   path: '/dashboard/pending_orders',
+    //   name: 'pendingOrders',
+    //   component: PendingOrders,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+    // // /dashboard/shippo / oauth / register
+    // {
+    //   path: '/dashboard/shippo/oauth/register/:state/:code',
+    //   name: 'dashboardRegisterShippoAccountRedirect',
+    //   component: DashboardShippoRegister,
+    //   beforeEnter: (to, from, next) => {
+    //     routingAuthentication(to, from, next)
+    //   }
+    // },
+
+    // // Buyer Routes below
+    // {
+    //   path: '/buyerRegistration',
+    //   name: 'buyerRegister',
+    //   component: BuyerRegister
+    // },
+    // {
+    //   path: '/buyerLogin',
+    //   name: 'buyerLogin',
+    //   component: BuyerLogin
+    // },
+    // {
+    //   path: '/buyerDashboard',
+    //   name: 'buyerDashboard',
+    //   component: BuyerDashboard
+    // },
+    // {
+    //   path: '/buyerDashboard/orders/status/:orderId',
+    //   name: 'buyerOrderStatus',
+    //   component: BuyerOrderStatus
+
+    // },
+    // {
+    //   path: '/shoppingCart',
+    //   name: 'shoppingCart',
+    //   component: ShoppingCart
+    // },
+    // {
+    //   path: '/buyerCheckout',
+    //   name: 'buyerCheckout',
+    //   component: BuyerCheckout
+    // },
+    // {
+    //   path: '/buyersCarts',
+    //   name: 'buyersCarts',
+    //   component: BuyersCarts
+    // },
+    // {
+    //   path: '/orderConfirm',
+    //   name: 'orderConfirm',
+    //   component: OrderConfirm
+    // },
+    // {
+    //   path: '/currentOrderStatus',
+    //   name: 'currentOrderStatus',
+    //   component: CurrentOrderStatus
+    // },
+    // {
+    //   path: '/buyer_inbox',
+    //   name: 'buyer_inbox',
+    //   component: BuyerInbox
+    // },
+    // {
+    //   path: '/buyerSettings',
+    //   name: 'buyerSettings',
+    //   component: BuyerSettings
+    // },
+    // {
+    //   path: '/buyerBillings',
+    //   name: 'buyerBillings',
+    //   component: BuyerBillings
+    // },
+    // {
+    //   path: '/orderHistory/correspondance',
+    //   name: 'buyerCorrespondance',
+    //   component: BuyerCorrespondance
+    // }
   ]
 })
