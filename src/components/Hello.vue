@@ -52,21 +52,17 @@
               <!-- Transition Expand Content -->
               <transition-expand>
                 <div id="expanded">
-                  
                   <div v-if="expanded">
-                    <h5>
-                      Using our proprietary algorithm; we connect you with high quality leads. Only pay for direct responses and inquiries about your products and services, the rest is free advertisement! You tell us about your target (things such as: keywords, your product's description, your competitors, target geographic area), and we funnel clients directly to you.                    
-                    </h5>
+                    <h5>Using our proprietary algorithm; we connect you with high quality leads. Only pay for direct responses and inquiries about your products and services, the rest is free advertisement! You tell us about your target (things such as: keywords, your product's description, your competitors, target geographic area), and we funnel clients directly to you.</h5>
                   </div>
-                  
                 </div>
               </transition-expand>
-              <a id="btn-expand"
-                @click="expanded = !expanded"
-              ><h2>{{ expanded ? `-` : `+` }}</h2></a>  
+              <a id="btn-expand" @click="expanded = !expanded">
+                <h2>{{ expanded ? `-` : `+` }}</h2>
+              </a>
               <br />
             </div>
-            <br>
+            <br />
             <br />
             <br />
             <br />
@@ -81,25 +77,23 @@
                   class="text-muted"
                 >Streamlined interface guides you from A to B through the Sales process.</h5>
               </div>
-            
+
               <!-- Transition Expand Content -->
               <transition-expand>
                 <div id="expanded">
-                  
                   <div v-if="expanded">
                     <h5>
-                      With prospective clients directly sent to your inbox,<br> you can negotiate real-time sales using a set of tools for quote generation and purchase orders.<br> All orders are handled and insured by Stripe and pre-agreed fulfillment contracts. List your company and services in the marketplace and let us handle the rest.
+                      With prospective clients directly sent to your inbox,
+                      <br />you can negotiate real-time sales using a set of tools for quote generation and purchase orders.
+                      <br />All orders are handled and insured by Stripe and pre-agreed fulfillment contracts. List your company and services in the marketplace and let us handle the rest.
                     </h5>
                   </div>
-                  
                 </div>
               </transition-expand>
-              <a 
-                id="btn-expand"
-                @click="expanded = !expanded" >
+              <a id="btn-expand" @click="expanded = !expanded">
                 <h2>{{ expanded ? `-` : `+` }}</h2>
               </a>
-                  
+
               <br />
             </div>
           </div>
@@ -115,24 +109,19 @@
                   class="text-muted"
                 >Our shipping partners handle everything from fragile packaging and dry ice to insurance.</h5>
               </div>
-            
+
               <!-- Transition Expand Content -->
               <transition-expand>
                 <div id="expanded" style="text-align:center">
-                  
                   <div v-if="expanded">
-                    <h5>
-                      We know how difficult shipping in the life sciences industry can be—with time sensitivity, perishable packages, and international shipping requirements. Using pre-negotiated labels and shipping agreements, we can drastically reduce your shipping costs while assuring expedient and safe delivery.                    
-                    </h5>
+                    <h5>We know how difficult shipping in the life sciences industry can be—with time sensitivity, perishable packages, and international shipping requirements. Using pre-negotiated labels and shipping agreements, we can drastically reduce your shipping costs while assuring expedient and safe delivery.</h5>
                   </div>
-                  
                 </div>
               </transition-expand>
-              <a id="btn-expand"
-                @click="expanded = !expanded" >
+              <a id="btn-expand" @click="expanded = !expanded">
                 <h2>{{ expanded ? `-` : `+` }}</h2>
               </a>
-                  
+
               <br />
             </div>
             <div class="col-lg-6">
@@ -227,11 +216,18 @@
               <br />
               <br />
               <br />
-              <a
+              <!-- <a
                 href="#register"
                 class="btn btn-outline btn-xl"
                 @click="continueOntoRegisterForm()"
+              >Continue</a>-->
+
+              <a
+                href="#register"
+                class="btn btn-outline btn-xl"
+                @click="continueOntoComingSoonPage()"
               >Continue</a>
+
               <br />
               <br />
               <br />

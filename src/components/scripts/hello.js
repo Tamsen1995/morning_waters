@@ -14,7 +14,7 @@ export default {
       companyName: '',
       emailAddress: '',
       msg: 'Fig Analytics Homepage',
-      expanded: false,
+      expanded: false
     }
   },
   mounted () {
@@ -38,6 +38,15 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async continueOntoComingSoonPage () {
+      try {
+        this.$router.push({
+          name: 'comingSoon'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async logout () {
       try {
         await AuthenticationService.logout
