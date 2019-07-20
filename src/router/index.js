@@ -33,6 +33,9 @@ import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondanc
 // Shippo routes
 import DashboardShippoRegister from '@/components/sellerComponents/DashboardShippoRegister'
 
+// testing routes
+import ComingSoon from '@/components/ComingSoon'
+
 Vue.use(Router)
 function routingAuthentication (to, from, next) {
   try {
@@ -58,6 +61,12 @@ function routingAuthentication (to, from, next) {
 
 export default new Router({
   routes: [
+    {
+      path: '/coming_soon',
+      name: 'comingSoon',
+      component: ComingSoon
+
+    },
     {
       path: '/checkout',
       name: 'checkout',
