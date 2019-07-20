@@ -10,7 +10,7 @@ export default {
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;
-
+      //
       element.style.width = width;
       element.style.position = "absolute";
       element.style.visibility = "hidden";
