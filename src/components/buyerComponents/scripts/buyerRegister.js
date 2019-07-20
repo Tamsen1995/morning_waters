@@ -19,7 +19,14 @@ export default {
       },
       number: '',
       contactListTableId: '',
-      error: null
+      error: null,
+      loadingFlag: 0,
+      active: 'first',
+      first: false,
+      second: false,
+      third: false,
+      fourth: false,
+      secondStepError: null
     }
   },
   components: {
@@ -31,6 +38,18 @@ export default {
   methods: {
     // Prefills registration
     // info if it was provided on the homepage
+    setDone (id, index) {
+      this[id] = true
+
+      this.secondStepError = null
+
+      if (index) {
+        this.active = index
+      }
+    },
+    setError () {
+      this.secondStepError = 'This is an error!'
+    },
     async register () {
       try {
         const response = await AuthenticationService.buyerRegister({
@@ -41,6 +60,9 @@ export default {
           address: JSON.stringify(this.address),
           number: this.number
         })
+        if (response) {
+          this.loadingFlag = 2
+        }
         localStorage.setItem('id_token', response.data.token)
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setBuyer', response.data.buyer)

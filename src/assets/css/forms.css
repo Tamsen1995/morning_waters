@@ -9,14 +9,19 @@ body {
     min-height: 100vh; 
 }
 
-a, p {
+#login a, p {
     text-align:center;
     font: 14px 'Roboto';
     color: #29105b;
 }
 
-h1 {
+#login h1 {
     font: 28px 'Roboto';
+    color: #29105b;
+    text-align:center;
+}
+
+#login h2 {
     color: #29105b;
     text-align:center;
 }
@@ -35,18 +40,22 @@ h1 {
 
 /* Card Formatting */
 
-.card {
+.md-card {
     margin-bottom: 0px;
-    max-width:500px;
+    max-width:700px;
     margin-left: auto;
     margin-right:auto;
     border-radius: 10px;
+    background-color:white;
 }
 
 /* .card #rounded {
     border-radius: 10px;
 } */
 
+.md-steppers {
+    color: #361555;
+}
 
 /* Container Formatting */
 
@@ -129,13 +138,21 @@ form {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;  
+    width: 800px;
 }
 
 .error {
     color: red;
 }
 
+#sign-up-link{
+    color: #850696;
+}
+#sign-up-link:hover, 
+#sign-up-link:active, 
+#sign-up-link:focus {
+    color: #b109c7;
+}
 
 p {
     text-align: left;
@@ -146,20 +163,30 @@ p {
 
 #btn-login {
     color: white;
-    border-color: #361555;
-    background-color: #361555;
+    border-color: #850696;
+    background-color: #850696;
     justify-content: center;
     display: inline-block;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
-#btn-submit {
+#btn-login:hover, 
+#btn-login:active, 
+#btn-login:focus {
     color: white;
-    border-color: #361555;
-    background-color: #361555;
+    border-color: #9c07af;
+    background-color: #9c07af;
     justify-content: center;
     display: inline-block;
+    border-radius: 20px;
+}
+
+#btn-signup {
+    display: inline-block;
     border-radius: 5px;
+    height:40px;
+    width:200px;
+    border-color:#29105b;
 }
 
 #btn-submit:hover {
@@ -214,22 +241,13 @@ p {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;  
+    width: 475px;  
 }
 
 
 /* ------Login Form--------- */
 
 #login {
-    /* margin-bottom:10px;
-    top: 25px;
-    left: 50%;
-    width: 350px;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%); */
     display: block;
     margin-left: auto;
     margin-right: auto;

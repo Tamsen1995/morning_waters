@@ -1,6 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
+  checkForBuyerPaymentMethod (buyerId) {
+    return Api().get('buyer/payment/checkForPaymentMethod', {
+      params: {
+        buyerId: buyerId
+      }
+    })
+  },
   chargeBuyerForOrder (orderId) {
     return Api().get('seller/orders/chargeBuyerForOrder', {
       params: {
@@ -19,15 +26,6 @@ export default {
   processPayment (stripeToken) {
     console.log('\nInside of processPayment\n')
     return Api().post('processPayment', stripeToken)
-  },
-  getAmountOfCredits (userId) {
-    return Api().get('getAmountOfCredits', {
-      params: {
-        userId: userId
-      }
-    })
-  },
-  addSubscription (purchaseSubInfo) {
-    return Api().post('addSubscription', purchaseSubInfo)
   }
+
 }

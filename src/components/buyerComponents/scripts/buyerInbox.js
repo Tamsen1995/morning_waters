@@ -1,7 +1,10 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
-import UserServices from '../../../services/UserServices'
+import PaymentService from '@/services/PaymentService'
+import BuyerSettingsBillingsTab from '@/components/buyerComponents/BuyerSettingsBillingsTab'
+import SettingsService from '@/services/SettingsService'
+// let stripe = Stripe(process.env.stripe_public_key)
 
 export default {
   data () {
@@ -34,9 +37,66 @@ export default {
   async mounted () {
   },
   components: {
-    BuyerHeader
+    BuyerHeader,
+    BuyerSettingsBillingsTab
   },
   methods: {
+    async submitPaymentMethod (card, stripe) {
+      try {
+        const buyerExtracted = this.$store.getters.getBuyerInfo
+        const buyerId = buyerExtracted.id
+        const stripeCustomerId = buyerExtracted.stripeCustomerId
+        const token = await stripe.createToken(card)
+        const sourceToBeAdded = {
+          uid: buyerId,
+          stripeCustomerId: stripeCustomerId,
+          stripeToken: token
+        }
+        await SettingsService.addPaymentMethod(sourceToBeAdded)
+
+        this.$modal.hide('add-payment-method')
+        this.confirmOrder()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    // this will render the modal to add a payment method with
+    async addPaymentMethod () {
+      try {
+        this.$modal.show('add-payment-method')
+        this.$modal.hide('no-buyer-method-detected')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async closePaymentMethodModal () {
+      try {
+        this.$modal.hide('no-buyer-method-detected')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async closeConfirmationModal () {
+      try {
+        this.$modal.hide('would-you-like-confirm')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async promptForOrderConfirmation () {
+      try {
+        const buyerExtracted = this.$store.getters.getBuyerInfo
+        const buyerHasPaymentMethod = (await PaymentService.checkForBuyerPaymentMethod(buyerExtracted.id)).data
+
+        if (buyerHasPaymentMethod === true) {
+          this.$modal.show('would-you-like-confirm')
+        } else {
+          this.$modal.show('no-buyer-method-detected')
+        }
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async confirmOrder () {
       try {
         await InboxService.confirmOrder({

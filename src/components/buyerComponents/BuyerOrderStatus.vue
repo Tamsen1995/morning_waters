@@ -8,7 +8,7 @@
       <div class="container current-order-status">
         <!-- Add tabs to toggle Current Orders/ Pending Orders-->
         <!-- Curent Orders -->
-        <br>
+        <br />
         <div class="timeline-dashboard">
           <!-- <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index"> -->
           <div>
@@ -16,10 +16,10 @@
               <div class="col-8">
                 <h3>[Buyer Name]</h3>
                 <h2>[Buyer Lab]</h2>
-                <br>
+                <br />
                 <h3 style="color:green;">Order Confirmed [Date]</h3>
                 <h2 style="color:green;">Charged [$$$]</h2>
-                <br>
+                <br />
 
                 <!-- View Order Details, Add expandable Div -->
                 <div id="order_details">
@@ -43,7 +43,7 @@
                   <h2  style="color:green;"> Charged [$$$]</h2>    
               </div>-->
             </div>
-            <br>
+            <br />
 
             <!-- Handle shipping -->
             <button
@@ -52,12 +52,12 @@
               type="submit"
               @click="confirmOrder(index)"
             >Handle Shipping</button>
-            <br>
+            <br />
 
             <a class="invoice-link">Download Invoice</a>
           </div>
 
-          <hr>
+          <hr />
         </div>
 
         <div id="seller-timeline">
@@ -288,8 +288,8 @@
               </div>
             </div>
           </div>
-          <br>
-          <br>
+          <br />
+          <br />
           <div class="row timeline-movement timeline-movement-top">
             <div class="timeline-badge timeline-future-movement" style="top: 25px;">
               <a href="#">
@@ -305,7 +305,6 @@
 </template>
 
 <script>
-import DashboardHeader from "@/components/DashboardHeader.vue";
 import BuyerHeader from "@/components/buyerComponents/BuyerHeader.vue";
 export default {
   data() {

@@ -1,5 +1,7 @@
 import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
+import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'
 import AuthenticationService from '@/services/AuthenticationService'
+import Api from '@/services/Api'
 
 export default {
   data () {
@@ -12,16 +14,20 @@ export default {
     this.getBuyerAuthStatus()
   },
   components: {
-    ShoppingCart
+    ShoppingCart,
+    RequestQuoteCart,
   },
   methods: {
     async buyerLogout () {
       try {
         localStorage.clear()
+        Api().defaults.headers.common['Authorization'] = ''
         this.$store.dispatch('setToken', null)
+        this.$store.dispatch('setAuthStatus', false)
         this.$store.dispatch('setUser', null)
+        this.$store.dispatch('setBuyer', null)
         this.$store.dispatch('setQuoteToBeRequested', null)
-        this.$store.dispatch('setSidebarHighlight', '')
+        this.$store.dispatch()
         await AuthenticationService.logout()
       } catch (error) {
         if (error) throw error

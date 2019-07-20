@@ -1,13 +1,12 @@
 body.dashboard {
-  /* opacity: 0.50; */
   text-align: justify;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 15px 80px;
+  padding: 15px 0px;
   /* background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%); */
-  background: linear-gradient(to bottom right, #ffffff 0%, #c7c4d1 100%);
+  background: linear-gradient(to bottom right, #ffffff 0%, #e1dfe7 100%);
 }
 
 .expand-enter-active,
@@ -25,7 +24,7 @@ body.dashboard {
 #dashboard #name-location {
   max-width: 1314px;
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
-  background: linear-gradient( white 60%, #311c63 40%);
+  background: linear-gradient( white 60%, #301a70 40%);
   border-color: rgb(190, 187, 187);
   border-style: solid;
   border-width: .5px;
@@ -34,39 +33,59 @@ body.dashboard {
   border-radius: 5px;
 }
 
-#dashboard #service-card {
-  border-bottom: 2px solid #4527a0;
-  /* color: #5c5d60; */
-}
-
-#dashboard #stats {
-  background-color: white;
-  box-shadow: 2px 2px 5px 1px  #bebbc7;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-#stats .card {
-  border-color: yellowgreen;
-  border-width: 3px; 
-  border-style: solid;
-  border-radius: 5px;
-  margin-left:5px;
-  margin-right:5px;
-}
-
 .dashboard #about {
-  display: inline-block;
-  padding-left: 30px;
-  padding-top: 10px;
   background-color: white;
   border-width: .5px;
   border-color: rgb(190, 187, 187);
   border-style: solid;
-  /* max-width: 1314px; */
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
   border-radius: 5px;
+  text-align: left;
+  padding: 15px;
 }
+
+#dashboard #about .md-content {
+  max-width: 1200px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+#dashboard #stats {
+  border-radius: 5px;
+}
+#services .md-empty-state{
+  color: #9a92af;
+}
+
+#stats .card {
+  border-radius: 5px;
+  margin-left:5px;
+  margin-right:5px;
+  box-shadow:   2px 2px 5px 1px  #c7c4d1;
+}
+
+#dashboard .service-border {
+  border-bottom: 2px solid #301a70;
+}
+
+#dashboard .md-checkbox {
+  display: flex;
+}
+
+#dashboard #service-card .md-card-content {
+  max-width: 900px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+#dashboard .md-card {
+  width: 320px;
+  margin: 4px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
 
 .dashboard #services {
   padding-left: 20px;
@@ -78,24 +97,11 @@ body.dashboard {
   border-radius: 5px;
 }
 
-/* .dashboard .service-block{
-  background-color: #4a148c;
-  margin-top:10px;
-  border-radius: 5px;
-} */
 
-.dashboard .service-block-sub{
-  padding-left:30px;
-  border-radius: 5px;
+.dashboard #subservice-block {
+  min-width: 95%; 
+  margin-left: 40px;
 }
-
-/* .dashboard .service-block #service-title{
-  background-color: #d6d1e4;
-  box-shadow:  0px 2px 2px 1px  #c2bece;
-  padding-left: 10px;
-  padding-top:0px;
-  border-radius: 5px;
-} */
 
 .dashboard .service-block #service-desc{
   background-color: white;
@@ -103,7 +109,7 @@ body.dashboard {
 }
 
 .dashboard .service-block-sub #service-title{
-  background-color: #4a148c;
+  background-color: #301a70;
   padding-left: 10px;
   margin-right: 10px;
   padding-top:0px;
@@ -127,19 +133,20 @@ body.dashboard {
   border-radius: 75px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./Icons/noun_DNA_2362091.png");
+  /* background-image: url("./Icons/noun_DNA_2362091.png"); */
+  background-image: url("./noun_Science_profile_crop_purple.png");
 }
 
 #dashboard #logo-border {
-  background-color: #22104b;
-  width: 170px;
-  height: 170px;
+  background-color: #301a70;
+  width: 160px;
+  height: 160px;
   -moz-border-radius: 85px;
   -webkit-border-radius: 85px;
   border-radius: 85px;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10px;
+  padding: 5px;
 }
 
 #price-chart {
@@ -150,18 +157,23 @@ body.dashboard {
 }
 
 /*------------- Text ------------------------*/
-.dashboard #dashboard #add-service p {
-  font-size: 15px;
+/* .dashboard #dashboard #add-services p {
   text-align: left;
+  color: #4527a0;
+} */
+
+#dashboard .md-title {
+  font-size: 25px;
+  color: #301a70;
 }
 
 #dashboard .md-title {
   font-size: 25px;
-  color: #4527a0;
+  color: #301a70;
 }
 
 #dashboard #service_logo {
-  color: #4527a0;
+  color: #301a70;
   font-size: 25px;
 }
 
@@ -174,6 +186,15 @@ body.dashboard {
   text-align: center;
 }
 
+.dashboard #dashboard h2 {
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  font-style: medium;
+  font: 25px "Roboto";
+  color: #311c63;
+  text-align: left;
+}
+
 .dashboard #dashboard h3 {
   letter-spacing: 1px;
   /* text-transform: uppercase; */
@@ -183,7 +204,7 @@ body.dashboard {
   text-align: center;
 }
 
-.dashboard .services h4 {
+.dashboard #services h4 {
   letter-spacing: 1px;
   font: 20px "Roboto";
   color: #311c63;
@@ -205,7 +226,7 @@ body.dashboard {
   /* font-style: medium; */
   font: 19px "Roboto";
   color: black;
-  text-align: center;
+  text-align: left;
 }
 
 #dashboard #about p {
@@ -221,9 +242,10 @@ body.dashboard {
   letter-spacing: 1px;
   /* font-style: medium; */
   font: 18px "Roboto";
-  color: black;
   text-align: center;
 }
+
+
 
 #dashboard #service-desc h5 {
   font: 15px "Roboto";
@@ -261,6 +283,31 @@ body.dashboard {
 #dashboard #spec_inquiry p {
   text-align: left;
 }
+
+.md-checkbox {
+  display: flex;
+}
+
+#add_service{
+  padding-top:10px;
+}
+
+#service-form-block {
+  color:#301a70;
+  border: 5px #301a70 solid;
+  padding: 30px;
+}
+
+#service-form-block table {
+  width: 100%;
+  table-layout: fixed;
+  background: #ebe8f1;
+}
+
+#subservice-form-block {
+  color:#301a70;
+}
+
 
 /* Responsive Text */
 
@@ -333,120 +380,74 @@ p {
   background-color: #2238ff;
 }
 
-/* Stats Add credits */
-/* .btn-add-service {
-  border-radius: 300px;
+#btn-orders {
+  background-color: rgb(136, 2, 177);
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-style: medium;
-  margin: 0 auto;
-  justify-content: center;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
 }
 
-.btn-login {
-  border-radius: 300px;
+#btn-orders:hover, #btn-orders:focus, #btn-orders:active {
+  background-color: rgb(149, 50, 179);
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
-  text-transform: uppercase;
-  font-style: medium;
-  margin: 0 auto;
-  justify-content: center;
-}
-
-.btn-signup-outline {
-  color: rgb(190, 190, 190);
-  border: 1px solid;
-  border-color: rgb(190, 190, 190);
-}
-
-.btn-login-outline {
-  color: rgb(190, 190, 190);
-  border: 1px solid;
-  border-color: rgb(190, 190, 190);
-}
-
-.btn-signup-outline:hover, .btn-signup-outline:focus, .btn-signup-outline.active {
+  font-size: 15px;
   color: white;
-  border-color: #361555;
-  background-color: #361555;
+  border-radius: 5px;
 }
 
-.btn-login-outline:hover, .btn-login-outline:focus, .btn-login-outline.active {
+#btn-leads {
+  background-color: rgb(128, 207, 0);
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  font-size: 15px;
   color: white;
-  border-color: #088a12;
-  background-color: #088a12;
+  border-radius: 5px;
 }
 
-.btn-xl {
-font-size: 11px;
-padding: 15px 45px;
-} */
-
-
-
-
-/* Tagging Basic Style */
-
-
-
+#btn-leads:hover, #btn-leads:focus, #btn-leads:active {
+  background-color: rgb(156, 226, 43);
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+  font-size: 15px;
+  color: white;
+  border-radius: 5px;
+}
 
 /* ------Vue Directive Responsive Design Ish ----------------------------------------------------*/
 
 .responsive-component.small body.dashboard {
-  /* opacity: 0.50; */
   text-align: center;
   text-align: justify;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  padding: 15px 0px;
-  /* background-image: url("./BACKGROUND.png"); */
+  padding: 10px 0px;
   background: linear-gradient(to bottom right, #ffffff 0%, #d8d4dc 100%);
 } 
 
-
-/* .responsive-component.small #name-location {
-  background: linear-gradient( white 70%, #311c63 30%);
-  border-color: rgb(190, 187, 187);
-  border-style: solid;
-  border-width: .5px;
-}  */
-
-
-
-/* .responsive-component #dashboard #company-name {
-
-  color: white;
-
+.responsive-component.small #add-services {
+  margin: 10px;
 }
-
-.responsive-component #dashboard #company-location{
-  color: white;
-
-
-} */
-
-
 
 /* logo */
 .responsive-component.small #dashboard #logo {
   background-color: white;
-  width: 100px;
-  height: 100px;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
+  width: 110px;
+  height: 110px;
+  -moz-border-radius: 55px;
+  -webkit-border-radius: 55px;
+  border-radius: 55px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./Icons/noun_DNA_2362091.png");
+  /* background-image: url("./Icons/noun_DNA_2362091.png"); */
+  background-image: url("./noun_Science_profile_crop_purple.png");
 }
-
-
 .responsive-component.small #dashboard #logo-border {
-  background-color: #22104b;
+  background-color: #301a70;
   width: 120px;
   height: 120px;
   -moz-border-radius: 60px;
@@ -454,43 +455,16 @@ padding: 15px 45px;
   border-radius: 60px;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10px;
+  padding: 5px;
+}
+.responsive-component.small .dashboard #subservice-block {
+  min-width: 95%; 
+  margin-left: 20px;
 }
 
-/* .responsive-component.small #company-name {
-
-  color: white;
-} */
-
-/* .responsive-component.small #dashboard #company-location{
-  padding-top: 20px;
-} */
-
-/* text */
-
-/* .responsive-component.small h1, h2 {
-  letter-spacing: 1px;
-  font-size: 28px;
-  text-align:center;
+#service-form-block{
+  padding:10px;
 }
 
-.responsive-component.small h3 {
-  letter-spacing: 1px;
-  font-size: 25px;
-  text-align:center;
-}
 
-.responsive-component.small p{
-  width:100%;
-  font-size: 20px;
-}
 
-.responsive-component.small footer p{
-  width:100%;
-  font-size: 10px;
-}
-
-.responsive-component.small form{
-  width:100%;
-  font-size: 12px;
-} */

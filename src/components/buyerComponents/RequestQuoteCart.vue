@@ -1,6 +1,6 @@
 <template>
 <div id="app" style="background-color: white;">
-  <body>
+  <body id="requestQuoteCart">
     <md-card style="background-color: #311c63; color: white; text-align: center; height: 50%;">
       <span class="md-title">Quote Requests</span>
     </md-card>
@@ -13,35 +13,71 @@
       v-bind:key="index"
     >
       <md-list-item md-expand :md-expanded.sync="expandNews">
-        <md-icon>whatshot</md-icon>
+        <i class="fas fa-atom" id="service_logo"></i>
         <span class="md-list-item-text">Request #{{index+1}}</span>
 
         <md-list slot="md-expand">
           <md-card>
-            <md-card-content style="font-size: 0.7vw; ">
-              Item : {{ item.serviceTitle }}
-              <br />
-              Description : {{ item.serviceDescription }}
-              <br />
-              Quanitity : {{ item.quantity }}
-              <br />
-              Inquiry : {{ item.inquiryText }}
-              <br />
+            <md-card-content>
+              <span class="pull-right" id="tooltip">
+                <h3>
+                  <a href="#" class="card-link">X</a>
+                </h3>  
+                <md-tooltip md-delay="300">Delete Message</md-tooltip>
+              </span>
+
+              <!-- Editable Service Specific Request Form -->
+              <form>
+                <md-field>
+                  <label>Item : {{ item.serviceTitle }}</label>
+                  <!-- <md-input></md-input> -->
+                </md-field>              
+                <md-field>
+                  <label>Quantity : {{ item.quantity }}</label>
+                  <!-- <md-input></md-input> -->
+                </md-field>
+                <md-field>
+                  <label>Turn Around Time : </label>
+                </md-field>
+                <md-field>
+                  <label>Message to Seller: </label>
+                  <md-textarea v-model="inquiryText">
+                  
+                  </md-textarea>
+                </md-field>
+              <!-- <br />
+              Inquiry : 
+              <md-content style="text-align:left" id="inquiry-text" class="md-scrollbar">
+               <p>{{ item.inquiryText }}</p>
+              </md-content>
+              <br /> -->
+              </form>
+            </md-card-content>
+          </md-card>
+        </md-list>
+      </md-list-item>
+    </md-list>  
+    
+    <md-list style="background-color:#eeeef6;">
+      <md-list-item md-expand :md-expanded.sync="expandNews" >
+        <i class="fas fa-plus" id="service_logo"></i>
+        <span class="md-list-item-text">Add Quote Request</span>
+
+        <md-list slot="md-expand">
+          <md-card style="background-color:white;">
+            <md-card-content>
+              <form>
+              </form>
             </md-card-content>
           </md-card>
         </md-list>
       </md-list-item>
     </md-list>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <!--  -->
-    <md-card style="background-color: white; color: grey;">
-      <md-button @click="testingDelete()">Testing only please delete</md-button>
-    </md-card>
+    <!-- Add Modal to edit Quote request, with delete request functionality -->
+    
+    <br>
+
   </body>
 </div>
 </template>
@@ -85,4 +121,23 @@ export default {
 </script>
 
 <style>
+#requestQuoteCart #service_logo {
+  color: #4527a0;
+  font-size: 20px;
+  padding-right:10px;
+}
+
+#requestQuoteCart #inquiry-text {
+  max-width: 800px;
+  height: 150px;
+  max-height: 400px;
+  padding: 5px;
+  overflow: auto;
+  border:#3094f1 solid 2px;
+}
+#requestQuoteCart #tooltip {
+  min-width: 60px;
+  display: inline-block;
+  text-align: center;
+}
 </style>

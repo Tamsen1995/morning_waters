@@ -4,17 +4,16 @@ import InboxServices from '@/services/InboxService'
 import BuyerServices from '@/services/BuyerServices'
 
 export default {
-  data  () {
+  data () {
     return {
       pendingOrders: null
-
     }
   },
-  async created  () {
+  async created () {
     await this.getBuyerPendingOrders()
     await this.getBuyerPendingOrdersOrderItems()
   },
-  async mounted  () {
+  async mounted () {
     await this.checkGeneralInquiry()
   },
   components: {
@@ -24,7 +23,7 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    async getBuyerPendingOrdersOrderItems  () {
+    async getBuyerPendingOrdersOrderItems () {
       try {
         console.log(`\n\nIn here we wanna get the buyer pending orders order items : ${JSON.stringify(this.pendingOrders)}\n`) // TESTING
         for (var i = 0; i < this.pendingOrders.length; i++) {
@@ -39,7 +38,7 @@ export default {
         if (error) throw error
       }
     },
-    async downloadInvoice  (pendingOrder) {
+    async downloadInvoice (pendingOrder) {
       try {
         const response = await InboxServices.retrieveOrderInvoice(pendingOrder.orderId)
 
@@ -61,7 +60,7 @@ export default {
         if (error) throw error
       }
     },
-    async goToOrderStatus  (index) {
+    async goToOrderStatus (index) {
       try {
         const pendingOrder = this.pendingOrders[index]
 
@@ -74,7 +73,7 @@ export default {
         if (error) throw error
       }
     },
-    async getBuyerPendingOrders  () {
+    async getBuyerPendingOrders () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
         const buyerId = buyerExtracted.id
@@ -87,7 +86,7 @@ export default {
         if (error) throw error
       }
     },
-    async checkGeneralInquiry  () {
+    async checkGeneralInquiry () {
       try {
         // after log in check if there is any GI.
         // If so then submit it and reset it to null in the store.

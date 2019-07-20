@@ -1,102 +1,88 @@
 <template>
-<div>
+<div id="app">
   <buyer-header></buyer-header>
-  <body class="login">
-    <div
-      class="responsive-component"
-      v-responsive="{
-      small: el => el.width < 430
-      }"
-      id="register"
-    >
-      <div class="container-fluid" style="width: 50%;" id="login">
-        <md-content class="md-primary">
-          <div class="row">
-            <br />
-            <div class="col">
-              <div class="container-fluid">
-                <br />
-                <br />
-                <div id="fig-logo-white">
-                  <img
-                    src="../../assets/css/TINY_LOGO_WHITE.png"
-                    alt="FIG ANALYTICS"
-                    class="center"
-                    id="login-logo"
-                  />
-                </div>
-                <br />
-              </div>
-              <!-- Loadng animation -->
-              <div class="loader" v-if="loadingFlag == 2">Loading...</div>
-
-              <!-- Form -->
-
-              <div class="container-fluid" style="width: 50%">
-                <md-card class="card border-0" id="rounded">
-                  <form>
-                    <br />
-                    <h3>Buyer Login</h3>
-                    <br />
-                    <hr />
-
-                    <md-field>
-                      <label>Email:</label>
-                      <br />
-                      <md-input
-                        placeholder="Enter your email address"
-                        class="form-control"
-                        v-model="email"
-                      ></md-input>
-                    </md-field>
-
-                    <md-field>
-                      <label>Password:</label>
-                      <br />
-                      <md-input
-                        type="password"
-                        v-model="password"
-                        class="form-control"
-                        id="inputPassword"
-                        placeholder="Enter your password"
-                      ></md-input>
-                    </md-field>
-
-                    <br />
-                    <div class="error" v-html="error" />
-
-                    <div class="container" id="center">
-                      <md-button
-                        type="button"
-                        @click="buyerLogin()"
-                        style="background-color: purple; color: white;"
-                      >Login</md-button>
-                      <br />
-                      <br />
-                      <p>
-                        Don't have an account yet?
-                        <a @click="redirectOntoBuyerRegister()">Sign up</a>
-                      </p>
-                    </div>
-                  </form>
-                </md-card>
-              </div>
-              <!-- Footer -->
-              <div class="container" id="form-footer">
-                <a href="#" id="legal-links">Terms and Conditions</a>
-                <br />
-                <a href="#" id="legal-links">Privacy</a>
-                <br />
-                <hr />
-                <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
-                <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
-              </div>
+  <div class="responsive-component" v-responsive="{
+    small: el => el.width < 430
+    }">
+    <body>
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <div id="fig-logo-white">
+              <img
+                src="../../assets/css/TINY_LOGO_WHITE.png"
+                alt="FIG ANALYTICS"
+                class="center"
+                id="login-logo"
+              />
             </div>
+            <br />
           </div>
-        </md-content>
+          <!-- Loadng animation -->
+          <div class="loader" v-if="loadingFlag == 2">Loading...</div>
+
+          <!-- Form -->
+          <div class="card" id="login">
+            <form>
+              <br />
+              <h2>Buyer Login</h2>
+              <br />
+
+              <md-field>
+                <label>Email:</label>
+                <br />
+                <md-input
+                  placeholder="Enter your email address"
+                  class="form-control"
+                  v-model="email"
+                ></md-input>
+              </md-field>
+
+              <md-field>
+                <label>Password:</label>
+                <br />
+                <md-input
+                  type="password"
+                  v-model="password"
+                  class="form-control"
+                  id="inputPassword"
+                  placeholder="Enter your password"
+                ></md-input>
+              </md-field>
+
+              <br />
+              <div class="error" v-html="error" />
+
+              <div class="container" id="center">
+                <md-button
+                  type="button"
+                  @click="buyerLogin()"
+                  id="btn-login"
+                  style="width:100px;"
+                >Login</md-button>
+                <br />
+                <br />
+                <p>
+                  Don't have an account yet?
+                  <a @click="redirectOntoBuyerRegister()">Sign up</a>
+                </p>
+              </div>
+            </form>
+          </div>
+          <!-- Footer -->
+          <div class="container" id="login-form-footer">
+            <a href="#" id="legal-links">Terms and Conditions</a>
+            <br />
+            <a href="#" id="legal-links">Privacy</a>
+            <br />
+            <hr />
+            <p style="text-align:center">Fig Analytics is a certified C Corporation.</p>
+            <p style="text-align:center">&copy; FIG 2018. All Rights Reserved.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </body>
+    </body>
+  </div>
 </div>
 </template>
 

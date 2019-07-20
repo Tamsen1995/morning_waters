@@ -7,7 +7,6 @@
       <thead>
         <tr>
           <th scope="col">Item</th>
-          <th scope="col">Description</th>
           <th scope="col">Turn Around Time</th>
           <th scope="col">Quantity</th>
           <th scope="col">Price</th>
@@ -18,17 +17,20 @@
       <tbody>
         <tr v-for="(item, index) in this.shoppingCart" v-bind:key="index">
           <th scope="row">{{ item.service.title}}</th>
-          <td>{{ item.service.description }}</td>
+          <!-- Subservice title -->
+          <!-- Turn Around Time & Hours/Days/Weeks-->
           <td></td>
-
-          <!-- Add edit quantity functionality -->
+          <!-- Add Quantity & Units-->
           <td></td>
+          <!-- Price -->
           <td></td>
-          <td></td>
+          <!-- Total -->
           <td></td>
 
           <!-- Add delete functionality -->
-          <td @click="deleteItemFromShoppingCart(index)">X</td>
+          <td @click="deleteItemFromShoppingCart(index)">
+            <a>X</a>
+          </td>
         </tr>
       </tbody>
     </table>
