@@ -2,7 +2,7 @@
 <div id="app">
   <dashboard-header />
   <div class="responsive-component" v-responsive="{
-      small: el => el.width < 430
+      small: el => el.width < 860
       }">
     <body class="settings">
       <div id="settings-page">
@@ -12,23 +12,24 @@
         </div>
 
         <md-tabs>
-          <md-tab id="tab-profile" md-label="Profile">
+          <!-- Payout -->
+          <md-tab id="tab-personal" md-label="Personal">
             <md-card md-with-hover>
-              <md-card-content>
-                <!-- Edit Profile info -->
-                <div>
-                  <h4>Edit Main Profile Info:</h4>
-                  <p>(Services information can be added & edited directly on your profile.)</p>
-                  <br />
-                </div>
-                <!-- input for Name -->
+              <md-card-content>                
+                <!-- input for First Name -->
                 <div class="form-row">
                   <md-field>
-                    <label>Name:</label>
+                    <label>First Name:</label>
                     <md-input v-model="name"></md-input>
                   </md-field>
-                </div>
-
+                </div> 
+                <!-- input for First Name -->
+                <div class="form-row">
+                  <md-field>
+                    <label>Last Name:</label>
+                    <md-input v-model="name"></md-input>
+                  </md-field>
+                </div> 
                 <!-- input for email address -->
                 <div class="form-row">
                   <md-field>
@@ -53,6 +54,21 @@
                   </md-field>
                 </div>
 
+                <md-button  class="md-raised md-primary">Submit</md-button>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+
+          <md-tab id="tab-profile" md-label="Profile">
+            <md-card md-with-hover>
+              <md-card-content>
+                <!-- Edit Profile info -->
+                <div>
+                  <h4>Edit Main Profile Info:</h4>
+                  <p>(Services information can be added & edited directly on your profile.)</p>
+                  <br />
+                </div>
+
                 <!-- Input for Company Name -->
                 <div class="form-row">
                   <md-field>
@@ -67,14 +83,6 @@
                     <md-input v-model="companyWebsite"></md-input>
                   </md-field>
                 </div>
-                <!-- Input for Billing Address -->
-                <!-- Add more formatting to this section: Maybe even map app -->
-                <div class="form-row">
-                  <md-field>
-                    <label>Billing Address:</label>
-                    <md-input v-model="billingAddress"></md-input>
-                  </md-field>
-                </div>
                 <!-- Input for About -->
                 <div class="form-group row">
                   <md-field>
@@ -84,24 +92,101 @@
                 </div>
 
                 <br />
-
-                <md-button @click="updateProfile" class="md-raised md-primary">Submit profile edits</md-button>
+                <md-button @click="updateProfile" class="md-raised md-primary">Publish</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
-          <md-tab id="tab-billing" md-label="Billing">
-            <billing-tab></billing-tab>
+
+          <!-- Payout -->
+          <md-tab id="tab-payout" md-label="Payout">
+            <md-card md-with-hover>
+              <md-card-content>
+                <p style="color:#880599">Your organization's bank information for recieving payments from buyers.</p>
+                <md-button class="md-raised md-primary">Submit</md-button>
+              </md-card-content>
+            </md-card>          
           </md-tab>
+
+          <!-- Payment -->
+          <md-tab id="tab-billing" md-label="Payment">
+            <md-card md-with-hover>
+              <md-card-content>
+                <p style="color:#880599">Bank information for Fig payments. </p>
+                <billing-tab></billing-tab>
+                Billing Address
+                <br />
+                <!-- Street -->
+                <div class="form-group row">
+                  <label for="inputStreet" class="col-sm col-form-label">Street:</label>
+                  <div class="col-sm-12">
+                    <!-- <input
+                      v-model="address.street"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter your street"
+                    /> -->
+                  </div>
+                </div>
+
+                <!-- City -->
+                <div class="form-group row">
+                  <label for="inputCity" class="col-sm col-form-label">City:</label>
+                  <div class="col-sm-12">
+                    <!-- <input
+                      v-model="address.city"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter your city"
+                    /> -->
+                  </div>
+                </div>
+
+                <!-- State -->
+                <div class="form-group row">
+                  <label for="inputState" class="col-sm col-form-label">State:</label>
+                  <div class="col-sm-12">
+                    <!-- <input
+                      v-model="address.state"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter your city"
+                    /> -->
+                  </div>
+                </div>
+
+                <!-- Zip -->
+                <div class="form-group row">
+                  <label for="inputZip" class="col-sm col-form-label">Zip:</label>
+                  <div class="col-sm-12">
+                    <!-- <input
+                      v-model="address.zip"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter your zip code"
+                    /> -->
+                  </div>
+                </div>
+
+                <!-- Country -->
+                <div class="form-group row">
+                  <label for="inputCountry" class="col-sm col-form-label">Country:</label>
+                  <div class="col-sm-12">
+                    <!-- <input
+                      v-model="address.country"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter your country"
+                    /> -->
+                  </div>
+                </div>
+                <md-button class="md-raised md-primary">Submit</md-button>
+              </md-card-content>
+            </md-card>
+          </md-tab>
+
           <md-tab id="tab-password" md-label="Password">
             <md-card>
               <md-card-content>
-                <!-- 
-                <div class="form-row">
-                  <md-field>
-                    <label>Billing Address:</label>
-                    <md-input v-model="billingAddress"></md-input>
-                  </md-field>
-                </div>-->
 
                 <h4>Edit Password:</h4>
                 <br />
@@ -129,11 +214,7 @@
                     v-model="confirmNewPass"
                   ></md-input>
                 </md-field>
-
-                <br />
-                <button class="btn btn-outline btn-xl pull-right" @click="updatePassword">
-                  <p>Update Password</p>
-                </button>
+                <md-button class="md-raised md-primary" @click="updatePassword">Update Password</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -151,12 +232,12 @@
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 @import "../../assets/css/settings.css";
 
-.tabs {
+#settings-page .tabs {
   position: relative;
   margin: 0 auto;
 }
 
-.tabs__item {
+#settings-page .tabs__item {
   display: inline-block;
   margin: 0 5px;
   padding: 10px;
@@ -166,36 +247,39 @@
   color: rgb(94, 94, 94);
   text-decoration: none;
   border: none;
-  background-color: transparent;
   /* border-bottom: 2px solid white; */
   cursor: pointer;
   transition: all 0.25s;
 }
 
-.tabs__item_active {
+#settings-page .md-card {
+  background-color: white;
+}
+
+#settings-page .tabs__item_active {
   color: #29105b;
 }
 
-.tabs__item:hover {
+#settings-page .tabs__item:hover {
   border-bottom: 2px solid #ffffff;
   color: #29105b;
 }
 
-.tabs__item:focus {
+#settings-page .tabs__item:focus {
   outline: none;
   border-bottom: 3px solid #ffffff;
   color: #29105b;
 }
 
-.tabs__item:first-child {
+#settings-page .tabs__item:first-child {
   margin-left: 0;
 }
 
-.tabs__item:last-child {
+#settings-page .tabs__item:last-child {
   margin-right: 0;
 }
 
-.tabs__active-line {
+#settings-page .tabs__active-line {
   position: absolute;
   bottom: 0;
   left: 0;
