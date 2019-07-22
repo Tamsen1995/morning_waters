@@ -2,9 +2,6 @@
   <div class="card-group">
     <div
       class="card"
-      style="min-width: 30%;border-color: rgb(136, 2, 177);
-              border-width: 3px; 
-              border-style: solid;"
     >
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
@@ -15,9 +12,6 @@
     </div>
     <div
       class="card"
-      style="min-width: 30%;border-color: rgb(138, 207, 0);
-              border-width: 3px; 
-              border-style: solid;"
     >
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
@@ -29,13 +23,10 @@
     </div>
     <div
       class="card"
-      style="min-width: 30%;border-color: #2282ff;
-              border-width: 3px; 
-              border-style: solid;"
     >
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
-        <h3 class="card-title" style="color: #2282ff;">Page Views:</h3>
+        <h3 class="card-title" style="color: #301a70;">Page Views:</h3>
         <h3 class="card-text">{{ this.pageViews }}</h3>
         <p class="card-text">
           <small class="text-muted">Last updated [timestamp]</small>
