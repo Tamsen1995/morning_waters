@@ -23,7 +23,7 @@ export default {
       cardNumber: 0,
       cvc: 0,
       customerDefaultSource: null,
-      shoppingCart: null,
+      shoppingCart: [],
       quoteRequestsCart: null
     }
   },
@@ -203,7 +203,7 @@ export default {
         const quoteRequestsCart = this.$store.getters.getQuoteRequestsCart
 
         if (quoteRequestsCart) {
-          this.quoteRequestsCart = quoteRequestsCart
+          this.quoteRequestsCart = JSON.parse(JSON.stringify(quoteRequestsCart))
         } else {
           this.quoteRequestsCart = []
         }
@@ -213,9 +213,9 @@ export default {
     },
     async getCartItemsFromStore () {
       try {
-        const shoppingCartItems = this.$store.getters.getShoppingCartItems
-        if (shoppingCartItems) {
-          this.shoppingCart = shoppingCartItems
+        const cartItems = this.$store.getters.getShoppingCartItems
+        if (cartItems) {
+          this.shoppingCart = JSON.parse(JSON.stringify(cartItems))
         } else {
           this.shoppingCart = []
         }
