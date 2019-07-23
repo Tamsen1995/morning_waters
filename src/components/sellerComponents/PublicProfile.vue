@@ -151,11 +151,11 @@
           <!-- </div> -->
 
           <!-- quote request cart -->
-          <div class="col-md-3">
+          <!-- <div class="col-md-3">
             <md-card>
               <request-quote-cart></request-quote-cart>
             </md-card>
-          </div>
+          </div> -->
         </div>
       </div>
 
@@ -168,62 +168,74 @@
     </body>
 
     <!-- General Inquiry -->
-    <modal name="general-inquiry-modal">
-      <div class="container" style="margin:50px" id="gen_inquiry">
-        <div class="row">
-          <div class="col-10">
-            <p>Want to send a message to this seller about their listing?</p>
-            <textarea
+    <modal name="general-inquiry-modal" height="auto" scrollable="true" :clickToClose="true" id="inquiry-modal">
+      <div class="container" id="gen_inquiry">
+        <!-- <div class="row">
+          <div class="col-10"> -->
+        <div class="md-title">
+          <h2>
+            <i class="fas fa-atom" id="service_logo"></i>
+            Want to send a message to this seller about their listing?
+          </h2>
+        </div>
+        <form class="md-layout">
+          <md-field>
+            <label>Message to Seller:</label>
+            <md-textarea
               v-model="inquiryText"
               class="form-control animated"
               placeholder="Enter your message"
               rows="5"
-            ></textarea>
+            ></md-textarea>          
+          </md-field>
+          <md-button
+            class="btn btn-default pull-right"
+            @click="submitInquiryText()"
+            style="margin-top:10px"
+            type="button"
+          >Submit</md-button>
+    
+        </form>
 
-            <button
-              class="btn btn-info pull-right"
-              @click="submitInquiryText()"
-              style="margin-top:10px"
-              type="button"
-            >Submit</button>
-          </div>
-        </div>
+
+
       </div>
     </modal>
 
     <!-- Specific Inquiry -->
-    <modal height="auto" scrollable="true" name="request-quote-modal" style="padding-bottom:25px">
-      <div class="container" style="margin:25px" id="spec_inquiry">
-        <div class="row">
-          <div class="col-10">
-            <div v-if="this.itemChosen">
-              <p style="text-align:left;">
-                <strong>Service : {{ this.itemChosen.title }}</strong>
-              </p>
-              <ul>
-                <!-- price/unit -->
-                <li>Price/Unit</li>
-
-                <!-- turnaround time -->
-                <li>Turnaround Time</li>
-              </ul>
-
+    <modal height="auto" scrollable="true" name="request-quote-modal" :clickToClose="true" id="inquiry-modal">
+      <div class="container"  id="spec_inquiry">
+        <form class="md-layout">
+          <div v-if="this.itemChosen">
+            <md-title>
+              <h2>
+                <i class="fas fa-atom" id="service_logo"></i>
+                Service : {{ this.itemChosen.title }}
+              </h2>
+            </md-title>
+            <ul>
+              <!-- price/unit -->
+              <li>Price/Unit</li>
+              <!-- turnaround time -->
+              <li>Turnaround Time</li>
+            </ul>
+            <md-field>
               <label>Amount? (optional)</label>
-              <input v-model="pickedQuantityQuoteRequest" type="number" style="width: 40px" />
+              <md-input v-model="pickedQuantityQuoteRequest" type="number" />
+            </md-field>
 
-              <br />
-              <br />Send message to Seller
-              <textarea
+            <md-field>
+              <label>Message to Seller:</label>
+              <md-textarea
                 v-model="inquiryText"
                 class="form-control animated"
                 placeholder="Enter your message"
                 rows="5"
-              ></textarea>
-            </div>
+                style="min-width:400px;"
+              ></md-textarea>          
+            </md-field>
           </div>
-          <br />
-        </div>
-
+        </form>
         <md-button
           class="md-raised md-primary submit-buttons-md"
           style="margin-top:10px"

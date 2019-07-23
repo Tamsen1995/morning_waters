@@ -30,21 +30,6 @@ body.public-profile {
   padding-bottom:4px;
   border-radius: 5px;
 }
-#public-profile #about .md-content {
-  max-width: 900px;
-  max-height: 250px;
-  overflow: auto;
-  margin-bottom: 5px;
-}
-#public-profile #service-description {
-  max-width: 900px;
-  max-height: 200px;
-  overflow: auto;
-  margin-bottom: 5px;
-}
-#public-profile #stats {
-  border-radius: 5px;
-}
 .public-profile #about {
   background-color: white;
   border-width: .5px;
@@ -53,7 +38,26 @@ body.public-profile {
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
   border-radius: 5px;
   text-align: left;
+  padding: 15px;
 }
+.public-profile #about .md-content {
+  max-width: 1200px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+#public-profile #service-description {
+  max-width: 900px;
+  max-height: 200px;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+#public-profile #stats {
+  border-radius: 5px;
+}
+
+
 
 .public-profile #services {
   padding-left: 20px;
@@ -92,6 +96,20 @@ body.public-profile {
   background-color: white;
   border-radius: 5px;
 }
+#inquiry-modal{
+  background-color: transparent;
+}
+#gen_inquiry {
+  color:#301a70;
+  border: 5px #301a70 solid;
+  padding: 30px;
+}
+#spec_inquiry{
+  color:#301a70;
+  border: 5px #301a70 solid;
+  padding: 30px;
+}
+
 
 /* Profile photo - company logo */
 .circle,
@@ -252,10 +270,6 @@ body.public-profile {
 #public-profile #price-chart p  {
   font: 16px "Roboto";
   color: #111;
-}
-
-#public-profile #spec_inquiry p {
-  text-align: left;
 }
 
 .md-checkbox {
