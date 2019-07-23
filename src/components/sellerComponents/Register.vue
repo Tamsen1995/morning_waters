@@ -20,16 +20,31 @@
               <!-- Form -->
               <form>
                 <md-steppers :md-active-step.sync="active" md-linear md-vertical >
+                  <!-- First Name -->
                   <md-step id="first" :md-done.sync="first" md-label="Personal Info" md-description="Required">
                     <div class="form-group row">
-                      <label for="name" class="col-sm col-form-label">Name:</label>
+
+                      <!-- CHANGE TO FIRST NAME -->
+                      <label for="name" class="col-sm col-form-label">First Name:</label>
                       <div class="col-sm-12">
                         <input
                           v-model="name"
                           type="text"
                           class="form-control"
-                          placeholder="Enter your name"
+                          placeholder="Enter your first name"
                         />
+                      </div>
+                    </div>
+                    <!-- ADD LAST NAME -->
+                    <div class="form-group row">
+                      <label for="name" class="col-sm col-form-label">Last Name:</label>
+                      <div class="col-sm-12">
+                        <!-- <input
+                          v-model="name"
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter your last name"
+                        /> -->
                       </div>
                     </div>
 
@@ -48,11 +63,13 @@
                     <div class="form-group row">
                       <label for="inputPassword" class="col-sm col-form-label">Password:</label>
                       <div class="col-sm-12">
+
+                        <!-- ADD PASSWORD RESTRICTIONS (length, characters, numbers) -->
                         <input
                           v-model="password"
                           type="password"
                           class="form-control"
-                          placeholder="Enter your password"
+                          placeholder="Must be at least 7 characters long with at least one digit."
                         />
                       </div>
                     </div>
@@ -83,7 +100,7 @@
 
                     <!-- Job Title -->
                     <div class="form-group row">
-                      <label for="inputPhoneNumber" class="col-sm col-form-label">Job Title:</label>
+                      <label for="inputPhoneNumber" class="col-sm col-form-label">Role:</label>
                       <div class="col-sm-12">
                         <input
                           v-model="jobTitle"
@@ -93,43 +110,62 @@
                         />
                       </div>
                     </div>
-
                     <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('first', 'second')">Continue</md-button>
 
                   </md-step>
 
-                  <!-- Lab Info -->
-                  <md-step id="second" :md-done.sync="second" md-label="Lab Info" md-description="Required">
-                    <h2 style="color:#880599">Lab Info</h2>
-                    <!-- Company Name -->
+                  <!--Organization Info -->
+                  <md-step id="second" :md-done.sync="second" md-label="Organization Info" md-description="Required">
+                    
+                    <!-- MANDATORY -->
+                    <!-- Org Name -->
                     <div class="form-group row">
-                      <label for="inputCompanyName" class="col-sm col-form-label">Lab Name:</label>
+                      <label for="inputCompanyName" class="col-sm col-form-label">Organization Name:</label>
                       <div class="col-sm-12">
                         <input
                           v-model="companyName"
                           type="text"
                           class="form-control"
-                          placeholder="Enter your company's name"
+                          placeholder="Enter the name of your organization"
                         />
                       </div>
                     </div>
+
+                    <!-- NON MANDATORY -->
                     <!-- Company Website -->
                     <div class="form-group row">
-                      <label for="inputCompanyWebsite" class="col-sm col-form-label">Lab Website:</label>
+                      <label for="inputCompanyWebsite" class="col-sm col-form-label">Website:</label>
                       <div class="col-sm-12">
                         <input
                           v-model="companyWebsite"
                           type="text"
                           class="form-control"
-                          placeholder="Enter your company's website"
+                          placeholder="Enter your organization's website"
                         />
                       </div>
                     </div>
+                    <!-- MANDATORY -->
+                    <!-- About -->
+                    <div class="form-group row">
+                      <label for="About" class="col-sm col-form-label">About:</label>
+                      <div class="col-sm-12">
+                        <textarea
+                          v-model="about"
+                          rows="10"
+                          class="form-control"
+                          placeholder="Tell us about your organization's work"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <br />
+                    <!-- <h5 style="color:#880599">You can add service listings after you've signed up.</h5> -->
 
                     <!-- Billing -->
-                    <h2 style="color:#880599">Your Payment Info</h2>
-                    <div>
-                      Address
+                    <!-- ADD BANK ACCOUNT INFO SUBMISSION -->
+                    <!-- <h2 style="color:#880599">Payment System Setup</h2>
+                    <h5 style="color:#880599">Bank information for Fig payments </h5> -->
+                    <div class="hidden">
+                      Billing Address
                       <br />
                       <!-- Street -->
                       <div class="form-group row">
@@ -197,30 +233,15 @@
                       </div>
 
                     </div>
-                    
-                    
-                    <!-- About -->
-                    <div class="form-group row">
-                      <label for="About" class="col-sm col-form-label">About:</label>
-                      <div class="col-sm-12">
-                        <textarea
-                          v-model="about"
-                          rows="10"
-                          class="form-control"
-                          placeholder="Tell us about your company"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <br />
                     <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('second', 'third')">Continue</md-button>                      
                   </md-step>
 
-                  <md-step id="third" :md-done.sync="third" md-label="Payment System Set Up" md-description="Required">
-                    <h2 style="color:#880599">The Bank info your clients will use to pay you</h2>
+                  <md-step id="third" :md-done.sync="third" md-label="Payout System Set Up" md-description="Required">
+                    <!-- <h2 style="color:#880599">Payout System Set Up</h2> -->
+                    <h5 style="color:#880599">Your lab's bank information for recieving payments from buyers.</h5>
                     <md-button style="border-radius:15px;" class="md-raised md-primary" @click="setDone('third', 'fourth')">Continue</md-button>                 
                   </md-step>
                   
-                  <!--  -->
                   <md-step id="fourth" :md-done.sync="fourth" md-label="Terms & Conditions" md-description="Required">
                     <div
                       name="termly-embed"
@@ -281,7 +302,7 @@
 
                 </md-steppers>
               </form>
-            <!-- </div> -->
+
           </md-card-content>
     
         </md-card>
