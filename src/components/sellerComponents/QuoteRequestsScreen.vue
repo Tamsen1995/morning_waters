@@ -14,6 +14,7 @@
             <h2>Inbox</h2>
           </div>
         </div>
+
         <div class="row message-wrapper rounded shadow mb-20">
           <div class="col-lg-3 message-sideleft">
             <!-- <md-card> -->
