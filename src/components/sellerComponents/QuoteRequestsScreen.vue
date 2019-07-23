@@ -286,9 +286,14 @@
                           </div>
                           <div class="col-3">
                             <!-- Edit Quantity -->
+
                             <md-field>
                               X
+                              <!-- TODO : make sure the default of this is set to true on back -->
+                              <div v-if="order.active === false">{{amtForServicesNegotiated[index]}}</div>
+
                               <md-input
+                                v-else
                                 style="background-color: white; width: 10%;"
                                 v-model="amtForServicesNegotiated[index]"
                                 @change="updateOrderItems(index)"
