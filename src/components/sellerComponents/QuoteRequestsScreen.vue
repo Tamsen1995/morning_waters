@@ -337,9 +337,21 @@
 
   <!--  -->
 
-  <modal name="would-you-like-to-submit">
+  <modal height="auto" scrollable="true" name="would-you-like-to-submit">
     <div class="invoice-preview">
-      <h1>Order (TODO: List order items here)</h1>
+      <h1>Order</h1>
+
+      <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
+        <br />
+        {{orderItem.amount}} *
+        {{ servicesNegotiated[index].title }}
+        $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
+      </div>
+
+      <hr />
+      Total Price: $ {{this.totalPrice}}
+      <br />
+      <br />
       <div>Would you like to submit this order?</div>
       <md-button @click="submitOrder">Yes</md-button>
       <md-button @click="closeSubmitPrompt">No</md-button>
