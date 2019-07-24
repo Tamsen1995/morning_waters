@@ -125,6 +125,13 @@ export default {
         if (error) throw error
       }
     },
+    async submitOrder () {
+      try {
+        console.log(`\n\nThis function is to submit the order\n\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitMessage () {
       try {
         console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
@@ -139,15 +146,6 @@ export default {
             sender: 'buyer',
             message: this.message
           }
-        } else if (this.quoteRequest !== null) {
-          correspondanceMsg = {
-            orderId: this.quoteRequest.orderId,
-            buyerId: this.quoteRequest.buyerId,
-            userId: this.quoteRequest.sellerId,
-            date: 'nothing for now',
-            sender: 'buyer',
-            message: this.message
-          }
         }
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
@@ -156,10 +154,7 @@ export default {
         this.message = ''
         if (this.order !== null) {
           this.showOrder(this.order)
-        } else if (this.quoteRequest !== null) {
-          this.showQuoteRequest(this.quoteRequest)
         }
-        // this.showMessage(this.order)
       } catch (error) {
         if (error) throw error
       }
