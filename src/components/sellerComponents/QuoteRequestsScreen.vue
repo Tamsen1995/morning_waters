@@ -262,17 +262,13 @@
               </md-card-header>
               <md-card-expand v-if="this.order && this.order.locked === false">
                 <md-card-actions md-alignment="space-between">
-                  <div>
-                    <!-- <md-button>View Order</md-button>
-                    <md-button>Edit Invoice</md-button>-->
-                  </div>
+                  <div></div>
                   <md-card-expand-trigger>
                     <md-button v-if="order.pending || order.seller_confirmed === true">
                       Invoice
                       <md-icon>keyboard_arrow_down</md-icon>
                     </md-button>
 
-                    <!--  -->
                     <md-button v-else>
                       Edit Invoice
                       <md-icon>keyboard_arrow_down</md-icon>
