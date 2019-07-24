@@ -181,7 +181,7 @@
               >
                 <!-- if -->
                 <md-card
-                  v-if="msg && msg.sender && msg.sender === 'buyer'"
+                  v-if="msg && msg.sender && msg.sender === 'seller'"
                   id="recieve-text-bubble"
                   class="pull-left"
                 >
@@ -308,8 +308,8 @@
                         </div>
                       </div>
 
-                      <hr />
-                      Total price: {{ this.totalPrice }} $
+                      <hr />Total Price :
+                      <!-- Total price: {{ this.totalPrice }} $ -->
                       <br />
                       <br />
                       <!-- Negotiation Interface -->
@@ -347,8 +347,8 @@
         <!-- $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }} -->
       </div>
 
-      <hr />
-      Total Price: $ {{this.totalPrice}}
+      <hr />Total Price: $
+      <!-- {{this.totalPrice}} -->
       <br />
       <br />
       <div>Would you like to submit this order?</div>
