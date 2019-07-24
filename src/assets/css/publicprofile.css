@@ -22,27 +22,12 @@ body.public-profile {
 #public-profile #name-location {
   max-width: 1314px;
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
-  background: linear-gradient( white 60%, #4527a0 40%);
+  background: linear-gradient( white 60%, #301a70 40%);
   border-color: rgb(190, 187, 187);
   border-style: solid;
   border-width: .5px;
   padding-top: 13px;
   padding-bottom:4px;
-  border-radius: 5px;
-}
-#public-profile #about .md-content {
-  max-width: 900px;
-  max-height: 250px;
-  overflow: auto;
-  margin-bottom: 5px;
-}
-#public-profile #service-description {
-  max-width: 900px;
-  max-height: 200px;
-  overflow: auto;
-  margin-bottom: 5px;
-}
-#public-profile #stats {
   border-radius: 5px;
 }
 .public-profile #about {
@@ -53,7 +38,26 @@ body.public-profile {
   box-shadow:   2px 2px 5px 1px  #c7c4d1;
   border-radius: 5px;
   text-align: left;
+  padding: 15px;
 }
+.public-profile #about .md-content {
+  max-width: 1200px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+#public-profile #service-description {
+  max-width: 1200px;
+  max-height: 200px;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+#public-profile #stats {
+  border-radius: 5px;
+}
+
+
 
 .public-profile #services {
   padding-left: 20px;
@@ -66,7 +70,7 @@ body.public-profile {
 }
 
 #public-profile .service-border {
-  border-bottom: 2px solid #4527a0;
+  border-bottom: 2px solid #301a70;
 }
 
 .public-profile #subservice-block {
@@ -80,7 +84,7 @@ body.public-profile {
 }
 
 .public-profile .service-block-sub #service-title{
-  background-color: #4a148c;
+  background-color: #301a70;
   padding-left: 10px;
   margin-right: 10px;
   padding-top:0px;
@@ -92,6 +96,20 @@ body.public-profile {
   background-color: white;
   border-radius: 5px;
 }
+#inquiry-modal{
+  background-color: transparent;
+}
+#gen_inquiry {
+  color:#301a70;
+  border: 5px #301a70 solid;
+  padding: 30px;
+}
+#spec_inquiry{
+  color:#301a70;
+  border: 5px #301a70 solid;
+  padding: 30px;
+}
+
 
 /* Profile photo - company logo */
 .circle,
@@ -104,19 +122,19 @@ body.public-profile {
   border-radius: 75px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./Icons/noun_DNA_2362091.png");
+  background-image: url("./noun_Science_profile_crop_purple.png");
 }
 
 #public-profile #logo-border {
-  background-color: #381c8b;
-  width: 170px;
-  height: 170px;
+  background-color: #301a70;
+  width: 160px;
+  height: 160px;
   -moz-border-radius: 85px;
   -webkit-border-radius: 85px;
   border-radius: 85px;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10px;
+  padding: 5px;
 }
 
 /* #price-chart {
@@ -254,10 +272,6 @@ body.public-profile {
   color: #111;
 }
 
-#public-profile #spec_inquiry p {
-  text-align: left;
-}
-
 .md-checkbox {
   display: flex;
 }
@@ -267,7 +281,7 @@ body.public-profile {
 }
 
 #service-form-block {
-  color:#4527a0;
+  color:#4527a0 #44ceab;
   border: 5px #4527a0 solid;
   padding: 30px;
 }
@@ -282,6 +296,10 @@ body.public-profile {
   color:#4527a0;
 }
 
+#price-text {
+  text-align: right;
+  padding-bottom:3px; 
+}
 /* ------Vue Directive Responsive Design Ish ----------------------------------------------------*/
 .responsive-component.small body.public-profile {
   text-align: center;
@@ -296,17 +314,17 @@ body.public-profile {
 
 .responsive-component.small #public-profile #logo {
   background-color: white;
-  width: 100px;
-  height: 100px;
-  -moz-border-radius: 50px;
-  -webkit-border-radius: 50px;
-  border-radius: 50px;
+  width: 110px;
+  height: 110px;
+  -moz-border-radius: 55px;
+  -webkit-border-radius: 55px;
+  border-radius: 55px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("./Icons/noun_DNA_2362091.png");
+  background-image: url("./noun_Science_profile_crop_purple.png");
 }
 .responsive-component.small #public-profile #logo-border {
-  background-color: #301a70;
+  background-color: #301a70 #6f4cd6;
   width: 120px;
   height: 120px;
   -moz-border-radius: 60px;
@@ -314,7 +332,7 @@ body.public-profile {
   border-radius: 60px;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 10px;
+  padding: 5px;
 }
 
 .responsive-component.small .public-profile #subservice-block {

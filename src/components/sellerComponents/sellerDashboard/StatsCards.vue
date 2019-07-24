@@ -5,7 +5,7 @@
     >
       <!-- <img src="..." class="card-img-top" alt="..."> -->
       <div class="card-body">
-        <h3 class="card-title" style="color: rgb(136, 2, 177)">Pending Orders:</h3>
+        <h3 class="card-title" style="color: #6545c5;">Pending Orders:</h3>
         <h3 class="card-text">{{ this.credits }}</h3>
         <button class="btn-block" id="btn-orders" @click="redirectToPendingOrders()">View Orders</button>
       </div>
