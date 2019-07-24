@@ -10,8 +10,9 @@ export default {
   data () {
     return {
       orders: [],
+      companyName: '',
       pendingOrders: [],
-
+      buyer: null,
       buyerQuoteRequests: null,
       quoteRequest: null,
       order: null,
@@ -114,6 +115,13 @@ export default {
         }
       } catch (error) {
         console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
+        if (error) throw error
+      }
+    },
+    async closeSubmitPrompt () {
+      try {
+        console.log(`\n\nThis function is supposed to close the modal which is used to validate submission with.\n\n`) // TESTING
+      } catch (error) {
         if (error) throw error
       }
     },

@@ -166,7 +166,7 @@
             class="col-md-6 message-sideright"
             style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
           >
-            <div v-if="this.order && this.order.locked === false">
+            <div>
               <div class="message-header-a">
                 <h3 v-if="buyer !== null">{{buyer.name}}</h3>
                 <div class="message-header-b">
@@ -188,7 +188,7 @@
                   <md-content>
                     <h4 class="media-heading pull-right">Date</h4>
                     <md-icon>account_circle</md-icon>
-                    {{buyer.name}}
+                    <!-- {{buyer.name}} -->
                     <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                     <div class="view_msg">
                       <p class="lead">{{msg.message}}</p>
@@ -201,7 +201,7 @@
                   <md-content>
                     <h4 class="media-heading pull-right">Date</h4>
                     <md-icon>account_circle</md-icon>
-                    {{seller.companyName}}
+                    <!-- {{seller.companyName}} -->
                     <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                     <div class="view_msg">
                       <p class="lead">{{msg.message}}</p>
@@ -232,15 +232,6 @@
                   >Send</md-button>
                 </md-card>
               </div>
-            </div>
-            <div v-else>
-              <md-empty-state
-                md-icon="lock"
-                md-label="Unlock this correspondence"
-                md-description="Unlocking this lead will unlock every subsequent interaction with this customer."
-              >
-                <md-button class="md-primary md-raised" @click="unlockRelationship()">Unlock</md-button>
-              </md-empty-state>
             </div>
           </div>
 
@@ -284,7 +275,7 @@
                         <!-- Edit Service Title -->
                         <div class="row">
                           <div class="col-6">
-                            <md-field>{{ item.title }}</md-field>
+                            <!-- <md-field>{{ item.title }}</md-field> -->
                           </div>
                           <div class="col-3">
                             <!-- Edit Quantity -->
@@ -334,7 +325,6 @@
                   </md-card-content>
                 </md-card-expand-content>
               </md-card-expand>
-              <md-button v-else @click="unlockRelationship()">Unlock</md-button>
 
               <!-- </md-ripple> -->
             </md-card>
