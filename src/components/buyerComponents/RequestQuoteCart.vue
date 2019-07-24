@@ -1,3 +1,4 @@
+
 <template>
 <div id="app" style="background-color: white;">
   <body id="requestQuoteCart">
@@ -56,6 +57,21 @@
       </md-list-item>
     </md-list>
 
+    <md-list style="background-color:#eeeef6;">
+      <md-list-item md-expand :md-expanded.sync="expandNews">
+        <i class="fas fa-plus" id="service_logo"></i>
+        <span class="md-list-item-text">Add Quote Request</span>
+
+        <md-list slot="md-expand">
+          <md-card style="background-color:white;">
+            <md-card-content>
+              <form></form>
+            </md-card-content>
+          </md-card>
+        </md-list>
+      </md-list-item>
+    </md-list>
+
     <!-- Add Modal to edit Quote request, with delete request functionality -->
 
     <br />
@@ -65,10 +81,11 @@
 
 <script>
 import BuyerServices from "@/services/BuyerServices";
-
 export default {
   data() {
     return {
+      expandNews: false,
+      expandSingle: false,
       quoteRequestsCart: null
     };
   },
@@ -107,7 +124,6 @@ export default {
   font-size: 20px;
   padding-right: 10px;
 }
-
 #requestQuoteCart #inquiry-text {
   max-width: 800px;
   height: 150px;
