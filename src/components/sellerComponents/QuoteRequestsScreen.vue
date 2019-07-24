@@ -267,7 +267,13 @@
                     <md-button>Edit Invoice</md-button>-->
                   </div>
                   <md-card-expand-trigger>
-                    <md-button>
+                    <md-button v-if="order.active === false || order.seller_confirmed === true">
+                      Invoice
+                      <md-icon>keyboard_arrow_down</md-icon>
+                    </md-button>
+
+                    <!--  -->
+                    <md-button v-else>
                       Edit Invoice
                       <md-icon>keyboard_arrow_down</md-icon>
                     </md-button>
@@ -290,7 +296,9 @@
                             <md-field>
                               X
                               <!-- TODO : make sure the default of this is set to true on back -->
-                              <div v-if="order.active === false">{{amtForServicesNegotiated[index]}}</div>
+                              <div
+                                v-if="order.active === false || order.seller_confirmed === true"
+                              >{{amtForServicesNegotiated[index]}}</div>
 
                               <md-input
                                 v-else
