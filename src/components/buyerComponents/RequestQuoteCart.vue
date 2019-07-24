@@ -22,7 +22,7 @@
               <span class="pull-right" id="tooltip">
                 <h3>
                   <a href="#" class="card-link">X</a>
-                </h3>  
+                </h3>
                 <md-tooltip md-delay="300">Delete Message</md-tooltip>
               </span>
 
@@ -31,42 +31,24 @@
                 <md-field>
                   <label>Item : {{ item.serviceTitle }}</label>
                   <!-- <md-input></md-input> -->
-                </md-field>              
+                </md-field>
                 <md-field>
                   <label>Quantity : {{ item.quantity }}</label>
                   <!-- <md-input></md-input> -->
                 </md-field>
                 <md-field>
-                  <label>Turn Around Time : </label>
+                  <label>Turn Around Time :</label>
                 </md-field>
                 <md-field>
-                  <label>Message to Seller: </label>
-                  <md-textarea v-model="inquiryText">
-                  
-                  </md-textarea>
+                  <label>Message to Seller:</label>
+                  <md-textarea v-model="inquiryText"></md-textarea>
                 </md-field>
-              <!-- <br />
+                <!-- <br />
               Inquiry : 
               <md-content style="text-align:left" id="inquiry-text" class="md-scrollbar">
                <p>{{ item.inquiryText }}</p>
               </md-content>
-              <br /> -->
-              </form>
-            </md-card-content>
-          </md-card>
-        </md-list>
-      </md-list-item>
-    </md-list>  
-    
-    <md-list style="background-color:#eeeef6;">
-      <md-list-item md-expand :md-expanded.sync="expandNews" >
-        <i class="fas fa-plus" id="service_logo"></i>
-        <span class="md-list-item-text">Add Quote Request</span>
-
-        <md-list slot="md-expand">
-          <md-card style="background-color:white;">
-            <md-card-content>
-              <form>
+                <br />-->
               </form>
             </md-card-content>
           </md-card>
@@ -75,9 +57,8 @@
     </md-list>
 
     <!-- Add Modal to edit Quote request, with delete request functionality -->
-    
-    <br>
 
+    <br />
   </body>
 </div>
 </template>
@@ -124,7 +105,7 @@ export default {
 #requestQuoteCart #service_logo {
   color: #4527a0;
   font-size: 20px;
-  padding-right:10px;
+  padding-right: 10px;
 }
 
 #requestQuoteCart #inquiry-text {
@@ -133,7 +114,7 @@ export default {
   max-height: 400px;
   padding: 5px;
   overflow: auto;
-  border:#3094f1 solid 2px;
+  border: #3094f1 solid 2px;
 }
 #requestQuoteCart #tooltip {
   min-width: 60px;
