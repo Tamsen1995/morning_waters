@@ -267,7 +267,7 @@
                     <md-button>Edit Invoice</md-button>-->
                   </div>
                   <md-card-expand-trigger>
-                    <md-button v-if="order.active === false || order.seller_confirmed === true">
+                    <md-button v-if="order.pending || order.seller_confirmed === true">
                       Invoice
                       <md-icon>keyboard_arrow_down</md-icon>
                     </md-button>
@@ -297,7 +297,7 @@
                               X
                               <!-- TODO : make sure the default of this is set to true on back -->
                               <div
-                                v-if="order.active === false || order.seller_confirmed === true"
+                                v-if="order.pending || order.seller_confirmed === true"
                               >{{amtForServicesNegotiated[index]}}</div>
 
                               <md-input
