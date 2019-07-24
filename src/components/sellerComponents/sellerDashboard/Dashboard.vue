@@ -70,7 +70,7 @@
                   <div style="padding-left: 15px;">
                     <md-chip
                       class="md-primary md-accent"
-                      style="background-color: #2282ff; color: white;"
+                      style="background-color: white; color: #a558e4; border: 1px solid #a558e4;"
                       v-for="chip in service.tags"
                       :key="chip"
                     >{{ chip.tag }}</md-chip>
@@ -104,7 +104,7 @@
                     <div style="padding-left: 15px;">
                       <md-chip
                         class="md-primary md-accent"
-                        style="padding-left: 5px;background-color: #2282ff; color: white;"
+                        style="background-color: white; color: #a558e4; border: 1px solid #a558e4;"
                         v-for="chip in subService.tags"
                         :key="chip"
                       >{{ chip.tag }}</md-chip>
@@ -177,7 +177,7 @@
             <md-chips
               v-model="tags"
               md-placeholder="Add a tag and click enter"
-              style="border-bottom: 1px inset; color: #2282ff;"
+              style="border-bottom: 1px inset; color: #a558e4;"
             ></md-chips>
           </md-field>
 
@@ -287,7 +287,7 @@
               <md-chips
                 md-placeholder="Add a tag and click enter"
                 v-model="subServicesToBeAdded[index].serviceTags"
-                style="border-bottom: 1px inset; color: #2282ff;"
+                style="border-bottom: 1px inset; color: #a558e4;"
               ></md-chips>
             </md-field>
 

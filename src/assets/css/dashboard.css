@@ -157,10 +157,6 @@ body.dashboard {
 }
 
 /*------------- Text ------------------------*/
-/* .dashboard #dashboard #add-services p {
-  text-align: left;
-  color: #4527a0;
-} */
 
 #dashboard .md-title {
   font-size: 25px;
@@ -381,7 +377,7 @@ p {
 }
 
 #btn-orders {
-  background-color: rgb(136, 2, 177);
+  background-color: #8164d8;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
   font-size: 15px;
@@ -390,7 +386,7 @@ p {
 }
 
 #btn-orders:hover, #btn-orders:focus, #btn-orders:active {
-  background-color: rgb(149, 50, 179);
+  background-color: #6545c5;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
   font-size: 15px;

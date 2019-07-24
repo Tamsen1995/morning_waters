@@ -47,6 +47,7 @@
         <div id="services">
           <br />
           <md-button
+          style="background-color: #4828a5; color: white;"
             @click="manifestModalInquiry(service)"
             class="md-raised md-primary pull-right submit-buttons-md"
           >Message Seller</md-button>
@@ -58,45 +59,47 @@
           <div v-for="(service, index) in this.services" :key="service.id">
             <div v-if="service.isSubService === false">
               <div class="service-border">
-                <md-button
-                  @click="manifestModalForm(service)"
-                  class="md-raised md-primary pull-right"
-                  style="background-color: #2238ff; color: white;"
-                >Request Quote</md-button>
                 <md-card-area md-inset>
-                  <md-card-header>
+                  <md-card-header >
+                    <div >
+                      <div class="pull-right">
+                      
+                        <div
+                          style="color:#51b828;font-size: 20px;"
+                          id="price-text"
+                        >Price: {{service.servicePrice}}$</div>
+                        <md-button
+                          @click="manifestModalForm(service)"
+                          class="md-raised md-primary"
+                          style="background-color: #8164d8; color: white;"
+                        >Request Quote
+                        </md-button>
+                        <md-button
+                          style="background-color: #51b828; color: white;"
+                          @click="addServiceToCart(service, index)"
+                        >Add to Cart</md-button>
+                        
+                      </div>
+                    </div>
+                    
                     <i class="fas fa-atom" id="service_logo"></i>
                     <span class="md-title">{{ service.title }}</span>
-                    <br />
-                    <md-button
-                      v-if="subServicesPresent(service) === false"
-                      style="background-color: #28a745; color: white;"
-                      @click="addServiceToCart(service, index)"
-                    >Add to Cart</md-button>
-                    <md-card-content>
-                      <div class="card-reservation">
-                        <div class="md-subhead">
-                          <span
-                            style="color:#1faa00;font-size: 18px;"
-                          >Price: {{service.servicePrice}} $</span>
 
-                          <span class="pull-right">
-                            <md-icon>access_time</md-icon>
-                            Turnaround time : {{ service.turnAroundTime }}
-                          </span>
-                        </div>
-                      </div>
-                    </md-card-content>
+                    <div>
+                      <md-icon>access_time</md-icon>
+                      Turnaround time : {{ service.turnAroundTime }}
+                    </div>
                   </md-card-header>
-
+                  
                   <md-card-content
                     class="md-scrollbar"
+                    style="word-wrap: break-word;"
                     id="service-description"
                   >{{ service.description }}</md-card-content>
                   <div style="padding-left: 15px;">
                     <md-chip
                       class="md-primary md-accent"
-                      style="background-color: #00b2cc; color: white;"
+                      style="background-color: white; color: #a558e4; border: 1px solid #a558e4;"
                       v-for="chip in service.tags"
                       :key="chip"
                     >{{ chip.tag }}</md-chip>
@@ -110,20 +113,30 @@
                   >
                     <md-card-area>
                       <md-card-header>
-                        <span class="pull-right">
-                          <span
-                            style="padding-top:10px;color:#009624;font-size: 18px;"
-                          >Price: {{subService.servicePrice}} $</span>
-                          <br />
+                        <div class="pull-right">
+                        
+                          <div
+                            style="color:#51b828;font-size: 20px;"
+                            id="price-text"
+                          >Price: {{subService.servicePrice}}$</div>
                           <md-button
-                            style="background-color: #28a745; color: white;"
+                            @click="manifestModalForm(service)"
+                            class="md-raised md-primary"
+                            style="background-color: #8164d8; color: white;"
+                          >Request Quote
+                          </md-button>
+                          <md-button
+                            style="background-color: #51b828; color: white;"
                             @click="addServiceToCart(subService, index)"
                           >Add to Cart</md-button>
-                        </span>
+                          
+                        </div>
+                        
                         <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
-
+                        <div>
                         <md-icon>access_time</md-icon>
                         Turnaround time : {{ subService.turnAroundTime }}
+                        </div>
                       </md-card-header>
                       <md-card-content
                         class="md-scrollbar"
@@ -134,7 +147,7 @@
                     <div style="padding-left: 15px;">
                       <md-chip
                         class="md-primary md-accent"
-                        style="padding-left: 5px;background-color: #00b2cc; color: white;"
+                        style="background-color: white; color: #a558e4; border: 1px solid #a558e4;"
                         v-for="chip in subService.tags"
                         :key="chip"
                       >{{ chip.tag }}</md-chip>
@@ -231,7 +244,7 @@
                 class="form-control animated"
                 placeholder="Enter your message"
                 rows="5"
-                style="min-width:400px;"
+                style="min-width:600px;"
               ></md-textarea>          
             </md-field>
           </div>
