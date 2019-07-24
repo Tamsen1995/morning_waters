@@ -14,6 +14,7 @@
             <h2>Inbox</h2>
           </div>
         </div>
+
         <div class="row message-wrapper rounded shadow mb-20">
           <div class="col-lg-3 message-sideleft">
             <!-- <md-card> -->
@@ -261,12 +262,14 @@
               </md-card-header>
               <md-card-expand v-if="this.order && this.order.locked === false">
                 <md-card-actions md-alignment="space-between">
-                  <div>
-                    <!-- <md-button>View Order</md-button>
-                    <md-button>Edit Invoice</md-button>-->
-                  </div>
+                  <div></div>
                   <md-card-expand-trigger>
-                    <md-button>
+                    <md-button v-if="order.pending || order.seller_confirmed === true">
+                      Invoice
+                      <md-icon>keyboard_arrow_down</md-icon>
+                    </md-button>
+
+                    <md-button v-else>
                       Edit Invoice
                       <md-icon>keyboard_arrow_down</md-icon>
                     </md-button>
@@ -285,9 +288,16 @@
                           </div>
                           <div class="col-3">
                             <!-- Edit Quantity -->
+
                             <md-field>
                               X
+                              <!-- TODO : make sure the default of this is set to true on back -->
+                              <div
+                                v-if="order.pending || order.seller_confirmed === true"
+                              >{{amtForServicesNegotiated[index]}}</div>
+
                               <md-input
+                                v-else
                                 style="background-color: white; width: 10%;"
                                 v-model="amtForServicesNegotiated[index]"
                                 @change="updateOrderItems(index)"
@@ -336,9 +346,21 @@
 
   <!--  -->
 
-  <modal name="would-you-like-to-submit">
+  <modal height="auto" scrollable="true" name="would-you-like-to-submit">
     <div class="invoice-preview">
-      <h1>Order (TODO: List order items here)</h1>
+      <h1>Order</h1>
+
+      <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
+        <br />
+        {{orderItem.amount}} *
+        {{ servicesNegotiated[index].title }}
+        $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
+      </div>
+
+      <hr />
+      Total Price: $ {{this.totalPrice}}
+      <br />
+      <br />
       <div>Would you like to submit this order?</div>
       <md-button @click="submitOrder">Yes</md-button>
       <md-button @click="closeSubmitPrompt">No</md-button>

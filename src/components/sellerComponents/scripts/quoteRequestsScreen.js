@@ -46,6 +46,7 @@ export default {
 
     if (this.pendingOrders && this.pendingOrders.length > 0) {
       this.showOrder(this.pendingOrders[0])
+      this.retrieveOrderOrderItems(this.pendingOrders[0])
     }
 
     if (this.orders && this.orders.length > 0) {
@@ -54,7 +55,6 @@ export default {
     }
   },
   methods: {
-
     // goes through the array of orders and pending orders
     // finds the order with the appropiate order id
     // and then displays that order with the showOrder function
@@ -186,21 +186,7 @@ export default {
         if (error) throw error
       }
     },
-    // async switchMessagesDisplayed (messagesDisplayed) {
-    //   try {
-    //     if (messagesDisplayed === 'all') {
-    //       this.dropdownVariable = 'All messages'
-    //     } else if (messagesDisplayed === 'orders') {
-    //       this.dropdownVariable = 'Orders'
-    //       this.getLockedOrders()
-    //     } else if (messagesDisplayed === 'quoteRequests') {
-    //       this.dropdownVariable = 'Quote Requests'
-    //     }
-    //   } catch (error) {
-    //     console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
-    //     if (error) throw error
-    //   }
-    // },
+
     async generateInvoice () {
       try {
         InboxService.generateInvoice(this.order)
