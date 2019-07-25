@@ -100,10 +100,16 @@ export default {
         if (error) throw error
       }
     },
-
     async closeSubmitPrompt () {
       try {
-        console.log(`\n\nThis function is supposed to close the modal which is used to validate submission with.\n\n`) // TESTING
+        this.$modal.hide('would-you-like-to-submit')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async submitOrderPrompt () {
+      try {
+        this.$modal.show('would-you-like-to-submit')
       } catch (error) {
         if (error) throw error
       }

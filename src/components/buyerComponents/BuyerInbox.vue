@@ -305,8 +305,6 @@
                         style="background-color: #12005e; color: white;"
                         class="btn-block"
                       >Submit Order</md-button>
-
-                      <md-button>Preview Invoice</md-button>
                     </div>
                   </md-card-content>
                 </md-card-expand-content>
@@ -319,7 +317,6 @@
       </div>
     </div>
   </body>
-
   <!--  -->
 
   <modal height="auto" scrollable="true" name="would-you-like-to-submit">
@@ -333,8 +330,8 @@
         <!-- $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }} -->
       </div>
 
-      <hr />Total Price: $
-      <!-- {{this.totalPrice}} -->
+      <hr />
+      Total Price: $ {{this.totalPrice}}
       <br />
       <br />
       <div>Would you like to submit this order?</div>
