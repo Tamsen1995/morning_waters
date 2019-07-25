@@ -17,8 +17,10 @@ export default {
       quoteRequest: null,
       order: null,
       orderItems: [],
+      amtForServicesNegotiated: [],
       servicesNegotiated: [],
       // orders:[] is an array holding several objects, each representing an order
+      totalPrice: 0.0,
       quoteOrders: [],
       dropdownVariable: 'All messages',
       correspondanceMessages: [],
@@ -173,11 +175,20 @@ export default {
     },
     async retrieveOrderOrderItems (order) {
       try {
-        const response = await InboxService.retrieveOrderOrderItems(order.orderId)
-        const response2 = await InboxService.retrieveServicesNegotiated(response.data.orderItems)
+        const orderId = order.orderId
+        const response = await InboxService.retrieveOrderOrderItems(orderId)
+        const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
 
+        this.orderItems = null
         this.orderItems = response.data.orderItems
-        this.servicesNegotiated = response2.data
+        this.amtForServicesNegotiated = []
+        this.totalPrice = 0.0
+        for (var i = 0; i < this.orderItems.length; i++) {
+          this.amtForServicesNegotiated.push(this.orderItems[i].amount)
+          this.totalPrice = this.totalPrice + this.orderItems[i].price
+        }
+        this.servicesNegotiated = []
+        this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nError in retrieveOrderOrderItems\n`) // TESTING
         if (error) throw error

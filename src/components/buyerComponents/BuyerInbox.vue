@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <dashboard-header />
+  <buyer-header />
   <body class="inbox" id="inbox">
     <div
       class="responsive-component"
@@ -251,7 +251,7 @@
                   and you will have ro re-confirm the order before your buyer is charged.
                 </div>
               </md-card-header>
-              <md-card-expand v-if="this.order && this.order.locked === false">
+              <md-card-expand v-if="this.order">
                 <md-card-actions md-alignment="space-between">
                   <div></div>
                   <md-card-expand-trigger>
@@ -275,7 +275,7 @@
                         <!-- Edit Service Title -->
                         <div class="row">
                           <div class="col-6">
-                            <!-- <md-field>{{ item.title }}</md-field> -->
+                            <md-field>{{ item.title }}</md-field>
                           </div>
                           <div class="col-3">
                             <!-- Edit Quantity -->
@@ -308,8 +308,8 @@
                         </div>
                       </div>
 
-                      <hr />Total Price :
-                      <!-- Total price: {{ this.totalPrice }} $ -->
+                      <hr />
+                      Total price: {{ this.totalPrice }} $
                       <br />
                       <br />
                       <!-- Negotiation Interface -->
