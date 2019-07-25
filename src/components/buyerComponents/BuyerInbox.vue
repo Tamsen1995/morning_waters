@@ -283,18 +283,7 @@
                             <md-field>
                               X
                               <!-- TODO : make sure the default of this is set to true on back -->
-                              <div
-                                v-if="order.pending || order.seller_confirmed === true"
-                              >{{amtForServicesNegotiated[index]}}</div>
-
-                              <md-input
-                                v-else
-                                style="background-color: white; width: 10%;"
-                                v-model="amtForServicesNegotiated[index]"
-                                @change="updateOrderItems(index)"
-                                placeholder="amount"
-                                type="text"
-                              />
+                              <div>{{amtForServicesNegotiated[index]}}</div>
                             </md-field>
                           </div>
                           <div class="col-3">
@@ -315,7 +304,7 @@
                       <!-- Negotiation Interface -->
                       <md-button
                         @click="submitOrderPrompt()"
-                        v-if="this.order && this.order.seller_confirmed === false"
+                        v-if="this.order && this.order.seller_confirmed === true"
                         style="background-color: #12005e; color: white;"
                         class="btn-block"
                       >Submit Order</md-button>
