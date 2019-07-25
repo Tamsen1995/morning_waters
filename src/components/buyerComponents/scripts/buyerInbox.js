@@ -100,8 +100,17 @@ export default {
         if (error) throw error
       }
     },
-    async confirmOrder () {
+
+    async closeSubmitPrompt () {
       try {
+        console.log(`\n\nThis function is supposed to close the modal which is used to validate submission with.\n\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async submitOrder () {
+      try {
+        console.log(`\n\nThis function is to submit the order\n\n`) // TESTING
         await InboxService.confirmOrder({
           orderId: this.order.orderId,
           user: 'buyer'
@@ -115,21 +124,6 @@ export default {
             name: 'buyerDashboard'
           })
         }
-      } catch (error) {
-        console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
-        if (error) throw error
-      }
-    },
-    async closeSubmitPrompt () {
-      try {
-        console.log(`\n\nThis function is supposed to close the modal which is used to validate submission with.\n\n`) // TESTING
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async submitOrder () {
-      try {
-        console.log(`\n\nThis function is to submit the order\n\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
