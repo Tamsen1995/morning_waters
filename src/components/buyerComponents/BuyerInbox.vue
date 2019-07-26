@@ -58,36 +58,6 @@
                 </md-ripple>
               </md-card>
             </div>
-            <!-- Responded -->
-            <div class="list-group no-margin list-message">
-              <!-- <md-card
-                class="list-group-item request"
-                v-for="(order, index) in this.orders"
-                v-bind:key="index"
-                md-with-hover
-                id="responded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order), retrieveOrderOrderItems(order)">
-                    <h4 class="list-group-item-heading">
-                      <md-avatar class="md-avatar-icon md-primary">
-
-                        <i class="fas fa-lock"></i>
-                      </md-avatar>
-                      Buyer ID : {{ order.buyerId }}
-                      <small class="pull-right">{{ order.createdAt }}</small>
-                      <br />
-                      <br />
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
-                    <span class="label label-success pull-right">Request</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>-->
-            </div>
 
             <!-- The panels for the orders -->
             <!-- The panels for the pending orders -->
@@ -103,10 +73,7 @@
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems (order)">
                     <h4 class="list-group-item-heading">
-                      <div v-if="order.locked === true">
-                        <md-icon>lock</md-icon>
-                        Buyer ID : {{ order.buyerId }}
-                      </div>
+                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
                       <div v-else>Buyer ID : {{ order.buyerName }}</div>
                       <br />
                       <br />
@@ -118,43 +85,12 @@
                     </h4>
 
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
+
                     <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
                     <div class="clearfix"></div>
                   </div>
                 </md-ripple>
               </md-card>
-            </div>
-            <!-- Responded -->
-
-            <div class="list-group no-margin list-message">
-              <!-- <md-card
-                class="list-group-item pending-order"
-                v-for="(order, index) in this.pendingOrders"
-                v-bind:key="index"
-                md-with-hover
-                id="responded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order)">
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br />
-                      <br />
-
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
-
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
-                    <span class="label pull-right" style="background-color:#a255ff">Pending Order</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>-->
             </div>
 
             <!-- The panels for the quote requests -->
