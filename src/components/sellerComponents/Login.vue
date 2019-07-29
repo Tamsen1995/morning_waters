@@ -39,6 +39,7 @@
                     class="form-control"
                     id="staticEmail"
                     placeholder="Enter your email"
+                    v-on:keyup.enter="login()"
                   />
                 </div>
               </div>
@@ -51,6 +52,7 @@
                     class="form-control"
                     id="inputPassword"
                     placeholder="Enter your password"
+                    v-on:keyup.enter="login()"
                   />
                 </div>
               </div>

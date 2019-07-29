@@ -121,7 +121,7 @@
                   <md-content>
                     <h4 class="media-heading pull-right">Date</h4>
                     <md-icon>account_circle</md-icon>
-                    <!-- {{buyer.name}} -->
+                    <span v-if="buyer !== null">{{buyer.name}}</span>
                     <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                     <div class="view_msg">
                       <p class="lead">{{msg.message}}</p>
@@ -134,7 +134,7 @@
                   <md-content>
                     <h4 class="media-heading pull-right">Date</h4>
                     <md-icon>account_circle</md-icon>
-                    <!-- {{seller.companyName}} -->
+                    <span v-if="seller !== null">{{seller.companyName}}</span>
                     <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
                     <div class="view_msg">
                       <p class="lead">{{msg.message}}</p>

@@ -39,7 +39,7 @@
           <md-button
             class="md-dense md-raised md-primary"
             @click="expanded = !expanded"
-          >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
+          >{{ expanded ? `Shrink` : `Expand` }}</md-button>-->
         </div>
         <br />
         <br />
@@ -47,7 +47,7 @@
         <div id="services">
           <br />
           <md-button
-          style="background-color: #4828a5; color: white;"
+            style="background-color: #4828a5; color: white;"
             @click="manifestModalInquiry(service)"
             class="md-raised md-primary pull-right submit-buttons-md"
           >Message Seller</md-button>
@@ -60,10 +60,9 @@
             <div v-if="service.isSubService === false">
               <div class="service-border">
                 <md-card-area md-inset>
-                  <md-card-header >
-                    <div >
+                  <md-card-header>
+                    <div v-if="subServicesPresent(service) === false">
                       <div class="pull-right">
-                      
                         <div
                           style="color:#51b828;font-size: 20px;"
                           id="price-text"
@@ -72,16 +71,14 @@
                           @click="manifestModalForm(service)"
                           class="md-raised md-primary"
                           style="background-color: #8164d8; color: white;"
-                        >Request Quote
-                        </md-button>
+                        >Request Quote</md-button>
                         <md-button
                           style="background-color: #51b828; color: white;"
                           @click="addServiceToCart(service, index)"
                         >Add to Cart</md-button>
-                        
                       </div>
                     </div>
-                    
+
                     <i class="fas fa-atom" id="service_logo"></i>
                     <span class="md-title">{{ service.title }}</span>
 
@@ -90,7 +87,7 @@
                       Turnaround time : {{ service.turnAroundTime }}
                     </div>
                   </md-card-header>
-                  
+
                   <md-card-content
                     class="md-scrollbar"
                     style="word-wrap: break-word;"
@@ -114,7 +111,6 @@
                     <md-card-area>
                       <md-card-header>
                         <div class="pull-right">
-                        
                           <div
                             style="color:#51b828;font-size: 20px;"
                             id="price-text"
@@ -123,19 +119,17 @@
                             @click="manifestModalForm(service)"
                             class="md-raised md-primary"
                             style="background-color: #8164d8; color: white;"
-                          >Request Quote
-                          </md-button>
+                          >Request Quote</md-button>
                           <md-button
                             style="background-color: #51b828; color: white;"
                             @click="addServiceToCart(subService, index)"
                           >Add to Cart</md-button>
-                          
                         </div>
-                        
+
                         <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
                         <div>
-                        <md-icon>access_time</md-icon>
-                        Turnaround time : {{ subService.turnAroundTime }}
+                          <md-icon>access_time</md-icon>
+                          Turnaround time : {{ subService.turnAroundTime }}
                         </div>
                       </md-card-header>
                       <md-card-content
@@ -168,7 +162,7 @@
             <md-card>
               <request-quote-cart></request-quote-cart>
             </md-card>
-          </div> -->
+          </div>-->
         </div>
       </div>
 
@@ -181,10 +175,16 @@
     </body>
 
     <!-- General Inquiry -->
-    <modal name="general-inquiry-modal" height="auto" scrollable="true" :clickToClose="true" id="inquiry-modal">
+    <modal
+      name="general-inquiry-modal"
+      height="auto"
+      scrollable="true"
+      :clickToClose="true"
+      id="inquiry-modal"
+    >
       <div class="container" id="gen_inquiry">
         <!-- <div class="row">
-          <div class="col-10"> -->
+        <div class="col-10">-->
         <div class="md-title">
           <h2>
             <i class="fas fa-atom" id="service_logo"></i>
@@ -199,7 +199,7 @@
               class="form-control animated"
               placeholder="Enter your message"
               rows="5"
-            ></md-textarea>          
+            ></md-textarea>
           </md-field>
           <md-button
             class="btn btn-default pull-right"
@@ -207,17 +207,19 @@
             style="margin-top:10px"
             type="button"
           >Submit</md-button>
-    
         </form>
-
-
-
       </div>
     </modal>
 
     <!-- Specific Inquiry -->
-    <modal height="auto" scrollable="true" name="request-quote-modal" :clickToClose="true" id="inquiry-modal">
-      <div class="container"  id="spec_inquiry">
+    <modal
+      height="auto"
+      scrollable="true"
+      name="request-quote-modal"
+      :clickToClose="true"
+      id="inquiry-modal"
+    >
+      <div class="container" id="spec_inquiry">
         <form class="md-layout">
           <div v-if="this.itemChosen">
             <md-title>
@@ -245,7 +247,7 @@
                 placeholder="Enter your message"
                 rows="5"
                 style="min-width:600px;"
-              ></md-textarea>          
+              ></md-textarea>
             </md-field>
           </div>
         </form>
