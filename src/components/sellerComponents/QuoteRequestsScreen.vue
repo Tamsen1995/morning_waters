@@ -352,7 +352,7 @@
 
       <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
         <br />
-        {{orderItem.amount}} *
+        {{orderItem.amount}} x
         {{ servicesNegotiated[index].title }}
         $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
       </div>

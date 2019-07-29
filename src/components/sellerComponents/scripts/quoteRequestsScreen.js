@@ -151,6 +151,8 @@ export default {
         const orderId = order.orderId
         const response = await InboxService.retrieveOrderOrderItems(orderId)
         const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
+        this.servicesNegotiated = []
+        this.servicesNegotiated = servicesNegotiated
 
         this.orderItems = null
         this.orderItems = response.data.orderItems
@@ -160,8 +162,6 @@ export default {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
-        this.servicesNegotiated = []
-        this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error
@@ -241,13 +241,14 @@ export default {
             message: this.message
           }
         }
+        this.message = ''
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
         const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
         this.correspondanceMessages = response.data.correspondance
-        this.message = ''
         if (this.order !== null) {
           this.showOrder(this.order)
+          this.retrieveOrderOrderItems(this.order)
         }
       } catch (error) {
         if (error) throw error
