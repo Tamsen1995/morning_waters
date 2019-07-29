@@ -38,8 +38,7 @@ export default {
     }
   },
   mounted () {
-    this.insertPrefilledInfo(),
-    ('script', 'termly-jssdk')
+    this.insertPrefilledInfo()
   },
   components: {
     PageHeader
@@ -68,23 +67,11 @@ export default {
       this.$store.dispatch('setCompanyName', '')
       this.$store.dispatch('setEmailAddress', '')
     },
-    prev() {
-      this.step--;
-    },
-    next() {
-      this.step++;
-    },
-    function(d, s, id) {
-      var js, tjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "https://app.termly.io/embed-policy.min.js";
-      tjs.parentNode.insertBefore(js, tjs);
-    },
+
     async register () {
       try {
         const response = await AuthenticationService.register({
-          name: this.name,
+          name: `${this.firstName} ${this.lastName}`,
           email: this.email,
           password: this.password,
           passwordConfirm: this.passwordConfirm,
