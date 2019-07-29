@@ -18,6 +18,14 @@ export default {
       companyWebsite: '',
       billingAddress: '',
       about: '',
+      // This address is used for the changing of the address in the settings
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zip: '',
+        country: ''
+      },
       tabs: [
         { title: 'Profile', value: 'profile1' },
         { title: 'Billing', value: 'billing3' },

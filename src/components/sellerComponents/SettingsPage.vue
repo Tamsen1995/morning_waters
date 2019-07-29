@@ -15,21 +15,21 @@
           <!-- Payout -->
           <md-tab id="tab-personal" md-label="Personal">
             <md-card md-with-hover>
-              <md-card-content>                
+              <md-card-content>
                 <!-- input for First Name -->
                 <div class="form-row">
                   <md-field>
                     <label>First Name:</label>
                     <md-input v-model="name"></md-input>
                   </md-field>
-                </div> 
-                <!-- input for First Name -->
+                </div>
+                <!-- input for Last Name -->
                 <div class="form-row">
                   <md-field>
                     <label>Last Name:</label>
                     <md-input v-model="name"></md-input>
                   </md-field>
-                </div> 
+                </div>
                 <!-- input for email address -->
                 <div class="form-row">
                   <md-field>
@@ -54,7 +54,7 @@
                   </md-field>
                 </div>
 
-                <md-button  class="md-raised md-primary">Submit</md-button>
+                <md-button class="md-raised md-primary">Submit</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -101,82 +101,71 @@
           <md-tab id="tab-payout" md-label="Payout">
             <md-card md-with-hover>
               <md-card-content>
-                <p style="color:#880599">Your organization's bank information for recieving payments from buyers.</p>
+                <p
+                  style="color:#880599"
+                >Your organization's bank information for recieving payments from buyers.</p>
                 <md-button class="md-raised md-primary">Submit</md-button>
               </md-card-content>
-            </md-card>          
+            </md-card>
           </md-tab>
 
           <!-- Payment -->
           <md-tab id="tab-billing" md-label="Payment">
             <md-card md-with-hover>
               <md-card-content>
-                <p style="color:#880599">Bank information for Fig payments. </p>
-                <billing-tab></billing-tab>
-                Billing Address
+                <p style="color:#880599">Bank information for Fig payments.</p>
+                <billing-tab></billing-tab>Billing Address
                 <br />
                 <!-- Street -->
                 <div class="form-group row">
-                  <label for="inputStreet" class="col-sm col-form-label">Street:</label>
                   <div class="col-sm-12">
-                    <!-- <input
-                      v-model="address.street"
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter your street"
-                    /> -->
+                    <md-field>
+                      <md-input
+                        v-model="address.street"
+                        type="text"
+                        placeholder="Enter your street"
+                      ></md-input>
+                    </md-field>
                   </div>
                 </div>
 
                 <!-- City -->
                 <div class="form-group row">
-                  <label for="inputCity" class="col-sm col-form-label">City:</label>
                   <div class="col-sm-12">
-                    <!-- <input
-                      v-model="address.city"
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter your city"
-                    /> -->
+                    <md-field>
+                      <md-input v-model="address.city" type="text" placeholder="Enter your city"></md-input>
+                    </md-field>
                   </div>
                 </div>
 
                 <!-- State -->
                 <div class="form-group row">
-                  <label for="inputState" class="col-sm col-form-label">State:</label>
                   <div class="col-sm-12">
-                    <!-- <input
-                      v-model="address.state"
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter your city"
-                    /> -->
+                    <md-field>
+                      <md-input v-model="address.state" type="text" placeholder="Enter your state"></md-input>
+                    </md-field>
                   </div>
                 </div>
 
                 <!-- Zip -->
                 <div class="form-group row">
-                  <label for="inputZip" class="col-sm col-form-label">Zip:</label>
                   <div class="col-sm-12">
-                    <!-- <input
-                      v-model="address.zip"
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter your zip code"
-                    /> -->
+                    <md-field>
+                      <md-input v-model="address.zip" type="text" placeholder="Enter your zip code"></md-input>
+                    </md-field>
                   </div>
                 </div>
 
                 <!-- Country -->
                 <div class="form-group row">
-                  <label for="inputCountry" class="col-sm col-form-label">Country:</label>
                   <div class="col-sm-12">
-                    <!-- <input
-                      v-model="address.country"
-                      type="text"
-                      class="form-control"
-                      placeholder="Enter your country"
-                    /> -->
+                    <md-field>
+                      <md-input
+                        v-model="address.country"
+                        type="text"
+                        placeholder="Enter your country"
+                      ></md-input>
+                    </md-field>
                   </div>
                 </div>
                 <md-button class="md-raised md-primary">Submit</md-button>
@@ -187,7 +176,6 @@
           <md-tab id="tab-password" md-label="Password">
             <md-card>
               <md-card-content>
-
                 <h4>Edit Password:</h4>
                 <br />
                 <br />

@@ -236,7 +236,8 @@
             </ul>
             <md-field>
               <label>Amount? (optional)</label>
-              <md-input v-model="pickedQuantityQuoteRequest" type="number" />
+              <!-- TODO : Not quite sure what this is -->
+              <!-- <md-input v-model="pickedQuantityQuoteRequest" type="number" /> -->
             </md-field>
 
             <md-field>
