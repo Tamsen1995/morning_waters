@@ -184,7 +184,7 @@
                   <!-- ADD BANK ACCOUNT INFO SUBMISSION -->
                   <!-- <h2 style="color:#880599">Payment System Setup</h2>
                   <h5 style="color:#880599">Bank information for Fig payments </h5>-->
-                  <div class="hidden">
+                  <div>
                     Billing Address
                     <br />
                     <!-- Street -->
