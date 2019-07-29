@@ -4,6 +4,7 @@ import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
 import BuyerSettingsBillingsTab from '@/components/buyerComponents/BuyerSettingsBillingsTab'
 import SettingsService from '@/services/SettingsService'
+import UserServices from '../../../services/UserServices'
 // let stripe = Stripe(process.env.stripe_public_key)
 
 export default {
@@ -13,6 +14,7 @@ export default {
       companyName: '',
       pendingOrders: [],
       buyer: null,
+      seller: null,
       buyerQuoteRequests: null,
       quoteRequest: null,
       order: null,
@@ -196,12 +198,13 @@ export default {
     },
     async showOrder (order) {
       try {
+        const orderId = order.orderId
+        const response = await InboxService.retrieveCorrespondance(orderId)
+
         this.servicesNegotiated = []
         this.order = order
-        this.quoteRequest = null
-        const orderId = order.orderId
-
-        const response = await InboxService.retrieveCorrespondance(orderId)
+        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
+        this.seller = (await UserServices.getUserInfo(order.sellerId)).data
         this.correspondanceMessages = response.data.correspondance
       } catch (error) {
         if (error) throw error
