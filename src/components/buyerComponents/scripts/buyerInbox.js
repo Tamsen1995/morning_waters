@@ -17,8 +17,10 @@ export default {
       quoteRequest: null,
       order: null,
       orderItems: [],
+      amtForServicesNegotiated: [],
       servicesNegotiated: [],
       // orders:[] is an array holding several objects, each representing an order
+      totalPrice: 0.0,
       quoteOrders: [],
       dropdownVariable: 'All messages',
       correspondanceMessages: [],
@@ -98,8 +100,23 @@ export default {
         if (error) throw error
       }
     },
-    async confirmOrder () {
+    async closeSubmitPrompt () {
       try {
+        this.$modal.hide('would-you-like-to-submit')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async submitOrderPrompt () {
+      try {
+        this.$modal.show('would-you-like-to-submit')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async submitOrder () {
+      try {
+        console.log(`\n\nThis function is to submit the order\n\n`) // TESTING
         await InboxService.confirmOrder({
           orderId: this.order.orderId,
           user: 'buyer'
@@ -113,14 +130,6 @@ export default {
             name: 'buyerDashboard'
           })
         }
-      } catch (error) {
-        console.log(`\nAn error occurred inside of confirmOrder\n`) // TESTING
-        if (error) throw error
-      }
-    },
-    async closeSubmitPrompt () {
-      try {
-        console.log(`\n\nThis function is supposed to close the modal which is used to validate submission with.\n\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
@@ -139,15 +148,6 @@ export default {
             sender: 'buyer',
             message: this.message
           }
-        } else if (this.quoteRequest !== null) {
-          correspondanceMsg = {
-            orderId: this.quoteRequest.orderId,
-            buyerId: this.quoteRequest.buyerId,
-            userId: this.quoteRequest.sellerId,
-            date: 'nothing for now',
-            sender: 'buyer',
-            message: this.message
-          }
         }
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
@@ -156,10 +156,7 @@ export default {
         this.message = ''
         if (this.order !== null) {
           this.showOrder(this.order)
-        } else if (this.quoteRequest !== null) {
-          this.showQuoteRequest(this.quoteRequest)
         }
-        // this.showMessage(this.order)
       } catch (error) {
         if (error) throw error
       }
@@ -178,11 +175,20 @@ export default {
     },
     async retrieveOrderOrderItems (order) {
       try {
-        const response = await InboxService.retrieveOrderOrderItems(order.orderId)
-        const response2 = await InboxService.retrieveServicesNegotiated(response.data.orderItems)
+        const orderId = order.orderId
+        const response = await InboxService.retrieveOrderOrderItems(orderId)
+        const servicesNegotiated = (await InboxService.retrieveServicesNegotiated(response.data.orderItems)).data
 
+        this.orderItems = null
         this.orderItems = response.data.orderItems
-        this.servicesNegotiated = response2.data
+        this.amtForServicesNegotiated = []
+        this.totalPrice = 0.0
+        for (var i = 0; i < this.orderItems.length; i++) {
+          this.amtForServicesNegotiated.push(this.orderItems[i].amount)
+          this.totalPrice = this.totalPrice + this.orderItems[i].price
+        }
+        this.servicesNegotiated = []
+        this.servicesNegotiated = servicesNegotiated
       } catch (error) {
         console.log(`\nError in retrieveOrderOrderItems\n`) // TESTING
         if (error) throw error

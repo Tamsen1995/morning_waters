@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-  <dashboard-header />
+  <buyer-header />
   <body class="inbox" id="inbox">
     <div
       class="responsive-component"
@@ -42,10 +42,7 @@
                     <h4 class="list-group-item-heading">
                       <md-avatar class="md-avatar-icon md-primary"></md-avatar>
 
-                      <div v-if="order.locked === true">
-                        <md-icon>lock</md-icon>
-                        Buyer ID : {{ order.buyerId }}
-                      </div>
+                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
                       <div v-else>Buyer ID : {{ order.buyerName }}</div>
 
                       <small class="pull-right">{{ order.createdAt }}</small>
@@ -60,36 +57,6 @@
                   </div>
                 </md-ripple>
               </md-card>
-            </div>
-            <!-- Responded -->
-            <div class="list-group no-margin list-message">
-              <!-- <md-card
-                class="list-group-item request"
-                v-for="(order, index) in this.orders"
-                v-bind:key="index"
-                md-with-hover
-                id="responded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order), retrieveOrderOrderItems(order)">
-                    <h4 class="list-group-item-heading">
-                      <md-avatar class="md-avatar-icon md-primary">
-
-                        <i class="fas fa-lock"></i>
-                      </md-avatar>
-                      Buyer ID : {{ order.buyerId }}
-                      <small class="pull-right">{{ order.createdAt }}</small>
-                      <br />
-                      <br />
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
-                    <span class="label label-success pull-right">Request</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>-->
             </div>
 
             <!-- The panels for the orders -->
@@ -106,10 +73,7 @@
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems (order)">
                     <h4 class="list-group-item-heading">
-                      <div v-if="order.locked === true">
-                        <md-icon>lock</md-icon>
-                        Buyer ID : {{ order.buyerId }}
-                      </div>
+                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
                       <div v-else>Buyer ID : {{ order.buyerName }}</div>
                       <br />
                       <br />
@@ -121,43 +85,12 @@
                     </h4>
 
                     <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
+
                     <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
                     <div class="clearfix"></div>
                   </div>
                 </md-ripple>
               </md-card>
-            </div>
-            <!-- Responded -->
-
-            <div class="list-group no-margin list-message">
-              <!-- <md-card
-                class="list-group-item pending-order"
-                v-for="(order, index) in this.pendingOrders"
-                v-bind:key="index"
-                md-with-hover
-                id="responded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order)">
-                    <h4 class="list-group-item-heading">
-                      Buyer ID : {{ order.buyerId }}
-                      <br />
-                      <br />
-
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
-
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
-                    <span class="label pull-right" style="background-color:#a255ff">Pending Order</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>-->
             </div>
 
             <!-- The panels for the quote requests -->
@@ -181,7 +114,7 @@
               >
                 <!-- if -->
                 <md-card
-                  v-if="msg && msg.sender && msg.sender === 'buyer'"
+                  v-if="msg && msg.sender && msg.sender === 'seller'"
                   id="recieve-text-bubble"
                   class="pull-left"
                 >
@@ -251,7 +184,7 @@
                   and you will have ro re-confirm the order before your buyer is charged.
                 </div>
               </md-card-header>
-              <md-card-expand v-if="this.order && this.order.locked === false">
+              <md-card-expand v-if="this.order">
                 <md-card-actions md-alignment="space-between">
                   <div></div>
                   <md-card-expand-trigger>
@@ -275,7 +208,7 @@
                         <!-- Edit Service Title -->
                         <div class="row">
                           <div class="col-6">
-                            <!-- <md-field>{{ item.title }}</md-field> -->
+                            <md-field>{{ item.title }}</md-field>
                           </div>
                           <div class="col-3">
                             <!-- Edit Quantity -->
@@ -283,18 +216,7 @@
                             <md-field>
                               X
                               <!-- TODO : make sure the default of this is set to true on back -->
-                              <div
-                                v-if="order.pending || order.seller_confirmed === true"
-                              >{{amtForServicesNegotiated[index]}}</div>
-
-                              <md-input
-                                v-else
-                                style="background-color: white; width: 10%;"
-                                v-model="amtForServicesNegotiated[index]"
-                                @change="updateOrderItems(index)"
-                                placeholder="amount"
-                                type="text"
-                              />
+                              <div>{{amtForServicesNegotiated[index]}}</div>
                             </md-field>
                           </div>
                           <div class="col-3">
@@ -315,12 +237,10 @@
                       <!-- Negotiation Interface -->
                       <md-button
                         @click="submitOrderPrompt()"
-                        v-if="this.order && this.order.seller_confirmed === false"
+                        v-if="this.order && this.order.seller_confirmed === true"
                         style="background-color: #12005e; color: white;"
                         class="btn-block"
                       >Submit Order</md-button>
-
-                      <md-button>Preview Invoice</md-button>
                     </div>
                   </md-card-content>
                 </md-card-expand-content>
@@ -333,7 +253,6 @@
       </div>
     </div>
   </body>
-
   <!--  -->
 
   <modal height="auto" scrollable="true" name="would-you-like-to-submit">
@@ -343,8 +262,8 @@
       <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
         <br />
         {{orderItem.amount}} *
-        {{ servicesNegotiated[index].title }}
-        $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
+        <!-- {{ servicesNegotiated[index].title }} -->
+        <!-- $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }} -->
       </div>
 
       <hr />

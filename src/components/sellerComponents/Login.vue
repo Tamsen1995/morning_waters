@@ -57,13 +57,8 @@
               <br />
               <div class="error" v-html="error" />
 
-              <div class="container"  id="center">
-                <md-button
-                  type="button"
-                  @click="login()"
-                  id="btn-login"
-                  style="width:100px;"
-                >Login</md-button>
+              <div class="container" id="center">
+                <md-button type="button" @click="login()" id="btn-login" style="width:100px;">Login</md-button>
                 <br />
                 <br />
                 <p>
