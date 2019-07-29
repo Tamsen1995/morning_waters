@@ -16,7 +16,7 @@ export default {
       orders: [],
       pendingOrders: [],
       orderItems: null,
-      servicesNegotiated: null,
+      servicesNegotiated: [],
       amtForServicesNegotiated: [],
       order: null,
       buyer: null,
