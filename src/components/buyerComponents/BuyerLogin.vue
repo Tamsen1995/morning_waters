@@ -35,6 +35,7 @@
                   placeholder="Enter your email address"
                   class="form-control"
                   v-model="email"
+                  v-on:keyup.enter="buyerLogin()"
                 ></md-input>
               </md-field>
 
@@ -47,6 +48,7 @@
                   class="form-control"
                   id="inputPassword"
                   placeholder="Enter your password"
+                  v-on:keyup.enter="buyerLogin()"
                 ></md-input>
               </md-field>
 
