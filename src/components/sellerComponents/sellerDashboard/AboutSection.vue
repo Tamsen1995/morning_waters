@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-    <br>
+    <br />
 
     <!-- About Section -->
     <div class="container" id="about">
@@ -33,15 +33,14 @@
       <md-button
               class="md-dense md-raised md-primary"
               @click="expanded = !expanded"
-      >{{ expanded ? `Shrink` : `Expand` }}</md-button> -->
+      >{{ expanded ? `Shrink` : `Expand` }}</md-button>-->
     </div>
   </div>
 </template>
 
 <script>
 import UserServices from "@/services/UserServices";
-import TransitionExpand from '@/components/TransitionExpand';
-
+import TransitionExpand from "@/components/TransitionExpand";
 
 export default {
   data() {
@@ -66,8 +65,6 @@ export default {
         this.user = response.user;
         this.companyName = this.user.companyName;
         this.about = this.user.about;
-
-        console.log(`\n\n${JSON.stringify(response.user)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
