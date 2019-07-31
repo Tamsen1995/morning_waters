@@ -134,7 +134,6 @@ export default {
     },
     async sendOrderAndOrInquiries () {
       try {
-        console.log(`\nsend this shit !!\n`) // TESTING
         // sending shopping cart to back
         const token = await stripe.createToken(card)
         if (!token.error) {

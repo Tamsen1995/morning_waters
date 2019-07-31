@@ -97,11 +97,7 @@
 
           <!-- Step 2: Seller Confirms Order -->
           <div class="row timeline-movement">
-            <div class="timeline-badge" id="status-complete">
-              <span style="font-size: 40px;">
-                <i class="fas fa-clipboard-check"></i>
-              </span>
-            </div>
+            <div class="timeline-badge" id="status-complete"></div>
 
             <div class="col-sm-6 timeline-item">
               <div class="row">
@@ -152,150 +148,12 @@
                 <div class="col-sm-11"></div>
               </div>
             </div>
-
-            <div class="col-sm-6 timeline-item">
-              <div class="row">
-                <div class="col-sm-offset-1 col-sm-11">
-                  <div class="timeline-panel seller-side">
-                    <!-- Before Shippo status updates -->
-                    <ul class="timeline-panel-ul">
-                      <li>
-                        <span class="importo">Need to ship?</span>
-                      </li>
-                      <li>
-                        <span class="causale">Shipping UI Link.</span>
-                      </li>
-                    </ul>
-
-                    <!-- With Shippo Status updates -->
-                    <!-- <ul class="timeline-panel-ul">
-                        <li>
-                          <span class="importo">[Shipping status]</span>
-                        </li>
-                        <li>
-                          <span class="causale">Tracking Number</span>
-                        </li>
-                        <li>
-                          <p>
-                            <small class="text-muted">
-                              <i class="glyphicon glyphicon-time"></i> 11/09/2014
-                            </small>
-                          </p>
-                        </li>
-                    </ul>-->
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <!-- Post-Delivery Status (Replace above block) -->
-          <div class="row timeline-movement">
-            <div class="timeline-badge" id="status-incomplete" style="top: 25%;">
-              <span style="font-size: 40px;">
-                <i class="far fa-check-circle"></i>
-              </span>
-            </div>
-
-            <div class="col-sm-offset-6 col-sm-6 timeline-item">
-              <div class="row">
-                <div class="col-sm-offset-1 col-sm-11">
-                  <div class="timeline-panel seller-side">
-                    <ul class="timeline-panel-ul">
-                      <li>
-                        <span class="importo">[Delivered]</span>
-                      </li>
-                      <li>
-                        <span class="causale">Tracking Number</span>
-                      </li>
-                      <li>
-                        <p>
-                          <small class="text-muted">
-                            <i class="glyphicon glyphicon-time"></i> 11/09/2014
-                          </small>
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Buyer Pre-Delivery Shipping Status-->
-          <div class="row timeline-movement">
-            <div class="timeline-badge" style="padding:5px;" id="status-incomplete">
-              <span style="font-size: 37px; padding-top: 20px;">
-                <i class="fas fa-dolly"></i>
-              </span>
-            </div>
-
-            <div class="col-sm-6 timeline-item">
-              <div class="row">
-                <div class="col-sm-11">
-                  <div class="timeline-panel buyer-side">
-                    <!-- With Shippo Status updates -->
-                    <ul class="timeline-panel-ul">
-                      <li>
-                        <span class="importo">[Shipping status]</span>
-                      </li>
-                      <li>
-                        <span class="causale">Tracking Number</span>
-                      </li>
-                      <li>
-                        <p>
-                          <small class="text-muted">
-                            <i class="glyphicon glyphicon-time"></i> 11/09/2014
-                          </small>
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Buyer Post-Delivery Status (Replace above block) -->
-          <div class="row timeline-movement">
-            <div class="timeline-badge" id="status-incomplete" style="top: 25%;">
-              <span style="font-size: 40px;">
-                <i class="far fa-check-circle"></i>
-              </span>
-            </div>
-
-            <div class="col-sm-6 timeline-item">
-              <div class="row">
-                <div class="col-sm-11">
-                  <div class="timeline-panel buyer-side">
-                    <ul class="timeline-panel-ul">
-                      <li>
-                        <span class="importo">[Delivered]</span>
-                      </li>
-                      <li>
-                        <span class="causale">Tracking Number</span>
-                      </li>
-                      <li>
-                        <p>
-                          <small class="text-muted">
-                            <i class="glyphicon glyphicon-time"></i> 11/09/2014
-                          </small>
-                        </p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <br />
           <br />
           <div class="row timeline-movement timeline-movement-top">
-            <div class="timeline-badge timeline-future-movement" style="top: 25px;">
-              <a href="#">
-                <span class="glyphicon glyphicon-plus"></span>
-              </a>
-            </div>
+            <div class="timeline-badge" style="top: 25px;">asdasd</div>
           </div>
         </div>
       </div>
