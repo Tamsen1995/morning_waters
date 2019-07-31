@@ -138,7 +138,6 @@ export default {
     },
     async submitMessage () {
       try {
-        console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
         var correspondanceMsg = null
         if (this.order !== null) {
           correspondanceMsg = {
@@ -158,6 +157,7 @@ export default {
         this.message = ''
         if (this.order !== null) {
           this.showOrder(this.order)
+          this.retrieveOrderOrderItems(this.order)
         }
       } catch (error) {
         if (error) throw error
