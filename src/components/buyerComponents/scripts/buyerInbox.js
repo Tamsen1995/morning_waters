@@ -138,7 +138,6 @@ export default {
     },
     async submitMessage () {
       try {
-        console.log(`\norder : ${JSON.stringify(this.order)}\n`) // TESTING
         var correspondanceMsg = null
         if (this.order !== null) {
           correspondanceMsg = {

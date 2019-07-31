@@ -49,7 +49,7 @@ export default {
   },
   getUserInfo () {
     const token = localStorage.getItem('id_token')
-    console.log(`\nThe user's token is ${token}\n`)
+
     return Api().get('dashboard', token)
   },
   searchUser (searchedAfter) {
