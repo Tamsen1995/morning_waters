@@ -63,10 +63,14 @@
         <div id="seller-timeline">
           <!-- Step 1: Buyer Submits order -->
           <div class="row timeline-movement">
-            <div class="timeline-badge" id="status-complete">
-              <span style="font-size: 40px;">
-                <i class="fas fa-clipboard-list"></i>
-              </span>
+            <div class="timeline-badge" style="top: 25px;">
+              <md-card
+                class="md-primary timeline-badge"
+                md-theme="green-card"
+                style="background-color: green;"
+              >
+                <md-icon>backup</md-icon>
+              </md-card>
             </div>
 
             <!-- Order Submitted-->
@@ -75,12 +79,8 @@
                 <div class="col-sm-11">
                   <div class="timeline-panel buyer-side">
                     <ul class="timeline-panel-ul">
-                      <li>
-                        <span class="importo">[Buyer Name], [Lab Name]</span>
-                      </li>
-                      <li>
-                        <span class="importo">Submited Order</span>
-                      </li>
+                      <li>[TEST]</li>
+                      <li>[TEXT]</li>
                       <li>
                         <p>
                           <small class="text-muted">
@@ -97,7 +97,15 @@
 
           <!-- Step 2: Seller Confirms Order -->
           <div class="row timeline-movement">
-            <div class="timeline-badge" id="status-complete"></div>
+            <div class="timeline-badge" style="top: 25px;">
+              <md-card
+                class="md-primary timeline-badge"
+                md-theme="green-card"
+                style="background-color: green;"
+              >
+                <md-icon>backup</md-icon>
+              </md-card>
+            </div>
 
             <div class="col-sm-6 timeline-item">
               <div class="row">
@@ -112,15 +120,9 @@
                   <div class="timeline-panel seller-side">
                     <!-- Pending Confirmation -->
                     <ul class="timeline-panel-ul">
-                      <li>
-                        <span class="importo">You Confirmed Order</span>
-                      </li>
-                      <li>
-                        <span class="importo">Buyer Charged [total billed]</span>
-                      </li>
-                      <li>
-                        <span class="causale">View Invoice</span>
-                      </li>
+                      <li>[TEST]</li>
+                      <li>[TEXT]</li>
+                      <li></li>
                       <li>
                         <p>
                           <small class="text-muted">
@@ -135,26 +137,22 @@
             </div>
           </div>
 
-          <!-- Pre-Delivery Shipping Status-->
-          <div class="row timeline-movement">
-            <div class="timeline-badge" style="padding:5px;" id="status-incomplete">
-              <span style="font-size: 37px; padding-top: 20px;">
-                <i class="fas fa-dolly"></i>
-              </span>
-            </div>
-
-            <div class="col-sm-6 timeline-item">
-              <div class="row">
-                <div class="col-sm-11"></div>
-              </div>
-            </div>
-          </div>
-
           <br />
           <br />
+
+          <!-- This is a  ball -->
           <div class="row timeline-movement timeline-movement-top">
-            <div class="timeline-badge" style="top: 25px;">asdasd</div>
+            <div class="timeline-badge" style="top: 25px;">
+              <md-card
+                class="md-primary timeline-badge"
+                md-theme="green-card"
+                style="background-color: green;"
+              >
+                <md-icon>backup</md-icon>
+              </md-card>
+            </div>
           </div>
+          <!-- Here we can insert icons to indicate the shipping status -->
         </div>
       </div>
     </div>
