@@ -157,6 +157,7 @@ export default {
         this.message = ''
         if (this.order !== null) {
           this.showOrder(this.order)
+          this.retrieveOrderOrderItems(this.order)
         }
       } catch (error) {
         if (error) throw error
