@@ -1,25 +1,32 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader.vue'
 import InboxService from '@/services/InboxService'
 import UserServices from '@/services/UserServices'
+import ShippingService from '@/services/ShippingService'
+
 export default {
   data () {
     return {
       orderId: '',
-      // This array will hold the 'statusUpdates'
-      // necessary in order to populate the status timeline.
-      // Each statusUpdate will render a bubble as well as a written update
-      // in the timeline
+
+      // 1 seller side confirmed
+      // 2 buyer side confirmed
+      // 3 seller side shipping confirmed
       orderStatusInt: 0,
 
       // if the pending order's shipping has been confirmed,
       // that means we can render this variable
-      shipping_confirmed_date: ''
+      shipping_confirmed_date: '',
+
+      shippoOrder: null
     }
   },
-  async created () { },
+  async created () {
+
+  },
   async mounted () {
     this.orderId = this.$route.params.orderId
     this.retrieveOrderStatus(this.orderId)
+    this.retrieveOrderStatusFromShippo(this.orderId)
   },
   methods: {
     async redirectToShippo () {
@@ -31,17 +38,18 @@ export default {
         if (error) throw error
       }
     },
+    async retrieveOrderStatusFromShippo (orderId) {
+      try {
+        // the order id will be represented as the order number in Shippo
+        this.shippoOrder = (await ShippingService.retrieveOrderFromShippo(orderId)).data
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async retrieveOrderStatus (orderId) {
       try {
         const order = (await UserServices.getOrder(this.orderId)).data
-        console.log(
-          `\nI am printing the response for the order status : ${JSON.stringify(
-            order
-          )}\n`
-        ) // TESTING
 
-        // this.orderStatusInt = 2; // TESTING
-        // have a nested if statement
         if (order && order.order && order.order.seller_confirmed) {
           this.orderStatusInt = 1
         }

@@ -160,6 +160,14 @@
               </div>
             </div>
             <!--  -->
+            <div
+              v-if="shippoOrder.shipping_cost && shippoOrder.shipping_cost_currency && shippoOrder.shipping_method"
+            >
+              Shipping Cost: {{shippoOrder.shipping_cost}} {{shippoOrder.shipping_cost_currency}}
+              Shipping Method: {{shippoOrder.shipping_method}}
+            </div>
+
+            <!-- shipping_method": null, "shipping_cost": null, "shipping_cost_currency": null -->
           </div>
           <!-- Here we can insert icons to indicate the shipping status -->
         </div>
