@@ -22,6 +22,15 @@ export default {
     this.retrieveOrderStatus(this.orderId)
   },
   methods: {
+    async redirectToShippo () {
+      try {
+        console.log(`\n\nTODO : Here the user will be redirected to shippo\n`) // TESTING
+        var url = 'https://apps.goshippo.com/orders'
+        window.location = url
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async retrieveOrderStatus (orderId) {
       try {
         const order = (await UserServices.getOrder(this.orderId)).data
@@ -38,8 +47,8 @@ export default {
         }
         if (
           order &&
-					order.order &&
-					(order.order.buyer_confirmed || order.order.active === false)
+          order.order &&
+          (order.order.buyer_confirmed || order.order.active === false)
         ) {
           this.orderStatusInt = 2
         }

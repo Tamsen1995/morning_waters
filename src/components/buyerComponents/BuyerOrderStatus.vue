@@ -35,12 +35,13 @@
 
             <!-- TODO  -->
             <!-- Handle shipping -->
+
             <button
               v-if="this.orderStatusInt >= 3"
               class="pull-right"
               id="btn-shippo"
               type="submit"
-              @click="confirmOrder(index)"
+              @click="redirectToShippo"
             >Handle Shipping</button>
             <br />
           </div>
