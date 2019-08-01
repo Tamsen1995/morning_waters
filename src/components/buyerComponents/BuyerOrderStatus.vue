@@ -79,6 +79,7 @@
               </div>
             </div>
           </div>
+          <!--  -->
 
           <!-- Step 2: Seller Confirms Order -->
           <div class="row timeline-movement">
@@ -119,13 +120,11 @@
                 </div>
               </div>
             </div>
+            <!--  -->
           </div>
 
-          <br />
-          <br />
-
           <!-- This is a  ball -->
-          <div class="row timeline-movement timeline-movement-top">
+          <div class="row timeline-movement timeline-movement-top" v-if="this.orderStatusInt >= 3">
             <div class="timeline-badge" style="top: 25px;">
               <md-card
                 class="md-primary timeline-badge"
@@ -135,6 +134,28 @@
                 <md-icon>backup</md-icon>
               </md-card>
             </div>
+
+            <!-- Seller Side text card-->
+            <div class="col-sm-6 timeline-item">
+              <div class="row">
+                <div class="col-sm-11">
+                  <div class="timeline-panel buyer-side">
+                    <ul class="timeline-panel-ul">
+                      <li>Seller submitted Shipping logistics</li>
+                      <li>[TEST]</li>
+                      <li>
+                        <p>
+                          <small class="text-muted">
+                            <i class="glyphicon glyphicon-time"></i> [Timestamp] [Example Date]
+                          </small>
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--  -->
           </div>
           <!-- Here we can insert icons to indicate the shipping status -->
         </div>
@@ -151,7 +172,12 @@ import UserServices from "@/services/UserServices";
 export default {
   data() {
     return {
-      orderId: ""
+      orderId: "",
+      // This array will hold the 'statusUpdates'
+      // necessary in order to populate the status timeline.
+      // Each statusUpdate will render a bubble as well as a written update
+      // in the timeline
+      orderStatusInt: 0
     };
   },
   async created() {},
@@ -162,13 +188,24 @@ export default {
   methods: {
     async retrieveOrderStatus(orderId) {
       try {
-        console.log(`\nThe order id in retrieveOrderStatus is : ${orderId}\n`); // TESTING
         const order = (await UserServices.getOrder(this.orderId)).data;
         console.log(
           `\nI am printing the response for the order status : ${JSON.stringify(
             order
           )}\n`
         ); // TESTING
+
+        this.orderStatusInt = 2;
+        // have a nested if statement
+        if (order && order.order && order.order.seller_confirmed) {
+          this.orderStatusInt = 1;
+        }
+        if (order && order.order && order.order.buyer_confirmed) {
+          this.orderStatusInt = 2;
+        }
+        if (order.order.active === true) {
+          this.orderStatusInt = 3;
+        }
       } catch (error) {
         console.log(`\nThe error in retrieveOrderStatus ${error}\n`); // TESTING
         if (error) throw error;
