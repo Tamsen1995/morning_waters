@@ -148,7 +148,8 @@
                       <li>
                         <p>
                           <small class="text-muted">
-                            <i class="glyphicon glyphicon-time"></i> [Timestamp] [Example Date]
+                            <i class="glyphicon glyphicon-time"></i>
+                            [Timestamp] [ {{ shipping_confirmed_date }} ]
                           </small>
                         </p>
                       </li>
@@ -179,7 +180,11 @@ export default {
       // necessary in order to populate the status timeline.
       // Each statusUpdate will render a bubble as well as a written update
       // in the timeline
-      orderStatusInt: 0
+      orderStatusInt: 0,
+
+      // if the pending order's shipping has been confirmed,
+      // that means we can render this variable
+      shipping_confirmed_date: ""
     };
   },
   async created() {},
@@ -212,6 +217,7 @@ export default {
 
         if (order && order.order && order.order.active === true) {
           this.orderStatusInt = 3;
+          this.shipping_confirmed_date = order.order.shipping_confirmed;
         }
       } catch (error) {
         console.log(`\nThe error in retrieveOrderStatus ${error}\n`); // TESTING
