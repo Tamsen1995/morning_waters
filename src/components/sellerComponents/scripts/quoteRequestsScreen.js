@@ -195,6 +195,13 @@ export default {
         if (error) throw error
       }
     },
+    async closeConfirmedPrompt () {
+      try {
+        this.$modal.hide('order-has-been-submitted-message')
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async closeSubmitPrompt () {
       try {
         this.$modal.hide('would-you-like-to-submit')
@@ -222,6 +229,7 @@ export default {
         await this.discernLockedCorrespondences()
         this.showOrderWithOrderId(orderId)
         this.$modal.hide('would-you-like-to-submit')
+        this.$modal.show('order-has-been-submitted-message')
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
         if (error) throw error
