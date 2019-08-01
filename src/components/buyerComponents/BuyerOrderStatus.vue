@@ -3,12 +3,14 @@
   small: el => el.width < 860
   }">
   <buyer-header></buyer-header>
+
   <body class="pending_orders">
     <div id="pending_orders_content">
       <div class="container current-order-status">
         <!-- Add tabs to toggle Current Orders/ Pending Orders-->
         <!-- Curent Orders -->
         <br />
+
         <div class="timeline-dashboard">
           <!-- <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index"> -->
           <div>
@@ -47,7 +49,7 @@
 
         <div id="seller-timeline">
           <!-- Step 1: Buyer Submits order -->
-          <div class="row timeline-movement">
+          <div class="row timeline-movement" v-if="this.orderStatusInt >= 1">
             <div class="timeline-badge" style="top: 25px;">
               <md-card
                 class="md-primary timeline-badge"
@@ -82,7 +84,7 @@
           <!--  -->
 
           <!-- Step 2: Seller Confirms Order -->
-          <div class="row timeline-movement">
+          <div class="row timeline-movement" v-if="this.orderStatusInt >= 2">
             <div class="timeline-badge" style="top: 25px;">
               <md-card
                 class="md-primary timeline-badge"
@@ -195,15 +197,20 @@ export default {
           )}\n`
         ); // TESTING
 
-        this.orderStatusInt = 2;
+        // this.orderStatusInt = 2; // TESTING
         // have a nested if statement
         if (order && order.order && order.order.seller_confirmed) {
           this.orderStatusInt = 1;
         }
-        if (order && order.order && order.order.buyer_confirmed) {
+        if (
+          order &&
+          order.order &&
+          (order.order.buyer_confirmed || order.order.active === false)
+        ) {
           this.orderStatusInt = 2;
         }
-        if (order.order.active === true) {
+
+        if (order && order.order && order.order.active === true) {
           this.orderStatusInt = 3;
         }
       } catch (error) {
