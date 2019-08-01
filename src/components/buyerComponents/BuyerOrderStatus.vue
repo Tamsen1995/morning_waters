@@ -162,6 +162,8 @@
 
 <script>
 import BuyerHeader from "@/components/buyerComponents/BuyerHeader.vue";
+import InboxService from "@/services/InboxService";
+import UserServices from "@/services/UserServices";
 export default {
   data() {
     return {
@@ -171,6 +173,23 @@ export default {
   async created() {},
   async mounted() {
     this.orderId = this.$route.params.orderId;
+    this.retrieveOrderStatus(this.orderId);
+  },
+  methods: {
+    async retrieveOrderStatus(orderId) {
+      try {
+        console.log(`\nThe order id in retrieveOrderStatus is : ${orderId}\n`); // TESTING
+        const order = (await UserServices.getOrder(this.orderId)).data;
+        console.log(
+          `\nI am printing the response for the order status : ${JSON.stringify(
+            order
+          )}\n`
+        ); // TESTING
+      } catch (error) {
+        console.log(`\nThe error in retrieveOrderStatus ${error}\n`); // TESTING
+        if (error) throw error;
+      }
+    }
   },
   components: {
     BuyerHeader

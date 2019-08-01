@@ -15,7 +15,9 @@ export default {
       }
     })
   },
-  // this function will retrieve
+  // this function will retrieve either an order
+  // order pending order from the back
+  // depending on what this pertains to.
   getOrder (orderId) {
     return Api().get('orders/getOrder', {
       params: {
