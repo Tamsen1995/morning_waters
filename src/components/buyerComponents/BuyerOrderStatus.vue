@@ -67,7 +67,7 @@
                   <div class="timeline-panel buyer-side">
                     <ul class="timeline-panel-ul">
                       <li>Seller submitted the negotiation for buyer review</li>
-                      <li>[TEST]</li>
+
                       <li>
                         <p>
                           <small class="text-muted">
@@ -109,7 +109,7 @@
                     <!-- Pending Confirmation -->
                     <ul class="timeline-panel-ul">
                       <li>Buyer submitted the negotiation and the order has been submitted</li>
-                      <li>[TEST]</li>
+
                       <li>
                         <p>
                           <small class="text-muted">
@@ -133,7 +133,7 @@
                 md-theme="green-card"
                 style="background-color: green;"
               >
-                <md-icon>backup</md-icon>
+                <md-icon>local_shipping</md-icon>
               </md-card>
             </div>
 
@@ -144,12 +144,11 @@
                   <div class="timeline-panel buyer-side">
                     <ul class="timeline-panel-ul">
                       <li>Seller submitted Shipping logistics</li>
-                      <li>[TEST]</li>
                       <li>
                         <p>
                           <small class="text-muted">
                             <i class="glyphicon glyphicon-time"></i>
-                            [Timestamp] [ {{ shipping_confirmed_date }} ]
+                            Date of confirmation : [ {{ shipping_confirmed_date }} ]
                           </small>
                         </p>
                       </li>
