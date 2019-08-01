@@ -14,47 +14,32 @@
           <div>
             <div class="row">
               <div class="col-8">
+                <!-- TODO -->
+                <h3>[Seller Name]</h3>
+                <h2>[Seller Lab]</h2>
+
+                <!-- TODO -->
                 <h3>[Buyer Name]</h3>
                 <h2>[Buyer Lab]</h2>
                 <br />
                 <h3 style="color:green;">Order Confirmed [Date]</h3>
-                <h2 style="color:green;">Charged [$$$]</h2>
+                <h2 style="color:green;">Charged / Estimated revenue [$$$]</h2>
                 <br />
 
-                <!-- View Order Details, Add expandable Div -->
-                <div id="order_details">
-                  <h3>Order ID :</h3>
-                  <ol id="item_list">
-                    <h3>
-                      <li>
-                        <!-- {{orderItem.title}}
-                          <br>
-                          {{orderItem.description}} 
-                          <br>
-                        {{orderItem.quantity}}-->
-                      </li>
-                    </h3>
-                  </ol>
-                  <!-- <a><h3 style="color:purple;"> View Timeline</h3></a>  -->
-                </div>
+                <!-- TODO : View Order Details, Add expandable Div -->
               </div>
-              <!-- <div class="col-4">
-                  <h3  style="color:green;"> Order Confirmed [Date]</h3>         
-                  <h2  style="color:green;"> Charged [$$$]</h2>    
-              </div>-->
             </div>
             <br />
 
+            <!-- TODO  -->
             <!-- Handle shipping -->
-            <button
+            <!-- <button
               class="pull-right"
               id="btn-shippo"
               type="submit"
               @click="confirmOrder(index)"
-            >Handle Shipping</button>
+            >Handle Shipping</button>-->
             <br />
-
-            <a class="invoice-link">Download Invoice</a>
           </div>
 
           <hr />
@@ -79,12 +64,12 @@
                 <div class="col-sm-11">
                   <div class="timeline-panel buyer-side">
                     <ul class="timeline-panel-ul">
+                      <li>Seller submitted the negotiation for buyer review</li>
                       <li>[TEST]</li>
-                      <li>[TEXT]</li>
                       <li>
                         <p>
                           <small class="text-muted">
-                            <i class="glyphicon glyphicon-time"></i> Timestamp
+                            <i class="glyphicon glyphicon-time"></i> [Timestamp] [Example Date]
                           </small>
                         </p>
                       </li>
@@ -120,13 +105,12 @@
                   <div class="timeline-panel seller-side">
                     <!-- Pending Confirmation -->
                     <ul class="timeline-panel-ul">
+                      <li>Buyer submitted the negotiation and the order has been submitted</li>
                       <li>[TEST]</li>
-                      <li>[TEXT]</li>
-                      <li></li>
                       <li>
                         <p>
                           <small class="text-muted">
-                            <i class="glyphicon glyphicon-time"></i> [TimeStamp]
+                            <i class="glyphicon glyphicon-time"></i> [TimeStamp] [Example date]
                           </small>
                         </p>
                       </li>
