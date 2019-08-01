@@ -7,12 +7,10 @@ export default {
   data () {
     return {
       orderId: '',
-
       // 1 seller side confirmed
       // 2 buyer side confirmed
       // 3 seller side shipping confirmed
       orderStatusInt: 0,
-
       // if the pending order's shipping has been confirmed,
       // that means we can render this variable
       shipping_confirmed_date: '',
@@ -42,6 +40,7 @@ export default {
       try {
         // the order id will be represented as the order number in Shippo
         this.shippoOrder = (await ShippingService.retrieveOrderFromShippo(orderId)).data
+        console.log(`\n\nThe shippo order is : ${JSON.stringify(this.shippoOrder)}\n\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }

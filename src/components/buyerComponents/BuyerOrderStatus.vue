@@ -127,8 +127,8 @@
             <!--  -->
           </div>
 
-          <!-- This is a  ball -->
-          <div class="row timeline-movement timeline-movement-top" v-if="this.orderStatusInt >= 3">
+          <!-- Step 3-->
+          <div class="row timeline-movement" v-if="this.orderStatusInt >= 3">
             <div class="timeline-badge" style="top: 25px;">
               <md-card
                 class="md-primary timeline-badge"
@@ -170,6 +170,48 @@
             <!-- shipping_method": null, "shipping_cost": null, "shipping_cost_currency": null -->
           </div>
           <!-- Here we can insert icons to indicate the shipping status -->
+
+          <!-- Step 4: Seller Confirms Order -->
+          <div class="row timeline-movement timeline-movement-top" v-if="this.orderStatusInt >= 2">
+            <div class="timeline-badge" style="top: 25px;">
+              <md-card
+                class="md-primary timeline-badge"
+                md-theme="green-card"
+                style="background-color: green;"
+              >
+                <md-icon>local_shipping</md-icon>
+              </md-card>
+            </div>
+
+            <div class="col-sm-6 timeline-item">
+              <div class="row">
+                <div class="col-sm-11"></div>
+              </div>
+            </div>
+
+            <!-- Order Confirmed-->
+            <div class="col-sm-6 timeline-item">
+              <div class="row">
+                <div class="col-sm-offset-1 col-sm-11">
+                  <div class="timeline-panel seller-side">
+                    <!-- Pending Confirmation -->
+                    <ul class="timeline-panel-ul">
+                      <li>[INSERT LABEL CREAT INFO HERE]</li>
+
+                      <li>
+                        <p>
+                          <small class="text-muted">
+                            <i class="glyphicon glyphicon-time"></i> [TimeStamp] [Example date]
+                          </small>
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--  -->
+          </div>
         </div>
       </div>
     </div>
