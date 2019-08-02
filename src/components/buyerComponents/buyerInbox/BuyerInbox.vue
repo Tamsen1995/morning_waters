@@ -97,7 +97,7 @@
           <!--  -->
           <!--  -->
           <!-- Insert messaging panel here -->
-          <messaging-panel></messaging-panel>
+          <messaging-panel v-bind:order="this.order"></messaging-panel>
           <!--  -->
           <!--  -->
 

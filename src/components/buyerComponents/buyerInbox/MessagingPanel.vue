@@ -71,7 +71,18 @@
 
 <script>
 export default {
-  props: {},
+  props: {
+    order: null
+  },
+  watch: {
+    order: async function test() {
+      try {
+        console.log(`\n\ntesting !\n`); // TESTING
+      } catch (error) {
+        if (error) throw error;
+      }
+    }
+  },
   methods: {
     async submitMessage() {
       try {
