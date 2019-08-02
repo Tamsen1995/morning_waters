@@ -162,6 +162,7 @@ export default {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
+        console.log(`\n\nYou don't know : ${this.totalPrice}\n\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error
