@@ -162,6 +162,19 @@ export default {
     }
   },
   methods: {
+    async redirectToOrderStatus() {
+      try {
+        const orderId = this.order.orderId;
+
+        this.$router.push({
+          name: "buyerOrderStatus",
+          params: { orderId: orderId }
+        });
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+
     async closeSubmitPrompt() {
       try {
         this.$modal.hide("would-you-like-to-submit");

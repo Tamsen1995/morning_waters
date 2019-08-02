@@ -36,6 +36,7 @@ export default {
       this.retrieveOrderOrderItems(this.orders[0])
     } else if (this.pendingOrders.length > 0) {
       this.showOrder(this.pendingOrders[0])
+      this.retrieveOrderOrderItems(this.pendingOrders[0])
     }
   },
   async mounted () {
@@ -49,18 +50,6 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    async redirectToOrderStatus () {
-      try {
-        const orderId = this.order.orderId
-
-        this.$router.push({
-          name: 'buyerOrderStatus',
-          params: { orderId: orderId }
-        })
-      } catch (error) {
-        if (error) throw error
-      }
-    },
 
     async closeConfirmationModal () {
       try {
