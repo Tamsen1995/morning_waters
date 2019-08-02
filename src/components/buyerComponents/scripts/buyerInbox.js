@@ -16,7 +16,7 @@ export default {
       pendingOrders: [],
       buyer: null,
       seller: null,
-      buyerQuoteRequests: null,
+
       quoteRequest: null,
       order: null,
       orderItems: [],
@@ -137,27 +137,12 @@ export default {
           orderId: this.order.orderId,
           user: 'buyer'
         })
-
         await InboxService.submitToPendingOrders({ orderId: this.order.orderId })
-
-        // const response = await InboxService.checkIfOrderIsConfirmed({ orderId: this.order.orderId })
         if (this.order && this.order.seller_confirmed === true) {
           this.$router.push({
             name: 'buyerDashboard'
           })
         }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-
-    async showQuoteRequest (request) {
-      try {
-        this.quoteRequest = request
-        this.order = null
-        const orderId = request.orderId
-        const response = await InboxService.retrieveCorrespondance(orderId)
-        this.correspondanceMessages = response.data.correspondance
       } catch (error) {
         if (error) throw error
       }
@@ -197,33 +182,6 @@ export default {
         if (error) throw error
       }
     },
-    async switchMessagesDisplayed (messagesDisplayed) {
-      try {
-        if (messagesDisplayed === 'all') {
-          this.dropdownVariable = 'All messages'
-        } else if (messagesDisplayed === 'orders') {
-          this.dropdownVariable = 'Orders'
-          this.getLockedOrders()
-        } else if (messagesDisplayed === 'quoteRequests') {
-          this.dropdownVariable = 'Quote Requests'
-        }
-      } catch (error) {
-        console.log(`\n\nAn error occurred in switchMessagesDisplayed : ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
-
-    async getBuyersQuoteRequests () {
-      try {
-        const buyerExtracted = this.$store.getters.getBuyerInfo
-        const response = await BuyerServices.getBuyersQuoteRequests(
-          buyerExtracted.id
-        )
-        this.buyerQuoteRequests = response.data.buyerQuoteRequests
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     async getBuyersPendingOrders () {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
@@ -245,5 +203,8 @@ export default {
         if (error) throw error
       }
     }
+
+
+
   }
 }
