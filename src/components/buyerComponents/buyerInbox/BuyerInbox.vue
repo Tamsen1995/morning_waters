@@ -97,7 +97,12 @@
           <!--  -->
           <!--  -->
           <!-- Insert messaging panel here -->
-          <messaging-panel v-bind:order="this.order"></messaging-panel>
+          <messaging-panel
+            v-bind:order="this.order"
+            v-bind:correspondanceMessages="this.correspondanceMessages"
+            v-bind:buyer="this.buyer"
+            v-bind:seller="this.seller"
+          ></messaging-panel>
           <!--  -->
           <!--  -->
 

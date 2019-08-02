@@ -70,14 +70,31 @@
 </template>
 
 <script>
+import BuyerServices from "@/services/BuyerServices";
+import InboxService from "@/services/InboxService";
+
 export default {
+  data() {
+    return {
+      message: ""
+    };
+  },
   props: {
-    order: null
+    order: null,
+    buyer: null,
+    correspondanceMessages: [],
+    seller: null
   },
   watch: {
     order: async function test() {
       try {
-        console.log(`\n\ntesting !\n`); // TESTING
+        console.log(
+          `\n\ntesting ! ${JSON.stringify(this.order)}\n\n${JSON.stringify(
+            this.correspondanceMessages
+          )}\n\n${JSON.stringify(this.buyer)}\n\n${JSON.stringify(
+            this.message
+          )}\n\n${JSON.stringify(this.seller)}`
+        ); // TESTING
       } catch (error) {
         if (error) throw error;
       }
