@@ -36,9 +36,15 @@
 
           <md-card-actions>
             <md-button
+              v-if="pendingOrder.active === false"
               style="background-color: yellowgreen;"
               @click="confirmOrder(index)"
             >Handle Shipping</md-button>
+            <md-button
+              v-else
+              disabled
+              style="background-color: grey; color: white;"
+            >Shipping confirmed</md-button>
             <md-button @click="goToOrderStatus(index)">Timeline</md-button>
           </md-card-actions>
         </md-card>

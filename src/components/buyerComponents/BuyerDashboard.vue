@@ -44,7 +44,6 @@
           </md-card-content>
 
           <md-card-actions>
-            <md-button style="background-color: yellowgreen;">Shipping</md-button>
             <md-button @click="goToOrderStatus(index)">Timeline</md-button>
             <md-button
               type="submit"
