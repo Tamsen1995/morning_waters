@@ -49,7 +49,43 @@
           <hr />
         </div>
 
+        <!-- Step 0 : -->
         <div id="seller-timeline">
+          <div class="row timeline-movement">
+            <div class="timeline-badge" style="top: 25px;">
+              <md-card
+                class="md-primary timeline-badge"
+                md-theme="green-card"
+                style="background-color: green;"
+              >
+                <md-icon>backup</md-icon>
+              </md-card>
+            </div>
+
+            <!-- Order Submitted-->
+            <div class="col-sm-6 timeline-item">
+              <div class="row">
+                <div class="col-sm-11">
+                  <div class="timeline-panel buyer-side">
+                    <ul class="timeline-panel-ul">
+                      <li>The order has been placed</li>
+
+                      <li>
+                        <p>
+                          <small class="text-muted">
+                            <i class="glyphicon glyphicon-time"></i>
+                            placed at : [{{this.order.order.createdAt}}]
+                          </small>
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+
           <!-- Step 1: Buyer Submits order -->
           <div class="row timeline-movement" v-if="this.orderStatusInt >= 1">
             <div class="timeline-badge" style="top: 25px;">
