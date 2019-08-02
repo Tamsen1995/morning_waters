@@ -129,6 +129,7 @@
 
 <script>
 import PaymentService from "@/services/PaymentService";
+import InboxService from "@/services/InboxService";
 import BuyerSettingsBillingsTab from "@/components/buyerComponents/BuyerSettingsBillingsTab";
 import SettingsService from "@/services/SettingsService";
 import UserServices from "@/services/UserServices";
@@ -196,13 +197,7 @@ export default {
         if (error) throw error;
       }
     },
-    // async closePaymentMethodModal() {
-    //   try {
-    //     this.$modal.hide("no-buyer-method-detected");
-    //   } catch (error) {
-    //     if (error) throw error;
-    //   }
-    // },
+
     async promptForOrderConfirmation() {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo;
@@ -234,7 +229,7 @@ export default {
         await SettingsService.addPaymentMethod(sourceToBeAdded);
 
         this.$modal.hide("add-payment-method");
-        // this.confirmOrder();
+        this.$modal.show("would-you-like-to-submit");
       } catch (error) {
         if (error) throw error;
       }

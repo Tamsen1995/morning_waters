@@ -1,7 +1,7 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader.vue'
-import InboxService from '@/services/InboxService'
 import UserServices from '@/services/UserServices'
 import ShippingService from '@/services/ShippingService'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {
@@ -42,7 +42,7 @@ export default {
         // the order id will be represented as the order number in Shippo
         this.shippoOrder = (await ShippingService.retrieveOrderFromShippo(orderId)).data
         console.log(`\n\nthis.shippoOrder : ${JSON.stringify(this.shippoOrder)}\n\n`) // TESTING
-        if (this.shippoOrder.transactions.length > 0) {
+        if (this.shippoOrder && this.shippoOrder.transactions && this.shippoOrder.transactions.length > 0) {
           this.orderStatusInt = 4
         }
       } catch (error) {
@@ -76,5 +76,8 @@ export default {
   },
   components: {
     BuyerHeader
+  },
+  directives: {
+    responsive: ResponsiveDirective
   }
 }
