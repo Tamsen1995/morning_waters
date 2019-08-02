@@ -72,7 +72,7 @@
               <br />
               <!-- Negotiation Interface -->
               <md-button
-                @click="submitOrderPrompt()"
+                @click="promptForOrderConfirmation()"
                 v-if="this.order && this.order.seller_confirmed === true"
                 style="background-color: #12005e; color: white;"
                 class="btn-block"
@@ -84,10 +84,23 @@
 
       <!-- </md-ripple> -->
     </md-card>
+
+    <modal name="no-buyer-method-detected">
+      No payment method has been detected. Would you like to add one?
+      <br />
+      <md-button @click="addPaymentMethod()">Yes</md-button>
+      <md-button>No</md-button>
+    </modal>
+
+    <modal name="add-payment-method">add payment method here</modal>
   </div>
 </template>
 
 <script>
+import PaymentService from "@/services/PaymentService";
+import BuyerSettingsBillingsTab from "@/components/buyerComponents/BuyerSettingsBillingsTab";
+import SettingsService from "@/services/SettingsService";
+import UserServices from "../../../services/UserServices";
 export default {
   data() {
     return {};
@@ -102,6 +115,59 @@ export default {
     order: async function test() {
       try {
         console.log(`\nMy order being : ${JSON.stringify(this.order)}\n`); // TESTING
+      } catch (error) {
+        if (error) throw error;
+      }
+    }
+  },
+  methods: {
+    // this will render the modal to add a payment method with
+    async addPaymentMethod() {
+      try {
+        this.$modal.show("add-payment-method");
+        this.$modal.hide("no-buyer-method-detected");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    // async closePaymentMethodModal() {
+    //   try {
+    //     this.$modal.hide("no-buyer-method-detected");
+    //   } catch (error) {
+    //     if (error) throw error;
+    //   }
+    // },
+    async promptForOrderConfirmation() {
+      try {
+        const buyerExtracted = this.$store.getters.getBuyerInfo;
+        const buyerHasPaymentMethod = (await PaymentService.checkForBuyerPaymentMethod(
+          buyerExtracted.id
+        )).data;
+
+        if (buyerHasPaymentMethod === true) {
+          this.$modal.show("would-you-like-confirm");
+        } else {
+          this.$modal.show("no-buyer-method-detected");
+        }
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async submitPaymentMethod(card, stripe) {
+      try {
+        const buyerExtracted = this.$store.getters.getBuyerInfo;
+        const buyerId = buyerExtracted.id;
+        const stripeCustomerId = buyerExtracted.stripeCustomerId;
+        const token = await stripe.createToken(card);
+        const sourceToBeAdded = {
+          uid: buyerId,
+          stripeCustomerId: stripeCustomerId,
+          stripeToken: token
+        };
+        await SettingsService.addPaymentMethod(sourceToBeAdded);
+
+        this.$modal.hide("add-payment-method");
+        this.confirmOrder();
       } catch (error) {
         if (error) throw error;
       }
