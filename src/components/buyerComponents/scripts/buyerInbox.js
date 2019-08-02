@@ -8,6 +8,7 @@ import BuyerSettingsBillingsTab from '@/components/buyerComponents/BuyerSettings
 import SettingsService from '@/services/SettingsService'
 import UserServices from '../../../services/UserServices'
 // let stripe = Stripe(process.env.stripe_public_key)
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {
@@ -48,6 +49,9 @@ export default {
     BuyerSettingsBillingsTab,
     MessagingPanel,
     NegotiationInterface
+  },
+  directives: {
+    responsive: ResponsiveDirective
   },
   methods: {
     async redirectToOrderStatus () {

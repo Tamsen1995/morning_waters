@@ -83,7 +83,7 @@ export default {
   props: {
     order: null,
     buyer: null,
-    correspondanceMsgs: [],
+    correspondanceMsgs: null,
     seller: null
   },
   watch: {
