@@ -260,9 +260,17 @@
                   and you will have ro re-confirm the order before your buyer is charged.
                 </div>
               </md-card-header>
+
               <md-card-expand v-if="this.order && this.order.locked === false">
                 <md-card-actions md-alignment="space-between">
                   <div></div>
+
+                  <md-button
+                    class="md-accent"
+                    style="background-color: red; color: white;"
+                    @click="redirectToOrderStatus()"
+                  >Status</md-button>
+
                   <md-card-expand-trigger>
                     <md-button v-if="order.pending || order.seller_confirmed === true">
                       Invoice

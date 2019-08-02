@@ -55,6 +55,13 @@ export default {
     }
   },
   methods: {
+    async redirectToOrderStatus () {
+      try {
+        console.log(`\nredirect to order status\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     // goes through the array of orders and pending orders
     // finds the order with the appropiate order id
     // and then displays that order with the showOrder function
