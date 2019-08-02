@@ -48,7 +48,12 @@ export default {
   methods: {
     async redirectToOrderStatus () {
       try {
-        console.log(`\ndirect the focus\n`) // TESTING
+        const orderId = this.order.orderId
+
+        this.$router.push({
+          name: 'buyerOrderStatus',
+          params: { orderId: orderId }
+        })
       } catch (error) {
         if (error) throw error
       }
