@@ -291,10 +291,10 @@
 </div>
 </template>
 
-<script src="./scripts/buyerInbox.js">
+<script src="../scripts/buyerInbox.js">
 </script>
 
 <style scoped>
-@import "../../assets/css/inbox.css";
+@import "../../../assets/css/inbox.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>
