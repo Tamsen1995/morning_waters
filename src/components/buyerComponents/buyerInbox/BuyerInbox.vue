@@ -111,6 +111,12 @@
           <!--  -->
           <!--  -->
           <!-- Insert component here -->
+          <negotiation-interface
+            v-bind:order="this.order"
+            v-bind:servicesNegotiated="this.servicesNegotiated"
+            v-bind:totalPrice="this.totalPrice"
+            v-bind:amtForServicesNegotiated="this.amtForServicesNegotiated"
+          ></negotiation-interface>
           <!--  -->
           <!--  -->
           <!--  -->
@@ -122,7 +128,7 @@
 
   <modal
     height="auto"
-    scrollable="true"
+    scrollable
     name="would-you-like-to-submit"
     v-if="this.servicesNegotiated.length > 0"
   >

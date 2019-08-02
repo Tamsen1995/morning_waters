@@ -1,5 +1,6 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
 import MessagingPanel from '@/components/buyerComponents/buyerInbox/MessagingPanel'
+import NegotiationInterface from '@/components/buyerComponents/buyerInbox/NegotiationInterface'
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
@@ -45,7 +46,8 @@ export default {
   components: {
     BuyerHeader,
     BuyerSettingsBillingsTab,
-    MessagingPanel
+    MessagingPanel,
+    NegotiationInterface
   },
   methods: {
     async redirectToOrderStatus () {
@@ -203,8 +205,6 @@ export default {
         if (error) throw error
       }
     }
-
-
 
   }
 }

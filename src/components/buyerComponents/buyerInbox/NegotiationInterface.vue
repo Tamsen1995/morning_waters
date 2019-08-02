@@ -88,8 +88,29 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  props: {
+    order: null,
+    servicesNegotiated: null,
+    totalPrice: 0.0,
+    amtForServicesNegotiated: null
+  },
+  watch: {
+    order: async function test() {
+      try {
+        console.log(`\nMy order being : ${JSON.stringify(order)}\n`); // TESTING
+      } catch (error) {
+        if (error) throw error;
+      }
+    }
+  }
+};
 </script>
 
-<style>
+<style scoped>
+@import "../../../assets/css/inbox.css";
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>
