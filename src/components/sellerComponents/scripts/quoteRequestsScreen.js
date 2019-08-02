@@ -58,6 +58,7 @@ export default {
     async redirectToOrderStatus () {
       try {
         console.log(`\nredirect to order status\n`) // TESTING
+        // redirect to order status timeline with order id
       } catch (error) {
         if (error) throw error
       }
