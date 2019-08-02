@@ -1,23 +1,21 @@
 <template>
-  <div >
-    <b-navbar toggleable="lg"  id="buyer_nav">
+  <div>
+    <b-navbar toggleable="lg" id="buyer_nav">
       <b-navbar-brand href="#" class="mr-auto" style="margin-bottom:15px;">
-        <img src="./../TINY_LOGO.png" alt="FIG ANALYTICS" >
+        <img src="./../TINY_LOGO.png" alt="FIG ANALYTICS" />
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse" style="margin-bottom:15px;"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav >
-
-
+      <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto" >
+        <b-navbar-nav class="ml-auto">
           <!-- Orders -->
           <!-- This is the dropdown menu -->
-          <b-nav-item href="#"
+          <b-nav-item
+            href="#"
             v-if="this.buyerLoggedIn === true"
             @click="redirectOntoBuyerDashboard()"
-            
           >
             <a
               class="nav-link"
@@ -33,7 +31,7 @@
             >Orders</a>
           </b-nav-item>
 
-          <b-nav-item  v-if="this.buyerLoggedIn === true">
+          <b-nav-item v-if="this.buyerLoggedIn === true">
             <a
               class="nav-link"
               @click="redirectToInbox()"
@@ -52,19 +50,24 @@
           </b-nav-item>
 
           <b-nav-item v-if="this.buyerLoggedIn === false">
-              <i class="fas fa-envelope" alt="Inbox" id="buyer_nav_icon" style="padding-right:5px;"></i>
+            <i class="fas fa-envelope" alt="Inbox" id="buyer_nav_icon" style="padding-right:5px;"></i>
 
-            <b-nav-item-dropdown class="nav-item" text="Inbox" right id="dropdown-left" style="margin-top:-6px;">
+            <b-nav-item-dropdown
+              class="nav-item"
+              text="Inbox"
+              right
+              id="dropdown-left"
+              style="margin-top:-6px;"
+            >
               <request-quote-cart></request-quote-cart>
               <button class="btn-cart btn-default pull-right btn-block" @click="goToBuyersCart()">
                 <h3>View Messages</h3>
               </button>
             </b-nav-item-dropdown>
-
           </b-nav-item>
 
           <!-- Billing -->
-          <b-nav-item  class="nav-item" v-if="this.buyerLoggedIn === true">
+          <b-nav-item class="nav-item" v-if="this.buyerLoggedIn === true">
             <a
               class="nav-link"
               @click="redirectToBillings()"
@@ -97,8 +100,18 @@
 
           <!-- Cart -->
           <b-nav-item>
-            <i class="fas fa-shopping-cart" id="buyer_nav_icon" style="margin-top:1px;padding-top:0px;padding-bottom:0px;padding-right:10px;"></i>
-            <b-nav-item-dropdown class="nav-item" text="Cart" right id="dropdown-left" style="margin-top:-6px;">
+            <i
+              class="fas fa-shopping-cart"
+              id="buyer_nav_icon"
+              style="margin-top:1px;padding-top:0px;padding-bottom:0px;padding-right:10px;"
+            ></i>
+            <b-nav-item-dropdown
+              class="nav-item"
+              text="Cart"
+              right
+              id="dropdown-left"
+              style="margin-top:-6px;"
+            >
               <shopping-cart></shopping-cart>
               <button class="btn-cart btn-default pull-right btn-block" @click="goToBuyersCart()">
                 <h3>View Cart</h3>
@@ -108,59 +121,28 @@
 
           <b-nav-item class="nav-item" v-if=" this.buyerLoggedIn === true">
             <router-link class="nav-link nav-center" to="/">
-              <a
-                class="nav-link"
-                @click="buyerLogout()"
-                style="margin-top:-13px;"
-              >Logout</a>
+              <a class="nav-link" @click="buyerLogout()" style="margin-top:-13px;">Logout</a>
             </router-link>
           </b-nav-item>
           <!-- Login/Sign-up -->
-          <b-nav-item 
-            class="nav-item" 
-            v-if="this.buyerLoggedIn === false" 
-            href="#"  
+          <b-nav-item
+            class="nav-item"
+            v-if="this.buyerLoggedIn === false"
+            href="#"
             @click="redirectToSignUp()"
             style="padding-top:22px;"
-          >
-            Sign Up
-          </b-nav-item>
+          >Sign Up</b-nav-item>
 
-          <b-nav-item class="nav-item" 
-            v-if="this.buyerLoggedIn === false" 
-            href="#" 
+          <b-nav-item
+            class="nav-item"
+            v-if="this.buyerLoggedIn === false"
+            href="#"
             @click="redirectToLogin()"
-            style="padding-top:22px;" 
-          >
-            Login
-          </b-nav-item>
-
+            style="padding-top:22px;"
+          >Login</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-
-
-    <!-- View Cart Modal -->
-    <!-- <modal
-      name="view-cart"
-      height="auto"
-      pivotY="0"
-      scrollable="true"
-      style="padding-top:85px; padding-left:240px;"
-    >
-      <div class="container" id="shopping-cart">
-        <div class="pull-right">
-          <a @click="$modal.hide('view-cart')">
-            <h4>x</h4>
-          </a>
-        </div>
-        <shopping-cart></shopping-cart>
-        <button class="btn-cart btn-default pull-right btn-block" @click="goToBuyersCart()">
-          <h3>View Cart</h3>
-        </button>
-      </div>
-      <br>
-    </modal> -->
   </div>
 </template>
 

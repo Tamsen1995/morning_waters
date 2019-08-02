@@ -352,7 +352,7 @@
     </div>
   </body>
 
-  <modal height="auto" scrollable="true" name="order-has-been-submitted-message">
+  <modal height="auto" scrollable name="order-has-been-submitted-message">
     Your order has been submitted and will be confirmed once the buyer submits it from their end.
     <md-button @click="closeConfirmedPrompt">OK</md-button>
   </modal>
@@ -361,7 +361,7 @@
   <modal
     v-if="this.servicesNegotiated.length > 0"
     height="auto"
-    scrollable="true"
+    scrollable
     name="would-you-like-to-submit"
   >
     <div class="invoice-preview">

@@ -144,7 +144,7 @@
 
   <!-- Modal component to add a service with -->
 
-  <modal name="add-service" height="auto" scrollable="true" :clickToClose="true" id="add-services">
+  <modal name="add-service" height="auto" scrollable :clickToClose="true" id="add-services">
     <div class="container" id="service-form-block">
       <div class="md-title">
         <h2>

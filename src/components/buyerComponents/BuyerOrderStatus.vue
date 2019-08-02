@@ -72,7 +72,7 @@
 
                       <li>
                         <p>
-                          <small class="text-muted">
+                          <small class="text-muted" v-if="this.order">
                             <i class="glyphicon glyphicon-time"></i>
                             placed at : [{{this.order.order.createdAt}}]
                           </small>

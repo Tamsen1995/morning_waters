@@ -178,7 +178,7 @@
     <modal
       name="general-inquiry-modal"
       height="auto"
-      scrollable="true"
+      scrollable
       :clickToClose="true"
       id="inquiry-modal"
     >
@@ -214,7 +214,7 @@
     <!-- Specific Inquiry -->
     <modal
       height="auto"
-      scrollable="true"
+      scrollable
       name="request-quote-modal"
       :clickToClose="true"
       id="inquiry-modal"
