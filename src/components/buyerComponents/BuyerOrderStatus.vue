@@ -201,12 +201,11 @@
                     <div class="timeline-panel seller-side">
                       <!-- Pending Confirmation -->
                       <ul class="timeline-panel-ul">
-                        <li>[INSERT LABEL CREATE INFO HERE]</li>
-
+                        <li>Transaction number : [{{transaction.tracking_number}}]</li>
                         <li>
                           <p>
                             <small class="text-muted">
-                              <i class="glyphicon glyphicon-time"></i> [TimeStamp] [Example date]
+                              <i class="glyphicon glyphicon-time"></i> [Concept Prototype]
                             </small>
                           </p>
                         </li>

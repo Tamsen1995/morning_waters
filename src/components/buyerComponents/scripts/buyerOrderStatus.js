@@ -40,6 +40,7 @@ export default {
       try {
         // the order id will be represented as the order number in Shippo
         this.shippoOrder = (await ShippingService.retrieveOrderFromShippo(orderId)).data
+        console.log(`\n\nthis.shippoOrder : ${JSON.stringify(this.shippoOrder)}\n\n`) // TESTING
         if (this.shippoOrder.transactions.length > 0) {
           this.orderStatusInt = 4
         }
