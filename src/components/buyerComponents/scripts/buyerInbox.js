@@ -46,6 +46,13 @@ export default {
     BuyerSettingsBillingsTab
   },
   methods: {
+    async redirectToOrderStatus () {
+      try {
+        console.log(`\ndirect the focus\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitPaymentMethod (card, stripe) {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo
