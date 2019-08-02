@@ -1,4 +1,5 @@
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import MessagingPanel from '@/components/buyerComponents/buyerInbox/MessagingPanel'
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
@@ -43,7 +44,8 @@ export default {
   },
   components: {
     BuyerHeader,
-    BuyerSettingsBillingsTab
+    BuyerSettingsBillingsTab,
+    MessagingPanel
   },
   methods: {
     async redirectToOrderStatus () {
@@ -143,33 +145,6 @@ export default {
           this.$router.push({
             name: 'buyerDashboard'
           })
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async submitMessage () {
-      try {
-        var correspondanceMsg = null
-        if (this.order !== null) {
-          correspondanceMsg = {
-            orderId: this.order.orderId,
-            buyerId: this.order.buyerId,
-            // by userId we mean to say the id of the seller in the db
-            userId: this.order.sellerId,
-            date: '',
-            sender: 'buyer',
-            message: this.message
-          }
-        }
-
-        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
-        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
-        this.correspondanceMessages = response.data.correspondance
-        this.message = ''
-        if (this.order !== null) {
-          this.showOrder(this.order)
-          this.retrieveOrderOrderItems(this.order)
         }
       } catch (error) {
         if (error) throw error
