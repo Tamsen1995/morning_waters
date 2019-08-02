@@ -171,46 +171,52 @@
           </div>
           <!-- Here we can insert icons to indicate the shipping status -->
 
-          <!-- Step 4: Seller Confirms Order -->
-          <div class="row timeline-movement timeline-movement-top" v-if="this.orderStatusInt >= 2">
-            <div class="timeline-badge" style="top: 25px;">
-              <md-card
-                class="md-primary timeline-badge"
-                md-theme="green-card"
-                style="background-color: green;"
-              >
-                <md-icon>local_shipping</md-icon>
-              </md-card>
-            </div>
-
-            <div class="col-sm-6 timeline-item">
-              <div class="row">
-                <div class="col-sm-11"></div>
+          <div v-if="this.orderStatusInt >= 4">
+            <!-- Step 4: Seller Confirms Order -->
+            <div
+              class="row timeline-movement timeline-movement-top"
+              v-for="(transaction, index) in this.shippoOrder.transactions"
+              v-bind:key="index"
+            >
+              <div class="timeline-badge" style="top: 25px;">
+                <md-card
+                  class="md-primary timeline-badge"
+                  md-theme="green-card"
+                  style="background-color: green;"
+                >
+                  <md-icon>local_shipping</md-icon>
+                </md-card>
               </div>
-            </div>
 
-            <!-- Order Confirmed-->
-            <div class="col-sm-6 timeline-item">
-              <div class="row">
-                <div class="col-sm-offset-1 col-sm-11">
-                  <div class="timeline-panel seller-side">
-                    <!-- Pending Confirmation -->
-                    <ul class="timeline-panel-ul">
-                      <li>[INSERT LABEL CREAT INFO HERE]</li>
+              <div class="col-sm-6 timeline-item">
+                <div class="row">
+                  <div class="col-sm-11"></div>
+                </div>
+              </div>
 
-                      <li>
-                        <p>
-                          <small class="text-muted">
-                            <i class="glyphicon glyphicon-time"></i> [TimeStamp] [Example date]
-                          </small>
-                        </p>
-                      </li>
-                    </ul>
+              <!-- Order Confirmed-->
+              <div class="col-sm-6 timeline-item">
+                <div class="row">
+                  <div class="col-sm-offset-1 col-sm-11">
+                    <div class="timeline-panel seller-side">
+                      <!-- Pending Confirmation -->
+                      <ul class="timeline-panel-ul">
+                        <li>[INSERT LABEL CREATE INFO HERE]</li>
+
+                        <li>
+                          <p>
+                            <small class="text-muted">
+                              <i class="glyphicon glyphicon-time"></i> [TimeStamp] [Example date]
+                            </small>
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
+              <!--  -->
             </div>
-            <!--  -->
           </div>
         </div>
       </div>
