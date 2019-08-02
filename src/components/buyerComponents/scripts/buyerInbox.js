@@ -46,6 +46,18 @@ export default {
     BuyerSettingsBillingsTab
   },
   methods: {
+    async redirectToOrderStatus () {
+      try {
+        const orderId = this.order.orderId
+
+        this.$router.push({
+          name: 'buyerOrderStatus',
+          params: { orderId: orderId }
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitPaymentMethod (card, stripe) {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo

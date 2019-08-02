@@ -15,7 +15,8 @@ export default {
       // that means we can render this variable
       shipping_confirmed_date: '',
 
-      shippoOrder: null
+      shippoOrder: null,
+      order: null
     }
   },
   async created () {
@@ -51,14 +52,14 @@ export default {
     async retrieveOrderStatus (orderId) {
       try {
         const order = (await UserServices.getOrder(this.orderId)).data
-
-        if (order && order.order && order.order.seller_confirmed) {
+        this.order = order
+        if (order && order.order && order.order.seller_confirmed === true) {
           this.orderStatusInt = 1
         }
         if (
           order &&
           order.order &&
-          (order.order.buyer_confirmed || order.order.active === false)
+          (order.order.buyer_confirmed === true || order.order.active === false)
         ) {
           this.orderStatusInt = 2
         }
