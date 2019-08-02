@@ -92,7 +92,38 @@
       <md-button>No</md-button>
     </modal>
 
-    <modal name="add-payment-method">add payment method here</modal>
+    <modal name="add-payment-method">
+      <BuyerSettingsBillingsTab v-slot:default="slotProps">
+        <md-button @click="submitPaymentMethod(slotProps.card, slotProps.stripe)">Submit</md-button>
+        <!-- v-slot:default="slotProps" -->
+      </BuyerSettingsBillingsTab>
+    </modal>
+
+    <modal
+      height="auto"
+      scrollable
+      name="would-you-like-to-submit"
+      v-if="this.servicesNegotiated.length > 0"
+    >
+      <div class="invoice-preview">
+        <h1>Order</h1>
+
+        <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
+          <br />
+          {{orderItem.amount}} *
+          {{ servicesNegotiated[index].title }}
+          $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
+        </div>
+
+        <hr />
+        Total Price: $ {{this.totalPrice}}
+        <br />
+        <br />
+        <div>Would you like to submit this order?</div>
+        <md-button @click="submitOrder">Yes</md-button>
+        <md-button @click="closeSubmitPrompt">No</md-button>
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -100,16 +131,25 @@
 import PaymentService from "@/services/PaymentService";
 import BuyerSettingsBillingsTab from "@/components/buyerComponents/BuyerSettingsBillingsTab";
 import SettingsService from "@/services/SettingsService";
-import UserServices from "../../../services/UserServices";
+import UserServices from "@/services/UserServices";
+
 export default {
   data() {
-    return {};
+    return {
+      card: null,
+      stripe: null
+    };
+  },
+  mounted() {},
+  components: {
+    BuyerSettingsBillingsTab
   },
   props: {
     order: null,
     servicesNegotiated: null,
     totalPrice: 0.0,
-    amtForServicesNegotiated: null
+    amtForServicesNegotiated: null,
+    orderItems: null
   },
   watch: {
     order: async function test() {
@@ -121,6 +161,32 @@ export default {
     }
   },
   methods: {
+    async closeSubmitPrompt() {
+      try {
+        this.$modal.hide("would-you-like-to-submit");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async submitOrder() {
+      try {
+        console.log(`\n\nThis function is to submit the order\n\n`); // TESTING
+        await InboxService.confirmOrder({
+          orderId: this.order.orderId,
+          user: "buyer"
+        });
+        await InboxService.submitToPendingOrders({
+          orderId: this.order.orderId
+        });
+        if (this.order && this.order.seller_confirmed === true) {
+          this.$router.push({
+            name: "buyerDashboard"
+          });
+        }
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     // this will render the modal to add a payment method with
     async addPaymentMethod() {
       try {
@@ -145,7 +211,7 @@ export default {
         )).data;
 
         if (buyerHasPaymentMethod === true) {
-          this.$modal.show("would-you-like-confirm");
+          this.$modal.show("would-you-like-to-submit");
         } else {
           this.$modal.show("no-buyer-method-detected");
         }
@@ -153,6 +219,7 @@ export default {
         if (error) throw error;
       }
     },
+
     async submitPaymentMethod(card, stripe) {
       try {
         const buyerExtracted = this.$store.getters.getBuyerInfo;
@@ -167,7 +234,7 @@ export default {
         await SettingsService.addPaymentMethod(sourceToBeAdded);
 
         this.$modal.hide("add-payment-method");
-        this.confirmOrder();
+        // this.confirmOrder();
       } catch (error) {
         if (error) throw error;
       }

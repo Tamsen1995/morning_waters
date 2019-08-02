@@ -3,6 +3,7 @@ import MessagingPanel from '@/components/buyerComponents/buyerInbox/MessagingPan
 import NegotiationInterface from '@/components/buyerComponents/buyerInbox/NegotiationInterface'
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
+import UserServices from '@/services/UserServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
@@ -69,30 +70,6 @@ export default {
       }
     },
 
-    async closeSubmitPrompt () {
-      try {
-        this.$modal.hide('would-you-like-to-submit')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async submitOrder () {
-      try {
-        console.log(`\n\nThis function is to submit the order\n\n`) // TESTING
-        await InboxService.confirmOrder({
-          orderId: this.order.orderId,
-          user: 'buyer'
-        })
-        await InboxService.submitToPendingOrders({ orderId: this.order.orderId })
-        if (this.order && this.order.seller_confirmed === true) {
-          this.$router.push({
-            name: 'buyerDashboard'
-          })
-        }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     async retrieveOrderOrderItems (order) {
       try {
         const orderId = order.orderId

@@ -113,6 +113,7 @@
           <!-- Insert component here -->
           <negotiation-interface
             v-bind:order="this.order"
+            v-bind:orderItems="this.orderItems"
             v-bind:servicesNegotiated="this.servicesNegotiated"
             v-bind:totalPrice="this.totalPrice"
             v-bind:amtForServicesNegotiated="this.amtForServicesNegotiated"
@@ -126,31 +127,6 @@
   </body>
   <!--  -->
 
-  <modal
-    height="auto"
-    scrollable
-    name="would-you-like-to-submit"
-    v-if="this.servicesNegotiated.length > 0"
-  >
-    <div class="invoice-preview">
-      <h1>Order</h1>
-
-      <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
-        <br />
-        {{orderItem.amount}} *
-        {{ servicesNegotiated[index].title }}
-        $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
-      </div>
-
-      <hr />
-      Total Price: $ {{this.totalPrice}}
-      <br />
-      <br />
-      <div>Would you like to submit this order?</div>
-      <md-button @click="submitOrder">Yes</md-button>
-      <md-button @click="closeSubmitPrompt">No</md-button>
-    </div>
-  </modal>
   <!--  -->
 </div>
 </template>
