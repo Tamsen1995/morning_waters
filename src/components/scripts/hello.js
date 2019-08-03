@@ -1,6 +1,6 @@
 import PageHeader from '@/components/Header.vue'
 import Api from '@/services/Api'
-import { EventBus } from '../../event-bus.js'
+
 import { ResponsiveDirective } from 'vue-responsive-components'
 import AuthenticationService from '@/services/AuthenticationService'
 import { Carousel, Slide } from 'vue-carousel'
@@ -25,7 +25,7 @@ export default {
     this.$store.dispatch('setUser', null)
     this.$store.dispatch('setBuyer', null)
     this.$store.dispatch('setQuoteToBeRequested', null)
-    this.$store.dispatch()
+
     this.logout()
   },
   components: {

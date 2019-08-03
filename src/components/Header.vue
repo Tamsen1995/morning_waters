@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="lg" id="mainNav" v-b-scrollspy:nav-scroller>
+    <b-navbar toggleable="lg" id="mainNav">
       <b-navbar-brand class="mr-auto" href="/">
         <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center" />
       </b-navbar-brand>

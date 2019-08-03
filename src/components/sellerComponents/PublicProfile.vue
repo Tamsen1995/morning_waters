@@ -56,7 +56,7 @@
           <br />
           <div class="service-border"></div>
           <!-- <div class="col-md-9"> -->
-          <div v-for="(service, index) in this.services" :key="service.id">
+          <div v-for="(service, index) in this.services" :key="index">
             <div v-if="service.isSubService === false">
               <div class="service-border">
                 <md-card-area md-inset>
@@ -97,8 +97,8 @@
                     <md-chip
                       class="md-primary md-accent"
                       style="background-color: white; color: #a558e4; border: 1px solid #a558e4;"
-                      v-for="chip in service.tags"
-                      :key="chip"
+                      v-for="(chip, index) in service.tags"
+                      :key="index"
                     >{{ chip.tag }}</md-chip>
                   </div>
                 </md-card-area>
@@ -247,7 +247,7 @@
                 class="form-control animated"
                 placeholder="Enter your message"
                 rows="5"
-                style="min-width:600px;"
+                style="padding:5px; min-width: 180%;"
               ></md-textarea>
             </md-field>
           </div>
