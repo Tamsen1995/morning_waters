@@ -22,7 +22,7 @@
           <div class="loader" v-if="loadingFlag == 2">Loading...</div>
 
           <!-- Form -->
-          <div class="card" id="login">
+          <md-card class="card" id="login">
             <form>
               <br />
               <h2>Buyer Login</h2>
@@ -70,7 +70,7 @@
                 </p>
               </div>
             </form>
-          </div>
+          </md-card>
           <!-- Footer -->
           <div class="container" id="login-form-footer">
             <a href="#" id="legal-links">Terms and Conditions</a>

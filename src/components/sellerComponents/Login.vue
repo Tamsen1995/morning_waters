@@ -24,7 +24,7 @@
           <!-- Form -->
           <div>{{ this.errorMessage }}</div>
 
-          <div class="card" id="login">
+          <md-card class="card" id="login">
             <form>
               <br />
               <h2>Seller Login</h2>
@@ -69,7 +69,7 @@
                 </p>
               </div>
             </form>
-          </div>
+          </md-card>
 
           <!-- Footer -->
           <div class="container" id="login_form-footer">
