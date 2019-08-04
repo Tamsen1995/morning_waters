@@ -26,22 +26,11 @@
                   <h3>Order ID :</h3>
                   <ol id="item_list">
                     <h3>
-                      <li>
-                        <!-- {{orderItem.title}}
-                          <br>
-                          {{orderItem.description}} 
-                          <br>
-                        {{orderItem.quantity}}-->
-                      </li>
+                      <li></li>
                     </h3>
                   </ol>
-                  <!-- <a><h3 style="color:purple;"> View Timeline</h3></a>  -->
                 </div>
               </div>
-              <!-- <div class="col-4">
-                  <h3  style="color:green;"> Order Confirmed [Date]</h3>         
-                  <h2  style="color:green;"> Charged [$$$]</h2>    
-              </div>-->
             </div>
             <br />
 
@@ -166,23 +155,6 @@
                         <span class="causale">Shipping UI Link.</span>
                       </li>
                     </ul>
-
-                    <!-- With Shippo Status updates -->
-                    <!-- <ul class="timeline-panel-ul">
-                        <li>
-                          <span class="importo">[Shipping status]</span>
-                        </li>
-                        <li>
-                          <span class="causale">Tracking Number</span>
-                        </li>
-                        <li>
-                          <p>
-                            <small class="text-muted">
-                              <i class="glyphicon glyphicon-time"></i> 11/09/2014
-                            </small>
-                          </p>
-                        </li>
-                    </ul>-->
                   </div>
                 </div>
               </div>
