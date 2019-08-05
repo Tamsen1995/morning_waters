@@ -29,6 +29,20 @@
                 >
                   <div class="form-group row">
                     <!-- CHANGE TO FIRST NAME -->
+                    <label for="name" class="col-sm col-form-label">Beta key:</label>
+                    <div class="col-sm-12">
+                      <input
+                        v-model="betaKey"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter your secret beta key"
+                        v-on:keyup.enter="setDone('first', 'second')"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <!-- CHANGE TO FIRST NAME -->
                     <label for="name" class="col-sm col-form-label">First Name:</label>
                     <div class="col-sm-12">
                       <input

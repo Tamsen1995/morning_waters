@@ -7,6 +7,7 @@ import { ResponsiveDirective } from 'vue-responsive-components'
 export default {
   data () {
     return {
+      betaKey: '',
       name: '',
       email: '',
       password: '',
@@ -70,7 +71,9 @@ export default {
 
     async register () {
       try {
+        console.log(`\n\nThe beta key being : ${this.betaKey}\n`) // TESTING
         const response = await AuthenticationService.register({
+          betaKey: this.betaKey,
           name: `${this.firstName} ${this.lastName}`,
           email: this.email,
           password: this.password,
