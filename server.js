@@ -4,7 +4,6 @@ const serveStatic = require('serve-static')
 
 let app = express()
 app.use(serveStatic(__dirname + '/dist'))
-if (window.location.protocol !== 'https:') window.location.href = 'https://yourdomain.com'
 
 
 const port = process.env.PORT || 7000
