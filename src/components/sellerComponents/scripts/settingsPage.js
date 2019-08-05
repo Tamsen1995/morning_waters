@@ -75,7 +75,7 @@ export default {
           jobTitle: this.jobTitle,
           companyName: this.companyName,
           companyWebsite: this.companyWebsite,
-          billingAddress: this.billingAddress,
+          billingAddress: this.address,
           about: this.about
         }
         const response = await SettingsService.updateProfile(

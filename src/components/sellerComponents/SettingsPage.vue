@@ -54,7 +54,7 @@
                   </md-field>
                 </div>
 
-                <md-button class="md-raised md-primary">Submit</md-button>
+                <md-button class="md-raised md-primary" @click="updateProfile()">Submit</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -92,7 +92,7 @@
                 </div>
 
                 <br />
-                <md-button @click="updateProfile" class="md-raised md-primary">Publish</md-button>
+                <md-button @click="updateProfile()" class="md-raised md-primary">Publish</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
