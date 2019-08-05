@@ -17,11 +17,11 @@
           </b-nav-text>
 
           <b-nav-text>
-            <router-link class="nav-link" to="/login">Login</router-link>
+            <!-- <router-link class="nav-link" to="/login">Login</router-link> -->
           </b-nav-text>
 
           <b-nav-text to="/register">
-            <router-link class="nav-link" to="/register">Sign Up</router-link>
+            <!-- <router-link class="nav-link" to="/register">Sign Up</router-link> -->
           </b-nav-text>
         </b-navbar-nav>
       </b-collapse>
