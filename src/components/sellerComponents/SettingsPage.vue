@@ -202,7 +202,7 @@
                     v-model="confirmNewPass"
                   ></md-input>
                 </md-field>
-                <md-button class="md-raised md-primary" @click="updatePassword">Update Password</md-button>
+                <md-button class="md-raised md-primary" @click="updatePassword()">Update Password</md-button>
               </md-card-content>
             </md-card>
           </md-tab>

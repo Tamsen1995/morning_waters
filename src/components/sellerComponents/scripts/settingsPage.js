@@ -53,13 +53,16 @@ export default {
         const userExtracted = this.$store.getters.getUserInfo
 
         const updatePassInfo = {
-          email: userExtracted.email,
+          userId: userExtracted.id,
           oldPass: this.oldPass,
           newPass: this.newPass,
           confirmNewPass: this.confirmNewPass
         }
 
+        console.log(`\n\n$${JSON.stringify(updatePassInfo)}\n`) // TESTING
+
         const response = await SettingsService.updatePassword(updatePassInfo)
+        console.log(`\nThe password response ${JSON.stringify(response)}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error caught in update password ${error}\n`) // TESTING
         if (error) throw error
