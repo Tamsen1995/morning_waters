@@ -222,11 +222,7 @@
                 @click="continueOntoRegisterForm()"
               >Continue</a>-->
 
-              <a
-                href="#register"
-                class="btn btn-outline btn-xl"
-                @click="continueOntoComingSoonPage()"
-              >Continue</a>
+              <a class="btn btn-outline btn-xl" @click="continueOntoComingSoonPage()">Continue</a>
 
               <br />
               <br />
