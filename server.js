@@ -1,11 +1,15 @@
 const express = require('express')
 const path = require('path')
 const serveStatic = require('serve-static')
-var secure = require('ssl-express-www');
+
+var sslRedirect = require('heroku-ssl-redirect');
+
+
 
 let app = express()
 app.use(serveStatic(__dirname + '/dist'))
-app.use(secure);
+
+app.use(sslRedirect());
 
 
 const port = process.env.PORT || 7000
