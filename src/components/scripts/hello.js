@@ -25,6 +25,7 @@ export default {
     this.$store.dispatch('setUser', null)
     this.$store.dispatch('setBuyer', null)
     this.$store.dispatch('setQuoteToBeRequested', null)
+    if (window.location.protocol !== 'https:') window.location.href = 'https://www.fig-analytics.com'
 
     this.logout()
   },
