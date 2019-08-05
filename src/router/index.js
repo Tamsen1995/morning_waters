@@ -60,6 +60,7 @@ function routingAuthentication (to, from, next) {
 }
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/coming_soon',
