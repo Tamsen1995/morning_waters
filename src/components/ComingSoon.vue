@@ -1,7 +1,7 @@
 <template>
 <div>
   <body>
-    <h1>Coming Soon</h1>
+    <md-empty-state md-rounded md-icon="access_time" md-label="Coming Soon"></md-empty-state>
   </body>
 </div>
 </template>
