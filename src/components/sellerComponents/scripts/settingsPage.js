@@ -75,7 +75,7 @@ export default {
           jobTitle: this.jobTitle,
           companyName: this.companyName,
           companyWebsite: this.companyWebsite,
-          billingAddress: this.address,
+          address: this.address,
           about: this.about
         }
         const response = await SettingsService.updateProfile(
@@ -100,7 +100,7 @@ export default {
         this.jobTitle = userInfo.data.user.jobTitle
         this.companyName = userInfo.data.user.companyName
         this.companyWebsite = userInfo.data.user.companyWebsite
-        this.billingAddress = userInfo.data.user.billingAddress
+        this.address = JSON.parse(userInfo.data.user.address)
         this.about = userInfo.data.user.about
       } catch (error) {
         console.log(
