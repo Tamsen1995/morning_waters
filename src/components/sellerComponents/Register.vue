@@ -29,6 +29,30 @@
                 >
                   <div class="form-group row">
                     <!-- CHANGE TO FIRST NAME -->
+                    <md-card style="background-color:#e7ff8c;">
+                      <label
+                        for="name"
+                        class="col-sm col-form-label"
+                        style="text-align: center"
+                      >Beta key</label>
+
+                      <div class="col-sm-12">
+                        <input
+                          v-model="betaKey"
+                          type="text"
+                          class="form-control"
+                          placeholder="Please enter your beta key"
+                          v-on:keyup.enter="setDone('first', 'second')"
+                        />
+                      </div>
+                      <br />
+                      <br />
+                      <br />
+                    </md-card>
+                  </div>
+
+                  <div class="form-group row">
+                    <!-- CHANGE TO FIRST NAME -->
                     <label for="name" class="col-sm col-form-label">First Name:</label>
                     <div class="col-sm-12">
                       <input
