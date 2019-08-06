@@ -37,6 +37,19 @@ import DashboardShippoRegister from '@/components/sellerComponents/DashboardShip
 import ComingSoon from '@/components/ComingSoon'
 
 Vue.use(Router)
+
+function isInDevelopEnv (to, from, next) {
+  try {
+    if (process.env.NODE_ENV === 'development') {
+      next()
+    } else {
+      console.log(`\nThis is coming soon !\n`) // TESTING
+    }
+  } catch (error) {
+    if (error) throw error
+  }
+}
+
 function routingAuthentication (to, from, next) {
   try {
     const authToken = window.localStorage.getItem('id_token')
@@ -47,7 +60,7 @@ function routingAuthentication (to, from, next) {
           next()
         } else {
           // TODO :
-          console.log(`\n TODO : The user needs to be redirected\n`) // TESTING
+
         }
       })
       .catch(error => {
@@ -73,18 +86,26 @@ export default new Router({
       component: Checkout,
       beforeEnter: (to, from, next) => {
         routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
       }
     },
     {
       path: '/publicProfile/:id',
       name: 'publicProfile',
-      component: PublicProfile
+      component: PublicProfile,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
 
       path: '/pendingOrder/status/:orderId',
       name: 'pendingOrderStatus',
-      component: PendingOrderStatus
+      component: PendingOrderStatus,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/',
@@ -94,12 +115,18 @@ export default new Router({
     {
       path: '/register',
       name: 'register',
-      component: Register
+      component: Register,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/dashboard',
@@ -128,7 +155,11 @@ export default new Router({
     {
       path: '/dashboard/quoteRequestsScreen',
       name: 'quoteRequestsScreen',
-      component: QuoteRequestsScreen
+      component: QuoteRequestsScreen,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/dashboard/settings',
@@ -168,68 +199,115 @@ export default new Router({
     {
       path: '/buyerRegistration',
       name: 'buyerRegister',
-      component: BuyerRegister
+      component: BuyerRegister,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyerLogin',
       name: 'buyerLogin',
-      component: BuyerLogin
+      component: BuyerLogin,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyerDashboard',
       name: 'buyerDashboard',
-      component: BuyerDashboard
+      component: BuyerDashboard,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyerDashboard/orders/status/:orderId',
       name: 'buyerOrderStatus',
-      component: BuyerOrderStatus
+      component: BuyerOrderStatus,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
 
     },
     {
       path: '/shoppingCart',
       name: 'shoppingCart',
-      component: ShoppingCart
+      component: ShoppingCart,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyerCheckout',
       name: 'buyerCheckout',
-      component: BuyerCheckout
+      component: BuyerCheckout,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyersCarts',
       name: 'buyersCarts',
-      component: BuyersCarts
+      component: BuyersCarts,
+      beforeEnter: (to, from, next) => {
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/orderConfirm',
       name: 'orderConfirm',
-      component: OrderConfirm
+      component: OrderConfirm,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/currentOrderStatus',
       name: 'currentOrderStatus',
-      component: CurrentOrderStatus
+      component: CurrentOrderStatus,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyer_inbox',
       name: 'buyer_inbox',
-      component: BuyerInbox
+      component: BuyerInbox,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyerSettings',
       name: 'buyerSettings',
-      component: BuyerSettings
+      component: BuyerSettings,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/buyerBillings',
       name: 'buyerBillings',
-      component: BuyerBillings
+      component: BuyerBillings,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     },
     {
       path: '/orderHistory/correspondance',
       name: 'buyerCorrespondance',
-      component: BuyerCorrespondance
+      component: BuyerCorrespondance,
+      beforeEnter: (to, from, next) => {
+        routingAuthentication(to, from, next)
+        isInDevelopEnv(to, from, next)
+      }
     }
   ]
 })

@@ -1,6 +1,8 @@
 import PageHeader from '@/components/Header.vue'
 import AuthenticationService from '@/services/AuthenticationService'
 import Api from '@/services/Api'
+import { ResponsiveDirective } from 'vue-responsive-components'
+
 export default {
   data () {
     return {
@@ -13,6 +15,9 @@ export default {
   },
   components: {
     PageHeader
+  },
+  directives: {
+    responsive: ResponsiveDirective
   },
   methods: {
     async redirectToSignup () {
