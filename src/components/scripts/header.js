@@ -49,10 +49,18 @@ export default {
     }
   },
 
+  props: {
+    divToScrollTo: ''
+  },
+
   // The UserSearchResults is the
   // child component of the Header and will be used
   // to pass the search result into it
   methods: {
+    scrollToDiv (div) {
+      this.divToScrollTo = div
+      console.log(`\nThe div that's to be scrolled to is : ${this.divToScrollTo}\n`) // TESTING
+    },
     redirectUser () {
       if (this.dashLink === 'Register') {
         this.$router.push({

@@ -8,12 +8,12 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-text href="#about">
-            <a class="nav-link" href="#about">About</a>
+          <b-nav-text @click="scrollToDiv('about')">
+            <a class="nav-link">About</a>
           </b-nav-text>
 
-          <b-nav-text href="#services">
-            <a class="nav-link" href="#services">Services</a>
+          <b-nav-text @click="scrollToDiv('services')">
+            <a class="nav-link">Services</a>
           </b-nav-text>
 
           <b-nav-text>
