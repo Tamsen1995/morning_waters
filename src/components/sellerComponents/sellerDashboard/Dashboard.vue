@@ -160,6 +160,7 @@
             <label for="serviceTitle" class="col-sm .col-form-label-xsm">
               <p></p>
             </label>
+            <div class="error" v-html="error" />
             <md-field>
               <label>Service Title:</label>
               <md-input type="text" v-model="serviceTitle" style="border-bottom: 1px inset"></md-input>
@@ -412,5 +413,6 @@
 
 <style scoped>
 @import "../../../assets/css/dashboard.css";
+@import "../../../assets/css/forms.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>

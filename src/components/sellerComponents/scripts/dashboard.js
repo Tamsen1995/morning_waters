@@ -10,6 +10,7 @@ export default {
   name: 'Dashboard',
   data () {
     return {
+      error: null,
       services: [],
       subServices: [],
       serviceTitle: '',
@@ -161,6 +162,28 @@ export default {
         if (error) throw error
       }
     },
+    // this function determines if the
+    // servcice form has been filled out
+    serviceFormFilledOut: function () {
+      if (this.serviceTitle === '') {
+        this.error = 'No service title'
+        return false
+      } else if (this.serviceDescription === '') {
+        this.error = 'No service description'
+        return false
+      } else if (this.turnAroundTime === '') {
+        this.error = 'Please indicate a turnaround time'
+        return false
+      } else if (this.tags.length <= 0) {
+        this.error = 'Please enter some tags / keywords'
+        return false
+      } else if (this.unitType === '') {
+        this.error = 'The unit type needs to be indicated'
+        return false
+      } else {
+        return true
+      }
+    },
     async submitService () {
       try {
         // get the service table id from the user
@@ -173,11 +196,12 @@ export default {
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
           turnAroundTime: this.turnAroundTime,
+          unitType: this.unitType,
           tags: this.tags
         }
 
         // If the service fields are empty then don't execute everything below this
-        if (service.title !== '' && service.description !== '' && service.turnAroundTime !== '' && service.tags.length > 0) {
+        if (this.serviceFormFilledOut() === true) {
           await DashboardServices.pushServiceOntoDb(service)
           await this.getServices()
           const serviceId = this.services[this.services.length - 1].id
@@ -198,8 +222,6 @@ export default {
           this.turnAroundTime = ''
           this.tags = []
           this.subServicesToBeAdded = []
-        } else {
-          console.log(`\n\nTODO : Here we could possibly implement a message stating that all fields must bee filled out\n`) // TESTING
         }
       } catch (error) {
         if (error) {
