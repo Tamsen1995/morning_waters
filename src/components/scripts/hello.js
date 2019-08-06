@@ -30,7 +30,11 @@ export default {
     // event bus
     EventBus.$on('scroll-on-homepage', div => {
       // so if an event is received here we will scroll on the homepage
-
+      if (div === 'services') {
+        console.log(`\n\nthis.refs : ${JSON.stringify(this.$refs['our-services'])}`) // TESTING
+      } else if (div === 'about') {
+        console.log(`\n\nthis.refs : ${JSON.stringify(this.$refs['about'])}`) // TESTING
+      }
     })
 
     this.logout()

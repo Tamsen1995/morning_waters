@@ -30,7 +30,7 @@
       </div>
     </header>
 
-    <section class="services" id="services">
+    <section ref="our-services" class="services" id="services">
       <div class="col-centered my-auto">
         <h2>Our Services</h2>
         <br />
@@ -138,7 +138,7 @@
       </div>
     </section>
 
-    <section class="about" id="about">
+    <section ref="about" class="about" id="about">
       <div class="container-fluid">
         <h2>Your one-stop shop for biotech exchange.</h2>
         <br />
