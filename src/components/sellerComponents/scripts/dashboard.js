@@ -177,7 +177,7 @@ export default {
         }
 
         // If the service fields are empty then don't execute everything below this
-        if (service.title === '' || service.description === '' || service.turnAroundTime === '' || service.tags.length === 0) {
+        if (service.title !== '' && service.description !== '' && service.turnAroundTime !== '' && service.tags.length > 0) {
           await DashboardServices.pushServiceOntoDb(service)
           await this.getServices()
           const serviceId = this.services[this.services.length - 1].id
