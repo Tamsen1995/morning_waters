@@ -18,14 +18,16 @@
         <br />
         <br />
         <div class="col-md-12 text-center">
-          <a href="#start" class="btn-signup btn-signup-outline btn-xl">Sign Up</a>
+          <router-link class="btn-signup btn-signup-outline btn-xl" to="/coming_soon">Sign Up</router-link>
+          <!-- Conditionally render one which will lead to coming soon page -->
         </div>
         <br />
         <br />
         <br />
         <br />
         <div class="col-md-12 text-center">
-          <router-link class="btn-signup btn-signup-outline btn-xl" to="/login">Client Login</router-link>
+          <router-link class="btn-signup btn-signup-outline btn-xl" to="/coming_soon">Client Login</router-link>
+          <!-- Conditionally render one which will lead to coming soon page -->
         </div>
       </div>
     </header>
@@ -222,11 +224,7 @@
                 @click="continueOntoRegisterForm()"
               >Continue</a>-->
 
-              <a
-                href="#register"
-                class="btn btn-outline btn-xl"
-                @click="continueOntoComingSoonPage()"
-              >Continue</a>
+              <a class="btn btn-outline btn-xl" @click="continueOntoComingSoonPage()">Continue</a>
 
               <br />
               <br />

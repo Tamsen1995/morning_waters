@@ -38,12 +38,16 @@ import ComingSoon from '@/components/ComingSoon'
 
 Vue.use(Router)
 
+// Used to block of all routes in development from production env
 function isInDevelopEnv (to, from, next) {
   try {
+    // Releasing the beta would simply mean removing this guard from the routes to be released
+    // or releasing everything by just invoking the next method in this and removing everything else
     if (process.env.NODE_ENV === 'development') {
       next()
     } else {
-      console.log(`\nThis is coming soon !\n`) // TESTING
+      // redirecting the user back to where they came from
+      next(from)
     }
   } catch (error) {
     if (error) throw error
@@ -59,8 +63,8 @@ function routingAuthentication (to, from, next) {
         if (auth === true) {
           next()
         } else {
-          // TODO :
-
+          // redirecting the user back to where they came from
+          next(from)
         }
       })
       .catch(error => {
