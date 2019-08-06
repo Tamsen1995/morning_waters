@@ -5,6 +5,7 @@ import { ResponsiveDirective } from 'vue-responsive-components'
 import AuthenticationService from '@/services/AuthenticationService'
 import { Carousel, Slide } from 'vue-carousel'
 import TransitionExpand from '@/components/TransitionExpand'
+import { EventBus } from '@/event-bus.js'
 
 export default {
   name: 'HelloWorld',
@@ -26,6 +27,12 @@ export default {
     this.$store.dispatch('setBuyer', null)
     this.$store.dispatch('setQuoteToBeRequested', null)
 
+    // event bus
+    EventBus.$on('scroll-on-homepage', div => {
+      // so if an event is received here we will scroll on the homepage
+
+    })
+
     this.logout()
   },
   components: {
@@ -37,6 +44,7 @@ export default {
   directives: {
     responsive: ResponsiveDirective
   },
+
   methods: {
     async continueOntoComingSoonPage () {
       try {

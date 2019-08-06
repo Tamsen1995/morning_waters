@@ -3,8 +3,8 @@
   <div class="responsive-component" v-responsive="{
     small: el => el.width < 430
     }">
-    <page-header />
-    <!-- v-on:scroll="handleScroll"> -->
+    <page-header></page-header>
+
     <header class="masthead">
       <div>
         <a>
