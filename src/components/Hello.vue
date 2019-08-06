@@ -18,7 +18,7 @@
         <br />
         <br />
         <div class="col-md-12 text-center">
-          <a href="#start" class="btn-signup btn-signup-outline btn-xl">Sign Up</a>
+          <router-link class="btn-signup btn-signup-outline btn-xl" to="/register">Sign Up</router-link>
         </div>
         <br />
         <br />
@@ -222,11 +222,7 @@
                 @click="continueOntoRegisterForm()"
               >Continue</a>-->
 
-              <a
-                href="#register"
-                class="btn btn-outline btn-xl"
-                @click="continueOntoComingSoonPage()"
-              >Continue</a>
+              <a class="btn btn-outline btn-xl" @click="continueOntoComingSoonPage()">Continue</a>
 
               <br />
               <br />
