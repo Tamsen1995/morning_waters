@@ -31,9 +31,12 @@ export default {
     EventBus.$on('scroll-on-homepage', div => {
       // so if an event is received here we will scroll on the homepage
       if (div === 'services') {
-        console.log(`\n\nthis.refs : ${JSON.stringify(this.$refs['our-services'])}`) // TESTING
+        console.log(`\n\nthis.refszzz : ${JSON.stringify(this.$refs['our-services'].offsetTop)}`) // TESTING
+        window.scrollTo(0, this.$refs['our-services'].offsetTop)
       } else if (div === 'about') {
-        console.log(`\n\nthis.refs : ${JSON.stringify(this.$refs['about'])}`) // TESTING
+        window.scrollTo(0, this.$refs['about'].offsetTop)
+
+        console.log(`\n\nthis.refsss : ${JSON.stringify(this.$refs['about'].offsetTop)}`) // TESTING
       }
     })
 
