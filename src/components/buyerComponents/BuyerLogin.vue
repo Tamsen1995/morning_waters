@@ -93,6 +93,7 @@ import PageHeader from "@/components/Header.vue";
 import BuyerHeader from "@/components/buyerComponents/BuyerHeader.vue";
 import AuthenticationService from "@/services/AuthenticationService";
 import Api from "@/services/Api";
+
 export default {
   data() {
     return {

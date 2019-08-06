@@ -10,6 +10,7 @@ export default {
   name: 'Dashboard',
   data () {
     return {
+      error: null,
       services: [],
       subServices: [],
       serviceTitle: '',
@@ -161,6 +162,28 @@ export default {
         if (error) throw error
       }
     },
+    // this function determines if the
+    // servcice form has been filled out
+    serviceFormFilledOut: function () {
+      if (this.serviceTitle === '') {
+        this.error = 'No service title'
+        return false
+      } else if (this.serviceDescription === '') {
+        this.error = 'No service description'
+        return false
+      } else if (this.turnAroundTime === '') {
+        this.error = 'Please indicate a turnaround time'
+        return false
+      } else if (this.tags.length <= 0) {
+        this.error = 'Please enter some tags / keywords'
+        return false
+      } else if (this.unitType === '') {
+        this.error = 'The unit type needs to be indicated'
+        return false
+      } else {
+        return true
+      }
+    },
     async submitService () {
       try {
         // get the service table id from the user
@@ -173,33 +196,33 @@ export default {
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
           turnAroundTime: this.turnAroundTime,
+          unitType: this.unitType,
           tags: this.tags
         }
 
-        // console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
+        // If the service fields are empty then don't execute everything below this
+        if (this.serviceFormFilledOut() === true) {
+          await DashboardServices.pushServiceOntoDb(service)
+          await this.getServices()
+          const serviceId = this.services[this.services.length - 1].id
 
-        // TODO : the reponse object doesn't return anything. Fix that in a little bit
-        await DashboardServices.pushServiceOntoDb(service)
-        await this.getServices()
+          if (this.subServicesToBeAdded.length > 0) {
+            await DashboardServices.addSubServices({
+              parentServiceId: serviceId,
+              serviceTableId: serviceTableId,
+              subServices: this.subServicesToBeAdded
+            })
+          }
 
-        const serviceId = this.services[this.services.length - 1].id
-
-        if (this.subServicesToBeAdded.length > 0) {
-          await DashboardServices.addSubServices({
-            parentServiceId: serviceId,
-            serviceTableId: serviceTableId,
-            subServices: this.subServicesToBeAdded
-          })
+          await this.getServices()
+          this.$modal.hide('add-service')
+          this.serviceTitle = ''
+          this.serviceDescription = ''
+          this.servicePrice = 0.0
+          this.turnAroundTime = ''
+          this.tags = []
+          this.subServicesToBeAdded = []
         }
-
-        await this.getServices()
-        this.$modal.hide('add-service')
-        this.serviceTitle = ''
-        this.serviceDescription = ''
-        this.servicePrice = 0.0
-        this.turnAroundTime = ''
-        this.tags = []
-        this.subServicesToBeAdded = []
       } catch (error) {
         if (error) {
           console.log(
