@@ -176,30 +176,31 @@ export default {
           tags: this.tags
         }
 
-        // console.log(`\nThe service being : ${JSON.stringify(service)}\n`) // TESTING
+        // If the service fields are empty then don't execute everything below this
+        if (service.title === '' || service.description === '' || service.turnAroundTime === '' || service.tags.length === 0) {
+          await DashboardServices.pushServiceOntoDb(service)
+          await this.getServices()
+          const serviceId = this.services[this.services.length - 1].id
 
-        // TODO : the reponse object doesn't return anything. Fix that in a little bit
-        await DashboardServices.pushServiceOntoDb(service)
-        await this.getServices()
+          if (this.subServicesToBeAdded.length > 0) {
+            await DashboardServices.addSubServices({
+              parentServiceId: serviceId,
+              serviceTableId: serviceTableId,
+              subServices: this.subServicesToBeAdded
+            })
+          }
 
-        const serviceId = this.services[this.services.length - 1].id
-
-        if (this.subServicesToBeAdded.length > 0) {
-          await DashboardServices.addSubServices({
-            parentServiceId: serviceId,
-            serviceTableId: serviceTableId,
-            subServices: this.subServicesToBeAdded
-          })
+          await this.getServices()
+          this.$modal.hide('add-service')
+          this.serviceTitle = ''
+          this.serviceDescription = ''
+          this.servicePrice = 0.0
+          this.turnAroundTime = ''
+          this.tags = []
+          this.subServicesToBeAdded = []
+        } else {
+          console.log(`\n\nTODO : Here we could possibly implement a message stating that all fields must bee filled out\n`) // TESTING
         }
-
-        await this.getServices()
-        this.$modal.hide('add-service')
-        this.serviceTitle = ''
-        this.serviceDescription = ''
-        this.servicePrice = 0.0
-        this.turnAroundTime = ''
-        this.tags = []
-        this.subServicesToBeAdded = []
       } catch (error) {
         if (error) {
           console.log(
