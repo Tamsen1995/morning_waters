@@ -7,12 +7,16 @@ export default {
     return {
       search: '',
       user: null,
-      divToScrollTo: ''
+      divToScrollTo: '',
+      productionMode: false
 
     }
   },
   mounted () {
     this.verifyUser()
+    if (process.env.NODE_ENV === 'production') {
+      this.productionMode = true
+    }
   },
   updated () {
     this.verifyUser()
