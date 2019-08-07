@@ -2,7 +2,7 @@
 <div class="responsive-component" v-responsive="{
   small: el => el.width < 860
   }">
-  <buyer-header></buyer-header>
+  <dashboard-header></dashboard-header>
 
   <body class="pending_orders">
     <div id="pending_orders_content">
@@ -262,16 +262,58 @@
 
 <script>
 import DashboardHeader from "@/components/sellerComponents/DashboardHeader.vue";
+import UserServices from "@/services/UserServices";
+import { ResponsiveDirective } from "vue-responsive-components";
 
 export default {
   data() {
     return {
-      orderId: ""
+      orderId: "",
+      // 1 seller side confirmed
+      // 2 buyer side confirmed
+      // 3 seller side shipping confirmed
+      orderStatusInt: 0,
+      // if the pending order's shipping has been confirmed,
+      // that means we can render this variable
+      shipping_confirmed_date: "",
+
+      shippoOrder: null,
+      order: null
     };
   },
   async created() {},
   async mounted() {
     this.orderId = this.$route.params.orderId;
+    this.retrieveOrderStatus(this.orderId);
+  },
+  directives: {
+    responsive: ResponsiveDirective
+  },
+  methods: {
+    async retrieveOrderStatus(orderId) {
+      try {
+        const order = (await UserServices.getOrder(this.orderId)).data;
+        this.order = order;
+        if (order && order.order && order.order.seller_confirmed === true) {
+          this.orderStatusInt = 1;
+        }
+        if (
+          order &&
+          order.order &&
+          (order.order.buyer_confirmed === true || order.order.active === false)
+        ) {
+          this.orderStatusInt = 2;
+        }
+
+        if (order && order.order && order.order.active === true) {
+          this.orderStatusInt = 3;
+          this.shipping_confirmed_date = order.order.shipping_confirmed;
+        }
+      } catch (error) {
+        console.log(`\nThe error in retrieveOrderStatus ${error}\n`); // TESTING
+        if (error) throw error;
+      }
+    }
   },
   components: {
     DashboardHeader
