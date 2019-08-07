@@ -53,6 +53,15 @@ export default {
   },
 
   methods: {
+    async redirectToFaqPage () {
+      try {
+        this.$router.push({
+          name: 'faqPage'
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async continueOntoComingSoonPage () {
       try {
         this.$router.push({

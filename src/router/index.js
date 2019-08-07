@@ -33,8 +33,9 @@ import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondanc
 // Shippo routes
 import DashboardShippoRegister from '@/components/sellerComponents/DashboardShippoRegister'
 
-// testing routes
+// misc routes
 import ComingSoon from '@/components/ComingSoon'
+import FaqPage from '@/components/FaqPage'
 
 Vue.use(Router)
 
@@ -84,6 +85,11 @@ export default new Router({
       name: 'comingSoon',
       component: ComingSoon
 
+    },
+    {
+      path: '/FAQ',
+      name: 'faqPage',
+      component: FaqPage
     },
     {
       path: '/checkout',
