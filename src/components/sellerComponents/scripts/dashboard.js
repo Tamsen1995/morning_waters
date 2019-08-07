@@ -30,6 +30,7 @@ export default {
       tags: [],
       serviceBeingEdited: false,
       serviceEdited: null
+
     }
   },
   components: {
@@ -195,7 +196,7 @@ export default {
           title: this.serviceTitle,
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
-          turnAroundTime: this.turnAroundTime,
+          turnAroundTime: `${this.turnAroundTime} ${this.turnAroundTimeType}`,
           unitType: this.unitType,
           tags: this.tags
         }
