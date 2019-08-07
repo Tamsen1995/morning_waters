@@ -214,13 +214,14 @@
 
             <!-- Time Units -->
             <div class="col-4">
-              <md-field>
-                <label>Hours/Days/Weeks</label>
-                <!-- <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
-                  <md-option value="turnAroundTimeType">Days</md-option>
-                  <md-option value="turnAroundTimeType">Weeks</md-option>
-                </md-select>-->
-              </md-field>
+              <!-- <input type="radio" id="one" value="Hours" v-model="turnAroundTimeType" />
+              <label for="one">Hours</label>
+              <br />
+              <input type="radio" id="two" value="Days" v-model="turnAroundTimeType" />
+              <label for="two">Days</label>
+              <br />
+              <input type="radio" id="two" value="Weeks" v-model="turnAroundTimeType" />
+              <label for="two">Weeks</label>-->
             </div>
 
             <!-- Price Negotiable? -->
