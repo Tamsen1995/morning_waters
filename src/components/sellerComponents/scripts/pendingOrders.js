@@ -5,7 +5,7 @@ import UserServices from '@/services/UserServices'
 import InboxServices from '@/services/InboxService'
 
 export default {
-  data () {
+  data() {
     return {
       orderToBeConfirmed: null,
       // this will upon the call of the modal be
@@ -19,12 +19,12 @@ export default {
       buyer_shipping: false
     }
   },
-  async created () {
+  async created() {
     await this.getSellerPendingOrders()
     await this.getBuyerPendingOrdersOrderItems()
     this.pendingOrders.reverse()
   },
-  mounted () {
+  mounted() {
   },
   components: {
     DashboardHeader
@@ -32,7 +32,7 @@ export default {
   directives: {},
   methods: {
 
-    async getSellerPendingOrders () {
+    async getSellerPendingOrders() {
       try {
         this.shippoOrders = []
         const userExtracted = this.$store.getters.getUserInfo
@@ -46,7 +46,7 @@ export default {
       }
     },
 
-    async getBuyerPendingOrdersOrderItems () {
+    async getBuyerPendingOrdersOrderItems() {
       try {
         for (var i = 0; i < this.pendingOrders.length; i++) {
           var response = await InboxServices.retrieveOrderOrderItems(this.pendingOrders[i].orderId)
@@ -61,7 +61,7 @@ export default {
         if (error) throw error
       }
     },
-    async goToOrderStatus (index) {
+    async goToOrderStatus(index) {
       try {
         const pendingOrder = this.pendingOrders[index]
 
@@ -74,10 +74,10 @@ export default {
       }
     },
 
-    async createOrderOnShippo () {
+    async createOrderOnShippo() {
       try {
         // We can charge the buyer here for now
-        await PaymentService.chargeBuyerForOrder(this.orderToBeConfirmed.orderId)
+        // await PaymentService.chargeBuyerForOrder(this.orderToBeConfirmed.orderId)
         await ShippingService.activateOrder({ orderId: this.orderToBeConfirmed.orderId })
         await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,
@@ -89,7 +89,7 @@ export default {
         if (error) throw error
       }
     },
-    async confirmOrder (index) {
+    async confirmOrder(index) {
       try {
         this.orderToBeConfirmed = this.pendingOrders[index]
         ShippingService.makeShippoApiToken() // This might be relocated to somewhere else
