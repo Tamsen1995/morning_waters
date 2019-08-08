@@ -48,6 +48,13 @@ export default {
     handleClick (newTab) {
       this.currentTab = newTab
     },
+    async addPayoutInfo () {
+      try {
+        console.log(`\nHere stripe connect oauth will be initiated\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async updatePassword () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
