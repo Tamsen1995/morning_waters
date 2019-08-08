@@ -24,12 +24,10 @@ export default {
         // // This assumes the seller has opened a new shippo account
         if (userExtracted) {
           const stripeConnectClientIdRequest = {
-            sellerId: userExtracted.id
-            //     client_id: process.env.SHIPPO_CLIENT_ID,
-            //     client_secret: process.env.SHIPPO_CLIENT_SECRET,
-            //     code: this.$route.params.code,
-            //     state: this.$route.params.state,
-            //     grant_type: "authorization_code"
+            sellerId: userExtracted.id,
+            code: this.$route.params.code,
+            state: this.$route.params.state,
+            grant_type: "authorization_code"
           };
 
           await PaymentService.generateSellerStripeConnectClientId(
