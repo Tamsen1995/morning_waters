@@ -8,6 +8,7 @@
 
 <script>
 import ShippingService from "@/services/ShippingService";
+import PaymentService from "@/services/PaymentService";
 export default {
   data() {
     return {};
@@ -30,11 +31,12 @@ export default {
             //     state: this.$route.params.state,
             //     grant_type: "authorization_code"
           };
-          console.log(
-            `\n\n--- seller > ${JSON.stringify(stripeConnectClientIdRequest)}\n`
-          ); // TESTING
-          //   await ShippingService.generateSellerApiToken(shippoAPItokenRequest);
-          // window.close();
+
+          await PaymentService.generateSellerStripeConnectClientId(
+            stripeConnectClientIdRequest
+          );
+          // await ShippingService.generateSellerApiToken(shippoAPItokenRequest);
+          window.close();
         } else {
           const stripeConnectClientIdRequest = {
             buyerId: buyerExtracted.id
@@ -48,7 +50,7 @@ export default {
             `\n\n--- buyer > ${JSON.stringify(stripeConnectClientIdRequest)}\n`
           ); // TESTING
           //   // This assumes the buyer has opened a new shippo account
-          //   await ShippingService.generateBuyerApiToken(shippoAPItokenRequest);
+          // await ShippingService.generateBuyerApiToken(shippoAPItokenRequest);
           // window.close();
         }
       } catch (error) {
