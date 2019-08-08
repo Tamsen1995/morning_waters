@@ -104,7 +104,7 @@
                 <p
                   style="color:#880599"
                 >Your organization's bank information for recieving payments from buyers.</p>
-                <md-button class="md-raised md-primary">Submit</md-button>
+                <md-button class="md-raised md-primary" @click="addPayoutInfo()">Submit</md-button>
               </md-card-content>
             </md-card>
           </md-tab>

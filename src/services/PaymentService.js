@@ -1,6 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
+  generateSellerStripeConnectClientId (stripeConnectClientIdRequest) {
+    return Api().get('seller/payment/stripe_connect/auth/generate_client_id', {
+      params: {
+        request: stripeConnectClientIdRequest
+      }
+    })
+  },
   checkForBuyerPaymentMethod (buyerId) {
     return Api().get('buyer/payment/checkForPaymentMethod', {
       params: {

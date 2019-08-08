@@ -32,6 +32,7 @@ import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondanc
 
 // Shippo routes
 import DashboardShippoRegister from '@/components/sellerComponents/DashboardShippoRegister'
+import DashboardStripeConnectRegister from '@/components/sellerComponents/DashboardStripeConnectRegister'
 
 // misc routes
 import ComingSoon from '@/components/ComingSoon'
@@ -204,6 +205,11 @@ export default new Router({
       beforeEnter: (to, from, next) => {
         routingAuthentication(to, from, next)
       }
+    },
+    {
+      path: '/dashboard/stripe_connect/oauth/register/:state/:code',
+      name: 'dashboardRegisterStripeConnectRedirect',
+      component: DashboardStripeConnectRegister
     },
 
     // Buyer Routes below

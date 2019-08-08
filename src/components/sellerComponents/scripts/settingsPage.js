@@ -48,6 +48,22 @@ export default {
     handleClick (newTab) {
       this.currentTab = newTab
     },
+    async addPayoutInfo () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+        var randomString =
+          Math.random()
+            .toString(36)
+            .substring(2, 15) +
+          Math.random()
+            .toString(36)
+            .substring(2, 15)
+
+        window.open(`${process.env.STRIPE_CONNECT_OAUTH_LINK}${randomString}&stripe_user[business_type]=company&stripe_user[email]=${userExtracted.email}`)
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async updatePassword () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
