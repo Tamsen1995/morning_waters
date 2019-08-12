@@ -89,6 +89,7 @@ export default {
         })
         this.$modal.hide('ask-seller-if-seller-needs-to-ship')
       } catch (error) {
+        //
         if (error) throw error
       }
     },
