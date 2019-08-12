@@ -3,6 +3,7 @@ import ShippingService from '@/services/ShippingService'
 import PaymentService from '@/services/PaymentService'
 import UserServices from '@/services/UserServices'
 import InboxServices from '@/services/InboxService'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {
@@ -29,7 +30,9 @@ export default {
   components: {
     DashboardHeader
   },
-  directives: {},
+  directives: {
+    responsive: ResponsiveDirective
+  },
   methods: {
 
     async getSellerPendingOrders () {
@@ -73,11 +76,11 @@ export default {
         if (error) throw error
       }
     },
-    async createOrderOnShippo () {
+    async createOrder () {
       try {
         console.log(`\nIn this function a request for the buyer to get charged should be fired\n`) // TESTING
         // We can charge the buyer here for now
-        // await PaymentService.chargeBuyerForOrder(this.orderToBeConfirmed.orderId)
+        await PaymentService.chargeBuyerForOrder(this.orderToBeConfirmed.orderId)
         await ShippingService.activateOrder({ orderId: this.orderToBeConfirmed.orderId })
         await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,

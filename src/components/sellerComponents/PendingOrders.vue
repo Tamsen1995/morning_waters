@@ -88,7 +88,7 @@
           <br />
           <br />
           <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
-          <button @click="createOrderOnShippo()">Submit</button>
+          <button @click="createOrder()">Submit</button>
         </div>
       </modal>
     </div>
