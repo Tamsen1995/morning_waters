@@ -78,7 +78,7 @@ export default {
     },
     async createOrder () {
       try {
-        console.log(`\nIn this function a request for the buyer to get charged should be fired\n`) // TESTING
+        console.log(`\nIn this function a request for the buyer to get charged should be fired ${this.orderToBeConfirmed.orderId}\n`) // TESTING
         // We can charge the buyer here for now
         await PaymentService.chargeBuyerForOrder(this.orderToBeConfirmed.orderId)
         await ShippingService.activateOrder({ orderId: this.orderToBeConfirmed.orderId })

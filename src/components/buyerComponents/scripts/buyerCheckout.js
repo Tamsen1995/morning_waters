@@ -1,6 +1,7 @@
 import ShoppingCart from '@/components/buyerComponents/ShoppingCart' // TODO : Remove
 import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart' // TODO : Remove
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 import BuyerServices from '@/services/BuyerServices'
 import ShippingService from '@/services/ShippingService'
@@ -45,6 +46,10 @@ export default {
     ShoppingCart,
     RequestQuoteCart,
     BuyerHeader
+  },
+  directives: {
+    responsive: ResponsiveDirective
+
   },
   methods: {
     // This function redirects to the correct flow

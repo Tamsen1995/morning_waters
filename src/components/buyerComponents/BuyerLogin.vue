@@ -90,6 +90,7 @@
 
 <script>
 import PageHeader from "@/components/Header.vue";
+import { ResponsiveDirective } from "vue-responsive-components";
 import BuyerHeader from "@/components/buyerComponents/BuyerHeader.vue";
 import AuthenticationService from "@/services/AuthenticationService";
 import Api from "@/services/Api";
@@ -106,6 +107,9 @@ export default {
   components: {
     BuyerHeader,
     PageHeader
+  },
+  directives: {
+    responsive: ResponsiveDirective
   },
   methods: {
     async redirectOntoBuyerRegister() {
