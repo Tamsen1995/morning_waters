@@ -19,7 +19,8 @@ export default {
         const buyerExtracted = this.$store.getters.getBuyerInfo;
         const userExtracted = this.$store.getters.getUserInfo;
         // This assumes the seller has opened a new shippo account
-        if (userExtracted) {
+        if (buyerExtracted == null) {
+          console.log(`\nthe buyer is extracted\n`); // TESTING
           const shippoAPItokenRequest = {
             sellerId: userExtracted.id,
             client_id: process.env.SHIPPO_CLIENT_ID,
@@ -31,6 +32,7 @@ export default {
           await ShippingService.generateSellerApiToken(shippoAPItokenRequest);
           window.close();
         } else {
+          console.log(`\nthe seller is extracted\n`); // TESTING
           const shippoAPItokenRequest = {
             buyerId: buyerExtracted.id,
             client_id: process.env.SHIPPO_CLIENT_ID,
