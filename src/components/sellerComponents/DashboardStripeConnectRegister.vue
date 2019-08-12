@@ -40,11 +40,8 @@ export default {
             grant_type: "authorization_code"
           };
           console.log(
-            `\n\n--- buyer > ${JSON.stringify(stripeConnectClientIdRequest)}\n`
+            `\n\nHere we'll have to determine if the buyers will also need a stripe connect account\n`
           ); // TESTING
-
-          // await ShippingService.generateBuyerApiToken(shippoAPItokenRequest);
-          // window.close();
         }
       } catch (error) {
         if (error) throw error;
