@@ -21,29 +21,21 @@
           <md-card>
             <md-card-content>
               <span class="pull-right" id="tooltip">
-                <h3>
-                  <a href="#" class="card-link">X</a>
-                </h3>
                 <md-tooltip md-delay="300">Delete Message</md-tooltip>
               </span>
 
               <!-- Editable Service Specific Request Form -->
               <form>
-                <md-field>
-                  <label>Item : {{ item.serviceTitle }}</label>
-                  <!-- <md-input></md-input> -->
-                </md-field>
-                <md-field>
-                  <label>Quantity : {{ item.quantity }}</label>
-                  <!-- <md-input></md-input> -->
-                </md-field>
-                <md-field>
-                  <label>Turn Around Time :</label>
-                </md-field>
-                <md-field>
-                  <label>Message to Seller:</label>
-                  <md-textarea v-model="inquiryText"></md-textarea>
-                </md-field>
+                Item : {{ item.serviceTitle }}
+                <br />
+                <br />
+                Quantity : {{ item.quantity }}
+                <br />
+                <br />
+                Turn Around Time : {{item.turnAroundtime}}
+                <br />
+                <br />
+                Message to Seller: {{item.inquiryText}}
                 <!-- <br />
               Inquiry : 
               <md-content style="text-align:left" id="inquiry-text" class="md-scrollbar">
