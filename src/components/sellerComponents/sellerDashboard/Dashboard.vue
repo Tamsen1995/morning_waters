@@ -15,6 +15,9 @@
         </div>
         <br />
         <br />
+        <div>
+          <progress-bar></progress-bar>
+        </div>
 
         <!-- Stats Cards -->
         <div id="stats">

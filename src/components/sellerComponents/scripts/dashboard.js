@@ -1,6 +1,7 @@
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import StatsCards from '@/components/sellerComponents/sellerDashboard/StatsCards.vue'
 import AboutSection from '@/components/sellerComponents/sellerDashboard/AboutSection.vue'
+import ProgressBar from '@/components/sellerComponents/sellerDashboard/ProgressBar.vue'
 import UserServices from '@/services/UserServices'
 import DashboardServices from '@/services/DashboardServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
@@ -31,12 +32,15 @@ export default {
       serviceBeingEdited: false,
       serviceEdited: null
 
+      // progress bar vars
+
     }
   },
   components: {
     DashboardHeader,
     StatsCards,
-    AboutSection
+    AboutSection,
+    ProgressBar
   },
   directives: {
     responsive: ResponsiveDirective
