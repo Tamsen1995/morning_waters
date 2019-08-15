@@ -16,9 +16,11 @@ export default {
   components: {
     ProgressBar
   },
+  created() {
+    this.determineOnboardingStatus();
+  },
   mounted() {
     // TESTING only
-    window.setTimeout(this.determineOnboardingStatus, 3000);
   },
 
   methods: {

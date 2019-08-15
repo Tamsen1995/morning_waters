@@ -73,8 +73,8 @@
                     <md-chip
                       class="md-primary md-accent"
                       style="background-color: white; color: #a558e4; border: 1px solid #a558e4;"
-                      v-for="chip in service.tags"
-                      :key="chip"
+                      v-for="(chip, index) in service.tags"
+                      :key="index"
                     >{{ chip.tag }}</md-chip>
                   </div>
                 </md-card-area>
