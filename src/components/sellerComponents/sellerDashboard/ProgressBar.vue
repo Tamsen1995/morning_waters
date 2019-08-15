@@ -1,9 +1,7 @@
 <template>
   <div>
     <b-progress :max="max" class="mb-3">
-      <b-progress-bar variant="success" :value="value[0]"></b-progress-bar>
-      <b-progress-bar variant="success" :value="value[1]"></b-progress-bar>
-      <b-progress-bar variant="success" :value="value[2]"></b-progress-bar>
+      <b-progress-bar variant="success" :value="percentage"></b-progress-bar>
     </b-progress>
   </div>
 </template>
@@ -17,13 +15,13 @@ export default {
     return {
       percentage: 0,
       max: 100,
-      value: [30, 0, 0]
+      value: [0, 0, 0]
     };
   },
   components: {
     ProgressBar
   },
-  created() {
+  mounted() {
     this.determineOnboardingStatus();
   },
   methods: {
@@ -35,10 +33,8 @@ export default {
         )).data.user;
 
         if (seller.about !== "") {
-          this.percentage = 20;
+          this.percentage = 25;
         }
-
-        console.log(`\n\nthe seller is : ${JSON.stringify(seller)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
