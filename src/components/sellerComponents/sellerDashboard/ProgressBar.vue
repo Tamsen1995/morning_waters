@@ -3,6 +3,7 @@
     <b-progress :max="max" class="mb-3">
       <b-progress-bar variant="success" :value="percentage"></b-progress-bar>
     </b-progress>
+    {{this.percentage}}
   </div>
 </template>
 
@@ -33,8 +34,12 @@ export default {
         )).data.user;
 
         if (seller.about !== "") {
-          this.percentage = 25;
+          this.percentage = this.percentage + 25;
         }
+        if (seller.stripeConnectAcctInfo !== "") {
+          this.percentage = this.percentage + 15;
+        }
+        console.log(`\nseller :  ${JSON.stringify(seller)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
