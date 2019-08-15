@@ -61,6 +61,13 @@ export default {
       }
     })
   },
+  retrieveSellerProfile (sellerId) {
+    return Api().get('seller/retrieve', {
+      params: {
+        sellerId: sellerId
+      }
+    })
+  },
   getPublicProfileInfo (uid) {
     return Api().get('publicProfileInfo', {
       params: {
