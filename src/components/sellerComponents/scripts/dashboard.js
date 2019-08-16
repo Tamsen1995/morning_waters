@@ -36,6 +36,11 @@ export default {
 
     }
   },
+  mounted () {
+    this.getServices()
+    this.getUserInfo()
+    this.attemptOnboarding()
+  },
   components: {
     DashboardHeader,
     StatsCards,
@@ -46,7 +51,16 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async attemptOnboarding () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
 
+        var child = this.$refs.progressBar
+        child.commenceOnboarding()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async redirectToInbox () {
       try {
         this.$router.push({
@@ -276,9 +290,6 @@ export default {
         if (error) throw error
       }
     }
-  },
-  mounted () {
-    this.getServices()
-    this.getUserInfo()
   }
+
 }

@@ -16,7 +16,7 @@
         <br />
         <br />
         <div>
-          <progress-bar></progress-bar>
+          <progress-bar ref="progressBar"></progress-bar>
         </div>
 
         <!-- Stats Cards -->
