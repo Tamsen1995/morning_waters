@@ -53,10 +53,18 @@ export default {
   methods: {
     async attemptOnboarding () {
       try {
-        const userExtracted = this.$store.getters.getUserInfo
-
+        // check if user has been onboarded
         var child = this.$refs.progressBar
-        child.commenceOnboarding()
+        const userExtracted = this.$store.getters.getUserInfo
+        const userInfo = (await UserServices.getPublicProfileInfo(userExtracted.id))
+          .data
+        this.$store.dispatch('setUser', userInfo)
+
+        // if the user's onboarded variable is false
+        // execute
+        if (userExtracted) {
+          child.commenceOnboarding()
+        }
       } catch (error) {
         if (error) throw error
       }
