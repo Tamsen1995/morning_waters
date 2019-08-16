@@ -38,18 +38,22 @@ export default {
           seller.serviceTableId
         )).data.usersServices;
 
-        for (var i = 0; i < userServices.length; i++) {
+        // adding a percenta
+        for (var i = 0; i < userServices.length && i < 5; i++) {
           this.percentage = this.percentage + 10;
-          console.log(
-            `\n\nan illegal : ${JSON.stringify(userServices[i])}\n\n`
-          ); // TESTING
         }
 
+        // adding a percentage for the about section
         if (seller.about !== "") {
-          this.percentage = this.percentage + 25;
+          this.percentage = this.percentage + 15;
         }
+
+        // addding a percentage for the stripe account info
         if (seller.stripeConnectAcctInfo !== "") {
           this.percentage = this.percentage + 15;
+        }
+
+        if (seller.shippo_api_key !== "") {
         }
 
         // console.log(`\nseller :  ${JSON.stringify(seller)}\n`); // TESTING
