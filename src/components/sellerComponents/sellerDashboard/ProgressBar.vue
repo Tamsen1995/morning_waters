@@ -10,6 +10,7 @@
 <script>
 import ProgressBar from "vue-simple-progress";
 import UserServices from "@/services/UserServices";
+import DashboardServices from "@/services/DashboardServices";
 
 export default {
   data() {
@@ -33,13 +34,25 @@ export default {
           userExtracted.id
         )).data.user;
 
+        const userServices = (await DashboardServices.queryForUsersServices(
+          seller.serviceTableId
+        )).data.usersServices;
+
+        for (var i = 0; i < userServices.length; i++) {
+          this.percentage = this.percentage + 10;
+          console.log(
+            `\n\nan illegal : ${JSON.stringify(userServices[i])}\n\n`
+          ); // TESTING
+        }
+
         if (seller.about !== "") {
           this.percentage = this.percentage + 25;
         }
         if (seller.stripeConnectAcctInfo !== "") {
           this.percentage = this.percentage + 15;
         }
-        console.log(`\nseller :  ${JSON.stringify(seller)}\n`); // TESTING
+
+        // console.log(`\nseller :  ${JSON.stringify(seller)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
