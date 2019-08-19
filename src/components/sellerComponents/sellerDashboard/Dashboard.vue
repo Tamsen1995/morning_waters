@@ -16,7 +16,7 @@
         <br />
         <br />
         <div>
-          <progress-bar ref="progressBar" v-on:add-services="addService()"></progress-bar>
+          <progress-bar ref="progressBar" v-on:dashboard-add-services="addService()"></progress-bar>
         </div>
 
         <!-- Stats Cards -->

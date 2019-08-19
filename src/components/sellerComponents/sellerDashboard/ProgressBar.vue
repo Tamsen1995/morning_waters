@@ -38,7 +38,8 @@ export default {
   methods: {
     async addServices() {
       try {
-        this.$emit("add-services");
+        this.$emit("dashboard-add-services");
+        this.$modal.hide("onboarding-step-one");
       } catch (error) {
         if (error) throw error;
       }
