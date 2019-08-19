@@ -58,8 +58,10 @@ export default {
         const userExtracted = this.$store.getters.getUserInfo
         const userInfo = (await UserServices.getPublicProfileInfo(userExtracted.id))
           .data.user
+        // syncing front end store with current db entry
         this.$store.dispatch('setUser', userInfo)
 
+        console.log(`\n\nthe user extracted on dash is : ${JSON.stringify(userExtracted)}\n`) // TESTING
         // if the user's onboarded variable is false
         // execute
         if (userExtracted) {
