@@ -10,7 +10,7 @@
         <br />[Some kind of call to action for services (let Guy write)]
         <br />Would you like to add a service ?
       </div>
-      <md-button class="md-dense md-raised md-primary">Add Services</md-button>
+      <md-button class="md-dense md-raised md-primary" @click="addServices()">Add Services</md-button>
     </modal>
     <!--  -->
   </div>
@@ -36,6 +36,13 @@ export default {
     // this.commenceOnboarding();
   },
   methods: {
+    async addServices() {
+      try {
+        this.$emit("add-services");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async commenceOnboarding() {
       try {
         this.$modal.show("onboarding-step-one");
