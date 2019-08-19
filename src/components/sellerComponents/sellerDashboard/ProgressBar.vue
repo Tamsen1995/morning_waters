@@ -45,7 +45,7 @@ export default {
     },
     async commenceOnboarding() {
       try {
-        this.$modal.show("onboarding-step-one");
+        this.determineOnboardingStatus();
       } catch (error) {
         if (error) throw error;
       }
@@ -61,26 +61,29 @@ export default {
           seller.serviceTableId
         )).data.usersServices;
 
-        // adding a percenta
+        // Here we are adding percentages for the progress bar itself
         for (var i = 0; i < userServices.length && i < 5; i++) {
           this.percentage = this.percentage + 10;
         }
-
-        // adding a percentage for the about section
         if (seller.about !== "") {
           this.percentage = this.percentage + 10;
         }
-
-        // addding a percentage for the stripe account info
         if (seller.stripeConnectAcctInfo !== "") {
           this.percentage = this.percentage + 20;
         }
-
         if (seller.shippo_api_key !== "") {
           this.percentage = this.percentage + 20;
         }
+        ///////////////////////////////////////////////
 
-        // console.log(`\nseller :  ${JSON.stringify(seller)}\n`); // TESTING
+        // Below here the onboarding process itself is triggered
+
+        if (userServices.length <= 0) {
+          // no services means they need to add a service
+          this.$modal.show("onboarding-step-one");
+        }
+
+        //////////////////////////////////////////////////
       } catch (error) {
         if (error) throw error;
       }

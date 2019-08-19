@@ -64,7 +64,7 @@ export default {
         // if the user's onboarded variable is false
         // execute
         if (userExtracted.onboarded === false) {
-          child.commenceOnboarding()
+          // child.commenceOnboarding()
         }
       } catch (error) {
         if (error) throw error
