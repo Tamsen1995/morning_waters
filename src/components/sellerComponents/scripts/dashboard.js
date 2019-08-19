@@ -57,7 +57,7 @@ export default {
         var child = this.$refs.progressBar
         const userExtracted = this.$store.getters.getUserInfo
         const userInfo = (await UserServices.getPublicProfileInfo(userExtracted.id))
-          .data
+          .data.user
         this.$store.dispatch('setUser', userInfo)
 
         // if the user's onboarded variable is false
