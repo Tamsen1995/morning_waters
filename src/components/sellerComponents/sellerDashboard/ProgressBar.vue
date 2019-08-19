@@ -25,7 +25,9 @@ export default {
   data() {
     return {
       percentage: 0,
-      max: 100
+      max: 100,
+      user: null,
+      userServices: null
     };
   },
   components: {
@@ -51,19 +53,33 @@ export default {
         if (error) throw error;
       }
     },
+    async attemptOnboardingProcess() {
+      try {
+        // Below here the onboarding process itself is triggered
+
+        if (this.userServices.length <= 0) {
+          // no services means they need to add a service
+          this.$modal.show("onboarding-step-one");
+        }
+
+        //////////////////////////////////////////////////
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async determineOnboardingStatus() {
       try {
-        const userExtracted = this.$store.getters.getUserInfo;
-        const seller = (await UserServices.retrieveSellerProfile(
-          userExtracted.id
-        )).data.user;
+        this.user = this.$store.getters.getUserInfo;
+        const seller = (await UserServices.retrieveSellerProfile(this.user.id))
+          .data.user;
 
-        const userServices = (await DashboardServices.queryForUsersServices(
+        this.userServices = (await DashboardServices.queryForUsersServices(
           seller.serviceTableId
         )).data.usersServices;
 
+        this.percentage = 0;
         // Here we are adding percentages for the progress bar itself
-        for (var i = 0; i < userServices.length && i < 5; i++) {
+        for (var i = 0; i < this.userServices.length && i < 5; i++) {
           this.percentage = this.percentage + 10;
         }
         if (seller.about !== "") {
@@ -76,15 +92,7 @@ export default {
           this.percentage = this.percentage + 20;
         }
         ///////////////////////////////////////////////
-
-        // Below here the onboarding process itself is triggered
-
-        if (userServices.length <= 0) {
-          // no services means they need to add a service
-          this.$modal.show("onboarding-step-one");
-        }
-
-        //////////////////////////////////////////////////
+        this.attemptOnboardingProcess();
       } catch (error) {
         if (error) throw error;
       }

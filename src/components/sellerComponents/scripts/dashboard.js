@@ -39,7 +39,6 @@ export default {
   mounted () {
     this.getServices()
     this.getUserInfo()
-    // this.attemptOnboarding()
   },
   components: {
     DashboardHeader,
@@ -51,25 +50,7 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    // async attemptOnboarding () {
-    //   try {
-    //     // check if user has been onboarded
-    //     var child = this.$refs.progressBar
-    //     const userExtracted = this.$store.getters.getUserInfo
-    //     const userInfo = (await UserServices.getPublicProfileInfo(userExtracted.id))
-    //       .data.user
-    //     // syncing front end store with current db entry
-    //     this.$store.dispatch('setUser', userInfo)
 
-    //     // if the user's onboarded variable is false
-    //     // execute
-    //     if (userExtracted.onboarded === false) {
-    //       // child.commenceOnboarding()
-    //     }
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // },
     async redirectToInbox () {
       try {
         this.$router.push({
@@ -250,6 +231,10 @@ export default {
           this.turnAroundTime = ''
           this.tags = []
           this.subServicesToBeAdded = []
+
+          // re-evaluateo onboarding status
+          var child = this.$refs.progressBar
+          child.determineOnboardingStatus()
         }
       } catch (error) {
         if (error) {
