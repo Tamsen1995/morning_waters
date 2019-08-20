@@ -1,5 +1,5 @@
-<template>
-  <div>
+<template >
+  <div v-if="onboarded === false">
     <b-progress :max="max" class="mb-3">
       <b-progress-bar variant="success" :value="percentage"></b-progress-bar>
     </b-progress>
@@ -62,7 +62,8 @@ export default {
       max: 100,
       seller: null,
       user: null,
-      userServices: null
+      userServices: null,
+      onboarded: false
     };
   },
   components: {
@@ -169,7 +170,7 @@ export default {
 
         // if the onboarding has been completed we wanna make sure to signal this to the back
         if (this.percentage === 100) {
-          console.log(`\n\nUpddate onboarded variable in the back\n`); // TESTING
+          this.onboarded = true;
         }
 
         this.attemptOnboardingProcess();
