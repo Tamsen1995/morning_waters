@@ -153,7 +153,7 @@ export default {
         this.percentage = 0;
         // Here we are adding percentages for the progress bar itself
         for (var i = 0; i < this.userServices.length && i < 5; i++) {
-          this.percentage = this.percentage + 10;
+          this.percentage = this.percentage + 5;
         }
         if (this.seller.about !== "") {
           this.percentage = this.percentage + 10;
@@ -162,7 +162,7 @@ export default {
           this.percentage = this.percentage + 30;
         }
         if (this.seller.shippo_api_key !== "") {
-          this.percentage = this.percentage + 30;
+          this.percentage = this.percentage + 25;
         }
         ///////////////////////////////////////////////
         this.attemptOnboardingProcess();
