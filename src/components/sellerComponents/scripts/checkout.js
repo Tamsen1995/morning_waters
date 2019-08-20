@@ -39,7 +39,7 @@ export default {
         const stripeUserInfo = await SettingsService.getStripeUserInfo(
           userExtracted
         )
-        this.subscriptions = stripeUserInfo.data.subscriptions.data
+
         const customerDefaultSourceID =
           stripeUserInfo.data.stripeCustomer.default_source
         const customerDefaultSource = getDefaultSource(

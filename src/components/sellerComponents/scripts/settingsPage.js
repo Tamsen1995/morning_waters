@@ -48,11 +48,24 @@ export default {
     handleClick (newTab) {
       this.currentTab = newTab
     },
+    // opens up new tab for stripe connect
+    async goToStripeConnectDashboard () {
+      try {
+        if (this.user && this.user.stripeConnectAcctInfo !== '') {
+          const response = await PaymentService.goToStripeConnectDashboard(this.user.stripeConnectAcctInfo)
+          window.open(response.data)
+        } else {
+          console.log(`error in goToStripeConnectDashboard()`) // TESTING
+        }
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async addPayoutInfo () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
 
-        PaymentService.makeStripeConnectAccount(userExtracted)
+        PaymentService.makeStripeConnectAccount()
       } catch (error) {
         if (error) throw error
       }
@@ -105,6 +118,7 @@ export default {
         const userInfo = await UserServices.getPublicProfileInfo(
           userExtracted.id
         )
+        this.user = userInfo.data.user
 
         this.name = userInfo.data.user.name
         this.email = userInfo.data.user.email

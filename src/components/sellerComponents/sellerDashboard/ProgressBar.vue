@@ -1,5 +1,33 @@
-<template>
-  <div>
+<template >
+  <div v-if="onboarded === false">
+    <md-tooltip md-direction="right">
+      <md-card style="background-color: white;">
+        <!-- for (var i = 0; i < this.userServices.length && i < 5; i++) {
+          this.percentage = this.percentage + 5;
+        }
+        if (this.seller.about !== "") {
+          this.percentage = this.percentage + 10;
+        }
+        if (this.seller.stripeConnectAcctInfo !== "") {
+          this.percentage = this.percentage + 40;
+        }
+        if (this.seller.shippo_api_key !== "") {
+          this.percentage = this.percentage + 25;
+        }-->
+        <md-card-content>
+          5 services
+          <md-icon v-if="userServices.length >= 5">check</md-icon>
+          <br />About
+          <md-icon v-if="seller.about !== ''">check</md-icon>
+          <br />Shippo
+          <md-icon v-if="seller.shippo_api_key !== ''">check</md-icon>
+          <br />Payout
+          <md-icon v-if="seller.stripeConnectAcctInfo !== ''">check</md-icon>
+          <br />
+        </md-card-content>
+      </md-card>
+    </md-tooltip>
+
     <b-progress :max="max" class="mb-3">
       <b-progress-bar variant="success" :value="percentage"></b-progress-bar>
     </b-progress>
@@ -62,7 +90,8 @@ export default {
       max: 100,
       seller: null,
       user: null,
-      userServices: null
+      userServices: null,
+      onboarded: false
     };
   },
   components: {
@@ -169,7 +198,7 @@ export default {
 
         // if the onboarding has been completed we wanna make sure to signal this to the back
         if (this.percentage === 100) {
-          console.log(`\n\nUpddate onboarded variable in the back\n`); // TESTING
+          this.onboarded = true;
         }
 
         this.attemptOnboardingProcess();

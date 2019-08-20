@@ -33,25 +33,6 @@
 
   <br />
   <br />
-
-  <div
-    id="subscriptions-billing-tab"
-    v-for="subscription in this.subscriptions"
-    v-bind:key="subscription"
-  >
-    Date of purchase : {{ new Date(subscription.created * 1000) }}
-    <br />
-    <br />
-    Last billing date : {{ new Date(subscription.current_period_start * 1000) }}
-    <br />
-    <br />
-    Next billing date : {{ new Date(subscription.current_period_end * 1000) }}
-    <br />
-    <br />
-    Subscription plan : {{ subscription.items.data[0].plan.nickname }}
-    <br />
-    <br />
-  </div>
 </div>
 </template>
 
