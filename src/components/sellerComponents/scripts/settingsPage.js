@@ -94,6 +94,7 @@ export default {
           userExtracted.id,
           newProfileInfo
         )
+        console.log(`\n\npublish profile : ${JSON.stringify(response)}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe is inside of updateProfile : ${error}\n`) // TESTING
         if (error) throw error
