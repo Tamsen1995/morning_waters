@@ -1,15 +1,18 @@
 <template >
   <div v-if="onboarded === false">
     <md-tooltip md-direction="right">
-      <div style="background-color: white;">
-        TESTING
-        <br />TESTING
-        <br />TESTING
-        <br />TESTING
-        <br />TESTING
-        <br />TESTING
-        <br />
-      </div>
+      <md-card style="background-color: white;">
+        <md-card-content>
+          <md-icon>check</md-icon>5 services
+          <br />
+          <md-icon>check</md-icon>About
+          <br />
+          <md-icon>check</md-icon>Shippo
+          <br />
+          <md-icon>check</md-icon>Payout
+          <br />
+        </md-card-content>
+      </md-card>
     </md-tooltip>
 
     <b-progress :max="max" class="mb-3">
