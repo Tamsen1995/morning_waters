@@ -140,8 +140,14 @@ export default {
     },
     async addSellerAboutSection() {
       try {
-        this.aboutTextarea = "";
+        const response = await UserServices.addSellerAboutSection({
+          sellerId: "",
+          about: this.aboutTextarea
+        });
+        console.log(`\nabout section update : ${JSON.stringify(response)}\n`); // TESTING
+
         this.$modal.hide("onboarding-add-about-section");
+        this.aboutTextarea = "";
       } catch (error) {
         if (error) throw error;
       }

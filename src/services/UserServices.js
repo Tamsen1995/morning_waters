@@ -1,6 +1,10 @@
 import Api from '@/services/Api'
 
 export default {
+
+  addSellerAboutSection (aboutInfo) {
+    return Api().post('seller/update/about_section', { aboutInfo })
+  },
   getSellerPendingOrders (sellerId) {
     return Api().get('/getSellerPendingOrders', {
       params: {
