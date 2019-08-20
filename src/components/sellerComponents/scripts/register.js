@@ -69,6 +69,13 @@ export default {
       this.$store.dispatch('setEmailAddress', '')
     },
 
+    async makeShippoApiToken () {
+      try {
+        ShippingService.makeShippoApiToken()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async register () {
       try {
         console.log(`\n\nThe beta key being : ${this.betaKey}\n`) // TESTING
@@ -92,7 +99,7 @@ export default {
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
         Api().defaults.headers.common['Authorization'] = AuthenticationService.getAuthHeader()
-        ShippingService.makeShippoApiToken()
+
         this.$router.push({
           name: 'dashboard'
         })
