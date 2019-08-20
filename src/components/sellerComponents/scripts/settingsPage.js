@@ -51,6 +51,12 @@ export default {
     async goToStripeConnectDashboard () {
       try {
         console.log(`\nThis method is supposed to link to the stripe connect dashboard\n`) // TESTING
+        if (this.user && this.user.stripeConnectAcctInfo !== '') {
+          const response = await PaymentService.goToStripeConnectDashboard(this.user.stripeConnectAcctInfo)
+          console.log(`\n\nThe response link for the stripe dash  : ${JSON.stringify(response)}\n`) // TESTING
+        } else {
+          console.log(`error in goToStripeConnectDashboard()`) // TESTING
+        }
       } catch (error) {
         if (error) throw error
       }
@@ -59,7 +65,7 @@ export default {
       try {
         const userExtracted = this.$store.getters.getUserInfo
 
-        PaymentService.makeStripeConnectAccount(userExtracted)
+        PaymentService.makeStripeConnectAccount()
       } catch (error) {
         if (error) throw error
       }

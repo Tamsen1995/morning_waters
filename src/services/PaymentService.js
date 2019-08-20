@@ -1,6 +1,12 @@
 import Api from '@/services/Api'
 
 export default {
+  goToStripeConnectDashboard (stripeConnectAcctInfo) {
+    console.log(`\n${JSON.stringify(stripeConnectAcctInfo)}\n`) // TESTING
+    return Api().get('seller/payment/stripe_connect/auth/redirect_to_dashboard', {
+      params: { stripeConnectAcctInfo }
+    })
+  },
   makeStripeConnectAccount (userExtracted) {
     var randomString =
       Math.random()
