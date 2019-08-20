@@ -21,6 +21,19 @@
       </div>
       <md-button class="md-dense md-raised md-primary" @click="addPayoutMethod()">Add Payout method</md-button>
     </modal>
+
+    <modal name="thank-you-for-adding-a-payout-method">
+      <div>
+        <div>
+          <br />
+          <br />Thank you for adding a payout method
+        </div>
+        <md-button
+          class="md-dense md-raised md-primary"
+          @click="proceedAfterPayoutRegistration()"
+        >Next</md-button>
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -81,13 +94,21 @@ export default {
 
         PaymentService.makeStripeConnectAccount(userExtracted);
         this.$modal.hide("onboarding-add-stripe-connect");
+        this.$modal.show("thank-you-for-adding-a-payout-method");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+
+    async proceedAfterPayoutRegistration() {
+      try {
+        this.$modal.hide("thank-you-for-adding-a-payout-method");
 
         this.determineOnboardingStatus();
       } catch (error) {
         if (error) throw error;
       }
     },
-
     async commenceOnboarding() {
       try {
         this.determineOnboardingStatus();
