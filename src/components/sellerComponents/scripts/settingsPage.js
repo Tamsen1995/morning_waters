@@ -115,6 +115,8 @@ export default {
         this.companyWebsite = userInfo.data.user.companyWebsite
         this.address = JSON.parse(userInfo.data.user.address)
         this.about = userInfo.data.user.about
+
+        console.log(`\napres l'orgasme : ${JSON.stringify(userExtracted)}\n`) // TESTING
       } catch (error) {
         console.log(
           `\nThe error message inside of the retrieveProfileInfo: ${error}\n`
