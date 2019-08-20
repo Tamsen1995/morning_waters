@@ -12,7 +12,6 @@
         </div>
 
         <md-tabs>
-          <!-- Payout -->
           <md-tab id="tab-personal" md-label="Personal">
             <md-card md-with-hover>
               <md-card-content>
@@ -101,9 +100,11 @@
           <md-tab id="tab-payout" md-label="Payout">
             <md-card md-with-hover>
               <md-card-content>
-                <p
-                  style="color:#880599"
-                >Your organization's bank information for recieving payments from buyers.</p>
+                <p style="color:#880599">
+                  You can access your Stripe dashboard here
+                  <br />
+                  <md-button class="md-raised md-primary">Go to Stripe</md-button>
+                </p>
                 <md-button class="md-raised md-primary" @click="addPayoutInfo()">Submit</md-button>
               </md-card-content>
             </md-card>
