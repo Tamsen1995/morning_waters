@@ -71,7 +71,6 @@ export default new Vuex.Store({
       }
     },
     setUser (state, user) {
-      console.log(`\nstate user : ${JSON.stringify(user)}\n\n`) // TESTING
       state.user = user
     },
     setBuyer (state, buyer) {

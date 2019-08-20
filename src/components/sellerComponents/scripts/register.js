@@ -8,6 +8,8 @@ export default {
   data () {
     return {
       betaKey: '',
+      firstName: '',
+      lastName: '',
       name: '',
       email: '',
       password: '',
