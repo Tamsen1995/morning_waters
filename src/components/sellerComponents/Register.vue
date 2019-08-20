@@ -391,11 +391,19 @@
                   <br />(Not mandatory, but highly recommended!)
                   <br />
                   <br />
+
+                  <md-button
+                    class="md-raised md-primary center"
+                    style="height:40px; background-color: white; color: purple;"
+                    id="btn-login"
+                    @click="register()"
+                  >Skip Shippo Setup for now</md-button>
+
                   <md-button
                     class="md-raised md-primary center"
                     style="height:40px;"
                     id="btn-login"
-                    @click="register"
+                    @click="register(), makeShippoApiToken()"
                   >Submit</md-button>
                 </md-step>
               </md-steppers>
