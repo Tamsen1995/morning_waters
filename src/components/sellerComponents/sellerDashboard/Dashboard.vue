@@ -16,7 +16,9 @@
         <br />
         <br />
         <div>
-          <progress-bar ref="progressBar" v-on:dashboard-add-services="addService()"></progress-bar>
+          <progress-bar ref="progressBar" v-on:dashboard-add-services="addService()">
+            <md-tooltip md-direction="top">Top</md-tooltip>
+          </progress-bar>
         </div>
 
         <!-- Stats Cards -->

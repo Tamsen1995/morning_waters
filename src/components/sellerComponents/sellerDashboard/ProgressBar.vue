@@ -1,5 +1,9 @@
 <template >
   <div v-if="onboarded === false">
+    <md-tooltip md-direction="right" style="background-color: white;">
+      <div>Right</div>
+    </md-tooltip>
+
     <b-progress :max="max" class="mb-3">
       <b-progress-bar variant="success" :value="percentage"></b-progress-bar>
     </b-progress>
