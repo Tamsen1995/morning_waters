@@ -8,7 +8,7 @@
       >Make your profile marketable</md-button>
 
       <md-tooltip md-direction="right">
-        <md-card style="background-color: white;">
+        <md-card style="background-color: #9c4dcc; color: white;">
           <md-card-content>
             5 services
             <md-icon v-if="userServices && userServices.length >= 5">check</md-icon>
@@ -28,7 +28,7 @@
       </b-progress>
       {{this.percentage}} %
       <!-- Prompt to commence onboarding-->
-      <modal name="onboarding-add-services">
+      <modal height="auto" name="onboarding-add-services">
         <div>
           <br />[Some kind of call to action for services (let Guy write)]
           <br />Would you like to add a service ?
@@ -37,7 +37,7 @@
       </modal>
       <!--  -->
 
-      <modal name="onboarding-add-stripe-connect">
+      <modal height="auto" name="onboarding-add-stripe-connect">
         <div>
           <br />[Some kind of call to action stripe connect (let Guy write)]
           <br />Would you like to add a service ?
@@ -48,7 +48,7 @@
         >Add Payout method</md-button>
       </modal>
 
-      <modal name="onboarding-add-shippo-acct">
+      <modal height="auto" name="onboarding-add-shippo-acct">
         <div>
           <br />
           <br />In order to handle shipping a shippo acct is required
@@ -59,15 +59,22 @@
         >Add Shippo account</md-button>
       </modal>
 
-      <modal name="onboarding-add-about-section">
-        <div>
+      <modal height="auto" name="onboarding-add-about-section">
+        <div style="padding: 5%;">
           <br />
           <br />[Call to action for about section]
+          <md-field>
+            <label>Textarea</label>
+            <md-textarea v-model="aboutTextarea"></md-textarea>
+          </md-field>
+          <md-button
+            class="md-dense md-raised md-primary"
+            @click="addSellerAboutSection()"
+          >Add About section</md-button>
         </div>
-        <md-button class="md-dense md-raised md-primary">Add About section</md-button>
       </modal>
 
-      <modal name="thank-you-for-adding-a-payout-method">
+      <modal height="auto" name="thank-you-for-adding-a-payout-method">
         <div>
           <div>
             <br />
@@ -98,7 +105,8 @@ export default {
       seller: null,
       user: null,
       userServices: null,
-      onboarded: false
+      onboarded: false,
+      aboutTextarea: ""
     };
   },
   components: {
@@ -130,7 +138,14 @@ export default {
         if (error) throw error;
       }
     },
-
+    async addSellerAboutSection() {
+      try {
+        this.aboutTextarea = "";
+        this.$modal.hide("onboarding-add-about-section");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async addServices() {
       try {
         this.$emit("dashboard-add-services");
