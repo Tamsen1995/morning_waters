@@ -16,13 +16,13 @@
         }-->
         <md-card-content>
           5 services
-          <md-icon v-if="userServices.length >= 5">check</md-icon>
+          <md-icon v-if="userServices && userServices.length >= 5">check</md-icon>
           <br />About
-          <md-icon v-if="seller.about !== ''">check</md-icon>
+          <md-icon v-if="seller && seller.about !== ''">check</md-icon>
           <br />Shippo
-          <md-icon v-if="seller.shippo_api_key !== ''">check</md-icon>
+          <md-icon v-if="seller && seller.shippo_api_key !== ''">check</md-icon>
           <br />Payout
-          <md-icon v-if="seller.stripeConnectAcctInfo !== ''">check</md-icon>
+          <md-icon v-if="seller && seller.stripeConnectAcctInfo !== ''">check</md-icon>
           <br />
         </md-card-content>
       </md-card>
@@ -107,7 +107,7 @@ export default {
     // in order to trigger the onboarding
     async attemptOnboardingProcess() {
       try {
-        if (this.userServices.length <= 0) {
+        if (this.userServices && this.userServices.length <= 0) {
           // no services means they need to add a service
           this.$modal.show("onboarding-add-services");
         } else if (this.seller.stripeConnectAcctInfo === "") {
@@ -174,23 +174,25 @@ export default {
         this.seller = (await UserServices.retrieveSellerProfile(
           this.user.id
         )).data.user;
-
+        console.log(`skjnjsdfn${JSON.stringify(this.seller)}`); // TESTING
         this.userServices = (await DashboardServices.queryForUsersServices(
           this.seller.serviceTableId
         )).data.usersServices;
 
         this.percentage = 0;
         // Here we are adding percentages for the progress bar itself
-        for (var i = 0; i < this.userServices.length && i < 5; i++) {
-          this.percentage = this.percentage + 5;
+        if (this.userServices) {
+          for (var i = 0; i < this.userServices.length && i < 5; i++) {
+            this.percentage = this.percentage + 5;
+          }
         }
-        if (this.seller.about !== "") {
+        if (this.seller && this.seller.about !== "") {
           this.percentage = this.percentage + 10;
         }
-        if (this.seller.stripeConnectAcctInfo !== "") {
+        if (this.seller && this.seller.stripeConnectAcctInfo !== "") {
           this.percentage = this.percentage + 40;
         }
-        if (this.seller.shippo_api_key !== "") {
+        if (this.seller && this.seller.shippo_api_key !== "") {
           this.percentage = this.percentage + 25;
         }
 
