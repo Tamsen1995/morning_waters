@@ -2,14 +2,27 @@
   <div v-if="onboarded === false">
     <md-tooltip md-direction="right">
       <md-card style="background-color: white;">
+        <!-- for (var i = 0; i < this.userServices.length && i < 5; i++) {
+          this.percentage = this.percentage + 5;
+        }
+        if (this.seller.about !== "") {
+          this.percentage = this.percentage + 10;
+        }
+        if (this.seller.stripeConnectAcctInfo !== "") {
+          this.percentage = this.percentage + 40;
+        }
+        if (this.seller.shippo_api_key !== "") {
+          this.percentage = this.percentage + 25;
+        }-->
         <md-card-content>
-          <md-icon>check</md-icon>5 services
-          <br />
-          <md-icon>check</md-icon>About
-          <br />
-          <md-icon>check</md-icon>Shippo
-          <br />
-          <md-icon>check</md-icon>Payout
+          5 services
+          <md-icon v-if="userServices.length >= 5">check</md-icon>
+          <br />About
+          <md-icon v-if="seller.about !== ''">check</md-icon>
+          <br />Shippo
+          <md-icon v-if="seller.shippo_api_key !== ''">check</md-icon>
+          <br />Payout
+          <md-icon v-if="seller.stripeConnectAcctInfo !== ''">check</md-icon>
           <br />
         </md-card-content>
       </md-card>
