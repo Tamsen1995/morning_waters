@@ -66,7 +66,7 @@
                   </div>
                   <!-- ADD LAST NAME -->
                   <div class="form-group row">
-                    <label for="name" class="col-sm col-form-label">Last Name:</label>
+                    <label for="name" class="col-sm col-form-label">Name:</label>
                     <div class="col-sm-12">
                       <input
                         v-model="lastName"

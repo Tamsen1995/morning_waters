@@ -21,13 +21,39 @@
       </div>
       <md-button class="md-dense md-raised md-primary" @click="addPayoutMethod()">Add Payout method</md-button>
     </modal>
+
+    <modal name="onboarding-add-shippo-acct">
+      <div>
+        <br />
+        <br />In order to handle shipping a shippo acct is required
+      </div>
+      <md-button
+        class="md-dense md-raised md-primary"
+        @click="addShippoAccount()"
+      >Add Shippo account</md-button>
+    </modal>
+
+    <modal name="thank-you-for-adding-a-payout-method">
+      <div>
+        <div>
+          <br />
+          <br />Thank you for adding a payout method
+        </div>
+        <md-button
+          class="md-dense md-raised md-primary"
+          @click="proceedAfterPayoutRegistration()"
+        >Next</md-button>
+      </div>
+    </modal>
   </div>
 </template>
 
 <script>
 import ProgressBar from "vue-simple-progress";
 import UserServices from "@/services/UserServices";
+import PaymentService from "@/services/PaymentService";
 import DashboardServices from "@/services/DashboardServices";
+import ShippingService from "@/services/ShippingService";
 
 export default {
   data() {
@@ -55,10 +81,11 @@ export default {
         if (this.userServices.length <= 0) {
           // no services means they need to add a service
           this.$modal.show("onboarding-add-services");
-        }
-
-        if (this.seller.stripeConnectAcctInfo === "") {
+        } else if (this.seller.stripeConnectAcctInfo === "") {
           this.$modal.show("onboarding-add-stripe-connect");
+        } else if (this.seller.shippo_api_key === "") {
+          console.log(`asds`); // TESTING
+          this.$modal.show("onboarding-add-shippo-acct");
         }
 
         //////////////////////////////////////////////////
@@ -66,9 +93,11 @@ export default {
         if (error) throw error;
       }
     },
+
     async addServices() {
       try {
         this.$emit("dashboard-add-services");
+
         this.$modal.hide("onboarding-add-services");
       } catch (error) {
         if (error) throw error;
@@ -76,12 +105,33 @@ export default {
     },
     async addPayoutMethod() {
       try {
-        console.log(`\n\nadding payout method\n\n`); // TESTING
+        const userExtracted = this.$store.getters.getUserInfo;
+
+        PaymentService.makeStripeConnectAccount(userExtracted);
+        this.$modal.hide("onboarding-add-stripe-connect");
+        this.$modal.show("thank-you-for-adding-a-payout-method");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async addShippoAccount() {
+      try {
+        ShippingService.makeShippoApiToken();
+        this.$modal.hide("onboarding-add-shippo-acct");
+        this.$modal.show("thank-you-for-adding-a-payout-method");
       } catch (error) {
         if (error) throw error;
       }
     },
 
+    async proceedAfterPayoutRegistration() {
+      try {
+        this.$modal.hide("thank-you-for-adding-a-payout-method");
+        this.determineOnboardingStatus();
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async commenceOnboarding() {
       try {
         this.determineOnboardingStatus();
