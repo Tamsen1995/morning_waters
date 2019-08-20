@@ -22,6 +22,17 @@
       <md-button class="md-dense md-raised md-primary" @click="addPayoutMethod()">Add Payout method</md-button>
     </modal>
 
+    <modal name="onboarding-add-shippo-acct">
+      <div>
+        <br />
+        <br />In order to handle shipping a shippo acct is required
+      </div>
+      <md-button
+        class="md-dense md-raised md-primary"
+        @click="addShippoAccount()"
+      >Add Shippo account</md-button>
+    </modal>
+
     <modal name="thank-you-for-adding-a-payout-method">
       <div>
         <div>
@@ -42,6 +53,7 @@ import ProgressBar from "vue-simple-progress";
 import UserServices from "@/services/UserServices";
 import PaymentService from "@/services/PaymentService";
 import DashboardServices from "@/services/DashboardServices";
+import ShippingService from "@/services/ShippingService";
 
 export default {
   data() {
@@ -71,6 +83,9 @@ export default {
           this.$modal.show("onboarding-add-services");
         } else if (this.seller.stripeConnectAcctInfo === "") {
           this.$modal.show("onboarding-add-stripe-connect");
+        } else if (this.seller.shippo_api_key === "") {
+          console.log(`asds`); // TESTING
+          this.$modal.show("onboarding-add-shippo-acct");
         }
 
         //////////////////////////////////////////////////
@@ -99,11 +114,19 @@ export default {
         if (error) throw error;
       }
     },
+    async addShippoAccount() {
+      try {
+        ShippingService.makeShippoApiToken();
+        this.$modal.hide("onboarding-add-shippo-acct");
+        this.$modal.show("thank-you-for-adding-a-payout-method");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
 
     async proceedAfterPayoutRegistration() {
       try {
         this.$modal.hide("thank-you-for-adding-a-payout-method");
-
         this.determineOnboardingStatus();
       } catch (error) {
         if (error) throw error;
