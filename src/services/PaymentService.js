@@ -1,6 +1,17 @@
 import Api from '@/services/Api'
 
 export default {
+  makeStripeConnectAccount (userExtracted) {
+    var randomString =
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15)
+
+    window.open(`${process.env.STRIPE_CONNECT_OAUTH_LINK}${randomString}&stripe_user[business_type]=company&stripe_user[email]=${userExtracted.email}`)
+  },
   generateSellerStripeConnectClientId (stripeConnectClientIdRequest) {
     return Api().get('seller/payment/stripe_connect/auth/generate_client_id', {
       params: {

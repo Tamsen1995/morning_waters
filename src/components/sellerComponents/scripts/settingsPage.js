@@ -1,7 +1,7 @@
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import BillingTab from '@/components/sellerComponents/SettingsPageBillingTab.vue'
 import UserServices from '@/services/UserServices'
-
+import PaymentService from '@/services/PaymentService'
 import SettingsService from '@/services/SettingsService'
 
 import Tabs from 'vue-tabs-with-active-line'
@@ -51,15 +51,8 @@ export default {
     async addPayoutInfo () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
-        var randomString =
-          Math.random()
-            .toString(36)
-            .substring(2, 15) +
-          Math.random()
-            .toString(36)
-            .substring(2, 15)
 
-        window.open(`${process.env.STRIPE_CONNECT_OAUTH_LINK}${randomString}&stripe_user[business_type]=company&stripe_user[email]=${userExtracted.email}`)
+        PaymentService.makeStripeConnectAccount(userExtracted)
       } catch (error) {
         if (error) throw error
       }

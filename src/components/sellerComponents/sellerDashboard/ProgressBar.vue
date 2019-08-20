@@ -27,6 +27,7 @@
 <script>
 import ProgressBar from "vue-simple-progress";
 import UserServices from "@/services/UserServices";
+import PaymentService from "@/services/PaymentService";
 import DashboardServices from "@/services/DashboardServices";
 
 export default {
@@ -55,9 +56,7 @@ export default {
         if (this.userServices.length <= 0) {
           // no services means they need to add a service
           this.$modal.show("onboarding-add-services");
-        }
-
-        if (this.seller.stripeConnectAcctInfo === "") {
+        } else if (this.seller.stripeConnectAcctInfo === "") {
           this.$modal.show("onboarding-add-stripe-connect");
         }
 
@@ -66,9 +65,11 @@ export default {
         if (error) throw error;
       }
     },
+
     async addServices() {
       try {
         this.$emit("dashboard-add-services");
+
         this.$modal.hide("onboarding-add-services");
       } catch (error) {
         if (error) throw error;
@@ -76,7 +77,12 @@ export default {
     },
     async addPayoutMethod() {
       try {
-        console.log(`\n\nadding payout method\n\n`); // TESTING
+        const userExtracted = this.$store.getters.getUserInfo;
+
+        PaymentService.makeStripeConnectAccount(userExtracted);
+        this.$modal.hide("onboarding-add-stripe-connect");
+
+        this.determineOnboardingStatus();
       } catch (error) {
         if (error) throw error;
       }
