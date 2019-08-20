@@ -1,7 +1,15 @@
 <template >
   <div v-if="onboarded === false">
-    <md-tooltip md-direction="right" style="background-color: white;">
-      <div>Right</div>
+    <md-tooltip md-direction="right">
+      <div style="background-color: white;">
+        TESTING
+        <br />TESTING
+        <br />TESTING
+        <br />TESTING
+        <br />TESTING
+        <br />TESTING
+        <br />
+      </div>
     </md-tooltip>
 
     <b-progress :max="max" class="mb-3">
