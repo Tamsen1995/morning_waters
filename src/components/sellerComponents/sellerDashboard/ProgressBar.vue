@@ -159,12 +159,19 @@ export default {
           this.percentage = this.percentage + 10;
         }
         if (this.seller.stripeConnectAcctInfo !== "") {
-          this.percentage = this.percentage + 30;
+          this.percentage = this.percentage + 40;
         }
         if (this.seller.shippo_api_key !== "") {
           this.percentage = this.percentage + 25;
         }
+
         ///////////////////////////////////////////////
+
+        // if the onboarding has been completed we wanna make sure to signal this to the back
+        if (this.percentage === 100) {
+          console.log(`\n\nUpddate onboarded variable in the back\n`); // TESTING
+        }
+
         this.attemptOnboardingProcess();
       } catch (error) {
         if (error) throw error;
