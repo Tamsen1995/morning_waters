@@ -5,7 +5,7 @@
     </b-progress>
     {{this.percentage}} %
     <!-- Prompt to commence onboarding-->
-    <modal name="onboarding-step-one">
+    <modal name="onboarding-add-services">
       <div>
         <br />[Some kind of call to action for services (let Guy write)]
         <br />Would you like to add a service ?
@@ -13,6 +13,14 @@
       <md-button class="md-dense md-raised md-primary" @click="addServices()">Add Services</md-button>
     </modal>
     <!--  -->
+
+    <modal name="onboarding-add-stripe-connect">
+      <div>
+        <br />[Some kind of call to action stripe connect (let Guy write)]
+        <br />Would you like to add a service ?
+      </div>
+      <md-button class="md-dense md-raised md-primary" @click="addPayoutMethod()">Add Payout method</md-button>
+    </modal>
   </div>
 </template>
 
@@ -26,6 +34,7 @@ export default {
     return {
       percentage: 0,
       max: 100,
+      seller: null,
       user: null,
       userServices: null
     };
@@ -38,28 +47,18 @@ export default {
     // this.commenceOnboarding();
   },
   methods: {
-    async addServices() {
-      try {
-        this.$emit("dashboard-add-services");
-        this.$modal.hide("onboarding-step-one");
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
-    async commenceOnboarding() {
-      try {
-        this.determineOnboardingStatus();
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
+    // this function should be invoked in the dashboard
+    // everytime any steps related to the onboarding are updated
+    // in order to trigger the onboarding
     async attemptOnboardingProcess() {
       try {
-        // Below here the onboarding process itself is triggered
-
         if (this.userServices.length <= 0) {
           // no services means they need to add a service
-          this.$modal.show("onboarding-step-one");
+          this.$modal.show("onboarding-add-services");
+        }
+
+        if (this.seller.stripeConnectAcctInfo === "") {
+          this.$modal.show("onboarding-add-stripe-connect");
         }
 
         //////////////////////////////////////////////////
@@ -67,14 +66,38 @@ export default {
         if (error) throw error;
       }
     },
+    async addServices() {
+      try {
+        this.$emit("dashboard-add-services");
+        this.$modal.hide("onboarding-add-services");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async addPayoutMethod() {
+      try {
+        console.log(`\n\nadding payout method\n\n`); // TESTING
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+
+    async commenceOnboarding() {
+      try {
+        this.determineOnboardingStatus();
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async determineOnboardingStatus() {
       try {
         this.user = this.$store.getters.getUserInfo;
-        const seller = (await UserServices.retrieveSellerProfile(this.user.id))
-          .data.user;
+        this.seller = (await UserServices.retrieveSellerProfile(
+          this.user.id
+        )).data.user;
 
         this.userServices = (await DashboardServices.queryForUsersServices(
-          seller.serviceTableId
+          this.seller.serviceTableId
         )).data.usersServices;
 
         this.percentage = 0;
@@ -82,14 +105,14 @@ export default {
         for (var i = 0; i < this.userServices.length && i < 5; i++) {
           this.percentage = this.percentage + 10;
         }
-        if (seller.about !== "") {
+        if (this.seller.about !== "") {
           this.percentage = this.percentage + 10;
         }
-        if (seller.stripeConnectAcctInfo !== "") {
-          this.percentage = this.percentage + 20;
+        if (this.seller.stripeConnectAcctInfo !== "") {
+          this.percentage = this.percentage + 30;
         }
-        if (seller.shippo_api_key !== "") {
-          this.percentage = this.percentage + 20;
+        if (this.seller.shippo_api_key !== "") {
+          this.percentage = this.percentage + 30;
         }
         ///////////////////////////////////////////////
         this.attemptOnboardingProcess();
