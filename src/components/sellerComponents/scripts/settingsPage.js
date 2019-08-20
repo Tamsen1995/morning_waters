@@ -48,6 +48,13 @@ export default {
     handleClick (newTab) {
       this.currentTab = newTab
     },
+    async goToStripeConnectDashboard () {
+      try {
+        console.log(`\nThis method is supposed to link to the stripe connect dashboard\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async addPayoutInfo () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
@@ -94,7 +101,6 @@ export default {
           userExtracted.id,
           newProfileInfo
         )
-        console.log(`\n\npublish profile : ${JSON.stringify(response)}\n`) // TESTING
       } catch (error) {
         console.log(`\nThe is inside of updateProfile : ${error}\n`) // TESTING
         if (error) throw error
@@ -106,6 +112,7 @@ export default {
         const userInfo = await UserServices.getPublicProfileInfo(
           userExtracted.id
         )
+        this.user = userInfo.data.user
 
         this.name = userInfo.data.user.name
         this.email = userInfo.data.user.email
@@ -115,8 +122,6 @@ export default {
         this.companyWebsite = userInfo.data.user.companyWebsite
         this.address = JSON.parse(userInfo.data.user.address)
         this.about = userInfo.data.user.about
-
-        console.log(`\napres l'orgasme : ${JSON.stringify(userExtracted)}\n`) // TESTING
       } catch (error) {
         console.log(
           `\nThe error message inside of the retrieveProfileInfo: ${error}\n`

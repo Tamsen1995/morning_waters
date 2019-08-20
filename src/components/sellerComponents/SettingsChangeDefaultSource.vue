@@ -116,7 +116,7 @@ export default {
         const stripeUserInfo = await SettingsService.getStripeUserInfo(
           userExtracted
         );
-        this.subscriptions = stripeUserInfo.data.subscriptions.data;
+
         const customerSources = stripeUserInfo.data.stripeCustomer.sources;
         this.customerSources = customerSources.data;
 

@@ -17,8 +17,8 @@ function getDefaultSource (customerDefaultSourceID, customerSources) {
 export default {
   data () {
     return {
-      customerDefaultSource: null,
-      subscriptions: [] // holds the subscriptions
+      customerDefaultSource: null
+
     }
   },
   beforeDestroy () {
@@ -54,17 +54,20 @@ export default {
     async getStripeUserInfo () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
-        const stripeUserInfo = await SettingsService.getStripeUserInfo(
-          userExtracted
-        )
-        this.subscriptions = stripeUserInfo.data.subscriptions.data
-        const customerDefaultSourceID =
-          stripeUserInfo.data.stripeCustomer.default_source
-        const customerDefaultSource = getDefaultSource(
-          customerDefaultSourceID,
-          stripeUserInfo.data.stripeCustomer.sources.data
-        )
-        this.customerDefaultSource = customerDefaultSource
+
+        if (userExtracted && userExtracted.stripeCustomerId !== '') {
+          const stripeUserInfo = await SettingsService.getStripeUserInfo(
+            userExtracted
+          )
+
+          const customerDefaultSourceID =
+            stripeUserInfo.data.stripeCustomer.default_source
+          const customerDefaultSource = getDefaultSource(
+            customerDefaultSourceID,
+            stripeUserInfo.data.stripeCustomer.sources.data
+          )
+          this.customerDefaultSource = customerDefaultSource
+        }
       } catch (error) {
         console.log(`\nAn error occurred in getStripeUserInfo ${error}\n`)
         if (error) throw error

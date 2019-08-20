@@ -100,12 +100,17 @@
           <md-tab id="tab-payout" md-label="Payout">
             <md-card md-with-hover>
               <md-card-content>
-                <p style="color:#880599">
+                <p style="color:#880599" v-if="user && user.stripeConnectAcctInfo !== ''">
                   You can access your Stripe dashboard here
                   <br />
-                  <md-button class="md-raised md-primary">Go to Stripe</md-button>
+                  <md-button
+                    class="md-raised md-primary"
+                    @click="goToStripeConnectDashboard()"
+                  >Go to Stripe</md-button>
                 </p>
-                <md-button class="md-raised md-primary" @click="addPayoutInfo()">Submit</md-button>
+                <p v-else>
+                  <md-button class="md-raised md-primary" @click="addPayoutInfo()">Submit</md-button>
+                </p>
               </md-card-content>
             </md-card>
           </md-tab>
