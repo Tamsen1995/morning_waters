@@ -106,7 +106,7 @@
                   <md-button
                     class="md-raised md-primary"
                     @click="goToStripeConnectDashboard()"
-                  >Go to Stripe</md-button>
+                  >Go to Stripe Dashboard</md-button>
                 </p>
                 <p v-else>
                   <md-button class="md-raised md-primary" @click="addPayoutInfo()">Submit</md-button>

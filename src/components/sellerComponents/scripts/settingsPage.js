@@ -48,12 +48,12 @@ export default {
     handleClick (newTab) {
       this.currentTab = newTab
     },
+    // opens up new tab for stripe connect
     async goToStripeConnectDashboard () {
       try {
-        console.log(`\nThis method is supposed to link to the stripe connect dashboard\n`) // TESTING
         if (this.user && this.user.stripeConnectAcctInfo !== '') {
           const response = await PaymentService.goToStripeConnectDashboard(this.user.stripeConnectAcctInfo)
-          console.log(`\n\nThe response link for the stripe dash  : ${JSON.stringify(response)}\n`) // TESTING
+          window.open(response.data)
         } else {
           console.log(`error in goToStripeConnectDashboard()`) // TESTING
         }
