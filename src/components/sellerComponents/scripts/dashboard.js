@@ -244,8 +244,6 @@ export default {
           // re-evaluateo onboarding status
           var child = this.$refs.progressBar
           child.determineOnboardingStatus()
-          // scroll to top
-          window.scrollTo(0, 0) // testing
         }
       } catch (error) {
         if (error) {
