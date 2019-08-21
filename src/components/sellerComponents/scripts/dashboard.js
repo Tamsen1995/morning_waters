@@ -50,7 +50,16 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-
+    async updateAboutSection () {
+      try {
+        console.log(`listen !`) // TESTING
+        // re-evaluateo onboarding status
+        var child = this.$refs.aboutSection
+        child.getUserInfo()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async redirectToInbox () {
       try {
         this.$router.push({

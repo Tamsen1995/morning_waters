@@ -146,6 +146,7 @@ export default {
           sellerId: userExtracted.id,
           about: this.aboutTextarea
         });
+        this.$emit("update-about-section");
 
         this.$modal.hide("onboarding-add-about-section");
         this.aboutTextarea = "";
@@ -205,7 +206,7 @@ export default {
         this.seller = (await UserServices.retrieveSellerProfile(
           this.user.id
         )).data.user;
-        console.log(`skjnjsdfn${JSON.stringify(this.seller)}`); // TESTING
+
         this.userServices = (await DashboardServices.queryForUsersServices(
           this.seller.serviceTableId
         )).data.usersServices;
