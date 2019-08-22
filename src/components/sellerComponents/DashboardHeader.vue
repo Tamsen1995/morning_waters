@@ -77,7 +77,7 @@
             <router-link
               class="nav-link"
               to="/dashboard/settings"
-              v-if="this.user == null"
+              v-if="this.user === null"
               style="padding-top:0px;padding-bottom:0px;padding-left:5px;"
             >
               <i class="fas fa-sliders-h" id="seller_nav_icon"></i>
@@ -91,10 +91,14 @@
           </b-nav-item>
 
           <!-- Logout -->
-          <b-nav-item v-if="this.user == null">
-            <router-link class="nav-link" 
+          <b-nav-item>
+            <router-link
+              v-if="this.user === null"
+              class="nav-link"
               style="margin-top:17px;"
-              to="/" @click="logout()">
+              to="/"
+              @click="logout()"
+            >
               <!-- <i class="fas fa-sign-out-alt"></i> -->
               Logout
             </router-link>
