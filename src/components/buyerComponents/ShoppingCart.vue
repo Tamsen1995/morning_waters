@@ -21,7 +21,7 @@
           <!-- Turn Around Time & Hours/Days/Weeks-->
           <td>{{ item.service.turnAroundTime }}</td>
           <!-- Add Quantity & Units-->
-          <td></td>
+          <td>{{item.quantity}}</td>
           <!-- Price -->
           <td>{{ item.service.servicePrice }}</td>
           <!-- Total -->
