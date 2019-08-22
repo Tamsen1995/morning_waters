@@ -12,7 +12,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <!-- Orders -->
-          <b-nav-item href="#" v-if="this.user == null" @click="redirectOntoBuyerDashboard()">
+          <b-nav-item href="#" v-if="this.user == null">
             <router-link
               class="nav-link"
               to="/dashboard/pending_orders"
