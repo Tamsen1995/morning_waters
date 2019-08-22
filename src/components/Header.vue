@@ -16,12 +16,12 @@
             <a class="nav-link">Services</a>
           </b-nav-text>
 
-          <b-nav-text v-if="productionMode === false">
-            <router-link class="nav-link" to="/login">Login</router-link>
+          <b-nav-text v-if="productionMode === false" @click="redirectTo('Login')">
+            <a class="nav-link">Login</a>
           </b-nav-text>
 
-          <b-nav-text v-if="productionMode === false">
-            <router-link class="nav-link" to="/register">Sign Up</router-link>
+          <b-nav-text v-if="productionMode === false" @click="redirectTo('Signup')">
+            <a class="nav-link" to="/register">Sign Up</a>
           </b-nav-text>
         </b-navbar-nav>
       </b-collapse>
