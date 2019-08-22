@@ -139,6 +139,17 @@ export default {
         if (error) throw error
       }
     },
+    async manifestAddToCartModal (service) {
+      try {
+        // manifest modal
+
+        this.$modal.show('add-to-cart-modal')
+
+        this.itemChosen = service
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitQuoteRequest () {
       try {
         const quoteRequestForService = {
@@ -172,6 +183,7 @@ export default {
         if (error) throw error
       }
     }
+
     // the user id of the SELLER will also
     // need a spot in the store
 

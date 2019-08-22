@@ -74,7 +74,7 @@
                         >Request Quote</md-button>
                         <md-button
                           style="background-color: #51b828; color: white;"
-                          @click="addServiceToCart(service, index)"
+                          @click="manifestAddToCartModal(service, index)"
                         >Add to Cart</md-button>
                       </div>
                     </div>
@@ -215,6 +215,45 @@
     <modal
       height="auto"
       scrollable
+      name="add-to-cart-modal"
+      :clickToClose="true"
+      id="inquiry-modal"
+    >
+      <div class="container" id="spec_inquiry">
+        <form class="md-layout">
+          <div v-if="this.itemChosen">
+            <md-title>
+              <h2>
+                <i class="fas fa-atom" id="service_logo"></i>
+                Service : {{ this.itemChosen.title }}
+              </h2>
+            </md-title>
+            <ul>
+              <!-- price/unit -->
+              <li>Price/Unit</li>
+              <!-- turnaround time -->
+              <li>Turnaround Time</li>
+            </ul>
+            <label>Amount? (optional)</label>
+
+            <md-field>
+              <!-- TODO : Not quite sure what this is -->
+              <md-input v-model="pickedQuantityQuoteRequest" type="number" />
+            </md-field>
+          </div>
+        </form>
+        <md-button
+          class="md-raised md-primary submit-buttons-md"
+          style="margin-top:10px"
+          type="button"
+        >Add to cart</md-button>
+      </div>
+    </modal>
+
+    <!-- Specific Inquiry -->
+    <modal
+      height="auto"
+      scrollable
       name="request-quote-modal"
       :clickToClose="true"
       id="inquiry-modal"
@@ -234,11 +273,6 @@
               <!-- turnaround time -->
               <li>Turnaround Time</li>
             </ul>
-            <md-field>
-              <label>Amount? (optional)</label>
-              <!-- TODO : Not quite sure what this is -->
-              <!-- <md-input v-model="pickedQuantityQuoteRequest" type="number" /> -->
-            </md-field>
 
             <md-field>
               <label>Message to Seller:</label>
