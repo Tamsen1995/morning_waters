@@ -58,11 +58,14 @@
               style="background-color: #FFFFFF;"
             ></md-textarea>
           </md-field>
+
           <md-button
             class="md-raised md-primary pull-right"
             style="background-color: #2fb52b; color: white;"
             v-on:click="submitMessage()"
           >Send</md-button>
+
+          <simple-upload></simple-upload>
         </md-card>
       </div>
     </div>
@@ -72,6 +75,7 @@
 <script>
 import BuyerServices from "@/services/BuyerServices";
 import InboxService from "@/services/InboxService";
+import SimpleUpload from "@/components/SimpleUpload.vue";
 
 export default {
   data() {
@@ -79,6 +83,9 @@ export default {
       message: "",
       correspondanceMessages: []
     };
+  },
+  components: {
+    SimpleUpload
   },
   props: {
     order: null,
@@ -96,6 +103,13 @@ export default {
     }
   },
   methods: {
+    async uploadFilePrompt() {
+      try {
+        console.log(`\nHere we should prompt the user to upload a file\n`); // TESTING
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async submitMessage() {
       try {
         var correspondanceMsg = null;
