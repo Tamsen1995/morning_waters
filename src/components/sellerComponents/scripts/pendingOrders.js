@@ -53,9 +53,13 @@ export default {
       try {
         for (var i = 0; i < this.pendingOrders.length; i++) {
           var response = await InboxServices.retrieveOrderOrderItems(this.pendingOrders[i].orderId)
+
           const response2 = await InboxServices.retrieveServicesNegotiated(response.data.orderItems)
-          this.pendingOrders[i].orderItems = response2.data
+          this.pendingOrders[i].servicesNegotiated = response2.data
+
+          this.pendingOrders[i].orderItems = response.data.orderItems
         }
+
         var tmp = this.pendingOrders
         this.pendingOrders = []
         this.pendingOrders = tmp
