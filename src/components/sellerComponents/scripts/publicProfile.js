@@ -169,15 +169,19 @@ export default {
         if (error) throw error
       }
     },
-    async addServiceToCart (service, index) {
+    async addServiceToCart () {
       try {
+        console.log(`\nthis.itemschosen -> ${this.itemChosen}\n`) // TESTING
+        console.log(`\nthis.itemschosen -> ${JSON.stringify(this.itemChosen)}\n`) // TESTING
+        console.log(`\nthis.itemschosen -> ${this.pickedQuantityService}\n`) // TESTING
+
         const shoppingCartItem = {
           orderId: '',
-          quantity: this.quantity, // this.pickedQuantityService[index],
-          service: service
+          quantity: this.pickedQuantityService,
+          service: this.itemChosen
         }
         this.$store.dispatch('addServiceToCart', shoppingCartItem)
-        this.quantity = 0
+        this.pickedQuantityService = 0
       } catch (error) {
         console.log(`\nAn error occurred in addServiceToCart\n`) // TESTING
         if (error) throw error

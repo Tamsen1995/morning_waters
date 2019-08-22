@@ -120,10 +120,7 @@
                             class="md-raised md-primary"
                             style="background-color: #8164d8; color: white;"
                           >Request Quote</md-button>
-                          <md-button
-                            style="background-color: #51b828; color: white;"
-                            @click="addServiceToCart(subService, index)"
-                          >Add to Cart</md-button>
+                          <md-button style="background-color: #51b828; color: white;">Add to Cart</md-button>
                         </div>
 
                         <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
@@ -211,7 +208,7 @@
       </div>
     </modal>
 
-    <!-- Specific Inquiry -->
+    <!-- add to cart modal -->
     <modal
       height="auto"
       scrollable
@@ -222,12 +219,11 @@
       <div class="container" id="spec_inquiry">
         <form class="md-layout">
           <div v-if="this.itemChosen">
-            <md-title>
-              <h2>
-                <i class="fas fa-atom" id="service_logo"></i>
-                Service : {{ this.itemChosen.title }}
-              </h2>
-            </md-title>
+            <h2>
+              <i class="fas fa-atom" id="service_logo"></i>
+              Service : {{ this.itemChosen.title }}
+            </h2>
+
             <ul>
               <!-- price/unit -->
               <li>Price/Unit</li>
@@ -238,7 +234,7 @@
 
             <md-field>
               <!-- TODO : Not quite sure what this is -->
-              <md-input v-model="pickedQuantityQuoteRequest" type="number" />
+              <md-input v-model="pickedQuantityService" type="number" />
             </md-field>
           </div>
         </form>
@@ -246,6 +242,7 @@
           class="md-raised md-primary submit-buttons-md"
           style="margin-top:10px"
           type="button"
+          @click="addServiceToCart()"
         >Add to cart</md-button>
       </div>
     </modal>
@@ -261,12 +258,11 @@
       <div class="container" id="spec_inquiry">
         <form class="md-layout">
           <div v-if="this.itemChosen">
-            <md-title>
-              <h2>
-                <i class="fas fa-atom" id="service_logo"></i>
-                Service : {{ this.itemChosen.title }}
-              </h2>
-            </md-title>
+            <h2>
+              <i class="fas fa-atom" id="service_logo"></i>
+              Service : {{ this.itemChosen.title }}
+            </h2>
+
             <ul>
               <!-- price/unit -->
               <li>Price/Unit</li>
