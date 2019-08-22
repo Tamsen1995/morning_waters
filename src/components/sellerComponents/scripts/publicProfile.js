@@ -141,10 +141,7 @@ export default {
     },
     async manifestAddToCartModal (service) {
       try {
-        // manifest modal
-
         this.$modal.show('add-to-cart-modal')
-
         this.itemChosen = service
       } catch (error) {
         if (error) throw error
@@ -171,17 +168,15 @@ export default {
     },
     async addServiceToCart () {
       try {
-        console.log(`\nthis.itemschosen -> ${this.itemChosen}\n`) // TESTING
-        console.log(`\nthis.itemschosen -> ${JSON.stringify(this.itemChosen)}\n`) // TESTING
-        console.log(`\nthis.itemschosen -> ${this.pickedQuantityService}\n`) // TESTING
-
         const shoppingCartItem = {
           orderId: '',
           quantity: this.pickedQuantityService,
           service: this.itemChosen
         }
         this.$store.dispatch('addServiceToCart', shoppingCartItem)
+        this.$modal.hide('add-to-cart-modal')
         this.pickedQuantityService = 0
+        this.itemChosen = null
       } catch (error) {
         console.log(`\nAn error occurred in addServiceToCart\n`) // TESTING
         if (error) throw error
