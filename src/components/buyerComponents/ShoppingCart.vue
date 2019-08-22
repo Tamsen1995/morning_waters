@@ -23,9 +23,10 @@
           <!-- Add Quantity & Units-->
           <td>{{item.quantity}}</td>
           <!-- Price -->
-          <td>{{ item.service.servicePrice }}</td>
+          <td>${{ item.service.servicePrice }}</td>
+
           <!-- Total -->
-          <td></td>
+          <td>${{ item.quantity * item.service.servicePrice }}</td>
 
           <!-- Add delete functionality -->
           <td @click="deleteItemFromShoppingCart(index)">
