@@ -36,9 +36,9 @@
                 <h4 class="card-title">Order items:</h4>
 
                 <div
-                  v-for="(item, index) in pendingOrder.orderItems"
+                  v-for="(item, index) in pendingOrder.servicesNegotiated"
                   v-bind:key="index"
-                >{{item.title}} - price : {{item.servicePrice}} $</div>
+                >{{pendingOrder.orderItems[index].amount}} {{item.title}} - price : {{pendingOrder.orderItems[index].amount * item.servicePrice}} $</div>
               </div>
             </div>
           </md-card-content>
