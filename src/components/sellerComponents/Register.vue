@@ -209,7 +209,7 @@
                   <!-- <h2 style="color:#880599">Payment System Setup</h2>
                   <h5 style="color:#880599">Bank information for Fig payments </h5>-->
                   <div>
-                    Billing Address
+                    Shipping Address
                     <br />
                     <!-- Street -->
                     <div class="form-group row">
@@ -290,23 +290,6 @@
 
                 <md-step
                   id="third"
-                  :md-done.sync="third"
-                  md-label="Payout System Set Up"
-                  md-description="Required"
-                >
-                  <!-- <h2 style="color:#880599">Payout System Set Up</h2> -->
-                  <h5
-                    style="color:#880599"
-                  >Your lab's bank information for recieving payments from buyers.</h5>
-                  <md-button
-                    style="border-radius:15px;"
-                    class="md-raised md-primary"
-                    @click="setDone('third', 'fourth')"
-                  >Continue</md-button>
-                </md-step>
-
-                <md-step
-                  id="fourth"
                   :md-done.sync="fourth"
                   md-label="Terms & Conditions"
                   md-description="Required"
@@ -333,7 +316,7 @@
                 </md-step>
 
                 <md-step
-                  id="fifth"
+                  id="fourth"
                   :md-done.sync="fifth"
                   md-label="Privacy"
                   md-description="Required"
@@ -367,7 +350,7 @@
 
                 <!-- Shippo -->
                 <md-step
-                  id="sixth"
+                  id="fifth"
                   :md-done.sync="sixth"
                   md-label="Shippo Set Up"
                   md-description="Optional"
@@ -397,14 +380,14 @@
                     style="height:40px; background-color: white; color: purple;"
                     id="btn-login"
                     @click="register()"
-                  >Skip Shippo Setup for now</md-button>
+                  >Skip Shippo & Sign Up </md-button>
 
                   <md-button
                     class="md-raised md-primary center"
                     style="height:40px;"
                     id="btn-login"
                     @click="register(), makeShippoApiToken()"
-                  >Submit</md-button>
+                  >Sign Up</md-button>
                 </md-step>
               </md-steppers>
             </form>

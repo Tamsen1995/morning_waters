@@ -1,30 +1,39 @@
 <template >
-  <div class="contrainer" v-if="onboarded === false">
+  <div class="contrainer" id="progress" v-if="onboarded === false" >
     <md-card style="padding: 20px; margin-bottom: 2%; background-color: white;">
-      <md-button
-        v-if="userServices && percentage >= 80 && userServices.length < 5"
-        class="md-raised"
-        :md-ripple="false"
-        @click="addServices()"
-      >improve your profile</md-button>
+      
+      <div class="row">
+        <div class="col">
+          <h4>Profile completion:</h4>
+        </div>
+        <div class="col">
+          <md-button
+            v-if="userServices && percentage >= 80 && userServices.length < 5"
+            class="md-raised pull-right"
+            :md-ripple="false"
+            @click="addServices()"
+          >Improve your profile</md-button>
 
-      <md-button
-        v-else
-        class="md-raised"
-        :md-ripple="false"
-        @click="determineOnboardingStatus()"
-      >Make your profile marketable</md-button>
-
+          <md-button
+            v-else
+            class="md-raised pull-right"
+            :md-ripple="false"
+            @click="determineOnboardingStatus()"
+          >Complete your profile</md-button>
+        </div>
+      </div>
       <md-tooltip md-direction="right">
-        <md-card style="background-color: #9c4dcc; color: white;">
+        <md-card style="background-color: #d0b4db; color: white;">
           <md-card-content>
-            5 services
+            <h5>To do:</h5>
+            <hr>
+            Add service listing
             <md-icon v-if="userServices && userServices.length >= 5">check</md-icon>
-            <br />About
+            <br />Add about info
             <md-icon v-if="seller && seller.about !== ''">check</md-icon>
-            <br />Shippo
+            <br />Shippo setup
             <md-icon v-if="seller && seller.shippo_api_key !== ''">check</md-icon>
-            <br />Payout
+            <br />Payout setup
             <md-icon v-if="seller && seller.stripeConnectAcctInfo !== ''">check</md-icon>
             <br />
           </md-card-content>
@@ -37,38 +46,53 @@
       {{this.percentage}} %
       <!-- Prompt to commence onboarding-->
       <modal height="auto" name="onboarding-add-services">
-        <div>
-          <br />[Some kind of call to action for services (let Guy write)]
-          <br />Would you like to add a service ?
-        </div>
-        <md-button class="md-dense md-raised md-primary" @click="addServices()">Add Services</md-button>
+        <div class="container" id="progress_modal">
+          <h3>To begin marketing, you must add at least 1 service listing.</h3>
+          <br /><h5>A good service listing includes: </h5>
+          <ol>
+            <li>Service description for buyers</li>
+            <li>At least 5 descriptive keywords (the more the better)</li>
+            <li>Pricing</li>
+            <li>Turn-around time</li>
+          </ol>
+          <br />
+          Would you like to add a service?
+
+        <md-button class="md-dense md-raised md-primary" @click="addServices()"> <i class="fas fa-atom" id="service_logo"></i> Add Services</md-button>
+      </div>
       </modal>
       <!--  -->
 
       <modal height="auto" name="onboarding-add-stripe-connect">
-        <div>
-          <br />[Some kind of call to action stripe connect (let Guy write)]
-          <br />Would you like to add a service ?
+        <div class="container" id="progress_modal">
+          <h3>Add Payout System</h3>
+          <br /><h5>Your payout system is used for buyers to pay you. This information is mandatory before you can recieve payments from buyers.</h5>
+          <br/>
+          <md-button
+            class="md-dense md-raised md-primary"
+            @click="addPayoutMethod()"
+          >Add Payout method</md-button>
+          <br/>
+          <br /><p>We partner with Stripe to ensure safe & secure transactions. <a>Learn more</a></p>
+
         </div>
-        <md-button
-          class="md-dense md-raised md-primary"
-          @click="addPayoutMethod()"
-        >Add Payout method</md-button>
       </modal>
 
       <modal height="auto" name="onboarding-add-shippo-acct">
-        <div>
-          <br />
-          <br />In order to handle shipping a shippo acct is required
+        <div class="container" id="progress_modal">
+          <br />We recommend you use our shipping partners shippo for smoother transactions.
+          <br />With shippo you can handle delicate packages, dry ice, insurance, and get live updates - all on our platform...
+          <br />And you get 30% off!
+
+          <md-button
+            class="md-dense md-raised md-primary"
+            @click="addShippoAccount()"
+          >Add Shippo account</md-button>
         </div>
-        <md-button
-          class="md-dense md-raised md-primary"
-          @click="addShippoAccount()"
-        >Add Shippo account</md-button>
       </modal>
 
       <modal height="auto" name="onboarding-add-about-section">
-        <div style="padding: 5%;">
+        <div class="container" id="progress_modal">
           <br />
           <br />[Call to action for about section]
           <md-field>
@@ -83,7 +107,7 @@
       </modal>
 
       <modal height="auto" name="thank-you-for-adding-a-payout-method">
-        <div>
+        <div class="container" id="progress_modal">
           <div>
             <br />
             <br />Thank you for adding a payout method
@@ -253,4 +277,6 @@ export default {
 </script>
 
 <style scoped>
+@import "../../../assets/css/progress.css";
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>
