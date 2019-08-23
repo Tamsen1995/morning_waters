@@ -124,7 +124,7 @@ export default {
         const formData = new FormData();
         formData.append("file", this.file);
         const response = await InboxService.uploadFile(formData);
-        // console.log(`\nJSON.response ${JSON.stringify(response.data)}\n`); // TESTING
+        console.log(`\nJSON.response ${JSON.stringify(response.data)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
