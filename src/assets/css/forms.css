@@ -100,7 +100,7 @@ form {
     animation-duration: 2s;
 }
 
-#register{
+#register {
     border-radius: 10px;
 }
 
@@ -130,7 +130,7 @@ form {
 }
 
 #register-form-footer{
-    border-top: 2px #917e9e;
+    border-top: 2px #ac90be;
 }
 
 
@@ -382,3 +382,4 @@ p {
     font: 28px 'Roboto';
     color: #29105b;
 }
+

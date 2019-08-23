@@ -1,0 +1,54 @@
+/* Seller Progress Bar */
+
+/* #progress .md-card {
+    margin-bottom: 0px;
+    max-width:700px;
+    margin-left: auto;
+    margin-right:auto;
+    border-radius: 10px;
+    background-color:white;
+} */
+
+#progress h1 {
+  font: 28px 'Roboto';
+  color: #29105b;
+}
+#progress h2 {
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  font-style: medium;
+  font: 25px "Roboto";
+  color: #311c63;
+  text-align: left;
+}
+#progress h3 {
+  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  font-style: medium;
+  font: 25px "Roboto";
+  color: #311c63;
+  text-align: left;
+}
+#progress h4 {
+  font: 20px 'Roboto';
+  color: #29105b;
+}
+#progress h5 {
+  font: 20px 'Roboto';
+  color:#29105b;
+}
+#progress p {
+  font: 16px "Roboto";
+  color: #29105b;
+}
+
+
+.responsive-component.small #add-services {
+  padding: 10px;
+}
+
+#progress_modal{
+  color:#301a70;
+  border: 5px #301a70 solid;
+  padding: 30px;
+}
