@@ -139,6 +139,14 @@ export default {
         if (error) throw error
       }
     },
+    async manifestAddToCartModal (service) {
+      try {
+        this.$modal.show('add-to-cart-modal')
+        this.itemChosen = service
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitQuoteRequest () {
       try {
         const quoteRequestForService = {
@@ -158,20 +166,23 @@ export default {
         if (error) throw error
       }
     },
-    async addServiceToCart (service, index) {
+    async addServiceToCart () {
       try {
         const shoppingCartItem = {
           orderId: '',
-          quantity: this.quantity, // this.pickedQuantityService[index],
-          service: service
+          quantity: this.pickedQuantityService,
+          service: this.itemChosen
         }
         this.$store.dispatch('addServiceToCart', shoppingCartItem)
-        this.quantity = 0
+        this.$modal.hide('add-to-cart-modal')
+        this.pickedQuantityService = 0
+        this.itemChosen = null
       } catch (error) {
         console.log(`\nAn error occurred in addServiceToCart\n`) // TESTING
         if (error) throw error
       }
     }
+
     // the user id of the SELLER will also
     // need a spot in the store
 

@@ -48,19 +48,18 @@
             <br />
             <br />
           </div>
-          <br>
-
+          <br />
         </md-card>
-        <br>
-        
-          <md-button
-            class="btn-checkout md-raised md-accent btn-block"
-            style="margin-left: -1px;"
-            v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
-            type="submit"
-            @click="sendOrderAndOrInquiries()"    
-          >Send Order & Messages</md-button>
-        
+        <br />
+
+        <md-button
+          class="btn-checkout md-raised md-accent btn-block"
+          style="margin-left: -1px;"
+          v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
+          type="submit"
+          @click="sendOrderAndOrInquiries()"
+        >Send Order & Messages</md-button>
+
         <br />
 
         <md-button
@@ -78,7 +77,7 @@
           v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
           @click="sendQuoteRequests()"
         >Send Order</md-button>
-        <br/> -->
+        <br/>-->
 
         <div class="container" id="purchase_content">
           <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
@@ -91,7 +90,7 @@
           v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
           type="submit"
           class="btn-cart btn-default btn-block"
-          @click="sendShoppingCart()"
+          @click="sendOrderAndOrInquiries()"
         >
           <h3>Complete Purchase</h3>
         </button>

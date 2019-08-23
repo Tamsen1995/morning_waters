@@ -24,7 +24,9 @@ export default {
         this.$store.dispatch('setQuoteToBeRequested', null)
         this.$store.dispatch()
         await AuthenticationService.logout()
-        ()
+        this.$router.push({
+          name: 'hello'
+        })
       } catch (error) {
         if (error) throw error
       }
