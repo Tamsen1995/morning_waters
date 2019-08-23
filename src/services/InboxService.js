@@ -1,6 +1,13 @@
 import Api from '@/services/Api'
 
 export default {
+  uploadFile (formData) {
+    return Api().post('inbox/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+  },
   // checks to see if a relationship
   // between buyer and seller is unlocked
   relationshipUnlocked (sellerId, buyerId) {

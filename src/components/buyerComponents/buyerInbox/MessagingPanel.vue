@@ -60,12 +60,27 @@
           </md-field>
 
           <md-button
+            v-if="file ===''"
             class="md-raised md-primary pull-right"
             style="background-color: #2fb52b; color: white;"
             v-on:click="submitMessage()"
           >Send</md-button>
 
-          <simple-upload></simple-upload>
+          <md-button
+            v-else
+            class="md-raised md-primary pull-right"
+            style="background-color: blue; color: white;"
+            v-on:click="sendFile()"
+          >Send</md-button>
+
+          <form enctype="multipart/form-data">
+            <div class="field">
+              <input type="file" @change="selectFile" ref="file" style="display: none" />
+              <md-button @click="$refs.file.click()" class="md-icon-button md-raised pull-right">
+                <md-icon>attach_file</md-icon>
+              </md-button>
+            </div>
+          </form>
         </md-card>
       </div>
     </div>
@@ -75,18 +90,16 @@
 <script>
 import BuyerServices from "@/services/BuyerServices";
 import InboxService from "@/services/InboxService";
-import SimpleUpload from "@/components/SimpleUpload.vue";
 
 export default {
   data() {
     return {
       message: "",
-      correspondanceMessages: []
+      correspondanceMessages: [],
+      file: ""
     };
   },
-  components: {
-    SimpleUpload
-  },
+
   props: {
     order: null,
     buyer: null,
@@ -103,13 +116,20 @@ export default {
     }
   },
   methods: {
-    async uploadFilePrompt() {
+    selectFile() {
+      this.file = this.$refs.file.files[0];
+    },
+    async sendFile() {
       try {
-        console.log(`\nHere we should prompt the user to upload a file\n`); // TESTING
+        const formData = new FormData();
+        formData.append("file", this.file);
+        const response = await InboxService.uploadFile(formData);
+        // console.log(`\nJSON.response ${JSON.stringify(response.data)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
     },
+
     async submitMessage() {
       try {
         var correspondanceMsg = null;
