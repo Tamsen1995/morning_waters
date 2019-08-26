@@ -1,7 +1,6 @@
 <template >
-  <div class="contrainer" id="progress" v-if="onboarded === false" >
+  <div class="contrainer" id="progress" v-if="onboarded === false">
     <md-card style="padding: 20px; margin-bottom: 2%; background-color: white;">
-      
       <div class="row">
         <div class="col">
           <h4>Profile completion:</h4>
@@ -26,8 +25,7 @@
         <md-card style="background-color: #d0b4db; color: white;">
           <md-card-content>
             <h5>To do:</h5>
-            <hr>
-            Add service listing
+            <hr />Add service listing
             <md-icon v-if="userServices && userServices.length >= 5">check</md-icon>
             <br />Add about info
             <md-icon v-if="seller && seller.about !== ''">check</md-icon>
@@ -48,33 +46,38 @@
       <modal height="auto" name="onboarding-add-services">
         <div class="container" id="progress_modal">
           <h3>To begin marketing, you must add at least 1 service listing.</h3>
-          <br /><h5>A good service listing includes: </h5>
+          <br />
+          <h5>A good service listing includes:</h5>
           <ol>
             <li>Service description for buyers</li>
             <li>At least 5 descriptive keywords (the more the better)</li>
             <li>Pricing</li>
             <li>Turn-around time</li>
           </ol>
-          <br />
-          Would you like to add a service?
-
-        <md-button class="md-dense md-raised md-primary" @click="addServices()"> <i class="fas fa-atom" id="service_logo"></i> Add Services</md-button>
-      </div>
+          <br />Would you like to add a service?
+          <md-button class="md-dense md-raised md-primary" @click="addServices()">
+            <i class="fas fa-atom" id="service_logo"></i> Add Services
+          </md-button>
+        </div>
       </modal>
       <!--  -->
 
       <modal height="auto" name="onboarding-add-stripe-connect">
         <div class="container" id="progress_modal">
           <h3>Add Payout System</h3>
-          <br /><h5>Your payout system is used for buyers to pay you. This information is mandatory before you can recieve payments from buyers.</h5>
-          <br/>
+          <br />
+          <h5>Your payout system is used for buyers to pay you. This information is mandatory before you can recieve payments from buyers.</h5>
+          <br />
           <md-button
             class="md-dense md-raised md-primary"
             @click="addPayoutMethod()"
           >Add Payout method</md-button>
-          <br/>
-          <br /><p>We partner with Stripe to ensure safe & secure transactions. <a>Learn more</a></p>
-
+          <br />
+          <br />
+          <p>
+            We partner with Stripe to ensure safe & secure transactions.
+            <a>Learn more</a>
+          </p>
         </div>
       </modal>
 
@@ -83,7 +86,6 @@
           <br />We recommend you use our shipping partners shippo for smoother transactions.
           <br />With shippo you can handle delicate packages, dry ice, insurance, and get live updates - all on our platform...
           <br />And you get 30% off!
-
           <md-button
             class="md-dense md-raised md-primary"
             @click="addShippoAccount()"
@@ -111,6 +113,19 @@
           <div>
             <br />
             <br />Thank you for adding a payout method
+          </div>
+          <md-button
+            class="md-dense md-raised md-primary"
+            @click="proceedAfterPayoutRegistration()"
+          >Next</md-button>
+        </div>
+      </modal>
+
+      <modal height="auto" name="thank-you-for-adding-a-shipping-method">
+        <div class="container" id="progress_modal">
+          <div>
+            <br />
+            <br />Thank you for adding a shipping method
           </div>
           <md-button
             class="md-dense md-raised md-primary"
@@ -162,10 +177,8 @@ export default {
 
         this.percentage = 0;
         // Here we are adding percentages for the progress bar itself
-        if (this.userServices) {
-          for (var i = 0; i < this.userServices.length && i < 5; i++) {
-            this.percentage = this.percentage + 5;
-          }
+        if (this.userServices.length >= 1) {
+          this.percentage = this.percentage + 25;
         }
         if (this.seller && this.seller.about !== "") {
           this.percentage = this.percentage + 10;
@@ -251,7 +264,7 @@ export default {
       try {
         ShippingService.makeShippoApiToken();
         this.$modal.hide("onboarding-add-shippo-acct");
-        this.$modal.show("thank-you-for-adding-a-payout-method");
+        this.$modal.show("thank-you-for-adding-a-shipping-method");
       } catch (error) {
         if (error) throw error;
       }
