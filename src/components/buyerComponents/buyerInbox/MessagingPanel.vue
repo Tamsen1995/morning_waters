@@ -119,6 +119,18 @@ export default {
     selectFile() {
       this.file = this.$refs.file.files[0];
     },
+    async downloadFile() {
+      try {
+        const response = await InboxService.downloadFile();
+        console.log(
+          `the response for downloading file is : ${JSON.stringify(
+            response.data
+          )}`
+        ); // TESTING
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async sendFile() {
       try {
         const formData = new FormData();

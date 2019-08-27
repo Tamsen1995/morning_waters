@@ -1,6 +1,14 @@
 import Api from '@/services/Api'
 
 export default {
+  // '/inbox/files/download'
+  downloadFile (filename) {
+    return Api().get('inbox/files/download', {
+      params: {
+        filename: filename
+      }
+    })
+  },
   uploadFile (formData) {
     return Api().post('inbox/upload', formData, {
       headers: {
