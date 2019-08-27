@@ -8,11 +8,9 @@ export default {
   },
   mounted () {
     this.getCartItemsFromStore()
-    console.log(`\n\nThe shopping cart is : ${JSON.stringify(this.shoppingCart)}\n`) // TESTING
-    // set store here
   },
   methods: {
-    // TESTING
+
     async deleteItemFromShoppingCart (index) {
       try {
         this.$store.dispatch('deleteServiceFromShoppingCart', index)
