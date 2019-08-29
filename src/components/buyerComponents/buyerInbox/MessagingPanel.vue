@@ -124,24 +124,16 @@ export default {
     },
     async downloadFile() {
       try {
-        const response = await InboxService.downloadFile(
-          "file-FIG_Business_Plan.pdf"
-        );
-        console.log(
-          `the response for downloading file is : ${JSON.stringify(
-            response.data.url
-          )}`
-        ); // TESTING
-
-        // const pdfBlob = new Blob(response.data.fileStream.Body.data, {
-        //   type: "application/pdf"
-        // });
+        // This file key will determine the file to be downloaded from the s3 bucket
+        const fileKey = "file-Screen Shot 2019-08-27 at 4.25.54 PM.png";
+        // ///////////////////////////////////////////////////////////
+        const response = await InboxService.downloadFile(fileKey);
 
         const url = response.data.url;
 
         const link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", "file.pdf"); // or any other extension
+        link.setAttribute("download", fileKey); // or any other extension
         document.body.appendChild(link);
         link.click();
         link.remove();
