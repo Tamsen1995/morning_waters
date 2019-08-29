@@ -10,6 +10,7 @@ var $ = require('jQuery')
 export default {
   data () {
     return {
+      file: '',
       // this array shows up in the inbox to the left
       correspondanceMessages: [],
       message: '',
@@ -55,6 +56,9 @@ export default {
     }
   },
   methods: {
+    selectFile () {
+      this.file = this.$refs.file.files[0]
+    },
     async redirectToOrderStatus () {
       try {
         console.log(`\nredirect to order status\n`) // TESTING
