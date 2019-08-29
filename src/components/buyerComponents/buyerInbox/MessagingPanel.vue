@@ -124,12 +124,27 @@ export default {
     },
     async downloadFile() {
       try {
-        const response = await InboxService.downloadFile("");
+        const response = await InboxService.downloadFile(
+          "file-FIG_Business_Plan.pdf"
+        );
         console.log(
           `the response for downloading file is : ${JSON.stringify(
-            response.data
+            response.data.url
           )}`
         ); // TESTING
+
+        // const pdfBlob = new Blob(response.data.fileStream.Body.data, {
+        //   type: "application/pdf"
+        // });
+
+        const url = response.data.url;
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "file.pdf"); // or any other extension
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
       } catch (error) {
         if (error) throw error;
       }
