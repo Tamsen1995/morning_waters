@@ -29,6 +29,33 @@
           </md-content>
         </md-card>
         <!--  -->
+
+        <!--  -->
+        <md-card
+          v-else-if="msg && msg.sender && msg.sender === 'buyer-file-attachment'"
+          class="pull-right"
+          id="response-text-bubble"
+        >
+          <md-content>
+            <h4 class="media-heading pull-right">Date</h4>
+            <md-icon>account_circle</md-icon>
+            <span v-if="seller !== null">{{seller.companyName}}</span>
+            <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+            <div class="view_msg">
+              <p class="lead">
+                {{msg.message}}
+                {{msg.filename}}
+                <br />
+              </p>
+              <md-button
+                style="background-color: black; color: white;"
+                @click="downloadFile(msg.filename)"
+              >Download</md-button>
+            </div>
+          </md-content>
+        </md-card>
+        <!--  -->
+
         <!-- else -->
         <md-card v-else class="pull-right" id="response-text-bubble">
           <md-content>
@@ -122,24 +149,53 @@ export default {
     selectFile() {
       this.file = this.$refs.file.files[0];
     },
-    async downloadFile() {
+    async downloadFile(filename) {
       try {
-        const response = await InboxService.downloadFile("");
-        console.log(
-          `the response for downloading file is : ${JSON.stringify(
-            response.data
-          )}`
-        ); // TESTING
+        const fileKey = filename;
+        const response = await InboxService.downloadFile(fileKey);
+        const url = response.data.url;
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", fileKey); // or any other extension
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
       } catch (error) {
         if (error) throw error;
       }
     },
     async sendFile() {
       try {
+        // send a message indicating in the sender var
+        // that it is an inbox attachment sent by the buyer
+        var correspondanceMsg = null;
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            userId: this.order.sellerId,
+            date: "",
+            sender: "buyer-file-attachment",
+            message: this.message,
+            filename: `file-${this.file.name}`
+          };
+        }
+
+        // sending the message and refreshing the current inbox
+        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg);
+        const response = await InboxService.retrieveCorrespondance(
+          correspondanceMsg.orderId
+        );
+        this.correspondanceMessages = response.data.correspondance;
+        this.message = "";
+
+        console.log(`${this.order.orderId}`); // TESTING
+        // uploading the actual file
         const formData = new FormData();
         formData.append("file", this.file);
-        const response = await InboxService.uploadFile(formData);
-        console.log(`\nJSON.response ${JSON.stringify(response.data)}\n`); // TESTING
+        console.log(formData); // TESTING
+        const response2 = await InboxService.uploadFile(formData);
+        console.log(`\nJSON.response2 ${JSON.stringify(response2.data)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }
