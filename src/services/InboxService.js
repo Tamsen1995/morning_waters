@@ -9,8 +9,8 @@ export default {
       }
     })
   },
-  uploadFile (formData) {
-    return Api().post('inbox/upload', formData, {
+  uploadFile (file) {
+    return Api().post('inbox/upload', file, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
