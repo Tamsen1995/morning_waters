@@ -59,6 +59,41 @@ export default {
     selectFile () {
       this.file = this.$refs.file.files[0]
     },
+    async sendFile () {
+      try {
+        // // send a message indicating in the sender var
+        var correspondanceMsg = null
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            userId: this.order.sellerId,
+            date: '',
+            sender: 'seller-file-attachment',
+            message: this.message,
+            filename: `file-${this.file.name}`
+          }
+        }
+
+        // // sending the message and refreshing the current inbox
+        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
+        const response = await InboxService.retrieveCorrespondance(
+          correspondanceMsg.orderId
+        )
+        this.correspondanceMessages = response.data.correspondance
+        this.message = ''
+
+        // console.log(`${this.order.orderId}`); // TESTING
+        // // uploading the actual file
+        const formData = new FormData()
+        formData.append('file', this.file)
+        await InboxService.uploadFile(formData)
+        this.file = ''
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    /// ///////////////////////////////////////for sending file attachments above
     async redirectToOrderStatus () {
       try {
         console.log(`\nredirect to order status\n`) // TESTING

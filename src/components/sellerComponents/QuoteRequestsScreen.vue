@@ -225,12 +225,20 @@
                       style="background-color: #FFFFFF;"
                     ></md-textarea>
                   </md-field>
+
                   <md-button
+                    v-if="file ===''"
                     class="md-raised md-primary pull-right"
                     style="background-color: #2fb52b; color: white;"
                     v-on:click="submitMessage()"
                   >Send</md-button>
 
+                  <md-button
+                    v-else
+                    class="md-raised md-primary pull-right"
+                    style="background-color: blue; color: white;"
+                    v-on:click="sendFile()"
+                  >Send</md-button>
                   <form enctype="multipart/form-data">
                     <div class="field">
                       <input type="file" @change="selectFile" ref="file" style="display: none" />
