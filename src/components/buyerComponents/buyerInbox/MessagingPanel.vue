@@ -44,9 +44,13 @@
             <div class="view_msg">
               <p class="lead">
                 {{msg.message}}
+                {{msg.filename}}
                 <br />
               </p>
-              <md-button style="background-color: black; color: white;">Download</md-button>
+              <md-button
+                style="background-color: black; color: white;"
+                @click="downloadFile(msg.filename)"
+              >Download</md-button>
             </div>
           </md-content>
         </md-card>
@@ -145,15 +149,11 @@ export default {
     selectFile() {
       this.file = this.$refs.file.files[0];
     },
-    async downloadFile() {
+    async downloadFile(filename) {
       try {
-        // This file key will determine the file to be downloaded from the s3 bucket
-        const fileKey = "file-Screen Shot 2019-08-27 at 4.25.54 PM.png";
-        // ///////////////////////////////////////////////////////////
+        const fileKey = filename;
         const response = await InboxService.downloadFile(fileKey);
-
         const url = response.data.url;
-
         const link = document.createElement("a");
         link.href = url;
         link.setAttribute("download", fileKey); // or any other extension
@@ -177,7 +177,7 @@ export default {
             date: "",
             sender: "buyer-file-attachment",
             message: this.message,
-            filename: `${this.file.name}`
+            filename: `file-${this.file.name}`
           };
         }
 
