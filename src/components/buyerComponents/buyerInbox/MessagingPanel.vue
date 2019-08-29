@@ -193,6 +193,7 @@ export default {
         // uploading the actual file
         const formData = new FormData();
         formData.append("file", this.file);
+        console.log(formData); // TESTING
         const response2 = await InboxService.uploadFile(formData);
         console.log(`\nJSON.response2 ${JSON.stringify(response2.data)}\n`); // TESTING
       } catch (error) {
