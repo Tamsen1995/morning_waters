@@ -82,9 +82,18 @@ export default {
     },
     async createOrder () {
       try {
-        console.log(`\nIn this function a request for the buyer to get charged should be fired ${this.orderToBeConfirmed.orderId}\n`) // TESTING
-        // We can charge the buyer here for now
-        await PaymentService.chargeBuyerForOrder(this.orderToBeConfirmed.orderId)
+        // retrieving order items in order to calculate full price
+        var orderItems = (await InboxServices.retrieveOrderOrderItems(this.orderToBeConfirmed.orderId)).data.orderItems
+        var totalPriceCharged = 0
+        for (var i = 0; i < orderItems.length; i++) {
+          totalPriceCharged = totalPriceCharged + (orderItems[i].price * orderItems[i].amount)
+        }
+
+        // sending the total price and orderid to the web server
+        await PaymentService.chargeBuyerForOrder({
+          orderId: this.orderToBeConfirmed.orderId,
+          totalPriceCharged: totalPriceCharged
+        })
         await ShippingService.activateOrder({ orderId: this.orderToBeConfirmed.orderId })
         await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,

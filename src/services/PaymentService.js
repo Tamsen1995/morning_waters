@@ -32,10 +32,11 @@ export default {
       }
     })
   },
-  chargeBuyerForOrder (orderId) {
+  chargeBuyerForOrder (orderInfo) {
     return Api().get('seller/orders/chargeBuyerForOrder', {
       params: {
-        orderId: orderId
+        orderId: orderInfo.orderId,
+        totalPriceCharged: orderInfo.totalPriceCharged
       }
     })
   },
