@@ -143,18 +143,18 @@ export default {
         if (error) throw error
       }
     },
-    async unlockRelationship () {
-      try {
-        const orderId = this.order.orderId
-        await InboxService.unlockRelationship(this.order.sellerId, this.order.buyerId)
-        await this.getPendingOrders()
-        await this.getLockedOrders()
-        await this.discernLockedCorrespondences()
-        this.showOrderWithOrderId(orderId)
-      } catch (error) {
-        if (error) throw error
-      }
-    },
+    // async unlockRelationship () {
+    //   try {
+    //     const orderId = this.order.orderId
+    //     await InboxService.unlockRelationship(this.order.sellerId, this.order.buyerId)
+    //     await this.getPendingOrders()
+    //     await this.getLockedOrders()
+    //     await this.discernLockedCorrespondences()
+    //     this.showOrderWithOrderId(orderId)
+    //   } catch (error) {
+    //     if (error) throw error
+    //   }
+    // },
 
     async discernLockedCorrespondences () {
       try {

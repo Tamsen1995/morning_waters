@@ -166,7 +166,7 @@
             class="col-md-6 message-sideright"
             style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
           >
-            <div v-if="this.order && this.order.locked === false">
+            <div>
               <div class="message-header-a">
                 <h3 v-if="buyer !== null">{{buyer.name}}</h3>
                 <div class="message-header-b">
@@ -300,15 +300,6 @@
                 </md-card>
               </div>
             </div>
-            <div v-else>
-              <md-empty-state
-                md-icon="lock"
-                md-label="Unlock this correspondence"
-                md-description="Unlocking this lead will unlock every subsequent interaction with this customer."
-              >
-                <md-button class="md-primary md-raised" @click="unlockRelationship()">Unlock</md-button>
-              </md-empty-state>
-            </div>
           </div>
 
           <br />
@@ -328,7 +319,7 @@
                 </div>
               </md-card-header>
 
-              <md-card-expand v-if="this.order && this.order.locked === false">
+              <md-card-expand>
                 <md-card-actions md-alignment="space-between">
                   <div></div>
 
@@ -409,7 +400,6 @@
                   </md-card-content>
                 </md-card-expand-content>
               </md-card-expand>
-              <md-button v-else @click="unlockRelationship()">Unlock</md-button>
 
               <!-- </md-ripple> -->
             </md-card>
