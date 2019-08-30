@@ -29,7 +29,29 @@
           </md-content>
         </md-card>
         <!--  -->
-
+        <md-card
+          v-else-if="msg && msg.sender && msg.sender === 'seller-file-attachment'"
+          class="pull-left"
+          id="recieve-text-bubble"
+        >
+          <md-content>
+            <h4 class="media-heading pull-right">Date</h4>
+            <md-icon>account_circle</md-icon>
+            <span v-if="seller !== null">{{seller.companyName}}</span>
+            <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+            <div class="view_msg">
+              <p class="lead">
+                {{msg.message}}
+                {{msg.filename}}
+                <br />
+              </p>
+              <md-button
+                style="background-color: black; color: white;"
+                @click="downloadFile(msg.filename)"
+              >Download</md-button>
+            </div>
+          </md-content>
+        </md-card>
         <!--  -->
         <md-card
           v-else-if="msg && msg.sender && msg.sender === 'buyer-file-attachment'"

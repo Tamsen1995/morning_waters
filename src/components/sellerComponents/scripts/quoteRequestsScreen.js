@@ -59,6 +59,24 @@ export default {
     selectFile () {
       this.file = this.$refs.file.files[0]
     },
+
+    async downloadFile (filename) {
+      try {
+        const fileKey = filename
+        console.log(`\n\nThat's fine ${fileKey}\n\n`) // TESTING
+        const response = await InboxService.downloadFile(fileKey)
+        const url = response.data.url
+        const link = document.createElement('a')
+        link.href = url
+        link.setAttribute('download', fileKey)
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+
     async sendFile () {
       try {
         // // send a message indicating in the sender var
