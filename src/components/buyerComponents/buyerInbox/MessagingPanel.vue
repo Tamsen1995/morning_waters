@@ -29,7 +29,29 @@
           </md-content>
         </md-card>
         <!--  -->
-
+        <md-card
+          v-else-if="msg && msg.sender && msg.sender === 'seller-file-attachment'"
+          class="pull-left"
+          id="recieve-text-bubble"
+        >
+          <md-content>
+            <h4 class="media-heading pull-right">Date</h4>
+            <md-icon>account_circle</md-icon>
+            <span v-if="seller !== null">{{seller.companyName}}</span>
+            <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+            <div class="view_msg">
+              <p class="lead">
+                {{msg.message}}
+                {{msg.filename}}
+                <br />
+              </p>
+              <md-button
+                style="background-color: black; color: white;"
+                @click="downloadFile(msg.filename)"
+              >Download</md-button>
+            </div>
+          </md-content>
+        </md-card>
         <!--  -->
         <md-card
           v-else-if="msg && msg.sender && msg.sender === 'buyer-file-attachment'"
@@ -103,8 +125,6 @@
           <form enctype="multipart/form-data">
             <div class="field">
               <input type="file" @change="selectFile" ref="file" style="display: none" />
-
-              <md-button @click="downloadFile()">download</md-button>
 
               <md-button @click="$refs.file.click()" class="md-icon-button md-raised pull-right">
                 <md-icon>attach_file</md-icon>
@@ -194,8 +214,8 @@ export default {
         const formData = new FormData();
         formData.append("file", this.file);
         console.log(formData); // TESTING
-        const response2 = await InboxService.uploadFile(formData);
-        console.log(`\nJSON.response2 ${JSON.stringify(response2.data)}\n`); // TESTING
+        await InboxService.uploadFile(formData);
+        this.file = "";
       } catch (error) {
         if (error) throw error;
       }
