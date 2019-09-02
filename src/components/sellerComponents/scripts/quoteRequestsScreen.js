@@ -59,61 +59,7 @@ export default {
     }
   },
   methods: {
-    selectFile () {
-      this.file = this.$refs.file.files[0]
-    },
 
-    async downloadFile (filename) {
-      try {
-        const fileKey = filename
-        console.log(`\n\nThat's fine ${fileKey}\n\n`) // TESTING
-        const response = await InboxService.downloadFile(fileKey)
-        const url = response.data.url
-        const link = document.createElement('a')
-        link.href = url
-        link.setAttribute('download', fileKey)
-        document.body.appendChild(link)
-        link.click()
-        link.remove()
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-
-    async sendFile () {
-      try {
-        // // send a message indicating in the sender var
-        var correspondanceMsg = null
-        if (this.order !== null) {
-          correspondanceMsg = {
-            orderId: this.order.orderId,
-            buyerId: this.order.buyerId,
-            userId: this.order.sellerId,
-            date: '',
-            sender: 'seller-file-attachment',
-            message: this.message,
-            filename: `file-${this.file.name}`
-          }
-        }
-
-        // // sending the message and refreshing the current inbox
-        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
-        const response = await InboxService.retrieveCorrespondance(
-          correspondanceMsg.orderId
-        )
-        this.correspondanceMessages = response.data.correspondance
-        this.message = ''
-
-        // console.log(`${this.order.orderId}`); // TESTING
-        // // uploading the actual file
-        const formData = new FormData()
-        formData.append('file', this.file)
-        await InboxService.uploadFile(formData)
-        this.file = ''
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     /// ///////////////////////////////////////for sending file attachments above
     async redirectToOrderStatus () {
       try {
@@ -289,33 +235,6 @@ export default {
         this.$modal.show('order-has-been-submitted-message')
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
-    async submitMessage () {
-      try {
-        var correspondanceMsg = null
-        if (this.order !== null) {
-          correspondanceMsg = {
-            orderId: this.order.orderId,
-            buyerId: this.order.buyerId,
-            // by userId we mean to say the id of the seller in the db
-            userId: this.order.sellerId,
-            date: '',
-            sender: 'seller',
-            message: this.message
-          }
-        }
-        this.message = ''
-
-        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
-        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
-        this.correspondanceMessages = response.data.correspondance
-        if (this.order !== null) {
-          this.showOrder(this.order)
-          this.retrieveOrderOrderItems(this.order)
-        }
-      } catch (error) {
         if (error) throw error
       }
     },
