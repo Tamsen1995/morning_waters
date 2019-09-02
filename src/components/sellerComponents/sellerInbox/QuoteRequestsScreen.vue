@@ -27,69 +27,68 @@
 
             <!-- The panels for the orders -->
 
-            <!-- Unresponded -->
-
+            <!-- unread ! -->
             <div class="list-group no-margin list-message">
-              <md-card
-                class="list-group-item request"
-                v-for="(order, index) in this.orders"
-                v-bind:key="index"
-                md-with-hover
-                id="unresponded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order), retrieveOrderOrderItems(order)">
-                    <h4 class="list-group-item-heading">
-                      <md-avatar class="md-avatar-icon md-primary"></md-avatar>
+              <div v-for="(order, index) in this.orders" v-bind:key="index">
+                <md-card
+                  v-if="order && order.seller_read === false"
+                  class="list-group-item request"
+                  md-with-hover
+                  id="unresponded"
+                >
+                  <md-ripple>
+                    <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                      <h4 class="list-group-item-heading">
+                        <md-avatar class="md-avatar-icon md-primary"></md-avatar>
 
-                      <div v-if="order.locked === true">
-                        <md-icon>lock</md-icon>
-                        Buyer ID : {{ order.buyerId }}
-                      </div>
-                      <div v-else>Buyer ID : {{ order.buyerName }}</div>
+                        <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                        <div v-else>Buyer ID : {{ order.buyerName }}</div>
 
-                      <small class="pull-right">{{ order.createdAt }}</small>
-                      <br />
-                      <br />
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue: $ {{totalPrice}}</p>
-                    <span class="label label-success pull-right">Request</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>
+                        <small class="pull-right">{{ order.createdAt }}</small>
+                        <br />
+                        <br />
+                        <br />
+                      </h4>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <p>Estimated Revenue: $ {{totalPrice}}</p>
+                      <span class="label label-success pull-right">Request</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-ripple>
+                </md-card>
+              </div>
             </div>
-            <!-- Responded -->
+            <!-- read ! -->
             <div class="list-group no-margin list-message">
-              <!-- <md-card
-                class="list-group-item request"
-                v-for="(order, index) in this.orders"
-                v-bind:key="index"
-                md-with-hover
-                id="responded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order), retrieveOrderOrderItems(order)">
-                    <h4 class="list-group-item-heading">
-                      <md-avatar class="md-avatar-icon md-primary">
-
-                        <i class="fas fa-lock"></i>
-                      </md-avatar>
-                      Buyer ID : {{ order.buyerId }}
-                      <small class="pull-right">{{ order.createdAt }}</small>
-                      <br />
-                      <br />
-                      <br />
-                    </h4>
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
-                    <span class="label label-success pull-right">Request</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>-->
+              <div v-for="(order, index) in this.orders" v-bind:key="index">
+                <md-card
+                  v-if="order && order.seller_read === true"
+                  class="list-group-item request"
+                  md-with-hover
+                  id="responded"
+                >
+                  <md-ripple>
+                    <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                      <h4 class="list-group-item-heading">
+                        <md-avatar class="md-avatar-icon md-primary">
+                          <i class="fas fa-lock"></i>
+                        </md-avatar>
+                        Buyer ID : {{ order.buyerId }}
+                        <small
+                          class="pull-right"
+                        >{{ order.createdAt }}</small>
+                        <br />
+                        <br />
+                        <br />
+                      </h4>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <p>Estimated Revenue:[$$$]</p>
+                      <span class="label label-success pull-right">Request</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-ripple>
+                </md-card>
+              </div>
             </div>
 
             <!-- The panels for the orders -->
@@ -106,10 +105,7 @@
                 <md-ripple>
                   <div @click="showOrder(order), retrieveOrderOrderItems (order)">
                     <h4 class="list-group-item-heading">
-                      <div v-if="order.locked === true">
-                        <md-icon>lock</md-icon>
-                        Buyer ID : {{ order.buyerId }}
-                      </div>
+                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
                       <div v-else>Buyer ID : {{ order.buyerName }}</div>
                       <br />
                       <br />

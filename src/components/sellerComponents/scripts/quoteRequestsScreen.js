@@ -185,6 +185,7 @@ export default {
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
+        await InboxService.markOrderAsRead('seller', orderId)
       } catch (error) {
         if (error) throw error
       }
