@@ -231,15 +231,39 @@ export default {
         await this.getLockedOrders()
         await this.getPendingOrders()
         await this.discernLockedCorrespondences()
-        this.showOrderWithOrderId(orderId)
         this.$modal.hide('would-you-like-to-submit')
         this.$modal.show('order-has-been-submitted-message')
+
+        this.sendMessage('[seller submits order confirmation]')
+        this.showOrderWithOrderId(orderId)
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
         if (error) throw error
       }
     },
+    async sendMessage (text) {
+      try {
+        var correspondanceMsg = null
 
+        /// /////////////////////////////////// Testing
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            // by userId we mean to say the id of the seller in the db
+            userId: this.order.sellerId,
+            date: '',
+            sender: 'seller',
+            message: text
+          }
+        }
+
+        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
+        /// ////////////////////////////////////////
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     // This function also sets the clicked on variable
     // of the message
     async retrieveCorrespondance (orderId) {

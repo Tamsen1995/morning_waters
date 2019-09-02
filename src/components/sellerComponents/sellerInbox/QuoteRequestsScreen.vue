@@ -50,7 +50,7 @@
                         <br />
                       </h4>
                       <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                      <p>Estimated Revenue: $ {{totalPrice}}</p>
+                      <!-- <p>Estimated Revenue: $ {{totalPrice}}</p> -->
                       <span class="label label-success pull-right">Request</span>
                       <div class="clearfix"></div>
                     </div>
