@@ -250,35 +250,6 @@ export default {
       }
     },
 
-    async discernLockedCorrespondences() {
-      try {
-        // checking if orders are is unlocked or not so we can block the seller
-        // from  interaction when it's locked
-        if (this.pendingOrders && this.pendingOrders.length > 0) {
-          for (var k = 0; k < this.pendingOrders.length; k++) {
-            this.pendingOrders[
-              k
-            ].locked = (await InboxService.relationshipUnlocked(
-              this.pendingOrders[k].sellerId,
-              this.pendingOrders[k].buyerId
-            )).data;
-          }
-          this.showOrder(this.pendingOrders[0]);
-        }
-
-        if (this.orders && this.orders.length > 0) {
-          for (var i = 0; i < this.orders.length; i++) {
-            this.orders[i].locked = (await InboxService.relationshipUnlocked(
-              this.orders[i].sellerId,
-              this.orders[i].buyerId
-            )).data;
-          }
-        }
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
-
     async showOrder(order) {
       try {
         // emptying this arr in case order is a pending order
@@ -300,25 +271,6 @@ export default {
       }
     },
 
-    async submitOrder() {
-      try {
-        const orderId = this.order.orderId;
-        // set the order confirmed on the seller side to true
-        await InboxService.confirmOrder({
-          orderId: orderId,
-          user: "seller"
-        });
-        await this.getLockedOrders();
-        await this.getPendingOrders();
-        await this.discernLockedCorrespondences();
-        this.showOrderWithOrderId(orderId);
-        this.$modal.hide("would-you-like-to-submit");
-        this.$modal.show("order-has-been-submitted-message");
-      } catch (error) {
-        console.log(`\nThe error occurred in submitOrder : ${error}\n`); // TESTING
-        if (error) throw error;
-      }
-    },
     async submitMessage() {
       try {
         var correspondanceMsg = null;
