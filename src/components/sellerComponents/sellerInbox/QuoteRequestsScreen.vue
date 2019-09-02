@@ -162,146 +162,14 @@
 
             <!-- The panels for the quote requests -->
           </div>
-          <div
-            class="col-md-6 message-sideright"
-            style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
-          >
-            <div>
-              <div class="message-header-a">
-                <h3 v-if="buyer !== null">{{buyer.name}}</h3>
-                <div class="message-header-b">
-                  <h4>[Company Name]</h4>
-                </div>
-              </div>
-
-              <div
-                class="panel-body"
-                v-for="(msg, index) in correspondanceMessages"
-                v-bind:key="index"
-              >
-                <!-- if -->
-                <md-card
-                  v-if="msg && msg.sender && msg.sender === 'buyer'"
-                  id="recieve-text-bubble"
-                  class="pull-left"
-                >
-                  <md-content>
-                    <h4 class="media-heading pull-right">Date</h4>
-                    <md-icon>account_circle</md-icon>
-                    {{buyer.name}}
-                    <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-                    <div class="view_msg">
-                      <p class="lead">{{msg.message}}</p>
-                    </div>
-                  </md-content>
-                </md-card>
-                <md-card
-                  v-else-if="msg && msg.sender && msg.sender === 'buyer-file-attachment'"
-                  class="pull-left"
-                  id="recieve-text-bubble"
-                >
-                  <md-content>
-                    <h4 class="media-heading pull-right">Date</h4>
-                    <md-icon>account_circle</md-icon>
-                    <span v-if="seller !== null">{{seller.companyName}}</span>
-                    <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-                    <div class="view_msg">
-                      <p class="lead">
-                        {{msg.message}}
-                        {{msg.filename}}
-                        <br />
-                      </p>
-                      <md-button
-                        style="background-color: black; color: white;"
-                        @click="downloadFile(msg.filename)"
-                      >Download</md-button>
-                    </div>
-                  </md-content>
-                </md-card>
-                <!--  -->
-                <md-card
-                  v-else-if="msg && msg.sender && msg.sender === 'seller-file-attachment'"
-                  class="pull-right"
-                  id="response-text-bubble"
-                >
-                  <md-content>
-                    <h4 class="media-heading pull-right">Date</h4>
-                    <md-icon>account_circle</md-icon>
-                    <span v-if="seller !== null">{{seller.companyName}}</span>
-                    <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-                    <div class="view_msg">
-                      <p class="lead">
-                        {{msg.message}}
-                        {{msg.filename}}
-                        <br />
-                      </p>
-                      <md-button
-                        style="background-color: black; color: white;"
-                        @click="downloadFile(msg.filename)"
-                      >Download</md-button>
-                    </div>
-                  </md-content>
-                </md-card>
-                <!-- else -->
-                <md-card v-else class="pull-right" id="response-text-bubble">
-                  <md-content>
-                    <h4 class="media-heading pull-right">Date</h4>
-                    <md-icon>account_circle</md-icon>
-                    {{seller.companyName}}
-                    <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-                    <div class="view_msg">
-                      <p class="lead">{{msg.message}}</p>
-                    </div>
-                  </md-content>
-                </md-card>
-                <!--  -->
-              </div>
-
-              <hr />
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <md-card class="reply_msg">
-                  <md-field>
-                    <md-textarea
-                      v-model="message"
-                      md-autogrow
-                      md-counter="500"
-                      v-on:keyup.enter="submitMessage()"
-                      placeholder="Enter your message here ..."
-                      style="background-color: #FFFFFF;"
-                    ></md-textarea>
-                  </md-field>
-
-                  <md-button
-                    v-if="file ===''"
-                    class="md-raised md-primary pull-right"
-                    style="background-color: #2fb52b; color: white;"
-                    v-on:click="submitMessage()"
-                  >Send</md-button>
-
-                  <md-button
-                    v-else
-                    class="md-raised md-primary pull-right"
-                    style="background-color: blue; color: white;"
-                    v-on:click="sendFile()"
-                  >Send</md-button>
-                  <form enctype="multipart/form-data">
-                    <div class="field">
-                      <input type="file" @change="selectFile" ref="file" style="display: none" />
-
-                      <md-button
-                        @click="$refs.file.click()"
-                        class="md-icon-button md-raised pull-right"
-                      >
-                        <md-icon>attach_file</md-icon>
-                      </md-button>
-                    </div>
-                  </form>
-                </md-card>
-              </div>
-            </div>
-          </div>
-
+          <!--  plug in message panel here  -->
+          <message-panel
+            v-bind:order="this.order"
+            v-bind:correspondanceMsgs="this.correspondanceMessages"
+            v-bind:buyer="this.buyer"
+            v-bind:seller="this.seller"
+          ></message-panel>
+          <!--  -->
           <br />
           <!-- Negotation Interface -->
           <div class="col-md-3 message-sideright card-expansion invoice-generator">
@@ -330,7 +198,7 @@
                   >Status</md-button>
 
                   <md-card-expand-trigger>
-                    <md-button v-if="order.pending || order.seller_confirmed === true">
+                    <md-button v-if="order && (order.pending || order.seller_confirmed === true)">
                       Invoice
                       <md-icon>keyboard_arrow_down</md-icon>
                     </md-button>
@@ -359,7 +227,7 @@
                               X
                               <!-- TODO : make sure the default of this is set to true on back -->
                               <div
-                                v-if="order.pending || order.seller_confirmed === true"
+                                v-if="order && (order.pending || order.seller_confirmed === true)"
                               >{{amtForServicesNegotiated[index]}}</div>
 
                               <md-input
@@ -444,10 +312,10 @@
 </div>
 </template>
 
-<script src="./scripts/quoteRequestsScreen.js">
+<script src="../scripts/quoteRequestsScreen.js">
 </script>
 
 <style scoped>
-@import "../../assets/css/inbox.css";
+@import "../../../assets/css/inbox.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>

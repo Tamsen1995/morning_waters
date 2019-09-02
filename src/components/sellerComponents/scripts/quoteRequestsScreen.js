@@ -3,6 +3,7 @@ import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
 import BuyerServices from '@/services/BuyerServices'
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
+import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 var $ = require('jQuery')
@@ -35,15 +36,16 @@ export default {
     }
   },
   components: {
-    DashboardHeader
+    DashboardHeader,
+    MessagePanel
   },
   directives: {
     responsive: ResponsiveDirective
   },
-  async mounted () {
+  async created () {
     await this.getPendingOrders()
     await this.getLockedOrders()
-    await this.discernLockedCorrespondences()
+    // await this.discernLockedCorrespondences()
 
     if (this.pendingOrders && this.pendingOrders.length > 0) {
       this.showOrder(this.pendingOrders[0])
@@ -51,6 +53,7 @@ export default {
     }
 
     if (this.orders && this.orders.length > 0) {
+      console.log(`asdsa`) // TESTING
       this.showOrder(this.orders[0])
       this.retrieveOrderOrderItems(this.orders[0])
     }
@@ -143,18 +146,6 @@ export default {
         if (error) throw error
       }
     },
-    // async unlockRelationship () {
-    //   try {
-    //     const orderId = this.order.orderId
-    //     await InboxService.unlockRelationship(this.order.sellerId, this.order.buyerId)
-    //     await this.getPendingOrders()
-    //     await this.getLockedOrders()
-    //     await this.discernLockedCorrespondences()
-    //     this.showOrderWithOrderId(orderId)
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // },
 
     async discernLockedCorrespondences () {
       try {
@@ -237,16 +228,16 @@ export default {
     async showOrder (order) {
       try {
         // emptying this arr in case order is a pending order
-        this.servicesNegotiated = []
-        this.order = order
-        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
-        this.seller = this.$store.getters.getUserInfo
 
         const orderId = order.orderId
-        this.orderItems = null
 
         // retrieving the correspondence itself (the conversation)
         const response = await InboxService.retrieveCorrespondance(orderId)
+        this.servicesNegotiated = []
+        this.order = order
+        console.log(`asddadsaads${JSON.stringify(this.order)}`) // TESTING
+        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
+        this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
       } catch (error) {
         if (error) throw error
