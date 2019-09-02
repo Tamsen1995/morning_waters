@@ -3,6 +3,7 @@ import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
 import BuyerServices from '@/services/BuyerServices'
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
+import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 var $ = require('jQuery')
@@ -35,15 +36,16 @@ export default {
     }
   },
   components: {
-    DashboardHeader
+    DashboardHeader,
+    MessagePanel
   },
   directives: {
     responsive: ResponsiveDirective
   },
-  async mounted () {
+  async created () {
     await this.getPendingOrders()
     await this.getLockedOrders()
-    await this.discernLockedCorrespondences()
+    // await this.discernLockedCorrespondences()
 
     if (this.pendingOrders && this.pendingOrders.length > 0) {
       this.showOrder(this.pendingOrders[0])
@@ -51,66 +53,13 @@ export default {
     }
 
     if (this.orders && this.orders.length > 0) {
+      console.log(`asdsa`) // TESTING
       this.showOrder(this.orders[0])
       this.retrieveOrderOrderItems(this.orders[0])
     }
   },
   methods: {
-    selectFile () {
-      this.file = this.$refs.file.files[0]
-    },
 
-    async downloadFile (filename) {
-      try {
-        const fileKey = filename
-        console.log(`\n\nThat's fine ${fileKey}\n\n`) // TESTING
-        const response = await InboxService.downloadFile(fileKey)
-        const url = response.data.url
-        const link = document.createElement('a')
-        link.href = url
-        link.setAttribute('download', fileKey)
-        document.body.appendChild(link)
-        link.click()
-        link.remove()
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-
-    async sendFile () {
-      try {
-        // // send a message indicating in the sender var
-        var correspondanceMsg = null
-        if (this.order !== null) {
-          correspondanceMsg = {
-            orderId: this.order.orderId,
-            buyerId: this.order.buyerId,
-            userId: this.order.sellerId,
-            date: '',
-            sender: 'seller-file-attachment',
-            message: this.message,
-            filename: `file-${this.file.name}`
-          }
-        }
-
-        // // sending the message and refreshing the current inbox
-        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
-        const response = await InboxService.retrieveCorrespondance(
-          correspondanceMsg.orderId
-        )
-        this.correspondanceMessages = response.data.correspondance
-        this.message = ''
-
-        // console.log(`${this.order.orderId}`); // TESTING
-        // // uploading the actual file
-        const formData = new FormData()
-        formData.append('file', this.file)
-        await InboxService.uploadFile(formData)
-        this.file = ''
-      } catch (error) {
-        if (error) throw error
-      }
-    },
     /// ///////////////////////////////////////for sending file attachments above
     async redirectToOrderStatus () {
       try {
@@ -143,18 +92,6 @@ export default {
         if (error) throw error
       }
     },
-    // async unlockRelationship () {
-    //   try {
-    //     const orderId = this.order.orderId
-    //     await InboxService.unlockRelationship(this.order.sellerId, this.order.buyerId)
-    //     await this.getPendingOrders()
-    //     await this.getLockedOrders()
-    //     await this.discernLockedCorrespondences()
-    //     this.showOrderWithOrderId(orderId)
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // },
 
     async discernLockedCorrespondences () {
       try {
@@ -237,17 +174,18 @@ export default {
     async showOrder (order) {
       try {
         // emptying this arr in case order is a pending order
-        this.servicesNegotiated = []
-        this.order = order
-        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
-        this.seller = this.$store.getters.getUserInfo
 
         const orderId = order.orderId
-        this.orderItems = null
 
         // retrieving the correspondence itself (the conversation)
         const response = await InboxService.retrieveCorrespondance(orderId)
+        this.servicesNegotiated = []
+        this.order = order
+        console.log(`asddadsaads${JSON.stringify(this.order)}`) // TESTING
+        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
+        this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
+        await InboxService.markOrderAsRead('seller', orderId)
       } catch (error) {
         if (error) throw error
       }
@@ -293,17 +231,21 @@ export default {
         await this.getLockedOrders()
         await this.getPendingOrders()
         await this.discernLockedCorrespondences()
-        this.showOrderWithOrderId(orderId)
         this.$modal.hide('would-you-like-to-submit')
         this.$modal.show('order-has-been-submitted-message')
+
+        this.sendMessage('[seller submits order confirmation]')
+        this.showOrderWithOrderId(orderId)
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
         if (error) throw error
       }
     },
-    async submitMessage () {
+    async sendMessage (text) {
       try {
         var correspondanceMsg = null
+
+        /// /////////////////////////////////// Testing
         if (this.order !== null) {
           correspondanceMsg = {
             orderId: this.order.orderId,
@@ -312,23 +254,16 @@ export default {
             userId: this.order.sellerId,
             date: '',
             sender: 'seller',
-            message: this.message
+            message: text
           }
         }
-        this.message = ''
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
-        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
-        this.correspondanceMessages = response.data.correspondance
-        if (this.order !== null) {
-          this.showOrder(this.order)
-          this.retrieveOrderOrderItems(this.order)
-        }
+        /// ////////////////////////////////////////
       } catch (error) {
         if (error) throw error
       }
     },
-
     // This function also sets the clicked on variable
     // of the message
     async retrieveCorrespondance (orderId) {

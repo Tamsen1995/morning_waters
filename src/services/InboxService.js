@@ -1,6 +1,15 @@
 import Api from '@/services/Api'
 
 export default {
+  markOrderAsRead (user, orderId) {
+    return Api().get('orders/markAsRead', {
+      params: {
+        // user determines whether it's coming from the buyer or seller side
+        user: user,
+        orderId: orderId
+      }
+    })
+  },
   // '/inbox/files/download'
   downloadFile (filename) {
     return Api().get('inbox/files/download', {
