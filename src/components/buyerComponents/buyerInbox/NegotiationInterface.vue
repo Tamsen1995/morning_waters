@@ -128,6 +128,8 @@
 </template>
 
 <script>
+import BuyerServices from "@/services/BuyerServices";
+
 import PaymentService from "@/services/PaymentService";
 import InboxService from "@/services/InboxService";
 import BuyerSettingsBillingsTab from "@/components/buyerComponents/BuyerSettingsBillingsTab";
@@ -192,11 +194,37 @@ export default {
         await InboxService.submitToPendingOrders({
           orderId: this.order.orderId
         });
+
+        await this.sendMessage("[buyer submits order confirmation]");
+
         if (this.order && this.order.seller_confirmed === true) {
           this.$router.push({
             name: "buyerDashboard"
           });
         }
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async sendMessage(text) {
+      try {
+        var correspondanceMsg = null;
+
+        /// /////////////////////////////////// Testing
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            // by userId we mean to say the id of the seller in the db
+            userId: this.order.sellerId,
+            date: "",
+            sender: "buyer",
+            message: text
+          };
+        }
+
+        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg);
+        /// ////////////////////////////////////////
       } catch (error) {
         if (error) throw error;
       }
