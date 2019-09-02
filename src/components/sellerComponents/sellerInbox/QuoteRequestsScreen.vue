@@ -31,7 +31,7 @@
             <div class="list-group no-margin list-message">
               <div v-for="(order, index) in this.orders" v-bind:key="index">
                 <md-card
-                  v-if="order && order.seller_read === false"
+                  v-if="order && order.seller_read === true"
                   class="list-group-item request"
                   md-with-hover
                   id="unresponded"
@@ -56,23 +56,11 @@
                     </div>
                   </md-ripple>
                 </md-card>
-              </div>
-            </div>
-            <!-- read ! -->
-            <div class="list-group no-margin list-message">
-              <div v-for="(order, index) in this.orders" v-bind:key="index">
-                <md-card
-                  v-if="order && order.seller_read === true"
-                  class="list-group-item request"
-                  md-with-hover
-                  id="responded"
-                >
+
+                <md-card v-else class="list-group-item request" md-with-hover id="responded">
                   <md-ripple>
                     <div @click="showOrder(order), retrieveOrderOrderItems(order)">
                       <h4 class="list-group-item-heading">
-                        <md-avatar class="md-avatar-icon md-primary">
-                          <i class="fas fa-lock"></i>
-                        </md-avatar>
                         Buyer ID : {{ order.buyerId }}
                         <small
                           class="pull-right"
@@ -89,6 +77,10 @@
                   </md-ripple>
                 </md-card>
               </div>
+            </div>
+            <!-- read ! -->
+            <div class="list-group no-margin list-message">
+              <div v-for="(order, index) in this.orders" v-bind:key="index"></div>
             </div>
 
             <!-- The panels for the orders -->
