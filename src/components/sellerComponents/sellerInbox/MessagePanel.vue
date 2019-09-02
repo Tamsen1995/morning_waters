@@ -134,13 +134,8 @@
 </template>
 
 <script>
-import UserServices from "@/services/UserServices";
 import InboxService from "@/services/InboxService";
-import PaymentService from "@/services/PaymentService";
 import BuyerServices from "@/services/BuyerServices";
-import DashboardHeader from "@/components/sellerComponents/DashboardHeader.vue";
-import MessagePanel from "@/components/sellerComponents/sellerInbox/MessagePanel.vue";
-import { ResponsiveDirective } from "vue-responsive-components";
 
 export default {
   data() {
