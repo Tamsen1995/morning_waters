@@ -226,51 +226,6 @@ export default {
     },
     /// ///////////////////////////////////////for sending file attachments above
 
-    // goes through the array of orders and pending orders
-    // finds the order with the appropiate order id
-    // and then displays that order with the showOrder function
-    async showOrderWithOrderId(orderId) {
-      try {
-        for (var k = 0; k < this.orders.length; k++) {
-          if (this.orders[k].orderId === orderId) {
-            this.showOrder(this.orders[k]);
-            this.retrieveOrderOrderItems(this.orders[k]);
-            break;
-          }
-        }
-        for (var j = 0; j < this.pendingOrders.length; j++) {
-          if (this.pendingOrders[j].orderId === orderId) {
-            this.showOrder(this.pendingOrders[j]);
-            this.retrieveOrderOrderItems(this.pendingOrders[j]);
-            break;
-          }
-        }
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
-
-    async showOrder(order) {
-      try {
-        // emptying this arr in case order is a pending order
-        this.servicesNegotiated = [];
-        this.order = order;
-        this.buyer = (await BuyerServices.getBuyerProfileInfo(
-          order.buyerId
-        )).data.buyer;
-        this.seller = this.$store.getters.getUserInfo;
-
-        const orderId = order.orderId;
-        this.orderItems = null;
-
-        // retrieving the correspondence itself (the conversation)
-        const response = await InboxService.retrieveCorrespondance(orderId);
-        this.correspondanceMessages = response.data.correspondance;
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
-
     async submitMessage() {
       try {
         var correspondanceMsg = null;
@@ -292,10 +247,6 @@ export default {
           correspondanceMsg.orderId
         );
         this.correspondanceMessages = response.data.correspondance;
-        if (this.order !== null) {
-          this.showOrder(this.order);
-          this.retrieveOrderOrderItems(this.order);
-        }
       } catch (error) {
         if (error) throw error;
       }
