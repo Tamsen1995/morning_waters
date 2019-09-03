@@ -19,14 +19,14 @@
                 <div class="form-row">
                   <md-field>
                     <label>First Name:</label>
-                    <md-input v-model="name"></md-input>
+                    <md-input v-model="firstName"></md-input>
                   </md-field>
                 </div>
                 <!-- input for Last Name -->
                 <div class="form-row">
                   <md-field>
                     <label>Last Name:</label>
-                    <md-input v-model="name"></md-input>
+                    <md-input v-model="lastName"></md-input>
                   </md-field>
                 </div>
                 <!-- input for email address -->

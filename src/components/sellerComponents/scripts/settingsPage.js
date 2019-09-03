@@ -11,6 +11,8 @@ export default {
   data () {
     return {
       name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       number: '',
       jobTitle: '',
@@ -103,7 +105,8 @@ export default {
       try {
         const userExtracted = this.$store.getters.getUserInfo
         const newProfileInfo = {
-          name: this.name,
+          firstName: this.firstName,
+          lastName: this.lastName,
           email: this.email,
           number: this.number,
           jobTitle: this.jobTitle,
