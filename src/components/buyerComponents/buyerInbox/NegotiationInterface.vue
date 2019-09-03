@@ -17,11 +17,11 @@
         <md-card-actions md-alignment="space-between">
           <div></div>
 
-          <md-button
+          <!-- <md-button
             class="md-accent"
             style="background-color: red; color: white;"
             @click="redirectToOrderStatus()"
-          >Status</md-button>
+          >Status</md-button>-->
 
           <md-card-expand-trigger>
             <md-button v-if="order.pending || order.seller_confirmed === true">
