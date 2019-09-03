@@ -90,6 +90,12 @@ export default {
         if (error) throw error
       }
     },
+    invokeSubmittedProfilePrompt () {
+      this.$modal.show('profile-updates-have-been-submitted')
+    },
+    closeSubmittedProfilePrompt () {
+      this.$modal.hide('profile-updates-have-been-submitted')
+    },
     async updateProfile () {
       try {
         const userExtracted = this.$store.getters.getUserInfo

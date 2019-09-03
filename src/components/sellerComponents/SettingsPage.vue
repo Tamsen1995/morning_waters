@@ -53,7 +53,10 @@
                   </md-field>
                 </div>
 
-                <md-button class="md-raised md-primary" @click="updateProfile()">Submit</md-button>
+                <md-button
+                  class="md-raised md-primary"
+                  @click="updateProfile(), invokeSubmittedProfilePrompt()"
+                >Submit</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -91,7 +94,10 @@
                 </div>
 
                 <br />
-                <md-button @click="updateProfile()" class="md-raised md-primary">Publish</md-button>
+                <md-button
+                  @click="updateProfile(), invokeSubmittedProfilePrompt()"
+                  class="md-raised md-primary"
+                >Publish</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -174,7 +180,10 @@
                     </md-field>
                   </div>
                 </div>
-                <md-button class="md-raised md-primary" @click="updateProfile()">Submit</md-button>
+                <md-button
+                  class="md-raised md-primary"
+                  @click="updateProfile(), invokeSubmittedProfilePrompt()"
+                >Submit</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -216,6 +225,13 @@
       </div>
     </body>
   </div>
+
+  <!-- Prompt to ask the user if they want to make this card the default source -->
+  <modal name="profile-updates-have-been-submitted">
+    Updates have been submitted !
+    <md-button @click="closeSubmittedProfilePrompt()">ok</md-button>
+  </modal>
+  <!--  -->
 </div>
 </template>
 
