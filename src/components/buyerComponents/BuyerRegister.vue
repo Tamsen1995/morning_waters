@@ -28,10 +28,23 @@
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <md-field>
-                        <label>Name :</label>
+                        <label>First Name :</label>
                         <md-input
                           class="form-control"
-                          v-model="name"
+                          v-model="firstName"
+                          v-on:keyup.enter="setDone('first', 'second')"
+                        ></md-input>
+                      </md-field>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-12">
+                      <md-field>
+                        <label>Last Name :</label>
+                        <md-input
+                          class="form-control"
+                          v-model="lastName"
                           v-on:keyup.enter="setDone('first', 'second')"
                         ></md-input>
                       </md-field>
