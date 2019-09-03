@@ -42,13 +42,15 @@
             <div class="view_msg">
               <p class="lead">
                 {{msg.message}}
-                {{msg.filename}}
                 <br />
               </p>
               <md-button
-                style="background-color: black; color: white;"
+                style="background-color: white; color: black;"
                 @click="downloadFile(msg.filename)"
-              >Download</md-button>
+              >
+                <md-icon>file_copy</md-icon>
+                {{msg.filename}}
+              </md-button>
             </div>
           </md-content>
         </md-card>
@@ -66,13 +68,15 @@
             <div class="view_msg">
               <p class="lead">
                 {{msg.message}}
-                {{msg.filename}}
                 <br />
               </p>
               <md-button
-                style="background-color: black; color: white;"
+                style="background-color: white; color: black;"
                 @click="downloadFile(msg.filename)"
-              >Download</md-button>
+              >
+                <md-icon>file_copy</md-icon>
+                {{msg.filename}}
+              </md-button>
             </div>
           </md-content>
         </md-card>
