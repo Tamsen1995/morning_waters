@@ -84,7 +84,10 @@ export default {
         console.log(`\n\n$${JSON.stringify(updatePassInfo)}\n`) // TESTING
 
         const response = await SettingsService.updatePassword(updatePassInfo)
-        console.log(`\nThe password response ${JSON.stringify(response)}\n`) // TESTING
+
+        if (response && response.status === 200) {
+          this.$modal.show('profile-updates-have-been-submitted')
+        }
       } catch (error) {
         console.log(`\nThe error caught in update password ${error}\n`) // TESTING
         if (error) throw error
