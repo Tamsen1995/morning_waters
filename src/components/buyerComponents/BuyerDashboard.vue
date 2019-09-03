@@ -17,7 +17,7 @@
 
       <!--  -->
 
-      <div v-if="this.pendingOrders.length > 0">
+      <div v-if="this.pendingOrders && this.pendingOrders.length > 0">
         <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index">
           <md-card style="background-color: white;">
             <md-card-header>

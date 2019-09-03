@@ -8,7 +8,7 @@
       <h1>Pending Orders</h1>
 
       <!--  This is where the pending orders md cards are gonna live -->
-      <div v-if="this.pendingOrders.length > 0">
+      <div v-if="this.pendingOrders && this.pendingOrders.length > 0">
         <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index">
           <md-card style="background-color: white;">
             <md-card-header>
