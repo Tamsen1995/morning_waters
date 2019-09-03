@@ -51,33 +51,12 @@
                       <md-input v-model="email"></md-input>
                     </md-field>
                   </div>
-
-                  <div class="form-row">
-                    <md-field>
-                      <label>Phone Number:</label>
-                      <md-input v-model="number"></md-input>
-                    </md-field>
-                  </div>
-
-                  <!-- Input for Billing Address -->
-                  <!-- Add more formatting to this section: Maybe even map app -->
-                  <div class="form-row">
-                    <md-field>
-                      <label>Billing Address:</label>
-                      <md-input v-model="billingAddress"></md-input>
-                    </md-field>
-                  </div>
-
-                  <!-- Input for About -->
-                  <div class="form-group row">
-                    <md-field>
-                      <label>About:</label>
-                      <md-textarea v-model="about" class="form-control"></md-textarea>
-                    </md-field>
-                  </div>
                 </md-card-content>
 
-                <md-button class="md-raised md-primary">Submit profile edits</md-button>
+                <md-button
+                  class="md-raised md-primary"
+                  @click="updateProfileInfo()"
+                >Submit profile edits</md-button>
               </md-ripple>
             </md-card>
             <!--  -->
