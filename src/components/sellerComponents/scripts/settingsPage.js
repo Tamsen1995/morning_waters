@@ -132,14 +132,15 @@ export default {
         )
         this.user = userInfo.data.user
 
-        this.name = userInfo.data.user.name
-        this.email = userInfo.data.user.email
-        this.number = userInfo.data.user.number
-        this.jobTitle = userInfo.data.user.jobTitle
-        this.companyName = userInfo.data.user.companyName
-        this.companyWebsite = userInfo.data.user.companyWebsite
-        this.address = JSON.parse(userInfo.data.user.address)
-        this.about = userInfo.data.user.about
+        this.firstName = this.user.firstName
+        this.lastName = this.user.lastName
+        this.email = this.user.email
+        this.number = this.user.number
+        this.jobTitle = this.user.jobTitle
+        this.companyName = this.user.companyName
+        this.companyWebsite = this.user.companyWebsite
+        this.address = JSON.parse(this.user.address)
+        this.about = this.user.about
       } catch (error) {
         console.log(
           `\nThe error message inside of the retrieveProfileInfo: ${error}\n`
