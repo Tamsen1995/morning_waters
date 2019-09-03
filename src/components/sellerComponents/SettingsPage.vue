@@ -20,20 +20,24 @@
                 <div class="form-row">
                   <md-field>
                     <label>First Name:</label>
+
                     <md-input  
                       class="form-control" 
-                      v-model="name">
+                      v-model="firstName">
                     </md-input>
+
                   </md-field>
                 </div>
                 <!-- input for Last Name -->
                 <div class="form-row">
                   <md-field>
                     <label>Last Name:</label>
+
                     <md-input 
                       class="form-control"
-                      v-model="name">
+                      v-model="lastName">
                     </md-input>
+
                   </md-field>
                 </div>
                 <!-- input for email address -->
