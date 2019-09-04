@@ -16,7 +16,10 @@
         </div>
 
         <div class="row message-wrapper rounded shadow mb-20">
-          <div class="col-lg-3 message-sideleft">
+          <div
+            class="col-lg-3 message-sideleft"
+            v-if="(this.orders && this.orders.length > 0) || (this.pendingOrders && this.pendingOrders.length > 0)"
+          >
             <!-- <md-card> -->
             <div class="panel-heading">
               <!-- Filter Orders/Quote Requests -->
@@ -90,8 +93,16 @@
                 </md-ripple>
               </md-card>
             </div>
-
             <!-- The panels for the quote requests -->
+          </div>
+          <div class="col-lg-3 message-sideleft" v-else>
+            <md-card>
+              <md-empty-state
+                md-icon="inbox"
+                md-label="0 new requests"
+                md-description="There are currently no new requests in your inbox"
+              ></md-empty-state>
+            </md-card>
           </div>
 
           <!--  -->
