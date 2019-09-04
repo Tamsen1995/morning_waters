@@ -266,7 +266,7 @@
                     <div v-else>
                       <md-empty-state
                         md-icon="select_all"
-                        md-description="No order selected. Please select an order in order to generate inboxes"
+                        md-description="No order selected. Please select an order in order to generate invoices"
                       ></md-empty-state>
                     </div>
                   </md-card-content>
