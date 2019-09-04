@@ -169,7 +169,11 @@
           <!--  -->
           <br />
           <!-- Negotation Interface -->
-          <div class="col-md-3 message-sideright card-expansion invoice-generator">
+
+          <div
+            class="col-md-3 message-sideright card-expansion invoice-generator"
+            v-if="this.orders && this.orders.length > 0"
+          >
             <md-card md-with-hover>
               <!-- <md-ripple> -->
               <md-card-header style="background-color:#9474cc; color:white;">
@@ -268,6 +272,9 @@
 
               <!-- </md-ripple> -->
             </md-card>
+          </div>
+          <div v-else class="col-md-3 message-sideright card-expansion invoice-generator">
+            <md-empty-state md-icon="block" md-description="No message selected"></md-empty-state>
           </div>
         </div>
       </div>
