@@ -29,7 +29,7 @@
 
             <!-- unread ! -->
             <div class="list-group no-margin list-message">
-              <div v-if="this.order && this.orders.length > 0">
+              <div v-if="this.orders && this.orders.length > 0">
                 <div v-for="(order, index) in this.orders" v-bind:key="index">
                   <md-card
                     v-if="order && order.seller_read === true"
@@ -96,34 +96,36 @@
             <!-- The panels for the pending orders -->
             <!-- Unresponded -->
             <div class="list-group no-margin list-message">
-              <md-card
-                class="list-group-item pending-order"
-                v-for="(order, index) in this.pendingOrders"
-                v-bind:key="index"
-                md-with-hover
-                id="unresponded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order), retrieveOrderOrderItems (order)">
-                    <h4 class="list-group-item-heading">
-                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
-                      <div v-else>Buyer ID : {{ order.buyerName }}</div>
-                      <br />
-                      <br />
-                      <!-- Charged: {{order.totalPrice}} $ -->
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
+              <div v-if="this.pendingOrders && this.pendingOrders.length > 0">
+                <md-card
+                  class="list-group-item pending-order"
+                  v-for="(order, index) in this.pendingOrders"
+                  v-bind:key="index"
+                  md-with-hover
+                  id="unresponded"
+                >
+                  <md-ripple>
+                    <div @click="showOrder(order), retrieveOrderOrderItems (order)">
+                      <h4 class="list-group-item-heading">
+                        <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                        <div v-else>Buyer ID : {{ order.buyerName }}</div>
+                        <br />
+                        <br />
+                        <!-- Charged: {{order.totalPrice}} $ -->
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
 
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
-                    <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <p>Estimated Revenue:[$$$]</p>
+                      <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-ripple>
+                </md-card>
+              </div>
             </div>
             <!-- Responded -->
 
