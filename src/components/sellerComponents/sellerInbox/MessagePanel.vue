@@ -3,7 +3,7 @@
     class="col-md-6 message-sideright"
     style="background-color: white; border-right: 1px groove white; border-left: 1px groove white"
   >
-    <div>
+    <div v-if="this.order">
       <div class="message-header-a">
         <h3 v-if="buyer !== null">{{buyer.name}}</h3>
         <div class="message-header-b">
@@ -129,6 +129,13 @@
           </form>
         </md-card>
       </div>
+    </div>
+    <div v-else>
+      <md-empty-state
+        md-icon="message"
+        md-label="No message selected"
+        md-description="Select a message in order to chat"
+      ></md-empty-state>
     </div>
   </div>
 </template>
