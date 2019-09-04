@@ -51,7 +51,8 @@ export default {
           buyerExtracted.id
         )
         const buyerInfo = response.data.buyer
-        this.name = buyerInfo.name
+        this.firstName = buyerInfo.firstName
+        this.lastName = buyerInfo.lastName
         this.email = buyerInfo.email
 
         console.log(`\n${JSON.stringify(buyerInfo)}\n`) // TESTING

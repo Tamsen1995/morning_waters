@@ -27,12 +27,12 @@
                 <md-card-content>
                   <br />
                   <!-- Edit Profile info -->
-                  <div class="form-row">
+                  <!-- <div class="form-row">
                     <md-field>
                       <label>Name:</label>
                       <md-input v-model="name"></md-input>
                     </md-field>
-                  </div>
+                  </div>-->
                   <div class="form-row">
                     <md-field>
                       <label>First Name:</label>
