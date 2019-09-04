@@ -132,6 +132,19 @@
     </div>
     <div v-else>
       <md-empty-state md-icon="message" md-description="No message selected"></md-empty-state>
+      <md-field>
+        <md-field>
+          <label>Select a correspondence to chat ...</label>
+          <md-input disabled></md-input>
+          <md-button
+            class="md-dense md-raised md-primary"
+            style="background-color: #c8e6c9; color: white;"
+            disabled
+          >
+            <md-icon>block</md-icon>
+          </md-button>
+        </md-field>
+      </md-field>
     </div>
   </div>
 </template>
