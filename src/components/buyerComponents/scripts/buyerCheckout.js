@@ -150,12 +150,14 @@ export default {
           const stripeCustomerId = buyerExtracted.stripeCustomerId
           const shoppingCartItems = this.shoppingCart
 
+          // payload for the quote requests
           const purchaseInfo = {
             seller: sellerExtracted,
             buyer: buyerExtracted,
             quoteRequestsCart: quoteRequestsCart
           }
 
+          // payload for the shopping cart
           const purchaseInfoTwo = {
             uid: buyerId,
             sellerId: sellerExtracted.user.id,
@@ -167,6 +169,7 @@ export default {
           await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
           await BuyerServices.purchaseShoppingCart(purchaseInfoTwo)
 
+          // this is linked to correspondences
           await BuyerServices.createOrder({
             buyerId: buyerId,
             sellerId: sellerExtracted.user.id,
