@@ -7,6 +7,8 @@ export default {
   data () {
     return {
       name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       passwordConfirm: '',
@@ -53,7 +55,8 @@ export default {
     async register () {
       try {
         const response = await AuthenticationService.buyerRegister({
-          name: this.name,
+          firstName: this.firstName,
+          lastName: this.lastName,
           email: this.email,
           password: this.password,
           passwordConfirm: this.passwordConfirm,

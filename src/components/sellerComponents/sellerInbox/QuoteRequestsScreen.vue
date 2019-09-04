@@ -29,52 +29,63 @@
 
             <!-- unread ! -->
             <div class="list-group no-margin list-message">
-              <div v-for="(order, index) in this.orders" v-bind:key="index">
-                <md-card
-                  v-if="order && order.seller_read === true"
-                  class="list-group-item request"
-                  md-with-hover
-                  id="unresponded"
-                >
-                  <md-ripple>
-                    <div @click="showOrder(order), retrieveOrderOrderItems(order)">
-                      <h4 class="list-group-item-heading">
-                        <md-avatar class="md-avatar-icon md-primary"></md-avatar>
+              <div v-if="this.orders && this.orders.length > 0">
+                <div v-for="(order, index) in this.orders" v-bind:key="index">
+                  <md-card
+                    v-if="order && order.seller_read === true"
+                    class="list-group-item request"
+                    md-with-hover
+                    id="unresponded"
+                  >
+                    <md-ripple>
+                      <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                        <h4 class="list-group-item-heading">
+                          <md-avatar class="md-avatar-icon md-primary"></md-avatar>
 
-                        <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
-                        <div v-else>Buyer ID : {{ order.buyerName }}</div>
+                          <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                          <div v-else>Buyer ID : {{ order.buyerName }}</div>
 
-                        <small class="pull-right">{{ order.createdAt }}</small>
-                        <br />
-                        <br />
-                        <br />
-                      </h4>
-                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                      <!-- <p>Estimated Revenue: $ {{totalPrice}}</p> -->
-                      <span class="label label-success pull-right">Request</span>
-                      <div class="clearfix"></div>
-                    </div>
-                  </md-ripple>
-                </md-card>
+                          <small class="pull-right">{{ order.createdAt }}</small>
+                          <br />
+                          <br />
+                          <br />
+                        </h4>
+                        <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                        <!-- <p>Estimated Revenue: $ {{totalPrice}}</p> -->
+                        <span class="label label-success pull-right">Request</span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </md-ripple>
+                  </md-card>
 
-                <md-card v-else class="list-group-item request" md-with-hover id="responded">
-                  <md-ripple>
-                    <div @click="showOrder(order), retrieveOrderOrderItems(order)">
-                      <h4 class="list-group-item-heading">
-                        Buyer ID : {{ order.buyerId }}
-                        <small
-                          class="pull-right"
-                        >{{ order.createdAt }}</small>
-                        <br />
-                        <br />
-                        <br />
-                      </h4>
-                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                  <md-card v-else class="list-group-item request" md-with-hover id="responded">
+                    <md-ripple>
+                      <div @click="showOrder(order), retrieveOrderOrderItems(order)">
+                        <h4 class="list-group-item-heading">
+                          Buyer ID : {{ order.buyerId }}
+                          <small
+                            class="pull-right"
+                          >{{ order.createdAt }}</small>
+                          <br />
+                          <br />
+                          <br />
+                        </h4>
+                        <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
 
-                      <span class="label label-success pull-right">Request</span>
-                      <div class="clearfix"></div>
-                    </div>
-                  </md-ripple>
+                        <span class="label label-success pull-right">Request</span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </md-ripple>
+                  </md-card>
+                </div>
+              </div>
+              <div v-else>
+                <md-card>
+                  <md-empty-state
+                    md-icon="inbox"
+                    md-label="0 new requests"
+                    md-description="There are currently no new requests in your inbox"
+                  ></md-empty-state>
                 </md-card>
               </div>
             </div>
@@ -87,34 +98,36 @@
             <!-- The panels for the pending orders -->
             <!-- Unresponded -->
             <div class="list-group no-margin list-message">
-              <md-card
-                class="list-group-item pending-order"
-                v-for="(order, index) in this.pendingOrders"
-                v-bind:key="index"
-                md-with-hover
-                id="unresponded"
-              >
-                <md-ripple>
-                  <div @click="showOrder(order), retrieveOrderOrderItems (order)">
-                    <h4 class="list-group-item-heading">
-                      <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
-                      <div v-else>Buyer ID : {{ order.buyerName }}</div>
-                      <br />
-                      <br />
-                      <!-- Charged: {{order.totalPrice}} $ -->
-                      <br />
-                      <br />
-                      <small>Date created : {{ order.createdAt }}</small>
-                      <br />
-                    </h4>
+              <div v-if="this.pendingOrders && this.pendingOrders.length > 0">
+                <md-card
+                  class="list-group-item pending-order"
+                  v-for="(order, index) in this.pendingOrders"
+                  v-bind:key="index"
+                  md-with-hover
+                  id="unresponded"
+                >
+                  <md-ripple>
+                    <div @click="showOrder(order), retrieveOrderOrderItems (order)">
+                      <h4 class="list-group-item-heading">
+                        <div v-if="order.locked === true">Buyer ID : {{ order.buyerId }}</div>
+                        <div v-else>Buyer ID : {{ order.buyerName }}</div>
+                        <br />
+                        <br />
+                        <!-- Charged: {{order.totalPrice}} $ -->
+                        <br />
+                        <br />
+                        <small>Date created : {{ order.createdAt }}</small>
+                        <br />
+                      </h4>
 
-                    <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
-                    <p>Estimated Revenue:[$$$]</p>
-                    <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
-                    <div class="clearfix"></div>
-                  </div>
-                </md-ripple>
-              </md-card>
+                      <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
+                      <p>Estimated Revenue:[$$$]</p>
+                      <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </md-ripple>
+                </md-card>
+              </div>
             </div>
             <!-- Responded -->
 
@@ -160,6 +173,7 @@
           <!--  -->
           <br />
           <!-- Negotation Interface -->
+
           <div class="col-md-3 message-sideright card-expansion invoice-generator">
             <md-card md-with-hover>
               <!-- <md-ripple> -->
@@ -183,7 +197,7 @@
                     class="md-accent"
                     style="background-color: red; color: white;"
                     @click="redirectToOrderStatus()"
-                  >Status</md-button> -->
+                  >Status</md-button>-->
 
                   <md-card-expand-trigger>
                     <md-button v-if="order && (order.pending || order.seller_confirmed === true)">
@@ -252,6 +266,12 @@
                       >Submit Order</md-button>
 
                       <md-button>Preview Invoice</md-button>
+                    </div>
+                    <div v-else>
+                      <md-empty-state
+                        md-icon="select_all"
+                        md-description="No order selected. Please select an order in order to generate invoices"
+                      ></md-empty-state>
                     </div>
                   </md-card-content>
                 </md-card-expand-content>

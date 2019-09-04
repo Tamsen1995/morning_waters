@@ -380,7 +380,7 @@
                     style="height:40px; background-color: white; color: purple;"
                     id="btn-login"
                     @click="register()"
-                  >Skip Shippo & Sign Up </md-button>
+                  >Skip Shippo & Sign Up</md-button>
 
                   <md-button
                     class="md-raised md-primary center"
