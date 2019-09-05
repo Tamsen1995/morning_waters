@@ -61,9 +61,12 @@ export default {
     }
   },
   methods: {
-    async reloadOrdersAfterSubmit () {
+    async reloadCorrespondence (orderIdGiven) {
       try {
-        console.log(`\n\n\nwhatever dude\n\n`) // TESTING
+        const orderId = orderIdGiven
+        await this.getPendingOrders()
+        await this.getLockedOrders()
+        this.showOrderWithOrderId(orderId)
       } catch (error) {
         if (error) throw error
       }
@@ -210,7 +213,7 @@ export default {
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.servicesNegotiated = []
         this.order = order
-        console.log(`asddadsaads${JSON.stringify(this.order)}`) // TESTING
+
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
