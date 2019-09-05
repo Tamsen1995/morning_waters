@@ -230,14 +230,14 @@ export default {
           orderId: orderId,
           user: 'seller'
         })
-        await this.getLockedOrders()
-        await this.getPendingOrders()
-        await this.discernLockedCorrespondences()
+        // await this.getLockedOrders()
+        // await this.getPendingOrders()
+
         this.$modal.hide('would-you-like-to-submit')
         this.$modal.show('order-has-been-submitted-message')
 
         this.sendMessage('[seller submits order confirmation]')
-        this.showOrderWithOrderId(orderId)
+        // this.showOrderWithOrderId(orderId)
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
         if (error) throw error

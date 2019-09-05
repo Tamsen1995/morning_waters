@@ -186,39 +186,6 @@
       </div>
     </div>
   </body>
-
-  <modal height="auto" scrollable name="order-has-been-submitted-message">
-    Your order has been submitted and will be confirmed once the buyer submits it from their end.
-    <md-button @click="closeConfirmedPrompt">OK</md-button>
-  </modal>
-
-  <!--  -->
-  <modal
-    v-if="this.servicesNegotiated.length > 0"
-    height="auto"
-    scrollable
-    name="would-you-like-to-submit"
-  >
-    <div class="invoice-preview">
-      <h1>Order</h1>
-
-      <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
-        <br />
-        {{orderItem.amount}} x
-        {{ servicesNegotiated[index].title }}
-        $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
-      </div>
-
-      <hr />
-      Total Price: $ {{this.totalPrice}}
-      <br />
-      <br />
-      <div>Would you like to submit this order?</div>
-      <md-button @click="submitOrder">Yes</md-button>
-      <md-button @click="closeSubmitPrompt">No</md-button>
-    </div>
-  </modal>
-  <!--  -->
 </div>
 </template>
 

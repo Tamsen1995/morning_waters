@@ -98,11 +98,54 @@
 
       <!-- </md-ripple> -->
     </md-card>
+
+    <!--  -->
+    <modal
+      v-if="this.servicesNegotiated.length > 0"
+      height="auto"
+      scrollable
+      name="would-you-like-to-submit"
+    >
+      <div class="invoice-preview">
+        <h1>Order</h1>
+
+        <div v-for="(orderItem, index) in this.orderItems" v-bind:key="index">
+          <br />
+          {{orderItem.amount}} x
+          {{ servicesNegotiated[index].title }}
+          $ {{ servicesNegotiated[index].servicePrice * orderItem.amount }}
+        </div>
+
+        <hr />
+        Total Price: $ {{this.totalPrice}}
+        <br />
+        <br />
+        <div>Would you like to submit this order?</div>
+        <md-button @click="submitOrder">Yes</md-button>
+        <md-button @click="closeSubmitPrompt">No</md-button>
+      </div>
+    </modal>
+
+    <modal height="auto" scrollable name="order-has-been-submitted-message">
+      Your order has been submitted and will be confirmed once the buyer submits it from their end.
+      <md-button @click="closeConfirmedPrompt">OK</md-button>
+    </modal>
+
+    <!--  -->
   </div>
 </template>
 
 
 <script>
+import UserServices from "@/services/UserServices";
+import InboxService from "@/services/InboxService";
+import PaymentService from "@/services/PaymentService";
+import BuyerServices from "@/services/BuyerServices";
+import DashboardHeader from "@/components/sellerComponents/DashboardHeader.vue";
+import MessagePanel from "@/components/sellerComponents/sellerInbox/MessagePanel.vue";
+import NegotiationInterface from "@/components/sellerComponents/sellerInbox/NegotiationInterface.vue";
+import { ResponsiveDirective } from "vue-responsive-components";
+
 export default {
   props: {
     order: null,
@@ -112,6 +155,50 @@ export default {
     orderItems: null
   },
   methods: {
+    async sendMessage(text) {
+      try {
+        var correspondanceMsg = null;
+
+        /// /////////////////////////////////// Testing
+        if (this.order !== null) {
+          correspondanceMsg = {
+            orderId: this.order.orderId,
+            buyerId: this.order.buyerId,
+            // by userId we mean to say the id of the seller in the db
+            userId: this.order.sellerId,
+            date: "",
+            sender: "seller",
+            message: text
+          };
+        }
+
+        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg);
+        /// ////////////////////////////////////////
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async submitOrder() {
+      try {
+        const orderId = this.order.orderId;
+        // set the order confirmed on the seller side to true
+        await InboxService.confirmOrder({
+          orderId: orderId,
+          user: "seller"
+        });
+        // await this.getLockedOrders()
+        // await this.getPendingOrders()
+
+        this.$modal.hide("would-you-like-to-submit");
+        this.$modal.show("order-has-been-submitted-message");
+
+        this.sendMessage("[seller submits order confirmation]");
+        // this.showOrderWithOrderId(orderId)
+      } catch (error) {
+        console.log(`\nThe error occurred in submitOrder : ${error}\n`); // TESTING
+        if (error) throw error;
+      }
+    },
     async submitOrderPrompt() {
       try {
         this.$modal.show("would-you-like-to-submit");
