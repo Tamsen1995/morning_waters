@@ -290,7 +290,7 @@
 
                 <md-step
                   id="third"
-                  :md-done.sync="fourth"
+                  :md-done.sync="third"
                   md-label="Terms & Conditions"
                   md-description="Required"
                 >
@@ -311,13 +311,13 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
-                    @click="setDone('fourth', 'fifth')"
+                    @click="setDone('third', 'fourth')"
                   >Continue</md-button>
                 </md-step>
 
                 <md-step
                   id="fourth"
-                  :md-done.sync="fifth"
+                  :md-done.sync="fourth"
                   md-label="Privacy"
                   md-description="Required"
                 >
@@ -344,14 +344,14 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
-                    @click="setDone('fifth', 'sixth')"
+                    @click="setDone('fourth', 'fifth')"
                   >Continue</md-button>
                 </md-step>
 
                 <!-- Shippo -->
                 <md-step
                   id="fifth"
-                  :md-done.sync="sixth"
+                  :md-done.sync="fifth"
                   md-label="Shippo Set Up"
                   md-description="Optional"
                 >
