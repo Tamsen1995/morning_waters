@@ -188,77 +188,80 @@
             ></md-chips>
           </md-field>
 
-          <!-- Price -->
-          <div class="row" id="form-row-border">
-            <div class="col-4">
-              <md-field>
-                <label>Price Per Unit:</label>
-                <md-input type="text" v-model="servicePrice" style="border-bottom: 1px inset"></md-input>
-              </md-field>
-            </div>
-            <!-- Unit Type -->
-            <div class="col-4">
-              <md-field>
-                <label>Unit Type:</label>
-                <md-input type="text" v-model="unitType" style="border-bottom: 1px inset"></md-input>
-              </md-field>
+          <!-- Pricing Block -->
+          <div class="pricing_block">
+            <!-- Price -->
+            <div class="row" id="form-row-border">
+              <div class="col-4">
+                <md-field>
+                  <label>Price Per Unit:</label>
+                  <md-input type="text" v-model="servicePrice" style="border-bottom: 1px inset"></md-input>
+                </md-field>
+              </div>
+              <!-- Unit Type -->
+              <div class="col-4">
+                <md-field>
+                  <label>Unit:</label>
+                  <md-input type="text" v-model="unitType" style="border-bottom: 1px inset"></md-input>
+                </md-field>
+              </div>
+
+              <!-- Price Negotiable? -->
+              <div class="col-4">
+                <md-checkbox value="priceNegotiable">Negotiable price</md-checkbox>
+              </div>
             </div>
 
-            <!-- Price Negotiable? -->
-            <div class="col-4">
-              <md-checkbox value="priceNegotiable">Negotiable price</md-checkbox>
+            <div class="row" id="form-row-border">
+              <!-- Turn Around Time -->
+              <div class="col-4">
+                <md-field>
+                  <label>Turn Around Time:</label>
+                  <md-input type="text" v-model="turnAroundTime" style="border-bottom: 1px inset"></md-input>
+                </md-field>
+              </div>
+
+              <!-- Time Units -->
+              <div class="col-4">
+                <md-field>
+                  <label for="unit">Time Unit</label>
+                  <md-select v-model="timeUnit" name="timeUnit" id="timeUnit" multiple>
+                    <md-option value="hours">hours</md-option>
+                    <md-option value="days">days</md-option>
+                    <md-option value="weeks">weeks</md-option>
+                  </md-select>
+                </md-field>
+              </div>
+
+              <!-- Price Negotiable? -->
+              <div class="col-4">
+                <md-checkbox value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
+              </div>
             </div>
+
+            <br />
+            <!-- Listings Table -->
+            <table>
+              <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Unit</th>
+                <th>Turn Around Time</th>
+                <!-- <th>No Value</th>
+                <th>Object</th>-->
+              </tr>
+
+              <tr>
+                <td>{{ serviceTitle }}</td>
+                <td>{{ servicePrice }}</td>
+                <td>{{ unitType }}</td>
+                <td>{{ turnAroundTime }} {{ turnAroundTimeType }}</td>
+                <!-- <td>{{ novalue }}</td>
+                <td>{{ obj }}</td>-->
+              </tr>
+            </table>
           </div>
-
-          <div class="row" id="form-row-border">
-            <!-- Turn Around Time -->
-            <div class="col-4">
-              <md-field>
-                <label>Turn Around Time:</label>
-                <md-input type="text" v-model="turnAroundTime" style="border-bottom: 1px inset"></md-input>
-              </md-field>
-            </div>
-
-            <!-- Time Units -->
-            <div class="col-4">
-              <!-- <input type="radio" id="one" value="Hours" v-model="turnAroundTimeType" />
-              <label for="one">Hours</label>
-              <br />
-              <input type="radio" id="two" value="Days" v-model="turnAroundTimeType" />
-              <label for="two">Days</label>
-              <br />
-              <input type="radio" id="two" value="Weeks" v-model="turnAroundTimeType" />
-              <label for="two">Weeks</label>-->
-            </div>
-
-            <!-- Price Negotiable? -->
-            <div class="col-4">
-              <md-checkbox value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
-            </div>
-          </div>
-
-          <br />
-          <!-- Listings Table -->
-          <table>
-            <tr>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Unit</th>
-              <th>Turn Around Time</th>
-              <!-- <th>No Value</th>
-              <th>Object</th>-->
-            </tr>
-
-            <tr>
-              <td>{{ serviceTitle }}</td>
-              <td>{{ servicePrice }}</td>
-              <td>{{ unitType }}</td>
-              <td>{{ turnAroundTime }} {{ turnAroundTimeType }}</td>
-              <!-- <td>{{ novalue }}</td>
-              <td>{{ obj }}</td>-->
-            </tr>
-          </table>
-          <br />
+          <br>
         </div>
         <!-- Sub services form -->
         <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
@@ -341,7 +344,7 @@
               <!-- Time Units -->
               <div class="col-4">
                 <md-field>
-                  <label>Hours/Days/Weeks</label>
+                  <label>Hours/Days/Weeks/Months</label>
                   <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
                     <md-option value="turnAroundTimeType">Days</md-option>
                     <md-option value="turnAroundTimeType">Weeks</md-option>
@@ -384,16 +387,12 @@
 
           <md-button
             type="button"
-            class="btn btn-default"
+            class="md-primary"
             id="addSubButton"
             @click="addSubService()"
           >
-            <strong>
-              <h6>
-                Add Sub-service
-                <span class="glyphicon glyphicon-plus-sign"></span>
-              </h6>
-            </strong>
+            Add Sub-service
+            <span class="glyphicon glyphicon-plus-sign"></span>
           </md-button>
 
           <md-button
@@ -401,14 +400,14 @@
             class="md-dense md-raised md-primary"
             type="button"
             @click="submitServiceEdit()"
-          >Submit Edit</md-button>
+          >Publish Edit</md-button>
 
           <md-button
             v-else
             class="md-raised md-primary"
             type="button"
             @click="submitService()"
-          >Submit</md-button>
+          >Publish</md-button>
         </div>
       </form>
     </div>

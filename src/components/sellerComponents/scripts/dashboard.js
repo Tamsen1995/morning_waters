@@ -9,6 +9,7 @@ var $ = require('jQuery')
 
 export default {
   name: 'Dashboard',
+  name: 'MultipleSelect',
   data () {
     return {
       error: null,
@@ -22,6 +23,7 @@ export default {
       unitType: '',
       price: '',
       user: null,
+      timeUnit:'',
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
