@@ -18,13 +18,8 @@ export default {
       message: '',
       orders: [],
       pendingOrders: [],
-      orderItems: null,
-      servicesNegotiated: [],
-      amtForServicesNegotiated: [],
-      order: null,
       buyer: null,
       seller: null,
-      totalPrice: 0.0,
       quoteRequest: null,
       complete: true,
       stripeOptions: {},
@@ -32,7 +27,15 @@ export default {
       orderIdClickedOn: '',
       showLockedMessages: true,
       // the variable which is shown on the dropdown menu
-      dropdownVariable: 'All messages'
+      dropdownVariable: 'All messages',
+
+      // the data bound to the props in the negotiation interface
+      order: null,
+      orderItems: null,
+      servicesNegotiated: [],
+      totalPrice: 0.0,
+      amtForServicesNegotiated: [],
+      inboxInvoice: null
 
     }
   },

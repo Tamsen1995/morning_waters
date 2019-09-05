@@ -192,7 +192,7 @@
 </div>
 </template>
 
-<script src="../scripts/quoteRequestsScreen.js">
+<script src="./scripts/quoteRequestsScreen.js">
 </script>
 
 <style scoped>
