@@ -16,9 +16,10 @@
           </md-card-header>
 
           <md-card-content>
-            <div class="error" v-html="error" />
+
             <!-- Form -->
             <form>
+              <div class="error" v-html="error" />
               <md-steppers :md-active-step.sync="active" md-linear md-vertical>
                 <!-- First Name -->
                 <md-step
@@ -290,7 +291,7 @@
 
                 <md-step
                   id="third"
-                  :md-done.sync="fourth"
+                  :md-done.sync="third"
                   md-label="Terms & Conditions"
                   md-description="Required"
                 >
@@ -311,13 +312,13 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
-                    @click="setDone('fourth', 'fifth')"
+                    @click="setDone('third', 'fourth')"
                   >Continue</md-button>
                 </md-step>
 
                 <md-step
                   id="fourth"
-                  :md-done.sync="fifth"
+                  :md-done.sync="fourth"
                   md-label="Privacy"
                   md-description="Required"
                 >
@@ -344,14 +345,14 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
-                    @click="setDone('fifth', 'sixth')"
+                    @click="setDone('fourth', 'fifth')"
                   >Continue</md-button>
                 </md-step>
 
                 <!-- Shippo -->
                 <md-step
                   id="fifth"
-                  :md-done.sync="sixth"
+                  :md-done.sync="fifth"
                   md-label="Shippo Set Up"
                   md-description="Optional"
                 >
@@ -388,6 +389,7 @@
                     id="btn-login"
                     @click="register(), makeShippoApiToken()"
                   >Sign Up</md-button>
+                  <div class="error" v-html="error" />
                 </md-step>
               </md-steppers>
             </form>
@@ -419,7 +421,5 @@
 <style scoped>
 @import "../../assets/css/forms.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-.error {
-  color: red;
-}
+
 </style>

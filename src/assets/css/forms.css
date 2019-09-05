@@ -143,6 +143,7 @@ form {
 
 .error {
     color: red;
+    font-size: 15px;
 }
 
 #sign-up-link{

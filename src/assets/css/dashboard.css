@@ -54,7 +54,7 @@ body.dashboard {
   border-radius: 5px;
 }
 #services .md-empty-state{
-  color: #d3c1d6;
+  color: #bdb7c7;
 }
 
 #stats .card {
@@ -290,14 +290,22 @@ body.dashboard {
 
 #service-form-block {
   color:#301a70;
-  border: 5px #301a70 solid;
   padding: 30px;
+}
+
+.pricing_block {
+  background-color: #f8f6fa;
+  padding-left: 10px;
+  margin-right: -10px;
+  margin-left: -20px;
 }
 
 #service-form-block table {
   width: 100%;
   table-layout: fixed;
-  background: #ebe8f1;
+  background: #e2ddeb;
+  margin-left: -10px;
+  padding-left: 20px;
 }
 
 #subservice-form-block {

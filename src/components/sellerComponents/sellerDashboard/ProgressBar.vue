@@ -1,6 +1,6 @@
 <template >
   <div class="contrainer" id="progress" v-if="onboarded === false">
-    <md-card style="padding: 20px; margin-bottom: 2%; background-color: white;">
+    <md-card style="padding: 20px; margin-bottom: 2%; background-color: white; border-radius: 5px;">
       <div class="row">
         <div class="col">
           <h4>Profile completion:</h4>
@@ -17,14 +17,15 @@
             v-else
             class="md-raised pull-right"
             :md-ripple="false"
+            style="color:#29105b;"
             @click="determineOnboardingStatus()"
           >Complete your profile</md-button>
         </div>
       </div>
       <md-tooltip md-direction="right">
-        <md-card style="background-color: #d0b4db; color: white;">
+        <md-card style="background-color: #efedf5; color: #29105b;">
           <md-card-content>
-            <h5>To do:</h5>
+            <h3>To do:</h3>
             <hr />Add service listing
             <md-icon v-if="userServices && userServices.length >= 5">check</md-icon>
             <br />Add about info
@@ -39,7 +40,7 @@
       </md-tooltip>
 
       <b-progress :max="max" class="mb-3">
-        <b-progress-bar variant="success" :value="percentage"></b-progress-bar>
+        <b-progress-bar class="progress_fill" :value="percentage"></b-progress-bar>
       </b-progress>
       {{this.percentage}} %
       <!-- Prompt to commence onboarding-->

@@ -41,6 +41,10 @@
   font: 16px "Roboto";
   color: #29105b;
 }
+.progress_fill{
+  background: rgb(114,10,196);
+  background: linear-gradient(90deg, rgb(104, 170, 255) 50%, rgb(155, 19, 209) 100%);
+}
 
 
 .responsive-component.small #add-services {
