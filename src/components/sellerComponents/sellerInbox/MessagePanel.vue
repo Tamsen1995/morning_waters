@@ -241,26 +241,28 @@ export default {
 
     async submitMessage() {
       try {
-        var correspondanceMsg = null;
-        if (this.order !== null) {
-          correspondanceMsg = {
-            orderId: this.order.orderId,
-            buyerId: this.order.buyerId,
-            // by userId we mean to say the id of the seller in the db
-            userId: this.order.sellerId,
-            date: "",
-            sender: "seller",
-            message: this.message
-          };
+        if (this.message !== "") {
+          var correspondanceMsg = null;
+          if (this.order !== null) {
+            correspondanceMsg = {
+              orderId: this.order.orderId,
+              buyerId: this.order.buyerId,
+              // by userId we mean to say the id of the seller in the db
+              userId: this.order.sellerId,
+              date: "",
+              sender: "seller",
+              message: this.message
+            };
+          }
+
+          await BuyerServices.sendCorrespondanceMsg(correspondanceMsg);
+          const response = await InboxService.retrieveCorrespondance(
+            correspondanceMsg.orderId
+          );
+          this.message = "";
+
+          this.correspondanceMessages = response.data.correspondance;
         }
-
-        await BuyerServices.sendCorrespondanceMsg(correspondanceMsg);
-        const response = await InboxService.retrieveCorrespondance(
-          correspondanceMsg.orderId
-        );
-        this.message = "";
-
-        this.correspondanceMessages = response.data.correspondance;
       } catch (error) {
         if (error) throw error;
       }
