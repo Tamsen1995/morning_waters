@@ -5,6 +5,10 @@ export default {
     return Api().post('inbox/generateInboxInvoice', invoiceInfo)
   },
   retrieveInboxInvoice (orderId) {
-    return Api().post('inbox/retrieveInboxInvoice', orderId)
+    return Api().get('inbox/retrieveInboxInvoice', {
+      params: {
+        orderId: orderId
+      }
+    })
   }
 }

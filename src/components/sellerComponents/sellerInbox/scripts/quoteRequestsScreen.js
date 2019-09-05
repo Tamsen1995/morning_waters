@@ -168,17 +168,18 @@ export default {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
-        console.log(`\n\nYou don't know : ${this.totalPrice}\n\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error
       }
     },
-    async retrieveInboxInvoice () {
+    async retrieveInboxInvoice (orderId) {
       try {
+        const response = await InvoiceService.retrieveInboxInvoice(orderId)
 
+        console.log(`\n\n${JSON.stringify(response.data.inboxInvoice)}\n\n`) // TESTING
       } catch (error) {
-
+        if (error) throw error
       }
     },
     async showOrder (order) {
@@ -193,7 +194,7 @@ export default {
         this.order = order
         // retrieving inbox invoice for the negotiation
         // interface
-        this.inboxInvoice = await InvoiceService.retrieveInboxInvoice(orderId)
+        this.retrieveInboxInvoice(orderId)
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
