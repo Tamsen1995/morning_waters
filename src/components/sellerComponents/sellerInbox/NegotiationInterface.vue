@@ -207,6 +207,8 @@ export default {
         this.$modal.show("order-has-been-submitted-message");
 
         this.sendMessage("[seller submits order confirmation]");
+        this.$emit("update-correpondences");
+
         // this.showOrderWithOrderId(orderId)
       } catch (error) {
         console.log(`\nThe error occurred in submitOrder : ${error}\n`); // TESTING

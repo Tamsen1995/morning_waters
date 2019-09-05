@@ -61,7 +61,34 @@ export default {
     }
   },
   methods: {
+    async reloadOrdersAfterSubmit () {
+      try {
+        console.log(`\n\n\nwhatever dude\n\n`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+      // async submitOrder() {
+      //   try {
+      //     const orderId = this.order.orderId;
+      //     // set the order confirmed on the seller side to true
+      //     await InboxService.confirmOrder({
+      //       orderId: orderId,
+      //       user: "seller"
+      //     });
+      //     // await this.getLockedOrders()
+      //     // await this.getPendingOrders()
 
+      //     this.$modal.hide("would-you-like-to-submit");
+      //     this.$modal.show("order-has-been-submitted-message");
+
+      //     this.sendMessage("[seller submits order confirmation]");
+      //     // this.showOrderWithOrderId(orderId)
+      //   } catch (error) {
+      //     console.log(`\nThe error occurred in submitOrder : ${error}\n`); // TESTING
+      //     if (error) throw error;
+      //   }
+      // },
+    },
     /// ///////////////////////////////////////for sending file attachments above
     async redirectToOrderStatus () {
       try {
