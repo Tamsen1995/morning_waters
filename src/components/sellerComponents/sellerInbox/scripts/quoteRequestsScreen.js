@@ -2,6 +2,7 @@ import UserServices from '@/services/UserServices'
 import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
 import BuyerServices from '@/services/BuyerServices'
+import InvoiceService from '@/services/InvoiceService'
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
 import NegotiationInterface from '@/components/sellerComponents/sellerInbox/NegotiationInterface.vue'
@@ -173,7 +174,13 @@ export default {
         if (error) throw error
       }
     },
+    async retrieveInboxInvoice () {
+      try {
 
+      } catch (error) {
+
+      }
+    },
     async showOrder (order) {
       try {
         // emptying this arr in case order is a pending order
@@ -184,7 +191,9 @@ export default {
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.servicesNegotiated = []
         this.order = order
-
+        // retrieving inbox invoice for the negotiation
+        // interface
+        this.inboxInvoice = await InvoiceService.retrieveInboxInvoice(orderId)
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
