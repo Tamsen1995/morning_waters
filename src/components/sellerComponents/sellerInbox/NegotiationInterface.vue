@@ -80,6 +80,7 @@
 
               <hr />
               Total price: {{ this.totalPrice }} $
+              [TESTING] {{this.inboxInvoice}} TESTING
               <br />
               <br />
               <!-- Negotiation Interface -->

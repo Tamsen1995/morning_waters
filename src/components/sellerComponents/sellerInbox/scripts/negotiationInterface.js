@@ -13,9 +13,20 @@ export default {
     servicesNegotiated: null,
     totalPrice: 0.0,
     amtForServicesNegotiated: null,
-    orderItems: null
+    orderItems: null,
+    inboxInvoice: null
+  },
+  async created () {
+    await this.retrieveInboxInvoice()
   },
   methods: {
+    async retrieveInboxInvoice () {
+      try {
+
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async closeSubmitPrompt () {
       try {
         this.$modal.hide('would-you-like-to-submit')
@@ -83,8 +94,8 @@ export default {
       try {
         this.orderItems[index].amount = this.amtForServicesNegotiated[index]
         this.orderItems[index].price =
-					this.servicesNegotiated[index].servicePrice *
-					this.amtForServicesNegotiated[index]
+          this.servicesNegotiated[index].servicePrice *
+          this.amtForServicesNegotiated[index]
         await InboxService.updateOrderItem(this.orderItems[index])
         this.$emit('update-order-items')
       } catch (error) {

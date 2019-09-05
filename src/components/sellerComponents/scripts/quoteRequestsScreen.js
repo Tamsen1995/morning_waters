@@ -70,27 +70,6 @@ export default {
       } catch (error) {
         if (error) throw error
       }
-      // async submitOrder() {
-      //   try {
-      //     const orderId = this.order.orderId;
-      //     // set the order confirmed on the seller side to true
-      //     await InboxService.confirmOrder({
-      //       orderId: orderId,
-      //       user: "seller"
-      //     });
-      //     // await this.getLockedOrders()
-      //     // await this.getPendingOrders()
-
-      //     this.$modal.hide("would-you-like-to-submit");
-      //     this.$modal.show("order-has-been-submitted-message");
-
-      //     this.sendMessage("[seller submits order confirmation]");
-      //     // this.showOrderWithOrderId(orderId)
-      //   } catch (error) {
-      //     console.log(`\nThe error occurred in submitOrder : ${error}\n`); // TESTING
-      //     if (error) throw error;
-      //   }
-      // },
     },
     /// ///////////////////////////////////////for sending file attachments above
     async redirectToOrderStatus () {
@@ -168,18 +147,7 @@ export default {
         if (error) throw error
       }
     },
-    // whenever a change occurrs in the negotiation
-    // interface, this dynamically modifies the values of the orderitems in the back
-    // async updateOrderItems (index) {
-    //   try {
-    //     this.orderItems[index].amount = this.amtForServicesNegotiated[index]
-    //     this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
-    //     await InboxService.updateOrderItem(this.orderItems[index])
-    //     this.retrieveOrderOrderItems(this.order)
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // },
+
     async retrieveOrderOrderItems (order) {
       try {
         const orderId = order.orderId
