@@ -4,6 +4,7 @@ import PaymentService from '@/services/PaymentService'
 import BuyerServices from '@/services/BuyerServices'
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
+import NegotiationInterface from '@/components/sellerComponents/sellerInbox/NegotiationInterface.vue'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 var $ = require('jQuery')
@@ -37,7 +38,8 @@ export default {
   },
   components: {
     DashboardHeader,
-    MessagePanel
+    MessagePanel,
+    NegotiationInterface
   },
   directives: {
     responsive: ResponsiveDirective
@@ -59,7 +61,37 @@ export default {
     }
   },
   methods: {
+    async reloadCorrespondence (orderIdGiven) {
+      try {
+        const orderId = orderIdGiven
+        await this.getPendingOrders()
+        await this.getLockedOrders()
+        this.showOrderWithOrderId(orderId)
+      } catch (error) {
+        if (error) throw error
+      }
+      // async submitOrder() {
+      //   try {
+      //     const orderId = this.order.orderId;
+      //     // set the order confirmed on the seller side to true
+      //     await InboxService.confirmOrder({
+      //       orderId: orderId,
+      //       user: "seller"
+      //     });
+      //     // await this.getLockedOrders()
+      //     // await this.getPendingOrders()
 
+      //     this.$modal.hide("would-you-like-to-submit");
+      //     this.$modal.show("order-has-been-submitted-message");
+
+      //     this.sendMessage("[seller submits order confirmation]");
+      //     // this.showOrderWithOrderId(orderId)
+      //   } catch (error) {
+      //     console.log(`\nThe error occurred in submitOrder : ${error}\n`); // TESTING
+      //     if (error) throw error;
+      //   }
+      // },
+    },
     /// ///////////////////////////////////////for sending file attachments above
     async redirectToOrderStatus () {
       try {
@@ -138,16 +170,16 @@ export default {
     },
     // whenever a change occurrs in the negotiation
     // interface, this dynamically modifies the values of the orderitems in the back
-    async updateOrderItems (index) {
-      try {
-        this.orderItems[index].amount = this.amtForServicesNegotiated[index]
-        this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
-        await InboxService.updateOrderItem(this.orderItems[index])
-        this.retrieveOrderOrderItems(this.order)
-      } catch (error) {
-        if (error) throw error
-      }
-    },
+    // async updateOrderItems (index) {
+    //   try {
+    //     this.orderItems[index].amount = this.amtForServicesNegotiated[index]
+    //     this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
+    //     await InboxService.updateOrderItem(this.orderItems[index])
+    //     this.retrieveOrderOrderItems(this.order)
+    //   } catch (error) {
+    //     if (error) throw error
+    //   }
+    // },
     async retrieveOrderOrderItems (order) {
       try {
         const orderId = order.orderId
@@ -181,7 +213,7 @@ export default {
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.servicesNegotiated = []
         this.order = order
-        console.log(`asddadsaads${JSON.stringify(this.order)}`) // TESTING
+
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
@@ -199,48 +231,7 @@ export default {
         if (error) throw error
       }
     },
-    async closeConfirmedPrompt () {
-      try {
-        this.$modal.hide('order-has-been-submitted-message')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async closeSubmitPrompt () {
-      try {
-        this.$modal.hide('would-you-like-to-submit')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async submitOrderPrompt () {
-      try {
-        this.$modal.show('would-you-like-to-submit')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async submitOrder () {
-      try {
-        const orderId = this.order.orderId
-        // set the order confirmed on the seller side to true
-        await InboxService.confirmOrder({
-          orderId: orderId,
-          user: 'seller'
-        })
-        await this.getLockedOrders()
-        await this.getPendingOrders()
-        await this.discernLockedCorrespondences()
-        this.$modal.hide('would-you-like-to-submit')
-        this.$modal.show('order-has-been-submitted-message')
 
-        this.sendMessage('[seller submits order confirmation]')
-        this.showOrderWithOrderId(orderId)
-      } catch (error) {
-        console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
     async sendMessage (text) {
       try {
         var correspondanceMsg = null
