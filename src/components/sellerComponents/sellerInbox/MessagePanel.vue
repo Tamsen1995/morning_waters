@@ -96,6 +96,8 @@
         <md-card class="reply_msg">
           <md-field>
             <md-textarea
+              contenteditable="true"
+              @keydown.enter.prevent
               v-model="message"
               md-autogrow
               md-counter="500"
@@ -251,12 +253,13 @@ export default {
             message: this.message
           };
         }
-        this.message = "";
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg);
         const response = await InboxService.retrieveCorrespondance(
           correspondanceMsg.orderId
         );
+        this.message = "";
+
         this.correspondanceMessages = response.data.correspondance;
       } catch (error) {
         if (error) throw error;
