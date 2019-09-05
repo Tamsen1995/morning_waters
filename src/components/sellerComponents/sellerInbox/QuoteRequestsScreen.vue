@@ -181,6 +181,7 @@
               v-bind:totalPrice="this.totalPrice"
               v-bind:amtForServicesNegotiated="this.amtForServicesNegotiated"
               v-on:update-correpondence="reloadOrdersAfterSubmit()"
+              v-on:update-order-items="retrieveOrderOrderItems(order)"
             ></negotiation-interface>
           </div>
         </div>

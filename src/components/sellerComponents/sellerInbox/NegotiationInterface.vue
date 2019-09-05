@@ -229,7 +229,9 @@ export default {
           this.servicesNegotiated[index].servicePrice *
           this.amtForServicesNegotiated[index];
         await InboxService.updateOrderItem(this.orderItems[index]);
-        this.retrieveOrderOrderItems(this.order);
+        this.$emit("update-order-items");
+
+        // this.retrieveOrderOrderItems(this.order);
       } catch (error) {
         if (error) throw error;
       }
