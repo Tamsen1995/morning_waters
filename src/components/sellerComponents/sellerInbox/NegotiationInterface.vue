@@ -155,6 +155,20 @@ export default {
     orderItems: null
   },
   methods: {
+    async closeSubmitPrompt() {
+      try {
+        this.$modal.hide("would-you-like-to-submit");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async closeConfirmedPrompt() {
+      try {
+        this.$modal.hide("order-has-been-submitted-message");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async sendMessage(text) {
       try {
         var correspondanceMsg = null;

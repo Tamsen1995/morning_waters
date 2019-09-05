@@ -201,48 +201,7 @@ export default {
         if (error) throw error
       }
     },
-    async closeConfirmedPrompt () {
-      try {
-        this.$modal.hide('order-has-been-submitted-message')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async closeSubmitPrompt () {
-      try {
-        this.$modal.hide('would-you-like-to-submit')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    // async submitOrderPrompt () {
-    //   try {
-    //     this.$modal.show('would-you-like-to-submit')
-    //   } catch (error) {
-    //     if (error) throw error
-    //   }
-    // },
-    async submitOrder () {
-      try {
-        const orderId = this.order.orderId
-        // set the order confirmed on the seller side to true
-        await InboxService.confirmOrder({
-          orderId: orderId,
-          user: 'seller'
-        })
-        // await this.getLockedOrders()
-        // await this.getPendingOrders()
 
-        this.$modal.hide('would-you-like-to-submit')
-        this.$modal.show('order-has-been-submitted-message')
-
-        this.sendMessage('[seller submits order confirmation]')
-        // this.showOrderWithOrderId(orderId)
-      } catch (error) {
-        console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
     async sendMessage (text) {
       try {
         var correspondanceMsg = null
