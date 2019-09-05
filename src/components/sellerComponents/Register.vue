@@ -16,9 +16,10 @@
           </md-card-header>
 
           <md-card-content>
-            <div class="error" v-html="error" />
+
             <!-- Form -->
             <form>
+              <div class="error" v-html="error" />
               <md-steppers :md-active-step.sync="active" md-linear md-vertical>
                 <!-- First Name -->
                 <md-step
@@ -388,6 +389,7 @@
                     id="btn-login"
                     @click="register(), makeShippoApiToken()"
                   >Sign Up</md-button>
+                  <div class="error" v-html="error" />
                 </md-step>
               </md-steppers>
             </form>
@@ -419,7 +421,5 @@
 <style scoped>
 @import "../../assets/css/forms.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-.error {
-  color: red;
-}
+
 </style>
