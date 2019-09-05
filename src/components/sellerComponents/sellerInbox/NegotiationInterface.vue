@@ -207,7 +207,7 @@ export default {
         this.$modal.show("order-has-been-submitted-message");
 
         this.sendMessage("[seller submits order confirmation]");
-        this.$emit("update-correpondences");
+        this.$emit("update-correpondence");
 
         // this.showOrderWithOrderId(orderId)
       } catch (error) {

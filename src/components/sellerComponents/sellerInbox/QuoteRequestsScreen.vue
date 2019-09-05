@@ -180,7 +180,7 @@
               v-bind:servicesNegotiated="this.servicesNegotiated"
               v-bind:totalPrice="this.totalPrice"
               v-bind:amtForServicesNegotiated="this.amtForServicesNegotiated"
-              v-on:update-correpondences="reloadOrdersAfterSubmit()"
+              v-on:update-correpondence="reloadOrdersAfterSubmit()"
             ></negotiation-interface>
           </div>
         </div>
