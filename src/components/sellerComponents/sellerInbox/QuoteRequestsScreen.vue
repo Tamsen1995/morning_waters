@@ -180,6 +180,7 @@
               v-bind:servicesNegotiated="this.servicesNegotiated"
               v-bind:totalPrice="this.totalPrice"
               v-bind:amtForServicesNegotiated="this.amtForServicesNegotiated"
+              v-bind:inboxInvoice="this.inboxInvoice"
               v-on:update-correspondence="reloadCorrespondence(order.orderId)"
               v-on:update-order-items="retrieveOrderOrderItems(order)"
             ></negotiation-interface>
@@ -191,7 +192,7 @@
 </div>
 </template>
 
-<script src="../scripts/quoteRequestsScreen.js">
+<script src="./scripts/quoteRequestsScreen.js">
 </script>
 
 <style scoped>
