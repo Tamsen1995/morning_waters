@@ -4,6 +4,7 @@ import PaymentService from '@/services/PaymentService'
 import BuyerServices from '@/services/BuyerServices'
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
+import NegotiationInterface from '@/components/sellerComponents/sellerInbox/NegotiationInterface.vue'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 var $ = require('jQuery')
@@ -37,7 +38,8 @@ export default {
   },
   components: {
     DashboardHeader,
-    MessagePanel
+    MessagePanel,
+    NegotiationInterface
   },
   directives: {
     responsive: ResponsiveDirective
@@ -138,16 +140,16 @@ export default {
     },
     // whenever a change occurrs in the negotiation
     // interface, this dynamically modifies the values of the orderitems in the back
-    async updateOrderItems (index) {
-      try {
-        this.orderItems[index].amount = this.amtForServicesNegotiated[index]
-        this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
-        await InboxService.updateOrderItem(this.orderItems[index])
-        this.retrieveOrderOrderItems(this.order)
-      } catch (error) {
-        if (error) throw error
-      }
-    },
+    // async updateOrderItems (index) {
+    //   try {
+    //     this.orderItems[index].amount = this.amtForServicesNegotiated[index]
+    //     this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
+    //     await InboxService.updateOrderItem(this.orderItems[index])
+    //     this.retrieveOrderOrderItems(this.order)
+    //   } catch (error) {
+    //     if (error) throw error
+    //   }
+    // },
     async retrieveOrderOrderItems (order) {
       try {
         const orderId = order.orderId
@@ -213,13 +215,13 @@ export default {
         if (error) throw error
       }
     },
-    async submitOrderPrompt () {
-      try {
-        this.$modal.show('would-you-like-to-submit')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
+    // async submitOrderPrompt () {
+    //   try {
+    //     this.$modal.show('would-you-like-to-submit')
+    //   } catch (error) {
+    //     if (error) throw error
+    //   }
+    // },
     async submitOrder () {
       try {
         const orderId = this.order.orderId

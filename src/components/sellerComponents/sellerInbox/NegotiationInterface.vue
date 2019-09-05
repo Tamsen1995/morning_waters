@@ -1,112 +1,141 @@
 <template>
   <div>
-    <div class="col-md-3 message-sideright card-expansion invoice-generator">
-      <md-card md-with-hover>
-        <!-- <md-ripple> -->
-        <md-card-header style="background-color:#9474cc; color:white;">
-          <div class="md-title" style="font-size:20px;">
-            <i class="fas fa-file-invoice" style="font-size:40px;"></i>
-            Custom Invoice Generator
-          </div>
-          <div class="md-subhead">
-            You can edit orders and send custom invoices here.
-            <br />If you create a custom invoice, your buyer will have to re-purchase the invoice,
-            and you will have ro re-confirm the order before your buyer is charged.
-          </div>
-        </md-card-header>
+    <md-card md-with-hover>
+      <!-- <md-ripple> -->
+      <md-card-header style="background-color:#9474cc; color:white;">
+        <div class="md-title" style="font-size:20px;">
+          <i class="fas fa-file-invoice" style="font-size:40px;"></i>
+          Custom Invoice Generator
+        </div>
+        <div class="md-subhead">
+          You can edit orders and send custom invoices here.
+          <br />If you create a custom invoice, your buyer will have to re-purchase the invoice,
+          and you will have ro re-confirm the order before your buyer is charged.
+        </div>
+      </md-card-header>
 
-        <md-card-expand>
-          <md-card-actions md-alignment="space-between">
-            <div></div>
+      <md-card-expand>
+        <md-card-actions md-alignment="space-between">
+          <div></div>
 
-            <!-- <md-button
+          <!-- <md-button
                     class="md-accent"
                     style="background-color: red; color: white;"
                     @click="redirectToOrderStatus()"
-            >Status</md-button>-->
+          >Status</md-button>-->
 
-            <md-card-expand-trigger>
-              <md-button v-if="order && (order.pending || order.seller_confirmed === true)">
-                Invoice
-                <md-icon>keyboard_arrow_down</md-icon>
-              </md-button>
+          <md-card-expand-trigger>
+            <md-button v-if="order && (order.pending || order.seller_confirmed === true)">
+              Invoice
+              <md-icon>keyboard_arrow_down</md-icon>
+            </md-button>
 
-              <md-button v-else>
-                Edit Invoice
-                <md-icon>keyboard_arrow_down</md-icon>
-              </md-button>
-            </md-card-expand-trigger>
-          </md-card-actions>
-          <md-card-expand-content>
-            <md-card-content>
-              <div class="panel-body invoice-editor" v-if="this.order">
-                <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-                  <!-- Add New Service (Title + Quantity + Price)-->
+            <md-button v-else>
+              Edit Invoice
+              <md-icon>keyboard_arrow_down</md-icon>
+            </md-button>
+          </md-card-expand-trigger>
+        </md-card-actions>
+        <md-card-expand-content>
+          <md-card-content>
+            <div class="panel-body invoice-editor" v-if="this.order">
+              <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
+                <!-- Add New Service (Title + Quantity + Price)-->
 
-                  <!-- Edit Service Title -->
-                  <div class="row">
-                    <div class="col-6">
-                      <md-field>{{ item.title }}</md-field>
-                    </div>
-                    <div class="col-3">
-                      <!-- Edit Quantity -->
+                <!-- Edit Service Title -->
+                <div class="row">
+                  <div class="col-6">
+                    <md-field>{{ item.title }}</md-field>
+                  </div>
+                  <div class="col-3">
+                    <!-- Edit Quantity -->
 
-                      <md-field>
-                        X
-                        <!-- TODO : make sure the default of this is set to true on back -->
-                        <div
-                          v-if="order && (order.pending || order.seller_confirmed === true)"
-                        >{{amtForServicesNegotiated[index]}}</div>
+                    <md-field>
+                      X
+                      <!-- TODO : make sure the default of this is set to true on back -->
+                      <div
+                        v-if="order && (order.pending || order.seller_confirmed === true)"
+                      >{{amtForServicesNegotiated[index]}}</div>
 
-                        <md-input
-                          v-else
-                          style="background-color: white; width: 10%;"
-                          v-model="amtForServicesNegotiated[index]"
-                          @change="updateOrderItems(index)"
-                          placeholder="amount"
-                          type="text"
-                        />
-                      </md-field>
-                    </div>
-                    <div class="col-3">
-                      <!-- Edit Price -->
-                      <md-field>
-                        <p
-                          style="color:red;font-size:15px;"
-                        >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
-                      </md-field>
-                    </div>
+                      <md-input
+                        v-else
+                        style="background-color: white; width: 10%;"
+                        v-model="amtForServicesNegotiated[index]"
+                        @change="updateOrderItems(index)"
+                        placeholder="amount"
+                        type="text"
+                      />
+                    </md-field>
+                  </div>
+                  <div class="col-3">
+                    <!-- Edit Price -->
+                    <md-field>
+                      <p
+                        style="color:red;font-size:15px;"
+                      >{{ item.servicePrice * amtForServicesNegotiated[index] }} $</p>
+                    </md-field>
                   </div>
                 </div>
-
-                <hr />
-                Total price: {{ this.totalPrice }} $
-                <br />
-                <br />
-                <!-- Negotiation Interface -->
-                <md-button
-                  @click="submitOrderPrompt()"
-                  v-if="this.order && this.order.seller_confirmed === false"
-                  style="background-color: #12005e; color: white;"
-                  class="btn-block"
-                >Submit Order</md-button>
-
-                <md-button>Preview Invoice</md-button>
               </div>
-            </md-card-content>
-          </md-card-expand-content>
-        </md-card-expand>
 
-        <!-- </md-ripple> -->
-      </md-card>
-    </div>
+              <hr />
+              Total price: {{ this.totalPrice }} $
+              <br />
+              <br />
+              <!-- Negotiation Interface -->
+              <md-button
+                @click="submitOrderPrompt()"
+                v-if="this.order && this.order.seller_confirmed === false"
+                style="background-color: #12005e; color: white;"
+                class="btn-block"
+              >Submit Order</md-button>
+
+              <md-button>Preview Invoice</md-button>
+            </div>
+          </md-card-content>
+        </md-card-expand-content>
+      </md-card-expand>
+
+      <!-- </md-ripple> -->
+    </md-card>
   </div>
 </template>
 
 
 <script>
-export default {};
+export default {
+  props: {
+    order: null,
+    servicesNegotiated: null,
+    totalPrice: 0.0,
+    amtForServicesNegotiated: null,
+    orderItems: null
+  },
+  methods: {
+    async submitOrderPrompt() {
+      try {
+        this.$modal.show("would-you-like-to-submit");
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
+    async updateOrderItems(index) {
+      try {
+        this.orderItems[index].amount = this.amtForServicesNegotiated[index];
+        this.orderItems[index].price =
+          this.servicesNegotiated[index].servicePrice *
+          this.amtForServicesNegotiated[index];
+        await InboxService.updateOrderItem(this.orderItems[index]);
+        this.retrieveOrderOrderItems(this.order);
+      } catch (error) {
+        if (error) throw error;
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>
+@import "../../../assets/css/inbox.css";
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
 </style>
