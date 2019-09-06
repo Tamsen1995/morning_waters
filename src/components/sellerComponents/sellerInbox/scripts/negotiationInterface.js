@@ -17,12 +17,14 @@ export default {
     orderItems: null,
     inboxInvoice: null
   },
-  async created () {
 
-  },
   methods: {
     addCustomOrderItemToInvoice () {
-      this.itemsToBeAdded.push(0)
+      this.itemsToBeAdded.push({
+        title: 'test',
+        quantity: 0,
+        price: 0
+      })
       console.log(`push an item into the orderitems to be pushed array`) // TESTING
     },
     async modifyInboxInvoice () {

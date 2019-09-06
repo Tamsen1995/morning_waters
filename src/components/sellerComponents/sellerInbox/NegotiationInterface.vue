@@ -76,7 +76,17 @@
                 </div>
               </div>
               <div v-if="this.itemsToBeAdded && this.itemsToBeAdded.length > 0">
-                <div v-for="(item, index) in this.itemsToBeAdded" v-bind:key="index">test</div>
+                <div v-for="(item, index) in this.itemsToBeAdded" v-bind:key="index">
+                  <md-field>
+                    <md-textarea
+                      @keydown.enter.prevent
+                      v-model="item.title"
+                      md-autogrow
+                      style="background-color: #e3f2fd;"
+                    ></md-textarea>
+                    <br />
+                  </md-field>
+                </div>
               </div>
               <div v-if="this.order && this.order.seller_confirmed === false">
                 <md-button
