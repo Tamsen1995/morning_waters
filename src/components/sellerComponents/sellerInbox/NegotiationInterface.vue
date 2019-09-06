@@ -40,8 +40,6 @@
           <md-card-content>
             <div class="panel-body invoice-editor" v-if="this.order">
               <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-                <!-- Add New Service (Title + Quantity + Price)-->
-
                 <!-- Edit Service Title -->
                 <div class="row">
                   <div class="col-6">
@@ -77,14 +75,18 @@
                   </div>
                 </div>
               </div>
+              <div v-if="this.itemsToBeAdded && this.itemsToBeAdded.length > 0">
+                <div v-for="(item, index) in this.itemsToBeAdded" v-bind:key="index">test</div>
+              </div>
               <div v-if="this.order && this.order.seller_confirmed === false">
                 <md-button
                   :md-ripple="false"
                   style="background-color: #e0bfe8; color: white;"
+                  @click="addCustomOrderItemToInvoice()"
                 >+ add item</md-button>
                 <br />
                 <br />
-                {{inboxInvoice.terms}}
+                <div v-if="inboxInvoice">{{inboxInvoice.terms}}</div>
                 <md-field>
                   <md-textarea
                     @keydown.enter.prevent

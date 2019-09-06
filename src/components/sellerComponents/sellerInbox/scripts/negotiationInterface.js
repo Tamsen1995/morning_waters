@@ -5,6 +5,7 @@ export default {
   data () {
     return {
       terms: '',
+      itemsToBeAdded: [],
       taxRate: 0.0
     }
   },
@@ -20,7 +21,10 @@ export default {
 
   },
   methods: {
-
+    addCustomOrderItemToInvoice () {
+      this.itemsToBeAdded.push(0)
+      console.log(`push an item into the orderitems to be pushed array`) // TESTING
+    },
     async modifyInboxInvoice () {
       try {
         console.log(`\n\nThe terms being :  ${this.terms} , ${JSON.stringify(this.order)}\n`) // TESTING
