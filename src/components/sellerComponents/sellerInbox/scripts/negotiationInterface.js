@@ -21,7 +21,7 @@ export default {
   },
   methods: {
 
-    async modifyInboxInvoiceTerms () {
+    async modifyInboxInvoice () {
       try {
         console.log(`\n\nThe terms being :  ${this.terms} , ${JSON.stringify(this.order)}\n`) // TESTING
         // send modification to the back
@@ -29,9 +29,11 @@ export default {
         modifiedInboxInvoice.terms = this.terms
         modifiedInboxInvoice.taxRate = this.taxRate
 
-        console.log(`\n\n\n\nmodifiedInboxInvoice - > ${JSON.stringify(modifiedInboxInvoice)}\n\n\n`) // TESTING
         const response = await InvoiceService.modifyInboxInvoice(modifiedInboxInvoice)
-        console.log(`\n\nThe response for modified invoice:${JSON.stringify(response)}\n`) // TESTING
+
+        if (response.status === 200) {
+          this.$emit('update-inbox-invoice')
+        }
 
         // emit event, forcing parent component to update invoice and thus the prop bound to the component
       } catch (error) {
