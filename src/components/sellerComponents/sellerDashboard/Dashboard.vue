@@ -272,7 +272,9 @@
         <div>
           <div
             class="container"
-            style="border: 2px rgb(136, 2, 177) dotted;"
+            style="  border-color: #c9c2d6;
+              border-style: solid;
+              border-width: 2px;"
             id="subservice-form-block"
             v-for="(subservice, index) in this.subServicesToBeAdded"
             v-bind:key="index"
@@ -307,7 +309,7 @@
             </md-field>
 
             <!-- Pricing Block -->
-            <div class="pricing_block">
+            <div class="sub_pricing_block">
               <!-- Price -->
               <div class="row" id="form-row-border">
                 <div class="col-4">
@@ -368,21 +370,23 @@
 
               <br />
               <!-- Listings Table -->
-              <table>
-                <tr>
-                  <th>Title</th>
-                  <th>Price</th>
-                  <th>Unit</th>
-                  <th>Turn Around Time</th>
-                </tr>
+              
+                <table>
+                  <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Unit</th>
+                    <th>Turn Around Time</th>
+                  </tr>
 
-                <tr>
-                  <td>{{ serviceTitle }}</td>
-                  <td>{{ servicePrice }}</td>
-                  <td>{{ unitType }}</td>
-                  <td>{{ turnAroundTime }} {{ timeUnit }}</td>
-                </tr>
-              </table>
+                  <tr>
+                    <td>{{ serviceTitle }}</td>
+                    <td>{{ servicePrice }}</td>
+                    <td>{{ unitType }}</td>
+                    <td>{{ turnAroundTime }} {{ timeUnit }}</td>
+                  </tr>
+                </table>
+
             </div>
           </div>
 
