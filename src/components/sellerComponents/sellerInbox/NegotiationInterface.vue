@@ -82,6 +82,9 @@
                   :md-ripple="false"
                   style="background-color: #e0bfe8; color: white;"
                 >+ add item</md-button>
+                <br />
+                <br />
+                {{inboxInvoice.terms}}
                 <md-field>
                   <md-textarea
                     @keydown.enter.prevent

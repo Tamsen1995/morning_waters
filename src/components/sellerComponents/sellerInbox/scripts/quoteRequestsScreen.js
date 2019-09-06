@@ -65,6 +65,7 @@ export default {
     }
   },
   methods: {
+
     async reloadCorrespondence (orderIdGiven) {
       try {
         const orderId = orderIdGiven

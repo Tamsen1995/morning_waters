@@ -28,6 +28,7 @@ export default {
         var modifiedInboxInvoice = this.inboxInvoice
         modifiedInboxInvoice.terms = this.terms
         modifiedInboxInvoice.taxRate = this.taxRate
+        this.terms = ''
 
         const response = await InvoiceService.modifyInboxInvoice(modifiedInboxInvoice)
 

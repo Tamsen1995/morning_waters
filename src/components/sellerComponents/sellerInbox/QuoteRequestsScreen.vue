@@ -183,6 +183,7 @@
               v-bind:inboxInvoice="this.inboxInvoice"
               v-on:update-correspondence="reloadCorrespondence(order.orderId)"
               v-on:update-order-items="retrieveOrderOrderItems(order)"
+              v-on:update-inbox-invoice="retrieveInboxInvoice(order.orderId)"
             ></negotiation-interface>
           </div>
         </div>
