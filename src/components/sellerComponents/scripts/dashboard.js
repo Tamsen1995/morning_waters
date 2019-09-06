@@ -24,6 +24,9 @@ export default {
       price: '',
       user: null,
       timeUnit:'',
+      unit:'',
+      negPrice:'',
+      negTime:'',
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
