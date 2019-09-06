@@ -205,38 +205,47 @@
                   <md-input type="text" v-model="unitType" style="border-bottom: 1px inset"></md-input>
                 </md-field>
               </div>
-
               <!-- Price Negotiable? -->
               <div class="col-4">
-                <md-checkbox value="priceNegotiable">Negotiable price</md-checkbox>
+                <div class="form-group form-check" style="padding-top:15px;">
+                  <input type="checkbox" v-model="negPrice" class="form-check-input" id="negPrice">
+                  <label class="form-check-label" style="padding-left:15px;" for="negPrice"><h4>Price Negotiable</h4></label>
+                </div>
               </div>
             </div>
+
 
             <div class="row" id="form-row-border">
               <!-- Turn Around Time -->
               <div class="col-4">
-                <md-field>
-                  <label>Turn Around Time:</label>
-                  <md-input type="text" v-model="turnAroundTime" style="border-bottom: 1px inset"></md-input>
-                </md-field>
+                <div class="form-group">
+                  <label for="exampleInputEmail1"><h4>Turn Around Time</h4></label>
+                  <input type="text" v-model="turnAroundTime" id="turnAroundTimeSelect" >
+                  <small id="emailHelp" class="form-text text-muted">Ex: 3 days</small>
+                </div>
+
               </div>
 
               <!-- Time Units -->
               <div class="col-4">
-                <md-field>
-                  <label for="unit">Time Unit</label>
-                  <md-select v-model="timeUnit" name="timeUnit" id="timeUnit" multiple>
-                    <md-option value="hours">hours</md-option>
-                    <md-option value="days">days</md-option>
-                    <md-option value="weeks">weeks</md-option>
-                  </md-select>
-                </md-field>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1"><h4>Time Unit</h4></label>
+                  <select v-model="timeUnit" class="form-control" id="exampleFormControlSelect1">
+                    <option>hours</option>
+                    <option>days</option>
+                    <option>weeks</option>
+                    <option>months</option>
+                  </select>
+                </div>
               </div>
 
-              <!-- Price Negotiable? -->
+              <!-- Turn Around Time Negotiable? -->
               <div class="col-4">
-                <md-checkbox value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
-              </div>
+                <div class="form-group form-check" style="padding-top:15px;">
+                  <input type="checkbox" v-model="negTime" class="form-check-input" id="negTime">
+                  <label class="form-check-label" style="padding-left:15px;" for="negTime"><h4>Turn Around Time Negotiable</h4></label>
+                </div>
+              </div>  
             </div>
 
             <br />
@@ -247,28 +256,25 @@
                 <th>Price</th>
                 <th>Unit</th>
                 <th>Turn Around Time</th>
-                <!-- <th>No Value</th>
-                <th>Object</th>-->
               </tr>
 
               <tr>
                 <td>{{ serviceTitle }}</td>
                 <td>{{ servicePrice }}</td>
                 <td>{{ unitType }}</td>
-                <td>{{ turnAroundTime }} {{ turnAroundTimeType }}</td>
-                <!-- <td>{{ novalue }}</td>
-                <td>{{ obj }}</td>-->
+                <td>{{ turnAroundTime }} {{ timeUnit }}</td>
               </tr>
             </table>
           </div>
           <br>
         </div>
         <!-- Sub services form -->
-        <!-- <div v-for="(item, index) in this.order" v-bind:key="index"> -->
         <div>
           <div
             class="container"
-            style="border: 2px rgb(136, 2, 177) dotted;"
+            style="  border-color: #c9c2d6;
+              border-style: solid;
+              border-width: 2px;"
             id="subservice-form-block"
             v-for="(subservice, index) in this.subServicesToBeAdded"
             v-bind:key="index"
@@ -302,85 +308,86 @@
               ></md-chips>
             </md-field>
 
-            <div class="row">
-              <div class="col-4">
-                <md-field>
-                  <label>Price Per Unit:</label>
-                  <md-input
-                    type="text"
-                    v-model="subServicesToBeAdded[index].servicePrice"
-                    style="border-bottom: 1px inset"
-                  ></md-input>
-                </md-field>
+            <!-- Pricing Block -->
+            <div class="sub_pricing_block">
+              <!-- Price -->
+              <div class="row" id="form-row-border">
+                <div class="col-4">
+                  <md-field>
+                    <label>Price Per Unit:</label>
+                    <md-input type="text" v-model="subServicesToBeAdded[index].servicePrice" style="border-bottom: 1px inset"></md-input>
+                  </md-field>
+                </div>
+                <!-- Unit Type -->
+                <div class="col-4">
+                  <md-field>
+                    <label>Unit:</label>
+                    <md-input type="text" v-model="subServicesToBeAdded[index].unit" style="border-bottom: 1px inset"></md-input>
+                  </md-field>
+                </div>
+                <!-- Price Negotiable? -->
+                <div class="col-4">
+                  <div class="form-group form-check" style="padding-top:15px;">
+                    <input type="checkbox" v-model="subServicesToBeAdded[index].negPrice" class="form-check-input" id="negPrice">
+                    <label class="form-check-label" style="padding-left:15px;" for="negPrice"><h4>Price Negotiable</h4></label>
+                  </div>
+                </div>
               </div>
 
-              <!-- Unit Type -->
-              <div class="col-4">
-                <md-field>
-                  <label>Unit Type:</label>
-                  <md-input type="text" v-model="unit" style="border-bottom: 1px inset"></md-input>
-                </md-field>
+
+              <div class="row" id="form-row-border">
+                <!-- Turn Around Time -->
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="turnAroundTimeSelect"><h4>Turn Around Time</h4></label>
+                    <input type="text" v-model="subServicesToBeAdded[index].turnAroundTime" id="turnAroundTimeSelect">
+                    <small id="emailHelp" class="form-text text-muted">Ex: 3 days</small>
+                  </div>
+
+                </div>
+
+                <!-- Time Units -->
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1"><h4>Time Unit</h4></label>
+                    <select v-model="timeUnit" class="form-control" id="exampleFormControlSelect1">
+                      <option>hours</option>
+                      <option>days</option>
+                      <option>weeks</option>
+                      <option>months</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Turn Around Time Negotiable? -->
+                <div class="col-4">
+                  <div class="form-group form-check" style="padding-top:15px;">
+                    <input type="checkbox" v-model="subServicesToBeAdded[index].negTime" class="form-check-input" id="negTime">
+                    <label class="form-check-label" style="padding-left:15px;" for="negTime"><h4>Turn Around Time Negotiable</h4></label>
+                  </div>
+                </div>  
               </div>
 
-              <!-- Price Negotiable? -->
-              <div class="col-4">
-                <md-checkbox value="priceNegotiable">Negotiable Price</md-checkbox>
-              </div>
+              <br />
+              <!-- Listings Table -->
+              
+                <table>
+                  <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Unit</th>
+                    <th>Turn Around Time</th>
+                  </tr>
+
+                  <tr>
+                    <td>{{ serviceTitle }}</td>
+                    <td>{{ servicePrice }}</td>
+                    <td>{{ unitType }}</td>
+                    <td>{{ turnAroundTime }} {{ timeUnit }}</td>
+                  </tr>
+                </table>
+
             </div>
-
-            <!-- Turn Around Time -->
-            <div class="row">
-              <div class="col-4">
-                <md-field>
-                  <label>Turn Around Time:</label>
-                  <md-input
-                    type="text"
-                    v-model="subServicesToBeAdded[index].turnAroundTime"
-                    style="border-bottom: 1px inset"
-                  ></md-input>
-                </md-field>
-              </div>
-
-              <!-- Time Units -->
-              <div class="col-4">
-                <md-field>
-                  <label>Hours/Days/Weeks/Months</label>
-                  <md-select name="turnAroundTimeType" v-model="turnAroundTimeType" md-dense>
-                    <md-option value="turnAroundTimeType">Days</md-option>
-                    <md-option value="turnAroundTimeType">Weeks</md-option>
-                  </md-select>
-                </md-field>
-              </div>
-
-              <!-- Time Negotiable? -->
-              <div class="col-4">
-                <md-checkbox value="negotiableTime">Negotiable Turn Around Time</md-checkbox>
-              </div>
-            </div>
-            <br />
-            <br />
-            <!-- Listings Table -->
-            <table>
-              <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Unit</th>
-                <th>Turn Around Time</th>
-                <!-- <th>No Value</th>
-                <th>Object</th>-->
-              </tr>
-
-              <tr>
-                <td>{{ serviceTitle }}</td>
-                <td>{{ servicePrice }}</td>
-                <td>{{ unit }}</td>
-                <td>{{ turnAroundTime }} {{ turnAroundTimeType }}</td>
-                <!-- <td>{{ novalue }}</td>
-                <td>{{ obj }}</td>-->
-              </tr>
-            </table>
-            <br />
-            <br />
           </div>
 
           <!-- Add another (plus button) -->
