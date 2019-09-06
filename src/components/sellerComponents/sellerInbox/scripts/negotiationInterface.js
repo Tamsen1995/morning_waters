@@ -1,13 +1,14 @@
-import UserServices from '@/services/UserServices'
 import InboxService from '@/services/InboxService'
-import PaymentService from '@/services/PaymentService'
-import BuyerServices from '@/services/BuyerServices'
-import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
-import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
-import NegotiationInterface from '@/components/sellerComponents/sellerInbox/NegotiationInterface.vue'
-import { ResponsiveDirective } from 'vue-responsive-components'
+import InvoiceService from '@/services/InvoiceService'
 
 export default {
+  data () {
+    return {
+      terms: '',
+      itemsToBeAdded: [],
+      taxRate: 0.0
+    }
+  },
   props: {
     order: null,
     servicesNegotiated: null,
@@ -16,13 +17,41 @@ export default {
     orderItems: null,
     inboxInvoice: null
   },
-  async created () {
-    await this.retrieveInboxInvoice()
-  },
-  methods: {
-    async retrieveInboxInvoice () {
-      try {
 
+  methods: {
+    addCustomOrderItemToInvoice () {
+      this.itemsToBeAdded.push({
+        title: 'service title',
+        quantity: 0,
+        price: 0
+      })
+      console.log(`push an item into the orderitems to be pushed array`) // TESTING
+    },
+    async createCustomOrderItems () {
+      try {
+        console.log(`\n\n\nthese are the order items to create ${JSON.stringify(this.itemsToBeAdded)}`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async modifyInboxInvoice () {
+      try {
+        console.log(`\n\nThe terms being :  ${this.terms} , ${JSON.stringify(this.order)}\n`) // TESTING
+        // send modification to the back
+        var modifiedInboxInvoice = this.inboxInvoice
+        modifiedInboxInvoice.terms = this.terms
+        modifiedInboxInvoice.taxRate = this.taxRate
+        this.terms = ''
+
+        const response = await InvoiceService.modifyInboxInvoice(modifiedInboxInvoice)
+
+        this.createCustomOrderItems()
+
+        // if (response.status === 200) {
+        this.$emit('update-inbox-invoice')
+        // }
+
+        // emit event, forcing parent component to update invoice and thus the prop bound to the component
       } catch (error) {
         if (error) throw error
       }

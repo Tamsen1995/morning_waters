@@ -40,8 +40,6 @@
           <md-card-content>
             <div class="panel-body invoice-editor" v-if="this.order">
               <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
-                <!-- Add New Service (Title + Quantity + Price)-->
-
                 <!-- Edit Service Title -->
                 <div class="row">
                   <div class="col-6">
@@ -77,21 +75,75 @@
                   </div>
                 </div>
               </div>
+              <div v-if="this.itemsToBeAdded && this.itemsToBeAdded.length > 0">
+                <div v-for="(item, index) in this.itemsToBeAdded" v-bind:key="index">
+                  <md-field>
+                    <md-input
+                      @keydown.enter.prevent
+                      v-model="item.title"
+                      md-autogrow
+                      style="background-color: #e3f2fd;"
+                    ></md-input>
+                  </md-field>
+
+                  <md-field>
+                    <md-input
+                      @keydown.enter.prevent
+                      v-model="item.quantity"
+                      md-autogrow
+                      style="background-color: #e3f2fd;"
+                    ></md-input>
+                  </md-field>
+
+                  <md-field>
+                    <md-input
+                      @keydown.enter.prevent
+                      v-model="item.price"
+                      md-autogrow
+                      style="background-color: #e3f2fd;"
+                    ></md-input>
+                  </md-field>
+                </div>
+              </div>
+              <div v-if="this.order && this.order.seller_confirmed === false">
+                <md-button
+                  :md-ripple="false"
+                  style="background-color: #e0bfe8; color: white;"
+                  @click="addCustomOrderItemToInvoice()"
+                >+ add item</md-button>
+                <br />
+                <br />
+                <div v-if="inboxInvoice">{{inboxInvoice.terms}}</div>
+                <md-field>
+                  <md-textarea
+                    @keydown.enter.prevent
+                    v-model="terms"
+                    md-autogrow
+                    placeholder="Modify terms here ... "
+                    style="background-color: #e3f2fd;"
+                  ></md-textarea>
+                  <br />
+                </md-field>
+                <md-button
+                  v-if="this.terms !== ''"
+                  class="md-dense md-raised md-primary"
+                  @click="modifyInboxInvoice()"
+                >Save</md-button>
+              </div>
 
               <hr />
               Total price: {{ this.totalPrice }} $
-              [TESTING] {{this.inboxInvoice}} TESTING
               <br />
               <br />
               <!-- Negotiation Interface -->
-              <md-button
-                @click="submitOrderPrompt()"
-                v-if="this.order && this.order.seller_confirmed === false"
-                style="background-color: #12005e; color: white;"
-                class="btn-block"
-              >Submit Order</md-button>
 
-              <md-button>Preview Invoice</md-button>
+              <div v-if="this.order && this.order.seller_confirmed === false">
+                <md-button
+                  @click="submitOrderPrompt()"
+                  style="background-color: #12005e; color: white;"
+                  class="btn-block"
+                >Submit Order</md-button>
+              </div>
             </div>
           </md-card-content>
         </md-card-expand-content>
@@ -119,6 +171,7 @@
 
         <hr />
         Total Price: $ {{this.totalPrice}}
+        {{this.inboxInvoice}}
         <br />
         <br />
         <div>Would you like to submit this order?</div>

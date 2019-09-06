@@ -2,6 +2,7 @@ import UserServices from '@/services/UserServices'
 import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
 import BuyerServices from '@/services/BuyerServices'
+import InvoiceService from '@/services/InvoiceService'
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
 import NegotiationInterface from '@/components/sellerComponents/sellerInbox/NegotiationInterface.vue'
@@ -64,6 +65,7 @@ export default {
     }
   },
   methods: {
+
     async reloadCorrespondence (orderIdGiven) {
       try {
         const orderId = orderIdGiven
@@ -167,13 +169,21 @@ export default {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
-        console.log(`\n\nYou don't know : ${this.totalPrice}\n\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error
       }
     },
+    async retrieveInboxInvoice (orderId) {
+      try {
+        const response = await InvoiceService.retrieveInboxInvoice(orderId)
+        const inboxInvoice = response.data.inboxInvoice
 
+        this.inboxInvoice = inboxInvoice
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async showOrder (order) {
       try {
         // emptying this arr in case order is a pending order
@@ -189,6 +199,10 @@ export default {
         this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
         await InboxService.markOrderAsRead('seller', orderId)
+
+        // retrieving inbox invoice for the negotiation
+        // interface
+        this.retrieveInboxInvoice(orderId)
       } catch (error) {
         if (error) throw error
       }
