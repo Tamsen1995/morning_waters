@@ -176,8 +176,9 @@ export default {
     async retrieveInboxInvoice (orderId) {
       try {
         const response = await InvoiceService.retrieveInboxInvoice(orderId)
+        const inboxInvoice = response.data.inboxInvoice
 
-        console.log(`\n\n${JSON.stringify(response.data.inboxInvoice)}\n\n`) // TESTING
+        this.inboxInvoice = inboxInvoice
       } catch (error) {
         if (error) throw error
       }
@@ -192,13 +193,15 @@ export default {
         const response = await InboxService.retrieveCorrespondance(orderId)
         this.servicesNegotiated = []
         this.order = order
-        // retrieving inbox invoice for the negotiation
-        // interface
-        this.retrieveInboxInvoice(orderId)
+
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
         await InboxService.markOrderAsRead('seller', orderId)
+
+        // retrieving inbox invoice for the negotiation
+        // interface
+        this.retrieveInboxInvoice(orderId)
       } catch (error) {
         if (error) throw error
       }

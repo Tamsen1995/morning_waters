@@ -77,21 +77,22 @@
                   </div>
                 </div>
               </div>
-
+              <div v-if="this.order && this.order.seller_confirmed === false">
+                <md-button class="md-dense md-raised md-primary">+ add item</md-button>
+              </div>
               <hr />
               Total price: {{ this.totalPrice }} $
-              [TESTING] {{this.inboxInvoice}} TESTING
               <br />
               <br />
               <!-- Negotiation Interface -->
-              <md-button
-                @click="submitOrderPrompt()"
-                v-if="this.order && this.order.seller_confirmed === false"
-                style="background-color: #12005e; color: white;"
-                class="btn-block"
-              >Submit Order</md-button>
 
-              <md-button>Preview Invoice</md-button>
+              <div v-if="this.order && this.order.seller_confirmed === false">
+                <md-button
+                  @click="submitOrderPrompt()"
+                  style="background-color: #12005e; color: white;"
+                  class="btn-block"
+                >Submit Order</md-button>
+              </div>
             </div>
           </md-card-content>
         </md-card-expand-content>
@@ -119,6 +120,7 @@
 
         <hr />
         Total Price: $ {{this.totalPrice}}
+        {{this.inboxInvoice}}
         <br />
         <br />
         <div>Would you like to submit this order?</div>
