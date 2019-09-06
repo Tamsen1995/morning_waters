@@ -78,13 +78,30 @@
               <div v-if="this.itemsToBeAdded && this.itemsToBeAdded.length > 0">
                 <div v-for="(item, index) in this.itemsToBeAdded" v-bind:key="index">
                   <md-field>
-                    <md-textarea
+                    <md-input
                       @keydown.enter.prevent
                       v-model="item.title"
                       md-autogrow
                       style="background-color: #e3f2fd;"
-                    ></md-textarea>
-                    <br />
+                    ></md-input>
+                  </md-field>
+
+                  <md-field>
+                    <md-input
+                      @keydown.enter.prevent
+                      v-model="item.quantity"
+                      md-autogrow
+                      style="background-color: #e3f2fd;"
+                    ></md-input>
+                  </md-field>
+
+                  <md-field>
+                    <md-input
+                      @keydown.enter.prevent
+                      v-model="item.price"
+                      md-autogrow
+                      style="background-color: #e3f2fd;"
+                    ></md-input>
                   </md-field>
                 </div>
               </div>
