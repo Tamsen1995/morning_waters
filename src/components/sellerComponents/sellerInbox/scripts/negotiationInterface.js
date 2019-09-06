@@ -21,11 +21,18 @@ export default {
   methods: {
     addCustomOrderItemToInvoice () {
       this.itemsToBeAdded.push({
-        title: 'test',
+        title: 'service title',
         quantity: 0,
         price: 0
       })
       console.log(`push an item into the orderitems to be pushed array`) // TESTING
+    },
+    async createCustomOrderItems () {
+      try {
+        console.log(`\n\n\nthese are the order items to create ${JSON.stringify(this.itemsToBeAdded)}`) // TESTING
+      } catch (error) {
+        if (error) throw error
+      }
     },
     async modifyInboxInvoice () {
       try {
@@ -38,9 +45,11 @@ export default {
 
         const response = await InvoiceService.modifyInboxInvoice(modifiedInboxInvoice)
 
-        if (response.status === 200) {
-          this.$emit('update-inbox-invoice')
-        }
+        this.createCustomOrderItems()
+
+        // if (response.status === 200) {
+        this.$emit('update-inbox-invoice')
+        // }
 
         // emit event, forcing parent component to update invoice and thus the prop bound to the component
       } catch (error) {
