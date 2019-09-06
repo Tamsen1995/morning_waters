@@ -78,8 +78,23 @@
                 </div>
               </div>
               <div v-if="this.order && this.order.seller_confirmed === false">
-                <md-button class="md-dense md-raised md-primary">+ add item</md-button>
+                <md-button
+                  :md-ripple="false"
+                  style="background-color: #e0bfe8; color: white;"
+                >+ add item</md-button>
+                <md-field>
+                  <md-textarea
+                    @keydown.enter.prevent
+                    v-model="terms"
+                    md-autogrow
+                    placeholder="Modify terms here ... "
+                    style="background-color: #dcedc8; border-width:10px; border-color:blue;"
+                  ></md-textarea>
+                  <br />
+                </md-field>
+                <md-button v-if="this.terms !== ''" class="md-dense md-raised md-primary">Save</md-button>
               </div>
+
               <hr />
               Total price: {{ this.totalPrice }} $
               <br />

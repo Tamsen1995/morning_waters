@@ -8,6 +8,12 @@ import NegotiationInterface from '@/components/sellerComponents/sellerInbox/Nego
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
+  data () {
+    return {
+
+      terms: ''
+    }
+  },
   props: {
     order: null,
     servicesNegotiated: null,
