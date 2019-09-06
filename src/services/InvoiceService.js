@@ -10,5 +10,11 @@ export default {
         orderId: orderId
       }
     })
+  },
+  // takes a complete new invoice and will replace the
+  // invoice with the same order id
+  // in the back
+  modifyInboxInvoice (inboxInvoice) {
+    return Api().post('inbox/modifyInboxInvoice', inboxInvoice)
   }
 }

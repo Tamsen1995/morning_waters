@@ -1,17 +1,11 @@
-import UserServices from '@/services/UserServices'
 import InboxService from '@/services/InboxService'
-import PaymentService from '@/services/PaymentService'
-import BuyerServices from '@/services/BuyerServices'
-import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
-import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
-import NegotiationInterface from '@/components/sellerComponents/sellerInbox/NegotiationInterface.vue'
-import { ResponsiveDirective } from 'vue-responsive-components'
+import InvoiceService from '@/services/InvoiceService'
 
 export default {
   data () {
     return {
-
-      terms: ''
+      terms: '',
+      taxRate: 0.0
     }
   },
   props: {
@@ -23,12 +17,23 @@ export default {
     inboxInvoice: null
   },
   async created () {
-    await this.retrieveInboxInvoice()
+
   },
   methods: {
-    async retrieveInboxInvoice () {
-      try {
 
+    async modifyInboxInvoiceTerms () {
+      try {
+        console.log(`\n\nThe terms being :  ${this.terms} , ${JSON.stringify(this.order)}\n`) // TESTING
+        // send modification to the back
+        var modifiedInboxInvoice = this.inboxInvoice
+        modifiedInboxInvoice.terms = this.terms
+        modifiedInboxInvoice.taxRate = this.taxRate
+
+        console.log(`\n\n\n\nmodifiedInboxInvoice - > ${JSON.stringify(modifiedInboxInvoice)}\n\n\n`) // TESTING
+        const response = await InvoiceService.modifyInboxInvoice(modifiedInboxInvoice)
+        console.log(`\n\nThe response for modified invoice:${JSON.stringify(response)}\n`) // TESTING
+
+        // emit event, forcing parent component to update invoice and thus the prop bound to the component
       } catch (error) {
         if (error) throw error
       }

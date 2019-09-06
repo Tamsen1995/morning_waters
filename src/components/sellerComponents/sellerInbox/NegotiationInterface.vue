@@ -88,11 +88,15 @@
                     v-model="terms"
                     md-autogrow
                     placeholder="Modify terms here ... "
-                    style="background-color: #dcedc8; border-width:10px; border-color:blue;"
+                    style="background-color: #e3f2fd;"
                   ></md-textarea>
                   <br />
                 </md-field>
-                <md-button v-if="this.terms !== ''" class="md-dense md-raised md-primary">Save</md-button>
+                <md-button
+                  v-if="this.terms !== ''"
+                  class="md-dense md-raised md-primary"
+                  @click="modifyInboxInvoice()"
+                >Save</md-button>
               </div>
 
               <hr />
