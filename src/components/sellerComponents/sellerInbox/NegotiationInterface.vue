@@ -125,7 +125,7 @@
                   <br />
                 </md-field>
                 <md-button
-                  v-if="this.terms !== ''"
+                  v-if="this.terms !== '' || this.itemsToBeAdded.length > 0"
                   class="md-dense md-raised md-primary"
                   @click="modifyInboxInvoice()"
                 >Save</md-button>

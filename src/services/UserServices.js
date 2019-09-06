@@ -1,7 +1,9 @@
 import Api from '@/services/Api'
 
 export default {
-
+  createCustomOrderItems (itemsToBeAdded) {
+    return Api().post('orders/create_custom_order_item', itemsToBeAdded)
+  },
   addSellerAboutSection (aboutInfo) {
     return Api().post('seller/update/about_section', { aboutInfo })
   },
