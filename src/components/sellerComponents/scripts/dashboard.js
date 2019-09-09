@@ -23,10 +23,10 @@ export default {
       unitType: '',
       price: '',
       user: null,
-      timeUnit:'',
-      unit:'',
-      negPrice:'',
-      negTime:'',
+      timeUnit: '',
+      unit: '',
+      negPrice: '',
+      negTime: '',
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
@@ -219,6 +219,7 @@ export default {
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
           turnAroundTime: `${this.turnAroundTime} ${this.turnAroundTimeType}`,
+          timeUnit: this.timeUnit,
           unitType: this.unitType,
           tags: this.tags
         }
