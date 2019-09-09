@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" id="buyer_nav">
       <b-navbar-brand href="#" class="mr-auto" style="margin-bottom:15px;">
-        <img src="./../TINY_LOGO.png" alt="FIG ANALYTICS" />
+        <img src="../LOGO_tiny.png" id="brand" alt="FIG ANALYTICS" class="center" />
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse" style="margin-bottom:15px;"></b-navbar-toggle>
@@ -49,7 +49,7 @@
             </a>
           </b-nav-item>
 
-          <b-nav-item v-if="this.buyerLoggedIn === false">
+          <!-- <b-nav-item v-if="this.buyerLoggedIn === false">
             <i class="fas fa-envelope" alt="Inbox" id="buyer_nav_icon" style="padding-right:5px;"></i>
 
             <b-nav-item-dropdown
@@ -64,7 +64,7 @@
                 <h3>View Messages</h3>
               </button>
             </b-nav-item-dropdown>
-          </b-nav-item>
+          </b-nav-item> -->
 
           <!-- Billing -->
           <b-nav-item class="nav-item" v-if="this.buyerLoggedIn === true">
@@ -99,6 +99,8 @@
           </b-nav-item>
 
           <!-- Cart -->
+
+          <!-- Make cart icon green after 1 item is in the cart. Add span tag w/ number of items-->
           <b-nav-item>
             <i
               class="fas fa-shopping-cart"
@@ -112,9 +114,13 @@
               id="dropdown-left"
               style="margin-top:-6px;"
             >
+              <md-card style="background-color: purple; color: white; text-align: center; height: 50%;">
+                <span class="md-title"><h3>Cart</h3></span>
+              </md-card>
               <shopping-cart></shopping-cart>
+              <request-quote-cart></request-quote-cart>
               <button class="btn-cart btn-default pull-right btn-block" @click="goToBuyersCart()">
-                <h3>View Cart</h3>
+                <h2>View</h2>
               </button>
             </b-nav-item-dropdown>
           </b-nav-item>

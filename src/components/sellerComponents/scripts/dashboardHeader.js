@@ -6,7 +6,8 @@ export default {
   data () {
     return {
       user: null,
-      credits: 0
+      pendingOrders: 0,
+      newMessages:0,
     }
   },
   mounted () {

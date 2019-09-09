@@ -403,7 +403,7 @@ p {
 }
 
 #btn-orders {
-  background-color: #8164d8;
+  background-color: #6545c5;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
   font-size: 15px;
@@ -412,7 +412,7 @@ p {
 }
 
 #btn-orders:hover, #btn-orders:focus, #btn-orders:active {
-  background-color: #6545c5;
+  background-color: #8164d8;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
   font-size: 15px;

@@ -14,6 +14,9 @@
   padding-top:0px;
 }
 
+#brand {
+  max-width: 50px;;
+}
 
 /* --------Seller Dashboard Nav-------------- */
 .nav-center {
@@ -73,6 +76,13 @@
   color: #823E90;
   visibility:visible;
   opacity: 1;
+}
+#seller_nav .badge-inbox{
+  background-color: rgb(117, 189, 3);
+}
+
+#seller_nav .badge-orders{
+  background-color: #8164d8;
 }
 
 /* -------Buyer Nav ----------*/

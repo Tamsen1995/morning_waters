@@ -2,8 +2,8 @@
 <template>
 <div id="app" style="background-color: white;">
   <body id="requestQuoteCart">
-    <md-card style="background-color: #311c63; color: white; text-align: center; height: 50%;">
-      <span class="md-title">Quote Requests</span>
+    <md-card style="background-color: #8972cc; color: white; text-align: center; height: 50%;">
+      <span class="md-title"><h3>Quote Requests</h3></span>
     </md-card>
 
     <!-- <h1 style="text-align: center;"></h1> -->
@@ -49,7 +49,7 @@
       </md-list-item>
     </md-list>
 
-    <md-list style="background-color:#eeeef6;">
+    <!-- <md-list style="background-color:#eeeef6;">
       <md-list-item md-expand :md-expanded.sync="expandNews">
         <i class="fas fa-plus" id="service_logo"></i>
         <span class="md-list-item-text">Add Quote Request</span>
@@ -62,7 +62,7 @@
           </md-card>
         </md-list>
       </md-list-item>
-    </md-list>
+    </md-list> -->
 
     <!-- Add Modal to edit Quote request, with delete request functionality -->
 
