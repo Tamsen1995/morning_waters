@@ -179,6 +179,8 @@ export default {
           serviceDescription: '',
           servicePrice: 0.0,
           turnAroundTime: '',
+          timeUnit: '',
+          unitType: '',
           serviceTags: []
         })
       } catch (error) {

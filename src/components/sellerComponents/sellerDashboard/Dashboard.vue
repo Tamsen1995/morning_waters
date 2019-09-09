@@ -344,7 +344,7 @@
                     <label>Unit:</label>
                     <md-input
                       type="text"
-                      v-model="subServicesToBeAdded[index].unit"
+                      v-model="subServicesToBeAdded[index].unitType"
                       style="border-bottom: 1px inset"
                     ></md-input>
                   </md-field>
@@ -387,7 +387,11 @@
                     <label for="exampleFormControlSelect1">
                       <h4>Time Unit</h4>
                     </label>
-                    <select v-model="timeUnit" class="form-control" id="exampleFormControlSelect1">
+                    <select
+                      v-model="subServicesToBeAdded[index].timeUnit"
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                    >
                       <option>hours</option>
                       <option>days</option>
                       <option>weeks</option>
