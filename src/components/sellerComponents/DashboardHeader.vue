@@ -3,7 +3,7 @@
     <b-navbar toggleable="lg" style="position: sticky" id="seller_nav">
       <b-navbar-brand href="#" class="mr-auto" style="margin-bottom:15px;">
         <router-link class="nav-link" to="/dashboard" v-if="this.user == null">
-          <img src="../TINY_LOGO.png" alt="FIG ANALYTICS" class="center" />
+          <img src="../LOGO_tiny.png" id="brand" alt="FIG ANALYTICS" class="center" />
         </router-link>
       </b-navbar-brand>
 

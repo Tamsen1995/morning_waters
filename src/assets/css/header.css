@@ -14,6 +14,9 @@
   padding-top:0px;
 }
 
+#brand {
+  max-width: 50px;;
+}
 
 /* --------Seller Dashboard Nav-------------- */
 .nav-center {
@@ -81,6 +84,7 @@
 #seller_nav .badge-orders{
   background-color: #8164d8;
 }
+
 /* -------Buyer Nav ----------*/
 #buyer_nav {
   -webkit-transition: all .35s;

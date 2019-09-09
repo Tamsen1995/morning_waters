@@ -2,7 +2,8 @@
   <div id="app">
     <b-navbar toggleable="lg" id="mainNav">
       <b-navbar-brand class="mr-auto" href="/">
-        <img src="./TINY_LOGO.png" alt="FIG ANALYTICS" class="center" />
+        <img src="./LOGO_tiny.png" id="brand" alt="FIG ANALYTICS" class="center" />
+
       </b-navbar-brand>
       <b-navbar-toggle id="nav-hover" target="nav-collapse"></b-navbar-toggle>
 

@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" id="buyer_nav">
       <b-navbar-brand href="#" class="mr-auto" style="margin-bottom:15px;">
-        <img src="../TINY_LOGO.png" alt="FIG ANALYTICS" class="center" />
+        <img src="../LOGO_tiny.png" id="brand" alt="FIG ANALYTICS" class="center" />
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse" style="margin-bottom:15px;"></b-navbar-toggle>
