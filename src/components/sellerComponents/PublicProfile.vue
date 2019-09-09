@@ -183,11 +183,8 @@
       id="inquiry-modal"
     >
       <div class="container" id="gen_inquiry">
-        <!-- <div class="row">
-        <div class="col-10">-->
         <div class="md-title">
           <h2>
-            <i class="fas fa-atom" id="service_logo"></i>
             Want to send a message to this seller about their listing?
           </h2>
         </div>
@@ -205,7 +202,7 @@
             ></md-textarea>
           </md-field>
           <md-button
-            class="btn btn-default"
+            class="md-raised md-primary submit-buttons-md"
             @click="submitInquiryText()"
             style="margin-top:10px; color: #301a70;"
             type="button"
@@ -222,26 +219,41 @@
       :clickToClose="true"
       id="inquiry-modal"
     >
-      <div class="container" id="spec_inquiry">
-        <form class="md-layout">
+      <div class="container" id="gen_inquiry">
+        <div class="md-title">
+          <h2>
+            Add to cart:
+          </h2>
+       
           <div v-if="this.itemChosen">
-            <h2>
+            <h4>
               <i class="fas fa-atom" id="service_logo"></i>
               Service : {{ this.itemChosen.title }}
-            </h2>
-
-            <ul>
-              <li>price/unit</li>
-              <!-- <li>{{subService.servicePrice}}$/{{subService.serviceUnit}}</li> -->
-              <li>Turnaround Time</li>
-            </ul>
-            <label>Amount? (optional)</label>
-
-            <md-field>
-              <!-- TODO : Not quite sure what this is -->
-              <md-input v-model="pickedQuantityService" type="number" />
-            </md-field>
+              <ul>
+                <li>{{ this.itemChosen.servicePrice}} / {{ this.itemChosen.serviceUnit}}</li>
+                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}} </li>
+              </ul>
+            </h4>
           </div>
+        </div>
+        <form class="md-layout">
+          <!-- MAKE QUANTITY MANDATORY -->
+          <div class="col-4">
+            <div class="form-group">
+              <label for="exampleInputEmail1"><h4>Quantity</h4></label>
+              <input v-model="pickedQuantityService" type="number" id="turnAroundTimeSelect" >
+              <small id="emailHelp" class="form-text text-muted">Ex: 3 samples</small>
+            </div>
+          </div>
+          <md-field>
+            <label>Message to seller (Optional)</label>
+            <md-textarea
+              v-model="inquiryText"
+              class="form-control animated"
+              placeholder="Ask your seller a question about this service"
+              rows="5"
+            ></md-textarea>
+          </md-field>
         </form>
         <md-button
           class="md-raised md-primary submit-buttons-md"
@@ -260,21 +272,24 @@
       :clickToClose="true"
       id="inquiry-modal"
     >
-      <div class="container" id="spec_inquiry">
-        <form class="md-layout">
+      <div class="container" id="gen_inquiry">
+        <div class="md-title">
+          <h2>
+            Request a quote:
+          </h2>
+       
           <div v-if="this.itemChosen">
-            <h2>
+            <h4>
               <i class="fas fa-atom" id="service_logo"></i>
               Service : {{ this.itemChosen.title }}
-            </h2>
-
-            <ul>
-              <!-- price/unit -->
-              <li>Price/Unit</li>
-              <!-- turnaround time -->
-              <li>Turnaround Time</li>
-            </ul>
-
+              <ul>
+                <li>{{ this.itemChosen.servicePrice}} / {{ this.itemChosen.serviceUnit}}</li>
+                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}} </li>
+              </ul>
+            </h4>
+          </div>
+        </div>
+          <form class="md-layout">
             <md-field>
               <label>Message to Seller:</label>
               <md-textarea
@@ -282,10 +297,10 @@
                 class="form-control animated"
                 placeholder="Enter your message"
                 rows="5"
-                style="padding:5px; min-width: 180%;"
+                
               ></md-textarea>
             </md-field>
-          </div>
+
         </form>
         <md-button
           class="md-raised md-primary submit-buttons-md"

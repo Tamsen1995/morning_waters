@@ -27,7 +27,7 @@
           <md-card-content>
             <h3>To do:</h3>
             <hr />Add service listing
-            <md-icon v-if="userServices && userServices.length >= 5">check</md-icon>
+            <md-icon v-if="userServices && userServices.length >= 1">check</md-icon>
             <br />Add about info
             <md-icon v-if="seller && seller.about !== ''">check</md-icon>
             <br />Shippo setup
