@@ -191,6 +191,9 @@
             Want to send a message to this seller about their listing?
           </h2>
         </div>
+        <p>
+          *You can view messages by clicking on the <i class="fas fa-shopping-cart"></i> cart icon.
+        </p>
         <form class="md-layout">
           <md-field>
             <label>Message to Seller:</label>
@@ -202,9 +205,9 @@
             ></md-textarea>
           </md-field>
           <md-button
-            class="btn btn-default pull-right"
+            class="btn btn-default"
             @click="submitInquiryText()"
-            style="margin-top:10px"
+            style="margin-top:10px; color: #301a70;"
             type="button"
           >Submit</md-button>
         </form>
@@ -228,9 +231,8 @@
             </h2>
 
             <ul>
-              <!-- price/unit -->
-              <li>Price/Unit</li>
-              <!-- turnaround time -->
+              <li>price/unit</li>
+              <!-- <li>{{subService.servicePrice}}$/{{subService.serviceUnit}}</li> -->
               <li>Turnaround Time</li>
             </ul>
             <label>Amount? (optional)</label>
