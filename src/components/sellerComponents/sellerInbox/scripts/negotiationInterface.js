@@ -1,5 +1,6 @@
 import InboxService from '@/services/InboxService'
 import InvoiceService from '@/services/InvoiceService'
+import UserServices from '@/services/UserServices'
 
 export default {
   data () {
@@ -29,7 +30,9 @@ export default {
     },
     async createCustomOrderItems () {
       try {
-        console.log(`\n\n\nthese are the order items to create ${JSON.stringify(this.itemsToBeAdded)}`) // TESTING
+        const itemsToBeAdded = this.itemsToBeAdded
+        const response = await UserServices.createCustomOrderItems(itemsToBeAdded)
+        console.log(`\ntesting the route ${response}\n`) // TESTING
       } catch (error) {
         if (error) throw error
       }
