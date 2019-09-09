@@ -74,7 +74,13 @@
   visibility:visible;
   opacity: 1;
 }
+#seller_nav .badge-inbox{
+  background-color: rgb(117, 189, 3);
+}
 
+#seller_nav .badge-orders{
+  background-color: #8164d8;
+}
 /* -------Buyer Nav ----------*/
 #buyer_nav {
   -webkit-transition: all .35s;
