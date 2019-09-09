@@ -63,7 +63,12 @@
 
                         <span style="color: #5f5a6d">
                           <md-icon>access_time</md-icon>
-                          Turnaround time : {{ service.turnAroundTime }}
+                          Turnaround time : {{ service.turnAroundTime }} {{ service.timeUnit }}
+                        </span>
+                        <br />
+                        <span style="color: #5f5a6d">
+                          <md-icon>scatter_plot</md-icon>
+                          Unit type: {{ service.unitType }}
                         </span>
                       </div>
                     </md-card-content>
@@ -98,7 +103,12 @@
                         >Price: {{subService.servicePrice}} $</span>
                         <span style="color: #5f5a6d;">
                           <md-icon>access_time</md-icon>
-                          Turnaround time : {{ subService.turnAroundTime }}
+                          Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
+                        </span>
+                        <br />
+                        <span style="color: #5f5a6d">
+                          <md-icon>scatter_plot</md-icon>
+                          Unit type: {{ subService.unitType }}
                         </span>
                       </md-card-header>
                       <md-card-content
@@ -208,28 +218,32 @@
               <!-- Price Negotiable? -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
-                  <input type="checkbox" v-model="negPrice" class="form-check-input" id="negPrice">
-                  <label class="form-check-label" style="padding-left:15px;" for="negPrice"><h4>Price Negotiable</h4></label>
+                  <input type="checkbox" v-model="negPrice" class="form-check-input" id="negPrice" />
+                  <label class="form-check-label" style="padding-left:15px;" for="negPrice">
+                    <h4>Price Negotiable</h4>
+                  </label>
                 </div>
               </div>
             </div>
-
 
             <div class="row" id="form-row-border">
               <!-- Turn Around Time -->
               <div class="col-4">
                 <div class="form-group">
-                  <label for="exampleInputEmail1"><h4>Turn Around Time</h4></label>
-                  <input type="text" v-model="turnAroundTime" id="turnAroundTimeSelect" >
+                  <label for="exampleInputEmail1">
+                    <h4>Turn Around Time</h4>
+                  </label>
+                  <input type="text" v-model="turnAroundTime" id="turnAroundTimeSelect" />
                   <small id="emailHelp" class="form-text text-muted">Ex: 3 days</small>
                 </div>
-
               </div>
 
               <!-- Time Units -->
               <div class="col-4">
                 <div class="form-group">
-                  <label for="exampleFormControlSelect1"><h4>Time Unit</h4></label>
+                  <label for="exampleFormControlSelect1">
+                    <h4>Time Unit</h4>
+                  </label>
                   <select v-model="timeUnit" class="form-control" id="exampleFormControlSelect1">
                     <option>hours</option>
                     <option>days</option>
@@ -242,10 +256,12 @@
               <!-- Turn Around Time Negotiable? -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
-                  <input type="checkbox" v-model="negTime" class="form-check-input" id="negTime">
-                  <label class="form-check-label" style="padding-left:15px;" for="negTime"><h4>Turn Around Time Negotiable</h4></label>
+                  <input type="checkbox" v-model="negTime" class="form-check-input" id="negTime" />
+                  <label class="form-check-label" style="padding-left:15px;" for="negTime">
+                    <h4>Turn Around Time Negotiable</h4>
+                  </label>
                 </div>
-              </div>  
+              </div>
             </div>
 
             <br />
@@ -266,7 +282,7 @@
               </tr>
             </table>
           </div>
-          <br>
+          <br />
         </div>
         <!-- Sub services form -->
         <div>
@@ -315,42 +331,67 @@
                 <div class="col-4">
                   <md-field>
                     <label>Price Per Unit:</label>
-                    <md-input type="text" v-model="subServicesToBeAdded[index].servicePrice" style="border-bottom: 1px inset"></md-input>
+                    <md-input
+                      type="text"
+                      v-model="subServicesToBeAdded[index].servicePrice"
+                      style="border-bottom: 1px inset"
+                    ></md-input>
                   </md-field>
                 </div>
                 <!-- Unit Type -->
                 <div class="col-4">
                   <md-field>
                     <label>Unit:</label>
-                    <md-input type="text" v-model="subServicesToBeAdded[index].unit" style="border-bottom: 1px inset"></md-input>
+                    <md-input
+                      type="text"
+                      v-model="subServicesToBeAdded[index].unitType"
+                      style="border-bottom: 1px inset"
+                    ></md-input>
                   </md-field>
                 </div>
                 <!-- Price Negotiable? -->
                 <div class="col-4">
                   <div class="form-group form-check" style="padding-top:15px;">
-                    <input type="checkbox" v-model="subServicesToBeAdded[index].negPrice" class="form-check-input" id="negPrice">
-                    <label class="form-check-label" style="padding-left:15px;" for="negPrice"><h4>Price Negotiable</h4></label>
+                    <input
+                      type="checkbox"
+                      v-model="subServicesToBeAdded[index].negPrice"
+                      class="form-check-input"
+                      id="negPrice"
+                    />
+                    <label class="form-check-label" style="padding-left:15px;" for="negPrice">
+                      <h4>Price Negotiable</h4>
+                    </label>
                   </div>
                 </div>
               </div>
-
 
               <div class="row" id="form-row-border">
                 <!-- Turn Around Time -->
                 <div class="col-4">
                   <div class="form-group">
-                    <label for="turnAroundTimeSelect"><h4>Turn Around Time</h4></label>
-                    <input type="text" v-model="subServicesToBeAdded[index].turnAroundTime" id="turnAroundTimeSelect">
+                    <label for="turnAroundTimeSelect">
+                      <h4>Turn Around Time</h4>
+                    </label>
+                    <input
+                      type="text"
+                      v-model="subServicesToBeAdded[index].turnAroundTime"
+                      id="turnAroundTimeSelect"
+                    />
                     <small id="emailHelp" class="form-text text-muted">Ex: 3 days</small>
                   </div>
-
                 </div>
 
                 <!-- Time Units -->
                 <div class="col-4">
                   <div class="form-group">
-                    <label for="exampleFormControlSelect1"><h4>Time Unit</h4></label>
-                    <select v-model="timeUnit" class="form-control" id="exampleFormControlSelect1">
+                    <label for="exampleFormControlSelect1">
+                      <h4>Time Unit</h4>
+                    </label>
+                    <select
+                      v-model="subServicesToBeAdded[index].timeUnit"
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                    >
                       <option>hours</option>
                       <option>days</option>
                       <option>weeks</option>
@@ -362,42 +403,43 @@
                 <!-- Turn Around Time Negotiable? -->
                 <div class="col-4">
                   <div class="form-group form-check" style="padding-top:15px;">
-                    <input type="checkbox" v-model="subServicesToBeAdded[index].negTime" class="form-check-input" id="negTime">
-                    <label class="form-check-label" style="padding-left:15px;" for="negTime"><h4>Turn Around Time Negotiable</h4></label>
+                    <input
+                      type="checkbox"
+                      v-model="subServicesToBeAdded[index].negTime"
+                      class="form-check-input"
+                      id="negTime"
+                    />
+                    <label class="form-check-label" style="padding-left:15px;" for="negTime">
+                      <h4>Turn Around Time Negotiable</h4>
+                    </label>
                   </div>
-                </div>  
+                </div>
               </div>
 
               <br />
               <!-- Listings Table -->
-              
-                <table>
-                  <tr>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Unit</th>
-                    <th>Turn Around Time</th>
-                  </tr>
 
-                  <tr>
-                    <td>{{ serviceTitle }}</td>
-                    <td>{{ servicePrice }}</td>
-                    <td>{{ unitType }}</td>
-                    <td>{{ turnAroundTime }} {{ timeUnit }}</td>
-                  </tr>
-                </table>
+              <table>
+                <tr>
+                  <th>Title</th>
+                  <th>Price</th>
+                  <th>Unit</th>
+                  <th>Turn Around Time</th>
+                </tr>
 
+                <tr>
+                  <td>{{ serviceTitle }}</td>
+                  <td>{{ servicePrice }}</td>
+                  <td>{{ unitType }}</td>
+                  <td>{{ turnAroundTime }} {{ timeUnit }}</td>
+                </tr>
+              </table>
             </div>
           </div>
 
           <!-- Add another (plus button) -->
 
-          <md-button
-            type="button"
-            class="md-primary"
-            id="addSubButton"
-            @click="addSubService()"
-          >
+          <md-button type="button" class="md-primary" id="addSubButton" @click="addSubService()">
             Add Sub-service
             <span class="glyphicon glyphicon-plus-sign"></span>
           </md-button>
