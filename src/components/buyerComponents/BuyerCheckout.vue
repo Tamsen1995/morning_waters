@@ -13,9 +13,7 @@
       >
         <h5 style="text-align:center;">Checkout</h5>
         <br />
-        <p
-          style="text-align:center;color:purple;"
-        >You will not be charged until the seller confirms your order.</p>
+        <p style="color:#361555;"> Review cart >> Login >> Review terms >> <span id="checkout_map">Add billing info >> </span> Confirm + submit </p>
 
         <md-card md-with-hover style="background-color: white;">
           <div>
@@ -50,6 +48,9 @@
           </div>
           <br />
         </md-card>
+                <p
+          style="text-align:center;color:purple;"
+        >*You will not be charged until the seller confirms your order.</p>
         <br />
 
         <md-button
@@ -58,7 +59,7 @@
           v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
           type="submit"
           @click="sendOrderAndOrInquiries()"
-        >Send Order & Messages</md-button>
+        >Add payment method</md-button>
 
         <br />
 
@@ -147,5 +148,8 @@
   padding: 2px;
   font-size: 15px;
   text-align: center;
+}
+.buyer-checkout #checkout_map {
+  color: purple;
 }
 </style>

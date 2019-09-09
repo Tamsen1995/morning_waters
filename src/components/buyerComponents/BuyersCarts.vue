@@ -11,9 +11,10 @@
         margin-left: auto;
         margin-right: auto;"
       >
-        <div class="container cart_container">
+        <div class="container">
+          <h5 style="text-align:center;">Checkout</h5>
           <br />
-          <p>Don't worry! You will not be charged until the Seller has approved your order.</p>
+          <p style="color:#361555;"> <span id="checkout_map">Review cart >> </span> Login >> Review terms >> Add billing info >> Confirm + submit </p>
           <br />
           <div class="card">
             <h5
@@ -30,19 +31,19 @@
           </div>
           <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
           <span>
-            <md-tooltip
+            <!-- <md-tooltip
               id="tooltip"
               md-direction="bottom"
               style="
               font: 18px;
               margin-top: 10px;
               margin-left: 30px;"
-            >Clicking "Checkout" will redirect you to login or create an account.</md-tooltip>
+            >Clicking "Checkout" will redirect you to login or create an account.</md-tooltip> -->
             <button
               @click="redirectToCheckoutOrLogin()"
               class="btn-cart btn-default pull-right btn-block"
             >
-              <h3>Checkout</h3>
+              <h3>Login / Sign up</h3>
             </button>
           </span>
           <br />
@@ -145,5 +146,8 @@ export default {
   background-color: white;
   font: 25px;
   padding-top: 30px;
+}
+.buyers_carts #checkout_map {
+  color: purple;
 }
 </style>
