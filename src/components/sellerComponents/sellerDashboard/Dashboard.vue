@@ -47,7 +47,7 @@
 
           <!-- Beginning of cards -->
           <div v-for="(service, index) in this.services" :key="index">
-            <div v-if="service.isSubService === false">
+            <div v-if="service.showOnProfile === true && service.isSubService === false">
               <div class="service-border">
                 <md-card-area md-inset>
                   <md-card-header>
