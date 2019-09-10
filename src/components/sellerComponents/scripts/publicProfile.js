@@ -72,6 +72,7 @@ export default {
         this.services = userServicesArray
         this.companyName = userInfo.user.companyName
         this.about = userInfo.user.about
+        this.companyLocation = JSON.parse(userInfo.user.address)
         this.$store.dispatch('setUser', userInfo)
       } catch (error) {
         if (error) throw error
