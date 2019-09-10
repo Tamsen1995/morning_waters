@@ -46,11 +46,11 @@
 
         <div id="services">
           <br />
-          <md-button
+          <!-- <md-button
             style="background-color: #4828a5; color: white;"
             @click="manifestModalInquiry(service)"
             class="md-raised md-primary pull-right submit-buttons-md"
-          >Message Seller</md-button>
+          >Message Seller</md-button>-->
 
           <h2>Services:</h2>
           <br />
