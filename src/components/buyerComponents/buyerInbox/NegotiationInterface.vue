@@ -157,7 +157,6 @@ export default {
   watch: {
     order: async function test() {
       try {
-        console.log(`\nMy order being : ${JSON.stringify(this.order)}\n`); // TESTING
       } catch (error) {
         if (error) throw error;
       }

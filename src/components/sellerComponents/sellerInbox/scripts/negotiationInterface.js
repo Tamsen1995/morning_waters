@@ -30,9 +30,18 @@ export default {
     },
     async createCustomOrderItems () {
       try {
+        const userExtracted = this.$store.getters.getUserInfo
         const itemsToBeAdded = this.itemsToBeAdded
-        const response = await UserServices.createCustomOrderItems(itemsToBeAdded)
-        console.log(`\ntesting the route ${response}\n`) // TESTING
+
+        const response = await UserServices.createCustomOrderItems({
+          orderId: this.order.orderId,
+          buyerId: this.order.buyerId,
+          sellerId: userExtracted.id,
+          serviceTableId: userExtracted.serviceTableId,
+          itemsToBeAdded: itemsToBeAdded
+        })
+        this.itemsToBeAdded = []
+        console.log(`created custom orderitem : ${JSON.stringify(response)}`) // TESTING
       } catch (error) {
         if (error) throw error
       }
@@ -50,10 +59,7 @@ export default {
 
         this.createCustomOrderItems()
 
-        // if (response.status === 200) {
         this.$emit('update-inbox-invoice')
-        // }
-
         // emit event, forcing parent component to update invoice and thus the prop bound to the component
       } catch (error) {
         if (error) throw error

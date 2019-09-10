@@ -46,11 +46,11 @@
 
         <div id="services">
           <br />
-          <md-button
+          <!-- <md-button
             style="background-color: #4828a5; color: white;"
             @click="manifestModalInquiry(service)"
             class="md-raised md-primary pull-right submit-buttons-md"
-          >Message Seller</md-button>
+          >Message Seller</md-button>-->
 
           <h2>Services:</h2>
           <br />
@@ -184,12 +184,11 @@
     >
       <div class="container" id="gen_inquiry">
         <div class="md-title">
-          <h2>
-            Want to send a message to this seller about their listing?
-          </h2>
+          <h2>Want to send a message to this seller about their listing?</h2>
         </div>
         <p>
-          *You can view messages by clicking on the <i class="fas fa-shopping-cart"></i> cart icon.
+          *You can view messages by clicking on the
+          <i class="fas fa-shopping-cart"></i> cart icon.
         </p>
         <form class="md-layout">
           <md-field>
@@ -221,17 +220,15 @@
     >
       <div class="container" id="gen_inquiry">
         <div class="md-title">
-          <h2>
-            Add to cart:
-          </h2>
-       
+          <h2>Add to cart:</h2>
+
           <div v-if="this.itemChosen">
             <h4>
               <i class="fas fa-atom" id="service_logo"></i>
               Service : {{ this.itemChosen.title }}
               <ul>
                 <li>{{ this.itemChosen.servicePrice}} / {{ this.itemChosen.serviceUnit}}</li>
-                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}} </li>
+                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}}</li>
               </ul>
             </h4>
           </div>
@@ -240,8 +237,10 @@
           <!-- MAKE QUANTITY MANDATORY -->
           <div class="col-4">
             <div class="form-group">
-              <label for="exampleInputEmail1"><h4>Quantity</h4></label>
-              <input v-model="pickedQuantityService" type="number" id="turnAroundTimeSelect" >
+              <label for="exampleInputEmail1">
+                <h4>Quantity</h4>
+              </label>
+              <input v-model="pickedQuantityService" type="number" id="turnAroundTimeSelect" />
               <small id="emailHelp" class="form-text text-muted">Ex: 3 samples</small>
             </div>
           </div>
@@ -255,6 +254,8 @@
             ></md-textarea>
           </md-field>
         </form>
+        <div class="error" v-html="error" />
+
         <md-button
           class="md-raised md-primary submit-buttons-md"
           style="margin-top:10px"
@@ -274,33 +275,29 @@
     >
       <div class="container" id="gen_inquiry">
         <div class="md-title">
-          <h2>
-            Request a quote:
-          </h2>
-       
+          <h2>Request a quote:</h2>
+
           <div v-if="this.itemChosen">
             <h4>
               <i class="fas fa-atom" id="service_logo"></i>
               Service : {{ this.itemChosen.title }}
               <ul>
                 <li>{{ this.itemChosen.servicePrice}} / {{ this.itemChosen.serviceUnit}}</li>
-                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}} </li>
+                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}}</li>
               </ul>
             </h4>
           </div>
         </div>
-          <form class="md-layout">
-            <md-field>
-              <label>Message to Seller:</label>
-              <md-textarea
-                v-model="inquiryText"
-                class="form-control animated"
-                placeholder="Enter your message"
-                rows="5"
-                
-              ></md-textarea>
-            </md-field>
-
+        <form class="md-layout">
+          <md-field>
+            <label>Message to Seller:</label>
+            <md-textarea
+              v-model="inquiryText"
+              class="form-control animated"
+              placeholder="Enter your message"
+              rows="5"
+            ></md-textarea>
+          </md-field>
         </form>
         <md-button
           class="md-raised md-primary submit-buttons-md"
@@ -323,6 +320,9 @@
 <style scoped>
 @import "../../assets/css/publicprofile.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+.error {
+  color: red;
+}
 </style>
 
 
