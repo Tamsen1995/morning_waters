@@ -159,14 +159,18 @@ export default {
           service: this.serviceEdited,
           subServices: this.subServicesToBeAdded
         }
+        console.log(serviceEdit) // TESTING
 
         await DashboardServices.editService(serviceEdit)
 
         this.$modal.hide('add-service')
+        // resetting component vars
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
+        this.timeUnit = ''
+        this.unitType = ''
 
         this.subServicesToBeAdded = []
         this.tags = []
