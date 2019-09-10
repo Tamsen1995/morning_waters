@@ -146,7 +146,7 @@
                   >Go to Stripe Dashboard</md-button>
                 </p>
                 <p v-else>
-                  <md-button style="color: #29105b" class="md-raised md-primary" @click="addPayoutInfo()">Submit</md-button>
+                  <md-button style="color: #29105b" class="md-raised md-primary" @click="addPayoutInfo()">add payout</md-button>
                 </p>
               </md-card-content>
             </md-card>

@@ -67,7 +67,7 @@ export default {
       try {
         const userExtracted = this.$store.getters.getUserInfo
 
-        PaymentService.makeStripeConnectAccount()
+        PaymentService.makeStripeConnectAccount(userExtracted)
       } catch (error) {
         if (error) throw error
       }
