@@ -24,7 +24,10 @@ export default {
       inquiryText: '',
       pickedQuantityQuoteRequest: 1,
       itemChosen: null,
-      expanded: false
+      expanded: false,
+
+      // error message var
+      error: ''
     }
   },
   components: {
@@ -168,15 +171,21 @@ export default {
     },
     async addServiceToCart () {
       try {
-        const shoppingCartItem = {
-          orderId: '',
-          quantity: this.pickedQuantityService,
-          service: this.itemChosen
+        if (this.pickedQuantityService > 0) {
+          const shoppingCartItem = {
+            orderId: '',
+            quantity: this.pickedQuantityService,
+            service: this.itemChosen
+          }
+          this.$store.dispatch('addServiceToCart', shoppingCartItem)
+          this.$modal.hide('add-to-cart-modal')
+          this.pickedQuantityService = 0
+          this.itemChosen = null
+          this.error = ''
+        } else {
+          // TODO : implement this
+          this.error = 'please pick a quantity'
         }
-        this.$store.dispatch('addServiceToCart', shoppingCartItem)
-        this.$modal.hide('add-to-cart-modal')
-        this.pickedQuantityService = 0
-        this.itemChosen = null
       } catch (error) {
         console.log(`\nAn error occurred in addServiceToCart\n`) // TESTING
         if (error) throw error
