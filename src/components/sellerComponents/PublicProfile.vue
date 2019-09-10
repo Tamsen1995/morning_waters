@@ -11,8 +11,14 @@
           <div class="d-flex justify-content-center" id="company-name">
             <h1 style="text-align:center:">{{ this.companyName }}</h1>
           </div>
-          <div class="d-flex justify-content-center" id="company-location">
-            <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
+          <div
+            class="d-flex justify-content-center"
+            id="company-location"
+            v-if="this.companyLocation "
+          >
+            <h4
+              style="text-align:center:"
+            >{{ this.companyLocation.city }}, {{ this.companyLocation.country }}</h4>
           </div>
           <div class="d-flex justify-content-center" id="company-logo">
             <div id="logo-border">
