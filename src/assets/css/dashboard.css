@@ -206,6 +206,18 @@ body.dashboard {
   color: #311c63;
 }
 
+
+.dashboard .pricing_block h5{
+  font: 20px "Roboto";
+  color: rgb(100, 100, 100);
+} 
+
+
+.dashboard .sub_pricing_block h5{
+  font: 20px "Roboto";
+  color: rgb(100, 100, 100);
+} 
+
 .dashboard .service-block h4 {
   letter-spacing: 1px;
   font: 20px "Roboto";

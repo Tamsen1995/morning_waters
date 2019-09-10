@@ -59,17 +59,17 @@
                         <span
                           class="pull-right"
                           style="color:#1faa00;font-size: 18px;"
-                        >Price: {{service.servicePrice}} $</span>
+                        >Price: $ {{service.servicePrice}}.00 /{{ service.unitType }}</span>
 
                         <span style="color: #5f5a6d">
                           <md-icon>access_time</md-icon>
                           Turnaround time : {{ service.turnAroundTime }} {{ service.timeUnit }}
                         </span>
                         <br />
-                        <span style="color: #5f5a6d">
+                        <!-- <span style="color: #5f5a6d">
                           <md-icon>scatter_plot</md-icon>
                           Unit type: {{ service.unitType }}
-                        </span>
+                        </span> -->
                       </div>
                     </md-card-content>
                   </md-card-header>
@@ -100,16 +100,12 @@
                         <span
                           style="color:#009624;font-size: 18px;"
                           class="pull-right"
-                        >Price: {{subService.servicePrice}} $</span>
+                        >Price: $ {{subService.servicePrice}} .00 /{{ subService.unitType }}</span>
                         <span style="color: #5f5a6d;">
                           <md-icon>access_time</md-icon>
                           Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
                         </span>
                         <br />
-                        <span style="color: #5f5a6d">
-                          <md-icon>scatter_plot</md-icon>
-                          Unit type: {{ subService.unitType }}
-                        </span>
                       </md-card-header>
                       <md-card-content
                         class="md-scrollbar"
@@ -220,7 +216,7 @@
                 <div class="form-group form-check" style="padding-top:15px;">
                   <input type="checkbox" v-model="negPrice" class="form-check-input" id="negPrice" />
                   <label class="form-check-label" style="padding-left:15px;" for="negPrice">
-                    <h4>Price Negotiable</h4>
+                    <h5>Price Negotiable</h5>
                   </label>
                 </div>
               </div>
@@ -231,7 +227,7 @@
               <div class="col-4">
                 <div class="form-group">
                   <label for="exampleInputEmail1">
-                    <h4>Turn Around Time</h4>
+                    <h5>Turn Around Time</h5>
                   </label>
                   <input type="text" v-model="turnAroundTime" id="turnAroundTimeSelect" />
                   <small id="emailHelp" class="form-text text-muted">Ex: 3 days</small>
@@ -242,7 +238,7 @@
               <div class="col-4">
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">
-                    <h4>Time Unit</h4>
+                    <h5>Time Unit</h5>
                   </label>
                   <select v-model="timeUnit" class="form-control" id="exampleFormControlSelect1">
                     <option>hours</option>
@@ -258,7 +254,7 @@
                 <div class="form-group form-check" style="padding-top:15px;">
                   <input type="checkbox" v-model="negTime" class="form-check-input" id="negTime" />
                   <label class="form-check-label" style="padding-left:15px;" for="negTime">
-                    <h4>Turn Around Time Negotiable</h4>
+                    <h5>Turn Around Time Negotiable</h5>
                   </label>
                 </div>
               </div>
@@ -359,7 +355,7 @@
                       id="negPrice"
                     />
                     <label class="form-check-label" style="padding-left:15px;" for="negPrice">
-                      <h4>Price Negotiable</h4>
+                      <h5>Price Negotiable</h5>
                     </label>
                   </div>
                 </div>
@@ -370,7 +366,7 @@
                 <div class="col-4">
                   <div class="form-group">
                     <label for="turnAroundTimeSelect">
-                      <h4>Turn Around Time</h4>
+                      <h5>Turn Around Time</h5>
                     </label>
                     <input
                       type="text"
@@ -385,7 +381,7 @@
                 <div class="col-4">
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">
-                      <h4>Time Unit</h4>
+                      <h5>Time Unit</h5>
                     </label>
                     <select
                       v-model="subServicesToBeAdded[index].timeUnit"
@@ -410,7 +406,7 @@
                       id="negTime"
                     />
                     <label class="form-check-label" style="padding-left:15px;" for="negTime">
-                      <h4>Turn Around Time Negotiable</h4>
+                      <h5>Turn Around Time Negotiable</h5>
                     </label>
                   </div>
                 </div>
