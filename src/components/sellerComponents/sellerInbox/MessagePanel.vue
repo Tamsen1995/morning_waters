@@ -133,7 +133,7 @@
       </div>
     </div>
     <div v-else>
-      <md-empty-state md-icon="message" md-description="No message selected"></md-empty-state>
+      <md-empty-state md-icon="message" style="color:grey" md-description="No message selected"></md-empty-state>
       <md-field>
         <md-field>
           <label>Select a correspondence to chat ...</label>
