@@ -65,9 +65,11 @@
                   </div>
                 </div>
               </div>
-
+              Terms: {{inboxInvoice.terms}}
               <hr />
               Total price: {{ this.totalPrice }} $
+              <br />
+              Tax Rate (%) : {{ inboxInvoice.taxRate }}
               <br />
               <br />
               <!-- Negotiation Interface -->
@@ -129,7 +131,6 @@
 
 <script>
 import BuyerServices from "@/services/BuyerServices";
-
 import PaymentService from "@/services/PaymentService";
 import InboxService from "@/services/InboxService";
 import BuyerSettingsBillingsTab from "@/components/buyerComponents/BuyerSettingsBillingsTab";
@@ -152,7 +153,8 @@ export default {
     servicesNegotiated: null,
     totalPrice: 0.0,
     amtForServicesNegotiated: null,
-    orderItems: null
+    orderItems: null,
+    inboxInvoice: null
   },
   watch: {
     order: async function test() {

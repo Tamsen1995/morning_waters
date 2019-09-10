@@ -125,6 +125,7 @@
           <negotiation-interface
             v-bind:order="this.order"
             v-bind:orderItems="this.orderItems"
+            v-bind:inboxInvoice="this.inboxInvoice"
             v-bind:servicesNegotiated="this.servicesNegotiated"
             v-bind:totalPrice="this.totalPrice"
             v-bind:amtForServicesNegotiated="this.amtForServicesNegotiated"
