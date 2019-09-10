@@ -30,9 +30,14 @@ export default {
     },
     async createCustomOrderItems () {
       try {
+        const userExtracted = this.$store.getters.getUserInfo
         const itemsToBeAdded = this.itemsToBeAdded
-        const response = await UserServices.createCustomOrderItems(itemsToBeAdded)
-        console.log(`\ntesting the route ${response}\n`) // TESTING
+        const response = await UserServices.createCustomOrderItems({
+          userId: userExtracted.userId,
+          serviceTableId: userExtracted.serviceTableId,
+          itemsToBeAdded: itemsToBeAdded
+        })
+        this.itemsToBeAdded = []
       } catch (error) {
         if (error) throw error
       }
