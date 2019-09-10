@@ -18,7 +18,7 @@
         <br />
         <br />
         <div class="col-md-12 text-center">
-          <router-link class="btn-signup btn-signup-outline btn-xl" to="/coming_soon">Sign Up</router-link>
+          <router-link class="btn-signup btn-signup-outline btn-xl" to="/register">Sign Up</router-link>
           <!-- Conditionally render one which will lead to coming soon page -->
         </div>
         <br />
@@ -26,7 +26,7 @@
         <br />
         <br />
         <div class="col-md-12 text-center">
-          <router-link class="btn-signup btn-signup-outline btn-xl" to="/coming_soon">Client Login</router-link>
+          <router-link class="btn-signup btn-signup-outline btn-xl" to="/login">Client Login</router-link>
           <!-- Conditionally render one which will lead to coming soon page -->
         </div>
       </div>

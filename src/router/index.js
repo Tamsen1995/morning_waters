@@ -45,12 +45,12 @@ function isInDevelopEnv (to, from, next) {
   try {
     // Releasing the beta would simply mean removing this guard from the routes to be released
     // or releasing everything by just invoking the next method in this and removing everything else
-    if (process.env.NODE_ENV === 'development') {
-      next()
-    } else {
-      // redirecting the user back to where they came from
-      next(from)
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    next()
+    // } else {
+    // redirecting the user back to where they came from
+    // next(from)
+    // }
   } catch (error) {
     if (error) throw error
   }
