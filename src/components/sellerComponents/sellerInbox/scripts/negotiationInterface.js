@@ -53,7 +53,7 @@ export default {
         // send modification to the back
         var modifiedInboxInvoice = this.inboxInvoice
         modifiedInboxInvoice.terms = this.terms
-        modifiedInboxInvoice.taxRate = this.taxRate
+        modifiedInboxInvoice.taxRate = this.inboxInvoice.taxRate
         this.terms = ''
 
         const response = await InvoiceService.modifyInboxInvoice(modifiedInboxInvoice)
