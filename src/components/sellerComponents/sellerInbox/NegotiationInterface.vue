@@ -126,7 +126,11 @@
                 </md-field>
                 <md-field>
                   <label>Tax rate %</label>
-                  <md-input v-model="inboxInvoice.taxRate" type="number"></md-input>
+                  <md-input
+                    v-model="inboxInvoice.taxRate"
+                    style="background-color: #e3f2fd;"
+                    type="number"
+                  ></md-input>
                 </md-field>
                 <md-button
                   v-if="this.terms !== '' || this.itemsToBeAdded.length > 0"
