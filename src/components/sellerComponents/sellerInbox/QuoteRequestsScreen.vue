@@ -83,7 +83,7 @@
                 <md-card>
                   <md-empty-state
                     md-icon="inbox"
-                    style="color:grey"
+                    class="icon"
                     md-label="0 new requests"
                     md-description="There are currently no new requests in your inbox"
                   ></md-empty-state>
