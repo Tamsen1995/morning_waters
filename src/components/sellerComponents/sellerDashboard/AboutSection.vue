@@ -5,7 +5,9 @@
         <h1 style="text-align:center:">{{ this.companyName }}</h1>
       </div>
       <div class="d-flex justify-content-center" id="company-location">
-        <h4 style="text-align:center:">Location: {{ this.companyLocation }}</h4>
+        <h4
+          style="text-align:center:"
+        >{{ this.companyLocation.city }}, {{ this.companyLocation.country }}</h4>
       </div>
       <div class="d-flex justify-content-center" id="company-logo">
         <div id="logo-border">
@@ -65,6 +67,7 @@ export default {
         this.user = response.user;
         this.companyName = this.user.companyName;
         this.about = this.user.about;
+        this.companyLocation = JSON.parse(userExtracted.address);
       } catch (error) {
         if (error) throw error;
       }
