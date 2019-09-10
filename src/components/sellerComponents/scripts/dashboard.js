@@ -102,6 +102,8 @@ export default {
         this.serviceDescription = service.description
         this.servicePrice = service.servicePrice
         this.turnAroundTime = service.turnAroundTime
+        this.timeUnit = service.timeUnit
+        this.unitType = service.unitType
         this.serviceEdited = service
 
         // Iteratively push the service tags into the array
@@ -110,6 +112,8 @@ export default {
         }
 
         this.subServicesToBeAdded = []
+
+        //
         for (var i = 0; i < this.services.length; i++) {
           if (this.services[i].parentServiceId === service.id) {
             var subServiceTags = []
@@ -125,6 +129,8 @@ export default {
               serviceDescription: this.services[i].description,
               servicePrice: this.services[i].servicePrice,
               turnAroundTime: this.services[i].turnAroundTime,
+              timeUnit: this.services[i].timeUnit,
+              unitType: this.services[i].unitType,
               serviceTags: subServiceTags
             })
           }
@@ -144,6 +150,8 @@ export default {
         this.serviceEdited.description = this.serviceDescription
         this.serviceEdited.servicePrice = this.servicePrice
         this.serviceEdited.turnAroundTime = this.turnAroundTime
+        this.serviceEdited.timeUnit = this.timeUnit
+        this.serviceEdited.unitType = this.unitType
         this.serviceEdited.tags = this.tags
 
         // all the info needed to modify a service and its subservices in the data base
@@ -151,14 +159,18 @@ export default {
           service: this.serviceEdited,
           subServices: this.subServicesToBeAdded
         }
+        console.log(serviceEdit) // TESTING
 
         await DashboardServices.editService(serviceEdit)
 
         this.$modal.hide('add-service')
+        // resetting component vars
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
+        this.timeUnit = ''
+        this.unitType = ''
 
         this.subServicesToBeAdded = []
         this.tags = []
