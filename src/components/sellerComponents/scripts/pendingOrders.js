@@ -3,6 +3,7 @@ import ShippingService from '@/services/ShippingService'
 import PaymentService from '@/services/PaymentService'
 import UserServices from '@/services/UserServices'
 import InboxServices from '@/services/InboxService'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
   data () {
@@ -29,7 +30,9 @@ export default {
   components: {
     DashboardHeader
   },
-  directives: {},
+  directives: {
+    responsive: ResponsiveDirective
+  },
   methods: {
 
     async getSellerPendingOrders () {
@@ -50,9 +53,13 @@ export default {
       try {
         for (var i = 0; i < this.pendingOrders.length; i++) {
           var response = await InboxServices.retrieveOrderOrderItems(this.pendingOrders[i].orderId)
+
           const response2 = await InboxServices.retrieveServicesNegotiated(response.data.orderItems)
-          this.pendingOrders[i].orderItems = response2.data
+          this.pendingOrders[i].servicesNegotiated = response2.data
+
+          this.pendingOrders[i].orderItems = response.data.orderItems
         }
+
         var tmp = this.pendingOrders
         this.pendingOrders = []
         this.pendingOrders = tmp
@@ -73,11 +80,20 @@ export default {
         if (error) throw error
       }
     },
-
-    async createOrderOnShippo () {
+    async createOrder () {
       try {
-        // We can charge the buyer here for now
-        await PaymentService.chargeBuyerForOrder(this.orderToBeConfirmed.orderId)
+        // retrieving order items in order to calculate full price
+        var orderItems = (await InboxServices.retrieveOrderOrderItems(this.orderToBeConfirmed.orderId)).data.orderItems
+        var totalPriceCharged = 0
+        for (var i = 0; i < orderItems.length; i++) {
+          totalPriceCharged = totalPriceCharged + (orderItems[i].price * orderItems[i].amount)
+        }
+
+        // sending the total price and orderid to the web server
+        await PaymentService.chargeBuyerForOrder({
+          orderId: this.orderToBeConfirmed.orderId,
+          totalPriceCharged: totalPriceCharged
+        })
         await ShippingService.activateOrder({ orderId: this.orderToBeConfirmed.orderId })
         await ShippingService.createOrderOnShippo({
           orderId: this.orderToBeConfirmed.orderId,
@@ -86,6 +102,7 @@ export default {
         })
         this.$modal.hide('ask-seller-if-seller-needs-to-ship')
       } catch (error) {
+        //
         if (error) throw error
       }
     },

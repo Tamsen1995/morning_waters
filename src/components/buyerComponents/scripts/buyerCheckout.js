@@ -1,9 +1,11 @@
 import ShoppingCart from '@/components/buyerComponents/ShoppingCart' // TODO : Remove
 import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart' // TODO : Remove
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import { ResponsiveDirective } from 'vue-responsive-components'
 
 import BuyerServices from '@/services/BuyerServices'
 import ShippingService from '@/services/ShippingService'
+import InvoiceService from '../../../services/InvoiceService'
 
 let stripe = Stripe(process.env.stripe_public_key) // TODO : Replace this with the live api key
 let elements = stripe.elements()
@@ -45,6 +47,10 @@ export default {
     ShoppingCart,
     RequestQuoteCart,
     BuyerHeader
+  },
+  directives: {
+    responsive: ResponsiveDirective
+
   },
   methods: {
     // This function redirects to the correct flow
@@ -145,12 +151,14 @@ export default {
           const stripeCustomerId = buyerExtracted.stripeCustomerId
           const shoppingCartItems = this.shoppingCart
 
+          // payload for the quote requests
           const purchaseInfo = {
             seller: sellerExtracted,
             buyer: buyerExtracted,
             quoteRequestsCart: quoteRequestsCart
           }
 
+          // payload for the shopping cart
           const purchaseInfoTwo = {
             uid: buyerId,
             sellerId: sellerExtracted.user.id,
@@ -162,11 +170,22 @@ export default {
           await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
           await BuyerServices.purchaseShoppingCart(purchaseInfoTwo)
 
+          // this is linked to correspondences
           await BuyerServices.createOrder({
             buyerId: buyerId,
             sellerId: sellerExtracted.user.id,
             orderId: this.orderId
           })
+
+          // TODO : Create inbox invoice here
+          // this invoice serves as reference for the live edited invoice
+          // in the inboxes
+          await InvoiceService.makeInboxInvoice({
+            buyerId: buyerId,
+            sellerId: sellerExtracted.user.id,
+            orderId: this.orderId
+          })
+
           this.$store.dispatch('setQuoteRequestCart', [])
           this.$store.dispatch('setShoppingCart', [])
           this.redirectToProperFlow()

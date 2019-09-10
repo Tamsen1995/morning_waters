@@ -1,23 +1,26 @@
 <template>
 <div id="app">
   <buyer-header></buyer-header>
-  <div class="responsive-component" v-responsive= "{
+  <div class="responsive-component" v-responsive="{
   small: el => el.width < 860
   }">
-
     <body class="buyers_carts">
-      <div class="container" style="max-width:800px; display: block;
+      <div
+        class="container"
+        style="max-width:800px; display: block;
         margin-left: auto;
-        margin-right: auto;">
-
-        <div class="container cart_container">
-          <br>
-          <p>
-            Don't worry! You will not be charged until the Seller has approved your order.
-          </p> 
-          <br>
+        margin-right: auto;"
+      >
+        <div class="container">
+          <h5 style="text-align:center;">Checkout</h5>
+          <br />
+          <p style="color:#361555;"> <span id="checkout_map">Review cart >> </span> Login >> Review terms >> Add billing info >> Confirm + submit </p>
+          <br />
           <div class="card">
-            <h5 class="card-header" style="text-align: center; color:white; background-color: purple;">Cart</h5>
+            <h5
+              class="card-header"
+              style="text-align: center; color:white; background-color: purple;"
+            >Cart</h5>
             <div class="card-body">
               <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
             </div>
@@ -28,35 +31,34 @@
           </div>
           <request-quote-cart v-if="this.quoteRequestsCart.length > 0"></request-quote-cart>
           <span>
-            <md-tooltip id="tooltip" md-direction="bottom"   
+            <!-- <md-tooltip
+              id="tooltip"
+              md-direction="bottom"
               style="
               font: 18px;
               margin-top: 10px;
-              margin-left: 30px;">
-              Clicking "Checkout" will redirect you to login or create an account.
-            </md-tooltip>
-            <button @click="redirectToCheckoutOrLogin()" class="btn-cart btn-default pull-right btn-block">
-              <h3>Checkout</h3>
-            </button> 
+              margin-left: 30px;"
+            >Clicking "Checkout" will redirect you to login or create an account.</md-tooltip> -->
+            <button
+              @click="redirectToCheckoutOrLogin()"
+              class="btn-cart btn-default pull-right btn-block"
+            >
+              <h3>Login / Sign up</h3>
+            </button>
           </span>
-          <br>
-          <br>
+          <br />
+          <br />
         </div>
-        <br>
+        <br />
 
-
-
-
-        <br>
-        <br>
-        <br>
-        <br>
+        <br />
+        <br />
+        <br />
+        <br />
         <h3 style="text-align:center;"></h3>
-
       </div>
     </body>
   </div>
-
 </div>
 </template>
 
@@ -64,6 +66,7 @@
 import ShoppingCart from "@/components/buyerComponents/ShoppingCart";
 import RequestQuoteCart from "@/components/buyerComponents/RequestQuoteCart";
 import BuyerHeader from "@/components/buyerComponents/BuyerHeader";
+import { ResponsiveDirective } from "vue-responsive-components";
 
 export default {
   data() {
@@ -83,6 +86,9 @@ export default {
     ShoppingCart,
     RequestQuoteCart,
     BuyerHeader
+  },
+  directives: {
+    responsive: ResponsiveDirective
   },
   methods: {
     async redirectToCheckoutOrLogin() {
@@ -137,8 +143,11 @@ export default {
 @import "../../assets/css/settings.css";
 .buyers_carts #tooltip {
   min-width: 60px;
-  background-color:white;
+  background-color: white;
   font: 25px;
   padding-top: 30px;
+}
+.buyers_carts #checkout_map {
+  color: purple;
 }
 </style>

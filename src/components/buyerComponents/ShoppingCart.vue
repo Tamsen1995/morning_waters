@@ -19,13 +19,14 @@
           <th scope="row">{{ item.service.title}}</th>
           <!-- Subservice title -->
           <!-- Turn Around Time & Hours/Days/Weeks-->
-          <td></td>
+          <td>{{ item.service.turnAroundTime }}</td>
           <!-- Add Quantity & Units-->
-          <td></td>
+          <td>{{item.quantity}}</td>
           <!-- Price -->
-          <td></td>
+          <td>${{ item.service.servicePrice }}</td>
+
           <!-- Total -->
-          <td></td>
+          <td>${{ item.quantity * item.service.servicePrice }}</td>
 
           <!-- Add delete functionality -->
           <td @click="deleteItemFromShoppingCart(index)">

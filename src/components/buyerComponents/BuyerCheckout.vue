@@ -13,9 +13,7 @@
       >
         <h5 style="text-align:center;">Checkout</h5>
         <br />
-        <p
-          style="text-align:center;color:purple;"
-        >You will not be charged until the seller confirms your order.</p>
+        <p style="color:#361555;"> Review cart >> Login >> Review terms >> <span id="checkout_map">Add billing info >> </span> Confirm + submit </p>
 
         <md-card md-with-hover style="background-color: white;">
           <div>
@@ -48,19 +46,21 @@
             <br />
             <br />
           </div>
-          <br>
-
+          <br />
         </md-card>
-        <br>
-        
-          <md-button
-            class="btn-checkout md-raised md-accent btn-block"
-            style="margin-left: -1px;"
-            v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
-            type="submit"
-            @click="sendOrderAndOrInquiries()"    
-          >Send Order & Messages</md-button>
-        
+                <p
+          style="text-align:center;color:purple;"
+        >*You will not be charged until the seller confirms your order.</p>
+        <br />
+
+        <md-button
+          class="btn-checkout md-raised md-accent btn-block"
+          style="margin-left: -1px;"
+          v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length"
+          type="submit"
+          @click="sendOrderAndOrInquiries()"
+        >Add payment method</md-button>
+
         <br />
 
         <md-button
@@ -78,7 +78,7 @@
           v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
           @click="sendQuoteRequests()"
         >Send Order</md-button>
-        <br/> -->
+        <br/>-->
 
         <div class="container" id="purchase_content">
           <shopping-cart v-if="this.shoppingCart.length > 0"></shopping-cart>
@@ -91,7 +91,7 @@
           v-if="this.shoppingCart.length > 0 && this.quoteRequestsCart.length === 0"
           type="submit"
           class="btn-cart btn-default btn-block"
-          @click="sendShoppingCart()"
+          @click="sendOrderAndOrInquiries()"
         >
           <h3>Complete Purchase</h3>
         </button>
@@ -148,5 +148,8 @@
   padding: 2px;
   font-size: 15px;
   text-align: center;
+}
+.buyer-checkout #checkout_map {
+  color: purple;
 }
 </style>

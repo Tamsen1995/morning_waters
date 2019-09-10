@@ -1,7 +1,7 @@
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import BillingTab from '@/components/sellerComponents/SettingsPageBillingTab.vue'
 import UserServices from '@/services/UserServices'
-
+import PaymentService from '@/services/PaymentService'
 import SettingsService from '@/services/SettingsService'
 
 import Tabs from 'vue-tabs-with-active-line'
@@ -11,6 +11,8 @@ export default {
   data () {
     return {
       name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       number: '',
       jobTitle: '',
@@ -48,6 +50,28 @@ export default {
     handleClick (newTab) {
       this.currentTab = newTab
     },
+    // opens up new tab for stripe connect
+    async goToStripeConnectDashboard () {
+      try {
+        if (this.user && this.user.stripeConnectAcctInfo !== '') {
+          const response = await PaymentService.goToStripeConnectDashboard(this.user.stripeConnectAcctInfo)
+          window.open(response.data)
+        } else {
+          console.log(`error in goToStripeConnectDashboard()`) // TESTING
+        }
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async addPayoutInfo () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+
+        PaymentService.makeStripeConnectAccount()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async updatePassword () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
@@ -62,17 +86,27 @@ export default {
         console.log(`\n\n$${JSON.stringify(updatePassInfo)}\n`) // TESTING
 
         const response = await SettingsService.updatePassword(updatePassInfo)
-        console.log(`\nThe password response ${JSON.stringify(response)}\n`) // TESTING
+
+        if (response && response.status === 200) {
+          this.$modal.show('profile-updates-have-been-submitted')
+        }
       } catch (error) {
         console.log(`\nThe error caught in update password ${error}\n`) // TESTING
         if (error) throw error
       }
     },
+    invokeSubmittedProfilePrompt () {
+      this.$modal.show('profile-updates-have-been-submitted')
+    },
+    closeSubmittedProfilePrompt () {
+      this.$modal.hide('profile-updates-have-been-submitted')
+    },
     async updateProfile () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
         const newProfileInfo = {
-          name: this.name,
+          firstName: this.firstName,
+          lastName: this.lastName,
           email: this.email,
           number: this.number,
           jobTitle: this.jobTitle,
@@ -96,15 +130,17 @@ export default {
         const userInfo = await UserServices.getPublicProfileInfo(
           userExtracted.id
         )
+        this.user = userInfo.data.user
 
-        this.name = userInfo.data.user.name
-        this.email = userInfo.data.user.email
-        this.number = userInfo.data.user.number
-        this.jobTitle = userInfo.data.user.jobTitle
-        this.companyName = userInfo.data.user.companyName
-        this.companyWebsite = userInfo.data.user.companyWebsite
-        this.address = JSON.parse(userInfo.data.user.address)
-        this.about = userInfo.data.user.about
+        this.firstName = this.user.firstName
+        this.lastName = this.user.lastName
+        this.email = this.user.email
+        this.number = this.user.number
+        this.jobTitle = this.user.jobTitle
+        this.companyName = this.user.companyName
+        this.companyWebsite = this.user.companyWebsite
+        this.address = JSON.parse(this.user.address)
+        this.about = this.user.about
       } catch (error) {
         console.log(
           `\nThe error message inside of the retrieveProfileInfo: ${error}\n`

@@ -1,6 +1,30 @@
 import Api from '@/services/Api'
 
 export default {
+  markOrderAsRead (user, orderId) {
+    return Api().get('orders/markAsRead', {
+      params: {
+        // user determines whether it's coming from the buyer or seller side
+        user: user,
+        orderId: orderId
+      }
+    })
+  },
+  // '/inbox/files/download'
+  downloadFile (filename) {
+    return Api().get('inbox/files/download', {
+      params: {
+        filename: filename
+      }
+    })
+  },
+  uploadFile (file) {
+    return Api().post('inbox/upload', file, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
+  },
   // checks to see if a relationship
   // between buyer and seller is unlocked
   relationshipUnlocked (sellerId, buyerId) {

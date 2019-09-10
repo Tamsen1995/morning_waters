@@ -5,7 +5,7 @@ import Register from '@/components/sellerComponents/Register'
 import Login from '@/components/sellerComponents/Login'
 import Dashboard from '@/components/sellerComponents/sellerDashboard/Dashboard'
 import CreditsPurchasing from '@/components/sellerComponents/CreditsPurchasing'
-import QuoteRequestsScreen from '@/components/sellerComponents/QuoteRequestsScreen'
+import QuoteRequestsScreen from '@/components/sellerComponents/sellerInbox/QuoteRequestsScreen'
 import PublicProfile from '@/components/sellerComponents/PublicProfile'
 import Checkout from '@/components/sellerComponents/Checkout'
 import CreditsHome from '@/components/sellerComponents/CreditsHome'
@@ -32,9 +32,11 @@ import BuyerCorrespondance from '@/components/buyerComponents/BuyerCorrespondanc
 
 // Shippo routes
 import DashboardShippoRegister from '@/components/sellerComponents/DashboardShippoRegister'
+import DashboardStripeConnectRegister from '@/components/sellerComponents/DashboardStripeConnectRegister'
 
-// testing routes
+// misc routes
 import ComingSoon from '@/components/ComingSoon'
+import FaqPage from '@/components/FaqPage'
 
 Vue.use(Router)
 
@@ -84,6 +86,11 @@ export default new Router({
       name: 'comingSoon',
       component: ComingSoon
 
+    },
+    {
+      path: '/FAQ',
+      name: 'faqPage',
+      component: FaqPage
     },
     {
       path: '/checkout',
@@ -198,6 +205,11 @@ export default new Router({
       beforeEnter: (to, from, next) => {
         routingAuthentication(to, from, next)
       }
+    },
+    {
+      path: '/dashboard/stripe_connect/oauth/register/:state/:code',
+      name: 'dashboardRegisterStripeConnectRedirect',
+      component: DashboardStripeConnectRegister
     },
 
     // Buyer Routes below

@@ -242,6 +242,11 @@
       <div class="container-fluid" id="contact">
         <div class="row">
           <div class="col">
+            <md-button
+              style="background-color: white; color: black;"
+              @click="redirectToFaqPage()"
+            >FAQ</md-button>
+
             <h3>Contact Us</h3>
             <br />
             <h4 style="text-align:center">info@fig-analytics.com</h4>

@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       customerDefaultSource: null,
-      subscriptions: [], // holds the subscriptions
+
       card: null,
       stripe: null
     }
@@ -62,7 +62,7 @@ export default {
         const stripeUserInfo = await PaymentService.getStripeUserInfo(
           stripeCustomerId
         )
-        this.subscriptions = stripeUserInfo.data.subscriptions.data
+
         const customerDefaultSourceID =
           stripeUserInfo.data.stripeCustomer.default_source
         const customerDefaultSource = getDefaultSource(

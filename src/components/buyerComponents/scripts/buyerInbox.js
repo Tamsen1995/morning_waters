@@ -4,6 +4,7 @@ import NegotiationInterface from '@/components/buyerComponents/buyerInbox/Negoti
 import BuyerServices from '@/services/BuyerServices'
 import InboxService from '@/services/InboxService'
 import UserServices from '@/services/UserServices'
+import InvoiceService from '@/services/InvoiceService'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 export default {
@@ -14,18 +15,21 @@ export default {
       pendingOrders: [],
       buyer: null,
       seller: null,
-
       quoteRequest: null,
+
+      // props on the negotiation interface
       order: null,
       orderItems: [],
       amtForServicesNegotiated: [],
       servicesNegotiated: [],
+      inboxInvoice: null,
       // orders:[] is an array holding several objects, each representing an order
       totalPrice: 0.0,
       quoteOrders: [],
       dropdownVariable: 'All messages',
       correspondanceMessages: [],
       message: ''
+
     }
   },
   async created () {
@@ -90,6 +94,12 @@ export default {
         this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
         this.seller = (await UserServices.getUserInfo(order.sellerId)).data
         this.correspondanceMessages = response.data.correspondance
+
+        // querying the invoice
+        const response2 = await InvoiceService.retrieveInboxInvoice(orderId)
+        const inboxInvoice = response2.data.inboxInvoice
+
+        this.inboxInvoice = inboxInvoice
       } catch (error) {
         if (error) throw error
       }

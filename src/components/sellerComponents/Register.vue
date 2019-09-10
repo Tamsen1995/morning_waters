@@ -16,9 +16,10 @@
           </md-card-header>
 
           <md-card-content>
-            <div class="error" v-html="error" />
+
             <!-- Form -->
             <form>
+              <div class="error" v-html="error" />
               <md-steppers :md-active-step.sync="active" md-linear md-vertical>
                 <!-- First Name -->
                 <md-step
@@ -209,7 +210,7 @@
                   <!-- <h2 style="color:#880599">Payment System Setup</h2>
                   <h5 style="color:#880599">Bank information for Fig payments </h5>-->
                   <div>
-                    Billing Address
+                    Shipping Address
                     <br />
                     <!-- Street -->
                     <div class="form-group row">
@@ -291,23 +292,6 @@
                 <md-step
                   id="third"
                   :md-done.sync="third"
-                  md-label="Payout System Set Up"
-                  md-description="Required"
-                >
-                  <!-- <h2 style="color:#880599">Payout System Set Up</h2> -->
-                  <h5
-                    style="color:#880599"
-                  >Your lab's bank information for recieving payments from buyers.</h5>
-                  <md-button
-                    style="border-radius:15px;"
-                    class="md-raised md-primary"
-                    @click="setDone('third', 'fourth')"
-                  >Continue</md-button>
-                </md-step>
-
-                <md-step
-                  id="fourth"
-                  :md-done.sync="fourth"
                   md-label="Terms & Conditions"
                   md-description="Required"
                 >
@@ -328,13 +312,13 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
-                    @click="setDone('fourth', 'fifth')"
+                    @click="setDone('third', 'fourth')"
                   >Continue</md-button>
                 </md-step>
 
                 <md-step
-                  id="fifth"
-                  :md-done.sync="fifth"
+                  id="fourth"
+                  :md-done.sync="fourth"
                   md-label="Privacy"
                   md-description="Required"
                 >
@@ -361,14 +345,14 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
-                    @click="setDone('fifth', 'sixth')"
+                    @click="setDone('fourth', 'fifth')"
                   >Continue</md-button>
                 </md-step>
 
                 <!-- Shippo -->
                 <md-step
-                  id="sixth"
-                  :md-done.sync="sixth"
+                  id="fifth"
+                  :md-done.sync="fifth"
                   md-label="Shippo Set Up"
                   md-description="Optional"
                 >
@@ -391,12 +375,21 @@
                   <br />(Not mandatory, but highly recommended!)
                   <br />
                   <br />
+
+                  <md-button
+                    class="md-raised md-primary center"
+                    style="height:40px; background-color: white; color: purple;"
+                    id="btn-login"
+                    @click="register()"
+                  >Skip Shippo & Sign Up</md-button>
+
                   <md-button
                     class="md-raised md-primary center"
                     style="height:40px;"
                     id="btn-login"
-                    @click="register"
-                  >Submit</md-button>
+                    @click="register(), makeShippoApiToken()"
+                  >Sign Up</md-button>
+                  <div class="error" v-html="error" />
                 </md-step>
               </md-steppers>
             </form>
@@ -428,7 +421,5 @@
 <style scoped>
 @import "../../assets/css/forms.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-.error {
-  color: red;
-}
+
 </style>

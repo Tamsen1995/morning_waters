@@ -2,8 +2,8 @@
 <template>
 <div id="app" style="background-color: white;">
   <body id="requestQuoteCart">
-    <md-card style="background-color: #311c63; color: white; text-align: center; height: 50%;">
-      <span class="md-title">Quote Requests</span>
+    <md-card style="background-color: #8972cc; color: white; text-align: center; height: 50%;">
+      <span class="md-title"><h3>Quote Requests</h3></span>
     </md-card>
 
     <!-- <h1 style="text-align: center;"></h1> -->
@@ -21,29 +21,21 @@
           <md-card>
             <md-card-content>
               <span class="pull-right" id="tooltip">
-                <h3>
-                  <a href="#" class="card-link">X</a>
-                </h3>
                 <md-tooltip md-delay="300">Delete Message</md-tooltip>
               </span>
 
               <!-- Editable Service Specific Request Form -->
               <form>
-                <md-field>
-                  <label>Item : {{ item.serviceTitle }}</label>
-                  <!-- <md-input></md-input> -->
-                </md-field>
-                <md-field>
-                  <label>Quantity : {{ item.quantity }}</label>
-                  <!-- <md-input></md-input> -->
-                </md-field>
-                <md-field>
-                  <label>Turn Around Time :</label>
-                </md-field>
-                <md-field>
-                  <label>Message to Seller:</label>
-                  <md-textarea v-model="inquiryText"></md-textarea>
-                </md-field>
+                Item : {{ item.serviceTitle }}
+                <br />
+                <br />
+                Quantity : {{ item.quantity }}
+                <br />
+                <br />
+                Turn Around Time : {{item.turnAroundtime}}
+                <br />
+                <br />
+                Message to Seller: {{item.inquiryText}}
                 <!-- <br />
               Inquiry : 
               <md-content style="text-align:left" id="inquiry-text" class="md-scrollbar">
@@ -57,7 +49,7 @@
       </md-list-item>
     </md-list>
 
-    <md-list style="background-color:#eeeef6;">
+    <!-- <md-list style="background-color:#eeeef6;">
       <md-list-item md-expand :md-expanded.sync="expandNews">
         <i class="fas fa-plus" id="service_logo"></i>
         <span class="md-list-item-text">Add Quote Request</span>
@@ -70,7 +62,7 @@
           </md-card>
         </md-list>
       </md-list-item>
-    </md-list>
+    </md-list> -->
 
     <!-- Add Modal to edit Quote request, with delete request functionality -->
 

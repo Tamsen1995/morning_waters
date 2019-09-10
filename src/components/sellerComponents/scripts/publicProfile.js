@@ -24,7 +24,10 @@ export default {
       inquiryText: '',
       pickedQuantityQuoteRequest: 1,
       itemChosen: null,
-      expanded: false
+      expanded: false,
+
+      // error message var
+      error: ''
     }
   },
   components: {
@@ -139,6 +142,14 @@ export default {
         if (error) throw error
       }
     },
+    async manifestAddToCartModal (service) {
+      try {
+        this.$modal.show('add-to-cart-modal')
+        this.itemChosen = service
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitQuoteRequest () {
       try {
         const quoteRequestForService = {
@@ -158,20 +169,29 @@ export default {
         if (error) throw error
       }
     },
-    async addServiceToCart (service, index) {
+    async addServiceToCart () {
       try {
-        const shoppingCartItem = {
-          orderId: '',
-          quantity: this.quantity, // this.pickedQuantityService[index],
-          service: service
+        if (this.pickedQuantityService > 0) {
+          const shoppingCartItem = {
+            orderId: '',
+            quantity: this.pickedQuantityService,
+            service: this.itemChosen
+          }
+          this.$store.dispatch('addServiceToCart', shoppingCartItem)
+          this.$modal.hide('add-to-cart-modal')
+          this.pickedQuantityService = 0
+          this.itemChosen = null
+          this.error = ''
+        } else {
+          // TODO : implement this
+          this.error = 'please pick a quantity'
         }
-        this.$store.dispatch('addServiceToCart', shoppingCartItem)
-        this.quantity = 0
       } catch (error) {
         console.log(`\nAn error occurred in addServiceToCart\n`) // TESTING
         if (error) throw error
       }
     }
+
     // the user id of the SELLER will also
     // need a spot in the store
 

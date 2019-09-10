@@ -2,7 +2,10 @@ import UserServices from '@/services/UserServices'
 import InboxService from '@/services/InboxService'
 import PaymentService from '@/services/PaymentService'
 import BuyerServices from '@/services/BuyerServices'
+import InvoiceService from '@/services/InvoiceService'
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
+import MessagePanel from '@/components/sellerComponents/sellerInbox/MessagePanel.vue'
+import NegotiationInterface from '@/components/sellerComponents/sellerInbox/NegotiationInterface.vue'
 import { ResponsiveDirective } from 'vue-responsive-components'
 
 var $ = require('jQuery')
@@ -10,18 +13,14 @@ var $ = require('jQuery')
 export default {
   data () {
     return {
+      file: '',
       // this array shows up in the inbox to the left
       correspondanceMessages: [],
       message: '',
       orders: [],
       pendingOrders: [],
-      orderItems: null,
-      servicesNegotiated: [],
-      amtForServicesNegotiated: [],
-      order: null,
       buyer: null,
       seller: null,
-      totalPrice: 0.0,
       quoteRequest: null,
       complete: true,
       stripeOptions: {},
@@ -29,20 +28,30 @@ export default {
       orderIdClickedOn: '',
       showLockedMessages: true,
       // the variable which is shown on the dropdown menu
-      dropdownVariable: 'All messages'
+      dropdownVariable: 'All messages',
+
+      // the data bound to the props in the negotiation interface
+      order: null,
+      orderItems: null,
+      servicesNegotiated: [],
+      totalPrice: 0.0,
+      amtForServicesNegotiated: [],
+      inboxInvoice: null
 
     }
   },
   components: {
-    DashboardHeader
+    DashboardHeader,
+    MessagePanel,
+    NegotiationInterface
   },
   directives: {
     responsive: ResponsiveDirective
   },
-  async mounted () {
+  async created () {
     await this.getPendingOrders()
     await this.getLockedOrders()
-    await this.discernLockedCorrespondences()
+    // await this.discernLockedCorrespondences()
 
     if (this.pendingOrders && this.pendingOrders.length > 0) {
       this.showOrder(this.pendingOrders[0])
@@ -50,11 +59,24 @@ export default {
     }
 
     if (this.orders && this.orders.length > 0) {
+      console.log(`asdsa`) // TESTING
       this.showOrder(this.orders[0])
       this.retrieveOrderOrderItems(this.orders[0])
     }
   },
   methods: {
+
+    async reloadCorrespondence (orderIdGiven) {
+      try {
+        const orderId = orderIdGiven
+        await this.getPendingOrders()
+        await this.getLockedOrders()
+        this.showOrderWithOrderId(orderId)
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    /// ///////////////////////////////////////for sending file attachments above
     async redirectToOrderStatus () {
       try {
         console.log(`\nredirect to order status\n`) // TESTING
@@ -82,18 +104,6 @@ export default {
             break
           }
         }
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async unlockRelationship () {
-      try {
-        const orderId = this.order.orderId
-        await InboxService.unlockRelationship(this.order.sellerId, this.order.buyerId)
-        await this.getPendingOrders()
-        await this.getLockedOrders()
-        await this.discernLockedCorrespondences()
-        this.showOrderWithOrderId(orderId)
       } catch (error) {
         if (error) throw error
       }
@@ -142,18 +152,7 @@ export default {
         if (error) throw error
       }
     },
-    // whenever a change occurrs in the negotiation
-    // interface, this dynamically modifies the values of the orderitems in the back
-    async updateOrderItems (index) {
-      try {
-        this.orderItems[index].amount = this.amtForServicesNegotiated[index]
-        this.orderItems[index].price = this.servicesNegotiated[index].servicePrice * this.amtForServicesNegotiated[index]
-        await InboxService.updateOrderItem(this.orderItems[index])
-        this.retrieveOrderOrderItems(this.order)
-      } catch (error) {
-        if (error) throw error
-      }
-    },
+
     async retrieveOrderOrderItems (order) {
       try {
         const orderId = order.orderId
@@ -170,27 +169,40 @@ export default {
           this.amtForServicesNegotiated.push(this.orderItems[i].amount)
           this.totalPrice = this.totalPrice + this.orderItems[i].price
         }
-        console.log(`\n\nYou don't know : ${this.totalPrice}\n\n`) // TESTING
       } catch (error) {
         console.log(`\nThe error found in retrieveOrderOrderItems : ${error}\n`) // TESTING
         if (error) throw error
       }
     },
+    async retrieveInboxInvoice (orderId) {
+      try {
+        const response = await InvoiceService.retrieveInboxInvoice(orderId)
+        const inboxInvoice = response.data.inboxInvoice
 
+        this.inboxInvoice = inboxInvoice
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async showOrder (order) {
       try {
         // emptying this arr in case order is a pending order
-        this.servicesNegotiated = []
-        this.order = order
-        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
-        this.seller = this.$store.getters.getUserInfo
 
         const orderId = order.orderId
-        this.orderItems = null
 
         // retrieving the correspondence itself (the conversation)
         const response = await InboxService.retrieveCorrespondance(orderId)
+        this.servicesNegotiated = []
+        this.order = order
+
+        this.buyer = (await BuyerServices.getBuyerProfileInfo(order.buyerId)).data.buyer
+        this.seller = this.$store.getters.getUserInfo
         this.correspondanceMessages = response.data.correspondance
+        await InboxService.markOrderAsRead('seller', orderId)
+
+        // retrieving inbox invoice for the negotiation
+        // interface
+        this.retrieveInboxInvoice(orderId)
       } catch (error) {
         if (error) throw error
       }
@@ -204,49 +216,12 @@ export default {
         if (error) throw error
       }
     },
-    async closeConfirmedPrompt () {
-      try {
-        this.$modal.hide('order-has-been-submitted-message')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async closeSubmitPrompt () {
-      try {
-        this.$modal.hide('would-you-like-to-submit')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async submitOrderPrompt () {
-      try {
-        this.$modal.show('would-you-like-to-submit')
-      } catch (error) {
-        if (error) throw error
-      }
-    },
-    async submitOrder () {
-      try {
-        const orderId = this.order.orderId
-        // set the order confirmed on the seller side to true
-        await InboxService.confirmOrder({
-          orderId: orderId,
-          user: 'seller'
-        })
-        await this.getLockedOrders()
-        await this.getPendingOrders()
-        await this.discernLockedCorrespondences()
-        this.showOrderWithOrderId(orderId)
-        this.$modal.hide('would-you-like-to-submit')
-        this.$modal.show('order-has-been-submitted-message')
-      } catch (error) {
-        console.log(`\nThe error occurred in submitOrder : ${error}\n`) // TESTING
-        if (error) throw error
-      }
-    },
-    async submitMessage () {
+
+    async sendMessage (text) {
       try {
         var correspondanceMsg = null
+
+        /// /////////////////////////////////// Testing
         if (this.order !== null) {
           correspondanceMsg = {
             orderId: this.order.orderId,
@@ -255,23 +230,16 @@ export default {
             userId: this.order.sellerId,
             date: '',
             sender: 'seller',
-            message: this.message
+            message: text
           }
         }
-        this.message = ''
 
         await BuyerServices.sendCorrespondanceMsg(correspondanceMsg)
-        const response = await InboxService.retrieveCorrespondance(correspondanceMsg.orderId)
-        this.correspondanceMessages = response.data.correspondance
-        if (this.order !== null) {
-          this.showOrder(this.order)
-          this.retrieveOrderOrderItems(this.order)
-        }
+        /// ////////////////////////////////////////
       } catch (error) {
         if (error) throw error
       }
     },
-
     // This function also sets the clicked on variable
     // of the message
     async retrieveCorrespondance (orderId) {

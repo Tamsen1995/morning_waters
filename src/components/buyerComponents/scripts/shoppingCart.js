@@ -8,10 +8,9 @@ export default {
   },
   mounted () {
     this.getCartItemsFromStore()
-    // set store here
   },
   methods: {
-    // TESTING
+
     async deleteItemFromShoppingCart (index) {
       try {
         this.$store.dispatch('deleteServiceFromShoppingCart', index)

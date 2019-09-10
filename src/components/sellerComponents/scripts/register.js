@@ -8,6 +8,8 @@ export default {
   data () {
     return {
       betaKey: '',
+      firstName: '',
+      lastName: '',
       name: '',
       email: '',
       password: '',
@@ -69,12 +71,20 @@ export default {
       this.$store.dispatch('setEmailAddress', '')
     },
 
+    async makeShippoApiToken () {
+      try {
+        ShippingService.makeShippoApiToken()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async register () {
       try {
-        console.log(`\n\nThe beta key being : ${this.betaKey}\n`) // TESTING
         const response = await AuthenticationService.register({
           betaKey: this.betaKey,
-          name: `${this.firstName} ${this.lastName}`,
+          name: `${this.firstName} ${this.lastName}`, // this might be legacy code
+          firstName: this.firstName,
+          lastName: this.lastName,
           email: this.email,
           password: this.password,
           passwordConfirm: this.passwordConfirm,
@@ -92,7 +102,7 @@ export default {
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
         Api().defaults.headers.common['Authorization'] = AuthenticationService.getAuthHeader()
-        ShippingService.makeShippoApiToken()
+
         this.$router.push({
           name: 'dashboard'
         })

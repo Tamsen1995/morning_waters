@@ -46,18 +46,18 @@
 
         <div id="services">
           <br />
-          <md-button
+          <!-- <md-button
             style="background-color: #4828a5; color: white;"
             @click="manifestModalInquiry(service)"
             class="md-raised md-primary pull-right submit-buttons-md"
-          >Message Seller</md-button>
+          >Message Seller</md-button>-->
 
           <h2>Services:</h2>
           <br />
           <div class="service-border"></div>
           <!-- <div class="col-md-9"> -->
           <div v-for="(service, index) in this.services" :key="index">
-            <div v-if="service.isSubService === false">
+            <div v-if="service.showOnProfile === true && service.isSubService === false">
               <div class="service-border">
                 <md-card-area md-inset>
                   <md-card-header>
@@ -74,7 +74,7 @@
                         >Request Quote</md-button>
                         <md-button
                           style="background-color: #51b828; color: white;"
-                          @click="addServiceToCart(service, index)"
+                          @click="manifestAddToCartModal(service, index)"
                         >Add to Cart</md-button>
                       </div>
                     </div>
@@ -122,7 +122,7 @@
                           >Request Quote</md-button>
                           <md-button
                             style="background-color: #51b828; color: white;"
-                            @click="addServiceToCart(subService, index)"
+                            @click="manifestAddToCartModal(service, index)"
                           >Add to Cart</md-button>
                         </div>
 
@@ -142,8 +142,8 @@
                       <md-chip
                         class="md-primary md-accent"
                         style="background-color: white; color: #a558e4; border: 1px solid #a558e4;"
-                        v-for="chip in subService.tags"
-                        :key="chip"
+                        v-for="(chip, index) in subService.tags"
+                        :key="index"
                       >{{ chip.tag }}</md-chip>
                     </div>
                     <br />
@@ -183,14 +183,13 @@
       id="inquiry-modal"
     >
       <div class="container" id="gen_inquiry">
-        <!-- <div class="row">
-        <div class="col-10">-->
         <div class="md-title">
-          <h2>
-            <i class="fas fa-atom" id="service_logo"></i>
-            Want to send a message to this seller about their listing?
-          </h2>
+          <h2>Want to send a message to this seller about their listing?</h2>
         </div>
+        <p>
+          *You can view messages by clicking on the
+          <i class="fas fa-shopping-cart"></i> cart icon.
+        </p>
         <form class="md-layout">
           <md-field>
             <label>Message to Seller:</label>
@@ -202,12 +201,67 @@
             ></md-textarea>
           </md-field>
           <md-button
-            class="btn btn-default pull-right"
+            class="md-raised md-primary submit-buttons-md"
             @click="submitInquiryText()"
-            style="margin-top:10px"
+            style="margin-top:10px; color: #301a70;"
             type="button"
           >Submit</md-button>
         </form>
+      </div>
+    </modal>
+
+    <!-- add to cart modal -->
+    <modal
+      height="auto"
+      scrollable
+      name="add-to-cart-modal"
+      :clickToClose="true"
+      id="inquiry-modal"
+    >
+      <div class="container" id="gen_inquiry">
+        <div class="md-title">
+          <h2>Add to cart:</h2>
+
+          <div v-if="this.itemChosen">
+            <h4>
+              <i class="fas fa-atom" id="service_logo"></i>
+              Service : {{ this.itemChosen.title }}
+              <ul>
+                <li>{{ this.itemChosen.servicePrice}} / {{ this.itemChosen.serviceUnit}}</li>
+                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}}</li>
+              </ul>
+            </h4>
+          </div>
+        </div>
+        <form class="md-layout">
+          <!-- MAKE QUANTITY MANDATORY -->
+          <div class="col-4">
+            <div class="form-group">
+              <label for="exampleInputEmail1">
+                <h4>Quantity</h4>
+              </label>
+              <input v-model="pickedQuantityService" type="number" id="turnAroundTimeSelect" />
+              <small id="emailHelp" class="form-text text-muted">Ex: 3 samples</small>
+            </div>
+          </div>
+          <md-field>
+            <label>Message to seller (Optional)</label>
+            <md-textarea
+              v-model="inquiryText"
+              class="form-control animated"
+              placeholder="Ask your seller a question about this service"
+              rows="5"
+            ></md-textarea>
+          </md-field>
+        </form>
+        <div class="error" v-html="error" />
+
+        <md-button
+          class="md-raised md-primary submit-buttons-md"
+          style="margin-top:10px"
+          type="button"
+          @click="addServiceToCart()"
+        >Add to cart</md-button>
       </div>
     </modal>
 
@@ -219,38 +273,31 @@
       :clickToClose="true"
       id="inquiry-modal"
     >
-      <div class="container" id="spec_inquiry">
-        <form class="md-layout">
-          <div v-if="this.itemChosen">
-            <md-title>
-              <h2>
-                <i class="fas fa-atom" id="service_logo"></i>
-                Service : {{ this.itemChosen.title }}
-              </h2>
-            </md-title>
-            <ul>
-              <!-- price/unit -->
-              <li>Price/Unit</li>
-              <!-- turnaround time -->
-              <li>Turnaround Time</li>
-            </ul>
-            <md-field>
-              <label>Amount? (optional)</label>
-              <!-- TODO : Not quite sure what this is -->
-              <!-- <md-input v-model="pickedQuantityQuoteRequest" type="number" /> -->
-            </md-field>
+      <div class="container" id="gen_inquiry">
+        <div class="md-title">
+          <h2>Request a quote:</h2>
 
-            <md-field>
-              <label>Message to Seller:</label>
-              <md-textarea
-                v-model="inquiryText"
-                class="form-control animated"
-                placeholder="Enter your message"
-                rows="5"
-                style="padding:5px; min-width: 180%;"
-              ></md-textarea>
-            </md-field>
+          <div v-if="this.itemChosen">
+            <h4>
+              <i class="fas fa-atom" id="service_logo"></i>
+              Service : {{ this.itemChosen.title }}
+              <ul>
+                <li>{{ this.itemChosen.servicePrice}} / {{ this.itemChosen.serviceUnit}}</li>
+                <li>Turnaround Time = {{ this.itemChosen.turnAroundTime}}</li>
+              </ul>
+            </h4>
           </div>
+        </div>
+        <form class="md-layout">
+          <md-field>
+            <label>Message to Seller:</label>
+            <md-textarea
+              v-model="inquiryText"
+              class="form-control animated"
+              placeholder="Enter your message"
+              rows="5"
+            ></md-textarea>
+          </md-field>
         </form>
         <md-button
           class="md-raised md-primary submit-buttons-md"
@@ -273,6 +320,9 @@
 <style scoped>
 @import "../../assets/css/publicprofile.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+.error {
+  color: red;
+}
 </style>
 
 

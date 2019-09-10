@@ -1,6 +1,7 @@
 import DashboardHeader from '@/components/sellerComponents/DashboardHeader.vue'
 import StatsCards from '@/components/sellerComponents/sellerDashboard/StatsCards.vue'
 import AboutSection from '@/components/sellerComponents/sellerDashboard/AboutSection.vue'
+import ProgressBar from '@/components/sellerComponents/sellerDashboard/ProgressBar.vue'
 import UserServices from '@/services/UserServices'
 import DashboardServices from '@/services/DashboardServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
@@ -8,6 +9,7 @@ var $ = require('jQuery')
 
 export default {
   name: 'Dashboard',
+  name: 'MultipleSelect',
   data () {
     return {
       error: null,
@@ -21,6 +23,10 @@ export default {
       unitType: '',
       price: '',
       user: null,
+      timeUnit: '',
+      unit: '',
+      negPrice: '',
+      negTime: '',
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
@@ -30,18 +36,35 @@ export default {
       tags: [],
       serviceBeingEdited: false,
       serviceEdited: null
+
+      // progress bar vars
+
     }
+  },
+  mounted () {
+    this.getServices()
+    this.getUserInfo()
   },
   components: {
     DashboardHeader,
     StatsCards,
-    AboutSection
+    AboutSection,
+    ProgressBar
   },
   directives: {
     responsive: ResponsiveDirective
   },
   methods: {
-
+    async updateAboutSection () {
+      try {
+        console.log(`listen !`) // TESTING
+        // re-evaluateo onboarding status
+        var child = this.$refs.aboutSection
+        child.getUserInfo()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async redirectToInbox () {
       try {
         this.$router.push({
@@ -79,6 +102,8 @@ export default {
         this.serviceDescription = service.description
         this.servicePrice = service.servicePrice
         this.turnAroundTime = service.turnAroundTime
+        this.timeUnit = service.timeUnit
+        this.unitType = service.unitType
         this.serviceEdited = service
 
         // Iteratively push the service tags into the array
@@ -87,6 +112,8 @@ export default {
         }
 
         this.subServicesToBeAdded = []
+
+        //
         for (var i = 0; i < this.services.length; i++) {
           if (this.services[i].parentServiceId === service.id) {
             var subServiceTags = []
@@ -102,6 +129,8 @@ export default {
               serviceDescription: this.services[i].description,
               servicePrice: this.services[i].servicePrice,
               turnAroundTime: this.services[i].turnAroundTime,
+              timeUnit: this.services[i].timeUnit,
+              unitType: this.services[i].unitType,
               serviceTags: subServiceTags
             })
           }
@@ -121,6 +150,8 @@ export default {
         this.serviceEdited.description = this.serviceDescription
         this.serviceEdited.servicePrice = this.servicePrice
         this.serviceEdited.turnAroundTime = this.turnAroundTime
+        this.serviceEdited.timeUnit = this.timeUnit
+        this.serviceEdited.unitType = this.unitType
         this.serviceEdited.tags = this.tags
 
         // all the info needed to modify a service and its subservices in the data base
@@ -128,14 +159,18 @@ export default {
           service: this.serviceEdited,
           subServices: this.subServicesToBeAdded
         }
+        console.log(serviceEdit) // TESTING
 
         await DashboardServices.editService(serviceEdit)
 
         this.$modal.hide('add-service')
+        // resetting component vars
         this.serviceTitle = ''
         this.serviceDescription = ''
         this.servicePrice = 0.0
         this.turnAroundTime = ''
+        this.timeUnit = ''
+        this.unitType = ''
 
         this.subServicesToBeAdded = []
         this.tags = []
@@ -156,6 +191,8 @@ export default {
           serviceDescription: '',
           servicePrice: 0.0,
           turnAroundTime: '',
+          timeUnit: '',
+          unitType: '',
           serviceTags: []
         })
       } catch (error) {
@@ -195,7 +232,8 @@ export default {
           title: this.serviceTitle,
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
-          turnAroundTime: this.turnAroundTime,
+          turnAroundTime: `${this.turnAroundTime} ${this.turnAroundTimeType}`,
+          timeUnit: this.timeUnit,
           unitType: this.unitType,
           tags: this.tags
         }
@@ -222,6 +260,10 @@ export default {
           this.turnAroundTime = ''
           this.tags = []
           this.subServicesToBeAdded = []
+
+          // re-evaluateo onboarding status
+          var child = this.$refs.progressBar
+          child.determineOnboardingStatus()
         }
       } catch (error) {
         if (error) {
@@ -271,9 +313,6 @@ export default {
         if (error) throw error
       }
     }
-  },
-  mounted () {
-    this.getServices()
-    this.getUserInfo()
   }
+
 }

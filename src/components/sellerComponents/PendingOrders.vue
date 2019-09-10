@@ -8,47 +8,57 @@
       <h1>Pending Orders</h1>
 
       <!--  This is where the pending orders md cards are gonna live -->
-      <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index">
-        <md-card style="background-color: white;">
-          <md-card-header>
-            <div class="md-title">Order ID : [ {{pendingOrder.orderId}} ]</div>
-          </md-card-header>
+      <div v-if="this.pendingOrders && this.pendingOrders.length > 0">
+        <div v-for="(pendingOrder, index) in this.pendingOrders" v-bind:key="index">
+          <md-card style="background-color: white;">
+            <md-card-header>
+              <div class="md-title">Order ID : [ {{pendingOrder.orderId}} ]</div>
+            </md-card-header>
 
-          <md-card-content>
-            Order Status: PAID
-            <br />Order Confirmed: [DATE]
-            <br />
-            <br />
-            <br />
+            <md-card-content>
+              Order Status: PAID
+              <br />Order Confirmed: [DATE]
+              <br />
+              <br />
+              <br />
+              <div class="card" style="min-width: 30%;">
+                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                <div class="card-body">
+                  <h4 class="card-title">Order items:</h4>
 
-            <div class="card" style="min-width: 30%;">
-              <!-- <img src="..." class="card-img-top" alt="..."> -->
-              <div class="card-body">
-                <h4 class="card-title">Order items:</h4>
-
-                <div
-                  v-for="(item, index) in pendingOrder.orderItems"
-                  v-bind:key="index"
-                >{{item.title}} - price : {{item.servicePrice}} $</div>
+                  <div
+                    v-for="(item, index) in pendingOrder.servicesNegotiated"
+                    v-bind:key="index"
+                  >{{pendingOrder.orderItems[index].amount}} {{item.title}} - price : {{pendingOrder.orderItems[index].amount * item.servicePrice}} $</div>
+                </div>
               </div>
-            </div>
-          </md-card-content>
+            </md-card-content>
 
-          <md-card-actions>
-            <md-button
-              v-if="pendingOrder.active === false"
-              style="background-color: yellowgreen;"
-              @click="confirmOrder(index)"
-            >Handle Shipping</md-button>
-            <md-button
-              v-else
-              disabled
-              style="background-color: grey; color: white;"
-            >Shipping confirmed</md-button>
-            <md-button @click="goToOrderStatus(index)">Timeline</md-button>
-          </md-card-actions>
-        </md-card>
-        <br />
+            <md-card-actions>
+              <md-button
+                v-if="pendingOrder.active === false"
+                style="background-color: yellowgreen;"
+                @click="confirmOrder(index)"
+              >Handle Shipping</md-button>
+              <md-button
+                v-else
+                disabled
+                style="background-color: grey; color: white;"
+              >Shipping confirmed</md-button>
+              <md-button @click="goToOrderStatus(index)">Timeline</md-button>
+            </md-card-actions>
+          </md-card>
+          <br />
+        </div>
+      </div>
+      <div v-else>
+        <md-empty-state
+          md-icon="devices_other"
+          md-label="No Pending Orders"
+          md-description="You currently have no pending orders"
+        >
+          <md-button class="md-primary md-raised">Generate more leads</md-button>
+        </md-empty-state>
       </div>
       <!--  -->
 
@@ -88,7 +98,7 @@
           <br />
           <br />
           <!-- <button @click="buyerNeedsToShip(false)">No</button> -->
-          <button @click="createOrderOnShippo()">Submit</button>
+          <button @click="createOrder()">Submit</button>
         </div>
       </modal>
     </div>

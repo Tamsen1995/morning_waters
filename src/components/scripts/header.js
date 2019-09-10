@@ -14,15 +14,15 @@ export default {
   },
   mounted () {
     this.verifyUser()
-    if (process.env.NODE_ENV === 'production') {
-      this.productionMode = true
-    }
   },
   updated () {
     this.verifyUser()
   },
   created () {
     this.verifyUser()
+    if (process.env.NODE_ENV === 'production') {
+      this.productionMode = true
+    }
   },
   watch: {
     search: _.debounce(async function (value) {
@@ -72,6 +72,17 @@ export default {
         this.$router.push({
           name: 'dashboard'
         })
+      }
+    },
+    async redirectTo (routeString) {
+      try {
+        if (routeString === 'Login') {
+          this.$router.push({ name: 'login' })
+        } else if (routeString === 'Signup') {
+          this.$router.push({ name: 'register' })
+        }
+      } catch (error) {
+        if (error) throw error
       }
     },
     async verifyUser () {

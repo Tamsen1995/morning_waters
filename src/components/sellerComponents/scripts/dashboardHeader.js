@@ -6,7 +6,8 @@ export default {
   data () {
     return {
       user: null,
-      credits: 0
+      pendingOrders: 0,
+      newMessages:0,
     }
   },
   mounted () {
@@ -24,7 +25,9 @@ export default {
         this.$store.dispatch('setQuoteToBeRequested', null)
         this.$store.dispatch()
         await AuthenticationService.logout()
-        ()
+        this.$router.push({
+          name: 'hello'
+        })
       } catch (error) {
         if (error) throw error
       }
