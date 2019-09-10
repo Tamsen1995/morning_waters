@@ -60,6 +60,7 @@ export default {
         this.createCustomOrderItems()
 
         this.$emit('update-inbox-invoice')
+        this.$emit('update-order-items')
         // emit event, forcing parent component to update invoice and thus the prop bound to the component
       } catch (error) {
         if (error) throw error
