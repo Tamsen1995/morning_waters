@@ -3,7 +3,6 @@
     <b-navbar toggleable="lg" id="mainNav">
       <b-navbar-brand class="mr-auto" href="/">
         <img src="./LOGO_tiny.png" id="brand" alt="FIG ANALYTICS" class="center" />
-
       </b-navbar-brand>
       <b-navbar-toggle id="nav-hover" target="nav-collapse"></b-navbar-toggle>
 
@@ -17,11 +16,18 @@
             <a class="nav-link">Services</a>
           </b-nav-text>
 
-          <b-nav-text v-if="productionMode === false" @click="redirectTo('Login')">
+          <!-- <b-nav-text v-if="productionMode === false" @click="redirectTo('Login')">
             <a class="nav-link">Login</a>
           </b-nav-text>
 
           <b-nav-text v-if="productionMode === false" @click="redirectTo('Signup')">
+            <a class="nav-link" to="/register">Sign Up</a>
+          </b-nav-text>-->
+          <b-nav-text @click="redirectTo('Login')">
+            <a class="nav-link">Login</a>
+          </b-nav-text>
+
+          <b-nav-text @click="redirectTo('Signup')">
             <a class="nav-link" to="/register">Sign Up</a>
           </b-nav-text>
         </b-navbar-nav>
