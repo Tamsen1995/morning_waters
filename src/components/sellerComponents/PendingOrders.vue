@@ -56,9 +56,7 @@
           md-icon="devices_other"
           md-label="No Pending Orders"
           md-description="You currently have no pending orders"
-        >
-          <md-button class="md-primary md-raised">Generate more leads</md-button>
-        </md-empty-state>
+        ></md-empty-state>
       </div>
       <!--  -->
 
