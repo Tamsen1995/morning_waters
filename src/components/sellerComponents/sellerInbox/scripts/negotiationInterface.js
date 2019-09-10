@@ -1,6 +1,7 @@
 import InboxService from '@/services/InboxService'
 import InvoiceService from '@/services/InvoiceService'
 import UserServices from '@/services/UserServices'
+import BuyerServices from '@/services/BuyerServices'
 
 export default {
   data () {

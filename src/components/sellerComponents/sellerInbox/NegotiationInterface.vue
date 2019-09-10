@@ -124,6 +124,7 @@
                   ></md-textarea>
                   <br />
                 </md-field>
+
                 <md-button
                   v-if="this.terms !== '' || this.itemsToBeAdded.length > 0"
                   class="md-dense md-raised md-primary"
@@ -171,12 +172,11 @@
 
         <hr />
         Total Price: $ {{this.totalPrice}}
-        {{this.inboxInvoice}}
         <br />
         <br />
         <div>Would you like to submit this order?</div>
-        <md-button @click="submitOrder">Yes</md-button>
-        <md-button @click="closeSubmitPrompt">No</md-button>
+        <md-button @click="submitOrder()">Yes</md-button>
+        <md-button @click="closeSubmitPrompt()">No</md-button>
       </div>
     </modal>
 
