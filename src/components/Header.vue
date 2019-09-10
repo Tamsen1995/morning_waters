@@ -16,6 +16,8 @@
             <a class="nav-link">Services</a>
           </b-nav-text>
 
+          <!-- in order to block all access to register
+          and login we just have to uncomment these-->
           <!-- <b-nav-text v-if="productionMode === false" @click="redirectTo('Login')">
             <a class="nav-link">Login</a>
           </b-nav-text>

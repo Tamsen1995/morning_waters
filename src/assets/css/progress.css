@@ -41,12 +41,28 @@
   font: 16px "Roboto";
   color: #29105b;
 }
-.progress_fill{
+/* .progress_fill{
   background: rgb(114,10,196);
   background: linear-gradient(90deg, rgb(104, 170, 255) 50%, rgb(155, 19, 209) 100%);
+} */
+.progress_fill{
+  background-image: linear-gradient(to right, #9ee4ff 0%,#dc73ff  51%, #9ed7ff 100%);
+  transition: 0.5s;
+  background-size: 200% auto;
 }
-
-
+/* .progress_fill{
+  background-image: linear-gradient(to right,#5e30ff 0%, #c444ff 51%, #5e30ff 100%);
+  transition: 0.5s;
+  background-size: 200% auto;
+} */
+/* .progress_fill{
+  background-image: linear-gradient(to right,#4b1afc 0%, #c444ff 51%, #5e30ff 100%);
+  transition: 0.5s;
+  background-size: 200% auto;
+} */
+.progress_fill:hover {
+  background-position: right center; /* change the direction of the change here */
+}
 .responsive-component.small #add-services {
   padding: 10px;
 }

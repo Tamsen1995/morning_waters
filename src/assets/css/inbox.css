@@ -4,9 +4,9 @@ body.inbox {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 90vh;
   background: linear-gradient(to bottom right, #FFFFFF 0%,  #e1dfe7 100%);
-  padding: 0px 40px;
+  padding: 15px 40px;
 }
 
 #inbox .message-header-a{
@@ -91,6 +91,12 @@ body.inbox {
   margin-top: 25px;
 }
 
+#inbox .row.message-wrapper {
+  margin-top: 25px;
+  height: 500px;
+}
+
+
 #inbox p {
   font-size: 15px;
 }
@@ -161,6 +167,8 @@ background-color: white;
   padding-right: 30px;
   color: #A0A0A0;
 }
+
+
 #inbox .aside .main-inbox .name {
   font-size: 18px;
   color: #5D5D5D;
@@ -479,4 +487,7 @@ background-color: white;
     border-bottom: 1px solid #DDD !important;
   }
 
-  
+  #inbox .icon {
+    color:grey;
+  }
+
