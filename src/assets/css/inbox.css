@@ -487,3 +487,7 @@ background-color: white;
     border-bottom: 1px solid #DDD !important;
   }
 
+  #inbox .icon {
+    color:grey;
+  }
+
