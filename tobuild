@@ -1,1 +1,1 @@
-npm install && npm run build && git add -A && git commit -m "[DEPLOY]" && git push origin master
+npm install && npm run build && git add -A && git commit -m "[DEPLOYING ...]" && git push origin master

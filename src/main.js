@@ -34,7 +34,7 @@ sync(store, router)
 
 Vue.config.productionTip = false
 
-// if (window.location.protocol !== 'https:' && process.env.NODE_ENV === 'production') window.location.href = 'https://www.fig-analytics.com/'
+if (window.location.protocol !== 'https:' && process.env.NODE_ENV === 'production') window.location.href = 'https://www.fig-analytics.com/'
 
 /* eslint-disable no-new */
 
