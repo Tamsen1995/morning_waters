@@ -23,7 +23,7 @@
           >Complete your profile</md-button>
         </div>
       </div>
-      <md-tooltip md-direction="right">
+      <md-tooltip md-direction="right" md-active>
         <md-card style="background-color: #efedf5; color: #29105b;">
           <md-card-content>
             <h3>To do:</h3>
