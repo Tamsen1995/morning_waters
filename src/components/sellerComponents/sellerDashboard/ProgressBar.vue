@@ -17,7 +17,8 @@
             v-else
             class="md-raised pull-right"
             :md-ripple="false"
-            style="color:#29105b;"
+            style="color:white;
+            background-color:#bc477b;"
             @click="determineOnboardingStatus()"
           >Complete your profile</md-button>
         </div>
@@ -161,7 +162,7 @@ export default {
     ProgressBar
   },
   mounted() {
-    this.determineOnboardingStatus();
+    // this.determineOnboardingStatus();
     // this.commenceOnboarding();
   },
   methods: {
@@ -182,10 +183,10 @@ export default {
           this.percentage = this.percentage + 25;
         }
         if (this.seller && this.seller.about !== "") {
-          this.percentage = this.percentage + 10;
+          this.percentage = this.percentage + 25;
         }
         if (this.seller && this.seller.stripeConnectAcctInfo !== "") {
-          this.percentage = this.percentage + 40;
+          this.percentage = this.percentage + 25;
         }
         if (this.seller && this.seller.shippo_api_key !== "") {
           this.percentage = this.percentage + 25;
