@@ -55,7 +55,7 @@ function isInDevelopEnv (to, from, next) {
     if (error) throw error
   }
 }
-
+//
 function routingAuthentication (to, from, next) {
   try {
     const authToken = window.localStorage.getItem('id_token')
