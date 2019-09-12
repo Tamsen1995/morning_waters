@@ -15,10 +15,8 @@
 
           <md-button
             v-else
-            class="md-raised pull-right"
+            class="md-raised pull-right blinking"
             :md-ripple="false"
-            style="color:white;
-            background-color:#bc477b;"
             @click="determineOnboardingStatus()"
           >Complete your profile</md-button>
         </div>
@@ -294,4 +292,24 @@ export default {
 <style scoped>
 @import "../../../assets/css/progress.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+.blinking {
+  background: purple;
+  color: white;
+  padding: 5px;
+}
+
+.blinking {
+  animation: blink 0.7s 20 alternate;
+}
+
+@keyframes blink {
+  from {
+    background-color: purple;
+    color: white;
+  }
+  to {
+    background-color: white;
+    color: purple;
+  }
+}
 </style>
