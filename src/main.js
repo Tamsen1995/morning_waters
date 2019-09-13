@@ -8,7 +8,7 @@ import store from '@/store/store'
 import VueResource from 'vue-resource'
 import VModal from 'vue-js-modal'
 import Api from '@/services/Api'
-
+/// /
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
