@@ -196,21 +196,28 @@
 
           <!-- Pricing Block -->
           <div class="pricing_block">
-            <!-- Price -->
             <div class="row" id="form-row-border">
-              <div class="col-4">
-                <md-field>
-                  <label>Price Per Unit:</label>
-                  <md-input type="text" v-model="servicePrice" style="border-bottom: 1px inset"></md-input>
-                </md-field>
-              </div>
               <!-- Unit Type -->
               <div class="col-4">
-                <md-field>
-                  <label>Unit:</label>
-                  <md-input type="text" v-model="unitType" style="border-bottom: 1px inset"></md-input>
-                </md-field>
+                <div class="form-group">
+                  <label>
+                    <h5>Unit:</h5>
+                  </label>
+                  <input type="text" v-model="unitType" id="turnAroundTimeSelect" placeholder="ex: sample"/>
+                </div>
               </div>
+              <!-- Price -->
+
+              <div class="col-4">
+                <div class="form-group">
+                  <label>
+                    <h5>Price Per Unit:</h5>
+                  </label>
+                  <input type="text" v-model="servicePrice" style="border-bottom: 1px inset" placeholder="$ USD"/>
+                  <!-- <small id="emailHelp" class="form-text text-muted">USD</small> -->
+                </div>
+              </div>
+
               <!-- Price Negotiable? -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
@@ -221,16 +228,17 @@
                 </div>
               </div>
             </div>
+            <br>
 
             <div class="row" id="form-row-border">
               <!-- Turn Around Time -->
               <div class="col-4">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">
+                  <label>
                     <h5>Turn Around Time</h5>
                   </label>
                   <input type="text" v-model="turnAroundTime" id="turnAroundTimeSelect" />
-                  <small id="emailHelp" class="form-text text-muted">Ex: 3 days</small>
+                  <small id="emailHelp" class="form-text text-muted">ex: 3 days</small>
                 </div>
               </div>
 
@@ -293,7 +301,7 @@
           >
             <!-- Service Title -->
             <md-field>
-              <label>Sub Service Title:</label>
+              <label>Sub-Item:</label>
               <md-input
                 type="text"
                 v-model="subServicesToBeAdded[index].serviceTitle"
@@ -303,7 +311,7 @@
 
             <!-- Service Description -->
             <md-field>
-              <label>Sub Service Description:</label>
+              <label>Sub-Item Description:</label>
               <md-textarea
                 v-model="subServicesToBeAdded[index].serviceDescription"
                 style="border-bottom: 1px inset"
@@ -324,27 +332,27 @@
             <div class="sub_pricing_block">
               <!-- Price -->
               <div class="row" id="form-row-border">
-                <div class="col-4">
-                  <md-field>
-                    <label>Price Per Unit:</label>
-                    <md-input
-                      type="text"
-                      v-model="subServicesToBeAdded[index].servicePrice"
-                      style="border-bottom: 1px inset"
-                    ></md-input>
-                  </md-field>
-                </div>
                 <!-- Unit Type -->
                 <div class="col-4">
-                  <md-field>
-                    <label>Unit:</label>
-                    <md-input
-                      type="text"
-                      v-model="subServicesToBeAdded[index].unitType"
-                      style="border-bottom: 1px inset"
-                    ></md-input>
-                  </md-field>
+                  <div class="form-group">
+                    <label>
+                      <h5>Unit:</h5>
+                    </label>
+                    <input type="text" v-model="subServicesToBeAdded[index].unitType" id="turnAroundTimeSelect" placeholder="ex: sample"/>
+                  </div>
                 </div>
+                <!-- Price -->
+
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>
+                      <h5>Price Per Unit:</h5>
+                    </label>
+                    <input type="text" v-model="subServicesToBeAdded[index].servicePrice" style="border-bottom: 1px inset" placeholder="$ USD"/>
+                    <!-- <small id="emailHelp" class="form-text text-muted">USD</small> -->
+                  </div>
+                </div>
+
                 <!-- Price Negotiable? -->
                 <div class="col-4">
                   <div class="form-group form-check" style="padding-top:15px;">
@@ -360,6 +368,7 @@
                   </div>
                 </div>
               </div>
+              <br>
 
               <div class="row" id="form-row-border">
                 <!-- Turn Around Time -->
@@ -373,7 +382,7 @@
                       v-model="subServicesToBeAdded[index].turnAroundTime"
                       id="turnAroundTimeSelect"
                     />
-                    <small id="emailHelp" class="form-text text-muted">Ex: 3 days</small>
+                    <small id="emailHelp" class="form-text text-muted">ex: 3 days</small>
                   </div>
                 </div>
 
@@ -436,7 +445,7 @@
           <!-- Add another (plus button) -->
 
           <md-button type="button" class="md-primary" id="addSubButton" @click="addSubService()">
-            Add Sub-service
+            Add Sub-Item
             <span class="glyphicon glyphicon-plus-sign"></span>
           </md-button>
 
