@@ -45,10 +45,10 @@ export default {
     await this.getUserData()
   },
   async mounted () {
-
+    // count page views
+    this.countPageViews()
   },
   methods: {
-
     subServicesPresent (service) {
       const serviceId = service.id
       for (var i = 0; i < this.services.length; i++) {
@@ -57,6 +57,13 @@ export default {
         }
       }
       return false
+    },
+    async countPageViews () {
+      try {
+        await UserServices.countPageViews(this.userId)
+      } catch (error) {
+        if (error) throw error
+      }
     },
 
     async getUserData () {
