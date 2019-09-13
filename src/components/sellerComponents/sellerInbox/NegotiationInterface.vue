@@ -92,12 +92,13 @@
                 </md-field>
 
                 <md-field>
-                  <md-input
+                  <currency-input
                     @keydown.enter.prevent
                     v-model="item.price"
-                    md-autogrow
                     style="background-color: #e3f2fd;"
-                  ></md-input>
+                    currency="USD"
+                    locale="us"
+                  />
                 </md-field>
               </div>
             </div>
