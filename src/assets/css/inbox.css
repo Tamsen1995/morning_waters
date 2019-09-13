@@ -326,7 +326,9 @@ background-color: white;
 }
 
 #inbox .list-message .list-group-item {
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 30px;
   color: #999999 !important;
   /* border-right: 3px solid #8CC152 !important; */
 }
@@ -352,22 +354,35 @@ background-color: white;
   height:50px;
 }
 
+ /* IN PROCESS  */
+/* #inbox .message-wrapper .col-md-6.message-sideright.input{
+  height: 150px;
+  background-color: white; 
+  border-right: 1px groove white; 
+  border-left: 1px groove white;
+} */
+
 /* scrolly bars */
 #inbox .col-md-4.message-sideleft .panel-body {
   overflow-y: auto;
   height: 100%;
 }
-#inbox .message-wrapper .col-md-8.message-sideright {
-  margin-top:22px;
+#inbox .message-wrapper .col-md-6.message-sideright{
   overflow-y: auto;
-  height: 500px;
+  max-height: 450px;
+  background-color: white; 
+  border-right: 1px groove white; 
+  border-left: 1px groove white
 }
 #inbox .message-wrapper .invoice-generator{
   min-width: 320px;
+  overflow-y: auto;
+  max-height: 500px;
+  padding: 10px;
 }
 
 .invoice-preview{
-  padding:20px;
+  padding:10px;
   margin:10px;
   border: 2px dotted #0a00b6;
 }
@@ -490,4 +505,17 @@ background-color: white;
   #inbox .icon {
     color:grey;
   }
+
+  /* #inbox .panel-body.invoice-editor .row {
+    
+  } */
+
+/* OR  */
+#inbox .panel-body.invoice-editor .row {
+    line-height: 50%;
+}
+
+
+
+
 
