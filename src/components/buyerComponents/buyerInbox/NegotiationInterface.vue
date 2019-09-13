@@ -65,12 +65,16 @@
                   </div>
                 </div>
               </div>
-              Terms: {{inboxInvoice.terms}}
-              <hr />
-              Total price: {{ this.totalPrice }} $
-              <br />
-              Tax Rate (%) : {{ inboxInvoice.taxRate }}
-              <br />
+
+              <div v-if="this.inboxInvoice">
+                Terms: {{inboxInvoice.terms}}
+                <hr />
+                Total price: {{ this.totalPrice }} $
+                <br />
+                Tax Rate (%) : {{ inboxInvoice.taxRate }}
+                <br />
+              </div>
+
               <br />
               <!-- Negotiation Interface -->
               <md-button
