@@ -69,7 +69,7 @@
                         <!-- <span style="color: #5f5a6d">
                           <md-icon>scatter_plot</md-icon>
                           Unit type: {{ service.unitType }}
-                        </span> -->
+                        </span>-->
                       </div>
                     </md-card-content>
                   </md-card-header>
