@@ -33,7 +33,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 @import "../assets/css/figanal.css";
 
 /* @import url('https://fonts.googleapis.com/css?family=Montserrat');  */

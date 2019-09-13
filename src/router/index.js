@@ -41,7 +41,7 @@ import FaqPage from '@/components/FaqPage'
 Vue.use(Router)
 
 // Used to block of all routes in development from production env
-function isInDevelopEnv (to, from, next) {
+function isInDevelopEnv(to, from, next) {
   try {
     // Releasing the beta would simply mean removing this guard from the routes to be released
     // or releasing everything by just invoking the next method in this and removing everything else
@@ -51,12 +51,14 @@ function isInDevelopEnv (to, from, next) {
     // redirecting the user back to where they came from
     // next(from)
     // }
+    // testing
   } catch (error) {
     if (error) throw error
   }
 }
-//
+
 function routingAuthentication (to, from, next) {
+
   try {
     const authToken = window.localStorage.getItem('id_token')
     AuthenticationService.routingAuthentication(authToken)
