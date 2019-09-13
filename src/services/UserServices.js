@@ -2,7 +2,7 @@ import Api from '@/services/Api'
 
 export default {
   countPageViews (userId) {
-    console.log(`\n\nthe id extracted from the user : ${userId}\n`) // TESTING
+    return Api().post('count_page_view', userId)
   },
   createCustomOrderItems (itemsToBeAdded) {
     return Api().post('orders/create_custom_order_item', itemsToBeAdded)
