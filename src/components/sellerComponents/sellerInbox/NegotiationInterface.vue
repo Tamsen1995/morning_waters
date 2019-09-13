@@ -98,7 +98,7 @@
                     style="background-color: #e3f2fd;"
                     currency="USD"
                     locale="us"
-                  />
+                  />Per Unit
                 </md-field>
               </div>
             </div>
