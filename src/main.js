@@ -26,12 +26,12 @@ Vue.use(VueMaterial)
 Api().defaults.headers.common[
   'Authorization'
 ] = AuthenticationService.getAuthHeader()
-console.log(`\nLaunching vuejs app\n`) // TESTING
+
 AuthenticationService.checkAuth()
-console.log('Reloading app')
+
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
-Vue.use(VModal) //
+Vue.use(VModal)
 
 sync(store, router)
 
