@@ -15,14 +15,13 @@
 
           <md-button
             v-else
-            class="md-raised pull-right"
+            class="md-raised pull-right blinking"
             :md-ripple="false"
-            style="color:#29105b;"
             @click="determineOnboardingStatus()"
           >Complete your profile</md-button>
         </div>
       </div>
-      <md-tooltip md-direction="right">
+      <md-tooltip md-direction="right" md-active>
         <md-card style="background-color: #efedf5; color: #29105b;">
           <md-card-content>
             <h3>To do:</h3>
@@ -161,10 +160,46 @@ export default {
     ProgressBar
   },
   mounted() {
-    this.determineOnboardingStatus();
+    this.determineOnboardingPercentage();
     // this.commenceOnboarding();
   },
   methods: {
+    async determineOnboardingPercentage() {
+      try {
+        this.user = this.$store.getters.getUserInfo;
+        this.seller = (await UserServices.retrieveSellerProfile(
+          this.user.id
+        )).data.user;
+
+        this.userServices = (await DashboardServices.queryForUsersServices(
+          this.seller.serviceTableId
+        )).data.usersServices;
+
+        this.percentage = 0;
+        // Here we are adding percentages for the progress bar itself
+        if (this.userServices.length >= 1) {
+          this.percentage = this.percentage + 25;
+        }
+        if (this.seller && this.seller.about !== "") {
+          this.percentage = this.percentage + 25;
+        }
+        if (this.seller && this.seller.stripeConnectAcctInfo !== "") {
+          this.percentage = this.percentage + 25;
+        }
+        if (this.seller && this.seller.shippo_api_key !== "") {
+          this.percentage = this.percentage + 25;
+        }
+
+        ///////////////////////////////////////////////
+
+        // if the onboarding has been completed we wanna make sure to signal this to the back
+        if (this.percentage === 100) {
+          this.onboarded = true;
+        }
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async determineOnboardingStatus() {
       try {
         this.user = this.$store.getters.getUserInfo;
@@ -182,10 +217,10 @@ export default {
           this.percentage = this.percentage + 25;
         }
         if (this.seller && this.seller.about !== "") {
-          this.percentage = this.percentage + 10;
+          this.percentage = this.percentage + 25;
         }
         if (this.seller && this.seller.stripeConnectAcctInfo !== "") {
-          this.percentage = this.percentage + 40;
+          this.percentage = this.percentage + 25;
         }
         if (this.seller && this.seller.shippo_api_key !== "") {
           this.percentage = this.percentage + 25;
@@ -293,4 +328,24 @@ export default {
 <style scoped>
 @import "../../../assets/css/progress.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
+.blinking {
+  background: purple;
+  color: white;
+  padding: 5px;
+}
+
+.blinking {
+  animation: blink 0.7s 20 alternate;
+}
+
+@keyframes blink {
+  from {
+    background-color: purple;
+    color: white;
+  }
+  to {
+    background-color: white;
+    color: purple;
+  }
+}
 </style>

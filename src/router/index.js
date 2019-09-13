@@ -57,7 +57,8 @@ function isInDevelopEnv(to, from, next) {
   }
 }
 
-function routingAuthentication(to, from, next) {
+function routingAuthentication (to, from, next) {
+
   try {
     const authToken = window.localStorage.getItem('id_token')
     AuthenticationService.routingAuthentication(authToken)
