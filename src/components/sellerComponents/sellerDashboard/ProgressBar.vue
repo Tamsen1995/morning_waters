@@ -22,7 +22,7 @@
         </div>
       </div>
       <md-tooltip md-direction="right" md-active>
-        <md-card style="background-color: #efedf5; color: #29105b;">
+        <md-card style="background-color: white; color: purple;">
           <md-card-content>
             <h3>To do:</h3>
             <hr />Add service listing

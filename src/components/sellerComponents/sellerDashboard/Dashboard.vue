@@ -56,20 +56,26 @@
 
                     <md-card-content>
                       <div class="card-reservation">
-                        <span
-                          class="pull-right"
-                          style="color:#1faa00;font-size: 18px;"
-                        >Price: $ {{service.servicePrice}}.00 /{{ service.unitType }}</span>
-
-                        <span style="color: #5f5a6d">
-                          <md-icon>access_time</md-icon>
-                          Turnaround time : {{ service.turnAroundTime }} {{ service.timeUnit }}
-                        </span>
-                        <br />
-                        <!-- <span style="color: #5f5a6d">
-                          <md-icon>scatter_plot</md-icon>
-                          Unit type: {{ service.unitType }}
-                        </span>-->
+                        <div class="row">
+                          <div class="col-6" >
+                            <span id="time">
+                              <md-icon>access_time</md-icon>
+                              Turnaround time : {{ service.turnAroundTime }} {{ service.timeUnit }}
+                            </span>
+                            <span id="negTime">
+                              Negotiable
+                              {{ service.serviceNegTime }}
+                            </span>
+                          </div>
+                          <div class="col-6" style="text-align:right;">
+                            <span id="price"
+                            >Price: $ {{service.servicePrice}} .00 per {{ service.unitType }}</span>
+                            <span id="negPrice">
+                              Negotiable
+                              {{ service.serviceNegPrice }}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </md-card-content>
                   </md-card-header>
@@ -97,7 +103,7 @@
                       <md-card-header>
                         <div class="md-title" style="font: 20px Roboto;">{{ subService.title }}</div>
 
-                        <span
+                        <!-- <span
                           style="color:#009624;font-size: 18px;"
                           class="pull-right"
                         >Price: $ {{subService.servicePrice}} .00 /{{ subService.unitType }}</span>
@@ -105,7 +111,27 @@
                           <md-icon>access_time</md-icon>
                           Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
                         </span>
-                        <br />
+                        <br /> -->
+                        <div class="row">
+                          <div class="col-6" >
+                            <span id="subTime">
+                              <md-icon>access_time</md-icon>
+                              Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
+                            </span>
+                            <span id="subNegTime">
+                              Negotiable
+                              {{ subService.serviceNegTime }}
+                            </span>
+                          </div>
+                          <div class="col-6" style="text-align:right;">
+                            <span id="subPrice"
+                            >Price: $ {{subService.servicePrice}} .00 per {{ subService.unitType }}</span>
+                            <span id="subNegPrice">
+                              Negotiable
+                              {{ subService.serviceNegPrice }}
+                            </span>
+                          </div>
+                        </div>
                       </md-card-header>
                       <md-card-content
                         class="md-scrollbar"
@@ -126,8 +152,8 @@
                 </div>
 
                 <md-card-actions>
-                  <md-button @click="editService(service)" class="md-raised" :md-ripple="false">Edit</md-button>
-                  <md-button @click="deleteService(service)" class="md-raised md-accent">Delete</md-button>
+                  <md-button @click="editService(service)"  :md-ripple="false">Edit</md-button>
+                  <md-button @click="deleteService(service)" class=" md-accent">Delete</md-button>
                 </md-card-actions>
               </div>
             </div>
@@ -221,8 +247,8 @@
               <!-- Price Negotiable? -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
-                  <input type="checkbox" v-model="negPrice" class="form-check-input" id="negPrice" />
-                  <label class="form-check-label" style="padding-left:15px;" for="negPrice">
+                  <input type="checkbox" v-model="serviceNegPrice" class="form-check-input" id="negPrice" />
+                  <label class="form-check-label" value="Negotiable" style="padding-left:15px;" for="serviceNegPrice">
                     <h5>Price Negotiable</h5>
                   </label>
                 </div>
@@ -260,8 +286,8 @@
               <!-- Turn Around Time Negotiable? -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
-                  <input type="checkbox" v-model="negTime" class="form-check-input" id="negTime" />
-                  <label class="form-check-label" style="padding-left:15px;" for="negTime">
+                  <input type="checkbox" v-model="serviceNegTime" class="form-check-input" id="negTime" />
+                  <label class="form-check-label" svalue="Negotiable" tyle="padding-left:15px;" for="serviceNegTime">
                     <h5>Turn Around Time Negotiable</h5>
                   </label>
                 </div>
