@@ -207,14 +207,13 @@ body.dashboard {
 }
 
 
-.dashboard .pricing_block h5{
-  font: 20px "Roboto";
+.pricing_block h5{
+  font: 16px "Roboto";
   color: rgb(100, 100, 100);
 } 
 
-
-.dashboard .sub_pricing_block h5{
-  font: 20px "Roboto";
+.sub_pricing_block h5{
+  font: 16px "Roboto";
   color: rgb(100, 100, 100);
 } 
 
