@@ -47,8 +47,6 @@
 
                           <small class="pull-right">{{ order.createdAt }}</small>
                           <br />
-                          <br />
-                          <br />
                         </h4>
                         <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                         <!-- <p>Estimated Revenue: $ {{totalPrice}}</p> -->
