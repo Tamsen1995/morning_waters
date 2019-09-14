@@ -279,6 +279,43 @@ body.public-profile {
   padding-top:10px;
 }
 
+.public-profile #time {
+  color:blue;
+  font-size: 18px;
+  padding:2px;
+}
+
+.public-profile #negTime {
+  color: blue;
+  background-color: rgb(239, 239, 253);
+  border: blue 2px solid; 
+  border-radius: 5px;
+  padding:3px;
+}
+.public-profile #price-container {
+  width: 200px;
+  min-width:200px;         
+  width: auto !important;
+  text-align:right;
+}
+.public-profile #btn-container {
+  text-align: right;
+  margin-bottom: 3px;
+}
+.public-profile #price {
+  color:#3f9e00;
+  font-size: 18px;
+  padding:2px;
+}
+
+.public-profile #negPrice {
+  color: #3f9e00;
+  background-color: #eeffe2;
+  border: #3f9e00 3px solid; 
+  border-radius: 5px;
+  padding:2px;
+  margin-bottom:2px;
+}
 #service-form-block {
   color:#4527a0 #44ceab;
   border: 5px #4527a0 solid;

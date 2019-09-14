@@ -72,3 +72,12 @@
   border: 5px #301a70 solid;
   padding: 30px;
 }
+#publicProfile-link {
+  color: purple;
+  font: 16px "Roboto";
+}
+
+#publicProfile-link:hover, #publicProfile-link:focus {
+  color: rgb(102, 0, 102);
+  font: 16px "Roboto";
+}

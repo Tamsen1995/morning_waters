@@ -33,6 +33,16 @@ body.dashboard {
   border-radius: 5px;
 }
 
+#publicProfile-link {
+  color: purple;
+  font: 16px "Roboto";
+}
+
+#publicProfile-link:hover, #publicProfile-link:focus {
+  color: rgb(102, 0, 102);
+  font: 16px "Roboto";
+}
+
 .dashboard #about {
   background-color: white;
   border-width: .5px;
@@ -268,6 +278,7 @@ body.dashboard {
   color:#3f9e00;
   font-size: 18px;
   padding:3px;
+  text-align:right;
 }
 
 .dashboard #negPrice {
@@ -276,6 +287,7 @@ body.dashboard {
   border: #3f9e00 3px solid; 
   border-radius: 5px;
   padding:3px;
+  text-align:right;
 }
 .dashboard #subTime {
   color:blue;

@@ -21,6 +21,7 @@
             v-on:dashboard-add-services="addService()"
             v-on:update-about-section="updateAboutSection()"
           ></progress-bar>
+
         </div>
 
         <!-- Stats Cards -->
@@ -69,7 +70,7 @@
                           </div>
                           <div class="col-6" style="text-align:right;">
                             <span id="price"
-                            >Price: $ {{service.servicePrice}} .00 per {{ service.unitType }}</span>
+                            > ${{service.servicePrice}} per {{ service.unitType }}</span>
                             <span id="negPrice">
                               Negotiable
                               {{ service.serviceNegPrice }}
@@ -125,7 +126,7 @@
                           </div>
                           <div class="col-6" style="text-align:right;">
                             <span id="subPrice"
-                            >Price: $ {{subService.servicePrice}} .00 per {{ subService.unitType }}</span>
+                            >${{subService.servicePrice}} per {{ subService.unitType }}</span>
                             <span id="subNegPrice">
                               Negotiable
                               {{ subService.serviceNegPrice }}
@@ -163,6 +164,9 @@
 
           <!-- Add Service Button -->
           <br />
+          <a id="publicProfile-link" style="text-align:left;">
+            Preview your profile
+          </a>
           <md-button
             class="md-raised pull-right"
             :md-ripple="false"
