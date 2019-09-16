@@ -25,8 +25,8 @@ export default {
       user: null,
       timeUnit: '',
       unit: '',
-      serviceNegPrice: '',
-      serviceNegTime: '',
+      serviceNegPrice: false,
+      serviceNegTime: false,
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
@@ -226,12 +226,15 @@ export default {
         // get the service table id from the user
         const userExtracted = this.$store.getters.getUserInfo
         const serviceTableId = userExtracted.serviceTableId
+
         const service = {
           userId: userExtracted.id,
           tableId: serviceTableId,
           title: this.serviceTitle,
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
+          serviceNegPrice: this.serviceNegPrice,
+          serviceNegTime: this.serviceNegTime,
           turnAroundTime: `${this.turnAroundTime} ${this.turnAroundTimeType}`,
           timeUnit: this.timeUnit,
           unitType: this.unitType,
