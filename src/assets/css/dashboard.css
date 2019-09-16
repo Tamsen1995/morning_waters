@@ -251,8 +251,60 @@ body.dashboard {
   font: 18px "Roboto";
   text-align: center;
 }
+.dashboard #time {
+  color:blue;
+  font-size: 18px;
+  padding:3px;
+}
 
+.dashboard #negTime {
+  color: blue;
+  background-color: rgb(239, 239, 253);
+  border: blue 3px solid; 
+  border-radius: 5px;
+  padding:3px;
+}
+.dashboard #price {
+  color:#3f9e00;
+  font-size: 18px;
+  padding:3px;
+}
 
+.dashboard #negPrice {
+  color: #3f9e00;
+  background-color: #eeffe2;
+  border: #3f9e00 3px solid; 
+  border-radius: 5px;
+  padding:3px;
+}
+.dashboard #subTime {
+  color:blue;
+  font-size: 17px;
+  padding:3px;
+}
+
+.dashboard #subNegTime {
+  color: blue;
+  background-color: rgb(239, 239, 253);
+  border: blue 3px solid; 
+  border-radius: 5px;
+  padding:3px;
+  font-size: 14px;
+}
+.dashboard #subPrice {
+  color:#3f9e00;
+  font-size: 17px;
+  padding:3px;
+}
+
+.dashboard #subNegPrice {
+  color: #3f9e00;
+  background-color: #eeffe2;
+  border: #3f9e00 3px solid; 
+  border-radius: 5px;
+  padding:3px;
+  font-size: 14px;
+}
 
 #dashboard #service-desc h5 {
   font: 15px "Roboto";
