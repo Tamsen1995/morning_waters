@@ -46,7 +46,7 @@
   background: linear-gradient(90deg, rgb(104, 170, 255) 50%, rgb(155, 19, 209) 100%);
 } */
 .progress_fill{
-  background-image: linear-gradient(to right, #9ee4ff 0%,#dc73ff  51%, #9ed7ff 100%);
+  background-image: linear-gradient(to right, rgb(180, 28, 147) 0%, blue 51%, rgb(196, 41, 162) 100%);
   transition: 0.5s;
   background-size: 200% auto;
 }
@@ -71,4 +71,13 @@
   color:#301a70;
   border: 5px #301a70 solid;
   padding: 30px;
+}
+#publicProfile-link {
+  color: purple;
+  font: 16px "Roboto";
+}
+
+#publicProfile-link:hover, #publicProfile-link:focus {
+  color: rgb(102, 0, 102);
+  font: 16px "Roboto";
 }

@@ -1,13 +1,22 @@
 <template>
   <div>
     <div class="container" id="name-location">
-      <div class="d-flex justify-content-center" id="company-name">
-        <h1 style="text-align:center:">{{ this.companyName }}</h1>
-      </div>
-      <div class="d-flex justify-content-center" id="company-location">
-        <h4
-          style="text-align:center:"
-        >{{ this.companyLocation.city }}, {{ this.companyLocation.country }}</h4>
+      
+        <div class="d-flex justify-content-center" id="company-name">
+          <h1 style="text-align:center:">{{ this.companyName }}</h1>
+        </div>
+     
+      <div class="row">
+        <div class="col">
+          <div class="pull-right" id="company-location">
+            <h4>{{ this.companyLocation.city }}, {{ this.companyLocation.country }}</h4>
+          </div>
+        </div>
+        <div class="col">
+          <a id="publicProfile-link" style="text-align:left;">
+            Preview your profile
+          </a>
+        </div>
       </div>
       <div class="d-flex justify-content-center" id="company-logo">
         <div id="logo-border">

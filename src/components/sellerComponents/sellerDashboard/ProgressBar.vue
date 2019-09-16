@@ -22,7 +22,7 @@
         </div>
       </div>
       <md-tooltip md-direction="right" md-active>
-        <md-card style="background-color: #efedf5; color: #29105b;">
+        <md-card style="background-color: white; color: purple;">
           <md-card-content>
             <h3>To do:</h3>
             <hr />Add service listing
@@ -42,6 +42,9 @@
         <b-progress-bar class="progress_fill" :value="percentage"></b-progress-bar>
       </b-progress>
       {{this.percentage}} %
+      <a class="pull-right" id="publicProfile-link" style="text-align:right;">
+        Preview your profile
+      </a>
       <!-- Prompt to commence onboarding-->
       <modal height="auto" name="onboarding-add-services">
         <div class="container" id="progress_modal">
