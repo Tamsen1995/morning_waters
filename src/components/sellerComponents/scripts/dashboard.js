@@ -190,6 +190,8 @@ export default {
           serviceTitle: '',
           serviceDescription: '',
           servicePrice: 0.0,
+          serviceNegPrice: false,
+          serviceNegTime: false,
           turnAroundTime: '',
           timeUnit: '',
           unitType: '',

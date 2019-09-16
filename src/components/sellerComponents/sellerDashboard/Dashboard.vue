@@ -427,7 +427,7 @@
                   <div class="form-group form-check" style="padding-top:15px;">
                     <input
                       type="checkbox"
-                      v-model="subServicesToBeAdded[index].negPrice"
+                      v-model="subServicesToBeAdded[index].serviceNegPrice"
                       class="form-check-input"
                       id="negPrice"
                     />
@@ -479,7 +479,7 @@
                   <div class="form-group form-check" style="padding-top:15px;">
                     <input
                       type="checkbox"
-                      v-model="subServicesToBeAdded[index].negTime"
+                      v-model="subServicesToBeAdded[index].serviceNegTime"
                       class="form-check-input"
                       id="negTime"
                     />
