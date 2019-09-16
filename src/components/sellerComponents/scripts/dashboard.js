@@ -101,6 +101,8 @@ export default {
         this.serviceTitle = service.title
         this.serviceDescription = service.description
         this.servicePrice = service.servicePrice
+        this.serviceNegPrice = service.serviceNegPrice
+        this.serviceNegTime = service.serviceNegTime
         this.turnAroundTime = service.turnAroundTime
         this.timeUnit = service.timeUnit
         this.unitType = service.unitType
@@ -128,6 +130,8 @@ export default {
               serviceTitle: this.services[i].title,
               serviceDescription: this.services[i].description,
               servicePrice: this.services[i].servicePrice,
+              serviceNegPrice: this.services[i].serviceNegPrice,
+              serviceNegTime: this.services[i].serviceNegTime,
               turnAroundTime: this.services[i].turnAroundTime,
               timeUnit: this.services[i].timeUnit,
               unitType: this.services[i].unitType,
@@ -149,6 +153,8 @@ export default {
         this.serviceEdited.title = this.serviceTitle
         this.serviceEdited.description = this.serviceDescription
         this.serviceEdited.servicePrice = this.servicePrice
+        this.serviceEdited.serviceNegPrice = this.serviceNegPrice
+        this.serviceEdited.serviceNegTime = this.serviceNegTime
         this.serviceEdited.turnAroundTime = this.turnAroundTime
         this.serviceEdited.timeUnit = this.timeUnit
         this.serviceEdited.unitType = this.unitType
