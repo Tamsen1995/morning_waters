@@ -118,20 +118,20 @@
                               <md-icon>access_time</md-icon>
                               Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
                             </span>
-                            <span id="subNegTime">
-                              Negotiable
-                              <!-- {{ subService.serviceNegTime }} -->
-                            </span>
+                            <span
+                              id="subNegTime"
+                              v-if="subService && subService.serviceNegTime === true"
+                            >Negotiable</span>
                           </div>
                           <div class="col-6" style="text-align:right;">
                             <span
                               id="subPrice"
                             >${{subService.servicePrice}} per {{ subService.unitType }}</span>
 
-                            <span id="subNegPrice">
-                              Negotiable
-                              <!-- {{ subService.serviceNegPrice }} -->
-                            </span>
+                            <span
+                              id="subNegPrice"
+                              v-if="subService && subService.serviceNegPrice === true"
+                            >Negotiable</span>
                           </div>
                         </div>
                       </md-card-header>
