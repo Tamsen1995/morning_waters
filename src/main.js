@@ -26,12 +26,12 @@ Vue.use(VueMaterial)
 Api().defaults.headers.common[
   'Authorization'
 ] = AuthenticationService.getAuthHeader()
-console.log(`\nLaunching vuejs app\n`) // TESTING
+
 AuthenticationService.checkAuth()
-console.log('Reloading app')
+
 Vue.use(BootstrapVue)
 Vue.use(VueResource)
-Vue.use(VModal) //
+Vue.use(VModal)
 
 sync(store, router)
 
@@ -40,6 +40,7 @@ Vue.config.productionTip = false
 if (window.location.protocol !== 'https:' && process.env.NODE_ENV === 'production') window.location.href = 'https://www.fig-analytics.com/'
 
 /* eslint-disable no-new */
+//
 
 new Vue({
   el: '#app',

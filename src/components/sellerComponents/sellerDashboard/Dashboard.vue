@@ -58,22 +58,24 @@
                     <md-card-content>
                       <div class="card-reservation">
                         <div class="row">
-                          <div class="col-6" >
+                          <div class="col-6">
                             <span id="time">
                               <md-icon>access_time</md-icon>
                               Turnaround time : {{ service.turnAroundTime }} {{ service.timeUnit }}
                             </span>
                             <span id="negTime">
                               Negotiable
-                              {{ service.serviceNegTime }}
+                              <!-- {{ service.serviceNegTime }} -->
                             </span>
                           </div>
                           <div class="col-6" style="text-align:right;">
+
                             <span id="price"
                             > ${{service.servicePrice}} per {{ service.unitType }}</span>
+
                             <span id="negPrice">
                               Negotiable
-                              {{ service.serviceNegPrice }}
+                              <!-- {{ service.serviceNegPrice }} -->
                             </span>
                           </div>
                         </div>
@@ -112,24 +114,26 @@
                           <md-icon>access_time</md-icon>
                           Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
                         </span>
-                        <br /> -->
+                        <br />-->
                         <div class="row">
-                          <div class="col-6" >
+                          <div class="col-6">
                             <span id="subTime">
                               <md-icon>access_time</md-icon>
                               Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
                             </span>
                             <span id="subNegTime">
                               Negotiable
-                              {{ subService.serviceNegTime }}
+                              <!-- {{ subService.serviceNegTime }} -->
                             </span>
                           </div>
                           <div class="col-6" style="text-align:right;">
+
                             <span id="subPrice"
                             >${{subService.servicePrice}} per {{ subService.unitType }}</span>
+
                             <span id="subNegPrice">
                               Negotiable
-                              {{ subService.serviceNegPrice }}
+                              <!-- {{ subService.serviceNegPrice }} -->
                             </span>
                           </div>
                         </div>
@@ -153,8 +157,8 @@
                 </div>
 
                 <md-card-actions>
-                  <md-button @click="editService(service)"  :md-ripple="false">Edit</md-button>
-                  <md-button @click="deleteService(service)" class=" md-accent">Delete</md-button>
+                  <md-button @click="editService(service)" :md-ripple="false">Edit</md-button>
+                  <md-button @click="deleteService(service)" class="md-accent">Delete</md-button>
                 </md-card-actions>
               </div>
             </div>
@@ -233,7 +237,12 @@
                   <label>
                     <h5>Unit:</h5>
                   </label>
-                  <input type="text" v-model="unitType" id="turnAroundTimeSelect" placeholder="ex: sample"/>
+                  <input
+                    type="text"
+                    v-model="unitType"
+                    id="turnAroundTimeSelect"
+                    placeholder="ex: sample"
+                  />
                 </div>
               </div>
               <!-- Price -->
@@ -243,7 +252,12 @@
                   <label>
                     <h5>Price Per Unit:</h5>
                   </label>
-                  <input type="text" v-model="servicePrice" style="border-bottom: 1px inset" placeholder="$ USD"/>
+                  <input
+                    type="text"
+                    v-model="servicePrice"
+                    style="border-bottom: 1px inset"
+                    placeholder="$ USD"
+                  />
                   <!-- <small id="emailHelp" class="form-text text-muted">USD</small> -->
                 </div>
               </div>
@@ -251,14 +265,24 @@
               <!-- Price Negotiable? -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
-                  <input type="checkbox" v-model="serviceNegPrice" class="form-check-input" id="negPrice" />
-                  <label class="form-check-label" value="Negotiable" style="padding-left:15px;" for="serviceNegPrice">
+                  <input
+                    type="checkbox"
+                    v-model="serviceNegPrice"
+                    class="form-check-input"
+                    id="negPrice"
+                  />
+                  <label
+                    class="form-check-label"
+                    value="Negotiable"
+                    style="padding-left:15px;"
+                    for="serviceNegPrice"
+                  >
                     <h5>Price Negotiable</h5>
                   </label>
                 </div>
               </div>
             </div>
-            <br>
+            <br />
 
             <div class="row" id="form-row-border">
               <!-- Turn Around Time -->
@@ -290,8 +314,18 @@
               <!-- Turn Around Time Negotiable? -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
-                  <input type="checkbox" v-model="serviceNegTime" class="form-check-input" id="negTime" />
-                  <label class="form-check-label" svalue="Negotiable" tyle="padding-left:15px;" for="serviceNegTime">
+                  <input
+                    type="checkbox"
+                    v-model="serviceNegTime"
+                    class="form-check-input"
+                    id="negTime"
+                  />
+                  <label
+                    class="form-check-label"
+                    svalue="Negotiable"
+                    tyle="padding-left:15px;"
+                    for="serviceNegTime"
+                  >
                     <h5>Turn Around Time Negotiable</h5>
                   </label>
                 </div>
@@ -368,7 +402,12 @@
                     <label>
                       <h5>Unit:</h5>
                     </label>
-                    <input type="text" v-model="subServicesToBeAdded[index].unitType" id="turnAroundTimeSelect" placeholder="ex: sample"/>
+                    <input
+                      type="text"
+                      v-model="subServicesToBeAdded[index].unitType"
+                      id="turnAroundTimeSelect"
+                      placeholder="ex: sample"
+                    />
                   </div>
                 </div>
                 <!-- Price -->
@@ -378,7 +417,12 @@
                     <label>
                       <h5>Price Per Unit:</h5>
                     </label>
-                    <input type="text" v-model="subServicesToBeAdded[index].servicePrice" style="border-bottom: 1px inset" placeholder="$ USD"/>
+                    <input
+                      type="text"
+                      v-model="subServicesToBeAdded[index].servicePrice"
+                      style="border-bottom: 1px inset"
+                      placeholder="$ USD"
+                    />
                     <!-- <small id="emailHelp" class="form-text text-muted">USD</small> -->
                   </div>
                 </div>
@@ -398,7 +442,7 @@
                   </div>
                 </div>
               </div>
-              <br>
+              <br />
 
               <div class="row" id="form-row-border">
                 <!-- Turn Around Time -->
