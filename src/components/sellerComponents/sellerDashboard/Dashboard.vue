@@ -62,18 +62,18 @@
                               <md-icon>access_time</md-icon>
                               Turnaround time : {{ service.turnAroundTime }} {{ service.timeUnit }}
                             </span>
-                            <span id="negTime">
-                              Negotiable
-                              <!-- {{ service.serviceNegTime }} -->
-                            </span>
+                            <span
+                              id="negTime"
+                              v-if="service && service.serviceNegTime === true"
+                            >Negotiable</span>
                           </div>
                           <div class="col-6" style="text-align:right;">
                             <span id="price">${{service.servicePrice}} per {{ service.unitType }}</span>
 
-                            <span id="negPrice">
-                              Negotiable
-                              <!-- {{ service.serviceNegPrice }} -->
-                            </span>
+                            <span
+                              id="negPrice"
+                              v-if="service && service.serviceNegPrice === true"
+                            >Negotiable</span>
                           </div>
                         </div>
                       </div>
