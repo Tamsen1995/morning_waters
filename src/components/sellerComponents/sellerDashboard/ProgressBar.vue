@@ -42,6 +42,9 @@
         <b-progress-bar class="progress_fill" :value="percentage"></b-progress-bar>
       </b-progress>
       {{this.percentage}} %
+      <a class="pull-right" id="publicProfile-link" style="text-align:right;">
+        Preview your profile
+      </a>
       <!-- Prompt to commence onboarding-->
       <modal height="auto" name="onboarding-add-services">
         <div class="container" id="progress_modal">
