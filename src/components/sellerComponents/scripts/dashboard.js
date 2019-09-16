@@ -263,6 +263,8 @@ export default {
           this.turnAroundTime = ''
           this.tags = []
           this.subServicesToBeAdded = []
+          this.serviceNegTime = false
+          this.serviceNegPrice = false
 
           // re-evaluateo onboarding status
           var child = this.$refs.progressBar
