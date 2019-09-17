@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-6 message-sideright">
+  <div class="message-sideright">
     <div v-if="this.order">
       <div class="message-header-a">
         <h3 v-if="buyer">{{buyer.firstName}} {{ buyer.lastName }}</h3>
