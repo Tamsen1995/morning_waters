@@ -4,7 +4,7 @@
       <div class="message-header-a">
         <h3 v-if="buyer">{{buyer.firstName}} {{ buyer.lastName }}</h3>
         <div class="message-header-b">
-          <h4>{{buyer.companyName}}</h4>
+          <h4 v-if="buyer">{{buyer.companyName}}</h4>
         </div>
       </div>
 
