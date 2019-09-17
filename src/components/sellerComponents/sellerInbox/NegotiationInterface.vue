@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <md-card md-with-hover>
+  <div class="card-expansion invoice-generator">
+    <md-card md-with-hover style="background-color:#6545c5;">
       <!-- <md-ripple> -->
-      <md-card-header style="background-color:#301a70; color:white;">
+      <md-card-header style="background-color:#6545c5; color:white;">
         <div class="md-title" style="font-size:20px;">
           <i class="fas fa-file-invoice" style="font-size:25px;"></i>
           Custom Quote Generator
