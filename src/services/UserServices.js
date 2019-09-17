@@ -83,10 +83,10 @@ export default {
       }
     })
   },
-  getPublicProfileInfo (uid) {
+  getPublicProfileInfo (userId) {
     return Api().get('publicProfileInfo', {
       params: {
-        userId: uid
+        userId: userId
       }
     })
   },

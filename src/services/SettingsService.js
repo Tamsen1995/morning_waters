@@ -7,10 +7,10 @@ export default {
   addPaymentMethod (sourceToBeAdded) {
     return Api().post('addPaymentMethod', sourceToBeAdded)
   },
-  updateProfile (uid, newProfileInfo) {
+  updateProfile (userId, newProfileInfo) {
     return Api().get('updateProfile', {
       params: {
-        userId: uid,
+        userId: userId,
         newProfileInfo: newProfileInfo
       }
     })
