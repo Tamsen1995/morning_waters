@@ -186,7 +186,7 @@
 
   <!-- Modal component to add a service with -->
 
-  <modal name="add-service" height="auto" scrollable :clickToClose="true" id="add-services">
+  <modal name="add-service" height="auto" scrollable :clickToClose="false" id="add-services">
     <md-button
       class="pull-right"
       style="border-width:1px; border-color: #2d133a; color: #2d133a; border-style: ridge;"
