@@ -27,7 +27,8 @@ export default {
       expanded: false,
 
       // error message var
-      error: ''
+      error: '',
+      preview: false
     }
   },
   components: {
@@ -42,11 +43,16 @@ export default {
   },
   async created () {
     this.userId = this.$route.params.id
+    this.preview = this.$route.params.preview
+    if (this.preview === true) {
+      // nothing
+    } else {
+      this.countPageViews()
+    }
     await this.getUserData()
   },
   async mounted () {
-    // count page views
-    this.countPageViews()
+
   },
   methods: {
     subServicesPresent (service) {
@@ -60,9 +66,9 @@ export default {
     },
     async countPageViews () {
       try {
-        await UserServices.countPageViews(this.userId)
+        UserServices.countPageViews(this.userId)
       } catch (error) {
-        if (error) throw error
+        console.log(`\nDid not count page view\n`) // TESTING
       }
     },
 
@@ -80,7 +86,8 @@ export default {
         this.companyName = userInfo.user.companyName
         this.about = userInfo.user.about
         this.companyLocation = JSON.parse(userInfo.user.address)
-        this.$store.dispatch('setUser', userInfo)
+
+        this.$store.dispatch('setUser', userInfo.user)
       } catch (error) {
         if (error) throw error
       }

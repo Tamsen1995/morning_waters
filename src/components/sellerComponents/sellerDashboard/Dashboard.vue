@@ -21,7 +21,6 @@
             v-on:dashboard-add-services="addService()"
             v-on:update-about-section="updateAboutSection()"
           ></progress-bar>
-
         </div>
 
         <!-- Stats Cards -->
@@ -63,20 +62,18 @@
                               <md-icon>access_time</md-icon>
                               Turnaround time : {{ service.turnAroundTime }} {{ service.timeUnit }}
                             </span>
-                            <span id="negTime">
-                              Negotiable
-                              <!-- {{ service.serviceNegTime }} -->
-                            </span>
+                            <span
+                              id="negTime"
+                              v-if="service && service.serviceNegTime === true"
+                            >Negotiable</span>
                           </div>
                           <div class="col-6" style="text-align:right;">
+                            <span id="price">${{service.servicePrice}} per {{ service.unitType }}</span>
 
-                            <span id="price"
-                            > ${{service.servicePrice}} per {{ service.unitType }}</span>
-
-                            <span id="negPrice">
-                              Negotiable
-                              <!-- {{ service.serviceNegPrice }} -->
-                            </span>
+                            <span
+                              id="negPrice"
+                              v-if="service && service.serviceNegPrice === true"
+                            >Negotiable</span>
                           </div>
                         </div>
                       </div>
@@ -121,20 +118,20 @@
                               <md-icon>access_time</md-icon>
                               Turnaround time : {{ subService.turnAroundTime }} {{ subService.timeUnit }}
                             </span>
-                            <span id="subNegTime">
-                              Negotiable
-                              <!-- {{ subService.serviceNegTime }} -->
-                            </span>
+                            <span
+                              id="subNegTime"
+                              v-if="subService && subService.serviceNegTime === true"
+                            >Negotiable</span>
                           </div>
                           <div class="col-6" style="text-align:right;">
-
-                            <span id="subPrice"
+                            <span
+                              id="subPrice"
                             >${{subService.servicePrice}} per {{ subService.unitType }}</span>
 
-                            <span id="subNegPrice">
-                              Negotiable
-                              <!-- {{ subService.serviceNegPrice }} -->
-                            </span>
+                            <span
+                              id="subNegPrice"
+                              v-if="subService && subService.serviceNegPrice === true"
+                            >Negotiable</span>
                           </div>
                         </div>
                       </md-card-header>
@@ -168,9 +165,7 @@
 
           <!-- Add Service Button -->
           <br />
-          <a id="publicProfile-link" style="text-align:left;">
-            Preview your profile
-          </a>
+
           <md-button
             class="md-raised pull-right"
             :md-ripple="false"
@@ -180,6 +175,13 @@
             <i class="fas fa-atom" style="color: white;"></i>
             Add Service
           </md-button>
+          <!-- TO DO: Add link to public profile -->
+          <md-button
+            id="publicProfile-link"
+            class="pull-right"
+            :md-ripple="false"
+            @click="previewPublicProfile()"
+          >Preview profile</md-button>
 
           <br />
           <br />
@@ -191,7 +193,12 @@
 
   <!-- Modal component to add a service with -->
 
-  <modal name="add-service" height="auto" scrollable :clickToClose="true" id="add-services">
+  <modal name="add-service" height="auto" scrollable :clickToClose="false" id="add-services">
+    <md-button
+      class="pull-right"
+      style="border-width:1px; border-color: #2d133a; color: #2d133a; border-style: ridge;"
+      @click="cleanServiceInput()"
+    >X</md-button>
     <div class="container" id="service-form-block">
       <div class="md-title">
         <h2>
@@ -432,7 +439,7 @@
                   <div class="form-group form-check" style="padding-top:15px;">
                     <input
                       type="checkbox"
-                      v-model="subServicesToBeAdded[index].negPrice"
+                      v-model="subServicesToBeAdded[index].serviceNegPrice"
                       class="form-check-input"
                       id="negPrice"
                     />
@@ -484,7 +491,7 @@
                   <div class="form-group form-check" style="padding-top:15px;">
                     <input
                       type="checkbox"
-                      v-model="subServicesToBeAdded[index].negTime"
+                      v-model="subServicesToBeAdded[index].serviceNegTime"
                       class="form-check-input"
                       id="negTime"
                     />

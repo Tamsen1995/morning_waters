@@ -9,7 +9,6 @@ var $ = require('jQuery')
 
 export default {
   name: 'Dashboard',
-  name: 'MultipleSelect',
   data () {
     return {
       error: null,
@@ -25,8 +24,8 @@ export default {
       user: null,
       timeUnit: '',
       unit: '',
-      serviceNegPrice: '',
-      serviceNegTime: '',
+      serviceNegPrice: false,
+      serviceNegTime: false,
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
@@ -55,6 +54,39 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async previewPublicProfile () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+
+        this.$router.push({
+          name: 'publicProfile',
+          params: {
+            id: userExtracted.id,
+            preview: true
+          }
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    cleanServiceInput () {
+      this.$modal.hide('add-service')
+
+      this.serviceTitle = ''
+      this.serviceDescription = ''
+      this.servicePrice = 0.0
+      this.turnAroundTime = ''
+      this.unitType = ''
+      this.price = ''
+      this.timeUnit = ''
+      this.unit = ''
+      this.serviceNegPrice = false
+      this.serviceNegTime = false
+      this.serviceBeingEdited = false
+      this.serviceEdited = null
+      this.tags = []
+      this.subServicesToBeAdded = []
+    },
     async updateAboutSection () {
       try {
         console.log(`listen !`) // TESTING
@@ -101,6 +133,8 @@ export default {
         this.serviceTitle = service.title
         this.serviceDescription = service.description
         this.servicePrice = service.servicePrice
+        this.serviceNegPrice = service.serviceNegPrice
+        this.serviceNegTime = service.serviceNegTime
         this.turnAroundTime = service.turnAroundTime
         this.timeUnit = service.timeUnit
         this.unitType = service.unitType
@@ -128,6 +162,8 @@ export default {
               serviceTitle: this.services[i].title,
               serviceDescription: this.services[i].description,
               servicePrice: this.services[i].servicePrice,
+              serviceNegPrice: this.services[i].serviceNegPrice,
+              serviceNegTime: this.services[i].serviceNegTime,
               turnAroundTime: this.services[i].turnAroundTime,
               timeUnit: this.services[i].timeUnit,
               unitType: this.services[i].unitType,
@@ -149,6 +185,8 @@ export default {
         this.serviceEdited.title = this.serviceTitle
         this.serviceEdited.description = this.serviceDescription
         this.serviceEdited.servicePrice = this.servicePrice
+        this.serviceEdited.serviceNegPrice = this.serviceNegPrice
+        this.serviceEdited.serviceNegTime = this.serviceNegTime
         this.serviceEdited.turnAroundTime = this.turnAroundTime
         this.serviceEdited.timeUnit = this.timeUnit
         this.serviceEdited.unitType = this.unitType
@@ -190,6 +228,8 @@ export default {
           serviceTitle: '',
           serviceDescription: '',
           servicePrice: 0.0,
+          serviceNegPrice: false,
+          serviceNegTime: false,
           turnAroundTime: '',
           timeUnit: '',
           unitType: '',
@@ -226,12 +266,15 @@ export default {
         // get the service table id from the user
         const userExtracted = this.$store.getters.getUserInfo
         const serviceTableId = userExtracted.serviceTableId
+
         const service = {
           userId: userExtracted.id,
           tableId: serviceTableId,
           title: this.serviceTitle,
           description: this.serviceDescription,
           servicePrice: this.servicePrice,
+          serviceNegPrice: this.serviceNegPrice,
+          serviceNegTime: this.serviceNegTime,
           turnAroundTime: `${this.turnAroundTime} ${this.turnAroundTimeType}`,
           timeUnit: this.timeUnit,
           unitType: this.unitType,
@@ -260,6 +303,8 @@ export default {
           this.turnAroundTime = ''
           this.tags = []
           this.subServicesToBeAdded = []
+          this.serviceNegTime = false
+          this.serviceNegPrice = false
 
           // re-evaluateo onboarding status
           var child = this.$refs.progressBar

@@ -12,16 +12,21 @@
             :md-ripple="false"
             @click="addServices()"
           >Improve your profile</md-button>
-
           <md-button
             v-else
             class="md-raised pull-right blinking"
             :md-ripple="false"
             @click="determineOnboardingStatus()"
           >Complete your profile</md-button>
+          <!-- TO DO: Add link to public profile -->
+          <md-button
+            id="publicProfile-link"
+            class="pull-right"
+            :md-ripple="false"
+          >Preview your profile</md-button>
         </div>
       </div>
-      <md-tooltip md-direction="right" md-active>
+      <md-tooltip md-active>
         <md-card style="background-color: white; color: purple;">
           <md-card-content>
             <h3>To do:</h3>
@@ -42,9 +47,6 @@
         <b-progress-bar class="progress_fill" :value="percentage"></b-progress-bar>
       </b-progress>
       {{this.percentage}} %
-      <a class="pull-right" id="publicProfile-link" style="text-align:right;">
-        Preview your profile
-      </a>
       <!-- Prompt to commence onboarding-->
       <modal height="auto" name="onboarding-add-services">
         <div class="container" id="progress_modal">

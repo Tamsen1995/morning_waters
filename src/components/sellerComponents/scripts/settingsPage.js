@@ -116,7 +116,7 @@ export default {
           about: this.about
         }
         const response = await SettingsService.updateProfile(
-          userExtracted.id,
+          userExtracted.user.id,
           newProfileInfo
         )
       } catch (error) {
@@ -127,6 +127,7 @@ export default {
     async retrieveProfileInfo () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
+        console.log(userExtracted.id) // TESTING
         const userInfo = await UserServices.getPublicProfileInfo(
           userExtracted.id
         )

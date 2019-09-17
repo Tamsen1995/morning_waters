@@ -31,7 +31,6 @@ export default {
     selectFile () {
       this.file = this.$refs.file.files[0]
     },
-
     async downloadFile (filename) {
       try {
         const fileKey = filename
