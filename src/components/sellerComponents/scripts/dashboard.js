@@ -56,23 +56,22 @@ export default {
   },
   methods: {
     cleanServiceInput () {
-      // serviceTitle: '',
-      //   serviceDescription: '',
-      //     servicePrice: 0.0,
-      //       turnAroundTime: '',
-      //         turnAroundTimeType: '',
-      //           unitType: '',
-      //             price: '',
-      //               user: null,
-      //                 timeUnit: '',
-      //                   unit: '',
-      //                     serviceNegPrice: false,
-      //                       serviceNegTime: false,
+      this.$modal.hide('add-service')
 
-      // subServicesToBeAdded: [],
-      //   tags: [],
-      //     serviceBeingEdited: false,
-      //       serviceEdited: null
+      this.serviceTitle = ''
+      this.serviceDescription = ''
+      this.servicePrice = 0.0
+      this.turnAroundTime = ''
+      this.unitType = ''
+      this.price = ''
+      this.timeUnit = ''
+      this.unit = ''
+      this.serviceNegPrice = false
+      this.serviceNegTime = false
+      this.serviceBeingEdited = false
+      this.serviceEdited = null
+      this.tags = []
+      this.subServicesToBeAdded = []
     },
     async updateAboutSection () {
       try {
