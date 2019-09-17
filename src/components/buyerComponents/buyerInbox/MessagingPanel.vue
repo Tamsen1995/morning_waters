@@ -98,19 +98,11 @@
             </div>
           </md-content>
         </md-card>
-        <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
-          <md-content>
-            <div class="view_msg">
-              <p class="lead">{{msg.message}}</p>
-            </div>
-          </md-content>
-        </md-card>
         <md-card v-else-if="msg && msg.sender === 'seller_submit'">
-          <md-content>
-            <div class="view_msg">
-              <p class="lead">{{msg.message}}</p>
-            </div>
-          </md-content>
+          <b-alert variant="success" show>{{seller.companyName}} has submitted the order ...</b-alert>
+        </md-card>
+        <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
+          <b-alert show>You have submitted the order ...</b-alert>
         </md-card>
       </div>
 
