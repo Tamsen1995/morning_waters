@@ -176,9 +176,12 @@
             Add Service
           </md-button>
           <!-- TO DO: Add link to public profile -->
-          <md-button id="publicProfile-link" class="pull-right" :md-ripple="false">
-            Preview profile 
-          </md-button>
+          <md-button
+            id="publicProfile-link"
+            class="pull-right"
+            :md-ripple="false"
+            @click="previewPublicProfile()"
+          >Preview profile</md-button>
 
           <br />
           <br />

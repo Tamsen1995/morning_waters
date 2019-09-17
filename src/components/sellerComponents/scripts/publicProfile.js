@@ -27,7 +27,8 @@ export default {
       expanded: false,
 
       // error message var
-      error: ''
+      error: '',
+      preview: false
     }
   },
   components: {
@@ -42,11 +43,16 @@ export default {
   },
   async created () {
     this.userId = this.$route.params.id
+    this.preview = this.$route.params.preview
+    if (this.preview === true) {
+      // nothing
+    } else {
+      this.countPageViews()
+    }
     await this.getUserData()
   },
   async mounted () {
-    // count page views
-    this.countPageViews()
+
   },
   methods: {
     subServicesPresent (service) {

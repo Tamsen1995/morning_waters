@@ -9,7 +9,6 @@ var $ = require('jQuery')
 
 export default {
   name: 'Dashboard',
-  name: 'MultipleSelect',
   data () {
     return {
       error: null,
@@ -55,6 +54,21 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async previewPublicProfile () {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo
+
+        this.$router.push({
+          name: 'publicProfile',
+          params: {
+            id: userExtracted.id,
+            preview: true
+          }
+        })
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     cleanServiceInput () {
       this.$modal.hide('add-service')
 
