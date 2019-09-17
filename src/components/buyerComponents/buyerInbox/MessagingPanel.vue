@@ -6,7 +6,7 @@
   >
     <div>
       <div class="message-header-a">
-        <h3 v-if="buyer !== null">{{buyer.name}}</h3>
+        <h3 v-if="buyer">{{buyer.name}}</h3>
         <div class="message-header-b">
           <h4>[Company Name]</h4>
         </div>
