@@ -26,7 +26,7 @@
           >Preview your profile</md-button>
         </div>
       </div>
-      <md-tooltip md-active md-direction="right">
+      <md-tooltip md-active>
         <md-card style="background-color: white; color: purple;">
           <md-card-content>
             <h3>To do:</h3>
