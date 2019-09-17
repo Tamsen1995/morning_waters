@@ -34,13 +34,12 @@ body.dashboard {
 }
 
 #publicProfile-link {
-  color: purple;
-  font: 16px "Roboto";
+  color: rgb(68, 0, 68);
 }
 
 #publicProfile-link:hover, #publicProfile-link:focus {
-  color: rgb(102, 0, 102);
-  font: 16px "Roboto";
+  color: purple;
+
 }
 
 .dashboard #about {
