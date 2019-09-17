@@ -80,7 +80,8 @@ export default {
         this.companyName = userInfo.user.companyName
         this.about = userInfo.user.about
         this.companyLocation = JSON.parse(userInfo.user.address)
-        this.$store.dispatch('setUser', userInfo)
+
+        this.$store.dispatch('setUser', userInfo.user)
       } catch (error) {
         if (error) throw error
       }

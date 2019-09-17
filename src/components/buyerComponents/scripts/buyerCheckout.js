@@ -130,7 +130,7 @@ export default {
         await BuyerServices.sendQuoteRequestsCart(purchaseInfo)
         await BuyerServices.createOrder({
           buyerId: buyerExtracted.id,
-          sellerId: sellerExtracted.user.id,
+          sellerId: sellerExtracted.id,
           orderId: this.orderId
         })
       } catch (error) {
@@ -161,7 +161,7 @@ export default {
           // payload for the shopping cart
           const purchaseInfoTwo = {
             uid: buyerId,
-            sellerId: sellerExtracted.user.id,
+            sellerId: sellerExtracted.id,
             stripeCustomerId: stripeCustomerId,
             stripeToken: token,
             shoppingCartItems: shoppingCartItems
@@ -173,7 +173,7 @@ export default {
           // this is linked to correspondences
           await BuyerServices.createOrder({
             buyerId: buyerId,
-            sellerId: sellerExtracted.user.id,
+            sellerId: sellerExtracted.id,
             orderId: this.orderId
           })
 
@@ -182,7 +182,7 @@ export default {
           // in the inboxes
           await InvoiceService.makeInboxInvoice({
             buyerId: buyerId,
-            sellerId: sellerExtracted.user.id,
+            sellerId: sellerExtracted.id,
             orderId: this.orderId
           })
 

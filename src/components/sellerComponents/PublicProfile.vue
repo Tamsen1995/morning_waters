@@ -68,7 +68,6 @@
                 <md-card-area md-inset>
                   <md-card-header>
                     <div v-if="subServicesPresent(service) === false">
-                      
                       <div class="row">
                         <div class="col-8">
                           <i class="fas fa-atom" id="service_logo"></i>
@@ -78,7 +77,7 @@
                           <div class="container" id="btn-container">
                             <md-button
                               @click="manifestModalForm(service)"
-                              class="md-raised md-primary "
+                              class="md-raised md-primary"
                               style="background-color: #8164d8; color: white;"
                             >Request Quote</md-button>
                             <md-button
@@ -89,7 +88,7 @@
                         </div>
                       </div>
                       <div class="row">
-                        <div class="col-6" >
+                        <div class="col-6">
                           <span id="time">
                             <md-icon>access_time</md-icon>
                             Turnaround time : {{ service.turnAroundTime }}
@@ -102,8 +101,9 @@
                         <div class="col-6">
                           <div class="container pull-right" id="price-container">
                             <div class="row">
-                              <span id="price"
-                                >${{service.servicePrice}}.00 per {{ service.unitType }}</span>
+                              <span
+                                id="price"
+                              >${{service.servicePrice}}.00 per {{ service.unitType }}</span>
                               <span id="negPrice">
                                 Negotiable
                                 {{ service.serviceNegPrice }}
@@ -114,8 +114,6 @@
                       </div>
                       <!-- </div> -->
                     </div>
-
-
                   </md-card-header>
 
                   <md-card-content
@@ -140,48 +138,49 @@
                   >
                     <md-card-area>
                       <md-card-header>
-                      <div class="row">
-                        <div class="col-7">
-                          <i class="fas fa-atom" id="service_logo"></i>
-                          <span class="md-title">{{ subService.title }}</span>
-                        </div>
-                        <div class="col-5">
-                          <div class="container" id="btn-container">
-                            <md-button
-                              @click="manifestModalForm(service)"
-                              class="md-raised md-primary "
-                              style="background-color: #8164d8; color: white;"
-                            >Request Quote</md-button>
-                            <md-button
-                              style="background-color: #51b828; color: white;"
-                              @click="manifestAddToCartModal(service, index)"
-                            >Add to Cart</md-button>
+                        <div class="row">
+                          <div class="col-7">
+                            <i class="fas fa-atom" id="service_logo"></i>
+                            <span class="md-title">{{ subService.title }}</span>
                           </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-6" >
-                          <span id="time">
-                            <md-icon>access_time</md-icon>
-                            Turnaround time : {{ subService.turnAroundTime }}
-                          </span>
-                          <span id="negTime">
-                            Negotiable
-                            {{ subService.serviceNegTime }}
-                          </span>
-                        </div>
-                        <div class="col-6">
-                          <div class="container pull-right" id="price-container">
-                            <div class="row">
-                              <span id="price"
-                                >${{subService.servicePrice}}.00 per {{ subService.unitType }}</span>
-                              <span id="negPrice">
-                                Negotiable
-                                {{ subService.serviceNegPrice }}
-                              </span>
+                          <div class="col-5">
+                            <div class="container" id="btn-container">
+                              <md-button
+                                @click="manifestModalForm(service)"
+                                class="md-raised md-primary"
+                                style="background-color: #8164d8; color: white;"
+                              >Request Quote</md-button>
+                              <md-button
+                                style="background-color: #51b828; color: white;"
+                                @click="manifestAddToCartModal(service, index)"
+                              >Add to Cart</md-button>
                             </div>
                           </div>
                         </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <span id="time">
+                              <md-icon>access_time</md-icon>
+                              Turnaround time : {{ subService.turnAroundTime }}
+                            </span>
+                            <span id="negTime">
+                              Negotiable
+                              {{ subService.serviceNegTime }}
+                            </span>
+                          </div>
+                          <div class="col-6">
+                            <div class="container pull-right" id="price-container">
+                              <div class="row">
+                                <span
+                                  id="price"
+                                >${{subService.servicePrice}}.00 per {{ subService.unitType }}</span>
+                                <span id="negPrice">
+                                  Negotiable
+                                  {{ subService.serviceNegPrice }}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
                           <!-- <div class="col-6">
                             <div class="pull-right">
                               <md-button
@@ -194,7 +193,7 @@
                                 @click="manifestAddToCartModal(service, index)"
                               >Add to Cart</md-button>
                             </div>
-                          </div> -->
+                          </div>-->
                         </div>
                       </md-card-header>
                       <md-card-content
