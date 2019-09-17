@@ -14,7 +14,7 @@
         <h3 class="card-title" style="color: rgb(138, 207, 0);">New Leads:</h3>
         <h3 class="card-text">{{ this.leads }}</h3>
         <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-        <button class="btn-block" id="btn-leads" @click="redirectToInbox()">View Leads</button>
+        <button class="btn-block" id="btn-leads" @click="redirectToInbox()">Inbox</button>
       </div>
     </div>
     <div class="card">
