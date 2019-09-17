@@ -60,9 +60,9 @@ export default {
     },
     async countPageViews () {
       try {
-        await UserServices.countPageViews(this.userId)
+        UserServices.countPageViews(this.userId)
       } catch (error) {
-        if (error) throw error
+        console.log(`\nDid not count page view\n`) // TESTING
       }
     },
 
