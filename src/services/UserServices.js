@@ -1,6 +1,7 @@
 import Api from '@/services/Api'
 
 export default {
+
   countPageViews (userId) {
     return Api().get('count_page_view', {
       params: {
