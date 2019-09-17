@@ -2,12 +2,12 @@
   <div>
     <md-card md-with-hover>
       <!-- <md-ripple> -->
-      <md-card-header style="background-color:#9474cc; color:white;">
+      <md-card-header style="background-color:#301a70; color:white;">
         <div class="md-title" style="font-size:20px;">
-          <i class="fas fa-file-invoice" style="font-size:40px;"></i>
-          Custom Invoice Generator
+          <i class="fas fa-file-invoice" style="font-size:25px;"></i>
+          Custom Quote Generator
         </div>
-        <div class="md-subhead">You can edit orders and send custom invoices here.</div>
+        <div class="md-subhead">You can edit orders and send custom quotes here.</div>
       </md-card-header>
 
       <md-card-expand>
