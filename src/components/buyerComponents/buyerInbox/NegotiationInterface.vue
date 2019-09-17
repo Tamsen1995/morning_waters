@@ -223,7 +223,7 @@ export default {
             // by userId we mean to say the id of the seller in the db
             userId: this.order.sellerId,
             date: "",
-            sender: "buyer",
+            sender: "buyer_submit",
             message: text
           };
         }
