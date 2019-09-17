@@ -89,10 +89,10 @@
           </md-content>
         </md-card>
         <md-card v-else-if="msg && msg.sender === 'seller_submit'">
-          <md-content>[]</md-content>
+          <b-alert variant="success" show>You have submitted the order ...</b-alert>
         </md-card>
         <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
-          <md-content>[]</md-content>
+          <b-alert show>{{buyer.firstName}} has submitted the order ...</b-alert>
         </md-card>
       </div>
 

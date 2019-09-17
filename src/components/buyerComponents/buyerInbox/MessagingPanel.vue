@@ -83,8 +83,11 @@
         </md-card>
         <!--  -->
 
-        <!-- else -->
-        <md-card v-else class="pull-right" id="response-text-bubble">
+        <md-card
+          v-else-if="msg && msg.sender === 'buyer'"
+          class="pull-right"
+          id="response-text-bubble"
+        >
           <md-content>
             <h4 class="media-heading pull-right">Date</h4>
             <md-icon>account_circle</md-icon>
@@ -95,7 +98,12 @@
             </div>
           </md-content>
         </md-card>
-        <!--  -->
+        <md-card v-else-if="msg && msg.sender === 'seller_submit'">
+          <b-alert variant="success" show>{{seller.companyName}} has submitted the order ...</b-alert>
+        </md-card>
+        <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
+          <b-alert show>You have submitted the order ...</b-alert>
+        </md-card>
       </div>
 
       <hr />
