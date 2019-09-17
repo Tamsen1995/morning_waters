@@ -165,7 +165,7 @@
 
           <!-- Add Service Button -->
           <br />
-          <a id="publicProfile-link" style="text-align:left;">Preview your profile</a>
+
           <md-button
             class="md-raised pull-right"
             :md-ripple="false"
@@ -174,6 +174,10 @@
           >
             <i class="fas fa-atom" style="color: white;"></i>
             Add Service
+          </md-button>
+          <!-- TO DO: Add link to public profile -->
+          <md-button id="publicProfile-link" class="pull-right" :md-ripple="false">
+            Preview profile 
           </md-button>
 
           <br />
