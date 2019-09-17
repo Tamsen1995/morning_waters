@@ -1,5 +1,5 @@
 <template>
-  <div class="card-expansion invoice-generator">
+  <div class="card-expansion invoice-generator" style="border-radius:20px;">
     <md-card md-with-hover style="background-color:#6545c5;">
       <!-- <md-ripple> -->
       <md-card-header style="background-color:#6545c5; color:white;">
@@ -10,17 +10,17 @@
         <div class="md-subhead">You can edit orders and send custom quotes here.</div>
       </md-card-header>
 
-      <md-card-expand>
-        <md-card-actions md-alignment="space-between">
+      <!-- <md-card-expand> -->
+        <!-- <md-card-actions >
           <div></div>
 
-          <!-- <md-button
+          <md-button
                     class="md-accent"
                     style="background-color: red; color: white;"
                     @click="redirectToOrderStatus()"
-          >Status</md-button>-->
+          >Status</md-button>
 
-          <!-- <md-card-expand-trigger>
+          <md-card-expand-trigger>
             <md-button v-if="order && (order.pending || order.seller_confirmed === true)">
               Invoice
               <md-icon>keyboard_arrow_down</md-icon>
@@ -30,8 +30,8 @@
               Edit Invoice
               <md-icon>keyboard_arrow_down</md-icon>
             </md-button>
-          </md-card-expand-trigger>-->
-        </md-card-actions>
+          </md-card-expand-trigger>
+        </md-card-actions> -->
         <!-- <md-card-expand-content> -->
         <md-card-content>
           <div class="panel-body invoice-editor" v-if="this.order">
@@ -152,7 +152,7 @@
           </div>
         </md-card-content>
         <!-- </md-card-expand-content> -->
-      </md-card-expand>
+      <!-- </md-card-expand> -->
 
       <!-- </md-ripple> -->
     </md-card>
