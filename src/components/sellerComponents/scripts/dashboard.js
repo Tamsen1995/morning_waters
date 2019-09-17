@@ -55,6 +55,25 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    cleanServiceInput () {
+      // serviceTitle: '',
+      //   serviceDescription: '',
+      //     servicePrice: 0.0,
+      //       turnAroundTime: '',
+      //         turnAroundTimeType: '',
+      //           unitType: '',
+      //             price: '',
+      //               user: null,
+      //                 timeUnit: '',
+      //                   unit: '',
+      //                     serviceNegPrice: false,
+      //                       serviceNegTime: false,
+
+      // subServicesToBeAdded: [],
+      //   tags: [],
+      //     serviceBeingEdited: false,
+      //       serviceEdited: null
+    },
     async updateAboutSection () {
       try {
         console.log(`listen !`) // TESTING
