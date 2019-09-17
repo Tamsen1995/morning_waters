@@ -13,15 +13,11 @@
           <!-- Orders -->
           <!-- This is the dropdown menu -->
           <b-nav-item
-            href="#"
+            href="/buyerDashboard"
             v-if="this.buyerLoggedIn === true"
             @click="redirectOntoBuyerDashboard()"
           >
-            <a
-              class="nav-link"
-              @click="toggleDropdownMenu()"
-              style="padding-top:0px;padding-bottom:0px;padding-left:10px;"
-            >
+            <a class="nav-link" style="padding-top:0px;padding-bottom:0px;padding-left:10px;">
               <i class="fas fa-seedling" id="buyer_nav_icon"></i>
             </a>
 
@@ -64,7 +60,7 @@
                 <h3>View Messages</h3>
               </button>
             </b-nav-item-dropdown>
-          </b-nav-item> -->
+          </b-nav-item>-->
 
           <!-- Billing -->
           <b-nav-item class="nav-item" v-if="this.buyerLoggedIn === true">
@@ -114,8 +110,12 @@
               id="dropdown-left"
               style="margin-top:-6px;"
             >
-              <md-card style="background-color: purple; color: white; text-align: center; height: 50%;">
-                <span class="md-title"><h3>Cart</h3></span>
+              <md-card
+                style="background-color: purple; color: white; text-align: center; height: 50%;"
+              >
+                <span class="md-title">
+                  <h3>Cart</h3>
+                </span>
               </md-card>
               <shopping-cart></shopping-cart>
               <request-quote-cart></request-quote-cart>
