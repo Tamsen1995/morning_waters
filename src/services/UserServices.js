@@ -1,8 +1,14 @@
 import Api from '@/services/Api'
 
 export default {
+
   countPageViews (userId) {
-    return Api().post('count_page_view', userId)
+    return Api().get('count_page_view', {
+      params: {
+        userId: userId
+      }
+    }
+    )
   },
   createCustomOrderItems (itemsToBeAdded) {
     return Api().post('orders/create_custom_order_item', itemsToBeAdded)
