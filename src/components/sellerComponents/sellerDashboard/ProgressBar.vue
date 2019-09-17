@@ -19,13 +19,14 @@
             @click="determineOnboardingStatus()"
           >Complete your profile</md-button>
           <!-- TO DO: Add link to public profile -->
-          <md-button id="publicProfile-link" class="pull-right" :md-ripple="false">
-            Preview your profile
-          </md-button>
+          <md-button
+            id="publicProfile-link"
+            class="pull-right"
+            :md-ripple="false"
+          >Preview your profile</md-button>
         </div>
-
       </div>
-      <md-tooltip md-active>
+      <md-tooltip md-active md-direction="right">
         <md-card style="background-color: white; color: purple;">
           <md-card-content>
             <h3>To do:</h3>
