@@ -29,7 +29,7 @@ export default {
 
       // error message var
       error: '',
-      preview: false
+      preview: ''
     }
   },
   components: {
@@ -45,10 +45,12 @@ export default {
   },
   async created () {
     this.userId = this.$route.params.id
-    this.preview = this.$route.params.preview
-    if (this.preview === true) {
-      // nothing
+    this.preview = this.$route.query.preview
+    console.log(`\nthis.preview ; ${this.preview}\n`) // TESTING
+    if (this.preview === 'true') {
+      console.log(`huh?`) // TESTING
     } else {
+      console.log(`dsd`) // TESTING
       this.countPageViews()
     }
     await this.getUserData()
