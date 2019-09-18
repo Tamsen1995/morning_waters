@@ -20,6 +20,7 @@
           >Complete your profile</md-button>
           <!-- TO DO: Add link to public profile -->
           <md-button
+            @click="previewPublicProfile()"
             id="publicProfile-link"
             class="pull-right"
             :md-ripple="false"
@@ -169,6 +170,21 @@ export default {
     // this.commenceOnboarding();
   },
   methods: {
+    async previewPublicProfile() {
+      try {
+        const userExtracted = this.$store.getters.getUserInfo;
+
+        this.$router.push({
+          name: "publicProfile",
+          params: {
+            id: userExtracted.id,
+            preview: true
+          }
+        });
+      } catch (error) {
+        if (error) throw error;
+      }
+    },
     async determineOnboardingPercentage() {
       try {
         this.user = this.$store.getters.getUserInfo;
