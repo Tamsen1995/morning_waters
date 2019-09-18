@@ -298,7 +298,7 @@
                   <label>
                     <h5>Turn Around Time</h5>
                   </label>
-                  <input type="text" v-model="turnAroundTime" id="turnAroundTimeSelect" />
+                  <input v-model.number="turnAroundTime" type="number" />
                   <small id="emailHelp" class="form-text text-muted">ex: 3 days</small>
                 </div>
               </div>
@@ -425,8 +425,8 @@
                       <h5>Price Per Unit:</h5>
                     </label>
                     <input
-                      type="text"
-                      v-model="subServicesToBeAdded[index].servicePrice"
+                      type="number"
+                      v-model.number="subServicesToBeAdded[index].servicePrice"
                       style="border-bottom: 1px inset"
                       placeholder="$ USD"
                     />
