@@ -212,7 +212,6 @@
           <!-- Service Title -->
           <div class="form-group row">
             <label for="serviceTitle" class="col-sm .col-form-label-xsm">
-              <p></p>
             </label>
             <div class="error" v-html="error" />
             <md-field>
@@ -228,11 +227,11 @@
           </md-field> -->
 
           <md-field>
-            <label>Tags</label>
+            <label>Tags</label> 
             <md-chips
               v-model="tags"
               md-placeholder="Add a tag and click enter"
-              style="border-bottom: 1px inset; color: #a558e4;"
+              style="border-bottom: 1px inset; color: #a558e4;margin-top:10px;"
             ></md-chips>
           </md-field>
 
@@ -443,7 +442,7 @@
               <md-chips
                 md-placeholder="Add a tag and click enter"
                 v-model="subServicesToBeAdded[index].serviceTags"
-                style="border-bottom: 1px inset; color: #a558e4;"
+                style="border-bottom: 1px inset; color: #a558e4;margin-top:10px;"
               ></md-chips>
             </md-field>
 
