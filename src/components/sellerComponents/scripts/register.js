@@ -50,6 +50,13 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async goToTerms () {
+      try {
+        window.open(`href="https://app.termly.io/document/terms-of-use-for-online-marketplace/5c4ca188-e4a8-4d86-b760-1a88ff2915f8`)
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     setDone (id, index) {
       this[id] = true
 

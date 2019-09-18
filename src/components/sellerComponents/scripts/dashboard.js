@@ -61,9 +61,10 @@ export default {
         this.$router.push({
           name: 'publicProfile',
           params: {
-            id: userExtracted.id,
-            preview: true
-          }
+            id: userExtracted.id
+          },
+          query: { preview: 'true' }
+
         })
       } catch (error) {
         if (error) throw error
