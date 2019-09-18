@@ -1,7 +1,7 @@
 <template>
 <div id="app">
-  <buyer-header v-if="preview === false"></buyer-header>
-  <preview-header v-else></preview-header>
+  <preview-header v-if="preview === 'true'"></preview-header>
+  <buyer-header v-else></buyer-header>
 
   <div class="responsive-component" v-responsive="{
       small: el => el.width < 860
@@ -78,13 +78,13 @@
                         <div class="col-4">
                           <div class="container" id="btn-container">
                             <md-button
-                              v-if="preview === false"
+                              v-if="preview !== 'true'"
                               @click="manifestModalForm(service)"
                               class="md-raised md-primary"
                               style="background-color: #8164d8; color: white;"
                             >Request Quote</md-button>
                             <md-button
-                              v-if="preview === false"
+                              v-if="preview !== 'true'"
                               style="background-color: #51b828; color: white;"
                               @click="manifestAddToCartModal(service, index)"
                             >Add to Cart</md-button>
@@ -150,13 +150,13 @@
                           <div class="col-5">
                             <div class="container" id="btn-container">
                               <md-button
-                                v-if="preview === false"
+                                v-if="preview !== 'true'"
                                 @click="manifestModalForm(service)"
                                 class="md-raised md-primary"
                                 style="background-color: #8164d8; color: white;"
                               >Request Quote</md-button>
                               <md-button
-                                v-if="preview === false"
+                                v-if="preview !== 'true'"
                                 style="background-color: #51b828; color: white;"
                                 @click="manifestAddToCartModal(service, index)"
                               >Add to Cart</md-button>
