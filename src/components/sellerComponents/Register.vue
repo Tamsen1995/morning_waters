@@ -189,7 +189,7 @@
                   </div>
                   <!-- MANDATORY -->
                   <!-- About -->
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="About" class="col-sm col-form-label">About:</label>
                     <div class="col-sm-12">
                       <textarea
@@ -200,14 +200,30 @@
                         v-on:keyup.enter="setDone('second', 'third')"
                       ></textarea>
                     </div>
+                  </div> -->
+                  <!-- Institution Type -->
+                  <!-- TO DO: plug in vmodal for institution type -->
+                  <div class="form-group row">
+                    <label for="Institution-type" class="col-sm col-form-label">Institution type:</label>
+                      <div class="col-sm-12">
+                        <select
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter your insitution Type"
+                          v-on:keyup.enter="setDone('second', 'third')"
+                        >
+                          <option value selected="selected">Please select an institution type</option>
+                          <option value="Large">Large Biotech Company</option>
+                          <option value="Mid">Mid-sized Biotech Company</option>
+                          <option value="Small">Small Biotech Company</option>
+                          <option value="CRO">CRO (Contract Research Organization)</option>
+                          <option value="CMO">CMO (Contract Manufacturing Organization)</option>
+                          <option value="university">University</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
                   </div>
-                  <br />
-                  <!-- <h5 style="color:#880599">You can add service listings after you've signed up.</h5> -->
-
-                  <!-- Billing -->
-                  <!-- ADD BANK ACCOUNT INFO SUBMISSION -->
-                  <!-- <h2 style="color:#880599">Payment System Setup</h2>
-                  <h5 style="color:#880599">Bank information for Fig payments </h5>-->
+                  <br>
                   <div>
                     Shipping Address
                     <br />
@@ -562,13 +578,15 @@
                   md-label="Terms & Conditions"
                   md-description="Required"
                 >
-                  <div class="form-check">
-                    <iframe
+                  <iframe
                       width="570"
-                      height="315"
                       :src="'https://app.termly.io/document/terms-of-use-for-online-marketplace/5c4ca188-e4a8-4d86-b760-1a88ff2915f8'"
-                      frameborder="0"
+                      frameborder="1"
+                      style="height:400px;"
                     />
+                    <br>
+                  <div class="form-check">
+
                     <input
                       v-model="acceptTerms"
                       type="checkbox"
@@ -599,15 +617,17 @@
                     <div class="col">
                       <iframe
                         width="570"
-                        height="315"
+                        style="height:400px;"
                         :src="'https://app.termly.io/document/privacy-policy/a291c868-81c5-4419-81c8-735597b64d86'"
-                        frameborder="0"
+                        frameborder="1"
                       />
                     </div>
                   </div>
 
                   <!-- Mandatory -->
+                  <br>
                   <div class="form-check">
+
                     <input
                       v-model="acceptPrivacy"
                       type="checkbox"
