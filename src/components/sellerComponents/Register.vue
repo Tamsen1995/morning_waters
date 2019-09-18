@@ -562,11 +562,6 @@
                   md-label="Terms & Conditions"
                   md-description="Required"
                 >
-                  <div
-                    name="termly-embed"
-                    data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8"
-                    data-type="iframe"
-                  ></div>
                   <div class="form-check">
                     <iframe
                       width="570"
@@ -574,7 +569,12 @@
                       :src="'https://app.termly.io/document/terms-of-use-for-online-marketplace/5c4ca188-e4a8-4d86-b760-1a88ff2915f8'"
                       frameborder="0"
                     />
-                    <input type="checkbox" class="form-check-input" id="termsCheck" />
+                    <input
+                      v-model="acceptTerms"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="termsCheck"
+                    />
                     <label
                       class="form-check-label"
                       for="termsCheck"
@@ -608,7 +608,12 @@
 
                   <!-- Mandatory -->
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="privacyCheck" />
+                    <input
+                      v-model="acceptPrivacy"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="privacyCheck"
+                    />
                     <label
                       class="form-check-label"
                       for="privacyCheck"
