@@ -562,11 +562,6 @@
                   md-label="Terms & Conditions"
                   md-description="Required"
                 >
-                  <div
-                    name="termly-embed"
-                    data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8"
-                    data-type="iframe"
-                  ></div>
                   <div class="form-check">
                     <iframe
                       width="570"
