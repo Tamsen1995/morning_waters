@@ -2,6 +2,7 @@ import UserServices from '@/services/UserServices'
 import InboxService from '@/services/InboxService'
 import DashboardServices from '@/services/DashboardServices'
 import BuyerHeader from '@/components/buyerComponents/BuyerHeader'
+import PreviewHeader from '@/components/sellerComponents/PreviewHeader'
 import ShoppingCart from '@/components/buyerComponents/ShoppingCart'
 import RequestQuoteCart from '@/components/buyerComponents/RequestQuoteCart'
 import AddItemToShoppingCartModal from '@/components/buyerComponents/modals/AddItemToShoppingCartModal'
@@ -33,6 +34,7 @@ export default {
   },
   components: {
     BuyerHeader,
+    PreviewHeader,
     ShoppingCart,
     RequestQuoteCart,
     AddItemToShoppingCartModal,

@@ -1,6 +1,8 @@
 <template>
 <div id="app">
   <buyer-header v-if="preview === false"></buyer-header>
+  <preview-header v-else></preview-header>
+
   <div class="responsive-component" v-responsive="{
       small: el => el.width < 860
       }">
