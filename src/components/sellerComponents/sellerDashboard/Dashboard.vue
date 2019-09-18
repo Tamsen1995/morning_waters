@@ -370,6 +370,11 @@
             v-for="(subservice, index) in this.subServicesToBeAdded"
             v-bind:key="index"
           >
+            <md-button
+              @click="deleteSubServiceToBeAdded(index)"
+              class="pull-right"
+              style="border-width:1px; border-color: #2d133a; color: #2d133a; border-style: ridge;"
+            >X</md-button>
             <!-- Service Title -->
             <md-field>
               <label>Sub-Item:</label>

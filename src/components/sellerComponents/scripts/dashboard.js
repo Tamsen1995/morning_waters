@@ -54,6 +54,10 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    deleteSubServiceToBeAdded (index) {
+      this.subServicesToBeAdded.splice(index, 1)
+    },
+
     async previewPublicProfile () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
