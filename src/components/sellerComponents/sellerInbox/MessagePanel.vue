@@ -8,7 +8,7 @@
         </div>
       </div>
 
-      <div class="panel-body" v-for="(msg, index) in correspondanceMessages" v-bind:key="index">
+      <div class="panel-body msg-scroll" v-for="(msg, index) in correspondanceMessages" v-bind:key="index">
         <!-- if -->
         <md-card
           v-if="msg && msg.sender && msg.sender === 'buyer'"
@@ -48,6 +48,7 @@
             </div>
           </md-content>
         </md-card>
+        
         <!--  -->
         <md-card
           v-else-if="msg && msg.sender && msg.sender === 'seller-file-attachment'"
@@ -72,6 +73,7 @@
             </div>
           </md-content>
         </md-card>
+        
 
         <md-card
           v-else-if="msg && msg.sender === 'seller'"
@@ -94,6 +96,7 @@
         <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
           <b-alert show>{{buyer.firstName}} has submitted the order ...</b-alert>
         </md-card>
+
       </div>
 
       <hr />
@@ -106,7 +109,6 @@
               @keydown.enter.prevent
               v-model="message"
               md-autogrow
-              md-counter="500"
               v-on:keyup.enter="submitMessage()"
               placeholder="Enter your message here ..."
               style="background-color: #FFFFFF;"
@@ -136,6 +138,7 @@
             </div>
           </form>
         </md-card>
+
       </div>
     </div>
     <div v-else>
