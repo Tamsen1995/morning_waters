@@ -218,7 +218,12 @@
                       frameborder="0"
                     />
 
-                    <input type="checkbox" class="form-check-input" id="termsCheck" />
+                    <input
+                      v-model="acceptTerms"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="termsCheck"
+                    />
                     <label
                       class="form-check-label"
                       for="termsCheck"
@@ -248,7 +253,12 @@
                     frameborder="0"
                   />
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="privacyCheck" />
+                    <input
+                      v-model="acceptPrivacy"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="privacyCheck"
+                    />
                     <label
                       class="form-check-label"
                       for="privacyCheck"
