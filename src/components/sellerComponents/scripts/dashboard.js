@@ -5,6 +5,8 @@ import ProgressBar from '@/components/sellerComponents/sellerDashboard/ProgressB
 import UserServices from '@/services/UserServices'
 import DashboardServices from '@/services/DashboardServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
+import InputTag from 'vue-input-tag'
+
 var $ = require('jQuery')
 
 export default {
@@ -48,7 +50,8 @@ export default {
     DashboardHeader,
     StatsCards,
     AboutSection,
-    ProgressBar
+    ProgressBar,
+    InputTag
   },
   directives: {
     responsive: ResponsiveDirective
