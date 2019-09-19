@@ -224,15 +224,16 @@
           <!-- <md-field>
             <label>Service Description:</label>
             <md-textarea v-model="serviceDescription" style="border-bottom: 1px inset"></md-textarea>
-          </md-field> -->
 
+          </md-field>Tags:
           <md-field>
-            <label>Tags</label> 
-            <md-chips
+            <input-tag
+              style="width:100%;"
+              placeholder="Add a tag and press enter / comma"
               v-model="tags"
-              md-placeholder="Add a tag and click enter"
-              style="border-bottom: 1px inset; color: #a558e4;margin-top:10px;"
-            ></md-chips>
+              :add-tag-on-keys="[13,188]"
+            ></input-tag>
+
           </md-field>
 
           <!-- Pricing Block -->
@@ -417,6 +418,11 @@
             v-for="(subservice, index) in this.subServicesToBeAdded"
             v-bind:key="index"
           >
+            <md-button
+              @click="deleteSubServiceToBeAdded(index)"
+              class="pull-right"
+              style="border-width:1px; border-color: #2d133a; color: #2d133a; border-style: ridge;"
+            >X</md-button>
             <!-- Service Title -->
             <md-field>
               <label>Sub-Item:</label>
@@ -437,13 +443,17 @@
             </md-field> -->
 
             <!-- Sub Service Tags -->
+
+            Tags:
             <md-field>
-              <label>Tags</label>
-              <md-chips
-                md-placeholder="Add a tag and click enter"
+              <input-tag
+                style="width:100%;"
+                placeholder="Add a tag and press enter / comma"
                 v-model="subServicesToBeAdded[index].serviceTags"
-                style="border-bottom: 1px inset; color: #a558e4;margin-top:10px;"
-              ></md-chips>
+
+                :add-tag-on-keys="[13,188]"
+              ></input-tag>
+
             </md-field>
 
             <!-- Pricing Block -->
