@@ -394,13 +394,15 @@
             </md-field>
 
             <!-- Sub Service Tags -->
+
+            Tags:
             <md-field>
-              <label>Tags</label>
-              <md-chips
-                md-placeholder="Add a tag and click enter"
+              <input-tag
+                style="width:100%;"
+                placeholder="Add a tag and press enter / comma"
                 v-model="subServicesToBeAdded[index].serviceTags"
-                style="border-bottom: 1px inset; color: #a558e4;"
-              ></md-chips>
+                :add-tag-on-keys="[13,188]"
+              ></input-tag>
             </md-field>
 
             <!-- Pricing Block -->
