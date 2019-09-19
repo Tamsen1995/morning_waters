@@ -81,10 +81,10 @@ body {
 
 form {
     border-radius: 5px;
-    max-width:600px;
+    max-width:800px;
     width:100%;
     /* margin: 5% auto; */
-    padding: 5px 15px;
+    padding: 5px 10px;
     background-color: #FFFFFF;
     overflow: hidden; 
     border-radius: 25px;
@@ -111,7 +111,7 @@ form {
 }
 
 #personalinfo {
-    width: 49.5%; 
+    /* width: 49.5%;  */
     float:left;
     border-right: 1px dotted #CCC;
     box-sizing: border-box;
@@ -121,7 +121,7 @@ form {
 }
   
 #companyinfo {
-    width:49.5%;
+    /* width:49.5%; */
     float:right;
     box-sizing: border-box;
     padding: 0px 0px 0px 15px;
