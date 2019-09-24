@@ -75,6 +75,11 @@
                               v-if="service && service.serviceNegPrice === true"
                             >Negotiable</span>
                           </div>
+
+                          <span
+                            id="taxable"
+                            v-if="service && service.serviceTaxable === true"
+                          >Taxable</span>
                         </div>
                       </div>
                     </md-card-content>
