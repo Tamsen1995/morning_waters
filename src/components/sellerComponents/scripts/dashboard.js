@@ -175,6 +175,7 @@ export default {
               servicePrice: this.services[i].servicePrice,
               serviceNegPrice: this.services[i].serviceNegPrice,
               serviceNegTime: this.services[i].serviceNegTime,
+              serviceTaxable: this.services[i].serviceTaxable,
               turnAroundTime: this.services[i].turnAroundTime,
               timeUnit: this.services[i].timeUnit,
               unitType: this.services[i].unitType,
