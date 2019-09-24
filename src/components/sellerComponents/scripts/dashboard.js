@@ -28,6 +28,7 @@ export default {
       unit: '',
       serviceNegPrice: false,
       serviceNegTime: false,
+      serviceTaxable: false,
 
       // The variable which will determine if
       // the section for adding a sub service will be shown
@@ -91,6 +92,7 @@ export default {
       this.serviceNegPrice = false
       this.serviceNegTime = false
       this.serviceBeingEdited = false
+      this.serviceTaxable = false
       this.serviceEdited = null
       this.tags = []
       this.subServicesToBeAdded = []
@@ -143,6 +145,7 @@ export default {
         this.servicePrice = service.servicePrice
         this.serviceNegPrice = service.serviceNegPrice
         this.serviceNegTime = service.serviceNegTime
+        this.serviceTaxable = service.serviceTaxable
         this.turnAroundTime = service.turnAroundTime
         this.timeUnit = service.timeUnit
         this.unitType = service.unitType
@@ -172,6 +175,7 @@ export default {
               servicePrice: this.services[i].servicePrice,
               serviceNegPrice: this.services[i].serviceNegPrice,
               serviceNegTime: this.services[i].serviceNegTime,
+              serviceTaxable: this.services[i].serviceTaxable,
               turnAroundTime: this.services[i].turnAroundTime,
               timeUnit: this.services[i].timeUnit,
               unitType: this.services[i].unitType,
@@ -195,6 +199,7 @@ export default {
         this.serviceEdited.servicePrice = this.servicePrice
         this.serviceEdited.serviceNegPrice = this.serviceNegPrice
         this.serviceEdited.serviceNegTime = this.serviceNegTime
+        this.serviceEdited.serviceTaxable = this.serviceTaxable
         this.serviceEdited.turnAroundTime = this.turnAroundTime
         this.serviceEdited.timeUnit = this.timeUnit
         this.serviceEdited.unitType = this.unitType
@@ -238,6 +243,7 @@ export default {
           servicePrice: 0.0,
           serviceNegPrice: false,
           serviceNegTime: false,
+          serviceTaxable: false,
           turnAroundTime: '',
           timeUnit: '',
           unitType: '',
@@ -252,9 +258,6 @@ export default {
     serviceFormFilledOut: function () {
       if (this.serviceTitle === '') {
         this.error = 'No service title'
-        return false
-      } else if (this.serviceDescription === '') {
-        this.error = 'No service description'
         return false
       } else if (this.turnAroundTime === '') {
         this.error = 'Please indicate a turnaround time'
@@ -283,6 +286,7 @@ export default {
           servicePrice: this.servicePrice,
           serviceNegPrice: this.serviceNegPrice,
           serviceNegTime: this.serviceNegTime,
+          serviceTaxable: this.serviceTaxable,
           turnAroundTime: `${this.turnAroundTime} ${this.turnAroundTimeType}`,
           timeUnit: this.timeUnit,
           unitType: this.unitType,
@@ -313,6 +317,7 @@ export default {
           this.subServicesToBeAdded = []
           this.serviceNegTime = false
           this.serviceNegPrice = false
+          this.serviceTaxable = false
 
           // re-evaluateo onboarding status
           var child = this.$refs.progressBar

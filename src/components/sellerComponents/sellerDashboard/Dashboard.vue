@@ -75,6 +75,11 @@
                               v-if="service && service.serviceNegPrice === true"
                             >Negotiable</span>
                           </div>
+
+                          <span
+                            id="taxable"
+                            v-if="service && service.serviceTaxable === true"
+                          >Taxable</span>
                         </div>
                       </div>
                     </md-card-content>
@@ -211,8 +216,7 @@
         <div class="container">
           <!-- Service Title -->
           <div class="form-group row">
-            <label for="serviceTitle" class="col-sm .col-form-label-xsm">
-            </label>
+            <label for="serviceTitle" class="col-sm .col-form-label-xsm"></label>
             <div class="error" v-html="error" />
             <md-field>
               <label>Service Title:</label>
@@ -224,8 +228,8 @@
           <!-- <md-field>
             <label>Service Description:</label>
             <md-textarea v-model="serviceDescription" style="border-bottom: 1px inset"></md-textarea>
-
-          </md-field>Tags:
+          </md-field>-->
+          Tags:
           <md-field>
             <input-tag
               style="width:100%;"
@@ -233,13 +237,11 @@
               v-model="tags"
               :add-tag-on-keys="[13,188]"
             ></input-tag>
-
           </md-field>
 
           <!-- Pricing Block -->
           <div class="pricing_block">
             <div class="row" id="form-row-border">
-
               <!-- Price -->
               <div class="col-4">
                 <div class="form-group">
@@ -347,17 +349,16 @@
                   </label>
                 </div>
               </div>
-              
-
             </div>
-            
-            <div class="row" id="form-row-border"> 
+
+            <div class="row" id="form-row-border">
               <!-- Taxable? -->
               <!-- TO DO: add taxable var -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
                   <input
                     type="checkbox"
+                    v-model="serviceTaxable"
                     class="form-check-input"
                     id="taxable"
                   />
@@ -371,7 +372,7 @@
                   </label>
                 </div>
               </div>
-              
+
               <!-- Tax Amount? -->
               <!-- TO DO: add tax amount var -->
               <div class="col-4">
@@ -379,15 +380,10 @@
                   <label>
                     <h5>Tax Amount %</h5>
                   </label>
-                  <input
-                    type="text"
-                    style="border-bottom: 1px inset"
-                    placeholder="%"
-                  />
+                  <input type="text" style="border-bottom: 1px inset" placeholder="%" />
                 </div>
               </div>
             </div>
-
 
             <br />
             <!-- Listings Table -->
@@ -440,26 +436,22 @@
                 v-model="subServicesToBeAdded[index].serviceDescription"
                 style="border-bottom: 1px inset"
               ></md-textarea>
-            </md-field> -->
+            </md-field>-->
 
             <!-- Sub Service Tags -->
-
             Tags:
             <md-field>
               <input-tag
                 style="width:100%;"
                 placeholder="Add a tag and press enter / comma"
                 v-model="subServicesToBeAdded[index].serviceTags"
-
                 :add-tag-on-keys="[13,188]"
               ></input-tag>
-
             </md-field>
 
             <!-- Pricing Block -->
             <div class="sub_pricing_block">
               <div class="row" id="form-row-border">
-                
                 <!-- Price -->
                 <div class="col-4">
                   <div class="form-group">
@@ -486,7 +478,7 @@
                       v-model="subServicesToBeAdded[index].unitType"
                       id="turnAroundTimeSelect"
                       placeholder="ex: sample"
-                    /> -->
+                    />-->
                     <select
                       type="text"
                       class="form-control"
@@ -572,42 +564,39 @@
                 </div>
               </div>
 
-            <div class="row" id="form-row-border"> 
-              <!-- Taxable? -->
-              <!-- TO DO: add taxable var -->
-              <div class="col-4">
-                <div class="form-group form-check" style="padding-top:15px;">
-                  <input
-                    type="checkbox"
-                    class="form-check-input"
-                    id="taxable"
-                  />
-                  <label
-                    class="form-check-label"
-                    svalue="Negotiable"
-                    style="padding-left:15px;"
-                    for="taxable"
-                  >
-                    <h5>Taxable</h5>
-                  </label>
+              <div class="row" id="form-row-border">
+                <!-- Taxable? -->
+                <!-- TO DO: add taxable var -->
+                <div class="col-4">
+                  <div class="form-group form-check" style="padding-top:15px;">
+                    <input
+                      type="checkbox"
+                      v-model="subServicesToBeAdded[index].serviceTaxable"
+                      class="form-check-input"
+                      id="taxable"
+                    />
+                    <label
+                      class="form-check-label"
+                      svalue="Negotiable"
+                      style="padding-left:15px;"
+                      for="taxable"
+                    >
+                      <h5>Taxable</h5>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Tax Amount? -->
+                <!-- TO DO: add tax amount var -->
+                <div class="col-4">
+                  <div class="form-group">
+                    <label>
+                      <h5>Tax Amount %</h5>
+                    </label>
+                    <input type="text" style="border-bottom: 1px inset" placeholder="%" />
+                  </div>
                 </div>
               </div>
-              
-              <!-- Tax Amount? -->
-              <!-- TO DO: add tax amount var -->
-              <div class="col-4">
-                <div class="form-group">
-                  <label>
-                    <h5>Tax Amount %</h5>
-                  </label>
-                  <input
-                    type="text"
-                    style="border-bottom: 1px inset"
-                    placeholder="%"
-                  />
-                </div>
-              </div>
-            </div>
 
               <br />
               <!-- Listings Table -->
