@@ -242,6 +242,7 @@ export default {
           servicePrice: 0.0,
           serviceNegPrice: false,
           serviceNegTime: false,
+          serviceTaxable: false,
           turnAroundTime: '',
           timeUnit: '',
           unitType: '',
