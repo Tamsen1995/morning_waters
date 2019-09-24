@@ -568,6 +568,11 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
+                    @click="goBack('second', 'first')"
+                  >Back</md-button>
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
                     @click="setDone('second', 'third')"
                   >Continue</md-button>
                 </md-step>
@@ -600,6 +605,11 @@
                     >Accept</label>
                   </div>
                   <br />
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
+                    @click="goBack('third', 'second')"
+                  >Back</md-button>
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
@@ -641,6 +651,11 @@
                     >Accept</label>
                   </div>
                   <br />
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
+                    @click="goBack('fourth', 'third')"
+                  >Back</md-button>
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
