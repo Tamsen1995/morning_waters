@@ -19,12 +19,12 @@
             <!-- Form -->
             <form>
               <div class="error" v-html="error" />
-              <md-steppers :md-active-step.sync="active" md-linear md-vertical>
+              <md-steppers :md-active-step.sync="active" md-vertical>
                 <!-- First Name -->
                 <md-step
                   id="first"
                   :md-done.sync="first"
-                  md-label="Personal Info"
+                  md-label="Step 1: Personal Info"
                   md-description="Required"
                 >
                   <div class="form-group row">
@@ -41,7 +41,7 @@
                           v-model="betaKey"
                           type="text"
                           class="form-control"
-                          placeholder="Please enter your beta key"
+                          placeholder="Enter your beta key"
                           v-on:keyup.enter="setDone('first', 'second')"
                         />
                       </div>
@@ -155,7 +155,7 @@
                 <md-step
                   id="second"
                   :md-done.sync="second"
-                  md-label="Organization Info"
+                  md-label="Step 2: Organization Info"
                   md-description="Required"
                 >
                   <!-- MANDATORY -->
@@ -568,6 +568,11 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
+                    @click="goBack('second', 'first')"
+                  >Back</md-button>
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
                     @click="setDone('second', 'third')"
                   >Continue</md-button>
                 </md-step>
@@ -575,7 +580,7 @@
                 <md-step
                   id="third"
                   :md-done.sync="third"
-                  md-label="Terms & Conditions"
+                  md-label="Step 3: Terms & Conditions"
                   md-description="Required"
                 >
                   <iframe
@@ -603,6 +608,11 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
+                    @click="goBack('third', 'second')"
+                  >Back</md-button>
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
                     @click="setDone('third', 'fourth')"
                   >Continue</md-button>
                 </md-step>
@@ -610,7 +620,7 @@
                 <md-step
                   id="fourth"
                   :md-done.sync="fourth"
-                  md-label="Privacy"
+                  md-label="Step 4: Privacy"
                   md-description="Required"
                 >
                   <div class="row">
@@ -644,6 +654,11 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
+                    @click="goBack('fourth', 'third')"
+                  >Back</md-button>
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
                     @click="setDone('fourth', 'fifth')"
                   >Continue</md-button>
                 </md-step>
@@ -652,7 +667,7 @@
                 <md-step
                   id="fifth"
                   :md-done.sync="fifth"
-                  md-label="Shippo Set Up"
+                  md-label="Step 5: Shipping"
                   md-description="Optional"
                 >
                   <div class="row">
@@ -687,7 +702,7 @@
                     style="height:40px;"
                     id="btn-login"
                     @click="register(), makeShippoApiToken()"
-                  >Sign Up</md-button>
+                  >Submit</md-button>
                   <div class="error" v-html="error" />
                 </md-step>
               </md-steppers>

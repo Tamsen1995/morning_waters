@@ -50,6 +50,26 @@
   transition: 0.5s;
   background-size: 200% auto;
 }
+.blinking {
+  background: purple;
+  color: white;
+  padding: 5px;
+}
+
+.blinking {
+  animation: blink 0.7s 20 alternate;
+}
+
+@keyframes blink {
+  from {
+    background-color: purple;
+    color: white;
+  }
+  to {
+    background-color: white;
+    color: purple;
+  }
+}
 /* .progress_fill{
   background-image: linear-gradient(to right,#5e30ff 0%, #c444ff 51%, #5e30ff 100%);
   transition: 0.5s;

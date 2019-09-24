@@ -198,10 +198,10 @@
 
   <!-- Modal component to add a service with -->
 
-  <modal name="add-service" height="auto" scrollable :clickToClose="false" id="add-services">
+  <modal  adaptive="true" resizable="true" name="add-service" height="auto" scrollable :clickToClose="false" id="add-services">
     <md-button
       class="pull-right"
-      style="border-width:1px; border-color: #2d133a; color: #2d133a; border-style: ridge;"
+      style=" color: #2d133a; border-style: ridge;"
       @click="cleanServiceInput()"
     >X</md-button>
     <div class="container" id="service-form-block">
@@ -271,7 +271,7 @@
                     v-on:keyup.enter="setDone('second', 'third')"
                     v-model="unitType"
                   >
-                    <option value selected="selected">Please select a unit type</option>
+                    <option value selected="selected">Select a unit type</option>
                     <option value="sample">sample</option>
                     <option value="kit">kit</option>
                     <option value="gigabyte">gigabyte</option>

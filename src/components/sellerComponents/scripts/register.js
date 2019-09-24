@@ -70,6 +70,13 @@ export default {
         this.active = index
       }
     },
+    goBack (id, index) {
+      this[id] = true
+
+      if (index) {
+        this.active = index
+      }
+    },
     setError () {
       this.secondStepError = 'This is an error!'
     },
