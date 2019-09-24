@@ -379,9 +379,11 @@ max-height: 500px;
 }
 
 #inbox .message-sideright{
-  /* overflow-y: auto;
-  max-height: 615px; */
+  overflow-y: auto;
+  max-height: 615px;
   background-color: white; 
+
+
 }
 #inbox .message-sideright .msg-scroll {
   overflow-y: auto;
@@ -392,6 +394,9 @@ max-height: 500px;
   max-height: 700px; */
   margin-top: -10px;
   padding: 10px;
+  min-width:350px;
+  margin-left: -10px;
+
 }
 
 
