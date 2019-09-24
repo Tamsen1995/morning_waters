@@ -351,7 +351,12 @@
               <!-- TO DO: add taxable var -->
               <div class="col-4">
                 <div class="form-group form-check" style="padding-top:15px;">
-                  <input type="checkbox" class="form-check-input" id="taxable" />
+                  <input
+                    type="checkbox"
+                    v-model="serviceTaxable"
+                    class="form-check-input"
+                    id="taxable"
+                  />
                   <label
                     class="form-check-label"
                     svalue="Negotiable"
