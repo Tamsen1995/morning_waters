@@ -253,9 +253,6 @@ export default {
       if (this.serviceTitle === '') {
         this.error = 'No service title'
         return false
-      } else if (this.serviceDescription === '') {
-        this.error = 'No service description'
-        return false
       } else if (this.turnAroundTime === '') {
         this.error = 'Please indicate a turnaround time'
         return false
