@@ -259,9 +259,6 @@ export default {
       if (this.serviceTitle === '') {
         this.error = 'No service title'
         return false
-      } else if (this.turnAroundTime === '') {
-        this.error = 'Please indicate a turnaround time'
-        return false
       } else if (this.tags.length <= 0) {
         this.error = 'Please enter some tags / keywords'
         return false
