@@ -8,7 +8,8 @@
         </div>
       </div>
 
-      <div class="panel-body msg-scroll" v-for="(msg, index) in correspondanceMessages" v-bind:key="index">
+      <div class="panel-body" v-for="(msg, index) in correspondanceMessages" v-bind:key="index">
+        <div class="msg-scroll">
         <!-- if -->
         <md-card
           v-if="msg && msg.sender && msg.sender === 'buyer'"
@@ -96,7 +97,7 @@
         <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
           <b-alert show>{{buyer.firstName}} has submitted the order ...</b-alert>
         </md-card>
-
+        </div>
       </div>
 
       <hr />

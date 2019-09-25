@@ -35,6 +35,7 @@
         <!-- <md-card-expand-content> -->
         <md-card-content>
           <div class="panel-body invoice-editor" v-if="this.order">
+
             <div v-for="(item, index) in this.servicesNegotiated" v-bind:key="index">
               <!-- Edit Service Title -->
               <div class="row">
@@ -43,7 +44,6 @@
                 </div>
                 <div class="col-3">
                   <!-- Edit Quantity -->
-
                   <md-field>
                     X
                     <!-- TODO : make sure the default of this is set to true on back -->
