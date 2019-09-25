@@ -27,7 +27,7 @@
           >Preview your profile</md-button>
         </div>
       </div>
-      <md-tooltip md-active>
+      <md-tooltip md-direction="right" md-active>
         <md-card style="background-color: white; color: purple;">
           <md-card-content>
             <h3>To do:</h3>
@@ -49,26 +49,26 @@
       </b-progress>
       {{this.percentage}} %
       <!-- Prompt to commence onboarding-->
-      <modal height="auto" name="onboarding-add-services">
-        <div class="container" id="progress_modal">
-          <h3>To begin marketing, you must add at least 1 service listing.</h3>
+      <modal adaptive="true" resizable="true" height="auto" name="onboarding-add-services">
+        <div id="progress_modal">
+          <h4>To begin marketing, you must add at least 1 service.</h4>
           <br />
-          <h5>A good service listing includes:</h5>
+          <!-- <h5>A good service listing includes:</h5>
           <ol>
             <li>Service description for buyers</li>
             <li>At least 5 descriptive keywords (the more the better)</li>
             <li>Pricing</li>
             <li>Turn-around time</li>
-          </ol>
+          </ol> -->
           <br />Would you like to add a service?
-          <md-button class="md-dense md-raised md-primary" @click="addServices()">
+          <md-button class="md-dense md-raised md-primary" style="color: purple;" @click="addServices()">
             <i class="fas fa-atom" id="service_logo"></i> Add Services
           </md-button>
         </div>
       </modal>
       <!--  -->
 
-      <modal height="auto" name="onboarding-add-stripe-connect">
+      <modal height="auto" adaptive="true" resizable="true" name="onboarding-add-stripe-connect">
         <div class="container" id="progress_modal">
           <h3>Add Payout System</h3>
           <br />
@@ -87,8 +87,8 @@
         </div>
       </modal>
 
-      <modal height="auto" name="onboarding-add-shippo-acct">
-        <div class="container" id="progress_modal">
+      <modal height="auto" adaptive="true" resizable="true" name="onboarding-add-shippo-acct">
+        <div id="progress_modal">
           <br />We recommend you use our shipping partners shippo for smoother transactions.
           <br />With shippo you can handle delicate packages, dry ice, insurance, and get live updates - all on our platform...
           <br />And you get 30% off!
@@ -99,8 +99,8 @@
         </div>
       </modal>
 
-      <modal height="auto" name="onboarding-add-about-section">
-        <div class="container" id="progress_modal">
+      <modal height="auto" adaptive="true" resizable="true" name="onboarding-add-about-section">
+        <div id="progress_modal">
           <br />
           <br />[Call to action for about section]
           <md-field>
@@ -114,8 +114,8 @@
         </div>
       </modal>
 
-      <modal height="auto" name="thank-you-for-adding-a-payout-method">
-        <div class="container" id="progress_modal">
+      <modal height="auto" adaptive="true" resizable="true" name="thank-you-for-adding-a-payout-method">
+        <div id="progress_modal">
           <div>
             <br />
             <br />Thank you for adding a payout method
@@ -127,8 +127,13 @@
         </div>
       </modal>
 
-      <modal height="auto" name="thank-you-for-adding-a-shipping-method">
-        <div class="container" id="progress_modal">
+      <modal 
+          height="auto" 
+          adaptive="true" 
+          resizable="true" 
+          name="thank-you-for-adding-a-shipping-method"
+        >
+        <div id="progress_modal">
           <div>
             <br />
             <br />Thank you for adding a shipping method
@@ -177,9 +182,9 @@ export default {
         this.$router.push({
           name: "publicProfile",
           params: {
-            id: userExtracted.id,
-            preview: true
-          }
+            id: userExtracted.id
+          },
+          query: { preview: "true" }
         });
       } catch (error) {
         if (error) throw error;
@@ -349,24 +354,5 @@ export default {
 <style scoped>
 @import "../../../assets/css/progress.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-.blinking {
-  background: purple;
-  color: white;
-  padding: 5px;
-}
 
-.blinking {
-  animation: blink 0.7s 20 alternate;
-}
-
-@keyframes blink {
-  from {
-    background-color: purple;
-    color: white;
-  }
-  to {
-    background-color: white;
-    color: purple;
-  }
-}
 </style>

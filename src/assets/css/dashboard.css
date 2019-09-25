@@ -273,6 +273,15 @@ body.dashboard {
   border-radius: 5px;
   padding:3px;
 }
+
+.dashboard #taxable {
+  color: purple;
+  background-color: rgb(239, 239, 253);
+  border: purple 3px solid; 
+  border-radius: 5px;
+  padding:3px;
+}
+
 .dashboard #price {
   color:#3f9e00;
   font-size: 18px;

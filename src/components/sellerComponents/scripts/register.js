@@ -37,7 +37,11 @@ export default {
       fourth: false,
       fifth: false,
       sixth: false,
-      secondStepError: null
+      secondStepError: null,
+
+      // accept vars
+      acceptTerms: false,
+      acceptPrivacy: false
     }
   },
   mounted () {
@@ -66,6 +70,13 @@ export default {
         this.active = index
       }
     },
+    goBack (id, index) {
+      this[id] = true
+
+      if (index) {
+        this.active = index
+      }
+    },
     setError () {
       this.secondStepError = 'This is an error!'
     },
@@ -87,32 +98,37 @@ export default {
     },
     async register () {
       try {
-        const response = await AuthenticationService.register({
-          betaKey: this.betaKey,
-          name: `${this.firstName} ${this.lastName}`, // this might be legacy code
-          firstName: this.firstName,
-          lastName: this.lastName,
-          email: this.email,
-          password: this.password,
-          passwordConfirm: this.passwordConfirm,
-          number: this.number,
-          jobTitle: this.jobTitle,
-          companyName: this.companyName,
-          companyWebsite: this.companyWebsite,
-          address: JSON.stringify(this.address),
-          serviceTableId: this.serviceTableId,
-          about: this.about,
-          credits: 0
-        })
+        this.error = ''
+        if (this.acceptTerms === true && this.acceptPrivacy === true) {
+          const response = await AuthenticationService.register({
+            betaKey: this.betaKey,
+            name: `${this.firstName} ${this.lastName}`, // this might be legacy code
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            password: this.password,
+            passwordConfirm: this.passwordConfirm,
+            number: this.number,
+            jobTitle: this.jobTitle,
+            companyName: this.companyName,
+            companyWebsite: this.companyWebsite,
+            address: JSON.stringify(this.address),
+            serviceTableId: this.serviceTableId,
+            about: this.about,
+            credits: 0
+          })
 
-        localStorage.setItem('id_token', response.data.token)
-        this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
-        Api().defaults.headers.common['Authorization'] = AuthenticationService.getAuthHeader()
+          localStorage.setItem('id_token', response.data.token)
+          this.$store.dispatch('setToken', response.data.token)
+          this.$store.dispatch('setUser', response.data.user)
+          Api().defaults.headers.common['Authorization'] = AuthenticationService.getAuthHeader()
 
-        this.$router.push({
-          name: 'dashboard'
-        })
+          this.$router.push({
+            name: 'dashboard'
+          })
+        } else {
+          this.error = 'Please accept the terms & conditions as well as the privacy agreement.'
+        }
       } catch (error) {
         console.log(`\nAn error occurred in register ${JSON.stringify(error)}\n`) // TESTING
         this.error = error.response.data.error

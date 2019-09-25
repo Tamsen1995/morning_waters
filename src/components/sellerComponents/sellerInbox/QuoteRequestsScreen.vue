@@ -17,7 +17,7 @@
 
         <div class="inbox-wrapper">
           <div class="row rounded">
-            <div class="col-lg-2" >
+            <div class="col-lg-3" >
               <div class="message-sideleft" style="margin-top:-20px;">
                 <!-- <md-card> -->
                 <div class="panel-heading">
@@ -165,7 +165,7 @@
             </div>
               <!-- The panels for the quote requests -->
             <div class="col-lg-6" >
-              <!-- <div class="message-sideright"> -->
+              <div class="message-sideright">
                 <!--  plug in message panel here  -->
                 <message-panel
                   v-bind:order="this.order"
@@ -173,13 +173,13 @@
                   v-bind:buyer="this.buyer"
                   v-bind:seller="this.seller"
                 ></message-panel>
-              <!-- </div> -->
+              </div>
             </div>
             <!--  -->
             <br />
             <!-- Negotation Interface -->
-            <!-- <div class="col-lg-3" > -->
-              <!-- <div class="card-expansion invoice-generator"> -->
+            <div class="col-lg-3">
+              <div class="invoice-generator">
                 <negotiation-interface
                   v-bind:order="this.order"
                   v-bind:orderItems="this.orderItems"
@@ -191,8 +191,8 @@
                   v-on:update-order-items="retrieveOrderOrderItems(order)"
                   v-on:update-inbox-invoice="retrieveInboxInvoice(order.orderId)"
                 ></negotiation-interface>
-              <!-- </div> -->
-            <!-- </div> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>

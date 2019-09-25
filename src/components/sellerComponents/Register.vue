@@ -19,12 +19,12 @@
             <!-- Form -->
             <form>
               <div class="error" v-html="error" />
-              <md-steppers :md-active-step.sync="active" md-linear md-vertical>
+              <md-steppers :md-active-step.sync="active" md-vertical>
                 <!-- First Name -->
                 <md-step
                   id="first"
                   :md-done.sync="first"
-                  md-label="Personal Info"
+                  md-label="Step 1: Personal Info"
                   md-description="Required"
                 >
                   <div class="form-group row">
@@ -41,7 +41,7 @@
                           v-model="betaKey"
                           type="text"
                           class="form-control"
-                          placeholder="Please enter your beta key"
+                          placeholder="Enter your beta key"
                           v-on:keyup.enter="setDone('first', 'second')"
                         />
                       </div>
@@ -155,7 +155,7 @@
                 <md-step
                   id="second"
                   :md-done.sync="second"
-                  md-label="Organization Info"
+                  md-label="Step 2: Organization Info"
                   md-description="Required"
                 >
                   <!-- MANDATORY -->
@@ -189,7 +189,7 @@
                   </div>
                   <!-- MANDATORY -->
                   <!-- About -->
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                     <label for="About" class="col-sm col-form-label">About:</label>
                     <div class="col-sm-12">
                       <textarea
@@ -200,14 +200,30 @@
                         v-on:keyup.enter="setDone('second', 'third')"
                       ></textarea>
                     </div>
+                  </div> -->
+                  <!-- Institution Type -->
+                  <!-- TO DO: plug in vmodal for institution type -->
+                  <div class="form-group row">
+                    <label for="Institution-type" class="col-sm col-form-label">Institution type:</label>
+                      <div class="col-sm-12">
+                        <select
+                          type="text"
+                          class="form-control"
+                          placeholder="Enter your insitution Type"
+                          v-on:keyup.enter="setDone('second', 'third')"
+                        >
+                          <option value selected="selected">Please select an institution type</option>
+                          <option value="Large">Large Biotech Company</option>
+                          <option value="Mid">Mid-sized Biotech Company</option>
+                          <option value="Small">Small Biotech Company</option>
+                          <option value="CRO">CRO (Contract Research Organization)</option>
+                          <option value="CMO">CMO (Contract Manufacturing Organization)</option>
+                          <option value="university">University</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
                   </div>
-                  <br />
-                  <!-- <h5 style="color:#880599">You can add service listings after you've signed up.</h5> -->
-
-                  <!-- Billing -->
-                  <!-- ADD BANK ACCOUNT INFO SUBMISSION -->
-                  <!-- <h2 style="color:#880599">Payment System Setup</h2>
-                  <h5 style="color:#880599">Bank information for Fig payments </h5>-->
+                  <br>
                   <div>
                     Shipping Address
                     <br />
@@ -552,6 +568,11 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
+                    @click="goBack('second', 'first')"
+                  >Back</md-button>
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
                     @click="setDone('second', 'third')"
                   >Continue</md-button>
                 </md-step>
@@ -559,22 +580,24 @@
                 <md-step
                   id="third"
                   :md-done.sync="third"
-                  md-label="Terms & Conditions"
+                  md-label="Step 3: Terms & Conditions"
                   md-description="Required"
                 >
-                  <div
-                    name="termly-embed"
-                    data-id="5c4ca188-e4a8-4d86-b760-1a88ff2915f8"
-                    data-type="iframe"
-                  ></div>
-                  <div class="form-check">
-                    <iframe
+                  <iframe
                       width="570"
-                      height="315"
                       :src="'https://app.termly.io/document/terms-of-use-for-online-marketplace/5c4ca188-e4a8-4d86-b760-1a88ff2915f8'"
-                      frameborder="0"
+                      frameborder="1"
+                      style="height:400px;"
                     />
-                    <input type="checkbox" class="form-check-input" id="termsCheck" />
+                    <br>
+                  <div class="form-check">
+
+                    <input
+                      v-model="acceptTerms"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="termsCheck"
+                    />
                     <label
                       class="form-check-label"
                       for="termsCheck"
@@ -585,6 +608,11 @@
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
+                    @click="goBack('third', 'second')"
+                  >Back</md-button>
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
                     @click="setDone('third', 'fourth')"
                   >Continue</md-button>
                 </md-step>
@@ -592,23 +620,30 @@
                 <md-step
                   id="fourth"
                   :md-done.sync="fourth"
-                  md-label="Privacy"
+                  md-label="Step 4: Privacy"
                   md-description="Required"
                 >
                   <div class="row">
                     <div class="col">
                       <iframe
                         width="570"
-                        height="315"
+                        style="height:400px;"
                         :src="'https://app.termly.io/document/privacy-policy/a291c868-81c5-4419-81c8-735597b64d86'"
-                        frameborder="0"
+                        frameborder="1"
                       />
                     </div>
                   </div>
 
                   <!-- Mandatory -->
+                  <br>
                   <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="privacyCheck" />
+
+                    <input
+                      v-model="acceptPrivacy"
+                      type="checkbox"
+                      class="form-check-input"
+                      id="privacyCheck"
+                    />
                     <label
                       class="form-check-label"
                       for="privacyCheck"
@@ -616,6 +651,11 @@
                     >Accept</label>
                   </div>
                   <br />
+                  <md-button
+                    style="border-radius:15px;"
+                    class="md-raised md-primary"
+                    @click="goBack('fourth', 'third')"
+                  >Back</md-button>
                   <md-button
                     style="border-radius:15px;"
                     class="md-raised md-primary"
@@ -627,7 +667,7 @@
                 <md-step
                   id="fifth"
                   :md-done.sync="fifth"
-                  md-label="Shippo Set Up"
+                  md-label="Step 5: Shipping"
                   md-description="Optional"
                 >
                   <div class="row">
@@ -662,7 +702,7 @@
                     style="height:40px;"
                     id="btn-login"
                     @click="register(), makeShippoApiToken()"
-                  >Sign Up</md-button>
+                  >Submit</md-button>
                   <div class="error" v-html="error" />
                 </md-step>
               </md-steppers>
