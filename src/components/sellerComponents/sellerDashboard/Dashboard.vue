@@ -203,8 +203,8 @@
   <!-- Modal component to add a service with -->
 
   <modal
-    adaptive="true"
-    resizable="true"
+    :adaptive="true"
+    :resizable="true"
     name="add-service"
     height="auto"
     scrollable
