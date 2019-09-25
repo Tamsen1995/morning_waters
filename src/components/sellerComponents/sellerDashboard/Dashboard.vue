@@ -137,6 +137,10 @@
                               id="subNegPrice"
                               v-if="subService && subService.serviceNegPrice === true"
                             >Negotiable</span>
+                            <span
+                              id="taxable"
+                              v-if="subService && subService.serviceTaxable === true"
+                            >Taxable</span>
                           </div>
                         </div>
                       </md-card-header>
@@ -198,7 +202,15 @@
 
   <!-- Modal component to add a service with -->
 
-  <modal  adaptive="true" resizable="true" name="add-service" height="auto" scrollable :clickToClose="false" id="add-services">
+  <modal
+    adaptive="true"
+    resizable="true"
+    name="add-service"
+    height="auto"
+    scrollable
+    :clickToClose="false"
+    id="add-services"
+  >
     <md-button
       class="pull-right"
       style=" color: #2d133a; border-style: ridge;"
