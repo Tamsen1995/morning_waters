@@ -34,6 +34,9 @@
       <h4>About:</h4>
       <!-- Scroll Content -->
       <md-content class="md-scrollbar">
+        <md-button style="color:#301a70" class="pull-right md-fab md-mini md-plain">
+          <md-icon>edit</md-icon>
+        </md-button>
         <p style="text-align:left">{{ this.about }}</p>
       </md-content>
 
