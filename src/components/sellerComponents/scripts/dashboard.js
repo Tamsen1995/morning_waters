@@ -61,7 +61,10 @@ export default {
     deleteSubServiceToBeAdded (index) {
       this.subServicesToBeAdded.splice(index, 1)
     },
-
+    editServiceDescription () {
+      // this.aboutTextarea = this.about;
+      // this.editingAboutSection = true;
+    },
     async previewPublicProfile () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
