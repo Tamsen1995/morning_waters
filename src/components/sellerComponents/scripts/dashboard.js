@@ -61,7 +61,11 @@ export default {
     deleteSubServiceToBeAdded (index) {
       this.subServicesToBeAdded.splice(index, 1)
     },
-    editServiceDescription () {
+    editServiceDescription (index) {
+      console.log(`what is : ${JSON.stringify(this.services[index])}`) // TESTING
+      this.services[index].editing = true
+
+      console.log(`fuck me dude : ${this.services[index].editing}`) // TESTING
       // this.aboutTextarea = this.about;
       // this.editingAboutSection = true;
     },

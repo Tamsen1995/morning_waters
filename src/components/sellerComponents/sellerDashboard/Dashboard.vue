@@ -88,7 +88,7 @@
                   <!-- TESTING -->
                   <div>
                     <md-button
-                      @click="editServiceDescription()"
+                      @click="editServiceDescription(index)"
                       style="color:#301a70"
                       class="pull-right md-fab md-mini md-plain"
                     >
