@@ -81,6 +81,9 @@
                             v-if="service && service.serviceTaxable === true"
                           >Taxable</span>
                         </div>
+                        <md-button style="color:#301a70" class="pull-right md-fab md-mini md-plain">
+                          <md-icon>edit</md-icon>
+                        </md-button>
                       </div>
                     </md-card-content>
                   </md-card-header>
