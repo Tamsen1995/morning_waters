@@ -10,93 +10,92 @@
 
       <div class="panel-body" v-for="(msg, index) in correspondanceMessages" v-bind:key="index">
         <div class="msg-scroll">
-        <!-- if -->
-        <md-card
-          v-if="msg && msg.sender && msg.sender === 'buyer'"
-          id="recieve-text-bubble"
-          class="pull-left"
-        >
-          <md-content>
-            <h4 class="media-heading pull-right">Date</h4>
-            <md-icon>account_circle</md-icon>
-            {{buyer.name}}
-            <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-            <div class="view_msg">
-              <p class="lead">{{msg.message}}</p>
-            </div>
-          </md-content>
-        </md-card>
-        <md-card
-          v-else-if="msg && msg.sender && msg.sender === 'buyer-file-attachment'"
-          class="pull-left"
-          id="recieve-text-bubble"
-        >
-          <md-content>
-            <h4 class="media-heading pull-right">Date</h4>
-            <md-icon>account_circle</md-icon>
-            <span v-if="seller !== null">{{seller.companyName}}</span>
-            <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-            <div class="view_msg">
-              <p class="lead">
-                {{msg.message}}
-                {{msg.filename}}
-                <br />
-              </p>
-              <md-button
-                style="background-color: black; color: white;"
-                @click="downloadFile(msg.filename)"
-              >Download</md-button>
-            </div>
-          </md-content>
-        </md-card>
-        
-        <!--  -->
-        <md-card
-          v-else-if="msg && msg.sender && msg.sender === 'seller-file-attachment'"
-          class="pull-right"
-          id="response-text-bubble"
-        >
-          <md-content>
-            <h4 class="media-heading pull-right">Date</h4>
-            <md-icon>account_circle</md-icon>
-            <span v-if="seller !== null">{{seller.companyName}}</span>
-            <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-            <div class="view_msg">
-              <p class="lead">
-                {{msg.message}}
-                {{msg.filename}}
-                <br />
-              </p>
-              <md-button
-                style="background-color: black; color: white;"
-                @click="downloadFile(msg.filename)"
-              >Download</md-button>
-            </div>
-          </md-content>
-        </md-card>
-        
+          <!-- if -->
+          <md-card
+            v-if="msg && msg.sender && msg.sender === 'buyer'"
+            id="recieve-text-bubble"
+            class="pull-left"
+          >
+            <md-content>
+              <h4 class="media-heading pull-right">Date</h4>
+              <md-icon>account_circle</md-icon>
+              {{buyer.name}}
+              <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+              <div class="view_msg">
+                <p class="lead">{{msg.message}}</p>
+              </div>
+            </md-content>
+          </md-card>
+          <md-card
+            v-else-if="msg && msg.sender && msg.sender === 'buyer-file-attachment'"
+            class="pull-left"
+            id="recieve-text-bubble"
+          >
+            <md-content>
+              <h4 class="media-heading pull-right">Date</h4>
+              <md-icon>account_circle</md-icon>
+              <span v-if="seller !== null">{{seller.companyName}}</span>
+              <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+              <div class="view_msg">
+                <p class="lead">
+                  {{msg.message}}
+                  {{msg.filename}}
+                  <br />
+                </p>
+                <md-button
+                  style="background-color: black; color: white;"
+                  @click="downloadFile(msg.filename)"
+                >Download</md-button>
+              </div>
+            </md-content>
+          </md-card>
 
-        <md-card
-          v-else-if="msg && msg.sender === 'seller'"
-          class="pull-right"
-          id="response-text-bubble"
-        >
-          <md-content>
-            <h4 class="media-heading pull-right">Date</h4>
-            <md-icon>account_circle</md-icon>
-            {{seller.companyName}}
-            <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
-            <div class="view_msg">
-              <p class="lead">{{msg.message}}</p>
-            </div>
-          </md-content>
-        </md-card>
-        <md-card v-else-if="msg && msg.sender === 'seller_submit'">
-          <b-alert variant="success" show>You have submitted the order ...</b-alert>
-        </md-card>
-        <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
-          <b-alert show>{{buyer.firstName}} has submitted the order ...</b-alert>
-        </md-card>
+          <!--  -->
+          <md-card
+            v-else-if="msg && msg.sender && msg.sender === 'seller-file-attachment'"
+            class="pull-right"
+            id="response-text-bubble"
+          >
+            <md-content>
+              <h4 class="media-heading pull-right">Date</h4>
+              <md-icon>account_circle</md-icon>
+              <span v-if="seller !== null">{{seller.companyName}}</span>
+              <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+              <div class="view_msg">
+                <p class="lead">
+                  {{msg.message}}
+                  {{msg.filename}}
+                  <br />
+                </p>
+                <md-button
+                  style="background-color: black; color: white;"
+                  @click="downloadFile(msg.filename)"
+                >Download</md-button>
+              </div>
+            </md-content>
+          </md-card>
+
+          <md-card
+            v-else-if="msg && msg.sender === 'seller'"
+            class="pull-right"
+            id="response-text-bubble"
+          >
+            <md-content>
+              <h4 class="media-heading pull-right">Date</h4>
+              <md-icon>account_circle</md-icon>
+              {{seller.companyName}}
+              <!-- <h4 class="media-heading">{{msg.sender}} :</h4> -->
+              <div class="view_msg">
+                <p class="lead" style="white-space: pre-wrap;">{{msg.message}}</p>
+              </div>
+            </md-content>
+          </md-card>
+          <md-card v-else-if="msg && msg.sender === 'seller_submit'">
+            <b-alert variant="success" show>You have submitted the order ...</b-alert>
+          </md-card>
+          <md-card v-else-if="msg && msg.sender === 'buyer_submit'">
+            <b-alert show>{{buyer.firstName}} has submitted the order ...</b-alert>
+          </md-card>
         </div>
       </div>
 
@@ -139,7 +138,6 @@
             </div>
           </form>
         </md-card>
-
       </div>
     </div>
     <div v-else>
