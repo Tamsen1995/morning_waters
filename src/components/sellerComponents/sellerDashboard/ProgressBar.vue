@@ -49,7 +49,7 @@
       </b-progress>
       {{this.percentage}} %
       <!-- Prompt to commence onboarding-->
-      <modal adaptive="true" resizable="true" height="auto" name="onboarding-add-services">
+      <modal :adaptive="true" :resizable="true" height="auto" name="onboarding-add-services">
         <div id="progress_modal">
           <h4>To begin marketing, you must add at least 1 service.</h4>
           <br />
@@ -59,16 +59,20 @@
             <li>At least 5 descriptive keywords (the more the better)</li>
             <li>Pricing</li>
             <li>Turn-around time</li>
-          </ol> -->
+          </ol>-->
           <br />Would you like to add a service?
-          <md-button class="md-dense md-raised md-primary" style="color: purple;" @click="addServices()">
+          <md-button
+            class="md-dense md-raised md-primary"
+            style="color: purple;"
+            @click="addServices()"
+          >
             <i class="fas fa-atom" id="service_logo"></i> Add Services
           </md-button>
         </div>
       </modal>
       <!--  -->
 
-      <modal height="auto" adaptive="true" resizable="true" name="onboarding-add-stripe-connect">
+      <modal height="auto" :adaptive="true" :resizable="true" name="onboarding-add-stripe-connect">
         <div class="container" id="progress_modal">
           <h3>Add Payout System</h3>
           <br />
@@ -87,7 +91,7 @@
         </div>
       </modal>
 
-      <modal height="auto" adaptive="true" resizable="true" name="onboarding-add-shippo-acct">
+      <modal height="auto" :adaptive="true" :resizable="true" name="onboarding-add-shippo-acct">
         <div id="progress_modal">
           <br />We recommend you use our shipping partners shippo for smoother transactions.
           <br />With shippo you can handle delicate packages, dry ice, insurance, and get live updates - all on our platform...
@@ -99,7 +103,7 @@
         </div>
       </modal>
 
-      <modal height="auto" adaptive="true" resizable="true" name="onboarding-add-about-section">
+      <modal height="auto" :adaptive="true" :resizable="true" name="onboarding-add-about-section">
         <div id="progress_modal">
           <br />
           <br />[Call to action for about section]
@@ -114,7 +118,12 @@
         </div>
       </modal>
 
-      <modal height="auto" adaptive="true" resizable="true" name="thank-you-for-adding-a-payout-method">
+      <modal
+        height="auto"
+        :adaptive="true"
+        :resizable="true"
+        name="thank-you-for-adding-a-payout-method"
+      >
         <div id="progress_modal">
           <div>
             <br />
@@ -127,12 +136,12 @@
         </div>
       </modal>
 
-      <modal 
-          height="auto" 
-          adaptive="true" 
-          resizable="true" 
-          name="thank-you-for-adding-a-shipping-method"
-        >
+      <modal
+        height="auto"
+        :adaptive="true"
+        :resizable="true"
+        name="thank-you-for-adding-a-shipping-method"
+      >
         <div id="progress_modal">
           <div>
             <br />
@@ -354,5 +363,4 @@ export default {
 <style scoped>
 @import "../../../assets/css/progress.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
-
 </style>

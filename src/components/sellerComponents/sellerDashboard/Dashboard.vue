@@ -85,6 +85,18 @@
                     </md-card-content>
                   </md-card-header>
 
+                  <!-- TESTING -->
+                  <div>
+                    <md-button
+                      @click="editServiceDescription()"
+                      style="color:#301a70"
+                      class="pull-right md-fab md-mini md-plain"
+                    >
+                      <md-icon>edit</md-icon>
+                    </md-button>
+                  </div>
+                  <!-- TESTING -->
+
                   <md-card-content
                     class="md-scrollbar"
                     style="word-wrap: break-word;"
@@ -203,8 +215,8 @@
   <!-- Modal component to add a service with -->
 
   <modal
-    adaptive="true"
-    resizable="true"
+    :adaptive="true"
+    :resizable="true"
     name="add-service"
     height="auto"
     scrollable
