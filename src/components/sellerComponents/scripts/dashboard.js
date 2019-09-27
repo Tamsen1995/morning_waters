@@ -63,6 +63,9 @@ export default {
         await DashboardServices.submitServiceDescriptionEdit({
           serviceEdit: this.serviceEdited
         })
+        this.serviceEdited = null
+        this.$modal.hide('service-live-edit')
+        this.getServices()
       } catch (error) {
         if (error) throw error
       }

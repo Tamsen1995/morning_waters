@@ -2,7 +2,7 @@ import Api from '@/services/Api'
 
 export default {
   submitServiceDescriptionEdit (serviceEdited) {
-    console.log(`serviceEdited : ${JSON.stringify(serviceEdited)}`) // TESTING
+    return Api().post('seller/services/editService/description', serviceEdited)
   },
   // takes in a service id
   // and then deletes it
