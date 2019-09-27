@@ -283,8 +283,6 @@ export default {
           this.$modal.show("onboarding-add-services");
         } else if (this.seller && this.seller.stripeConnectAcctInfo === "") {
           this.$modal.show("onboarding-add-stripe-connect");
-        } else if (this.seller && this.seller.about === "") {
-          this.$modal.show("onboarding-add-about-section");
         } else if (this.seller && this.seller.shippo_api_key === "") {
           this.$modal.show("onboarding-add-shippo-acct");
         }
