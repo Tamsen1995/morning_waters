@@ -11,16 +11,12 @@
         <!-- This section is reserved for the profile information -->
         <div>
           <!-- insert about section -->
-          <about-section ref="aboutSection"></about-section>
+          <about-section ref="aboutSection" v-on:determine-onboarding-status="updateProgressBar()"></about-section>
         </div>
         <br />
         <br />
         <div>
-          <progress-bar
-            ref="progressBar"
-            v-on:dashboard-add-services="addService()"
-            v-on:update-about-section="updateAboutSection()"
-          ></progress-bar>
+          <progress-bar ref="progressBar" v-on:dashboard-add-services="addService()"></progress-bar>
         </div>
 
         <!-- Stats Cards -->

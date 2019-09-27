@@ -102,6 +102,7 @@ export default {
         this.editingAboutSection = false;
         this.aboutTextarea = "";
         this.getUserInfo();
+        this.$emit("determine-onboarding-status");
       } catch (error) {
         if (error) throw error;
       }

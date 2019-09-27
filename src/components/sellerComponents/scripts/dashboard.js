@@ -58,6 +58,14 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
+    async updateProgressBar () {
+      try {
+        var child = this.$refs.progressBar
+        child.determineOnboardingStatus()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
     async submitServiceDescriptionEdit () {
       try {
         await DashboardServices.submitServiceDescriptionEdit({
@@ -294,6 +302,7 @@ export default {
         return true
       }
     },
+
     async submitService () {
       try {
         // get the service table id from the user
