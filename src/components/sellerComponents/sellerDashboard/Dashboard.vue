@@ -222,7 +222,10 @@
     :clickToClose="false"
     id="add-services"
   >
-    <add-service-modal v-on:close-add-service-modal="cleanServiceInput()"></add-service-modal>
+    <add-service-modal
+      v-on:close-add-service-modal="cleanServiceInput()"
+      v-on:get-services="getServices()"
+    ></add-service-modal>
     <!-- In here you wanna insert the add service modal component -->
   </modal>
 

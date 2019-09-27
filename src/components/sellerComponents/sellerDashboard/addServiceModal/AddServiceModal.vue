@@ -446,6 +446,7 @@
 
 <script>
 import InputTag from "vue-input-tag";
+import DashboardServices from "@/services/DashboardServices";
 
 export default {
   data() {
@@ -483,6 +484,73 @@ export default {
     InputTag
   },
   methods: {
+    async submitService() {
+      try {
+        // get the service table id from the user
+        const userExtracted = this.$store.getters.getUserInfo;
+        const serviceTableId = userExtracted.serviceTableId;
+
+        const service = {
+          userId: userExtracted.id,
+          tableId: serviceTableId,
+          title: this.serviceTitle,
+          description: this.serviceDescription,
+          servicePrice: this.servicePrice,
+          serviceNegPrice: this.serviceNegPrice,
+          serviceNegTime: this.serviceNegTime,
+          serviceTaxable: this.serviceTaxable,
+          turnAroundTime: `${this.turnAroundTime} ${this.turnAroundTimeType}`,
+          timeUnit: this.timeUnit,
+          unitType: this.unitType,
+          tags: this.tags
+        };
+
+        // If the service fields are empty then don't execute everything below this
+        if (this.serviceFormFilledOut() === true) {
+          await DashboardServices.pushServiceOntoDb(service);
+          // await this.getServices();
+          // const serviceId = this.services[this.services.length - 1].id;
+
+          // if (this.subServicesToBeAdded.length > 0) {
+          //   await DashboardServices.addSubServices({
+          //     parentServiceId: serviceId,
+          //     serviceTableId: serviceTableId,
+          //     subServices: this.subServicesToBeAdded
+          //   });
+          // }
+
+          this.$emit("get-services");
+
+          this.cleanServiceInput();
+        }
+      } catch (error) {
+        if (error) {
+          console.log(
+            `An error occurred inside of the dashboard.js submitService method : ${error}`
+          ); // TESTING
+        }
+      }
+    },
+    // this function determines if the
+    // servcice form has been filled out
+    serviceFormFilledOut: function() {
+      if (this.serviceTitle === "") {
+        this.error = "No service title";
+        return false;
+      } else if (this.turnAroundTime === "") {
+        this.error = "Please indicate a turnaround time";
+        return false;
+      } else if (this.tags.length <= 0) {
+        this.error = "Please enter some tags / keywords";
+        return false;
+      } else if (this.unitType === "") {
+        this.error = "The unit type needs to be indicated";
+        return false;
+      } else {
+        return true;
+      }
+    },
+
     cleanServiceInput() {
       // this should emit an event closing the service modal
       // on the dashboard
@@ -508,7 +576,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "../../../../assets/css/dashboard.css";
 @import "../../../../assets/css/forms.css";
 @import url("https://fonts.googleapis.com/css?family=Lato|Roboto");
