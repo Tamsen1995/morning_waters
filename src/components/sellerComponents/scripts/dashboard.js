@@ -6,6 +6,7 @@ import UserServices from '@/services/UserServices'
 import DashboardServices from '@/services/DashboardServices'
 import { ResponsiveDirective } from 'vue-responsive-components'
 import InputTag from 'vue-input-tag'
+import AddServiceModal from '@/components/sellerComponents/sellerDashboard/addServiceModal/AddServiceModal.vue'
 
 var $ = require('jQuery')
 
@@ -48,6 +49,7 @@ export default {
     this.getUserInfo()
   },
   components: {
+    AddServiceModal,
     DashboardHeader,
     StatsCards,
     AboutSection,
