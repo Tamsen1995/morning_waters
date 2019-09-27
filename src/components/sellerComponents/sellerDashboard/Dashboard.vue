@@ -669,7 +669,32 @@
     </div>
   </modal>
 
-  <modal name="service-live-edit">fuck</modal>
+  <!-- this modal is responsible for the live editing of the service description -->
+  <modal name="service-live-edit">
+    <div class="container" id="gen_inquiry">
+      <div class="md-title">
+        <h2>Want to send a message to this seller about their listing?</h2>
+      </div>
+
+      <form class="md-layout">
+        <md-field>
+          <md-textarea
+            v-if="serviceEdited"
+            v-model="serviceEdited.description"
+            class="form-control animated"
+            placeholder="Enter your message"
+            rows="5"
+          ></md-textarea>
+        </md-field>
+        <md-button
+          @click="submitServiceDescriptionEdit()"
+          class="md-raised md-primary submit-buttons-md"
+          style="margin-top:10px; color: #301a70;"
+          type="button"
+        >Submit</md-button>
+      </form>
+    </div>
+  </modal>
 </div>
 </template>
 

@@ -58,17 +58,29 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    deleteSubServiceToBeAdded (index) {
-      this.subServicesToBeAdded.splice(index, 1)
+    async submitServiceDescriptionEdit () {
+      try {
+        await DashboardServices.submitServiceDescriptionEdit({
+          serviceEdit: this.serviceEdited
+        })
+      } catch (error) {
+        if (error) throw error
+      }
     },
     editServiceDescription (index) {
       console.log(`\nthe index being :${index}`) // TESTING
 
       this.$modal.show('service-live-edit')
 
+      this.serviceEdited = this.services[index]
+
       // this.aboutTextarea = this.about;
       // this.editingAboutSection = true;
     },
+    deleteSubServiceToBeAdded (index) {
+      this.subServicesToBeAdded.splice(index, 1)
+    },
+
     async previewPublicProfile () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
