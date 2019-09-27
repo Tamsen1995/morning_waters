@@ -7,13 +7,6 @@
         </div>
         <div class="col">
           <md-button
-            v-if="userServices && percentage >= 80 && userServices.length < 5"
-            class="md-raised pull-right"
-            :md-ripple="false"
-            @click="addServices()"
-          >Improve your profile</md-button>
-          <md-button
-            v-else
             class="md-raised pull-right blinking"
             :md-ripple="false"
             @click="determineOnboardingStatus()"
@@ -100,21 +93,6 @@
             class="md-dense md-raised md-primary"
             @click="addShippoAccount()"
           >Add Shippo account</md-button>
-        </div>
-      </modal>
-
-      <modal height="auto" :adaptive="true" :resizable="true" name="onboarding-add-about-section">
-        <div id="progress_modal">
-          <br />
-          <br />[Call to action for about section]
-          <md-field>
-            <label>Textarea</label>
-            <md-textarea v-model="aboutTextarea"></md-textarea>
-          </md-field>
-          <md-button
-            class="md-dense md-raised md-primary"
-            @click="addSellerAboutSection()"
-          >Add About section</md-button>
         </div>
       </modal>
 
@@ -283,8 +261,6 @@ export default {
           this.$modal.show("onboarding-add-services");
         } else if (this.seller && this.seller.stripeConnectAcctInfo === "") {
           this.$modal.show("onboarding-add-stripe-connect");
-        } else if (this.seller && this.seller.about === "") {
-          this.$modal.show("onboarding-add-about-section");
         } else if (this.seller && this.seller.shippo_api_key === "") {
           this.$modal.show("onboarding-add-shippo-acct");
         }
@@ -294,23 +270,7 @@ export default {
         if (error) throw error;
       }
     },
-    async addSellerAboutSection() {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo;
 
-        const response = await UserServices.addSellerAboutSection({
-          sellerId: userExtracted.id,
-          about: this.aboutTextarea
-        });
-        this.$emit("update-about-section");
-
-        this.$modal.hide("onboarding-add-about-section");
-        this.aboutTextarea = "";
-        this.determineOnboardingStatus();
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
     async addServices() {
       try {
         this.$emit("dashboard-add-services");
@@ -343,7 +303,7 @@ export default {
 
     async proceedAfterPayoutRegistration() {
       try {
-        this.$modal.hide("thank-you-for-adding-a-payout-method");
+        this.$modal.hide("thank-you-for-adding-a-shipping-method");
         this.determineOnboardingStatus();
       } catch (error) {
         if (error) throw error;

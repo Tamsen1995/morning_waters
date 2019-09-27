@@ -1,6 +1,9 @@
 import Api from '@/services/Api'
 
 export default {
+  submitServiceDescriptionEdit (serviceEdited) {
+    return Api().post('seller/services/editService/description', serviceEdited)
+  },
   // takes in a service id
   // and then deletes it
   editService (serviceEdit) {

@@ -21,11 +21,7 @@
                   <md-field>
                     <label>First Name:</label>
 
-                    <md-input  
-                      class="form-control" 
-                      v-model="firstName">
-                    </md-input>
-
+                    <md-input class="form-control" v-model="firstName"></md-input>
                   </md-field>
                 </div>
                 <!-- input for Last Name -->
@@ -33,21 +29,14 @@
                   <md-field>
                     <label>Last Name:</label>
 
-                    <md-input 
-                      class="form-control"
-                      v-model="lastName">
-                    </md-input>
-
+                    <md-input class="form-control" v-model="lastName"></md-input>
                   </md-field>
                 </div>
                 <!-- input for email address -->
                 <div class="form-row">
                   <md-field>
                     <label>Email:</label>
-                    <md-input 
-                      class="form-control"
-                      v-model="email">
-                    </md-input>
+                    <md-input class="form-control" v-model="email"></md-input>
                   </md-field>
                 </div>
 
@@ -55,10 +44,7 @@
                 <div class="form-row">
                   <md-field>
                     <label>Phone Number:</label>
-                    <md-input 
-                      class="form-control"
-                      v-model="number">
-                    </md-input>
+                    <md-input class="form-control" v-model="number"></md-input>
                   </md-field>
                 </div>
 
@@ -66,10 +52,7 @@
                 <div class="form-row">
                   <md-field>
                     <label>Job Title:</label>
-                    <md-input 
-                      class="form-control"
-                      v-model="jobTitle">
-                    </md-input>
+                    <md-input class="form-control" v-model="jobTitle"></md-input>
                   </md-field>
                 </div>
 
@@ -88,7 +71,9 @@
                 <!-- Edit Profile info -->
                 <div>
                   <p style="color:#880599">Edit Main Profile Info:</p>
-                  <p style="color:#880599">(Services can be added & edited directly on your profile.)</p>
+                  <p
+                    style="color:#880599"
+                  >(Services can be added & edited directly on your profile.)</p>
                   <br />
                 </div>
 
@@ -96,30 +81,21 @@
                 <div class="form-row">
                   <md-field>
                     <label>Company name:</label>
-                    <md-input
-                      class="form-control"
-                      v-model="companyName">
-                    </md-input>
+                    <md-input class="form-control" v-model="companyName"></md-input>
                   </md-field>
                 </div>
                 <!-- Company Website -->
                 <div class="form-row">
                   <md-field>
                     <label>Company Website:</label>
-                    <md-input 
-                      class="form-control"
-                      v-model="companyWebsite">
-                    </md-input>
+                    <md-input class="form-control" v-model="companyWebsite"></md-input>
                   </md-field>
                 </div>
                 <!-- Input for About -->
                 <div class="form-group row">
                   <md-field>
                     <label>About:</label>
-                    <md-textarea 
-                      v-model="about" 
-                      class="form-control">
-                    </md-textarea>
+                    <md-textarea v-model="about" class="form-control"></md-textarea>
                   </md-field>
                 </div>
 
@@ -146,7 +122,11 @@
                   >Go to Stripe Dashboard</md-button>
                 </p>
                 <p v-else>
-                  <md-button style="color: #29105b" class="md-raised md-primary" @click="addPayoutInfo()">add payout</md-button>
+                  <md-button
+                    style="color: #29105b"
+                    class="md-raised md-primary"
+                    @click="addPayoutInfo()"
+                  >add payout</md-button>
                 </p>
               </md-card-content>
             </md-card>
@@ -157,7 +137,9 @@
             <md-card md-with-hover>
               <md-card-content>
                 <p style="color:#880599">Edit your shipping address:</p>
-                <p style="color:#880599">(We will send your updates directly to your shippo account.)</p>
+                <p
+                  style="color:#880599"
+                >(We will send your updates directly to your shippo account.)</p>
                 <!-- Street -->
                 <div class="form-group row">
                   <label for="inputStreet" class="col-sm col-form-label">Street:</label>
@@ -178,12 +160,12 @@
                   <label for="inputCity" class="col-sm col-form-label">City:</label>
                   <div class="col-sm-12">
                     <md-field>
-                      <md-input 
-                        v-model="address.city" 
-                        type="text" 
+                      <md-input
+                        v-model="address.city"
+                        type="text"
                         class="form-control"
-                        placeholder="Enter your city">
-                      </md-input>
+                        placeholder="Enter your city"
+                      ></md-input>
                     </md-field>
                   </div>
                 </div>
@@ -193,12 +175,12 @@
                   <label for="inputState" class="col-sm col-form-label">State:</label>
                   <div class="col-sm-12">
                     <md-field>
-                      <md-input 
-                        v-model="address.state" 
-                        type="text" 
+                      <md-input
+                        v-model="address.state"
+                        type="text"
                         placeholder="Enter your state"
-                        class="form-control">
-                      </md-input>
+                        class="form-control"
+                      ></md-input>
                     </md-field>
                   </div>
                 </div>
@@ -208,12 +190,12 @@
                   <label for="inputZip" class="col-sm col-form-label">Zip:</label>
                   <div class="col-sm-12">
                     <md-field>
-                      <md-input 
+                      <md-input
                         v-model="address.zip"
-                        class="form-control" 
-                        type="text" 
-                        placeholder="Enter your zip code">
-                      </md-input>
+                        class="form-control"
+                        type="text"
+                        placeholder="Enter your zip code"
+                      ></md-input>
                     </md-field>
                   </div>
                 </div>
@@ -244,43 +226,48 @@
           <md-tab id="tab-password" md-label="Password">
             <md-card>
               <md-card-content>
-                <p style="color:#880599">Edit your password: </p>
+                <p style="color:#880599">Edit your password:</p>
                 <br />
                 <br />
                 <!-- Input old password -->
 
                 <md-field>
                   <label>Old Password:</label>
-                  <md-input 
-                    class="form-control" 
-                    placeholder="Enter your old password" 
-                    type="password" v-model="oldPass">
-                  </md-input>
+                  <md-input
+                    class="form-control"
+                    placeholder="Enter your old password"
+                    type="password"
+                    v-model="oldPass"
+                  ></md-input>
                 </md-field>
 
                 <!-- input for new password -->
 
                 <md-field>
                   <label>New Password:</label>
-                  <md-input 
-                    placeholder="Enter your old password" 
+                  <md-input
+                    placeholder="Enter your new password"
                     class="form-control"
-                    type="password" 
-                    v-model="newPass">
-                  </md-input>
+                    type="password"
+                    v-model="newPass"
+                  ></md-input>
                 </md-field>
 
                 <!-- Confirm new password -->
                 <md-field>
                   <label>Confirm New Password:</label>
                   <md-input
-                    placeholder="Enter your old password"
+                    placeholder="Enter your new password"
                     type="password"
                     class="form-control"
                     v-model="confirmNewPass"
                   ></md-input>
                 </md-field>
-                <md-button style="color: #29105b" class="md-raised md-primary" @click="updatePassword()">Update Password</md-button>
+                <md-button
+                  style="color: #29105b"
+                  class="md-raised md-primary"
+                  @click="updatePassword()"
+                >Update Password</md-button>
               </md-card-content>
             </md-card>
           </md-tab>
@@ -294,8 +281,11 @@
     <div class="container" style="padding:30px;">
       <h3 style="color:#880599;text-align:center;">
         Your updates have been successfully saved.
-      
-      <md-button style="color:#880599" class="pull-right" @click="closeSubmittedProfilePrompt()">ok</md-button>
+        <md-button
+          style="color:#880599"
+          class="pull-right"
+          @click="closeSubmittedProfilePrompt()"
+        >ok</md-button>
       </h3>
     </div>
   </modal>
