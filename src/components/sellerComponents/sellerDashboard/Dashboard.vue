@@ -86,7 +86,10 @@
                   </md-card-header>
 
                   <!-- TESTING -->
-                  <div>
+                  <div
+                    v-if="services[index] && services[index].editing && services[index].editing === true"
+                  >test</div>
+                  <div v-else>
                     <md-button
                       @click="editServiceDescription(index)"
                       style="color:#301a70"
@@ -665,6 +668,8 @@
       </form>
     </div>
   </modal>
+
+  <modal name="service-live-edit">fuck</modal>
 </div>
 </template>
 

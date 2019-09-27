@@ -62,10 +62,10 @@ export default {
       this.subServicesToBeAdded.splice(index, 1)
     },
     editServiceDescription (index) {
-      console.log(`what is : ${JSON.stringify(this.services[index])}`) // TESTING
-      this.services[index].editing = true
+      console.log(`\nthe index being :${index}`) // TESTING
 
-      console.log(`fuck me dude : ${this.services[index].editing}`) // TESTING
+      this.$modal.show('service-live-edit')
+
       // this.aboutTextarea = this.about;
       // this.editingAboutSection = true;
     },
