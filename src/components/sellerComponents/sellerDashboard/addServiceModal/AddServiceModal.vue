@@ -445,7 +445,62 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      error: null,
+
+      subServices: [],
+      serviceTitle: "",
+      serviceDescription: "",
+      servicePrice: 0.0,
+      turnAroundTime: "",
+      turnAroundTimeType: "",
+      unitType: "",
+      price: "",
+      user: null,
+      timeUnit: "",
+      unit: "",
+      serviceNegPrice: false,
+      serviceNegTime: false,
+      serviceTaxable: false,
+
+      // The variable which will determine if
+      // the section for adding a sub service will be shown
+      // addSubService: false
+      // these are the subservicesToBeAdded to be added
+      subServicesToBeAdded: [],
+      tags: [],
+      serviceBeingEdited: false,
+      serviceEdited: null
+
+      // progress bar vars
+    };
+  },
+  methods: {
+    cleanServiceInput() {
+      // this should emit an event closing the service modal
+      // on the dashboard
+      this.$emit("close-add-service-modal");
+
+      this.serviceTitle = "";
+      this.serviceDescription = "";
+      this.servicePrice = 0.0;
+      this.turnAroundTime = "";
+      this.unitType = "";
+      this.price = "";
+      this.timeUnit = "";
+      this.unit = "";
+      this.serviceNegPrice = false;
+      this.serviceNegTime = false;
+      this.serviceBeingEdited = false;
+      this.serviceTaxable = false;
+      this.serviceEdited = null;
+      this.tags = [];
+      this.subServicesToBeAdded = [];
+    }
+  }
+};
 </script>
 
 <style>
