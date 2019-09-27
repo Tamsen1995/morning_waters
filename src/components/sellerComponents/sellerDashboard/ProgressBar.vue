@@ -7,7 +7,6 @@
         </div>
         <div class="col">
           <md-button
-            v-if="percentage < 75 && seller.about !== '' "
             class="md-raised pull-right blinking"
             :md-ripple="false"
             @click="determineOnboardingStatus()"
@@ -304,7 +303,7 @@ export default {
 
     async proceedAfterPayoutRegistration() {
       try {
-        this.$modal.hide("thank-you-for-adding-a-payout-method");
+        this.$modal.hide("thank-you-for-adding-a-shipping-method");
         this.determineOnboardingStatus();
       } catch (error) {
         if (error) throw error;
