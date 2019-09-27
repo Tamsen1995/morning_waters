@@ -672,9 +672,7 @@
   <!-- this modal is responsible for the live editing of the service description -->
   <modal name="service-live-edit">
     <div class="container" id="gen_inquiry">
-      <div class="md-title">
-        <h2>Want to send a message to this seller about their listing?</h2>
-      </div>
+      <div class="md-title"></div>
 
       <form class="md-layout">
         <md-field>
@@ -682,7 +680,7 @@
             v-if="serviceEdited"
             v-model="serviceEdited.description"
             class="form-control animated"
-            placeholder="Enter your message"
+            placeholder="Enter your service description"
             rows="5"
           ></md-textarea>
         </md-field>
