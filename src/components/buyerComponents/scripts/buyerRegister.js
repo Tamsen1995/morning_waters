@@ -12,6 +12,7 @@ export default {
       email: '',
       password: '',
       passwordConfirm: '',
+      companyName: '',
       address: {
         street: '',
         city: '',

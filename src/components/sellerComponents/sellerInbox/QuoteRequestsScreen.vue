@@ -17,18 +17,18 @@
 
         <div class="inbox-wrapper">
           <div class="row rounded">
-            <div class="col-lg-3" >
+            <div class="col-lg-3">
               <div class="message-sideleft" style="margin-top:-20px;">
                 <!-- <md-card> -->
                 <div class="panel-heading">
                   <!-- Filter Orders/Quote Requests -->
+
                   <div class="pull-left"></div>
 
                   <div class="clearfix"></div>
                 </div>
 
                 <!-- The panels for the orders -->
-
                 <!-- unread ! -->
                 <div class="list-group no-margin list-message">
                   <div v-if="this.orders && this.orders.length > 0">
@@ -123,7 +123,10 @@
 
                           <p class="list-group-item-text">Order# {{ order.orderId }}:</p>
                           <p>Estimated Revenue:[$$$]</p>
-                          <span class="label pull-right" style="background-color:#64489b">Pending Order</span>
+                          <span
+                            class="label pull-right"
+                            style="background-color:#64489b"
+                          >Pending Order</span>
                           <div class="clearfix"></div>
                         </div>
                       </md-ripple>
@@ -163,8 +166,8 @@
                 </div>
               </div>
             </div>
-              <!-- The panels for the quote requests -->
-            <div class="col-lg-6" >
+            <!-- The panels for the quote requests -->
+            <div class="col-lg-6">
               <div class="message-sideright">
                 <!--  plug in message panel here  -->
                 <message-panel
