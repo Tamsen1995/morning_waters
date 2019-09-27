@@ -445,6 +445,8 @@
 </template>
 
 <script>
+import InputTag from "vue-input-tag";
+
 export default {
   data() {
     return {
@@ -476,6 +478,9 @@ export default {
 
       // progress bar vars
     };
+  },
+  components: {
+    InputTag
   },
   methods: {
     cleanServiceInput() {
