@@ -58,17 +58,40 @@ export default {
     responsive: ResponsiveDirective
   },
   methods: {
-    deleteSubServiceToBeAdded (index) {
-      this.subServicesToBeAdded.splice(index, 1)
+    async updateProgressBar () {
+      try {
+        var child = this.$refs.progressBar
+        child.determineOnboardingStatus()
+      } catch (error) {
+        if (error) throw error
+      }
+    },
+    async submitServiceDescriptionEdit () {
+      try {
+        await DashboardServices.submitServiceDescriptionEdit({
+          serviceEdit: this.serviceEdited
+        })
+        this.serviceEdited = null
+        this.$modal.hide('service-live-edit')
+        this.getServices()
+      } catch (error) {
+        if (error) throw error
+      }
     },
     editServiceDescription (index) {
-      console.log(`what is : ${JSON.stringify(this.services[index])}`) // TESTING
-      this.services[index].editing = true
+      console.log(`\nthe index being :${index}`) // TESTING
 
-      console.log(`fuck me dude : ${this.services[index].editing}`) // TESTING
+      this.$modal.show('service-live-edit')
+
+      this.serviceEdited = this.services[index]
+
       // this.aboutTextarea = this.about;
       // this.editingAboutSection = true;
     },
+    deleteSubServiceToBeAdded (index) {
+      this.subServicesToBeAdded.splice(index, 1)
+    },
+
     async previewPublicProfile () {
       try {
         const userExtracted = this.$store.getters.getUserInfo
@@ -279,6 +302,7 @@ export default {
         return true
       }
     },
+
     async submitService () {
       try {
         // get the service table id from the user

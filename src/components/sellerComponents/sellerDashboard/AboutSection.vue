@@ -4,6 +4,7 @@
       <div class="d-flex justify-content-center" id="company-name">
         <h1 style="text-align:center:">{{ this.companyName }}</h1>
       </div>
+
       <div class="d-flex justify-content-center" d="company-location">
         <h4>{{ this.companyLocation.city }}, {{ this.companyLocation.country }}</h4>
       </div>
@@ -101,6 +102,7 @@ export default {
         this.editingAboutSection = false;
         this.aboutTextarea = "";
         this.getUserInfo();
+        this.$emit("determine-onboarding-status");
       } catch (error) {
         if (error) throw error;
       }

@@ -11,16 +11,12 @@
         <!-- This section is reserved for the profile information -->
         <div>
           <!-- insert about section -->
-          <about-section ref="aboutSection"></about-section>
+          <about-section ref="aboutSection" v-on:determine-onboarding-status="updateProgressBar()"></about-section>
         </div>
         <br />
         <br />
         <div>
-          <progress-bar
-            ref="progressBar"
-            v-on:dashboard-add-services="addService()"
-            v-on:update-about-section="updateAboutSection()"
-          ></progress-bar>
+          <progress-bar ref="progressBar" v-on:dashboard-add-services="addService()"></progress-bar>
         </div>
 
         <!-- Stats Cards -->
@@ -86,7 +82,10 @@
                   </md-card-header>
 
                   <!-- TESTING -->
-                  <div>
+                  <div
+                    v-if="services[index] && services[index].editing && services[index].editing === true"
+                  >test</div>
+                  <div v-else>
                     <md-button
                       @click="editServiceDescription(index)"
                       style="color:#301a70"
@@ -662,6 +661,31 @@
             @click="submitService()"
           >Publish</md-button>
         </div>
+      </form>
+    </div>
+  </modal>
+
+  <!-- this modal is responsible for the live editing of the service description -->
+  <modal name="service-live-edit">
+    <div class="container" id="gen_inquiry">
+      <div class="md-title"></div>
+
+      <form class="md-layout">
+        <md-field>
+          <md-textarea
+            v-if="serviceEdited"
+            v-model="serviceEdited.description"
+            class="form-control animated"
+            placeholder="Enter your service description"
+            rows="5"
+          ></md-textarea>
+        </md-field>
+        <md-button
+          @click="submitServiceDescriptionEdit()"
+          class="md-raised md-primary submit-buttons-md"
+          style="margin-top:10px; color: #301a70;"
+          type="button"
+        >Submit</md-button>
       </form>
     </div>
   </modal>
