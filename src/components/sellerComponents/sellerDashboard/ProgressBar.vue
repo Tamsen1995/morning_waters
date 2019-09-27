@@ -7,13 +7,7 @@
         </div>
         <div class="col">
           <md-button
-            v-if="userServices && percentage >= 80 && userServices.length < 5"
-            class="md-raised pull-right"
-            :md-ripple="false"
-            @click="addServices()"
-          >Improve your profile</md-button>
-          <md-button
-            v-else
+            v-if="percentage >= 75 && about === '' "
             class="md-raised pull-right blinking"
             :md-ripple="false"
             @click="determineOnboardingStatus()"
