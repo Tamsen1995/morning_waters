@@ -7,7 +7,7 @@
         </div>
         <div class="col">
           <md-button
-            v-if="percentage >= 75 && about === '' "
+            v-if="percentage < 75 && seller.about !== '' "
             class="md-raised pull-right blinking"
             :md-ripple="false"
             @click="determineOnboardingStatus()"
@@ -94,21 +94,6 @@
             class="md-dense md-raised md-primary"
             @click="addShippoAccount()"
           >Add Shippo account</md-button>
-        </div>
-      </modal>
-
-      <modal height="auto" :adaptive="true" :resizable="true" name="onboarding-add-about-section">
-        <div id="progress_modal">
-          <br />
-          <br />[Call to action for about section]
-          <md-field>
-            <label>Textarea</label>
-            <md-textarea v-model="aboutTextarea"></md-textarea>
-          </md-field>
-          <md-button
-            class="md-dense md-raised md-primary"
-            @click="addSellerAboutSection()"
-          >Add About section</md-button>
         </div>
       </modal>
 
@@ -286,23 +271,7 @@ export default {
         if (error) throw error;
       }
     },
-    async addSellerAboutSection() {
-      try {
-        const userExtracted = this.$store.getters.getUserInfo;
 
-        const response = await UserServices.addSellerAboutSection({
-          sellerId: userExtracted.id,
-          about: this.aboutTextarea
-        });
-        this.$emit("update-about-section");
-
-        this.$modal.hide("onboarding-add-about-section");
-        this.aboutTextarea = "";
-        this.determineOnboardingStatus();
-      } catch (error) {
-        if (error) throw error;
-      }
-    },
     async addServices() {
       try {
         this.$emit("dashboard-add-services");
